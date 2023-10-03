@@ -66,5 +66,16 @@ public class Reservation {
 		 
 		 return;
 	 }
+	 
+	 public void getReservation() {
+		 
+		 return;
+	 }
+	 
+	 public void modifyReservation() {
+		 
+		 
+		 return;
+	 }
 	
 }
