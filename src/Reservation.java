@@ -8,12 +8,12 @@ public class Reservation {
 	private int[] seatNumbers;
 	
 	public Reservation() {
-		name = null;
+		customer.name = null;
 		flight = null;
 	}
 	
 	 public Reservation(Account n, Flight f) {
-		 this.custeomer = n;
+		 this.customer = n;
 		 this.flight = f;
 		 
 	 }
@@ -28,7 +28,7 @@ public class Reservation {
 		 System.out.println("");
 		 
 		 this.passengers = new String[numPassengers];
-		 this.passengers[0] = this.customer.name;
+		 this.passengers[0] = customer.getname();
 		 
 		 for(int i = 1; i <= numPassengers; i++) {
 			 System.out.print("What is the name of this passenger: ");
@@ -45,8 +45,8 @@ public class Reservation {
 					 System.out.println("Sorry but that is not an available seat");
 					 i--;
 				 }else {
-					 flight.passengers[seat][1] = this.customer.name;
-					 flight.passengers[seat][2] = this.customer.accountnumber;
+					 flight.passengers[seat][1] = this.customer.getname();
+					 flight.passengers[seat][2] = this.customer.accountnumber();
 					 seatNumbers[i-1] = seat;
 					 
 				 }
