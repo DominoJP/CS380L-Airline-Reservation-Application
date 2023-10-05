@@ -10,8 +10,8 @@ public class Reservation {
 	
 	//a constructor that accepts nothing
 	public Reservation() {
-		customer.name = null;
-		flight = null;
+		this.customer = null;
+		this.flight = null;
 	}
 	
 	//a constructor that adds the customer making the reservation and the flight the reservation applies to
