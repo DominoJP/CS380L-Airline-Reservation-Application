@@ -27,6 +27,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JSpinner;
+import javax.swing.JList;
+import javax.swing.JScrollBar;
 
 public class WindowBuilder extends JFrame {
 
@@ -77,6 +79,9 @@ public class WindowBuilder extends JFrame {
 	private JLabel lblCreationPaneReTypePassword_1;
 	private JPasswordField passwordFieldCreationPaneReType;
 	private JButton btnCreationPaneSignUp;
+	private JScrollPane scrollPaneTest;
+	private JList list;
+	private JScrollBar scrollBar;
 
 
 	public static void main(String[] args) {
@@ -157,11 +162,14 @@ public class WindowBuilder extends JFrame {
 		FilterListPane = new JPanel();
 		contentPane.add(FilterListPane, "FILTERLIST");
 		GridBagLayout gbl_FilterListPane = new GridBagLayout();
-		gbl_FilterListPane.columnWidths = new int[]{0};
-		gbl_FilterListPane.rowHeights = new int[]{0};
-		gbl_FilterListPane.columnWeights = new double[]{Double.MIN_VALUE};
-		gbl_FilterListPane.rowWeights = new double[]{Double.MIN_VALUE};
+		gbl_FilterListPane.columnWidths = new int[]{91, 0, 0, 0, 0, 0, 4, 0, 0};
+		gbl_FilterListPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_FilterListPane.columnWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_FilterListPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		FilterListPane.setLayout(gbl_FilterListPane);
+		
+		scrollPaneTest = new JScrollPane();
+		contentPane.add(scrollPaneTest, "SCROLLTEST");
 		
 		// LogInPane components
 		
@@ -542,6 +550,7 @@ public class WindowBuilder extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				int FilterPanePassengerNumber = comboBoxFilterPanePassengers.getSelectedIndex();
 				// STANDBY: METHOD FOR FILTERING FLIGHTS
+				((CardLayout) contentPane.getLayout()).show(contentPane, "SCROLLTEST");
 			}
 		});
 		GridBagConstraints gbc_btnFilterPaneSearch = new GridBagConstraints();
@@ -549,6 +558,14 @@ public class WindowBuilder extends JFrame {
 		gbc_btnFilterPaneSearch.gridx = 3;
 		gbc_btnFilterPaneSearch.gridy = 9;
 		FilterPane.add(btnFilterPaneSearch, gbc_btnFilterPaneSearch);
+		
+		// scrollPaneTest components
+		
+		list = new JList();
+		scrollPaneTest.setViewportView(list);
+		
+		scrollBar = new JScrollBar();
+		scrollPaneTest.setRowHeaderView(scrollBar);
 		
 		
 	}
