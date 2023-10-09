@@ -80,8 +80,9 @@ public class WindowBuilder extends JFrame {
 	private JPasswordField passwordFieldCreationPaneReType;
 	private JButton btnCreationPaneSignUp;
 	private JScrollPane scrollPaneTest;
-	private JList list;
+	private JList listScrollPaneTest;
 	private JScrollBar scrollBar;
+	private JButton btnFilterListPaneReserve;
 
 
 	public static void main(String[] args) {
@@ -561,12 +562,22 @@ public class WindowBuilder extends JFrame {
 		
 		// scrollPaneTest components
 		
-		list = new JList();
-		scrollPaneTest.setViewportView(list);
+		// ADD CASE FOR NO FLIGHTS FOUND. RETOOL "RESERVE SELECTED FLIGHT" BUTTON INTO "GO BACK BUTTON"
+		String testArray[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s"};
+		// Java Docs: JList doesn't implement scrolling directly. To create a list that scrolls, make it the viewport view of a JScrollPane
+		listScrollPaneTest = new JList(testArray);
+		scrollPaneTest.setViewportView(listScrollPaneTest);
+		listScrollPaneTest.setSelectedIndex(0);
+		// returns Obj
+		listScrollPaneTest.getSelectedValue();
 		
-		scrollBar = new JScrollBar();
-		scrollPaneTest.setRowHeaderView(scrollBar);
-		
+		btnFilterListPaneReserve = new JButton("Reserve Selected Flight");
+		btnFilterListPaneReserve.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		scrollPaneTest.setColumnHeaderView(btnFilterListPaneReserve);
 		
 	}
 
