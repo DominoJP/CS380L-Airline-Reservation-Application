@@ -2,18 +2,20 @@
 import java.util.Scanner;
 
 public class Reservation {
+	
 	private Account customer;
 	private Flight flight;
 	private String[] passengers;
 	private int[] seatNumbers;
 	
+	
 	public Reservation() {
-		name = null;
+		this.customer = null;
 		flight = null;
 	}
 	
 	 public Reservation(Account n, Flight f) {
-		 this.custeomer = n;
+		 this.customer = n;
 		 this.flight = f;
 		 
 	 }
@@ -46,7 +48,7 @@ public class Reservation {
 					 i--;
 				 }else {
 					 flight.passengers[seat][1] = this.customer.name;
-					 flight.passengers[seat][2] = this.customer.accountnumber;
+					 flight.passengers[seat][2] = this.customer.name;
 					 seatNumbers[i-1] = seat;
 					 
 				 }
@@ -66,5 +68,16 @@ public class Reservation {
 		 
 		 return;
 	 }
-	
+	 
+	 public void getReservation() {
+		 return;
+	 }
+
+	 
+	 public void modifyReservatiob() {
+		 
+		 return;
+	 }
+
+
 }
