@@ -110,8 +110,8 @@ public class Flight {
 	 * 
 	 * @return
 	 */
-	public List<Passenger> getPassenger() {
-		return null;
+	public String getPassenger(int location) {
+		return passengers[location][1];
 	}
 
 	/**

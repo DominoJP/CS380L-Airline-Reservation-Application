@@ -19,6 +19,7 @@ public class Reservation {
 		 this.customer = n;
 		 this.flight = f;
 		 
+		 this.setReservation();
 	 }
 	 
 	 //the method that sets all other values for the reservation
@@ -32,7 +33,7 @@ public class Reservation {
 		 System.out.println("");
 		 
 		 this.passengers = new String[numPassengers];
-		 this.passengers[0] = customer.getname();
+		 this.passengers[0] = this.customer.getName();
 		 
 		 for(int i = 1; i <= numPassengers; i++) {
 			 System.out.print("What is the name of this passenger: ");
@@ -46,12 +47,11 @@ public class Reservation {
 				 System.out.print("What seat would you like: ");
 				 seat = Integer.parseInt(scan.nextLine());
 				 System.out.println("");
-				 if(seat >= flight.totalPassengerCapacity || flight.passengers[seat][1] != null) {
+				 if(seat >= this.flight.gettotalpassengercapacity() || this.flight.getPassenger(seat) != null) {
 					 System.out.println("Sorry but that is not an available seat");
 					 i--;
 				 }else {
-					 flight.passengers[seat][1] = this.customer.getname();
-					 flight.passengers[seat][2] = this.customer.accountnumber();
+					 this.flight.setpassenger(seat, this.customer.getAccountNumber(), this.passengers[i-1]);
 					 seatNumbers[i-1] = seat;
 					 
 				 }
@@ -60,11 +60,11 @@ public class Reservation {
 				 System.out.print("What seat would " + this.passengers[i-1] + " like: ");
 				 seat = Integer.parseInt(scan.nextLine());
 				 System.out.println("");
-				 if(seat >= flight.totalPassengerCapacity || flight.passengers[seat][1] != null) {
+				 if(seat >= this.flight.gettotalpassengercapacity() || this.flight.getPassenger(seat) != null) {
 					 System.out.println("Sorry but that is not an available seat");
 					 i--;
 				 }else {
-					 flight.passengers[seat][1] = this.passengers[i-1];
+					 this.flight.setpassenger(seat, null, this.passengers[i-1]);
 				 }
 			 }
 		 }
@@ -77,19 +77,41 @@ public class Reservation {
 	 
 	 public double setTotalPrice(int p) {
 		 for(int i = 0; i < p; i++) {
-			 this.totalPrice = this.totalPrice + this.flight.pricing();
+			 this.totalPrice = this.totalPrice + this.flight.getpricing();
 		 }
 		 
 		 return this.totalPrice;
 	 }
 	 
+	 public void setFlight(Flight f) {
+		 this.flight = f;
+	 }
+	 
+	 public void removePassenger(String p) {
+		 boolean exist = false;
+		 
+		 for(int i = 0; i < this.passengers.length; i++) {
+			 if(this.passengers[i] == p) {
+				 this.passengers[i] = null;
+				 this.flight.setpassenger(this.seatNumbers[i], null, null);
+				 this.totalPrice = this.totalPrice - this.flight.getpricing();
+				 exist = true;
+			 }
+		 }
+		 
+		 if(exist)
+			 System.out.println(p + " has been removed from the passenger list\n");
+		 else
+			 System.out.println("Sorry but we could not find that passenger on the list\n");
+	 }
+	 
 	 //prints all the set values for the reservation so that the customer is notified of their reservation
 	 public void getReservation() {
 		 System.out.println("Type of flight: " + this.flight.gettype());
-		 System.out.println("Destination: " + this.flight.cityArrival());
+		 System.out.println("Destination: " + this.flight.getcityArrival());
 		 System.out.println("City of Departure: " + this.flight.getcityDeparture());
-		 System.out.println("Date and time of departure: " + this.flight.dateDeparture()
-				 + " " + this.flight.timeDeparture());
+		 System.out.println("Date and time of departure: " + this.flight.getdateDeparture()
+				 + " " + this.flight.gettimeDeparture());
 		 
 		 System.out.println("Number of Passengers(including customer): " + this.passengers.length);
 		 
@@ -103,10 +125,5 @@ public class Reservation {
 		 return;
 	 }
 	 
-	 public void modifyReservation() {
-		 
-		 
-		 return;
-	 }
 	
 }
