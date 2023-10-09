@@ -9,10 +9,6 @@ public void accessReservationInfo() {
 	//Implementation to access reservation info
 	
 	
-	
-	
-	
-	
   }
 
  //Constructor - Manager
