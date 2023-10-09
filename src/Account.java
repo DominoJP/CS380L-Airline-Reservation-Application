@@ -6,13 +6,13 @@ import java.util.List;
    It stores information such as user's name, email, password, account number
    and reservation history. 
    @author Sayra Reyes
-   @version 21.0
+   @version 1.0
  */
 public class Account{
 	 private String name;
 	 private String email;
 	 private String password;
-	 private String accountNumber;
+	 private int accountNumber;
 	 private List<Reservation> reservationHistory;
 	 
 	
@@ -54,7 +54,7 @@ public class Account{
 	  * Getter method to retrieve the account number. 
 	  * @return : account number
 	  */
-	 public String getAccountNumber() {
+	 public int getAccountNumber() {
 		 return accountNumber;
 	 }
 	 
@@ -174,7 +174,7 @@ public class Account{
 		  System.out.println("Arrival city: " + flight.getcityArrival());
 		  System.out.println("Departure date: " + flight.getdateDeparture());
 		  System.out.println("Arrival date: " + flight.getTimeArrival());
-		  System.out.println("Total Passenger Caapcity: " + flight.gettotalPassengerCapacity());
+		  System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
 		  System.out.println("Passengers on board: " + flight.getPassenger());
 		  System.out.println("Price of flight: " + flight.getpricing());
 

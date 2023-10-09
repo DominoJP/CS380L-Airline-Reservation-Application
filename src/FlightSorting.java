@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-
 public class FlightSorting{
 	
 	private int totalFlightAvailable;
