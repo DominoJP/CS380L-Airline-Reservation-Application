@@ -23,6 +23,9 @@ import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class WindowBuilder extends JFrame {
 
@@ -43,6 +46,25 @@ public class WindowBuilder extends JFrame {
 	private JTextField textField_1;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
+	private JScrollPane scrollPane;
+	private JPanel FilterPane;
+	private JPanel FilterListPane;
+	private JComboBox selectionComboBox;
+	private JButton btnSelectionPaneContinue;
+	private JComboBox flightTypeComboBox;
+	private JTextField txtFilterPaneDepart;
+	private JLabel lblFilterPaneDepart;
+	private JLabel lblFilterPaneReturn;
+	private JRadioButton rdbtnFilterPaneRoundTrip;
+	private JRadioButton rdbtnFilterPaneOneWay;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JTextField txtFilterPaneReturn;
+	private JLabel lblFilterPaneInvalidDepartDateFormat;
+	private JLabel lblFilterPaneInvalidReturnDateFormat;
+	private JTextField txtFilterPaneFrom;
+	private JTextField txtFilterPaneTo;
+	private JLabel lblFilterPaneFrom;
+	private JLabel lblFilterPaneTo;
 
 
 	public static void main(String[] args) {
@@ -76,7 +98,7 @@ public class WindowBuilder extends JFrame {
 		
 		JPanel LogInPane = new JPanel();
 		LogInPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.add(LogInPane, "name_199742075500365");
+		contentPane.add(LogInPane, "LOGIN");
 		GridBagLayout gbl_LogInPane = new GridBagLayout();
 		gbl_LogInPane.columnWidths = new int[]{0, 0, 0, 0, 0, 46, 0, 0};
 		gbl_LogInPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -85,7 +107,7 @@ public class WindowBuilder extends JFrame {
 		LogInPane.setLayout(gbl_LogInPane);
 		
 		JPanel CreationPane = new JPanel();
-		contentPane.add(CreationPane, "name_213982163308624");
+		contentPane.add(CreationPane, "CREATION");
 		GridBagLayout gbl_CreationPane = new GridBagLayout();
 		// gbl_CreationPane.columnWidths = new int[]{0, 0, 0, 0 ,0 , 0};
 		// gbl_CreationPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
@@ -99,17 +121,35 @@ public class WindowBuilder extends JFrame {
 		
 		JPanel SelectionPane = new JPanel();
 		SelectionPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.add(SelectionPane, "name_199935099642492");
+		contentPane.add(SelectionPane, "SELECTION");
 		GridBagLayout gbl_SelectionPane = new GridBagLayout();
-		gbl_SelectionPane.columnWidths = new int[]{0, 0};
-		gbl_SelectionPane.rowHeights = new int[]{0, 0};
-		gbl_SelectionPane.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_SelectionPane.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		// gbl_SelectionPane.columnWidths = new int[]{39, 0};
+		// gbl_SelectionPane.rowHeights = new int[]{0, 0, 0};
+		// gbl_SelectionPane.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		// gbl_SelectionPane.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+		gbl_SelectionPane.columnWidths = new int[]{0, 0, 0, 0, 0, 46, 0, 0};
+		gbl_SelectionPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_SelectionPane.columnWeights = new double[]{1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_SelectionPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		SelectionPane.setLayout(gbl_SelectionPane);
 		
-		contentPane.add("LOGIN", LogInPane);
-		contentPane.add("SELECTION", SelectionPane);
-		contentPane.add("CREATION", CreationPane);
+		FilterPane = new JPanel();
+		contentPane.add(FilterPane, "FILTER");
+		GridBagLayout gbl_FilterPane = new GridBagLayout();
+		gbl_FilterPane.columnWidths = new int[]{91, 0, 0, 0, 0, 0, 4, 0, 0};
+		gbl_FilterPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_FilterPane.columnWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_FilterPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		FilterPane.setLayout(gbl_FilterPane);
+		
+		FilterListPane = new JPanel();
+		contentPane.add(FilterListPane, "FILTERLIST");
+		GridBagLayout gbl_FilterListPane = new GridBagLayout();
+		gbl_FilterListPane.columnWidths = new int[]{0};
+		gbl_FilterListPane.rowHeights = new int[]{0};
+		gbl_FilterListPane.columnWeights = new double[]{Double.MIN_VALUE};
+		gbl_FilterListPane.rowWeights = new double[]{Double.MIN_VALUE};
+		FilterListPane.setLayout(gbl_FilterListPane);
 		
 		// LogInPane components
 		
@@ -165,10 +205,10 @@ public class WindowBuilder extends JFrame {
 		btnLogInPane.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnLogInPane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				char[] inputEmail = txtEmail.getText().toCharArray();
+				String inputEmail = txtEmail.getText();
 				char[] inputPassword = passwordField.getPassword();
 				// Arrays inherit equals from Object; .equals() will not work
-				if (Arrays.equals(inputEmail, test.getEmail()) && Arrays.equals(inputPassword, test.getPassword())) {
+				if (inputEmail.equals(test.getEmail()) && Arrays.equals(inputPassword, test.getPassword())) {
 					// cl.getLayout()).show(contentPane, "SELECTION");
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECTION");
 					// cl.next(contentPane);
@@ -215,11 +255,32 @@ public class WindowBuilder extends JFrame {
 		
 		// SelectionPane components
 		
-		btnNewButton = new JButton("New button");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 0;
-		SelectionPane.add(btnNewButton, gbc_btnNewButton);
+		String [] selectionOptions = {
+				"Reserve",
+				"Cancel",
+				"Review",
+		};
+		selectionComboBox = new JComboBox(selectionOptions);
+		GridBagConstraints gbc_selectionComboBox = new GridBagConstraints();
+		gbc_selectionComboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_selectionComboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_selectionComboBox.gridx = 0;
+		gbc_selectionComboBox.gridy = 2;
+		SelectionPane.add(selectionComboBox, gbc_selectionComboBox);
+		
+		btnSelectionPaneContinue = new JButton("Continue");
+		btnSelectionPaneContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (selectionComboBox.getSelectedItem().equals("Reserve")) {
+					((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
+				}
+			}
+		});
+		GridBagConstraints gbc_btnSelectionPaneContinue = new GridBagConstraints();
+		gbc_btnSelectionPaneContinue.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSelectionPaneContinue.gridx = 0;
+		gbc_btnSelectionPaneContinue.gridy = 3;
+		SelectionPane.add(btnSelectionPaneContinue, gbc_btnSelectionPaneContinue);
 		
 		// CreationPane components
 		
@@ -258,6 +319,124 @@ public class WindowBuilder extends JFrame {
 		gbc_textField.gridy = 3;
 		CreationPane.add(textField, gbc_textField);
 		textField.setColumns(10);
+		
+		// FilterPane components
+		
+		rdbtnFilterPaneRoundTrip = new JRadioButton("Round Trip");
+		rdbtnFilterPaneRoundTrip.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFilterPaneReturn.setVisible(true);
+				txtFilterPaneReturn.setVisible(true);
+			}
+		});
+		buttonGroup.add(rdbtnFilterPaneRoundTrip);
+		GridBagConstraints gbc_rdbtnFilterPaneRoundTrip = new GridBagConstraints();
+		gbc_rdbtnFilterPaneRoundTrip.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnFilterPaneRoundTrip.gridx = 1;
+		gbc_rdbtnFilterPaneRoundTrip.gridy = 0;
+		FilterPane.add(rdbtnFilterPaneRoundTrip, gbc_rdbtnFilterPaneRoundTrip);
+		
+		rdbtnFilterPaneOneWay = new JRadioButton("One way");
+		rdbtnFilterPaneOneWay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblFilterPaneReturn.setVisible(false);
+				txtFilterPaneReturn.setVisible(false);
+			}
+		});
+		buttonGroup.add(rdbtnFilterPaneOneWay);
+		GridBagConstraints gbc_rdbtnFilterPaneOneWay = new GridBagConstraints();
+		gbc_rdbtnFilterPaneOneWay.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnFilterPaneOneWay.gridx = 3;
+		gbc_rdbtnFilterPaneOneWay.gridy = 0;
+		FilterPane.add(rdbtnFilterPaneOneWay, gbc_rdbtnFilterPaneOneWay);
+		
+		lblFilterPaneFrom = new JLabel(" From");
+		GridBagConstraints gbc_lblFilterPaneFrom = new GridBagConstraints();
+		gbc_lblFilterPaneFrom.anchor = GridBagConstraints.WEST;
+		gbc_lblFilterPaneFrom.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFilterPaneFrom.gridx = 1;
+		gbc_lblFilterPaneFrom.gridy = 2;
+		FilterPane.add(lblFilterPaneFrom, gbc_lblFilterPaneFrom);
+		
+		lblFilterPaneTo = new JLabel(" To");
+		GridBagConstraints gbc_lblFilterPaneTo = new GridBagConstraints();
+		gbc_lblFilterPaneTo.anchor = GridBagConstraints.WEST;
+		gbc_lblFilterPaneTo.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFilterPaneTo.gridx = 3;
+		gbc_lblFilterPaneTo.gridy = 2;
+		FilterPane.add(lblFilterPaneTo, gbc_lblFilterPaneTo);
+		
+		txtFilterPaneFrom = new JTextField();
+		GridBagConstraints gbc_txtFilterPaneFrom = new GridBagConstraints();
+		gbc_txtFilterPaneFrom.insets = new Insets(0, 0, 5, 5);
+		gbc_txtFilterPaneFrom.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtFilterPaneFrom.gridx = 1;
+		gbc_txtFilterPaneFrom.gridy = 3;
+		FilterPane.add(txtFilterPaneFrom, gbc_txtFilterPaneFrom);
+		txtFilterPaneFrom.setColumns(10);
+		
+		txtFilterPaneTo = new JTextField();
+		GridBagConstraints gbc_txtFilterPaneTo = new GridBagConstraints();
+		gbc_txtFilterPaneTo.insets = new Insets(0, 0, 5, 5);
+		gbc_txtFilterPaneTo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtFilterPaneTo.gridx = 3;
+		gbc_txtFilterPaneTo.gridy = 3;
+		FilterPane.add(txtFilterPaneTo, gbc_txtFilterPaneTo);
+		txtFilterPaneTo.setColumns(10);
+		
+		lblFilterPaneDepart = new JLabel(" Depart (dd/mm/yyyy)");
+		GridBagConstraints gbc_lblFilterPaneDepart = new GridBagConstraints();
+		gbc_lblFilterPaneDepart.anchor = GridBagConstraints.WEST;
+		gbc_lblFilterPaneDepart.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFilterPaneDepart.gridx = 1;
+		gbc_lblFilterPaneDepart.gridy = 4;
+		FilterPane.add(lblFilterPaneDepart, gbc_lblFilterPaneDepart);
+		
+		lblFilterPaneReturn = new JLabel(" Return (dd/mm/yyyy)");
+		GridBagConstraints gbc_lblFilterPaneReturn = new GridBagConstraints();
+		gbc_lblFilterPaneReturn.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFilterPaneReturn.gridx = 3;
+		gbc_lblFilterPaneReturn.gridy = 4;
+		FilterPane.add(lblFilterPaneReturn, gbc_lblFilterPaneReturn);
+		
+		txtFilterPaneDepart = new JTextField();
+		GridBagConstraints gbc_txtFilterPaneDepart = new GridBagConstraints();
+		gbc_txtFilterPaneDepart.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtFilterPaneDepart.insets = new Insets(0, 0, 5, 5);
+		gbc_txtFilterPaneDepart.gridx = 1;
+		gbc_txtFilterPaneDepart.gridy = 5;
+		FilterPane.add(txtFilterPaneDepart, gbc_txtFilterPaneDepart);
+		txtFilterPaneDepart.setColumns(10);
+		
+		txtFilterPaneReturn = new JTextField();
+		GridBagConstraints gbc_txtFilterPaneReturn = new GridBagConstraints();
+		gbc_txtFilterPaneReturn.insets = new Insets(0, 0, 5, 5);
+		gbc_txtFilterPaneReturn.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtFilterPaneReturn.gridx = 3;
+		gbc_txtFilterPaneReturn.gridy = 5;
+		FilterPane.add(txtFilterPaneReturn, gbc_txtFilterPaneReturn);
+		txtFilterPaneReturn.setColumns(10);
+		
+		lblFilterPaneInvalidDepartDateFormat = new JLabel("Invalid date format");
+		lblFilterPaneInvalidDepartDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		lblFilterPaneInvalidDepartDateFormat.setForeground(Color.RED);
+		GridBagConstraints gbc_lblFilterPaneInvalidDepartDateFormat = new GridBagConstraints();
+		gbc_lblFilterPaneInvalidDepartDateFormat.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFilterPaneInvalidDepartDateFormat.gridx = 1;
+		gbc_lblFilterPaneInvalidDepartDateFormat.gridy = 7;
+		FilterPane.add(lblFilterPaneInvalidDepartDateFormat, gbc_lblFilterPaneInvalidDepartDateFormat);
+		lblFilterPaneInvalidDepartDateFormat.setVisible(false);
+		
+		lblFilterPaneInvalidReturnDateFormat = new JLabel("Invalid date format");
+		lblFilterPaneInvalidReturnDateFormat.setForeground(Color.RED);
+		lblFilterPaneInvalidReturnDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		GridBagConstraints gbc_lblFilterPaneInvalidReturnDateFormat = new GridBagConstraints();
+		gbc_lblFilterPaneInvalidReturnDateFormat.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFilterPaneInvalidReturnDateFormat.gridx = 3;
+		gbc_lblFilterPaneInvalidReturnDateFormat.gridy = 7;
+		FilterPane.add(lblFilterPaneInvalidReturnDateFormat, gbc_lblFilterPaneInvalidReturnDateFormat);
+		lblFilterPaneInvalidReturnDateFormat.setVisible(false);
+		
 	}
 
 }
