@@ -1,6 +1,3 @@
-
-
-
 public class Passenger{
 	String name;
 

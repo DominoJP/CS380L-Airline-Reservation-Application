@@ -87,7 +87,7 @@ public class Flight {
 	 * 
 	 * @return
 	 */
-	public int gettotalPassengerCapacity() {
+	public int gettotalremainingpassengercapacity() {
 		int available = 0; 
 		for(int i = 0; i < totalPassengerCapacity; i++) {
 			if(passengers[i][1] == null ) {
@@ -96,6 +96,7 @@ public class Flight {
 		}
 		return available;
 	}
+	
 	
     /**
      * 
@@ -149,6 +150,15 @@ public class Flight {
 	 * 
 	 * @return
 	 */
+	public int gettotalpassengercapacity() {
+		return totalPassengerCapacity;
+		
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isFull() {
 		return false;
 	}
@@ -164,4 +174,6 @@ public class Flight {
 			System.out.println("Sorry that is not a seat available on the flight");
 		}
 	}
+	
+	
 }
