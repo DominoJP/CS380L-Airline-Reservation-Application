@@ -1,12 +1,14 @@
 
 //Define Manager class
 class Manager {
+	
 	private int employeeID; 
 	private String employeepassword;
 	
 
 public void accessReservationInfo() {
 	//Implementation to access reservation info
+	
 	
 	
 	
@@ -28,6 +30,6 @@ public void accessReservationInfo() {
  public String getemployeepassword() {
 	 return employeepassword;
  }
- 
+
  
 }
