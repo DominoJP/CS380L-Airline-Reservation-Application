@@ -26,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JSpinner;
 
 public class WindowBuilder extends JFrame {
 
@@ -65,6 +66,9 @@ public class WindowBuilder extends JFrame {
 	private JTextField txtFilterPaneTo;
 	private JLabel lblFilterPaneFrom;
 	private JLabel lblFilterPaneTo;
+	private JSpinner spinnerFilterPanePassengers;
+	private JLabel lblFilterPanePassengers;
+	private JComboBox comboBoxFilterPanePassengers;
 
 
 	public static void main(String[] args) {
@@ -323,6 +327,7 @@ public class WindowBuilder extends JFrame {
 		// FilterPane components
 		
 		rdbtnFilterPaneRoundTrip = new JRadioButton("Round Trip");
+		rdbtnFilterPaneRoundTrip.setSelected(true);
 		rdbtnFilterPaneRoundTrip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblFilterPaneReturn.setVisible(true);
@@ -436,6 +441,33 @@ public class WindowBuilder extends JFrame {
 		gbc_lblFilterPaneInvalidReturnDateFormat.gridy = 7;
 		FilterPane.add(lblFilterPaneInvalidReturnDateFormat, gbc_lblFilterPaneInvalidReturnDateFormat);
 		lblFilterPaneInvalidReturnDateFormat.setVisible(false);
+		
+		lblFilterPanePassengers = new JLabel("Passengers");
+		GridBagConstraints gbc_lblFilterPanePassengers = new GridBagConstraints();
+		gbc_lblFilterPanePassengers.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFilterPanePassengers.gridx = 1;
+		gbc_lblFilterPanePassengers.gridy = 8;
+		FilterPane.add(lblFilterPanePassengers, gbc_lblFilterPanePassengers);
+		
+		Integer [] passengerOptions = {
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9
+		};
+		comboBoxFilterPanePassengers = new JComboBox(passengerOptions);
+		GridBagConstraints gbc_comboBoxFilterPanePassengers = new GridBagConstraints();
+		gbc_comboBoxFilterPanePassengers.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxFilterPanePassengers.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxFilterPanePassengers.gridx = 1;
+		gbc_comboBoxFilterPanePassengers.gridy = 9;
+		FilterPane.add(comboBoxFilterPanePassengers, gbc_comboBoxFilterPanePassengers);
+		
 		
 	}
 
