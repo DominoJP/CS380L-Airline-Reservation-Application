@@ -13,7 +13,6 @@ public class Customer {
 	private Date DOB;       /**  Represents Customer's Date of Birth */
 	private String passportNo;  /**  Represents Customer's passport number */
 	
-
 /**
  * 
  * @param name1

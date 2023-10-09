@@ -1,6 +1,7 @@
 import java.util.List;
 
 
+//Define Reservation Flight
 public class ReservationFlight {
 		
 	    private Flight flight;

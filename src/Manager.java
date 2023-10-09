@@ -1,4 +1,3 @@
-
 //Define Manager class
 class Manager {
 	
