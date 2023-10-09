@@ -43,10 +43,10 @@ public class WindowBuilder extends JFrame {
 	private JLabel lblPlaceHolder;
 	private JButton btnNewButton;
 	private JSeparator separator;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JLabel lblFirstName;
-	private JLabel lblLastName;
+	private JTextField txtCreationPaneLastName;
+	private JTextField txtCreationPaneFirstName;
+	private JLabel lblCreationPaneFirstName;
+	private JLabel lblCreationPaneLastName;
 	private JScrollPane scrollPane;
 	private JPanel FilterPane;
 	private JPanel FilterListPane;
@@ -69,6 +69,14 @@ public class WindowBuilder extends JFrame {
 	private JSpinner spinnerFilterPanePassengers;
 	private JLabel lblFilterPanePassengers;
 	private JComboBox comboBoxFilterPanePassengers;
+	private JButton btnFilterPaneSearch;
+	private JLabel lblCreationPaneEmail;
+	private JTextField txtCreationPaneEmail;
+	private JLabel lblCreationPanePassword;
+	private JPasswordField passwordFieldCreationPane;
+	private JLabel lblCreationPaneReTypePassword_1;
+	private JPasswordField passwordFieldCreationPaneReType;
+	private JButton btnCreationPaneSignUp;
 
 
 	public static void main(String[] args) {
@@ -118,9 +126,9 @@ public class WindowBuilder extends JFrame {
 		// gbl_CreationPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		// gbl_CreationPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_CreationPane.columnWidths = new int[]{0, 0, 126, 60, 0, 46, 0, 0};
-		gbl_CreationPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_CreationPane.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_CreationPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_CreationPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_CreationPane.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_CreationPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		CreationPane.setLayout(gbl_CreationPane);
 		
 		JPanel SelectionPane = new JPanel();
@@ -288,41 +296,103 @@ public class WindowBuilder extends JFrame {
 		
 		// CreationPane components
 		
-		lblFirstName = new JLabel(" First Name");
-		lblFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		GridBagConstraints gbc_lblFirstName = new GridBagConstraints();
-		gbc_lblFirstName.anchor = GridBagConstraints.WEST;
-		gbc_lblFirstName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFirstName.gridx = 2;
-		gbc_lblFirstName.gridy = 0;
-		CreationPane.add(lblFirstName, gbc_lblFirstName);
+		lblCreationPaneFirstName = new JLabel(" First Name");
+		lblCreationPaneFirstName.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		GridBagConstraints gbc_lblCreationPaneFirstName = new GridBagConstraints();
+		gbc_lblCreationPaneFirstName.anchor = GridBagConstraints.WEST;
+		gbc_lblCreationPaneFirstName.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCreationPaneFirstName.gridx = 2;
+		gbc_lblCreationPaneFirstName.gridy = 0;
+		CreationPane.add(lblCreationPaneFirstName, gbc_lblCreationPaneFirstName);
 		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 2;
-		gbc_textField_1.gridy = 1;
-		CreationPane.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		lblCreationPaneLastName = new JLabel(" Last Name");
+		lblCreationPaneLastName.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		GridBagConstraints gbc_lblCreationPaneLastName = new GridBagConstraints();
+		gbc_lblCreationPaneLastName.anchor = GridBagConstraints.WEST;
+		gbc_lblCreationPaneLastName.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCreationPaneLastName.gridx = 4;
+		gbc_lblCreationPaneLastName.gridy = 0;
+		CreationPane.add(lblCreationPaneLastName, gbc_lblCreationPaneLastName);
 		
-		lblLastName = new JLabel(" Last Name");
-		lblLastName.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		GridBagConstraints gbc_lblLastName = new GridBagConstraints();
-		gbc_lblLastName.anchor = GridBagConstraints.WEST;
-		gbc_lblLastName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblLastName.gridx = 2;
-		gbc_lblLastName.gridy = 2;
-		CreationPane.add(lblLastName, gbc_lblLastName);
+		txtCreationPaneFirstName = new JTextField();
+		GridBagConstraints gbc_txtCreationPaneFirstName = new GridBagConstraints();
+		gbc_txtCreationPaneFirstName.insets = new Insets(0, 0, 5, 5);
+		gbc_txtCreationPaneFirstName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtCreationPaneFirstName.gridx = 2;
+		gbc_txtCreationPaneFirstName.gridy = 1;
+		CreationPane.add(txtCreationPaneFirstName, gbc_txtCreationPaneFirstName);
+		txtCreationPaneFirstName.setColumns(10);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 2;
-		gbc_textField.gridy = 3;
-		CreationPane.add(textField, gbc_textField);
-		textField.setColumns(10);
+		txtCreationPaneLastName = new JTextField();
+		GridBagConstraints gbc_txtCreationPaneLastName = new GridBagConstraints();
+		gbc_txtCreationPaneLastName.insets = new Insets(0, 0, 5, 5);
+		gbc_txtCreationPaneLastName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtCreationPaneLastName.gridx = 4;
+		gbc_txtCreationPaneLastName.gridy = 1;
+		CreationPane.add(txtCreationPaneLastName, gbc_txtCreationPaneLastName);
+		txtCreationPaneLastName.setColumns(10);
+		
+		lblCreationPaneEmail = new JLabel(" Email");
+		GridBagConstraints gbc_lblCreationPaneEmail = new GridBagConstraints();
+		gbc_lblCreationPaneEmail.anchor = GridBagConstraints.WEST;
+		gbc_lblCreationPaneEmail.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCreationPaneEmail.gridx = 2;
+		gbc_lblCreationPaneEmail.gridy = 2;
+		CreationPane.add(lblCreationPaneEmail, gbc_lblCreationPaneEmail);
+		
+		txtCreationPaneEmail = new JTextField();
+		GridBagConstraints gbc_txtCreationPaneEmail = new GridBagConstraints();
+		gbc_txtCreationPaneEmail.insets = new Insets(0, 0, 5, 5);
+		gbc_txtCreationPaneEmail.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtCreationPaneEmail.gridx = 2;
+		gbc_txtCreationPaneEmail.gridy = 3;
+		CreationPane.add(txtCreationPaneEmail, gbc_txtCreationPaneEmail);
+		txtCreationPaneEmail.setColumns(10);
+		
+		lblCreationPanePassword = new JLabel(" Password");
+		GridBagConstraints gbc_lblCreationPanePassword = new GridBagConstraints();
+		gbc_lblCreationPanePassword.anchor = GridBagConstraints.WEST;
+		gbc_lblCreationPanePassword.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCreationPanePassword.gridx = 2;
+		gbc_lblCreationPanePassword.gridy = 4;
+		CreationPane.add(lblCreationPanePassword, gbc_lblCreationPanePassword);
+		
+		lblCreationPaneReTypePassword_1 = new JLabel(" Re-type Password");
+		GridBagConstraints gbc_lblCreationPaneReTypePassword_1 = new GridBagConstraints();
+		gbc_lblCreationPaneReTypePassword_1.anchor = GridBagConstraints.WEST;
+		gbc_lblCreationPaneReTypePassword_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCreationPaneReTypePassword_1.gridx = 4;
+		gbc_lblCreationPaneReTypePassword_1.gridy = 4;
+		CreationPane.add(lblCreationPaneReTypePassword_1, gbc_lblCreationPaneReTypePassword_1);
+		
+		passwordFieldCreationPane = new JPasswordField();
+		GridBagConstraints gbc_passwordFieldCreationPane = new GridBagConstraints();
+		gbc_passwordFieldCreationPane.insets = new Insets(0, 0, 5, 5);
+		gbc_passwordFieldCreationPane.fill = GridBagConstraints.HORIZONTAL;
+		gbc_passwordFieldCreationPane.gridx = 2;
+		gbc_passwordFieldCreationPane.gridy = 5;
+		CreationPane.add(passwordFieldCreationPane, gbc_passwordFieldCreationPane);
+		
+		passwordFieldCreationPaneReType = new JPasswordField();
+		passwordFieldCreationPaneReType.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// String CreationPaneInputEmail = txtCreationPaneEmail.getText();
+				// 
+			}
+		});
+		GridBagConstraints gbc_passwordFieldCreationPaneReType = new GridBagConstraints();
+		gbc_passwordFieldCreationPaneReType.insets = new Insets(0, 0, 5, 5);
+		gbc_passwordFieldCreationPaneReType.fill = GridBagConstraints.HORIZONTAL;
+		gbc_passwordFieldCreationPaneReType.gridx = 4;
+		gbc_passwordFieldCreationPaneReType.gridy = 5;
+		CreationPane.add(passwordFieldCreationPaneReType, gbc_passwordFieldCreationPaneReType);
+		
+		btnCreationPaneSignUp = new JButton("Sign Up");
+		GridBagConstraints gbc_btnCreationPaneSignUp = new GridBagConstraints();
+		gbc_btnCreationPaneSignUp.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCreationPaneSignUp.gridx = 4;
+		gbc_btnCreationPaneSignUp.gridy = 8;
+		CreationPane.add(btnCreationPaneSignUp, gbc_btnCreationPaneSignUp);
 		
 		// FilterPane components
 		
@@ -467,6 +537,19 @@ public class WindowBuilder extends JFrame {
 		gbc_comboBoxFilterPanePassengers.gridx = 1;
 		gbc_comboBoxFilterPanePassengers.gridy = 9;
 		FilterPane.add(comboBoxFilterPanePassengers, gbc_comboBoxFilterPanePassengers);
+		
+		btnFilterPaneSearch = new JButton("Search");
+		btnFilterPaneSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int FilterPanePassengerNumber = comboBoxFilterPanePassengers.getSelectedIndex();
+				// STANDBY: METHOD FOR FILTERING FLIGHTS
+			}
+		});
+		GridBagConstraints gbc_btnFilterPaneSearch = new GridBagConstraints();
+		gbc_btnFilterPaneSearch.insets = new Insets(0, 0, 5, 5);
+		gbc_btnFilterPaneSearch.gridx = 3;
+		gbc_btnFilterPaneSearch.gridy = 9;
+		FilterPane.add(btnFilterPaneSearch, gbc_btnFilterPaneSearch);
 		
 		
 	}
