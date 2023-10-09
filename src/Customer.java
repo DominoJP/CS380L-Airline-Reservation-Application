@@ -1,40 +1,68 @@
+/**
+ 
+ @author Sayra Reyes
+ @version 21.0
+ */
 
 import java.util.Date;
 
-//Define Customer class
 public class Customer {
 	
-	private String name;  //name of customer 
-	private String email; 
-	private Date DOB;
-	private String passportNo;
+	private String name;  /**  Represents Customer's name */
+	private String email;    /**  Represents Customer's email */
+	private Date DOB;       /**  Represents Customer's Date of Birth */
+	private String passportNo;  /**  Represents Customer's passport number */
 	
 
-//Constructor - Customer 
-public Customer(String name1, String email1, Date DOB1, String passportNo1) {
+/**
+ * 
+ * @param name1
+ * @param email1
+ * @param DOB
+ * @param passportNo1
+ */
+ public Customer(String name1, String email1, Date DOB, String passportNo1) {
 	this.name = name1;
-	this.DOB = DOB1;
+	this.DOB = DOB;
 	this.passportNo = passportNo1;
 	this.email = email1;
 	
    }
 
-  //Getters - Customer 
+  
+ /**
+  * Getter method 
+  * @return
+  */
   public String getname() {
 	 return name;
  }
 
+  /**
+   * Getter method
+   * @return
+   */
   public Date getDOB() {
 	return DOB;
  }
 
+  /**
+   * Getter method
+   * @return
+   */
   public String getpassportNo() {
 	return passportNo;
  }
 
+  /**
+   * Getter method 
+   * @return
+   */
   public String getEmail() {
   	return email;
  }
   
-  }
+
+
+}
 

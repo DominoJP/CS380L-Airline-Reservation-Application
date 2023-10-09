@@ -2,9 +2,8 @@ import java.util.List;
 
 
 public class ReservationFlight {
-	//Define Reservation class
-	
-		private Flight flight;
+		
+	    private Flight flight;
 		private List<Passenger> passegers;
 		
 		public Flight getflight() {
@@ -18,6 +17,14 @@ public class ReservationFlight {
 		public void setPassegers(List<Passenger> passegers) {
 			this.passegers = passegers;
 		}
+
+		public void setFlight(Flight newflight) {
+			this.flight = newflight;
+		}
 		
+
+		public Flight getFlight() {
+			return null;
+		}
 		
 	}
