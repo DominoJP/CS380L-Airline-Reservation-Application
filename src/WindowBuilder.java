@@ -269,8 +269,8 @@ public class WindowBuilder extends JFrame {
 		
 		String [] selectionOptions = {
 				"Reserve",
-				"Cancel",
 				"Review",
+				"Cancel",
 		};
 		selectionComboBox = new JComboBox(selectionOptions);
 		GridBagConstraints gbc_selectionComboBox = new GridBagConstraints();
@@ -374,12 +374,6 @@ public class WindowBuilder extends JFrame {
 		CreationPane.add(passwordFieldCreationPane, gbc_passwordFieldCreationPane);
 		
 		passwordFieldCreationPaneReType = new JPasswordField();
-		passwordFieldCreationPaneReType.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// String CreationPaneInputEmail = txtCreationPaneEmail.getText();
-				// 
-			}
-		});
 		GridBagConstraints gbc_passwordFieldCreationPaneReType = new GridBagConstraints();
 		gbc_passwordFieldCreationPaneReType.insets = new Insets(0, 0, 5, 5);
 		gbc_passwordFieldCreationPaneReType.fill = GridBagConstraints.HORIZONTAL;
@@ -388,6 +382,11 @@ public class WindowBuilder extends JFrame {
 		CreationPane.add(passwordFieldCreationPaneReType, gbc_passwordFieldCreationPaneReType);
 		
 		btnCreationPaneSignUp = new JButton("Sign Up");
+		btnCreationPaneSignUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// String CreationPaneInputEmail = txtCreationPaneEmail.getText();
+			}
+		});
 		GridBagConstraints gbc_btnCreationPaneSignUp = new GridBagConstraints();
 		gbc_btnCreationPaneSignUp.insets = new Insets(0, 0, 5, 5);
 		gbc_btnCreationPaneSignUp.gridx = 4;
