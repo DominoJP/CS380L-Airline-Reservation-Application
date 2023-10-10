@@ -51,9 +51,15 @@ public class FlightSorting{
 		
 	}
 	
-	public void displayAvaiableSeating() {
-	
+	public String[] displayAvaiableSeating(Flight f) {
+		String[] passengers = new String[f.gettotalpassengercapacity()];
 		
+		for(int i = 0; i < f.gettotalpassengercapacity(); i++) {
+			passengers[i] = f.getPassenger(i);
+		}
+		
+		
+		return passengers;
 	}
 }
 
