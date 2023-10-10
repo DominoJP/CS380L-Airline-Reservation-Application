@@ -1,4 +1,3 @@
-
 //Define Manager class
 class Manager {
 	
@@ -8,10 +7,6 @@ class Manager {
 
 public void accessReservationInfo() {
 	//Implementation to access reservation info
-	
-	
-	
-	
 	
 	
   }

@@ -1,7 +1,7 @@
 /**
  
  @author Sayra Reyes
- @version 21.0
+ @version 1.0
  */
 
 import java.util.Date;
@@ -13,7 +13,6 @@ public class Customer {
 	private Date DOB;       /**  Represents Customer's Date of Birth */
 	private String passportNo;  /**  Represents Customer's passport number */
 	
-
 /**
  * 
  * @param name1
