@@ -1,5 +1,11 @@
+/**
+ * 
+ * 
+ * @author
+ * @version 
+ */
 
-//Define Passenger
+
 public class Passenger{
 	String name;
 

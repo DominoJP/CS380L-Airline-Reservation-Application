@@ -5,8 +5,8 @@ import java.util.List;
    Account class represents a user account for a flight reservation system. 
    It stores information such as user's name, email, password, account number
    and reservation history. 
-   @author Sayra Reyes
-   @version 1.0
+   @author 
+   @version 
  */
 public class Account{
 	 private String name;

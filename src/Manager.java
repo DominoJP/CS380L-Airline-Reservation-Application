@@ -1,4 +1,10 @@
-//Define Manager class
+/**
+ * 
+ * 
+ * @author
+ * @version
+ */
+
 class Manager {
 	
 	private int employeeID; 
