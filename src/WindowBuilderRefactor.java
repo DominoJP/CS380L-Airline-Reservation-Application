@@ -23,6 +23,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 	}
 
 	public WindowBuilderRefactor() {
+		
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -33,8 +34,10 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
+		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
+		contentPane.add(SelectionPane, "SELECT");
 		
 		
 	}

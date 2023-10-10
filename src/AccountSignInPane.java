@@ -21,7 +21,6 @@ import javax.swing.JTextField;
 public class AccountSignInPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
 
 	public AccountSignInPane(JPanel contentPane) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -39,7 +38,7 @@ public class AccountSignInPane extends JPanel {
 		gbc_lblEmail.gridy = 0;
 		add(lblEmail, gbc_lblEmail);
 		
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -81,13 +80,15 @@ public class AccountSignInPane extends JPanel {
 		btnLogInPane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME
+				// TEMP
+				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				/*
 				String inputEmail = txtEmail.getText();
 				char[] inputPassword = passwordField.getPassword();
 				// Arrays inherit equals from Object; .equals() will not work
 				if (inputEmail.equals(test.getEmail()) && Arrays.equals(inputPassword, test.getPassword())) {
 					// cl.getLayout()).show(contentPane, "SELECTION");
-					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECTION");
+					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 					// cl.next(contentPane);
 				}
 				else {
