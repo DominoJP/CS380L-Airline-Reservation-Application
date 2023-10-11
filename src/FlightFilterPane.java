@@ -23,6 +23,7 @@ public class FlightFilterPane extends JPanel {
 	private JTextField textTo;
 	private JTextField textDepart;
 	private JTextField textReturn;
+	private JLabel lblReturn;
 
 	public FlightFilterPane(JPanel contentPane) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -32,17 +33,12 @@ public class FlightFilterPane extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JRadioButton rdbtnOneWay = new JRadioButton("One Way");
-		buttonGroupTripType.add(rdbtnOneWay);
-		rdbtnOneWay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
 		JRadioButton rdbtnRoundTrip = new JRadioButton("Round Trip");
 		buttonGroupTripType.add(rdbtnRoundTrip);
 		rdbtnRoundTrip.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				lblReturn.setVisible(true);
+				textReturn.setVisible(true);
 			}
 		});
 		GridBagConstraints gbc_rdbtnRoundTrip = new GridBagConstraints();
@@ -50,6 +46,16 @@ public class FlightFilterPane extends JPanel {
 		gbc_rdbtnRoundTrip.gridx = 1;
 		gbc_rdbtnRoundTrip.gridy = 0;
 		add(rdbtnRoundTrip, gbc_rdbtnRoundTrip);
+		
+		JRadioButton rdbtnOneWay = new JRadioButton("One Way");
+		buttonGroupTripType.add(rdbtnOneWay);
+		rdbtnOneWay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblReturn.setVisible(false);
+				textReturn.setVisible(false);
+			}
+		});
+		
 		GridBagConstraints gbc_rdbtnOneWay = new GridBagConstraints();
 		gbc_rdbtnOneWay.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnOneWay.gridx = 3;
@@ -92,13 +98,15 @@ public class FlightFilterPane extends JPanel {
 		
 		JLabel lblDepart = new JLabel(" Depart (dd/mm/yyyy)");
 		GridBagConstraints gbc_lblDepart = new GridBagConstraints();
+		gbc_lblDepart.anchor = GridBagConstraints.WEST;
 		gbc_lblDepart.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDepart.gridx = 1;
 		gbc_lblDepart.gridy = 3;
 		add(lblDepart, gbc_lblDepart);
 		
-		JLabel lblReturn = new JLabel("Return (dd/mm/yyyy)");
+		lblReturn = new JLabel(" Return (dd/mm/yyyy)");
 		GridBagConstraints gbc_lblReturn = new GridBagConstraints();
+		gbc_lblReturn.anchor = GridBagConstraints.WEST;
 		gbc_lblReturn.insets = new Insets(0, 0, 5, 5);
 		gbc_lblReturn.gridx = 3;
 		gbc_lblReturn.gridy = 3;
@@ -130,15 +138,17 @@ public class FlightFilterPane extends JPanel {
 		gbc_lblDepartInvalidDateFormat.gridx = 1;
 		gbc_lblDepartInvalidDateFormat.gridy = 5;
 		add(lblDepartInvalidDateFormat, gbc_lblDepartInvalidDateFormat);
+		lblDepartInvalidDateFormat.setVisible(false);
 		
-		JLabel lblReturnInvalidDateFormat_1 = new JLabel("Invalid date format");
-		lblReturnInvalidDateFormat_1.setForeground(Color.RED);
-		lblReturnInvalidDateFormat_1.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		GridBagConstraints gbc_lblReturnInvalidDateFormat_1 = new GridBagConstraints();
-		gbc_lblReturnInvalidDateFormat_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblReturnInvalidDateFormat_1.gridx = 3;
-		gbc_lblReturnInvalidDateFormat_1.gridy = 5;
-		add(lblReturnInvalidDateFormat_1, gbc_lblReturnInvalidDateFormat_1);
+		JLabel lblReturnInvalidDateFormat = new JLabel("Invalid date format");
+		lblReturnInvalidDateFormat.setForeground(Color.RED);
+		lblReturnInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		GridBagConstraints gbc_lblReturnInvalidDateFormat = new GridBagConstraints();
+		gbc_lblReturnInvalidDateFormat.insets = new Insets(0, 0, 5, 5);
+		gbc_lblReturnInvalidDateFormat.gridx = 3;
+		gbc_lblReturnInvalidDateFormat.gridy = 5;
+		add(lblReturnInvalidDateFormat, gbc_lblReturnInvalidDateFormat);
+		lblReturnInvalidDateFormat.setVisible(false);
 		
 		JLabel lblPassengerAmount = new JLabel("Passengers");
 		GridBagConstraints gbc_lblPassengerAmount = new GridBagConstraints();
