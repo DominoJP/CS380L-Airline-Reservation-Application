@@ -35,9 +35,11 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
+		FlightFilterPane FilterPane = new FlightFilterPane(contentPane);
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
 		contentPane.add(SelectionPane, "SELECT");
+		contentPane.add(FilterPane, "FILTER");
 		
 		
 	}
