@@ -24,6 +24,8 @@ public class FlightFilterPane extends JPanel {
 	private JTextField textDepart;
 	private JTextField textReturn;
 	private JLabel lblReturn;
+	private JLabel lblDepartInvalidDateFormat;
+	private JLabel lblReturnInvalidDateFormat;
 
 	public FlightFilterPane(JPanel contentPane) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -130,7 +132,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_textReturn.gridy = 4;
 		add(textReturn, gbc_textReturn);
 		
-		JLabel lblDepartInvalidDateFormat = new JLabel("Invalid date format");
+		lblDepartInvalidDateFormat = new JLabel("Invalid date format");
 		lblDepartInvalidDateFormat.setForeground(Color.RED);
 		lblDepartInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		GridBagConstraints gbc_lblDepartInvalidDateFormat = new GridBagConstraints();
@@ -140,7 +142,7 @@ public class FlightFilterPane extends JPanel {
 		add(lblDepartInvalidDateFormat, gbc_lblDepartInvalidDateFormat);
 		lblDepartInvalidDateFormat.setVisible(false);
 		
-		JLabel lblReturnInvalidDateFormat = new JLabel("Invalid date format");
+		lblReturnInvalidDateFormat = new JLabel("Invalid date format");
 		lblReturnInvalidDateFormat.setForeground(Color.RED);
 		lblReturnInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		GridBagConstraints gbc_lblReturnInvalidDateFormat = new GridBagConstraints();
@@ -173,7 +175,7 @@ public class FlightFilterPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME
 				// REQUIRES FILTER METHOD
-				((CardLayout) contentPane.getLayout()).show(contentPane, "FLIGHTLIST");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTERLIST");
 			}
 		});
 		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
