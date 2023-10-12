@@ -150,7 +150,7 @@ public class Account{
      * @param reservation : reservation to  be changed. 
      * @param new flight : new flight for the reservation.
      */
-     public void changeReservation(ReservationFlight reservation, Flight newflight){
+     public void changeReservation(Reservation reservation, Flight newflight){
 	 
       if(reservation != null & newflight != null) {
 		 reservation.setFlight(newflight);
