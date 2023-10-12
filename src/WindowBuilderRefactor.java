@@ -4,6 +4,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
+/**
+   Swing JFrame in which initial JPanel is instantiated.
+   Instantiates and adds JPanels to CardLayout, allowing switching between.
+   @author
+   @version
+ */
+
 public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;

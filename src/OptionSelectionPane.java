@@ -9,6 +9,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+   JPanel that allows navigation between Reserving, Reviewing, or Canceling flights.
+   @author
+   @verison
+*/
+
 public class OptionSelectionPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;

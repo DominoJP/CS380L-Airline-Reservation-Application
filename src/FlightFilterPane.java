@@ -15,6 +15,13 @@ import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+/**
+   JPanel accepting user input (round trip/oneway, airport/city of departure/arrival, date of departure and/or arrival, number of passengers)
+   as criteria for filtering flights.
+   @author
+   @verison
+*/
+
 public class FlightFilterPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;

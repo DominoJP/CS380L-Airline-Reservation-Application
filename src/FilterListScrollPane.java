@@ -4,6 +4,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
 
+/**
+   JPanel in BorderLayout with JScrollPane, allowing use of JList to display and select flights.
+   @author
+   @verison
+*/
+
 public class FilterListScrollPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
