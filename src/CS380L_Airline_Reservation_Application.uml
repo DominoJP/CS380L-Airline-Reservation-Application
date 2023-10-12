@@ -4,7 +4,7 @@
     <eAnnotations xmi:id="_wBMHQGlAEe6EUpwF1ZzeBw" source="http://ns.yatta.de/umllab">
       <contents xmi:type="ecore:EAnnotation" xmi:id="_wBMuUGlAEe6EUpwF1ZzeBw" source="codegen">
         <details xmi:id="_wBMuUWlAEe6EUpwF1ZzeBw" key="codegenDirectory" value="/CS380L_Airline_Reservation_Application/src"/>
-        <details xmi:id="_wS_B4GlAEe6EUpwF1ZzeBw" key="AssociatedSourceCode" value="/CS380L_Airline_Reservation_Application/src/Reservation.java;3816214229/1;/CS380L_Airline_Reservation_Application/src/Airport.java;3113397867/1;/CS380L_Airline_Reservation_Application/src/AirportFlights.java;1200270839/1;/CS380L_Airline_Reservation_Application/src/Account.java;3540875120/1;/CS380L_Airline_Reservation_Application/src/Flight.java;2279156287/1;/CS380L_Airline_Reservation_Application/src/Customer.java;1514613797/1;/CS380L_Airline_Reservation_Application/src/Manager.java;1278329293/1;/CS380L_Airline_Reservation_Application/src/AccountSignInPane.java;3604226369/1;/CS380L_Airline_Reservation_Application/src/AccountSignUpPane.java;2712783747/1;/CS380L_Airline_Reservation_Application/src/FilterListScrollPane.java;1384289897/1;/CS380L_Airline_Reservation_Application/src/OptionSelectionPane.java;2706813589/1;/CS380L_Airline_Reservation_Application/src/FlightFilterPane.java;1304894592/1;/CS380L_Airline_Reservation_Application/src/WindowBuilderRefactor.java;153942341/1;"/>
+        <details xmi:id="_wS_B4GlAEe6EUpwF1ZzeBw" key="AssociatedSourceCode" value="/CS380L_Airline_Reservation_Application/src/Reservation.java;3816214229/1;/CS380L_Airline_Reservation_Application/src/Airport.java;3113397867/1;/CS380L_Airline_Reservation_Application/src/AirportFlights.java;1200270839/1;/CS380L_Airline_Reservation_Application/src/Account.java;3540875120/1;/CS380L_Airline_Reservation_Application/src/Flight.java;2279156287/1;/CS380L_Airline_Reservation_Application/src/Customer.java;1514613797/1;/CS380L_Airline_Reservation_Application/src/Manager.java;1278329293/1;/CS380L_Airline_Reservation_Application/src/AccountSignInPane.java;3604226369/1;/CS380L_Airline_Reservation_Application/src/AccountSignUpPane.java;2712783747/1;/CS380L_Airline_Reservation_Application/src/FilterListScrollPane.java;1384289897/1;/CS380L_Airline_Reservation_Application/src/OptionSelectionPane.java;2706813589/1;/CS380L_Airline_Reservation_Application/src/FlightFilterPane.java;1304894592/1;/CS380L_Airline_Reservation_Application/src/WindowBuilderRefactor.java;484170650/1;/CS380L_Airline_Reservation_Application/src/ReservationPaymentPane.java;1419719005/1;/CS380L_Airline_Reservation_Application/src/TravellerInformationPane.java;4100716630/1;/CS380L_Airline_Reservation_Application/src/ReservationCancellationPane.java;613046518/1;"/>
       </contents>
     </eAnnotations>
     <elementImport xmi:id="_wMHk4GlAEe6EUpwF1ZzeBw">
@@ -61,7 +61,10 @@
         <body>Owner: Logan Langewisch&#xD;
 The Reservation class handles the creation of a reservation for a customer with an account</body>
       </ownedComment>
-      <ownedAttribute xmi:id="_wNZ-UGlAEe6EUpwF1ZzeBw" name="customer" visibility="private" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_wN2qQGlAEe6EUpwF1ZzeBw"/>
+      <ownedAttribute xmi:id="_wNZ-UGlAEe6EUpwF1ZzeBw" name="customer" visibility="private" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_wN2qQGlAEe6EUpwF1ZzeBw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ClS2cGlTEe6JF_hZgeJ_nA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ClTdgGlTEe6JF_hZgeJ_nA" value="*"/>
+      </ownedAttribute>
       <ownedAttribute xmi:id="_wNbMcWlAEe6EUpwF1ZzeBw" name="flight" visibility="private" type="_wNVF0GlAEe6EUpwF1ZzeBw" association="_wN34YWlAEe6EUpwF1ZzeBw"/>
       <ownedAttribute xmi:id="_wNcakWlAEe6EUpwF1ZzeBw" name="passengers" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -2103,7 +2106,7 @@ leave using a binary tree</body>
       <ownedEnd xmi:id="_lsVLQmlLEe6JF_hZgeJ_nA" name="" type="_lqVAIGlLEe6JF_hZgeJ_nA" association="_lsVLQWlLEe6JF_hZgeJ_nA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_oG37EGlLEe6JF_hZgeJ_nA" name="WindowBuilderRefactor">
-      <ownedComment xmi:id="_oHY4cGlLEe6JF_hZgeJ_nA">
+      <ownedComment xmi:id="_Q9OawGlSEe6JF_hZgeJ_nA">
         <body>Swing JFrame in which initial JPanel is instantiated.&#xD;
    Instantiates and adds JPanels to CardLayout, allowing switching between.&#xD;
    @author&#xD;
@@ -2134,7 +2137,9 @@ leave using a binary tree</body>
 	</body>
       </ownedBehavior>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_oHYRY2lLEe6JF_hZgeJ_nA" name="WindowBuilderRefactor" specification="_oG5wQWlLEe6JF_hZgeJ_nA">
-        <ownedParameter xmi:id="_oHYRZGlLEe6JF_hZgeJ_nA" type="_oG37EGlLEe6JF_hZgeJ_nA" direction="return"/>
+        <ownedParameter xmi:id="_oHYRZGlLEe6JF_hZgeJ_nA" type="_oG37EGlLEe6JF_hZgeJ_nA" direction="return">
+          <name xsi:nil="true"/>
+        </ownedParameter>
         <language>java</language>
         <body>setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);&#xD;
 		setBounds(100, 100, 450, 300);&#xD;
@@ -2154,8 +2159,7 @@ leave using a binary tree</body>
 		contentPane.add(SelectionPane, &quot;SELECT&quot;);&#xD;
 		contentPane.add(FilterPane, &quot;FILTER&quot;);&#xD;
 		contentPane.add(FilterListPane, &quot;FILTERLIST&quot;);&#xD;
-		&#xD;
-		&#xD;
+			&#xD;
 	</body>
       </ownedBehavior>
       <ownedOperation xmi:id="_oG5JMGlLEe6JF_hZgeJ_nA" name="main" isStatic="true" method="_oHYRYGlLEe6JF_hZgeJ_nA">
@@ -2176,6 +2180,45 @@ leave using a binary tree</body>
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_R6LAoGlREe6JF_hZgeJ_nA" client="_KuTDEGlBEe6EUpwF1ZzeBw" supplier="_wNVF0GlAEe6EUpwF1ZzeBw"/>
     <packagedElement xmi:type="uml:Usage" xmi:id="_UC5nsGlREe6JF_hZgeJ_nA" client="_Kui6sGlBEe6EUpwF1ZzeBw" supplier="_wNVF0GlAEe6EUpwF1ZzeBw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XCa3YGlSEe6JF_hZgeJ_nA" name="ReservationPaymentPane">
+      <generalization xmi:id="_XCnEoGlSEe6JF_hZgeJ_nA" general="_iODGgGlLEe6JF_hZgeJ_nA"/>
+      <ownedAttribute xmi:id="_XCnrsGlSEe6JF_hZgeJ_nA" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_XCnrsWlSEe6JF_hZgeJ_nA" value="1L"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_XCcFgGlSEe6JF_hZgeJ_nA" name="ReservationPaymentPane">
+        <eAnnotations xmi:id="_XCcFgWlSEe6JF_hZgeJ_nA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:id="_XCcFgmlSEe6JF_hZgeJ_nA" key="create"/>
+        </eAnnotations>
+        <ownedParameter xmi:id="_XCcskWlSEe6JF_hZgeJ_nA" type="_XCa3YGlSEe6JF_hZgeJ_nA" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_X3xyEGlSEe6JF_hZgeJ_nA" name="TravellerInformationPane">
+      <generalization xmi:id="_X36U8GlSEe6JF_hZgeJ_nA" general="_iODGgGlLEe6JF_hZgeJ_nA"/>
+      <ownedAttribute xmi:id="_X368AGlSEe6JF_hZgeJ_nA" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_X368AWlSEe6JF_hZgeJ_nA" value="1L"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_X3yZIGlSEe6JF_hZgeJ_nA" name="TravellerInformationPane">
+        <eAnnotations xmi:id="_X3zAMGlSEe6JF_hZgeJ_nA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:id="_X3zAMWlSEe6JF_hZgeJ_nA" key="create"/>
+        </eAnnotations>
+        <ownedParameter xmi:id="_X3zAM2lSEe6JF_hZgeJ_nA" type="_X3xyEGlSEe6JF_hZgeJ_nA" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ba7IsGlSEe6JF_hZgeJ_nA" name="ReservationCancellationPane">
+      <generalization xmi:id="_bbFgwGlSEe6JF_hZgeJ_nA" general="_iODGgGlLEe6JF_hZgeJ_nA"/>
+      <ownedAttribute xmi:id="_bbGH0GlSEe6JF_hZgeJ_nA" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_bbGH0WlSEe6JF_hZgeJ_nA" value="1L"/>
+      </ownedAttribute>
+      <ownedOperation xmi:id="_ba7vwGlSEe6JF_hZgeJ_nA" name="ReservationCancellationPane">
+        <eAnnotations xmi:id="_ba8W0GlSEe6JF_hZgeJ_nA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+          <details xmi:id="_ba8W0WlSEe6JF_hZgeJ_nA" key="create"/>
+        </eAnnotations>
+        <ownedParameter xmi:id="_ba8W02lSEe6JF_hZgeJ_nA" type="_ba7IsGlSEe6JF_hZgeJ_nA" direction="return"/>
+      </ownedOperation>
+    </packagedElement>
     <profileApplication xmi:id="_wBOjgGlAEe6EUpwF1ZzeBw">
       <eAnnotations xmi:id="_wBUDEGlAEe6EUpwF1ZzeBw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
@@ -2275,4 +2318,7 @@ leave using a binary tree</body>
   <UMLLabProfile:Reference xmi:id="_oHV1IGlLEe6JF_hZgeJ_nA" base_Element="_oHVOEWlLEe6JF_hZgeJ_nA"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_oHXqUWlLEe6JF_hZgeJ_nA" base_Element="_oHXqUGlLEe6JF_hZgeJ_nA"/>
   <UMLLabProfile:Reference xmi:id="_oHZfgmlLEe6JF_hZgeJ_nA" base_Element="_oHZfgGlLEe6JF_hZgeJ_nA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_XCcskGlSEe6JF_hZgeJ_nA" base_Element="_XCcFgGlSEe6JF_hZgeJ_nA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_X3zAMmlSEe6JF_hZgeJ_nA" base_Element="_X3yZIGlSEe6JF_hZgeJ_nA"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_ba8W0mlSEe6JF_hZgeJ_nA" base_Element="_ba7vwGlSEe6JF_hZgeJ_nA"/>
 </xmi:XMI>

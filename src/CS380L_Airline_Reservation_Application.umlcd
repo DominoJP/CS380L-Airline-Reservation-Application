@@ -9,48 +9,47 @@
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_wTVnM2lAEe6EUpwF1ZzeBw" targetItem="_wTk39WlAEe6EUpwF1ZzeBw" sourceItem="_wTVnMmlAEe6EUpwF1ZzeBw"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_wTW1UGlAEe6EUpwF1ZzeBw" targetItem="_wTk3-GlAEe6EUpwF1ZzeBw" sourceItem="_wTWOQGlAEe6EUpwF1ZzeBw"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_wTW1UmlAEe6EUpwF1ZzeBw" targetItem="_wTk4BGlAEe6EUpwF1ZzeBw" sourceItem="_wTW1UWlAEe6EUpwF1ZzeBw"/>
-  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_wTjCkGlAEe6EUpwF1ZzeBw" sourceAnchor="332.0,146.0" targetAnchor="0.0,216.0" target="_m2BiwWlBEe6EUpwF1ZzeBw" source="_wTk3wGlAEe6EUpwF1ZzeBw">
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_wTjCkGlAEe6EUpwF1ZzeBw" sourceAnchor="0.0,146.0" targetAnchor="553.0,195.0" target="_m2BiwWlBEe6EUpwF1ZzeBw" source="_wTk3wGlAEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_wN2qQGlAEe6EUpwF1ZzeBw"/>
     <stereotypes xmi:id="_wTjCkWlAEe6EUpwF1ZzeBw" name="Reference">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_wN34YGlAEe6EUpwF1ZzeBw"/>
     </stereotypes>
     <nameVisual xmi:id="_wTjCkmlAEe6EUpwF1ZzeBw" text="">
-      <visualProperties xmi:id="_m3uL4GlBEe6EUpwF1ZzeBw" position="-34.0,2.0"/>
+      <visualProperties xmi:id="_m3uL4GlBEe6EUpwF1ZzeBw" position="6.0,-19.000000000000057"/>
     </nameVisual>
     <sourceRole xmi:id="_wTjCk2lAEe6EUpwF1ZzeBw" aggregationKind="NONE" name="">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_wN2qQWlAEe6EUpwF1ZzeBw"/>
-      <visualProperties xmi:id="_m3tk12lBEe6EUpwF1ZzeBw" position="14.0,2.0"/>
+      <visualProperties xmi:id="_m3tk12lBEe6EUpwF1ZzeBw" position="-29.0,2.0"/>
       <visibility xmi:id="_wTjClGlAEe6EUpwF1ZzeBw" label="+"/>
       <cardinality xmi:id="_wTjClWlAEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_wTjClmlAEe6EUpwF1ZzeBw" aggregationKind="NONE" name="customer" navigable="true">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNZ-UGlAEe6EUpwF1ZzeBw"/>
-      <visualProperties xmi:id="_m3uL4WlBEe6EUpwF1ZzeBw" position="-111.0,2.0"/>
+      <visualProperties xmi:id="_m3uL4WlBEe6EUpwF1ZzeBw" position="40.66666666666674,2.0"/>
       <stereotypes xmi:id="_BtF8wGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
         <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNbMcGlAEe6EUpwF1ZzeBw"/>
       </stereotypes>
       <visibility xmi:id="_wTjCl2lAEe6EUpwF1ZzeBw" label="-"/>
-      <cardinality xmi:id="_wTjCmGlAEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <cardinality xmi:id="_wTjCmGlAEe6EUpwF1ZzeBw" label="1..*" max="-1" min="1"/>
     </targetRole>
   </edges>
-  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_wTkQsGlAEe6EUpwF1ZzeBw" sourceAnchor="166.0,232.0" targetAnchor="0.0,354.0" target="_nYpusGlBEe6EUpwF1ZzeBw" source="_wTk3wGlAEe6EUpwF1ZzeBw">
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_wTkQsGlAEe6EUpwF1ZzeBw" sourceAnchor="332.0,179.0" targetAnchor="0.0,234.0" target="_nYpusGlBEe6EUpwF1ZzeBw" source="_wTk3wGlAEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_wN34YWlAEe6EUpwF1ZzeBw"/>
-    <bendpoints xmi:id="_UJG9ZmlREe6JF_hZgeJ_nA" sourceY="45" targetX="-995"/>
     <stereotypes xmi:id="_wTkQsWlAEe6EUpwF1ZzeBw" name="Reference">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_wN4fcGlAEe6EUpwF1ZzeBw"/>
     </stereotypes>
     <nameVisual xmi:id="_wTkQsmlAEe6EUpwF1ZzeBw" text="">
-      <visualProperties xmi:id="_ncEPEWlBEe6EUpwF1ZzeBw" position="479.0,2.0"/>
+      <visualProperties xmi:id="_ncEPEWlBEe6EUpwF1ZzeBw" position="-5.0,-19.0"/>
     </nameVisual>
     <sourceRole xmi:id="_wTkQs2lAEe6EUpwF1ZzeBw" aggregationKind="NONE" name="">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_wN34YmlAEe6EUpwF1ZzeBw"/>
-      <visualProperties xmi:id="_ncEPEGlBEe6EUpwF1ZzeBw" position="-17.0,5.0"/>
+      <visualProperties xmi:id="_ncEPEGlBEe6EUpwF1ZzeBw" position="14.083333333333371,-47.0"/>
       <visibility xmi:id="_wTkQtGlAEe6EUpwF1ZzeBw" label="+"/>
       <cardinality xmi:id="_wTkQtWlAEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_wTkQtmlAEe6EUpwF1ZzeBw" aggregationKind="NONE" name="flight" navigable="true">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNbMcWlAEe6EUpwF1ZzeBw"/>
-      <visualProperties xmi:id="_ncEPEmlBEe6EUpwF1ZzeBw" position="-104.0,1.9999999999998863"/>
+      <visualProperties xmi:id="_ncEPEmlBEe6EUpwF1ZzeBw" position="-69.79999999999995,2.0"/>
       <stereotypes xmi:id="_BtF8wWlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
         <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNcakGlAEe6EUpwF1ZzeBw"/>
       </stereotypes>
@@ -60,9 +59,9 @@
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_KvZPQGlBEe6EUpwF1ZzeBw" sourceAnchor="135.0,232.0" targetAnchor="270.0,155.0" target="_KvfV6WlBEe6EUpwF1ZzeBw" source="_KvfV6WlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_KunMIGlBEe6EUpwF1ZzeBw"/>
-    <bendpoints xmi:id="_UJGWUWlREe6JF_hZgeJ_nA" sourceY="10" targetX="-135" targetY="87"/>
-    <bendpoints xmi:id="_UJGWUmlREe6JF_hZgeJ_nA" sourceX="150" sourceY="22" targetX="15" targetY="99"/>
-    <bendpoints xmi:id="_UJGWU2lREe6JF_hZgeJ_nA" sourceX="150" sourceY="-77" targetX="15"/>
+    <bendpoints xmi:id="_W2018mlTEe6JF_hZgeJ_nA" sourceY="10" targetX="-135" targetY="87"/>
+    <bendpoints xmi:id="_W20182lTEe6JF_hZgeJ_nA" sourceX="150" sourceY="22" targetX="15" targetY="99"/>
+    <bendpoints xmi:id="_W2019GlTEe6JF_hZgeJ_nA" sourceX="150" sourceY="-77" targetX="15"/>
     <stereotypes xmi:id="_Kvbrg2lBEe6EUpwF1ZzeBw" name="Reference">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_KunMImlBEe6EUpwF1ZzeBw"/>
     </stereotypes>
@@ -87,9 +86,9 @@
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_KvZPQWlBEe6EUpwF1ZzeBw" sourceAnchor="165.0,0.0" targetAnchor="270.0,95.0" target="_KvfV6WlBEe6EUpwF1ZzeBw" source="_KvfV6WlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_KunMI2lBEe6EUpwF1ZzeBw"/>
-    <bendpoints xmi:id="_UJGWVGlREe6JF_hZgeJ_nA" sourceY="-15" targetX="-105" targetY="-110"/>
-    <bendpoints xmi:id="_UJGWVWlREe6JF_hZgeJ_nA" sourceX="150" sourceY="-15" targetX="45" targetY="-110"/>
-    <bendpoints xmi:id="_UJGWVmlREe6JF_hZgeJ_nA" sourceX="150" sourceY="95" targetX="45"/>
+    <bendpoints xmi:id="_W21dAGlTEe6JF_hZgeJ_nA" sourceY="-15" targetX="-105" targetY="-110"/>
+    <bendpoints xmi:id="_W21dAWlTEe6JF_hZgeJ_nA" sourceX="150" sourceY="-15" targetX="45" targetY="-110"/>
+    <bendpoints xmi:id="_W21dAmlTEe6JF_hZgeJ_nA" sourceX="150" sourceY="95" targetX="45"/>
     <stereotypes xmi:id="_KvcSkmlBEe6EUpwF1ZzeBw" name="Reference">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_KunzMGlBEe6EUpwF1ZzeBw"/>
     </stereotypes>
@@ -126,17 +125,17 @@
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_KunzM2lBEe6EUpwF1ZzeBw"/>
     </stereotypes>
     <nameVisual xmi:id="_Kveu0mlBEe6EUpwF1ZzeBw" text="">
-      <visualProperties xmi:id="_LpijUGlBEe6EUpwF1ZzeBw" position="-7.0,2.0"/>
+      <visualProperties xmi:id="_LpijUGlBEe6EUpwF1ZzeBw" position="-18.0,2.0"/>
     </nameVisual>
     <sourceRole xmi:id="_Kveu02lBEe6EUpwF1ZzeBw" aggregationKind="NONE" name="">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_KunzMmlBEe6EUpwF1ZzeBw"/>
-      <visualProperties xmi:id="_Lph8QGlBEe6EUpwF1ZzeBw" position="27.0,2.0"/>
+      <visualProperties xmi:id="_Lph8QGlBEe6EUpwF1ZzeBw" position="28.0,2.0"/>
       <visibility xmi:id="_Kveu1GlBEe6EUpwF1ZzeBw" label="+"/>
       <cardinality xmi:id="_Kveu1WlBEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_Kveu1mlBEe6EUpwF1ZzeBw" aggregationKind="NONE" name="flights" navigable="true">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_Kukv4WlBEe6EUpwF1ZzeBw"/>
-      <visualProperties xmi:id="_LpjKYGlBEe6EUpwF1ZzeBw" position="-77.0,-47.0"/>
+      <visualProperties xmi:id="_LpjKYGlBEe6EUpwF1ZzeBw" position="-89.0,-47.0"/>
       <stereotypes xmi:id="_BtIZAWlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
         <modelElement href="CS380L_Airline_Reservation_Application.uml#_Kukv4mlBEe6EUpwF1ZzeBw"/>
       </stereotypes>
@@ -169,9 +168,9 @@
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_LmLGQGlBEe6EUpwF1ZzeBw" sourceAnchor="167.0,213.0" targetAnchor="335.0,46.0" target="_LmRz8GlBEe6EUpwF1ZzeBw" source="_LmRz8GlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_Lk-zcGlBEe6EUpwF1ZzeBw"/>
-    <bendpoints xmi:id="_UJG9YGlREe6JF_hZgeJ_nA" sourceY="75" targetX="-168" targetY="242"/>
-    <bendpoints xmi:id="_UJG9YWlREe6JF_hZgeJ_nA" sourceX="392" sourceY="75" targetX="224" targetY="242"/>
-    <bendpoints xmi:id="_UJG9YmlREe6JF_hZgeJ_nA" sourceX="392" sourceY="-167" targetX="224"/>
+    <bendpoints xmi:id="_W21dBWlTEe6JF_hZgeJ_nA" sourceY="75" targetX="-168" targetY="242"/>
+    <bendpoints xmi:id="_W21dBmlTEe6JF_hZgeJ_nA" sourceX="392" sourceY="75" targetX="224" targetY="242"/>
+    <bendpoints xmi:id="_W21dB2lTEe6JF_hZgeJ_nA" sourceX="392" sourceY="-167" targetX="224"/>
     <stereotypes xmi:id="_LmP-wGlBEe6EUpwF1ZzeBw" name="Reference">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_Lk_agGlBEe6EUpwF1ZzeBw"/>
     </stereotypes>
@@ -196,9 +195,9 @@
   </edges>
   <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_LmLtUGlBEe6EUpwF1ZzeBw" sourceAnchor="197.0,213.0" targetAnchor="335.0,76.0" target="_LmRz8GlBEe6EUpwF1ZzeBw" source="_LmRz8GlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_Lk_agWlBEe6EUpwF1ZzeBw"/>
-    <bendpoints xmi:id="_UJG9Y2lREe6JF_hZgeJ_nA" sourceY="45" targetX="-138" targetY="182"/>
-    <bendpoints xmi:id="_UJG9ZGlREe6JF_hZgeJ_nA" sourceX="332" sourceY="45" targetX="194" targetY="182"/>
-    <bendpoints xmi:id="_UJG9ZWlREe6JF_hZgeJ_nA" sourceX="332" sourceY="-137" targetX="194"/>
+    <bendpoints xmi:id="_W21dCGlTEe6JF_hZgeJ_nA" sourceY="45" targetX="-138" targetY="182"/>
+    <bendpoints xmi:id="_W21dCWlTEe6JF_hZgeJ_nA" sourceX="332" sourceY="45" targetX="194" targetY="182"/>
+    <bendpoints xmi:id="_W22EEGlTEe6JF_hZgeJ_nA" sourceX="332" sourceY="-137" targetX="194"/>
     <stereotypes xmi:id="_LmP-xGlBEe6EUpwF1ZzeBw" name="Reference">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_Lk_ag2lBEe6EUpwF1ZzeBw"/>
     </stereotypes>
@@ -252,23 +251,23 @@
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_LmOJkWlBEe6EUpwF1ZzeBw" targetItem="_LmR0JGlBEe6EUpwF1ZzeBw" sourceItem="_LmOJkGlBEe6EUpwF1ZzeBw"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_LmOJk2lBEe6EUpwF1ZzeBw" targetItem="_LmR0LGlBEe6EUpwF1ZzeBw" sourceItem="_LmOJkmlBEe6EUpwF1ZzeBw"/>
   <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_LmOJlWlBEe6EUpwF1ZzeBw" targetItem="_LmR0MmlBEe6EUpwF1ZzeBw" sourceItem="_LmOJlGlBEe6EUpwF1ZzeBw"/>
-  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_m19RUGlBEe6EUpwF1ZzeBw" sourceAnchor="0.0,186.0" targetAnchor="332.0,116.0" target="_wTk3wGlAEe6EUpwF1ZzeBw" source="_m2BiwWlBEe6EUpwF1ZzeBw">
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_m19RUGlBEe6EUpwF1ZzeBw" sourceAnchor="553.0,165.0" targetAnchor="0.0,116.0" target="_wTk3wGlAEe6EUpwF1ZzeBw" source="_m2BiwWlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_m07WkGlBEe6EUpwF1ZzeBw"/>
     <stereotypes xmi:id="_m1-fc2lBEe6EUpwF1ZzeBw" name="Reference">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_m07WkmlBEe6EUpwF1ZzeBw"/>
     </stereotypes>
     <nameVisual xmi:id="_m1-fcGlBEe6EUpwF1ZzeBw" text="">
-      <visualProperties xmi:id="_m3vaAWlBEe6EUpwF1ZzeBw" position="-34.0,2.0"/>
+      <visualProperties xmi:id="_m3vaAWlBEe6EUpwF1ZzeBw" position="-43.0,2.0"/>
     </nameVisual>
     <sourceRole xmi:id="_m1-fcWlBEe6EUpwF1ZzeBw" aggregationKind="NONE" name="">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_m07WkWlBEe6EUpwF1ZzeBw"/>
-      <visualProperties xmi:id="_m3vaAGlBEe6EUpwF1ZzeBw" position="-30.0,-47.0"/>
+      <visualProperties xmi:id="_m3vaAGlBEe6EUpwF1ZzeBw" position="14.0,-47.0"/>
       <visibility xmi:id="_m2A7sWlBEe6EUpwF1ZzeBw" label="+"/>
       <cardinality xmi:id="_m2A7sGlBEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
     </sourceRole>
     <targetRole xmi:id="_m1-fcmlBEe6EUpwF1ZzeBw" aggregationKind="NONE" name="reservationHistory" navigable="true">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_m05hYGlBEe6EUpwF1ZzeBw"/>
-      <visualProperties xmi:id="_m3vaAmlBEe6EUpwF1ZzeBw" position="45.0,-47.00000000000006"/>
+      <visualProperties xmi:id="_m3vaAmlBEe6EUpwF1ZzeBw" position="-136.33333333333337,-47.0"/>
       <visibility xmi:id="_m2BiwGlBEe6EUpwF1ZzeBw" label="+"/>
       <cardinality xmi:id="_m2A7smlBEe6EUpwF1ZzeBw" label="1..*" max="-1" min="1"/>
     </targetRole>
@@ -472,27 +471,30 @@
       <cardinality xmi:id="_oLmDAmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
     </targetRole>
   </edges>
-  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_oLk04WlLEe6JF_hZgeJ_nA" targetItem="_oLnRIGlLEe6JF_hZgeJ_nA" sourceItem="_oLk04GlLEe6JF_hZgeJ_nA"/>
   <edges xsi:type="com.yattasolutions.diagrams:UsageVisual" xmi:id="_R6XN4GlREe6JF_hZgeJ_nA" sourceAnchor="135.0,0.0" targetAnchor="461.0,468.0" client="_KvfV6WlBEe6EUpwF1ZzeBw" supplier="_nYpusGlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_R6LAoGlREe6JF_hZgeJ_nA"/>
     <visualProperties xmi:id="_R6XN4WlREe6JF_hZgeJ_nA"/>
-    <bendpoints xmi:id="_UJFvQGlREe6JF_hZgeJ_nA" sourceY="-30" targetX="-468" targetY="142"/>
+    <bendpoints xmi:id="_W2018GlTEe6JF_hZgeJ_nA" sourceY="-30" targetX="-585" targetY="143"/>
+    <bendpoints xmi:id="_W2018WlTEe6JF_hZgeJ_nA" sourceX="585" sourceY="-30" targetY="143"/>
     <nameVisual xmi:id="_R6XN4mlREe6JF_hZgeJ_nA" text=""/>
   </edges>
-  <edges xsi:type="com.yattasolutions.diagrams:UsageVisual" xmi:id="_UC610GlREe6JF_hZgeJ_nA" sourceAnchor="171.0,0.0" targetAnchor="461.0,468.0" client="_LmRz8GlBEe6EUpwF1ZzeBw" supplier="_nYpusGlBEe6EUpwF1ZzeBw">
+  <edges xsi:type="com.yattasolutions.diagrams:UsageVisual" xmi:id="_UC610GlREe6JF_hZgeJ_nA" sourceAnchor="167.0,0.0" targetAnchor="461.0,468.0" client="_LmRz8GlBEe6EUpwF1ZzeBw" supplier="_nYpusGlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_UC5nsGlREe6JF_hZgeJ_nA"/>
     <visualProperties xmi:id="_UC610WlREe6JF_hZgeJ_nA"/>
+    <bendpoints xmi:id="_W21dA2lTEe6JF_hZgeJ_nA" sourceY="-35" targetX="82" targetY="143"/>
+    <bendpoints xmi:id="_W21dBGlTEe6JF_hZgeJ_nA" sourceX="-82" sourceY="-35" targetY="143"/>
     <nameVisual xmi:id="_UC610mlREe6JF_hZgeJ_nA" text=""/>
   </edges>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_wTOScGlAEe6EUpwF1ZzeBw" sourceConnectionVisual="_wTPgkGlAEe6EUpwF1ZzeBw" text="Owner: Logan Langewisch&#xD;&#xA;The Reservation class handles the creation of a reservation for a customer with an account" item="_wTk3wGlAEe6EUpwF1ZzeBw">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNy_4GlAEe6EUpwF1ZzeBw"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_wTSj4GlAEe6EUpwF1ZzeBw" sourceConnectionVisual="_wTTK8GlAEe6EUpwF1ZzeBw" text="a constructor that accepts nothing" item="_wTk33mlAEe6EUpwF1ZzeBw">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNy_4WlAEe6EUpwF1ZzeBw"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_wTUZEGlAEe6EUpwF1ZzeBw" sourceConnectionVisual="_wTUZEWlAEe6EUpwF1ZzeBw" text="the method that finishes the creation of the reservation by allowing the customer&#xD;&#xA;&#x9;  * to add all the people will be on the reservation(including themselves) and also to select the seats&#xD;&#xA;&#x9;  * that all passengers want" item="_wTk35GlAEe6EUpwF1ZzeBw">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNy_42lAEe6EUpwF1ZzeBw"/>
-  </nodes>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_Q_qDsGlSEe6JF_hZgeJ_nA" targetItem="_oLnRIGlLEe6JF_hZgeJ_nA" sourceItem="_Q_d2cGlSEe6JF_hZgeJ_nA"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_XGKH4GlSEe6JF_hZgeJ_nA" subClass="_XGLWAGlSEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_XCnEoGlSEe6JF_hZgeJ_nA"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_X55R8GlSEe6JF_hZgeJ_nA" subClass="_X555AGlSEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_X36U8GlSEe6JF_hZgeJ_nA"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:GeneralizationVisual" xmi:id="_beokAGlSEe6JF_hZgeJ_nA" subClass="_bepLEGlSEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_bbFgwGlSEe6JF_hZgeJ_nA"/>
+  </edges>
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_wTVAIGlAEe6EUpwF1ZzeBw" sourceConnectionVisual="_wTVAIWlAEe6EUpwF1ZzeBw" text="method that takes an integer&#xD;&#xA;&#x9;  * @param p&#xD;&#xA;&#x9;  * that represents the number of people on the reservation then uses the price of each ticket&#xD;&#xA;&#x9;  * from the flight variable in order to calculate the total price of the reservation&#xD;&#xA;&#x9;  * @return" item="_wTk352lAEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNy_5GlAEe6EUpwF1ZzeBw"/>
   </nodes>
@@ -558,6 +560,7 @@
   </nodes>
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_m194YGlBEe6EUpwF1ZzeBw" sourceConnectionVisual="_m194YWlBEe6EUpwF1ZzeBw" text="Account class represents a user account for a flight reservation system. &#xD;&#xA;   It stores information such as user's name, email, password, account number&#xD;&#xA;   and reservation history. &#xD;&#xA;   @author Sayra Reyes&#xD;&#xA;   @version 1.0" item="_m2BiwWlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_m06Ih2lBEe6EUpwF1ZzeBw"/>
+    <visualProperties xmi:id="_er24gGlTEe6JF_hZgeJ_nA" position="490.0,120.0" size="200.0,150.0" visible="false"/>
   </nodes>
   <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_m1-fdGlBEe6EUpwF1ZzeBw" sourceConnectionVisual="_m1-fdWlBEe6EUpwF1ZzeBw" text="Constructor for Account class &#xD;&#xA;&#x9;  * @param name : the name of account holder&#xD;&#xA;&#x9;  * @param email : the email associated with the account.&#xD;&#xA;&#x9;  * @param password : the password for the account.&#xD;&#xA;&#x9;  * @param accountNumber : the account number" item="_m2CJ42lBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_m06IiGlBEe6EUpwF1ZzeBw"/>
@@ -835,9 +838,496 @@
       </parameters>
     </operations>
   </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_ccXx4GlCEe6EUpwF1ZzeBw" sourceConnectionVisual="_ccXx4WlCEe6EUpwF1ZzeBw" text="Getter method &#xD;&#xA;  * @return" item="_ccaONWlCEe6EUpwF1ZzeBw">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_caOc0WlCEe6EUpwF1ZzeBw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_ccYY8GlCEe6EUpwF1ZzeBw" sourceConnectionVisual="_ccYY8WlCEe6EUpwF1ZzeBw" text="Getter method&#xD;&#xA;   * @return" item="_ccaOOmlCEe6EUpwF1ZzeBw">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_caOc0mlCEe6EUpwF1ZzeBw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_ccZAAGlCEe6EUpwF1ZzeBw" sourceConnectionVisual="_ccZAAWlCEe6EUpwF1ZzeBw" text="Represents Customer's passport number" item="_ccaOP2lCEe6EUpwF1ZzeBw">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_caOc0GlCEe6EUpwF1ZzeBw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lbPKUGlCEe6EUpwF1ZzeBw" name="Manager">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZRbcGlCEe6EUpwF1ZzeBw"/>
+    <visualProperties xmi:id="_lbPKUWlCEe6EUpwF1ZzeBw" position="29.0,802.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_lbPKUmlCEe6EUpwF1ZzeBw" label="~"/>
+    <attributes xmi:id="_lbPKU2lCEe6EUpwF1ZzeBw" name="employeeID">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZUewGlCEe6EUpwF1ZzeBw"/>
+      <stereotypes xmi:id="_lbPKVGlCEe6EUpwF1ZzeBw" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZUewWlCEe6EUpwF1ZzeBw"/>
+      </stereotypes>
+      <visibility xmi:id="_lbPKVWlCEe6EUpwF1ZzeBw" label="-"/>
+      <cardinality xmi:id="_lbPKVmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <type xmi:id="_lbPKV2lCEe6EUpwF1ZzeBw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lbPKWGlCEe6EUpwF1ZzeBw" name="employeepassword">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZVF0GlCEe6EUpwF1ZzeBw"/>
+      <stereotypes xmi:id="_lbPKWWlCEe6EUpwF1ZzeBw" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZVF0WlCEe6EUpwF1ZzeBw"/>
+      </stereotypes>
+      <visibility xmi:id="_lbPKWmlCEe6EUpwF1ZzeBw" label="-"/>
+      <cardinality xmi:id="_lbPKW2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <type xmi:id="_lbPKXGlCEe6EUpwF1ZzeBw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_lbPKXWlCEe6EUpwF1ZzeBw" name="accessReservationInfo">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZSpkGlCEe6EUpwF1ZzeBw"/>
+      <visibility xmi:id="_lbPKXmlCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_lbPKX2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_lbPKYGlCEe6EUpwF1ZzeBw" name="Manager">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQoGlCEe6EUpwF1ZzeBw"/>
+      <keywords xmi:id="_lbPKYWlCEe6EUpwF1ZzeBw" keyword="create"/>
+      <visibility xmi:id="_lbPKYmlCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_lbPKY2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lbPKZGlCEe6EUpwF1ZzeBw">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQpWlCEe6EUpwF1ZzeBw"/>
+        <type xmi:id="_lbPKZWlCEe6EUpwF1ZzeBw" name="Manager">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZRbcGlCEe6EUpwF1ZzeBw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_lbQYcGlCEe6EUpwF1ZzeBw" name="employeeID">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQoWlCEe6EUpwF1ZzeBw"/>
+        <cardinality xmi:id="_lbQYcWlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+        <type xmi:id="_lbQYcmlCEe6EUpwF1ZzeBw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_lbQYc2lCEe6EUpwF1ZzeBw" name="employeepassword">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQomlCEe6EUpwF1ZzeBw"/>
+        <cardinality xmi:id="_lbQYdGlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+        <type xmi:id="_lbQYdWlCEe6EUpwF1ZzeBw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_lbQYdmlCEe6EUpwF1ZzeBw" name="getemployeeID">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQpmlCEe6EUpwF1ZzeBw"/>
+      <visibility xmi:id="_lbQYd2lCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_lbQYeGlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lbQYeWlCEe6EUpwF1ZzeBw">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQp2lCEe6EUpwF1ZzeBw"/>
+        <type xmi:id="_lbQYemlCEe6EUpwF1ZzeBw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_lbQYe2lCEe6EUpwF1ZzeBw" name="getemployeepassword">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQqGlCEe6EUpwF1ZzeBw"/>
+      <visibility xmi:id="_lbQYfGlCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_lbQYfWlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lbQYfmlCEe6EUpwF1ZzeBw">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZT3sGlCEe6EUpwF1ZzeBw"/>
+        <type xmi:id="_lbQYf2lCEe6EUpwF1ZzeBw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_iSwAUGlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_iSwnYGlLEe6JF_hZgeJ_nA" text="JPanel for account sign in.&#xD;&#xA;   Login credentials (email and password) accepted as text inputs and authenticated on button press.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_iS0RwWlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOlSAGlLEe6JF_hZgeJ_nA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_jXyVwGlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_jXyVwWlLEe6JF_hZgeJ_nA" text="JPanel for account sign up.&#xD;&#xA;   Allows account creation with provided name, email, and password.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_jXzj4GlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTvjQGlLEe6JF_hZgeJ_nA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_kQGd0GlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_kQGd0WlLEe6JF_hZgeJ_nA" text="JPanel in BorderLayout with JScrollPane, allowing use of JList to display and select flights.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_kQHr8GlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMZpk2lLEe6JF_hZgeJ_nA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_kykRsWlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_kykRsmlLEe6JF_hZgeJ_nA" text="JPanel that allows navigation between Reserving, Reviewing, or Canceling flights.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_kylf0GlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_kuhfM2lLEe6JF_hZgeJ_nA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_lxq-QWlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_lxq-QmlLEe6JF_hZgeJ_nA" text="JPanel accepting user input (round trip/oneway, airport/city of departure/arrival, date of departure and/or arrival, number of passengers)&#xD;&#xA;   as criteria for filtering flights.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_lxxr-WlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsDec2lLEe6JF_hZgeJ_nA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_kQHr8GlLEe6JF_hZgeJ_nA" comments="_kQGd0GlLEe6JF_hZgeJ_nA" targetConnectionVisual="_kQGd0WlLEe6JF_hZgeJ_nA" name="FilterListScrollPane" generalizations="_kQF2wGlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMAoAGlLEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_kQHr8WlLEe6JF_hZgeJ_nA" position="37.0,1078.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_kQHr8mlLEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_kQHr82lLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMZCgGlLEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_kQHr9GlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_kQHr9WlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_kQHr9mlLEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_kQHr92lLEe6JF_hZgeJ_nA" name="FilterListScrollPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMX0YGlLEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_kQHr-GlLEe6JF_hZgeJ_nA" keyword="create"/>
+      <visibility xmi:id="_kQHr-WlLEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_kQHr-mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_kQHr-2lLEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMX0ZGlLEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_kQHr_GlLEe6JF_hZgeJ_nA" name="FilterListScrollPane">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMAoAGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_kQHr_WlLEe6JF_hZgeJ_nA" name="contentPane">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMX0YWlLEe6JF_hZgeJ_nA"/>
+        <cardinality xmi:id="_kQHr_mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+        <type xmi:id="_kQHr_2lLEe6JF_hZgeJ_nA" name="JPanel">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_kylf0GlLEe6JF_hZgeJ_nA" comments="_kykRsWlLEe6JF_hZgeJ_nA" targetConnectionVisual="_kykRsmlLEe6JF_hZgeJ_nA" name="OptionSelectionPane" generalizations="_kykRsGlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_kuFaUGlLEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_kylf0WlLEe6JF_hZgeJ_nA" position="547.0,1089.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_kylf0mlLEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_kylf02lLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_kugREWlLEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_kylf1GlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_kylf1WlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_kylf1mlLEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_kylf12lLEe6JF_hZgeJ_nA" name="OptionSelectionPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_kufC8GlLEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_kylf2GlLEe6JF_hZgeJ_nA" keyword="create"/>
+      <visibility xmi:id="_kylf2WlLEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_kylf2mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_kylf22lLEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_kufC9GlLEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_kylf3GlLEe6JF_hZgeJ_nA" name="OptionSelectionPane">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_kuFaUGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_kylf3WlLEe6JF_hZgeJ_nA" name="contentPane">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_kufC8WlLEe6JF_hZgeJ_nA"/>
+        <cardinality xmi:id="_kylf3mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+        <type xmi:id="_kylf32lLEe6JF_hZgeJ_nA" name="JPanel">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_oLnRIGlLEe6JF_hZgeJ_nA" comments="_Q_d2cGlSEe6JF_hZgeJ_nA" targetConnectionVisual="_Q_qDsGlSEe6JF_hZgeJ_nA" name="WindowBuilderRefactor" associationsOut="_oLkN0GlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG37EGlLEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_oLnRIWlLEe6JF_hZgeJ_nA" position="1107.0,1086.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_oLnRImlLEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_oLnRI2lLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_oHWcMGlLEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_oLnRJGlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_oLnRJWlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_oLnRJmlLEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_oLnRJ2lLEe6JF_hZgeJ_nA" name="contentPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_oHXqUGlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_oLnRKGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_oHXqUWlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_oLnRKWlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_oLnRKmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_oLnRK2lLEe6JF_hZgeJ_nA" name="JPanel">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_oLnRLGlLEe6JF_hZgeJ_nA" name="main" staticOperation="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG5JMGlLEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_oLnRLWlLEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_oLnRLmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <parameters xmi:id="_oLnRL2lLEe6JF_hZgeJ_nA" name="args">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG5JMWlLEe6JF_hZgeJ_nA"/>
+        <cardinality xmi:id="_oLnRMGlLEe6JF_hZgeJ_nA" label="1..*" max="-1" min="1"/>
+        <type xmi:id="_oLnRMWlLEe6JF_hZgeJ_nA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_oLnRMmlLEe6JF_hZgeJ_nA" name="WindowBuilderRefactor">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG5wQWlLEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_oLnRM2lLEe6JF_hZgeJ_nA" keyword="create"/>
+      <visibility xmi:id="_oLnRNGlLEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_oLnRNWlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_oLnRNmlLEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG5wRGlLEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_oLnRN2lLEe6JF_hZgeJ_nA" name="WindowBuilderRefactor">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG37EGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lxxr-WlLEe6JF_hZgeJ_nA" comments="_lxq-QWlLEe6JF_hZgeJ_nA" targetConnectionVisual="_lxq-QmlLEe6JF_hZgeJ_nA" name="FlightFilterPane" associationsOut="_lxuBkGlLEe6JF_hZgeJ_nA _lxuooGlLEe6JF_hZgeJ_nA _lxvPsGlLEe6JF_hZgeJ_nA _lxv2wGlLEe6JF_hZgeJ_nA _lxwd0GlLEe6JF_hZgeJ_nA _lxxE4GlLEe6JF_hZgeJ_nA _lxxE6WlLEe6JF_hZgeJ_nA _lxxr8GlLEe6JF_hZgeJ_nA" generalizations="_lxq-QGlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_lqVAIGlLEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_lxxr-mlLEe6JF_hZgeJ_nA" position="39.0,1215.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_lxxr-2lLEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_lxxr_GlLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr5GYGlLEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_lxxr_WlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxr_mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxr_2lLEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lxxsAGlLEe6JF_hZgeJ_nA" defaultValue="new ButtonGroup()" name="buttonGroupTripType">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr5tcWlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_lxxsAWlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr6UgGlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_lxxsAmlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxsA2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxsBGlLEe6JF_hZgeJ_nA" name="ButtonGroup">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lrT3kGlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lxxsBWlLEe6JF_hZgeJ_nA" name="textFrom">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr67kGlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_lxxsBmlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr8wwGlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_lxxsB2lLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxsCGlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxsCWlLEe6JF_hZgeJ_nA" name="JTextField">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOa58WlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lxxsCmlLEe6JF_hZgeJ_nA" name="textTo">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr8wwWlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_lxxsC2lLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr9X0GlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_lxxsDGlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxsDWlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxsDmlLEe6JF_hZgeJ_nA" name="JTextField">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOa58WlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lxxsD2lLEe6JF_hZgeJ_nA" name="textDepart">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr9-4GlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_lxxsEGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr9-4WlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_lxxsEWlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxsEmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxsE2lLEe6JF_hZgeJ_nA" name="JTextField">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOa58WlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lxxsFGlLEe6JF_hZgeJ_nA" name="textReturn">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr-l8GlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_lxxsFWlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr_0EGlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_lxxsFmlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxsF2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxsGGlLEe6JF_hZgeJ_nA" name="JTextField">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOa58WlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lxxsGWlLEe6JF_hZgeJ_nA" name="lblReturn">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsAbIGlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_lxxsGmlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsAbIWlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_lxxsG2lLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxsHGlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxsHWlLEe6JF_hZgeJ_nA" name="JLabel">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iORI8WlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lxxsHmlLEe6JF_hZgeJ_nA" name="lblDepartInvalidDateFormat">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsAbImlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_lxxsH2lLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsBCMGlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_lxxsIGlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxsIWlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxsImlLEe6JF_hZgeJ_nA" name="JLabel">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iORI8WlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_lxxsI2lLEe6JF_hZgeJ_nA" name="lblReturnInvalidDateFormat">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsBCMWlLEe6JF_hZgeJ_nA"/>
+      <stereotypes xmi:id="_lxxsJGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsBpQGlLEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_lxxsJWlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_lxxsJmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_lxxsJ2lLEe6JF_hZgeJ_nA" name="JLabel">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iORI8WlLEe6JF_hZgeJ_nA"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_lxxsKGlLEe6JF_hZgeJ_nA" name="FlightFilterPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lrWT0GlLEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_lxxsKWlLEe6JF_hZgeJ_nA" keyword="create"/>
+      <visibility xmi:id="_lxxsKmlLEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_lxxsK2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lxyTAGlLEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lrWT1GlLEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_lxyTAWlLEe6JF_hZgeJ_nA" name="FlightFilterPane">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_lqVAIGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_lxyTAmlLEe6JF_hZgeJ_nA" name="contentPane">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lrWT0WlLEe6JF_hZgeJ_nA"/>
+        <cardinality xmi:id="_lxyTA2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+        <type xmi:id="_lxyTBGlLEe6JF_hZgeJ_nA" name="JPanel">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_iS0RwWlLEe6JF_hZgeJ_nA" comments="_iSwAUGlLEe6JF_hZgeJ_nA" targetConnectionVisual="_iSwnYGlLEe6JF_hZgeJ_nA" name="AccountSignInPane" generalizations="_iS0RwGlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_iMtCsGlLEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_iS0RwmlLEe6JF_hZgeJ_nA" position="546.0,1241.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_iS0Rw2lLEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_iS0RxGlLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOiOsGlLEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_iS0RxWlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_iS0RxmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_iS0Rx2lLEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_iS0RyGlLEe6JF_hZgeJ_nA" name="AccountSignInPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOfycGlLEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_iS0RyWlLEe6JF_hZgeJ_nA" keyword="create"/>
+      <visibility xmi:id="_iS0RymlLEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_iS0Ry2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_iS0RzGlLEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOhAkmlLEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_iS0RzWlLEe6JF_hZgeJ_nA" name="AccountSignInPane">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iMtCsGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_iS0RzmlLEe6JF_hZgeJ_nA" name="contentPane">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOgZgGlLEe6JF_hZgeJ_nA"/>
+        <cardinality xmi:id="_iS0Rz2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+        <type xmi:id="_iS0R0GlLEe6JF_hZgeJ_nA" name="JPanel">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_jXzj4GlLEe6JF_hZgeJ_nA" comments="_jXyVwGlLEe6JF_hZgeJ_nA" targetConnectionVisual="_jXyVwWlLEe6JF_hZgeJ_nA" name="AccountSignUpPane" generalizations="_jXxHoGlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTP0AGlLEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_jXzj4WlLEe6JF_hZgeJ_nA" position="1114.0,1236.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_jXzj4mlLEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_jXzj42lLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTtuEGlLEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_jXzj5GlLEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_jXzj5WlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_jXzj5mlLEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_jXzj52lLEe6JF_hZgeJ_nA" name="AccountSignUpPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTrR0GlLEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_jX0K8GlLEe6JF_hZgeJ_nA" keyword="create"/>
+      <visibility xmi:id="_jX0K8WlLEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_jX0K8mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_jX0K82lLEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTr442lLEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_jX0K9GlLEe6JF_hZgeJ_nA" name="AccountSignUpPane">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTP0AGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_jX0K9WlLEe6JF_hZgeJ_nA" name="contentPane">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTr44GlLEe6JF_hZgeJ_nA"/>
+        <cardinality xmi:id="_jX0K9mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+        <type xmi:id="_jX0K92lLEe6JF_hZgeJ_nA" name="JPanel">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_Q_d2cGlSEe6JF_hZgeJ_nA" sourceConnectionVisual="_Q_qDsGlSEe6JF_hZgeJ_nA" text="Swing JFrame in which initial JPanel is instantiated.&#xD;&#xA;   Instantiates and adds JPanels to CardLayout, allowing switching between.&#xD;&#xA;   @author&#xD;&#xA;   @version" item="_oLnRIGlLEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_Q9OawGlSEe6JF_hZgeJ_nA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_bepLEGlSEe6JF_hZgeJ_nA" name="ReservationCancellationPane" generalizations="_beokAGlSEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_ba7IsGlSEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_bepLEWlSEe6JF_hZgeJ_nA" position="529.0,1443.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_bepLEmlSEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_bepLE2lSEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_bbGH0GlSEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_bepLFGlSEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_bepLFWlSEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_bepLFmlSEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_bepLF2lSEe6JF_hZgeJ_nA" name="ReservationCancellationPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_ba7vwGlSEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_bepLGGlSEe6JF_hZgeJ_nA" keyword="create"/>
+      <stereotypes xmi:id="_bepLGWlSEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_ba8W0mlSEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_bepLGmlSEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_bepLG2lSEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_bepLHGlSEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_ba8W02lSEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_bepLHWlSEe6JF_hZgeJ_nA" name="ReservationCancellationPane">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_ba7IsGlSEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_X555AGlSEe6JF_hZgeJ_nA" name="TravellerInformationPane" generalizations="_X55R8GlSEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_X3xyEGlSEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_X555AWlSEe6JF_hZgeJ_nA" position="1112.0,1455.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_X555AmlSEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_X555A2lSEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_X368AGlSEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_X555BGlSEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_X555BWlSEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_X555BmlSEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_X555B2lSEe6JF_hZgeJ_nA" name="TravellerInformationPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_X3yZIGlSEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_X555CGlSEe6JF_hZgeJ_nA" keyword="create"/>
+      <stereotypes xmi:id="_X555CWlSEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_X3zAMmlSEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_X555CmlSEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_X555C2lSEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_X555DGlSEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_X3zAM2lSEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_X555DWlSEe6JF_hZgeJ_nA" name="TravellerInformationPane">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_X3xyEGlSEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_XGLWAGlSEe6JF_hZgeJ_nA" name="ReservationPaymentPane" generalizations="_XGKH4GlSEe6JF_hZgeJ_nA">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_XCa3YGlSEe6JF_hZgeJ_nA"/>
+    <visualProperties xmi:id="_XGLWAWlSEe6JF_hZgeJ_nA" position="529.0,1591.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_XGLWAmlSEe6JF_hZgeJ_nA" label="+"/>
+    <attributes xmi:id="_XGLWA2lSEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_XCnrsGlSEe6JF_hZgeJ_nA"/>
+      <visibility xmi:id="_XGLWBGlSEe6JF_hZgeJ_nA" label="-"/>
+      <cardinality xmi:id="_XGLWBWlSEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <type xmi:id="_XGLWBmlSEe6JF_hZgeJ_nA" name="long">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_XGLWB2lSEe6JF_hZgeJ_nA" name="ReservationPaymentPane">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_XCcFgGlSEe6JF_hZgeJ_nA"/>
+      <keywords xmi:id="_XGLWCGlSEe6JF_hZgeJ_nA" keyword="create"/>
+      <stereotypes xmi:id="_XGLWCWlSEe6JF_hZgeJ_nA" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_XCcskGlSEe6JF_hZgeJ_nA"/>
+      </stereotypes>
+      <visibility xmi:id="_XGLWCmlSEe6JF_hZgeJ_nA" label="+"/>
+      <cardinality xmi:id="_XGLWC2lSEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_XGLWDGlSEe6JF_hZgeJ_nA">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_XCcskWlSEe6JF_hZgeJ_nA"/>
+        <type xmi:id="_XGLWDWlSEe6JF_hZgeJ_nA" name="ReservationPaymentPane">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_XCa3YGlSEe6JF_hZgeJ_nA"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_LmRz8GlBEe6EUpwF1ZzeBw" comments="_LmLtUWlBEe6EUpwF1ZzeBw" targetConnectionVisual="_LmLtUmlBEe6EUpwF1ZzeBw" using="_UC610GlREe6JF_hZgeJ_nA" name="AirportFlights" associationsIn="_LmLGQGlBEe6EUpwF1ZzeBw _LmLtUGlBEe6EUpwF1ZzeBw _Kveu0GlBEe6EUpwF1ZzeBw" associationsOut="_LmLGQGlBEe6EUpwF1ZzeBw _LmLtUGlBEe6EUpwF1ZzeBw _LmMUYGlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_Kui6sGlBEe6EUpwF1ZzeBw"/>
-    <visualProperties xmi:id="_LmRz8WlBEe6EUpwF1ZzeBw" position="1335.0,740.0" size="-1.0,-1.0"/>
+    <visualProperties xmi:id="_LmRz8WlBEe6EUpwF1ZzeBw" position="1538.0,740.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_LmRz8mlBEe6EUpwF1ZzeBw" label="+"/>
     <attributes xmi:id="_LmRz82lBEe6EUpwF1ZzeBw" name="destination">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_Lk8-QGlBEe6EUpwF1ZzeBw"/>
@@ -1010,7 +1500,7 @@
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_nYpusGlBEe6EUpwF1ZzeBw" supplying="_R6XN4GlREe6JF_hZgeJ_nA _UC610GlREe6JF_hZgeJ_nA" name="Flight" associationsIn="_wTkQsGlAEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNVF0GlAEe6EUpwF1ZzeBw"/>
-    <visualProperties xmi:id="_nYpusWlBEe6EUpwF1ZzeBw" position="1045.0,95.0" size="922.0,468.0"/>
+    <visualProperties xmi:id="_nYpusWlBEe6EUpwF1ZzeBw" position="1162.0,94.0" size="922.0,468.0"/>
     <visibility xmi:id="_nYpusmlBEe6EUpwF1ZzeBw" label="+"/>
     <attributes xmi:id="_nYpus2lBEe6EUpwF1ZzeBw" name="type">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_nXLIAGlBEe6EUpwF1ZzeBw"/>
@@ -1324,9 +1814,114 @@
       </parameters>
     </operations>
   </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_ccaOIGlCEe6EUpwF1ZzeBw" name="Customer">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZy_AGlCEe6EUpwF1ZzeBw"/>
+    <visualProperties xmi:id="_ccaOIWlCEe6EUpwF1ZzeBw" position="-87.0,597.0" size="543.0,187.0"/>
+    <visibility xmi:id="_ccaOImlCEe6EUpwF1ZzeBw" label="+"/>
+    <attributes xmi:id="_ccaOI2lCEe6EUpwF1ZzeBw" name="name">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caLZgGlCEe6EUpwF1ZzeBw"/>
+      <stereotypes xmi:id="_ccaOJGlCEe6EUpwF1ZzeBw" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caMAkGlCEe6EUpwF1ZzeBw"/>
+      </stereotypes>
+      <visibility xmi:id="_ccaOJWlCEe6EUpwF1ZzeBw" label="-"/>
+      <cardinality xmi:id="_ccaOJmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <type xmi:id="_ccaOJ2lCEe6EUpwF1ZzeBw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_ccaOKGlCEe6EUpwF1ZzeBw" name="email">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caMnoGlCEe6EUpwF1ZzeBw"/>
+      <visibility xmi:id="_ccaOKWlCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_ccaOKmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <type xmi:id="_ccaOK2lCEe6EUpwF1ZzeBw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_ccaOLGlCEe6EUpwF1ZzeBw" name="DOB">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caMnoWlCEe6EUpwF1ZzeBw"/>
+      <visibility xmi:id="_ccaOLWlCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_ccaOLmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <type xmi:id="_ccaOL2lCEe6EUpwF1ZzeBw" name="Date">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caHIEGlCEe6EUpwF1ZzeBw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_ccaOMGlCEe6EUpwF1ZzeBw" name="passportNo">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caMnomlCEe6EUpwF1ZzeBw"/>
+      <stereotypes xmi:id="_ccaOMWlCEe6EUpwF1ZzeBw" name="LegacyStyledElement">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caNOsGlCEe6EUpwF1ZzeBw"/>
+      </stereotypes>
+      <visibility xmi:id="_ccaOMmlCEe6EUpwF1ZzeBw" label="-"/>
+      <cardinality xmi:id="_ccaOM2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <type xmi:id="_ccaONGlCEe6EUpwF1ZzeBw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_ccaONWlCEe6EUpwF1ZzeBw" comments="_ccXx4GlCEe6EUpwF1ZzeBw" targetConnectionVisual="_ccXx4WlCEe6EUpwF1ZzeBw" name="getname">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZ2pYGlCEe6EUpwF1ZzeBw"/>
+      <visibility xmi:id="_ccaONmlCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_ccaON2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_ccaOOGlCEe6EUpwF1ZzeBw">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZ3QcGlCEe6EUpwF1ZzeBw"/>
+        <type xmi:id="_ccaOOWlCEe6EUpwF1ZzeBw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_ccaOOmlCEe6EUpwF1ZzeBw" comments="_ccYY8GlCEe6EUpwF1ZzeBw" targetConnectionVisual="_ccYY8WlCEe6EUpwF1ZzeBw" name="getpassportNo">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZ3QcWlCEe6EUpwF1ZzeBw"/>
+      <visibility xmi:id="_ccaOO2lCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_ccaOPGlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_ccaOPWlCEe6EUpwF1ZzeBw">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZ4ekGlCEe6EUpwF1ZzeBw"/>
+        <type xmi:id="_ccaOPmlCEe6EUpwF1ZzeBw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_ccaOP2lCEe6EUpwF1ZzeBw" comments="_ccZAAGlCEe6EUpwF1ZzeBw" targetConnectionVisual="_ccZAAWlCEe6EUpwF1ZzeBw" name="Customer">
+      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKLYGlCEe6EUpwF1ZzeBw"/>
+      <keywords xmi:id="_ccaOQGlCEe6EUpwF1ZzeBw" keyword="create"/>
+      <visibility xmi:id="_ccaOQWlCEe6EUpwF1ZzeBw" label="+"/>
+      <cardinality xmi:id="_ccaOQmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_ccaOQ2lCEe6EUpwF1ZzeBw">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKydGlCEe6EUpwF1ZzeBw"/>
+        <type xmi:id="_ccaORGlCEe6EUpwF1ZzeBw" name="Customer">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZy_AGlCEe6EUpwF1ZzeBw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_ccaORWlCEe6EUpwF1ZzeBw" name="name1">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKLYWlCEe6EUpwF1ZzeBw"/>
+        <cardinality xmi:id="_ccaORmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+        <type xmi:id="_ccaOR2lCEe6EUpwF1ZzeBw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_ccaOSGlCEe6EUpwF1ZzeBw" name="email1">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKLYmlCEe6EUpwF1ZzeBw"/>
+        <cardinality xmi:id="_ccaOSWlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+        <type xmi:id="_ccaOSmlCEe6EUpwF1ZzeBw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_ccaOS2lCEe6EUpwF1ZzeBw" name="DOB">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKycGlCEe6EUpwF1ZzeBw"/>
+        <cardinality xmi:id="_ccaOTGlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+        <type xmi:id="_ccaOTWlCEe6EUpwF1ZzeBw" name="Date">
+          <modelElement href="CS380L_Airline_Reservation_Application.uml#_caHIEGlCEe6EUpwF1ZzeBw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_ccaOTmlCEe6EUpwF1ZzeBw" name="passportNo1">
+        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKycWlCEe6EUpwF1ZzeBw"/>
+        <cardinality xmi:id="_ccaOT2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+        <type xmi:id="_cca1MGlCEe6EUpwF1ZzeBw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_m2BiwWlBEe6EUpwF1ZzeBw" comments="_m194YGlBEe6EUpwF1ZzeBw" targetConnectionVisual="_m194YWlBEe6EUpwF1ZzeBw" name="Account" associationsIn="_wTjCkGlAEe6EUpwF1ZzeBw" associationsOut="_m19RUGlBEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNT3sGlAEe6EUpwF1ZzeBw"/>
-    <visualProperties xmi:id="_m2BiwmlBEe6EUpwF1ZzeBw" position="462.0,102.0" size="553.0,332.0"/>
+    <visualProperties xmi:id="_m2BiwmlBEe6EUpwF1ZzeBw" position="-83.0,100.0" size="553.0,332.0"/>
     <visibility xmi:id="_m2Biw2lBEe6EUpwF1ZzeBw" label="+"/>
     <attributes xmi:id="_m2BixGlBEe6EUpwF1ZzeBw" name="name">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_m04TQWlBEe6EUpwF1ZzeBw"/>
@@ -1553,517 +2148,9 @@
       </parameters>
     </operations>
   </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_ccXx4GlCEe6EUpwF1ZzeBw" sourceConnectionVisual="_ccXx4WlCEe6EUpwF1ZzeBw" text="Getter method &#xD;&#xA;  * @return" item="_ccaONWlCEe6EUpwF1ZzeBw">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_caOc0WlCEe6EUpwF1ZzeBw"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_ccYY8GlCEe6EUpwF1ZzeBw" sourceConnectionVisual="_ccYY8WlCEe6EUpwF1ZzeBw" text="Getter method&#xD;&#xA;   * @return" item="_ccaOOmlCEe6EUpwF1ZzeBw">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_caOc0mlCEe6EUpwF1ZzeBw"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_ccZAAGlCEe6EUpwF1ZzeBw" sourceConnectionVisual="_ccZAAWlCEe6EUpwF1ZzeBw" text="Represents Customer's passport number" item="_ccaOP2lCEe6EUpwF1ZzeBw">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_caOc0GlCEe6EUpwF1ZzeBw"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_ccaOIGlCEe6EUpwF1ZzeBw" name="Customer">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZy_AGlCEe6EUpwF1ZzeBw"/>
-    <visualProperties xmi:id="_ccaOIWlCEe6EUpwF1ZzeBw" position="27.0,553.0" size="543.0,187.0"/>
-    <visibility xmi:id="_ccaOImlCEe6EUpwF1ZzeBw" label="+"/>
-    <attributes xmi:id="_ccaOI2lCEe6EUpwF1ZzeBw" name="name">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caLZgGlCEe6EUpwF1ZzeBw"/>
-      <stereotypes xmi:id="_ccaOJGlCEe6EUpwF1ZzeBw" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caMAkGlCEe6EUpwF1ZzeBw"/>
-      </stereotypes>
-      <visibility xmi:id="_ccaOJWlCEe6EUpwF1ZzeBw" label="-"/>
-      <cardinality xmi:id="_ccaOJmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <type xmi:id="_ccaOJ2lCEe6EUpwF1ZzeBw" name="String">
-        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_ccaOKGlCEe6EUpwF1ZzeBw" name="email">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caMnoGlCEe6EUpwF1ZzeBw"/>
-      <visibility xmi:id="_ccaOKWlCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_ccaOKmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <type xmi:id="_ccaOK2lCEe6EUpwF1ZzeBw" name="String">
-        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_ccaOLGlCEe6EUpwF1ZzeBw" name="DOB">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caMnoWlCEe6EUpwF1ZzeBw"/>
-      <visibility xmi:id="_ccaOLWlCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_ccaOLmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <type xmi:id="_ccaOL2lCEe6EUpwF1ZzeBw" name="Date">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caHIEGlCEe6EUpwF1ZzeBw"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_ccaOMGlCEe6EUpwF1ZzeBw" name="passportNo">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caMnomlCEe6EUpwF1ZzeBw"/>
-      <stereotypes xmi:id="_ccaOMWlCEe6EUpwF1ZzeBw" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caNOsGlCEe6EUpwF1ZzeBw"/>
-      </stereotypes>
-      <visibility xmi:id="_ccaOMmlCEe6EUpwF1ZzeBw" label="-"/>
-      <cardinality xmi:id="_ccaOM2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <type xmi:id="_ccaONGlCEe6EUpwF1ZzeBw" name="String">
-        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_ccaONWlCEe6EUpwF1ZzeBw" comments="_ccXx4GlCEe6EUpwF1ZzeBw" targetConnectionVisual="_ccXx4WlCEe6EUpwF1ZzeBw" name="getname">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZ2pYGlCEe6EUpwF1ZzeBw"/>
-      <visibility xmi:id="_ccaONmlCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_ccaON2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_ccaOOGlCEe6EUpwF1ZzeBw">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZ3QcGlCEe6EUpwF1ZzeBw"/>
-        <type xmi:id="_ccaOOWlCEe6EUpwF1ZzeBw" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </outParameters>
-    </operations>
-    <operations xmi:id="_ccaOOmlCEe6EUpwF1ZzeBw" comments="_ccYY8GlCEe6EUpwF1ZzeBw" targetConnectionVisual="_ccYY8WlCEe6EUpwF1ZzeBw" name="getpassportNo">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZ3QcWlCEe6EUpwF1ZzeBw"/>
-      <visibility xmi:id="_ccaOO2lCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_ccaOPGlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_ccaOPWlCEe6EUpwF1ZzeBw">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZ4ekGlCEe6EUpwF1ZzeBw"/>
-        <type xmi:id="_ccaOPmlCEe6EUpwF1ZzeBw" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </outParameters>
-    </operations>
-    <operations xmi:id="_ccaOP2lCEe6EUpwF1ZzeBw" comments="_ccZAAGlCEe6EUpwF1ZzeBw" targetConnectionVisual="_ccZAAWlCEe6EUpwF1ZzeBw" name="Customer">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKLYGlCEe6EUpwF1ZzeBw"/>
-      <keywords xmi:id="_ccaOQGlCEe6EUpwF1ZzeBw" keyword="create"/>
-      <visibility xmi:id="_ccaOQWlCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_ccaOQmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_ccaOQ2lCEe6EUpwF1ZzeBw">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKydGlCEe6EUpwF1ZzeBw"/>
-        <type xmi:id="_ccaORGlCEe6EUpwF1ZzeBw" name="Customer">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_cZy_AGlCEe6EUpwF1ZzeBw"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_ccaORWlCEe6EUpwF1ZzeBw" name="name1">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKLYWlCEe6EUpwF1ZzeBw"/>
-        <cardinality xmi:id="_ccaORmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-        <type xmi:id="_ccaOR2lCEe6EUpwF1ZzeBw" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-      <parameters xmi:id="_ccaOSGlCEe6EUpwF1ZzeBw" name="email1">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKLYmlCEe6EUpwF1ZzeBw"/>
-        <cardinality xmi:id="_ccaOSWlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-        <type xmi:id="_ccaOSmlCEe6EUpwF1ZzeBw" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-      <parameters xmi:id="_ccaOS2lCEe6EUpwF1ZzeBw" name="DOB">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKycGlCEe6EUpwF1ZzeBw"/>
-        <cardinality xmi:id="_ccaOTGlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-        <type xmi:id="_ccaOTWlCEe6EUpwF1ZzeBw" name="Date">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_caHIEGlCEe6EUpwF1ZzeBw"/>
-        </type>
-      </parameters>
-      <parameters xmi:id="_ccaOTmlCEe6EUpwF1ZzeBw" name="passportNo1">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_caKycWlCEe6EUpwF1ZzeBw"/>
-        <cardinality xmi:id="_ccaOT2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-        <type xmi:id="_cca1MGlCEe6EUpwF1ZzeBw" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-    </operations>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lbPKUGlCEe6EUpwF1ZzeBw" name="Manager">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZRbcGlCEe6EUpwF1ZzeBw"/>
-    <visualProperties xmi:id="_lbPKUWlCEe6EUpwF1ZzeBw" position="29.0,802.0" size="-1.0,-1.0"/>
-    <visibility xmi:id="_lbPKUmlCEe6EUpwF1ZzeBw" label="~"/>
-    <attributes xmi:id="_lbPKU2lCEe6EUpwF1ZzeBw" name="employeeID">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZUewGlCEe6EUpwF1ZzeBw"/>
-      <stereotypes xmi:id="_lbPKVGlCEe6EUpwF1ZzeBw" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZUewWlCEe6EUpwF1ZzeBw"/>
-      </stereotypes>
-      <visibility xmi:id="_lbPKVWlCEe6EUpwF1ZzeBw" label="-"/>
-      <cardinality xmi:id="_lbPKVmlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <type xmi:id="_lbPKV2lCEe6EUpwF1ZzeBw" name="int">
-        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lbPKWGlCEe6EUpwF1ZzeBw" name="employeepassword">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZVF0GlCEe6EUpwF1ZzeBw"/>
-      <stereotypes xmi:id="_lbPKWWlCEe6EUpwF1ZzeBw" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZVF0WlCEe6EUpwF1ZzeBw"/>
-      </stereotypes>
-      <visibility xmi:id="_lbPKWmlCEe6EUpwF1ZzeBw" label="-"/>
-      <cardinality xmi:id="_lbPKW2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <type xmi:id="_lbPKXGlCEe6EUpwF1ZzeBw" name="String">
-        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_lbPKXWlCEe6EUpwF1ZzeBw" name="accessReservationInfo">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZSpkGlCEe6EUpwF1ZzeBw"/>
-      <visibility xmi:id="_lbPKXmlCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_lbPKX2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-    </operations>
-    <operations xmi:id="_lbPKYGlCEe6EUpwF1ZzeBw" name="Manager">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQoGlCEe6EUpwF1ZzeBw"/>
-      <keywords xmi:id="_lbPKYWlCEe6EUpwF1ZzeBw" keyword="create"/>
-      <visibility xmi:id="_lbPKYmlCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_lbPKY2lCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_lbPKZGlCEe6EUpwF1ZzeBw">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQpWlCEe6EUpwF1ZzeBw"/>
-        <type xmi:id="_lbPKZWlCEe6EUpwF1ZzeBw" name="Manager">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZRbcGlCEe6EUpwF1ZzeBw"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_lbQYcGlCEe6EUpwF1ZzeBw" name="employeeID">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQoWlCEe6EUpwF1ZzeBw"/>
-        <cardinality xmi:id="_lbQYcWlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-        <type xmi:id="_lbQYcmlCEe6EUpwF1ZzeBw" name="int">
-          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-        </type>
-      </parameters>
-      <parameters xmi:id="_lbQYc2lCEe6EUpwF1ZzeBw" name="employeepassword">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQomlCEe6EUpwF1ZzeBw"/>
-        <cardinality xmi:id="_lbQYdGlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-        <type xmi:id="_lbQYdWlCEe6EUpwF1ZzeBw" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-    </operations>
-    <operations xmi:id="_lbQYdmlCEe6EUpwF1ZzeBw" name="getemployeeID">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQpmlCEe6EUpwF1ZzeBw"/>
-      <visibility xmi:id="_lbQYd2lCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_lbQYeGlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_lbQYeWlCEe6EUpwF1ZzeBw">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQp2lCEe6EUpwF1ZzeBw"/>
-        <type xmi:id="_lbQYemlCEe6EUpwF1ZzeBw" name="int">
-          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
-        </type>
-      </outParameters>
-    </operations>
-    <operations xmi:id="_lbQYe2lCEe6EUpwF1ZzeBw" name="getemployeepassword">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZTQqGlCEe6EUpwF1ZzeBw"/>
-      <visibility xmi:id="_lbQYfGlCEe6EUpwF1ZzeBw" label="+"/>
-      <cardinality xmi:id="_lbQYfWlCEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_lbQYfmlCEe6EUpwF1ZzeBw">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lZT3sGlCEe6EUpwF1ZzeBw"/>
-        <type xmi:id="_lbQYf2lCEe6EUpwF1ZzeBw" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </outParameters>
-    </operations>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_iSwAUGlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_iSwnYGlLEe6JF_hZgeJ_nA" text="JPanel for account sign in.&#xD;&#xA;   Login credentials (email and password) accepted as text inputs and authenticated on button press.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_iS0RwWlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOlSAGlLEe6JF_hZgeJ_nA"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_jXyVwGlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_jXyVwWlLEe6JF_hZgeJ_nA" text="JPanel for account sign up.&#xD;&#xA;   Allows account creation with provided name, email, and password.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_jXzj4GlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTvjQGlLEe6JF_hZgeJ_nA"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_kQGd0GlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_kQGd0WlLEe6JF_hZgeJ_nA" text="JPanel in BorderLayout with JScrollPane, allowing use of JList to display and select flights.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_kQHr8GlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMZpk2lLEe6JF_hZgeJ_nA"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_kykRsWlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_kykRsmlLEe6JF_hZgeJ_nA" text="JPanel that allows navigation between Reserving, Reviewing, or Canceling flights.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_kylf0GlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_kuhfM2lLEe6JF_hZgeJ_nA"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_lxq-QWlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_lxq-QmlLEe6JF_hZgeJ_nA" text="JPanel accepting user input (round trip/oneway, airport/city of departure/arrival, date of departure and/or arrival, number of passengers)&#xD;&#xA;   as criteria for filtering flights.&#xD;&#xA;   @author&#xD;&#xA;   @verison" item="_lxxr-WlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsDec2lLEe6JF_hZgeJ_nA"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_oLk04GlLEe6JF_hZgeJ_nA" sourceConnectionVisual="_oLk04WlLEe6JF_hZgeJ_nA" text="Swing JFrame in which initial JPanel is instantiated.&#xD;&#xA;   Instantiates and adds JPanels to CardLayout, allowing switching between.&#xD;&#xA;   @author&#xD;&#xA;   @version" item="_oLnRIGlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_oHY4cGlLEe6JF_hZgeJ_nA"/>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_kQHr8GlLEe6JF_hZgeJ_nA" comments="_kQGd0GlLEe6JF_hZgeJ_nA" targetConnectionVisual="_kQGd0WlLEe6JF_hZgeJ_nA" name="FilterListScrollPane" generalizations="_kQF2wGlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMAoAGlLEe6JF_hZgeJ_nA"/>
-    <visualProperties xmi:id="_kQHr8WlLEe6JF_hZgeJ_nA" position="37.0,1078.0" size="-1.0,-1.0"/>
-    <visibility xmi:id="_kQHr8mlLEe6JF_hZgeJ_nA" label="+"/>
-    <attributes xmi:id="_kQHr82lLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMZCgGlLEe6JF_hZgeJ_nA"/>
-      <visibility xmi:id="_kQHr9GlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_kQHr9WlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_kQHr9mlLEe6JF_hZgeJ_nA" name="long">
-        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_kQHr92lLEe6JF_hZgeJ_nA" name="FilterListScrollPane">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMX0YGlLEe6JF_hZgeJ_nA"/>
-      <keywords xmi:id="_kQHr-GlLEe6JF_hZgeJ_nA" keyword="create"/>
-      <visibility xmi:id="_kQHr-WlLEe6JF_hZgeJ_nA" label="+"/>
-      <cardinality xmi:id="_kQHr-mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_kQHr-2lLEe6JF_hZgeJ_nA">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMX0ZGlLEe6JF_hZgeJ_nA"/>
-        <type xmi:id="_kQHr_GlLEe6JF_hZgeJ_nA" name="FilterListScrollPane">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMAoAGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_kQHr_WlLEe6JF_hZgeJ_nA" name="contentPane">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_kMX0YWlLEe6JF_hZgeJ_nA"/>
-        <cardinality xmi:id="_kQHr_mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-        <type xmi:id="_kQHr_2lLEe6JF_hZgeJ_nA" name="JPanel">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </parameters>
-    </operations>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_kylf0GlLEe6JF_hZgeJ_nA" comments="_kykRsWlLEe6JF_hZgeJ_nA" targetConnectionVisual="_kykRsmlLEe6JF_hZgeJ_nA" name="OptionSelectionPane" generalizations="_kykRsGlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_kuFaUGlLEe6JF_hZgeJ_nA"/>
-    <visualProperties xmi:id="_kylf0WlLEe6JF_hZgeJ_nA" position="547.0,1089.0" size="-1.0,-1.0"/>
-    <visibility xmi:id="_kylf0mlLEe6JF_hZgeJ_nA" label="+"/>
-    <attributes xmi:id="_kylf02lLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_kugREWlLEe6JF_hZgeJ_nA"/>
-      <visibility xmi:id="_kylf1GlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_kylf1WlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_kylf1mlLEe6JF_hZgeJ_nA" name="long">
-        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_kylf12lLEe6JF_hZgeJ_nA" name="OptionSelectionPane">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_kufC8GlLEe6JF_hZgeJ_nA"/>
-      <keywords xmi:id="_kylf2GlLEe6JF_hZgeJ_nA" keyword="create"/>
-      <visibility xmi:id="_kylf2WlLEe6JF_hZgeJ_nA" label="+"/>
-      <cardinality xmi:id="_kylf2mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_kylf22lLEe6JF_hZgeJ_nA">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_kufC9GlLEe6JF_hZgeJ_nA"/>
-        <type xmi:id="_kylf3GlLEe6JF_hZgeJ_nA" name="OptionSelectionPane">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_kuFaUGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_kylf3WlLEe6JF_hZgeJ_nA" name="contentPane">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_kufC8WlLEe6JF_hZgeJ_nA"/>
-        <cardinality xmi:id="_kylf3mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-        <type xmi:id="_kylf32lLEe6JF_hZgeJ_nA" name="JPanel">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </parameters>
-    </operations>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_oLnRIGlLEe6JF_hZgeJ_nA" comments="_oLk04GlLEe6JF_hZgeJ_nA" targetConnectionVisual="_oLk04WlLEe6JF_hZgeJ_nA" name="WindowBuilderRefactor" associationsOut="_oLkN0GlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG37EGlLEe6JF_hZgeJ_nA"/>
-    <visualProperties xmi:id="_oLnRIWlLEe6JF_hZgeJ_nA" position="1107.0,1086.0" size="-1.0,-1.0"/>
-    <visibility xmi:id="_oLnRImlLEe6JF_hZgeJ_nA" label="+"/>
-    <attributes xmi:id="_oLnRI2lLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_oHWcMGlLEe6JF_hZgeJ_nA"/>
-      <visibility xmi:id="_oLnRJGlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_oLnRJWlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_oLnRJmlLEe6JF_hZgeJ_nA" name="long">
-        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_oLnRJ2lLEe6JF_hZgeJ_nA" name="contentPane">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_oHXqUGlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_oLnRKGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_oHXqUWlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_oLnRKWlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_oLnRKmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_oLnRK2lLEe6JF_hZgeJ_nA" name="JPanel">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_oLnRLGlLEe6JF_hZgeJ_nA" name="main" staticOperation="true">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG5JMGlLEe6JF_hZgeJ_nA"/>
-      <visibility xmi:id="_oLnRLWlLEe6JF_hZgeJ_nA" label="+"/>
-      <cardinality xmi:id="_oLnRLmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <parameters xmi:id="_oLnRL2lLEe6JF_hZgeJ_nA" name="args">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG5JMWlLEe6JF_hZgeJ_nA"/>
-        <cardinality xmi:id="_oLnRMGlLEe6JF_hZgeJ_nA" label="1..*" max="-1" min="1"/>
-        <type xmi:id="_oLnRMWlLEe6JF_hZgeJ_nA" name="String">
-          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </type>
-      </parameters>
-    </operations>
-    <operations xmi:id="_oLnRMmlLEe6JF_hZgeJ_nA" name="WindowBuilderRefactor">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG5wQWlLEe6JF_hZgeJ_nA"/>
-      <keywords xmi:id="_oLnRM2lLEe6JF_hZgeJ_nA" keyword="create"/>
-      <visibility xmi:id="_oLnRNGlLEe6JF_hZgeJ_nA" label="+"/>
-      <cardinality xmi:id="_oLnRNWlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_oLnRNmlLEe6JF_hZgeJ_nA">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG5wRGlLEe6JF_hZgeJ_nA"/>
-        <type xmi:id="_oLnRN2lLEe6JF_hZgeJ_nA" name="WindowBuilderRefactor">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_oG37EGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </outParameters>
-    </operations>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lxxr-WlLEe6JF_hZgeJ_nA" comments="_lxq-QWlLEe6JF_hZgeJ_nA" targetConnectionVisual="_lxq-QmlLEe6JF_hZgeJ_nA" name="FlightFilterPane" associationsOut="_lxuBkGlLEe6JF_hZgeJ_nA _lxuooGlLEe6JF_hZgeJ_nA _lxvPsGlLEe6JF_hZgeJ_nA _lxv2wGlLEe6JF_hZgeJ_nA _lxwd0GlLEe6JF_hZgeJ_nA _lxxE4GlLEe6JF_hZgeJ_nA _lxxE6WlLEe6JF_hZgeJ_nA _lxxr8GlLEe6JF_hZgeJ_nA" generalizations="_lxq-QGlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_lqVAIGlLEe6JF_hZgeJ_nA"/>
-    <visualProperties xmi:id="_lxxr-mlLEe6JF_hZgeJ_nA" position="39.0,1215.0" size="-1.0,-1.0"/>
-    <visibility xmi:id="_lxxr-2lLEe6JF_hZgeJ_nA" label="+"/>
-    <attributes xmi:id="_lxxr_GlLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr5GYGlLEe6JF_hZgeJ_nA"/>
-      <visibility xmi:id="_lxxr_WlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxr_mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxr_2lLEe6JF_hZgeJ_nA" name="long">
-        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lxxsAGlLEe6JF_hZgeJ_nA" defaultValue="new ButtonGroup()" name="buttonGroupTripType">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr5tcWlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_lxxsAWlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr6UgGlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_lxxsAmlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxsA2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxsBGlLEe6JF_hZgeJ_nA" name="ButtonGroup">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lrT3kGlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lxxsBWlLEe6JF_hZgeJ_nA" name="textFrom">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr67kGlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_lxxsBmlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr8wwGlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_lxxsB2lLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxsCGlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxsCWlLEe6JF_hZgeJ_nA" name="JTextField">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOa58WlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lxxsCmlLEe6JF_hZgeJ_nA" name="textTo">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr8wwWlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_lxxsC2lLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr9X0GlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_lxxsDGlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxsDWlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxsDmlLEe6JF_hZgeJ_nA" name="JTextField">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOa58WlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lxxsD2lLEe6JF_hZgeJ_nA" name="textDepart">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr9-4GlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_lxxsEGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr9-4WlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_lxxsEWlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxsEmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxsE2lLEe6JF_hZgeJ_nA" name="JTextField">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOa58WlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lxxsFGlLEe6JF_hZgeJ_nA" name="textReturn">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr-l8GlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_lxxsFWlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lr_0EGlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_lxxsFmlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxsF2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxsGGlLEe6JF_hZgeJ_nA" name="JTextField">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOa58WlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lxxsGWlLEe6JF_hZgeJ_nA" name="lblReturn">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsAbIGlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_lxxsGmlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsAbIWlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_lxxsG2lLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxsHGlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxsHWlLEe6JF_hZgeJ_nA" name="JLabel">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iORI8WlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lxxsHmlLEe6JF_hZgeJ_nA" name="lblDepartInvalidDateFormat">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsAbImlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_lxxsH2lLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsBCMGlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_lxxsIGlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxsIWlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxsImlLEe6JF_hZgeJ_nA" name="JLabel">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iORI8WlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <attributes xmi:id="_lxxsI2lLEe6JF_hZgeJ_nA" name="lblReturnInvalidDateFormat">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsBCMWlLEe6JF_hZgeJ_nA"/>
-      <stereotypes xmi:id="_lxxsJGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lsBpQGlLEe6JF_hZgeJ_nA"/>
-      </stereotypes>
-      <visibility xmi:id="_lxxsJWlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_lxxsJmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_lxxsJ2lLEe6JF_hZgeJ_nA" name="JLabel">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iORI8WlLEe6JF_hZgeJ_nA"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_lxxsKGlLEe6JF_hZgeJ_nA" name="FlightFilterPane">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_lrWT0GlLEe6JF_hZgeJ_nA"/>
-      <keywords xmi:id="_lxxsKWlLEe6JF_hZgeJ_nA" keyword="create"/>
-      <visibility xmi:id="_lxxsKmlLEe6JF_hZgeJ_nA" label="+"/>
-      <cardinality xmi:id="_lxxsK2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_lxyTAGlLEe6JF_hZgeJ_nA">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lrWT1GlLEe6JF_hZgeJ_nA"/>
-        <type xmi:id="_lxyTAWlLEe6JF_hZgeJ_nA" name="FlightFilterPane">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_lqVAIGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_lxyTAmlLEe6JF_hZgeJ_nA" name="contentPane">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_lrWT0WlLEe6JF_hZgeJ_nA"/>
-        <cardinality xmi:id="_lxyTA2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-        <type xmi:id="_lxyTBGlLEe6JF_hZgeJ_nA" name="JPanel">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </parameters>
-    </operations>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_iS0RwWlLEe6JF_hZgeJ_nA" comments="_iSwAUGlLEe6JF_hZgeJ_nA" targetConnectionVisual="_iSwnYGlLEe6JF_hZgeJ_nA" name="AccountSignInPane" generalizations="_iS0RwGlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_iMtCsGlLEe6JF_hZgeJ_nA"/>
-    <visualProperties xmi:id="_iS0RwmlLEe6JF_hZgeJ_nA" position="546.0,1241.0" size="-1.0,-1.0"/>
-    <visibility xmi:id="_iS0Rw2lLEe6JF_hZgeJ_nA" label="+"/>
-    <attributes xmi:id="_iS0RxGlLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOiOsGlLEe6JF_hZgeJ_nA"/>
-      <visibility xmi:id="_iS0RxWlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_iS0RxmlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_iS0Rx2lLEe6JF_hZgeJ_nA" name="long">
-        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_iS0RyGlLEe6JF_hZgeJ_nA" name="AccountSignInPane">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOfycGlLEe6JF_hZgeJ_nA"/>
-      <keywords xmi:id="_iS0RyWlLEe6JF_hZgeJ_nA" keyword="create"/>
-      <visibility xmi:id="_iS0RymlLEe6JF_hZgeJ_nA" label="+"/>
-      <cardinality xmi:id="_iS0Ry2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_iS0RzGlLEe6JF_hZgeJ_nA">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOhAkmlLEe6JF_hZgeJ_nA"/>
-        <type xmi:id="_iS0RzWlLEe6JF_hZgeJ_nA" name="AccountSignInPane">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iMtCsGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_iS0RzmlLEe6JF_hZgeJ_nA" name="contentPane">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_iOgZgGlLEe6JF_hZgeJ_nA"/>
-        <cardinality xmi:id="_iS0Rz2lLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-        <type xmi:id="_iS0R0GlLEe6JF_hZgeJ_nA" name="JPanel">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </parameters>
-    </operations>
-  </nodes>
-  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_jXzj4GlLEe6JF_hZgeJ_nA" comments="_jXyVwGlLEe6JF_hZgeJ_nA" targetConnectionVisual="_jXyVwWlLEe6JF_hZgeJ_nA" name="AccountSignUpPane" generalizations="_jXxHoGlLEe6JF_hZgeJ_nA">
-    <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTP0AGlLEe6JF_hZgeJ_nA"/>
-    <visualProperties xmi:id="_jXzj4WlLEe6JF_hZgeJ_nA" position="1114.0,1236.0" size="-1.0,-1.0"/>
-    <visibility xmi:id="_jXzj4mlLEe6JF_hZgeJ_nA" label="+"/>
-    <attributes xmi:id="_jXzj42lLEe6JF_hZgeJ_nA" defaultValue="1L" name="serialVersionUID" staticAttribute="true">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTtuEGlLEe6JF_hZgeJ_nA"/>
-      <visibility xmi:id="_jXzj5GlLEe6JF_hZgeJ_nA" label="-"/>
-      <cardinality xmi:id="_jXzj5WlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <type xmi:id="_jXzj5mlLEe6JF_hZgeJ_nA" name="long">
-        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
-      </type>
-    </attributes>
-    <operations xmi:id="_jXzj52lLEe6JF_hZgeJ_nA" name="AccountSignUpPane">
-      <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTrR0GlLEe6JF_hZgeJ_nA"/>
-      <keywords xmi:id="_jX0K8GlLEe6JF_hZgeJ_nA" keyword="create"/>
-      <visibility xmi:id="_jX0K8WlLEe6JF_hZgeJ_nA" label="+"/>
-      <cardinality xmi:id="_jX0K8mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-      <outParameters xmi:id="_jX0K82lLEe6JF_hZgeJ_nA">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTr442lLEe6JF_hZgeJ_nA"/>
-        <type xmi:id="_jX0K9GlLEe6JF_hZgeJ_nA" name="AccountSignUpPane">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTP0AGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </outParameters>
-      <parameters xmi:id="_jX0K9WlLEe6JF_hZgeJ_nA" name="contentPane">
-        <modelElement href="CS380L_Airline_Reservation_Application.uml#_jTr44GlLEe6JF_hZgeJ_nA"/>
-        <cardinality xmi:id="_jX0K9mlLEe6JF_hZgeJ_nA" label="1" max="1" min="1"/>
-        <type xmi:id="_jX0K92lLEe6JF_hZgeJ_nA" name="JPanel">
-          <modelElement href="CS380L_Airline_Reservation_Application.uml#_iODGgGlLEe6JF_hZgeJ_nA"/>
-        </type>
-      </parameters>
-    </operations>
-  </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_wTk3wGlAEe6EUpwF1ZzeBw" comments="_wTOScGlAEe6EUpwF1ZzeBw" targetConnectionVisual="_wTPgkGlAEe6EUpwF1ZzeBw" name="Reservation" associationsIn="_m19RUGlBEe6EUpwF1ZzeBw" associationsOut="_wTjCkGlAEe6EUpwF1ZzeBw _wTkQsGlAEe6EUpwF1ZzeBw">
     <modelElement href="CS380L_Airline_Reservation_Application.uml#_wMD6gGlAEe6EUpwF1ZzeBw"/>
-    <visualProperties xmi:id="_wTk3wWlAEe6EUpwF1ZzeBw" position="-116.0,172.0" size="-1.0,-1.0"/>
+    <visualProperties xmi:id="_wTk3wWlAEe6EUpwF1ZzeBw" position="656.0,149.0" size="-1.0,-1.0"/>
     <visibility xmi:id="_wTk3wmlAEe6EUpwF1ZzeBw" label="+"/>
     <attributes xmi:id="_wTk3w2lAEe6EUpwF1ZzeBw" name="customer">
       <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNZ-UGlAEe6EUpwF1ZzeBw"/>
@@ -2073,8 +2160,10 @@
       <stereotypes xmi:id="_eK9rkGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_eK_gwGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_eLWGEGlLEe6JF_hZgeJ_nA" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_ClUroGlTEe6JF_hZgeJ_nA" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_ClWg0GlTEe6JF_hZgeJ_nA" name="LegacyStyledElement"/>
       <visibility xmi:id="_wTk3xWlAEe6EUpwF1ZzeBw" label="-"/>
-      <cardinality xmi:id="_wTk3xmlAEe6EUpwF1ZzeBw" label="1" max="1" min="1"/>
+      <cardinality xmi:id="_wTk3xmlAEe6EUpwF1ZzeBw" label="1..*" max="-1" min="1"/>
       <type xmi:id="_wTk3x2lAEe6EUpwF1ZzeBw" name="Account">
         <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNT3sGlAEe6EUpwF1ZzeBw"/>
       </type>
@@ -2222,5 +2311,17 @@
         </type>
       </parameters>
     </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_wTOScGlAEe6EUpwF1ZzeBw" sourceConnectionVisual="_wTPgkGlAEe6EUpwF1ZzeBw" text="Owner: Logan Langewisch&#xD;&#xA;The Reservation class handles the creation of a reservation for a customer with an account" item="_wTk3wGlAEe6EUpwF1ZzeBw">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNy_4GlAEe6EUpwF1ZzeBw"/>
+    <visualProperties xmi:id="_gRQwEGlTEe6JF_hZgeJ_nA" position="1008.0,169.0" size="200.0,150.0" visible="false"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_wTSj4GlAEe6EUpwF1ZzeBw" sourceConnectionVisual="_wTTK8GlAEe6EUpwF1ZzeBw" text="a constructor that accepts nothing" item="_wTk33mlAEe6EUpwF1ZzeBw">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNy_4WlAEe6EUpwF1ZzeBw"/>
+    <visualProperties xmi:id="_lfNboGlTEe6JF_hZgeJ_nA" position="861.0,264.0" size="200.0,150.0" visible="false"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_wTUZEGlAEe6EUpwF1ZzeBw" sourceConnectionVisual="_wTUZEWlAEe6EUpwF1ZzeBw" text="the method that finishes the creation of the reservation by allowing the customer&#xD;&#xA;&#x9;  * to add all the people will be on the reservation(including themselves) and also to select the seats&#xD;&#xA;&#x9;  * that all passengers want" item="_wTk35GlAEe6EUpwF1ZzeBw">
+    <modelElement href="CS380L_Airline_Reservation_Application.uml#_wNy_42lAEe6EUpwF1ZzeBw"/>
+    <visualProperties xmi:id="_maNrUGlTEe6JF_hZgeJ_nA" position="806.0,283.0" size="200.0,150.0" visible="false"/>
   </nodes>
 </com.yattasolutions.uml.diagrams.classifier:ClassDiagram>
