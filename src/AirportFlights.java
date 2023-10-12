@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 
-public class Node2 {
-	private String departure;
-	private Node2 child1;
-	private Node2 child2;
+public class AirportFlights {
+	private String destination;
+	private AirportFlights child1;
+	private AirportFlights child2;
 	private ArrayList<Flight> timeDeparture;
 	
-	public Node2() {
-		this.departure = null;
+	public AirportFlights() {
+		this.destination = null;
 		this.child1 = null;
 		this.child2 = null;
 		this.timeDeparture = null;
 	}
 	
-	public Node2(String a) {
-		this.departure = a;
+	public AirportFlights(String a) {
+		this.destination = a;
 		this.child1 = null;
 		this.child2 = null;
 		this.timeDeparture = null;
@@ -23,7 +23,7 @@ public class Node2 {
 	public void addFlight(Flight f) {
 		Flight curr = f;
 		Flight next = null;
-		if(this.departure == f.getcityDeparture()) {
+		if(this.destination == f.getcityArrival()) {
 			if(this.timeDeparture == null) {
 				this.timeDeparture.add(f);
 			}else {
@@ -38,15 +38,15 @@ public class Node2 {
 				this.timeDeparture.add(curr);
 			}
 		}else {
-			Node2 newChild = new Node2(f.getcityDeparture());
+			AirportFlights newChild = new AirportFlights(f.getcityArrival());
 			newChild.addFlight(f);
 			
 			this.addChild(this, newChild);
 		}
 	}
 	
-	public void addChild(Node2 curr,Node2 n) {
-		if(curr.departure.compareTo(n.departure) > 0) {
+	public void addChild(AirportFlights curr,AirportFlights n) {
+		if(curr.destination.compareTo(n.destination) > 0) {
 			if(curr.child1 != null) {
 				curr.addChild(curr.child1, n);
 				return;

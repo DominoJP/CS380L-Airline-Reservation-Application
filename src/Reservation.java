@@ -66,7 +66,7 @@ public class Reservation {
 					 System.out.println("Sorry but that is not an available seat");
 					 i--;
 				 }else {
-					 this.flight.setpassenger(seat, this.customer.getAccountNumber(), this.passengers[i-1]);
+					 this.flight.setpassenger(seat, Integer.toString(this.customer.getAccountNumber()), this.passengers[i-1]);
 					 seatNumbers[i-1] = seat;
 					 
 				 }
