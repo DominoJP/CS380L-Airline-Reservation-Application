@@ -5,8 +5,8 @@ import java.util.List;
    Account class represents a user account for a flight reservation system. 
    It stores information such as user's name, email, password, account number
    and reservation history. 
-   @author 
-   @version 
+   @author Sayra Reyes 
+   @version 1.0 
  */
 public class Account{
 	 private String name;
@@ -22,6 +22,7 @@ public class Account{
 	  * @param email : the email associated with the account.
 	  * @param password : the password for the account.
 	  * @param accountNumber : the account number
+	  * @param reservationHistory : stores a list of reservation made by the account holder. 
 	  */
 	 
 	 public Account(String name, String email, String password, int accountNumber) {
@@ -34,7 +35,7 @@ public class Account{
 	 
 
 	 /**
-	  * Getter method to retrieve account holder's name
+	  * Getter method to returns the name of the account holder. 
 	  * @return : the name of the account holder. 
 	  */
 	 public String getName() {
@@ -43,7 +44,7 @@ public class Account{
 	 }
 	 
 	 /**
-	  * Getter method to retrieve email associated with account. 
+	  * Getter method to returns the email associated with the account. 
 	  * @return : the email associated with the account.
 	  */
 	 public String getEmail() {
@@ -51,7 +52,7 @@ public class Account{
 	 }
 	 
 	 /**
-	  * Getter method to retrieve the account number. 
+	  * Getter method to returns the account number. 
 	  * @return : account number
 	  */
 	 public int getAccountNumber() {
@@ -78,7 +79,7 @@ public class Account{
 	   }
 	 
 	 /**
-	  * Method to add a reservation to the customer's reservation history.
+	  * Method to add a reservation to the account's reservation history. 
 	  * @param reservation : reservation to be added. 
 	  */
 	 public void addReservationHistory(Reservation reservation) {
@@ -86,7 +87,7 @@ public class Account{
 	 }
 	 
 	 /**
-	  * Method to retrieve customer's reservation history.
+	  * Method to returns the list of reservations made by the account. 
 	  * @return The list of reservation made by the customer. 
 	  */
 	 public List<Reservation> getReservationHistory() {
@@ -94,7 +95,7 @@ public class Account{
 	 }
 
 	 /**
-	  * Getter method to retrieve the account's password.
+	  * Getter method to returns the account's password. 
 	  * @return : the account's password
 	  */
 	 public String getPassword() {
@@ -102,7 +103,7 @@ public class Account{
 	 }
 
 	 /**
-	  * Setter method to set the account's password.
+	  * Setter method to set a new password for the account. 
 	  * @param password : new password to be set. 
 	  */
 	 public void setPassword(String password) {
@@ -112,7 +113,8 @@ public class Account{
 	 
 	 
 	 /**
-	  * Method to reserve/make a flight reservation for the user. 
+	  * Method to attempt to make a flight reservation. Checks if the flight is full and 
+	  * adds a new reservation to the history if there is space. 
 	  * @param flight : flight to be reserved.
 	  * @param passengers : list of passengers for reservation.
 	  */
@@ -130,7 +132,7 @@ public class Account{
  
 
 	/**
-	 * Method to cancel reservation for the user. 
+	 * Method to cancel reservation a reservation from the account's reservation history.
 	 * @param reservation : reservation to be canceled. 
 	 */
     public void cancelReservation(Reservation reservation) {
@@ -146,7 +148,7 @@ public class Account{
  
   
     /**
-     * Method to change a reservation to a new flight. 
+     * Method to change an existing reservation to a new flight. 
      * @param reservation : reservation to  be changed. 
      * @param new flight : new flight for the reservation.
      */
@@ -162,7 +164,9 @@ public class Account{
    }
  
      /**
-      * Method to review flight details. 
+      * Method to review and prints the details of a given flight, such as the type of flight, departure city,
+      * arrival city, departure date, arrival date, passenger capacity, passengers on board and 
+      * price of the flight. 
       * @param flight : the flight for which details are to be reviewed. 
       */
      public void reviewFlightDetails(Flight flight) {
@@ -175,7 +179,7 @@ public class Account{
 		  System.out.println("Departure date: " + flight.getdateDeparture());
 		  System.out.println("Arrival date: " + flight.getTimeArrival());
 		  System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
-		  System.out.println("Passengers on board: " + flight.getPassenger());
+		  System.out.println("Passengers on board: " + flight.getPassenger(accountNumber));
 		  System.out.println("Price of flight: " + flight.getpricing());
 
 	 }
