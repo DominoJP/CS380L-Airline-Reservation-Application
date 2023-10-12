@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 /**
+ * Owner: Logan Langewisch
  * The AirportFlights class sorts all the flights that take off at an airport
  * in order of where the flights are heading to and then what time they
  * leave using a binary tree
@@ -114,5 +115,50 @@ public class AirportFlights {
 		}
 		
 		return times;
+	}
+	
+	/**
+	 * the search method searches through the binary tree for the list of flights
+	 * an airport possesses that heads toward a specific destination
+	 * @param d
+	 * @return
+	 */
+	
+	public AirportFlights search(String d) {
+		AirportFlights curr = this;
+		
+		while(curr.destination != d) {
+			if(d.compareTo(curr.destination) < 0)
+				curr = curr.child1;
+			else
+				curr = curr.child2;
+		}
+		
+		return curr;
+		
+	}
+	
+	/**
+	 * the findFlight method searches through the list of flights that leave to a specific destination
+	 * and returns the flight that matches the time of departure that was given
+	 * @param t
+	 * @return
+	 */
+	
+	public Flight findFlight(String t) {
+		Flight flight = null;
+		
+		for(int i = 0; i < this.timeDeparture.size(); i++) {
+			if(this.timeDeparture.get(i).gettimeDeparture() == t) {
+				flight = this.timeDeparture.get(i);
+			}
+		}
+		
+		if(flight == null) {
+			System.out.println("No Results \n");
+			return null;
+		}
+		
+		return flight;
 	}
 }

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 /**
+ * Owner: Logan Langewisch
  * The Airport Class holds a list of all airports that are saved in the software and also sorts the airports
  * depending on where they are located by using a binary tree.
  * Each Airport also contains a list of the flights that leave it.
@@ -135,5 +136,25 @@ public class Airport {
 	
 	public String getOrigin() {
 		return this.origin;
+	}
+	
+	/**
+	 * the search method takes the city you are going to leave from and then searches
+	 * the binary tree and returns what airport you are looking for
+	 * @param o
+	 * @return
+	 */
+	
+	public Airport search(String o) {
+		Airport curr = this;
+		
+		while(curr.getOrigin() != o) {
+			if(o.compareTo(curr.getOrigin()) < 0)
+				curr = curr.child1;
+			else
+				curr = curr.child2;
+		}
+		
+		return curr;
 	}
 }

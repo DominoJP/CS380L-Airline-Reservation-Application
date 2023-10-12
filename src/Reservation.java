@@ -2,6 +2,7 @@
 import java.util.Scanner;
 
 /**
+ * Owner: Logan Langewisch
  * The Reservation class handles the creation of a reservation for a customer with an account
  */
 
