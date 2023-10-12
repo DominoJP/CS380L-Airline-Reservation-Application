@@ -1,11 +1,20 @@
 import java.util.ArrayList;
 
+/**
+ * The AirportFlights class sorts all the flights that take off at an airport
+ * in order of where the flights are heading to and then what time they
+ * leave using a binary tree
+ */
+
 public class AirportFlights {
 	private String destination;
 	private AirportFlights child1;
 	private AirportFlights child2;
 	private ArrayList<Flight> timeDeparture;
 	
+	/**
+	 * null constructor for the AirportFlights class
+	 */
 	public AirportFlights() {
 		this.destination = null;
 		this.child1 = null;
@@ -13,12 +22,24 @@ public class AirportFlights {
 		this.timeDeparture = null;
 	}
 	
+	/**
+	 * a constructor for the AirportFlights class that accepts the name of the
+	 * location all flights in this instance of the class are heading towards
+	 * @param a
+	 */
+	
 	public AirportFlights(String a) {
 		this.destination = a;
 		this.child1 = null;
 		this.child2 = null;
 		this.timeDeparture = null;
 	}
+	
+	/**
+	 * the addFlight method for the AirportFlights class adds a flight into the list of planes from
+	 * for the airport and sorts them based on what time they leave
+	 * @param f
+	 */
 	
 	public void addFlight(Flight f) {
 		Flight curr = f;
@@ -45,7 +66,14 @@ public class AirportFlights {
 		}
 	}
 	
-	public void addChild(AirportFlights curr,AirportFlights n) {
+	/**
+	 * the addChild method will take two instances of the AirportFlights class and will recursively add
+	 * and new list of flights when a flight is leaving to a city that has not been added to the tree
+	 * @param curr
+	 * @param n
+	 */
+	
+	public void addChild(AirportFlights curr, AirportFlights n) {
 		if(curr.destination.compareTo(n.destination) > 0) {
 			if(curr.child1 != null) {
 				curr.addChild(curr.child1, n);
@@ -61,5 +89,30 @@ public class AirportFlights {
 			
 			curr.child2 = n;
 		}
+	}
+	
+	/**
+	 * the getDestination method returns the destination that the list of flights heads to
+	 * @return
+	 */
+	
+	public String getDestination() {
+		return this.destination;
+	}
+	
+	/**
+	 * this method returns a String array that possesses the time of departure for each flight that
+	 * is heading towards this instance of the AirportFlights' destination
+	 * @return
+	 */
+	
+	public String[] getTimes() {
+		String[] times = new String[this.timeDeparture.size()];
+		
+		for(int i = 0; i < this.timeDeparture.size(); i++) {
+			times[i] = this.timeDeparture.get(i).gettimeDeparture();
+		}
+		
+		return times;
 	}
 }
