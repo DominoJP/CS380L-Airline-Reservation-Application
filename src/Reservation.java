@@ -23,8 +23,8 @@ public class Reservation {
 	
 	/**
 	 * a constructor that adds the customer account making the reservation and the flight the reservation applies to
-	 * @param n
-	 * @param f
+	 * @param n is the Account making the reservation
+	 * @param f is the flight that the reservation is for
 	 * and also calls the method setReservation()
 	 */
 	 public Reservation(Account n, Flight f) {
@@ -92,11 +92,10 @@ public class Reservation {
 	 }
 	 
 	 /**
-	  * method that takes an integer
-	  * @param p
-	  * that represents the number of people on the reservation then uses the price of each ticket
-	  * from the flight variable in order to calculate the total price of the reservation
-	  * @return
+	  * method that gives the total price of the reservation using the price per ticket of the flight
+	  * and the number of passengers that was given
+	  * @param p is the number of passengers for the reservation
+	  * @return returns the total price that was calculated by the method
 	  */
 	 
 	 public double setTotalPrice(int p) {
@@ -108,19 +107,19 @@ public class Reservation {
 	 }
 	 
 	 /**
-	  * takes an instance of the Flight class
-	  * @param f
-	  * and then sets the variable flight to the parameter f
+	  * This method allows the user to change the flight that is being reserved
+	  * and allows recalculates the total price for the new flight
+	  * @param f is the new flight that is going to be added to the reservation
 	  */
 	 
 	 public void setFlight(Flight f) {
 		 this.flight = f;
+		 this.totalPrice = this.setTotalPrice(this.passengers.length);
 	 }
 	 
 	 /**
-	  * allows the customer to remove a specific passenger
-	  * @param p
-	  * from the list of people on the reservation and adjusts the total cost
+	  * this method allows the user to remove a passenger from the reservation
+	  * @param p is the name of the passenger that is being removed
 	  */
 	 
 	 public void removePassenger(String p) {
@@ -142,7 +141,7 @@ public class Reservation {
 	 }
 	 
 	 /**
-	  * prints all the set values for the reservation so that the customer is notified of their reservation
+	  * this method prints all the set values for the reservation so that the customer is notified of their reservation
 	  */
 	 public void getReservation() {
 		 System.out.println("Type of flight: " + this.flight.gettype());
