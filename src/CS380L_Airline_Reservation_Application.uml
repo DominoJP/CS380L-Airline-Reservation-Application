@@ -84,17 +84,17 @@ The Reservation class handles the creation of a reservation for a customer with 
       <ownedAttribute xmi:id="_wNe20GlAEe6EUpwF1ZzeBw" name="totalPrice" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DX-SgGoBEe6C1Y5CxNg8Wg" name="reservationCancellationPane" type="_ba7IsGlSEe6JF_hZgeJ_nA" association="_DX9rcGoBEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DX-SgWoBEe6C1Y5CxNg8Wg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DX-SgmoBEe6C1Y5CxNg8Wg" value="*"/>
+      <ownedAttribute xmi:id="_E3MdNGo7Ee6vDqfVRjFCqw" name="reservationCancellationPane" type="_ba7IsGlSEe6JF_hZgeJ_nA" association="_E3MdMGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E3NEQGo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E3NEQWo7Ee6vDqfVRjFCqw" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_D4PuAWoBEe6C1Y5CxNg8Wg" name="travellerInformationPane" type="_X3xyEGlSEe6JF_hZgeJ_nA" association="_D4PuAGoBEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D4Q8IGoBEe6C1Y5CxNg8Wg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D4Q8IWoBEe6C1Y5CxNg8Wg" value="*"/>
+      <ownedAttribute xmi:id="_FVp602o7Ee6vDqfVRjFCqw" name="travellerInformationPane" type="_X3xyEGlSEe6JF_hZgeJ_nA" association="_FVpTwGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FVp61Go7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FVp61Wo7Ee6vDqfVRjFCqw" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_EWg-YWoBEe6C1Y5CxNg8Wg" name="reservationPaymentPane" type="_XCa3YGlSEe6JF_hZgeJ_nA" association="_EWg-YGoBEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EWg-YmoBEe6C1Y5CxNg8Wg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EWg-Y2oBEe6C1Y5CxNg8Wg" value="*"/>
+      <ownedAttribute xmi:id="_F6Ong2o7Ee6vDqfVRjFCqw" name="reservationPaymentPane" type="_XCa3YGlSEe6JF_hZgeJ_nA" association="_F6OAcGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F6POkGo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F6POkWo7Ee6vDqfVRjFCqw" value="1"/>
       </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_wNp18GlAEe6EUpwF1ZzeBw" name="Reservation" specification="_wMKBIGlAEe6EUpwF1ZzeBw">
         <ownedParameter xmi:id="_wNp18WlAEe6EUpwF1ZzeBw" type="_wMD6gGlAEe6EUpwF1ZzeBw" direction="return">
@@ -326,21 +326,17 @@ The Reservation class handles the creation of a reservation for a customer with 
       <ownedAttribute xmi:id="_m05hYGlBEe6EUpwF1ZzeBw" name="reservationHistory" type="_wMD6gGlAEe6EUpwF1ZzeBw" isOrdered="true" isReadOnly="true" association="_m07WkGlBEe6EUpwF1ZzeBw">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m05hYWlBEe6EUpwF1ZzeBw" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_9uFaMmnyEe66DqQ6dkb6Og" name="customer" type="_cZy_AGlCEe6EUpwF1ZzeBw" association="_9uDlAGnyEe66DqQ6dkb6Og">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9uGBQGnyEe66DqQ6dkb6Og" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9uGBQWnyEe66DqQ6dkb6Og" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="_Canrsmn8Ee6C1Y5CxNg8Wg" name="manager" type="_lZRbcGlCEe6EUpwF1ZzeBw" association="_CamdkGn8Ee6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CaoSwGn8Ee6C1Y5CxNg8Wg" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CaoSwWn8Ee6C1Y5CxNg8Wg" value="1"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="_qKgr4Wn9Ee6C1Y5CxNg8Wg" name="accountSignInPane" type="_iMtCsGlLEe6JF_hZgeJ_nA" association="_qKgr4Gn9Ee6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qKk9UGn9Ee6C1Y5CxNg8Wg" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qKk9UWn9Ee6C1Y5CxNg8Wg" value="1"/>
-      </ownedAttribute>
       <ownedAttribute xmi:id="_JufQAWn-Ee6C1Y5CxNg8Wg" name="accountSignUpPane" type="_jTP0AGlLEe6JF_hZgeJ_nA" association="_JufQAGn-Ee6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JufQAmn-Ee6C1Y5CxNg8Wg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JufQA2n-Ee6C1Y5CxNg8Wg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_wvtVE2o7Ee6vDqfVRjFCqw" name="customer" type="_cZy_AGlCEe6EUpwF1ZzeBw" association="_wvsuAGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wvtVFGo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wvtVFWo7Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_xFFIJGo7Ee6vDqfVRjFCqw" name="manager" type="_lZRbcGlCEe6EUpwF1ZzeBw" association="_xFFIIGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xFFIJWo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xFFIJmo7Ee6vDqfVRjFCqw" value="1"/>
       </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_m05hYmlBEe6EUpwF1ZzeBw" name="Account" specification="_m0MWwGlBEe6EUpwF1ZzeBw">
         <ownedParameter xmi:id="_m05hY2lBEe6EUpwF1ZzeBw" name="name">
@@ -939,13 +935,30 @@ Each Airport also contains a list of the flights that leave it.</body>
       <ownedAttribute xmi:id="_KukI0GlBEe6EUpwF1ZzeBw" name="name" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_KukI0mlBEe6EUpwF1ZzeBw" name="child1" visibility="private" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_KunMIGlBEe6EUpwF1ZzeBw"/>
-      <ownedAttribute xmi:id="_KukI1GlBEe6EUpwF1ZzeBw" name="child2" visibility="private" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_KunMI2lBEe6EUpwF1ZzeBw"/>
-      <ownedAttribute xmi:id="_Kukv4WlBEe6EUpwF1ZzeBw" name="flights" visibility="private" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_KunzMWlBEe6EUpwF1ZzeBw"/>
       <ownedAttribute xmi:id="_Kukv42lBEe6EUpwF1ZzeBw" name="airports" visibility="private" type="_KugecGlBEe6EUpwF1ZzeBw" association="_KunzNGlBEe6EUpwF1ZzeBw"/>
       <ownedAttribute xmi:id="_b8LTAGn_Ee6C1Y5CxNg8Wg" name="flightSorting" type="_55EaAGn-Ee6C1Y5CxNg8Wg" association="_b8Kr8Gn_Ee6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_b8LTAWn_Ee6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b8L6EGn_Ee6C1Y5CxNg8Wg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_zN5Lkmo3Ee6vDqfVRjFCqw" name="airportFlights" type="_Kui6sGlBEe6EUpwF1ZzeBw" aggregation="shared" association="_zNoF0Go3Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zN5yoGo3Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zN5yoWo3Ee6vDqfVRjFCqw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_sfY2wWo4Ee6vDqfVRjFCqw" name="airport" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_sfY2wGo4Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sfY2wmo4Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sfY2w2o4Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_sfY2xGo4Ee6vDqfVRjFCqw" name="child1" type="_KuTDEGlBEe6EUpwF1ZzeBw" aggregation="shared" association="_sfY2wGo4Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sfY2xWo4Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sfY2xmo4Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_F7zfYWo8Ee6vDqfVRjFCqw" name="child2" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_F7zfYGo8Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F70GcGo8Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F70GcWo8Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_F70Gcmo8Ee6vDqfVRjFCqw" name="airport" type="_KuTDEGlBEe6EUpwF1ZzeBw" aggregation="shared" association="_F7zfYGo8Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F70Gc2o8Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F70GdGo8Ee6vDqfVRjFCqw" value="1"/>
       </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_KulW8WlBEe6EUpwF1ZzeBw" name="Airport" specification="_KuURMGlBEe6EUpwF1ZzeBw">
         <ownedParameter xmi:id="_KulW8mlBEe6EUpwF1ZzeBw" type="_KuTDEGlBEe6EUpwF1ZzeBw" direction="return"/>
@@ -1160,9 +1173,31 @@ leave using a binary tree</body>
       <ownedAttribute xmi:id="_Lk8-QGlBEe6EUpwF1ZzeBw" name="destination" isReadOnly="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_Lk8-QWlBEe6EUpwF1ZzeBw" name="child1" visibility="private" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_Lk-zcGlBEe6EUpwF1ZzeBw"/>
-      <ownedAttribute xmi:id="_Lk8-Q2lBEe6EUpwF1ZzeBw" name="child2" visibility="private" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_Lk_agWlBEe6EUpwF1ZzeBw"/>
       <ownedAttribute xmi:id="_Lk9lUWlBEe6EUpwF1ZzeBw" name="timeDeparture" visibility="private" type="_KugecGlBEe6EUpwF1ZzeBw" association="_Lk_ahGlBEe6EUpwF1ZzeBw"/>
+      <ownedAttribute xmi:id="_zN2vUGo3Ee6vDqfVRjFCqw" name="airport" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_zNoF0Go3Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zN5LkGo3Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zN5LkWo3Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_zkO9EWo5Ee6vDqfVRjFCqw" name="airportFlights" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_zkO9EGo5Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zkPkIGo5Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zkPkIWo5Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_zkPkImo5Ee6vDqfVRjFCqw" name="child1" type="_Kui6sGlBEe6EUpwF1ZzeBw" aggregation="shared" association="_zkO9EGo5Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zkPkI2o5Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zkPkJGo5Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_z_4XQGo5Ee6vDqfVRjFCqw" name="airportFlights" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_z_3JIGo5Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_z_4XQWo5Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z_4XQmo5Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_z_4XQ2o5Ee6vDqfVRjFCqw" name="child2" type="_Kui6sGlBEe6EUpwF1ZzeBw" aggregation="shared" association="_z_3JIGo5Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_z_4XRGo5Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_z_4-UGo5Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_fbYtlGo7Ee6vDqfVRjFCqw" name="flight" type="_wNVF0GlAEe6EUpwF1ZzeBw" association="_fbYtkGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fbYtlWo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fbYtlmo7Ee6vDqfVRjFCqw" value="*"/>
+      </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Lk9lVGlBEe6EUpwF1ZzeBw" name="AirportFlights" specification="_Lkvi4GlBEe6EUpwF1ZzeBw">
         <ownedParameter xmi:id="_Lk9lVWlBEe6EUpwF1ZzeBw" type="_Kui6sGlBEe6EUpwF1ZzeBw" direction="return"/>
         <language>java</language>
@@ -1365,29 +1400,17 @@ leave using a binary tree</body>
         <ownedParameter xmi:id="_Lk7wImlBEe6EUpwF1ZzeBw" name="n" type="_Kui6sGlBEe6EUpwF1ZzeBw"/>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_KunMIGlBEe6EUpwF1ZzeBw" name="" memberEnd="_KunMIWlBEe6EUpwF1ZzeBw _KukI0mlBEe6EUpwF1ZzeBw">
-      <ownedEnd xmi:id="_KunMIWlBEe6EUpwF1ZzeBw" name="" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_KunMIGlBEe6EUpwF1ZzeBw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_KunMI2lBEe6EUpwF1ZzeBw" name="" memberEnd="_KunMJGlBEe6EUpwF1ZzeBw _KukI1GlBEe6EUpwF1ZzeBw">
-      <ownedEnd xmi:id="_KunMJGlBEe6EUpwF1ZzeBw" name="" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_KunMI2lBEe6EUpwF1ZzeBw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_KunzMWlBEe6EUpwF1ZzeBw" name="" memberEnd="_KunzMmlBEe6EUpwF1ZzeBw _Kukv4WlBEe6EUpwF1ZzeBw">
-      <ownedEnd xmi:id="_KunzMmlBEe6EUpwF1ZzeBw" name="" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_KunzMWlBEe6EUpwF1ZzeBw"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_KunzNGlBEe6EUpwF1ZzeBw" name="" memberEnd="_KunzNWlBEe6EUpwF1ZzeBw _Kukv42lBEe6EUpwF1ZzeBw">
       <ownedEnd xmi:id="_KunzNWlBEe6EUpwF1ZzeBw" name="" type="_KuTDEGlBEe6EUpwF1ZzeBw" association="_KunzNGlBEe6EUpwF1ZzeBw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_Lk-zcGlBEe6EUpwF1ZzeBw" name="" memberEnd="_Lk-zcWlBEe6EUpwF1ZzeBw _Lk8-QWlBEe6EUpwF1ZzeBw">
-      <ownedEnd xmi:id="_Lk-zcWlBEe6EUpwF1ZzeBw" name="" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_Lk-zcGlBEe6EUpwF1ZzeBw"/>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_Lk_agWlBEe6EUpwF1ZzeBw" name="" memberEnd="_Lk_agmlBEe6EUpwF1ZzeBw _Lk8-Q2lBEe6EUpwF1ZzeBw">
-      <ownedEnd xmi:id="_Lk_agmlBEe6EUpwF1ZzeBw" name="" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_Lk_agWlBEe6EUpwF1ZzeBw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_Lk_ahGlBEe6EUpwF1ZzeBw" name="" memberEnd="_Lk_ahWlBEe6EUpwF1ZzeBw _Lk9lUWlBEe6EUpwF1ZzeBw">
       <ownedEnd xmi:id="_Lk_ahWlBEe6EUpwF1ZzeBw" name="" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_Lk_ahGlBEe6EUpwF1ZzeBw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_m07WkGlBEe6EUpwF1ZzeBw" name="" memberEnd="_m07WkWlBEe6EUpwF1ZzeBw _m05hYGlBEe6EUpwF1ZzeBw">
-      <ownedEnd xmi:id="_m07WkWlBEe6EUpwF1ZzeBw" name="" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_m07WkGlBEe6EUpwF1ZzeBw"/>
+      <ownedEnd xmi:id="_m07WkWlBEe6EUpwF1ZzeBw" name="account" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_m07WkGlBEe6EUpwF1ZzeBw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qOJiAGo6Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qOKJEGo6Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_cZy_AGlCEe6EUpwF1ZzeBw" name="Customer">
       <ownedAttribute xmi:id="_caLZgGlCEe6EUpwF1ZzeBw" name="name" visibility="private">
@@ -1399,10 +1422,6 @@ leave using a binary tree</body>
       <ownedAttribute xmi:id="_caMnoWlCEe6EUpwF1ZzeBw" name="DOB" type="_caHIEGlCEe6EUpwF1ZzeBw" isReadOnly="true"/>
       <ownedAttribute xmi:id="_caMnomlCEe6EUpwF1ZzeBw" name="passportNo" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="_9uEMEGnyEe66DqQ6dkb6Og" name="account" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_9uDlAGnyEe66DqQ6dkb6Og">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9uFaMGnyEe66DqQ6dkb6Og" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9uFaMWnyEe66DqQ6dkb6Og" value="1"/>
       </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_caN1wGlCEe6EUpwF1ZzeBw" name="Customer" specification="_caKLYGlCEe6EUpwF1ZzeBw">
         <ownedParameter xmi:id="_caN1wWlCEe6EUpwF1ZzeBw" name="name1">
@@ -1484,10 +1503,6 @@ leave using a binary tree</body>
       </ownedAttribute>
       <ownedAttribute xmi:id="_lZVF0GlCEe6EUpwF1ZzeBw" name="employeepassword" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="_CanEoGn8Ee6C1Y5CxNg8Wg" name="account" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_CamdkGn8Ee6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CanrsGn8Ee6C1Y5CxNg8Wg" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CanrsWn8Ee6C1Y5CxNg8Wg" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_0Q6womn8Ee6C1Y5CxNg8Wg" name="account1" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_0Q6JkGn8Ee6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0Q6wo2n8Ee6C1Y5CxNg8Wg" value="1"/>
@@ -1584,17 +1599,13 @@ leave using a binary tree</body>
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
         <defaultValue xmi:type="uml:LiteralString" xmi:id="_iOi1wGlLEe6JF_hZgeJ_nA" value="1L"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_qKk9Umn9Ee6C1Y5CxNg8Wg" name="account" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_qKgr4Gn9Ee6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qKlkYGn9Ee6C1Y5CxNg8Wg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qKlkYWn9Ee6C1Y5CxNg8Wg" value="*"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="_21qv4Wn9Ee6C1Y5CxNg8Wg" name="accountSignUpPane" type="_jTP0AGlLEe6JF_hZgeJ_nA" association="_21qv4Gn9Ee6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_21r-AGn9Ee6C1Y5CxNg8Wg" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_21r-AWn9Ee6C1Y5CxNg8Wg" value="1"/>
-      </ownedAttribute>
       <ownedAttribute xmi:id="_OQPckWoBEe6C1Y5CxNg8Wg" name="windowBuilderRefactor" type="_oG37EGlLEe6JF_hZgeJ_nA" association="_OQPckGoBEe6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OQPckmoBEe6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OQPck2oBEe6C1Y5CxNg8Wg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Q8Mqs2o8Ee6vDqfVRjFCqw" name="account" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_Q8MDoGo8Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Q8MqtGo8Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Q8NRwGo8Ee6vDqfVRjFCqw" value="*"/>
       </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_iOkq8GlLEe6JF_hZgeJ_nA" name="AccountSignInPane" specification="_iOfycGlLEe6JF_hZgeJ_nA">
         <ownedParameter xmi:id="_iOkq8WlLEe6JF_hZgeJ_nA" name="contentPane" type="_iODGgGlLEe6JF_hZgeJ_nA"/>
@@ -1730,10 +1741,6 @@ leave using a binary tree</body>
       <ownedAttribute xmi:id="_jTtuEGlLEe6JF_hZgeJ_nA" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
         <defaultValue xmi:type="uml:LiteralString" xmi:id="_jTuVIGlLEe6JF_hZgeJ_nA" value="1L"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="_21r-Amn9Ee6C1Y5CxNg8Wg" name="accountSignInPane" type="_iMtCsGlLEe6JF_hZgeJ_nA" association="_21qv4Gn9Ee6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_21r-A2n9Ee6C1Y5CxNg8Wg" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_21r-BGn9Ee6C1Y5CxNg8Wg" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_JugeIGn-Ee6C1Y5CxNg8Wg" name="account" type="_wNT3sGlAEe6EUpwF1ZzeBw" aggregation="shared" association="_JufQAGn-Ee6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JugeIWn-Ee6C1Y5CxNg8Wg" value="1"/>
@@ -1883,10 +1890,6 @@ leave using a binary tree</body>
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
         <defaultValue xmi:type="uml:LiteralString" xmi:id="_kMZCgWlLEe6JF_hZgeJ_nA" value="1L"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_u0BGRGoAEe6C1Y5CxNg8Wg" name="flightFilterPane" type="_lqVAIGlLEe6JF_hZgeJ_nA" association="_u0BGQGoAEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_u0BGRWoAEe6C1Y5CxNg8Wg" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u0BtUGoAEe6C1Y5CxNg8Wg" value="1"/>
-      </ownedAttribute>
       <ownedAttribute xmi:id="_S8a30WoBEe6C1Y5CxNg8Wg" name="windowBuilderRefactor" type="_oG37EGlLEe6JF_hZgeJ_nA" association="_S8a30GoBEe6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_S8be4GoBEe6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_S8be4WoBEe6C1Y5CxNg8Wg" value="1"/>
@@ -1936,6 +1939,14 @@ leave using a binary tree</body>
       <ownedAttribute xmi:id="_M4xTUWoBEe6C1Y5CxNg8Wg" name="windowBuilderRefactor" type="_oG37EGlLEe6JF_hZgeJ_nA" association="_M4xTUGoBEe6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M4x6YGoBEe6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M4x6YWoBEe6C1Y5CxNg8Wg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_0x6bs2o6Ee6vDqfVRjFCqw" name="accountSignUpPane" type="_jTP0AGlLEe6JF_hZgeJ_nA" association="_0x50oGo6Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0x6btGo6Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0x6btWo6Ee6vDqfVRjFCqw" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3zWzdGo6Ee6vDqfVRjFCqw" name="accountSignInPane" type="_iMtCsGlLEe6JF_hZgeJ_nA" association="_3zWzcGo6Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zWzdWo6Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zWzdmo6Ee6vDqfVRjFCqw" value="1"/>
       </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_kuhfMGlLEe6JF_hZgeJ_nA" name="OptionSelectionPane" specification="_kufC8GlLEe6JF_hZgeJ_nA">
         <ownedParameter xmi:id="_kuhfMWlLEe6JF_hZgeJ_nA" name="contentPane" type="_iODGgGlLEe6JF_hZgeJ_nA"/>
@@ -2012,13 +2023,13 @@ leave using a binary tree</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mMwK82n_Ee6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mMwK9Gn_Ee6C1Y5CxNg8Wg" value="1"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_u0BGQWoAEe6C1Y5CxNg8Wg" name="filterListScrollPane" type="_kMAoAGlLEe6JF_hZgeJ_nA" association="_u0BGQGoAEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_u0BGQmoAEe6C1Y5CxNg8Wg" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_u0BGQ2oAEe6C1Y5CxNg8Wg" value="1"/>
-      </ownedAttribute>
       <ownedAttribute xmi:id="_RW0L8WoBEe6C1Y5CxNg8Wg" name="windowBuilderRefactor" type="_oG37EGlLEe6JF_hZgeJ_nA" association="_RW0L8GoBEe6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RW0zAGoBEe6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RW0zAWoBEe6C1Y5CxNg8Wg" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_i36CVGo8Ee6vDqfVRjFCqw" name="filterListScrollPane" type="_kMAoAGlLEe6JF_hZgeJ_nA" association="_i36CUGo8Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i36pYGo8Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i36pYWo8Ee6vDqfVRjFCqw" value="1"/>
       </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_lsDecGlLEe6JF_hZgeJ_nA" name="FlightFilterPane" specification="_lrWT0GlLEe6JF_hZgeJ_nA">
         <ownedParameter xmi:id="_lsDecWlLEe6JF_hZgeJ_nA" name="contentPane" type="_iODGgGlLEe6JF_hZgeJ_nA"/>
@@ -2240,8 +2251,8 @@ leave using a binary tree</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JiabhGoBEe6C1Y5CxNg8Wg" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_KufNFGoBEe6C1Y5CxNg8Wg" name="accountSignUpPane" type="_jTP0AGlLEe6JF_hZgeJ_nA" aggregation="shared" association="_KufNEGoBEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KufNFWoBEe6C1Y5CxNg8Wg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KufNFmoBEe6C1Y5CxNg8Wg" value="*"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KufNFWoBEe6C1Y5CxNg8Wg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KufNFmoBEe6C1Y5CxNg8Wg" value="1"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_M4x6YmoBEe6C1Y5CxNg8Wg" name="optionSelectionPane" type="_kuFaUGlLEe6JF_hZgeJ_nA" aggregation="shared" association="_M4xTUGoBEe6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M4x6Y2oBEe6C1Y5CxNg8Wg" value="1"/>
@@ -2319,17 +2330,11 @@ leave using a binary tree</body>
     <packagedElement xmi:type="uml:Association" xmi:id="_oHZfgGlLEe6JF_hZgeJ_nA" name="" memberEnd="_oHZfgWlLEe6JF_hZgeJ_nA _oHXqUGlLEe6JF_hZgeJ_nA">
       <ownedEnd xmi:id="_oHZfgWlLEe6JF_hZgeJ_nA" name="" type="_oG37EGlLEe6JF_hZgeJ_nA" association="_oHZfgGlLEe6JF_hZgeJ_nA"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Usage" xmi:id="_R6LAoGlREe6JF_hZgeJ_nA" client="_KuTDEGlBEe6EUpwF1ZzeBw" supplier="_wNVF0GlAEe6EUpwF1ZzeBw"/>
-    <packagedElement xmi:type="uml:Usage" xmi:id="_UC5nsGlREe6JF_hZgeJ_nA" client="_Kui6sGlBEe6EUpwF1ZzeBw" supplier="_wNVF0GlAEe6EUpwF1ZzeBw"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_XCa3YGlSEe6JF_hZgeJ_nA" name="ReservationPaymentPane">
       <generalization xmi:id="_XCnEoGlSEe6JF_hZgeJ_nA" general="_iODGgGlLEe6JF_hZgeJ_nA"/>
       <ownedAttribute xmi:id="_XCnrsGlSEe6JF_hZgeJ_nA" name="serialVersionUID" visibility="private" isLeaf="true" isStatic="true" isReadOnly="true">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
         <defaultValue xmi:type="uml:LiteralString" xmi:id="_XCnrsWlSEe6JF_hZgeJ_nA" value="1L"/>
-      </ownedAttribute>
-      <ownedAttribute xmi:id="_EWg-ZGoBEe6C1Y5CxNg8Wg" name="reservation" type="_wMD6gGlAEe6EUpwF1ZzeBw" association="_EWg-YGoBEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EWg-ZWoBEe6C1Y5CxNg8Wg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EWg-ZmoBEe6C1Y5CxNg8Wg" value="*"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_JiZ0cWoBEe6C1Y5CxNg8Wg" name="windowBuilderRefactor" type="_oG37EGlLEe6JF_hZgeJ_nA" association="_JiZ0cGoBEe6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JiabgGoBEe6C1Y5CxNg8Wg" value="1"/>
@@ -2348,10 +2353,6 @@ leave using a binary tree</body>
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
         <defaultValue xmi:type="uml:LiteralString" xmi:id="_X368AWlSEe6JF_hZgeJ_nA" value="1L"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_D4Q8ImoBEe6C1Y5CxNg8Wg" name="reservation" type="_wMD6gGlAEe6EUpwF1ZzeBw" association="_D4PuAGoBEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D4Q8I2oBEe6C1Y5CxNg8Wg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D4Q8JGoBEe6C1Y5CxNg8Wg" value="*"/>
-      </ownedAttribute>
       <ownedAttribute xmi:id="_I1qDMGoBEe6C1Y5CxNg8Wg" name="windowBuilderRefactor" type="_oG37EGlLEe6JF_hZgeJ_nA" association="_I1pcIGoBEe6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_I1qqQGoBEe6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_I1qqQWoBEe6C1Y5CxNg8Wg" value="1"/>
@@ -2369,10 +2370,6 @@ leave using a binary tree</body>
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
         <defaultValue xmi:type="uml:LiteralString" xmi:id="_bbGH0WlSEe6JF_hZgeJ_nA" value="1L"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_DX-Sg2oBEe6C1Y5CxNg8Wg" name="reservation" type="_wMD6gGlAEe6EUpwF1ZzeBw" association="_DX9rcGoBEe6C1Y5CxNg8Wg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DX-ShGoBEe6C1Y5CxNg8Wg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DX-ShWoBEe6C1Y5CxNg8Wg" value="*"/>
-      </ownedAttribute>
       <ownedAttribute xmi:id="_FUwvUGoBEe6C1Y5CxNg8Wg" name="windowBuilderRefactor" type="_oG37EGlLEe6JF_hZgeJ_nA" association="_FUwIQGoBEe6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FUwvUWoBEe6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FUwvUmoBEe6C1Y5CxNg8Wg" value="1"/>
@@ -2384,19 +2381,13 @@ leave using a binary tree</body>
         <ownedParameter xmi:id="_ba8W02lSEe6JF_hZgeJ_nA" type="_ba7IsGlSEe6JF_hZgeJ_nA" direction="return"/>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_9uDlAGnyEe66DqQ6dkb6Og" name="" memberEnd="_9uEMEGnyEe66DqQ6dkb6Og _9uFaMmnyEe66DqQ6dkb6Og"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_CamdkGn8Ee6C1Y5CxNg8Wg" name="" memberEnd="_CanEoGn8Ee6C1Y5CxNg8Wg _Canrsmn8Ee6C1Y5CxNg8Wg"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_0Q6JkGn8Ee6C1Y5CxNg8Wg" name="" memberEnd="_0Q6JkWn8Ee6C1Y5CxNg8Wg _0Q6womn8Ee6C1Y5CxNg8Wg">
       <ownedEnd xmi:id="_0Q6JkWn8Ee6C1Y5CxNg8Wg" name="manager" type="_lZRbcGlCEe6EUpwF1ZzeBw" association="_0Q6JkGn8Ee6C1Y5CxNg8Wg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0Q6woGn8Ee6C1Y5CxNg8Wg" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0Q6woWn8Ee6C1Y5CxNg8Wg" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_qKgr4Gn9Ee6C1Y5CxNg8Wg" name="" memberEnd="_qKgr4Wn9Ee6C1Y5CxNg8Wg _qKk9Umn9Ee6C1Y5CxNg8Wg"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_21qv4Gn9Ee6C1Y5CxNg8Wg" name="" memberEnd="_21qv4Wn9Ee6C1Y5CxNg8Wg _21r-Amn9Ee6C1Y5CxNg8Wg"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_JufQAGn-Ee6C1Y5CxNg8Wg" name="" memberEnd="_JufQAWn-Ee6C1Y5CxNg8Wg _JugeIGn-Ee6C1Y5CxNg8Wg"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_ooN9QGn-Ee6C1Y5CxNg8Wg" client="_iMtCsGlLEe6JF_hZgeJ_nA" supplier="_kuFaUGlLEe6JF_hZgeJ_nA"/>
-    <packagedElement xmi:type="uml:Dependency" xmi:id="_pSlI4Gn-Ee6C1Y5CxNg8Wg" client="_jTP0AGlLEe6JF_hZgeJ_nA" supplier="_kuFaUGlLEe6JF_hZgeJ_nA"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_55EaAGn-Ee6C1Y5CxNg8Wg" name="FlightSorting">
       <ownedAttribute xmi:id="_55J5kGn-Ee6C1Y5CxNg8Wg" name="totalFlightAvailable">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
@@ -2477,10 +2468,6 @@ leave using a binary tree</body>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_b8Kr8Gn_Ee6C1Y5CxNg8Wg" name="" memberEnd="_b8LTAGn_Ee6C1Y5CxNg8Wg _b8L6EWn_Ee6C1Y5CxNg8Wg"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_mMvj4Gn_Ee6C1Y5CxNg8Wg" name="" memberEnd="_mMvj4Wn_Ee6C1Y5CxNg8Wg _mMwK8mn_Ee6C1Y5CxNg8Wg"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_u0BGQGoAEe6C1Y5CxNg8Wg" name="" memberEnd="_u0BGQWoAEe6C1Y5CxNg8Wg _u0BGRGoAEe6C1Y5CxNg8Wg"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_DX9rcGoBEe6C1Y5CxNg8Wg" name="" memberEnd="_DX-SgGoBEe6C1Y5CxNg8Wg _DX-Sg2oBEe6C1Y5CxNg8Wg"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_D4PuAGoBEe6C1Y5CxNg8Wg" name="" memberEnd="_D4PuAWoBEe6C1Y5CxNg8Wg _D4Q8ImoBEe6C1Y5CxNg8Wg"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_EWg-YGoBEe6C1Y5CxNg8Wg" name="" memberEnd="_EWg-YWoBEe6C1Y5CxNg8Wg _EWg-ZGoBEe6C1Y5CxNg8Wg"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_FUwIQGoBEe6C1Y5CxNg8Wg" name="" memberEnd="_FUwvUGoBEe6C1Y5CxNg8Wg _FUwvU2oBEe6C1Y5CxNg8Wg"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_I1pcIGoBEe6C1Y5CxNg8Wg" name="" memberEnd="_I1qDMGoBEe6C1Y5CxNg8Wg _I1qqQmoBEe6C1Y5CxNg8Wg"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_JiZ0cGoBEe6C1Y5CxNg8Wg" name="" memberEnd="_JiZ0cWoBEe6C1Y5CxNg8Wg _JiabgmoBEe6C1Y5CxNg8Wg"/>
@@ -2489,6 +2476,72 @@ leave using a binary tree</body>
     <packagedElement xmi:type="uml:Association" xmi:id="_OQPckGoBEe6C1Y5CxNg8Wg" name="" memberEnd="_OQPckWoBEe6C1Y5CxNg8Wg _OQPclGoBEe6C1Y5CxNg8Wg"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_RW0L8GoBEe6C1Y5CxNg8Wg" name="" memberEnd="_RW0L8WoBEe6C1Y5CxNg8Wg _RW0zAmoBEe6C1Y5CxNg8Wg"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_S8a30GoBEe6C1Y5CxNg8Wg" name="" memberEnd="_S8a30WoBEe6C1Y5CxNg8Wg _S8be4moBEe6C1Y5CxNg8Wg"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zNoF0Go3Ee6vDqfVRjFCqw" name="" memberEnd="_zN2vUGo3Ee6vDqfVRjFCqw _zN5Lkmo3Ee6vDqfVRjFCqw"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_RT9AMGo4Ee6vDqfVRjFCqw" client="_KuTDEGlBEe6EUpwF1ZzeBw" supplier="_nXEaUGlBEe6EUpwF1ZzeBw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_sfY2wGo4Ee6vDqfVRjFCqw" name="" memberEnd="_sfY2wWo4Ee6vDqfVRjFCqw _sfY2xGo4Ee6vDqfVRjFCqw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_zkO9EGo5Ee6vDqfVRjFCqw" name="" memberEnd="_zkO9EWo5Ee6vDqfVRjFCqw _zkPkImo5Ee6vDqfVRjFCqw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_z_3JIGo5Ee6vDqfVRjFCqw" name="" memberEnd="_z_4XQGo5Ee6vDqfVRjFCqw _z_4XQ2o5Ee6vDqfVRjFCqw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0x50oGo6Ee6vDqfVRjFCqw" name="" memberEnd="_0x6bsGo6Ee6vDqfVRjFCqw _0x6bs2o6Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_0x6bsGo6Ee6vDqfVRjFCqw" name="optionSelectionPane" type="_kuFaUGlLEe6JF_hZgeJ_nA" association="_0x50oGo6Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0x6bsWo6Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0x6bsmo6Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_3zWzcGo6Ee6vDqfVRjFCqw" name="" memberEnd="_3zWzcWo6Ee6vDqfVRjFCqw _3zWzdGo6Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_3zWzcWo6Ee6vDqfVRjFCqw" name="optionSelectionPane" type="_kuFaUGlLEe6JF_hZgeJ_nA" association="_3zWzcGo6Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3zWzcmo6Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3zWzc2o6Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_E3MdMGo7Ee6vDqfVRjFCqw" name="" memberEnd="_E3MdMWo7Ee6vDqfVRjFCqw _E3MdNGo7Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_E3MdMWo7Ee6vDqfVRjFCqw" name="reservation" type="_wMD6gGlAEe6EUpwF1ZzeBw" association="_E3MdMGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E3MdMmo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E3MdM2o7Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_FVpTwGo7Ee6vDqfVRjFCqw" name="" memberEnd="_FVp60Go7Ee6vDqfVRjFCqw _FVp602o7Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_FVp60Go7Ee6vDqfVRjFCqw" name="reservation" type="_wMD6gGlAEe6EUpwF1ZzeBw" association="_FVpTwGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FVp60Wo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FVp60mo7Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_F6OAcGo7Ee6vDqfVRjFCqw" name="" memberEnd="_F6OngGo7Ee6vDqfVRjFCqw _F6Ong2o7Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_F6OngGo7Ee6vDqfVRjFCqw" name="reservation" type="_wMD6gGlAEe6EUpwF1ZzeBw" association="_F6OAcGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F6OngWo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_F6Ongmo7Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_fbYtkGo7Ee6vDqfVRjFCqw" name="" memberEnd="_fbYtkWo7Ee6vDqfVRjFCqw _fbYtlGo7Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_fbYtkWo7Ee6vDqfVRjFCqw" name="airportFlights" type="_Kui6sGlBEe6EUpwF1ZzeBw" association="_fbYtkGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fbYtkmo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fbYtk2o7Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_wvsuAGo7Ee6vDqfVRjFCqw" name="" memberEnd="_wvtVEGo7Ee6vDqfVRjFCqw _wvtVE2o7Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_wvtVEGo7Ee6vDqfVRjFCqw" name="account" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_wvsuAGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wvtVEWo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wvtVEmo7Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_xFFIIGo7Ee6vDqfVRjFCqw" name="" memberEnd="_xFFIIWo7Ee6vDqfVRjFCqw _xFFIJGo7Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_xFFIIWo7Ee6vDqfVRjFCqw" name="account" type="_wNT3sGlAEe6EUpwF1ZzeBw" association="_xFFIIGo7Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xFFIImo7Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xFFII2o7Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_F7zfYGo8Ee6vDqfVRjFCqw" name="" memberEnd="_F7zfYWo8Ee6vDqfVRjFCqw _F70Gcmo8Ee6vDqfVRjFCqw"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Q8MDoGo8Ee6vDqfVRjFCqw" name="" memberEnd="_Q8MqsGo8Ee6vDqfVRjFCqw _Q8Mqs2o8Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_Q8MqsGo8Ee6vDqfVRjFCqw" name="accountSignInPane" type="_iMtCsGlLEe6JF_hZgeJ_nA" association="_Q8MDoGo8Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Q8MqsWo8Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Q8Mqsmo8Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_i36CUGo8Ee6vDqfVRjFCqw" name="" memberEnd="_i36CUWo8Ee6vDqfVRjFCqw _i36CVGo8Ee6vDqfVRjFCqw">
+      <ownedEnd xmi:id="_i36CUWo8Ee6vDqfVRjFCqw" name="flightFilterPane" type="_lqVAIGlLEe6JF_hZgeJ_nA" association="_i36CUGo8Ee6vDqfVRjFCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i36CUmo8Ee6vDqfVRjFCqw" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i36CU2o8Ee6vDqfVRjFCqw" value="1"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:id="_wBOjgGlAEe6EUpwF1ZzeBw">
       <eAnnotations xmi:id="_wBUDEGlAEe6EUpwF1ZzeBw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
@@ -2511,22 +2564,12 @@ leave using a binary tree</body>
   <UMLLabProfile:Reference xmi:id="_wN4fcGlAEe6EUpwF1ZzeBw" base_Element="_wN34YWlAEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:Reference xmi:id="_KuhFgGlBEe6EUpwF1ZzeBw" base_Element="_KugecGlBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_KukI0WlBEe6EUpwF1ZzeBw" base_Element="_KukI0GlBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_KukI02lBEe6EUpwF1ZzeBw" base_Element="_KukI0mlBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_Kukv4GlBEe6EUpwF1ZzeBw" base_Element="_KukI1GlBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_Kukv4mlBEe6EUpwF1ZzeBw" base_Element="_Kukv4WlBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:Generics xmi:id="_Kukv5GlBEe6EUpwF1ZzeBw" genericsValue="String" base_Element="_Kukv42lBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_KulW8GlBEe6EUpwF1ZzeBw" base_Element="_Kukv42lBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:Reference xmi:id="_KunMImlBEe6EUpwF1ZzeBw" base_Element="_KunMIGlBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:Reference xmi:id="_KunzMGlBEe6EUpwF1ZzeBw" base_Element="_KunMI2lBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:Reference xmi:id="_KunzM2lBEe6EUpwF1ZzeBw" base_Element="_KunzMWlBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:Reference xmi:id="_KunzNmlBEe6EUpwF1ZzeBw" base_Element="_KunzNGlBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:Array xmi:id="_LkwxA2lBEe6EUpwF1ZzeBw" dimensions="1" base_Element="_LkwxAGlBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_Lk8-QmlBEe6EUpwF1ZzeBw" base_Element="_Lk8-QWlBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:LegacyStyledElement xmi:id="_Lk9lUGlBEe6EUpwF1ZzeBw" base_Element="_Lk8-Q2lBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:Generics xmi:id="_Lk9lUmlBEe6EUpwF1ZzeBw" genericsValue="Flight" base_Element="_Lk9lUWlBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:LegacyStyledElement xmi:id="_Lk9lU2lBEe6EUpwF1ZzeBw" base_Element="_Lk9lUWlBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:Reference xmi:id="_Lk_agGlBEe6EUpwF1ZzeBw" base_Element="_Lk-zcGlBEe6EUpwF1ZzeBw"/>
-  <UMLLabProfile:Reference xmi:id="_Lk_ag2lBEe6EUpwF1ZzeBw" base_Element="_Lk_agWlBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:Reference xmi:id="_LlABkGlBEe6EUpwF1ZzeBw" base_Element="_Lk_ahGlBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:Reference xmi:id="_m02eEGlBEe6EUpwF1ZzeBw" base_Element="_m013AGlBEe6EUpwF1ZzeBw"/>
   <UMLLabProfile:Generics xmi:id="_m04TQGlBEe6EUpwF1ZzeBw" genericsValue="Passenger" base_Element="_m03sMmlBEe6EUpwF1ZzeBw"/>
