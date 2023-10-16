@@ -30,7 +30,7 @@ public class FlightFilterListScrollPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME
 				// use listScrollPaneTest.getSelectedValue();
-				((CardLayout) contentPane.getLayout()).show(contentPane, "TRAVELLER_INFO");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "TRAVELER_INFO");
 			}
 		});
 		scrollPane.setColumnHeaderView(btnHeader);

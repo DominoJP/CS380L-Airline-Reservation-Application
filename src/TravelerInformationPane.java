@@ -14,7 +14,7 @@ import java.awt.Font;
    @verison
 */
 
-public class TravellerInformationPane extends JPanel {
+public class TravelerInformationPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textName;
@@ -26,7 +26,7 @@ public class TravellerInformationPane extends JPanel {
 			"Undisclosed (U)"
 	};
 
-	public TravellerInformationPane(JPanel contentPane) {
+	public TravelerInformationPane(JPanel contentPane) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{244, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
