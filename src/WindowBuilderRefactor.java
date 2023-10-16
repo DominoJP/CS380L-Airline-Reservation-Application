@@ -50,7 +50,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(SelectionPane, "SELECT");
 		contentPane.add(FilterPane, "FILTER");
 		contentPane.add(FilterListPane, "FILTER_LIST");
-		contentPane.add(TravellerInfoPane, "TRAVELLER_INFO");		
+		contentPane.add(TravellerInfoPane, "TRAVELLER_INFO");
 	}
 
 }

@@ -35,7 +35,9 @@ public class FlightFilterListScrollPane extends JPanel {
 		});
 		scrollPane.setColumnHeaderView(btnHeader);
 		
-		// ADD CASE FOR NO FLIGHTS FOUND: RETOOL "RESERVE SELECTED FLIGHT" BUTTON INTO "GO BACK BUTTON"
+		// SHOW: FLIGHT IDENTIFIER, PLACE OF DEPARTURE/ARRIVAL, TIME OF DEPARTURE/ARRIVAL, DURATION, CLASS COSt
+		// (DISREGARD) ADD CASE FOR NO FLIGHTS FOUND: RETOOL "RESERVE SELECTED FLIGHT" BUTTON INTO "GO BACK BUTTON"
+			// NEW DIRECTION: display "No Matches" message on previous JPanel (FlightFilterPane) and prompt to "Please try different search options."
 		String[] testArray = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s"};
 		JList listFlights = new JList(testArray);
 		scrollPane.setViewportView(listFlights);
