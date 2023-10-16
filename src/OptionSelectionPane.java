@@ -30,7 +30,6 @@ public class OptionSelectionPane extends JPanel {
 		String [] optionsArray = {
 				"Reserve",
 				"Review",
-				"Cancel",
 		};
 		JComboBox comboBox = new JComboBox(optionsArray);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
