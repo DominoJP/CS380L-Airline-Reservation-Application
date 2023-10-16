@@ -182,7 +182,7 @@ public class FlightFilterPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME
 				// REQUIRES FILTER METHOD
-				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTERLIST");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 			}
 		});
 		GridBagConstraints gbc_btnSearch = new GridBagConstraints();

@@ -1,8 +1,12 @@
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
    JPanel in BorderLayout with JScrollPane, allowing use of JList to display and select flights.
@@ -10,11 +14,11 @@ import javax.swing.JButton;
    @verison
 */
 
-public class FilterListScrollPane extends JPanel {
+public class FlightFilterListScrollPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public FilterListScrollPane(JPanel contentPane) {
+	public FlightFilterListScrollPane(JPanel contentPane) {
 		setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -22,6 +26,13 @@ public class FilterListScrollPane extends JPanel {
 		
 		
 		JButton btnHeader = new JButton("Reserve Selected Flight");
+		btnHeader.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// FIXME
+				// use listScrollPaneTest.getSelectedValue();
+				((CardLayout) contentPane.getLayout()).show(contentPane, "TRAVELLER_INFO");
+			}
+		});
 		scrollPane.setColumnHeaderView(btnHeader);
 		
 		// ADD CASE FOR NO FLIGHTS FOUND: RETOOL "RESERVE SELECTED FLIGHT" BUTTON INTO "GO BACK BUTTON"
@@ -30,7 +41,6 @@ public class FilterListScrollPane extends JPanel {
 		scrollPane.setViewportView(listFlights);
 		listFlights.setSelectedIndex(0);
 		// returns Obj
-		// listScrollPaneTest.getSelectedValue();
 				
 	}
 

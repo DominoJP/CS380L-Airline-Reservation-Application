@@ -6,7 +6,7 @@ import java.awt.CardLayout;
 
 /**
    Swing JFrame in which initial JPanel is instantiated.
-   Instantiates and adds JPanels to CardLayout, allowing switching between.
+   Instantiates and adds JPanels to CardLayout, allowing switching between JPanels.
    @author
    @version
  */
@@ -43,13 +43,14 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane);
-		FilterListScrollPane FilterListPane = new FilterListScrollPane(contentPane);
+		FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
+		TravellerInformationPane TravellerInfoPane = new TravellerInformationPane(contentPane);
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
 		contentPane.add(SelectionPane, "SELECT");
 		contentPane.add(FilterPane, "FILTER");
-		contentPane.add(FilterListPane, "FILTERLIST");
-			
+		contentPane.add(FilterListPane, "FILTER_LIST");
+		contentPane.add(TravellerInfoPane, "TRAVELLER_INFO");		
 	}
 
 }
