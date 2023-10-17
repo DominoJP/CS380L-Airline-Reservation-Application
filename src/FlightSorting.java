@@ -5,10 +5,15 @@ public class FlightSorting{
 	
 	private int totalFlightAvailable;
 	private List<Flight> flights;
-	
+	private Airport root1;
 	
 	public FlightSorting() {
-		setFlights(new ArrayList<>());
+		root1 = null;
+		flights = null;
+	}
+	
+	public FlightSorting(Flight first) {
+		root1 = new Airport(first);
 	}
 
 
@@ -32,16 +37,15 @@ public class FlightSorting{
 	}
 
 	public void addFlight(Flight flight) {
-		flights.add(flight);
-		totalFlightAvailable++;
+		root1.addFlight(flight);
 	}
 	
-	public void sortFlights() {
-		//Implement sorting 
-		
-		
-		
-		
+	public void sortFlights(String origin, String destination) {
+		 Airport curr = root1;
+		 curr = curr.search(origin);
+		 AirportFlights root2 = curr.findFlights(destination);
+		 this.setFlights(root2.getFlights());
+		 this.setTotalFlightAvailable(root2.getFlights().size());
 	}
 	
 	public String[] displayAvaiableSeating(Flight f) {

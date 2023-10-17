@@ -117,6 +117,10 @@ public class AirportFlights {
 		return times;
 	}
 	
+	public ArrayList<Flight> getFlights(){
+		return timeDeparture;
+	}
+	
 	/**
 	 * the search method searches through the binary tree for the list of flights
 	 * an airport possesses that heads toward a specific destination

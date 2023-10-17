@@ -48,14 +48,13 @@ public class Airport {
 	 * @param f
 	 */
 	
-	public Airport(String d, Flight f) {
-		this.origin = d;
-		this.name = findAirport(d);
+	public Airport(Flight f) {
+		this.origin = f.getcityDeparture();
+		this.name = findAirport(this.origin);
 		child1 = null;
 		child2 = null;
 		flights = null;
 	}
-	
 	/**
 	 * the findAirport method searches through the list of airports that have been saved and returns the
 	 * name of an airport depending on what city was given
@@ -83,13 +82,15 @@ public class Airport {
 	
 	public void addFlight(Flight f) {
 		
-		if(this.getOrigin() == null) {
+		if(this.origin == null) {
 			if(this.flights == null) {
 				this.flights = new AirportFlights(f.getcityDeparture());
+				this.origin = f.getcityDeparture();
+				this.name = findAirport(this.origin);
 			}
 			
 			flights.addFlight(f);;
-		}else if(this.getOrigin() == f.getcityArrival()) {
+		}else if(this.origin == f.getcityArrival()) {
 			if(this.flights == null) {
 				this.flights = new AirportFlights(f.getcityDeparture());
 			}
@@ -156,5 +157,9 @@ public class Airport {
 		}
 		
 		return curr;
+	}
+	
+	public AirportFlights findFlights(String destination) {
+		return flights.search(destination);
 	}
 }
