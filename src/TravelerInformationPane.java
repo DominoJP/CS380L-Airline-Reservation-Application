@@ -10,7 +10,7 @@ import java.awt.Font;
 import javax.swing.JSeparator;
 
 /**
-   //FIXME: JPanel for Passenger Details, based off of aa.com.
+   //FIXME: JPanel for Passenger Details, based on aa.com.
    @author
    @verison
 */
@@ -25,6 +25,10 @@ public class TravelerInformationPane extends JPanel {
 			"Female (F)",
 			"Unspecified (X)",
 			"Undisclosed (U)"
+	};
+	//FIXME: populate from .txt
+	String[] CountryArray = {
+			
 	};
 
 	public TravelerInformationPane(JPanel contentPane) {
@@ -109,6 +113,14 @@ public class TravelerInformationPane extends JPanel {
 		gbc_lblDoB.gridy = 6;
 		add(lblDoB, gbc_lblDoB);
 		
+		JLabel lblCountry = new JLabel(" Country or Region of Residence");
+		GridBagConstraints gbc_lblCountry = new GridBagConstraints();
+		gbc_lblCountry.anchor = GridBagConstraints.WEST;
+		gbc_lblCountry.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCountry.gridx = 2;
+		gbc_lblCountry.gridy = 6;
+		add(lblCountry, gbc_lblCountry);
+		
 		textDoB = new JTextField();
 		GridBagConstraints gbc_textDoB = new GridBagConstraints();
 		gbc_textDoB.insets = new Insets(0, 0, 5, 5);
@@ -117,6 +129,14 @@ public class TravelerInformationPane extends JPanel {
 		gbc_textDoB.gridy = 7;
 		add(textDoB, gbc_textDoB);
 		textDoB.setColumns(10);
+		
+		JComboBox comboBoxCountry = new JComboBox();
+		GridBagConstraints gbc_comboBoxCountry = new GridBagConstraints();
+		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxCountry.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxCountry.gridx = 2;
+		gbc_comboBoxCountry.gridy = 7;
+		add(comboBoxCountry, gbc_comboBoxCountry);
 		
 		JLabel lblDoBInvalidDateFormat = new JLabel("Invalid date format.");
 		lblDoBInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
