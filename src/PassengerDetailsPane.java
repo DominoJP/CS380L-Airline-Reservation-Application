@@ -5,11 +5,14 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 /**
    JPanel for Passenger Details, based on aa.com.
@@ -39,7 +42,7 @@ public class PassengerDetailsPane extends JPanel {
 			"California"
 		};
 
-	public PassengerDetailsPane(JPanel contentPane, int passengerIndex) {
+	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, String nextPassengerDetailsPane) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{168, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -162,7 +165,7 @@ public class PassengerDetailsPane extends JPanel {
 		gbc_lblState.gridx = 2;
 		gbc_lblState.gridy = 10;
 		add(lblState, gbc_lblState);
-		// marker for lblState
+		// lblState
 		lblState.setVisible(false);
 		
 		JComboBox comboBoxCountry = new JComboBox(countryArray);
@@ -188,8 +191,21 @@ public class PassengerDetailsPane extends JPanel {
 		gbc_comboBoxState.gridx = 2;
 		gbc_comboBoxState.gridy = 11;
 		add(comboBoxState, gbc_comboBoxState);
-		// marker for comboBoxState
+		// comboBoxState
 		comboBoxState.setVisible(false);
+		
+		JButton btnContinue = new JButton("Continue");
+		btnContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// FIXME: LOGIC TO KEEP COUNT OF PASSENGERS
+				((CardLayout) contentPane.getLayout()).show(contentPane, nextPassengerDetailsPane);
+			}
+		});
+		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
+		gbc_btnContinue.insets = new Insets(0, 0, 5, 5);
+		gbc_btnContinue.gridx = 2;
+		gbc_btnContinue.gridy = 12;
+		add(btnContinue, gbc_btnContinue);
 		
 	}
 
