@@ -8,18 +8,21 @@ import javax.swing.JComboBox;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JSeparator;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
-   //FIXME: JPanel for Passenger Details, based on aa.com.
+   JPanel for Passenger Details, based on aa.com.
    @author
    @verison
 */
 
-public class TravelerInformationPane extends JPanel {
+public class PassengerDetailsPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textName;
 	private JTextField textDoB;
+	private JComboBox comboBoxState;
 	String[] DepartmentofStateGenderMarkerArray = {
 			"Male (M)",
 			"Female (F)",
@@ -27,20 +30,24 @@ public class TravelerInformationPane extends JPanel {
 			"Undisclosed (U)"
 	};
 	//FIXME: populate from .txt
-	String[] CountryArray = {
-			
+	String[] countryArray = {
+		"Afghanistan",
+		"United States"
 	};
+	//FIXME: populate from .txt
+	String[] stateArray = {
+			"California"
+		};
 
-	public TravelerInformationPane(JPanel contentPane) {
+	public PassengerDetailsPane(JPanel contentPane, int passengerIndex) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{244, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{168, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		//FIXME: lblPassengerNumber.setText("");
-		JLabel lblPassengerNumber = new JLabel(" Passenger 1");
+		JLabel lblPassengerNumber = new JLabel(" Passenger " + passengerIndex);
 		GridBagConstraints gbc_lblPassengerNumber = new GridBagConstraints();
 		gbc_lblPassengerNumber.anchor = GridBagConstraints.WEST;
 		gbc_lblPassengerNumber.insets = new Insets(0, 0, 5, 5);
@@ -113,14 +120,6 @@ public class TravelerInformationPane extends JPanel {
 		gbc_lblDoB.gridy = 6;
 		add(lblDoB, gbc_lblDoB);
 		
-		JLabel lblCountry = new JLabel(" Country or Region of Residence");
-		GridBagConstraints gbc_lblCountry = new GridBagConstraints();
-		gbc_lblCountry.anchor = GridBagConstraints.WEST;
-		gbc_lblCountry.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCountry.gridx = 2;
-		gbc_lblCountry.gridy = 6;
-		add(lblCountry, gbc_lblCountry);
-		
 		textDoB = new JTextField();
 		GridBagConstraints gbc_textDoB = new GridBagConstraints();
 		gbc_textDoB.insets = new Insets(0, 0, 5, 5);
@@ -129,14 +128,6 @@ public class TravelerInformationPane extends JPanel {
 		gbc_textDoB.gridy = 7;
 		add(textDoB, gbc_textDoB);
 		textDoB.setColumns(10);
-		
-		JComboBox comboBoxCountry = new JComboBox();
-		GridBagConstraints gbc_comboBoxCountry = new GridBagConstraints();
-		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxCountry.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxCountry.gridx = 2;
-		gbc_comboBoxCountry.gridy = 7;
-		add(comboBoxCountry, gbc_comboBoxCountry);
 		
 		JLabel lblDoBInvalidDateFormat = new JLabel("Invalid date format.");
 		lblDoBInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
@@ -156,6 +147,49 @@ public class TravelerInformationPane extends JPanel {
 		gbc_separatorDoB.gridy = 9;
 		add(separatorDoB, gbc_separatorDoB);
 		
+		JLabel lblCountry = new JLabel(" Country or Region of Residence");
+		GridBagConstraints gbc_lblCountry = new GridBagConstraints();
+		gbc_lblCountry.anchor = GridBagConstraints.WEST;
+		gbc_lblCountry.insets = new Insets(0, 0, 5, 5);
+		gbc_lblCountry.gridx = 0;
+		gbc_lblCountry.gridy = 10;
+		add(lblCountry, gbc_lblCountry);
+		
+		JLabel lblState = new JLabel(" State of Residence");
+		GridBagConstraints gbc_lblState = new GridBagConstraints();
+		gbc_lblState.anchor = GridBagConstraints.WEST;
+		gbc_lblState.insets = new Insets(0, 0, 5, 5);
+		gbc_lblState.gridx = 2;
+		gbc_lblState.gridy = 10;
+		add(lblState, gbc_lblState);
+		// marker for lblState
+		lblState.setVisible(false);
+		
+		JComboBox comboBoxCountry = new JComboBox(countryArray);
+		comboBoxCountry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboBoxCountry.getSelectedItem().toString().equals("United States")) {
+					lblState.setVisible(true);
+					comboBoxState.setVisible(true);
+				}
+			}
+		});
+		GridBagConstraints gbc_comboBoxCountry = new GridBagConstraints();
+		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxCountry.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxCountry.gridx = 0;
+		gbc_comboBoxCountry.gridy = 11;
+		add(comboBoxCountry, gbc_comboBoxCountry);
+		
+		comboBoxState = new JComboBox(stateArray);
+		GridBagConstraints gbc_comboBoxState = new GridBagConstraints();
+		gbc_comboBoxState.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxState.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxState.gridx = 2;
+		gbc_comboBoxState.gridy = 11;
+		add(comboBoxState, gbc_comboBoxState);
+		// marker for comboBoxState
+		comboBoxState.setVisible(false);
 		
 	}
 

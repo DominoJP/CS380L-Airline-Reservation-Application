@@ -44,13 +44,13 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane);
 		FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
-		TravelerInformationPane TravelerInfoPane = new TravelerInformationPane(contentPane);
+		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1);
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
 		contentPane.add(SelectionPane, "SELECT");
 		contentPane.add(FilterPane, "FILTER");
 		contentPane.add(FilterListPane, "FILTER_LIST");
-		contentPane.add(TravelerInfoPane, "TRAVELER_INFO");
+		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 	}
 
 }
