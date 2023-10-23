@@ -1,0 +1,18 @@
+Aircraft Type: Boeing 737-800
+
+General Information:
+- Total Seats: 90
+- Seat Configuration: 3x3
+- Maximum Range: 3,115 miles
+
+Seating Details:
+- Economy Class: 50 seats
+- Business Class: 24 seats
+- First Class: 16 seats
+
+Amenities:
+- In-Flight Entertainment: Yes
+- Wi-Fi: No
+- Power Outlets: Yes (Business and First Class)
+
+(tie  to reservation?)

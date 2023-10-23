@@ -1,0 +1,9 @@
+Flight Number: AA101
+Date: 2023-9-15
+Departure Airport: JFK (New York)
+Arrival Airport: LAX (Los Angeles)
+
+Available Seats:
+Economy Class: 45 seats available
+Business Class: 12 seats available
+First Class: 3 seats available

@@ -1,0 +1,27 @@
+Generated file should look like this?
+Passenger Manifest
+Flight Number: AA101
+Date: 2023-9-15
+Departure Airport: JFK (New York)
+Arrival Airport: LAX (Los Angeles)
+
+Passenger Manifest:
+1. Name: John Smith
+   Passport: US123456
+   Seat: 1A
+
+2. Name: Sarah Johnson
+   Passport: US789012
+   Seat: 1B
+
+3. Name: David Lee
+   Passport: CA456789
+   Seat: 2A
+
+4. Name: Maria Rodriguez
+   Passport: MX987654
+   Seat: 2B
+
+5. Name: James White
+   Passport: GB345678
+   Seat: 3A
