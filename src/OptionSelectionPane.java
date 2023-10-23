@@ -30,6 +30,7 @@ public class OptionSelectionPane extends JPanel {
 		String [] optionsArray = {
 				"Reserve",
 				"Review",
+				"Cancel",
 		};
 		JComboBox comboBox = new JComboBox(optionsArray);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
@@ -46,6 +47,14 @@ public class OptionSelectionPane extends JPanel {
 					((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
 				}
 			}
+				else if (comboBox.getSelectedItem().equals("Review")) {
+					((CardLayout) contentPane.getLayout()).show(contentPane, "Review");
+				}
+				
+				if (comboBox.getSelectedItem().equals("Cancel")) {
+					((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
+			}
+		}
 		});
 		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
 		gbc_btnContinue.insets = new Insets(0, 0, 5, 5);

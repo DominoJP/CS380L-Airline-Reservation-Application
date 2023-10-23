@@ -34,6 +34,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane = (JPanel) new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -48,6 +49,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		// FIXME, add up until 9
 		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL");
 		TripContactPane TripContactPane =  new TripContactPane(contentPane);
+		TravellerInformationPane TravellerInfoPane = new TravellerInformationPane(contentPane);
+		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
 		
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
@@ -59,6 +62,15 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
+
+		contentPane.add(SignInPane, "SIGNIN");
+		contentPane.add(SignUpPane, "SIGNUP");
+		contentPane.add(SelectionPane, "SELECT");
+		contentPane.add(FilterPane, "FILTER");
+		contentPane.add(FilterListPane, "FILTER_LIST");
+		contentPane.add(TravellerInfoPane, "TRAVELLER_INFO");		
+		contentPane.add(ReservationCancellationPane, "Cancel");
+		
 	}
 
 }

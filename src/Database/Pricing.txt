@@ -1,0 +1,31 @@
+Airline: United Airlines
+
+Fare Class: Economy
+  - Fare Description: Standard Economy Fare
+  - Base Fare: $250
+  - Taxes and Fees: $50
+  - Total Fare: $300
+  - Baggage Allowance: 1 checked bag (23 kg), 1 carry-on (7 kg)
+  - Change Fee: $50
+  - Cancellation Fee: $100
+  - Refundable: No
+
+Fare Class: Business
+  - Fare Description: Business Class Fare
+  - Base Fare: $800
+  - Taxes and Fees: $100
+  - Total Fare: $900
+  - Baggage Allowance: 2 checked bags (32 kg each), 2 carry-ons (10 kg each)
+  - Change Fee: $75
+  - Cancellation Fee: $150
+  - Refundable: Yes
+
+Fare Class: First Class
+  - Fare Description: First Class Fare
+  - Base Fare: $1200
+  - Taxes and Fees: $150
+  - Total Fare: $1350
+  - Baggage Allowance: 3 checked bags (32 kg each), 2 carry-ons (10 kg each)
+  - Change Fee: $100
+  - Cancellation Fee: $200
+  - Refundable: No
