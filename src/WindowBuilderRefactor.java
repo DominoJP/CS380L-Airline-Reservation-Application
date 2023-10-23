@@ -44,9 +44,10 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane);
 		FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
-		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, "PASSENGER2_DETAILS");
+		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS");
 		// FIXME
-		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, "NULL");
+		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL");
+		TripContactPane TripContactPane =  new TripContactPane(contentPane);
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
 		contentPane.add(SelectionPane, "SELECT");
@@ -54,6 +55,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(FilterListPane, "FILTER_LIST");
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
+		contentPane.add(TripContactPane, "TRIP_CONTACT");
 	}
 
 }

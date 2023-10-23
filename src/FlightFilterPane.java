@@ -33,6 +33,7 @@ public class FlightFilterPane extends JPanel {
 	private JLabel lblReturn;
 	private JLabel lblDepartInvalidDateFormat;
 	private JLabel lblReturnInvalidDateFormat;
+	private JComboBox comboBoxPassengerAmount;
 
 	public FlightFilterPane(JPanel contentPane) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -169,7 +170,7 @@ public class FlightFilterPane extends JPanel {
 		Integer[] passengersAmountArray = {
 				1, 2, 3, 4, 5, 6, 7, 8, 9
 		};
-		JComboBox comboBoxPassengerAmount = new JComboBox(passengersAmountArray);
+		comboBoxPassengerAmount = new JComboBox(passengersAmountArray);
 		GridBagConstraints gbc_comboBoxPassengerAmount = new GridBagConstraints();
 		gbc_comboBoxPassengerAmount.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxPassengerAmount.fill = GridBagConstraints.HORIZONTAL;
@@ -191,6 +192,11 @@ public class FlightFilterPane extends JPanel {
 		gbc_btnSearch.gridy = 7;
 		add(btnSearch, gbc_btnSearch);
 		
+	}
+	
+	public int getPassengerAmount() {
+		// FIXME: temp solution
+		return Integer.parseInt(comboBoxPassengerAmount.getSelectedItem().toString());
 	}
 
 }
