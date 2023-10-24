@@ -15,8 +15,8 @@ import java.awt.GridBagLayout;
 /**
    JPanel for account sign up.
    Allows account creation with provided name, email, and password.
-   @author
-   @verison
+   @author Jevy Miranda
+   @version 1.0
 */
 
 public class AccountSignUpPane extends JPanel {

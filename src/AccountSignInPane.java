@@ -20,8 +20,8 @@ import javax.swing.JTextField;
 /**
    JPanel for account sign in.
    Login credentials (email and password) accepted as text inputs and authenticated on button press.
-   @author
-   @verison
+   @author Jevy Miranda
+   @version 1.0
  */
 
 public class AccountSignInPane extends JPanel {
@@ -87,21 +87,13 @@ public class AccountSignInPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME
 				// TEMP
-				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
-				/*
-				String inputEmail = txtEmail.getText();
-				char[] inputPassword = passwordField.getPassword();
-				// Arrays inherit equals from Object; .equals() will not work
-				if (inputEmail.equals(test.getEmail()) && Arrays.equals(inputPassword, test.getPassword())) {
-					// cl.getLayout()).show(contentPane, "SELECTION");
+				if (AccountSignIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
-					// cl.next(contentPane);
-				}
-				else {
+				} else {
 					lblWrong.setVisible(true);
 					passwordField.setText("");
 				}
-				*/
+				
 			}
 		});
 		GridBagConstraints gbc_btnLogInPane = new GridBagConstraints();
