@@ -11,8 +11,8 @@ import java.awt.event.ActionEvent;
 
 /**
    JPanel that allows navigation between Reserving, Reviewing, or Canceling flights.
-   @author
-   @verison
+   @author Jevy Miranda
+   @version 1.1
 */
 
 public class OptionSelectionPane extends JPanel {

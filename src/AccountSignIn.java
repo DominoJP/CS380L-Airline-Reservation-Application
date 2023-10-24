@@ -3,6 +3,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+   Class with static method for validation of login credentials.
+  @author Jevy Miranda
+  @version 1.0
+*/
+
 public class AccountSignIn {
 	
 	public static boolean validateCredentials(String email, char[] password) {

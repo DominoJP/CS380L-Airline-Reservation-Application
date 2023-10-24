@@ -18,8 +18,8 @@ import javax.swing.JButton;
 /**
    JPanel accepting user input (round trip/oneway, airport/city of departure/arrival, date of departure and/or arrival, number of passengers)
    as criteria for filtering flights.
-   @author
-   @verison
+   @author Jevy Miranda
+   @version 1.0
 */
 
 public class FlightFilterPane extends JPanel {

@@ -7,8 +7,8 @@ import java.awt.CardLayout;
 /**
    Swing JFrame in which initial JPanel is instantiated.
    Instantiates and adds JPanels to CardLayout, allowing switching between JPanels.
-   @author
-   @version
+   @author Jevy Miranda, Joshua Planovsky
+   @version 1.0
  */
 
 public class WindowBuilderRefactor extends javax.swing.JFrame {

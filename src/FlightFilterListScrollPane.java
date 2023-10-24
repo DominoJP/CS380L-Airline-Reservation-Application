@@ -10,8 +10,8 @@ import java.awt.event.ActionEvent;
 
 /**
    JPanel in BorderLayout with JScrollPane, allowing use of JList to display and select flights.
-   @author
-   @verison
+   @author Jevy Miranda
+   @version 1.0
 */
 
 public class FlightFilterListScrollPane extends JPanel {

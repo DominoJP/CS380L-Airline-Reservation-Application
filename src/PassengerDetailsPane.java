@@ -16,8 +16,8 @@ import javax.swing.JButton;
 
 /**
    JPanel for Passenger Details, based on aa.com.
-   @author
-   @verison
+   @author Jevy Miranda
+   @version 1.0
 */
 
 public class PassengerDetailsPane extends JPanel {

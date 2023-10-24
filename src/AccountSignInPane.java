@@ -20,8 +20,8 @@ import javax.swing.JTextField;
 /**
    JPanel for account sign in.
    Login credentials (email and password) accepted as text inputs and authenticated on button press.
-   @author
-   @verison
+   @author Jevy Miranda
+   @version 1.0
  */
 
 public class AccountSignInPane extends JPanel {
