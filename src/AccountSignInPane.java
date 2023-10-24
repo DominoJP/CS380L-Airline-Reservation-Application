@@ -87,7 +87,9 @@ public class AccountSignInPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME
 				// TEMP
-				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+				if (AccountSignIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
+					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+				}
 				/*
 				String inputEmail = txtEmail.getText();
 				char[] inputPassword = passwordField.getPassword();

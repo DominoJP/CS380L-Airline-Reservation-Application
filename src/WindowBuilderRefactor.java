@@ -62,12 +62,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
-
-		contentPane.add(SignInPane, "SIGNIN");
-		contentPane.add(SignUpPane, "SIGNUP");
-		contentPane.add(SelectionPane, "SELECT");
-		contentPane.add(FilterPane, "FILTER");
-		contentPane.add(FilterListPane, "FILTER_LIST");		
+	
 		// FIXME: temp. commented out
 		// contentPane.add(ReservationCancellationPane, "Cancel");
 		

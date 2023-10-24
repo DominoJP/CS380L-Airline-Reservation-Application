@@ -46,7 +46,6 @@ public class OptionSelectionPane extends JPanel {
 				if (comboBox.getSelectedItem().equals("Reserve")) {
 					((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
 				}
-			}
 				else if (comboBox.getSelectedItem().equals("Review")) {
 					((CardLayout) contentPane.getLayout()).show(contentPane, "Review");
 				}
