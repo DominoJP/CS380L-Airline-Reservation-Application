@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Reservation {
 	private Account customer; //whoever has the account and is making the reservation
 	private Flight flight;
-	private String[] passengers; //total list of passengers in case if the reservation includes more than just the customer
+	private ArrayList<String> passengers; //total list of passengers in case if the reservation includes more than just the customer
 	private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
 	private double totalPrice; //a double that keeps track of the total cost of this reservation since multiple tickets may be ordered
 	
@@ -48,12 +48,12 @@ public class Reservation {
 		 numPassengers = Integer.parseInt(scan.nextLine());
 		 System.out.println("");
 		 
-		 this.passengers = new String[numPassengers];
-		 this.passengers[0] = this.customer.getName();
+		 this.passengers = new ArrayList<String>();
+		 this.passengers.add(this.customer.getName());
 		 
 		 for(int i = 1; i <= numPassengers; i++) {
 			 System.out.print("What is the name of this passenger: ");
-			 passengers[i] = scan.nextLine();
+			 passengers.add(scan.nextLine());
 			 System.out.println("");
 		 }
 		 
@@ -67,20 +67,20 @@ public class Reservation {
 					 System.out.println("Sorry but that is not an available seat");
 					 i--;
 				 }else {
-					 this.flight.setpassenger(seat, Integer.toString(this.customer.getAccountNumber()), this.passengers[i-1]);
+					 this.flight.setpassenger(seat, Integer.toString(this.customer.getAccountNumber()), this.passengers.get(i-1));
 					 seatNumbers[i-1] = seat;
 					 
 				 }
 					 
 			 }else {
-				 System.out.print("What seat would " + this.passengers[i-1] + " like: ");
+				 System.out.print("What seat would " + this.passengers.get(i-1) + " like: ");
 				 seat = Integer.parseInt(scan.nextLine());
 				 System.out.println("");
 				 if(seat >= this.flight.gettotalpassengercapacity() || this.flight.getPassenger(seat) != null) {
 					 System.out.println("Sorry but that is not an available seat");
 					 i--;
 				 }else {
-					 this.flight.setpassenger(seat, null, this.passengers[i-1]);
+					 this.flight.setpassenger(seat, null, this.passengers.get(i-1));
 				 }
 			 }
 		 }
@@ -114,7 +114,11 @@ public class Reservation {
 	 
 	 public void setFlight(Flight f) {
 		 this.flight = f;
-		 this.totalPrice = this.setTotalPrice(this.passengers.length);
+		 this.totalPrice = this.setTotalPrice(this.passengers.size());
+	 }
+	 
+	 public void addPassenger(String p) {
+		 
 	 }
 	 
 	 /**
@@ -125,9 +129,9 @@ public class Reservation {
 	 public void removePassenger(String p) {
 		 boolean exist = false;
 		 
-		 for(int i = 0; i < this.passengers.length; i++) {
-			 if(this.passengers[i] == p) {
-				 this.passengers[i] = null;
+		 for(int i = 0; i < this.passengers.size(); i++) {
+			 if(this.passengers.get(i) == p) {
+				 this.passengers.remove(i);
 				 this.flight.setpassenger(this.seatNumbers[i], null, null);
 				 this.totalPrice = this.totalPrice - this.flight.getpricing();
 				 exist = true;
@@ -150,11 +154,11 @@ public class Reservation {
 		 System.out.println("Date and time of departure: " + this.flight.getdateDeparture()
 				 + " " + this.flight.gettimeDeparture());
 		 
-		 System.out.println("Number of Passengers(including customer): " + this.passengers.length);
+		 System.out.println("Number of Passengers(including customer): " + this.passengers.size());
 		 
 		 System.out.println("List of Passengers: \n");
-		 for(int i = 0; i < this.passengers.length; i++) {
-			 System.out.println("\t" + this.passengers[i]);
+		 for(int i = 0; i < this.passengers.size(); i++) {
+			 System.out.println("\t" + this.passengers.get(i));
 		 }
 		 
 		 System.out.println("Total cost of reservation: " + this.totalPrice);

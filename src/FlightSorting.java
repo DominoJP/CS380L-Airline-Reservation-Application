@@ -58,5 +58,14 @@ public class FlightSorting{
 		
 		return passengers;
 	}
+	
+	public Flight findFlight(String date, String time) {
+		for(int i = 0; i < flights.size(); i++) {
+			if(flights.get(i).getdateDeparture() == date && flights.get(i).gettimeDeparture() == time)
+				return flights.get(i);
+		}
+		
+		return null;
+	}
 }
 

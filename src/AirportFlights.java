@@ -43,21 +43,17 @@ public class AirportFlights {
 	 */
 	
 	public void addFlight(Flight f) {
-		Flight curr = f;
-		Flight next = null;
 		if(this.destination == f.getcityArrival()) {
 			if(this.timeDeparture == null) {
 				this.timeDeparture.add(f);
 			}else {
 				for(int i = 0; i < this.timeDeparture.size(); i++){
-					if(curr.gettimeDeparture().compareTo(this.timeDeparture.get(i).gettimeDeparture()) >= 0) {
-						next = this.timeDeparture.get(i);
-						this.timeDeparture.set(i, curr);
-						curr = next;
+					if(f.getdateDeparture().compareTo(this.timeDeparture.get(i).getdateDeparture()) >= 0){
+						if(f.gettimeDeparture().compareTo(this.timeDeparture.get(i).gettimeDeparture()) >= 0) {
+							this.timeDeparture.add(i, f);
+						}
 					}
 				}
-				
-				this.timeDeparture.add(curr);
 			}
 		}else {
 			AirportFlights newChild = new AirportFlights(f.getcityArrival());
