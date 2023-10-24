@@ -28,7 +28,6 @@ public class AccountSignIn {
                 	}
                 }
                 line = reader.readLine();
-                System.out.println(line);
             }
             reader.close();
             return false;
