@@ -43,16 +43,18 @@ public class OptionSelectionPane extends JPanel {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (comboBox.getSelectedItem().equals("Reserve")) {
-					((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
+				String selection = comboBox.getSelectedItem().toString();
+				switch (selection) {
+					case "Reserve":
+						((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
+						break;
+					case "Review":
+						((CardLayout) contentPane.getLayout()).show(contentPane, "Review");
+						break;
+					case "Cancel":
+						((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
+						break;
 				}
-				else if (comboBox.getSelectedItem().equals("Review")) {
-					((CardLayout) contentPane.getLayout()).show(contentPane, "Review");
-				}
-				
-				if (comboBox.getSelectedItem().equals("Cancel")) {
-					((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
-			}
 		}
 		});
 		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
