@@ -89,21 +89,11 @@ public class AccountSignInPane extends JPanel {
 				// TEMP
 				if (AccountSignIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
-				}
-				/*
-				String inputEmail = txtEmail.getText();
-				char[] inputPassword = passwordField.getPassword();
-				// Arrays inherit equals from Object; .equals() will not work
-				if (inputEmail.equals(test.getEmail()) && Arrays.equals(inputPassword, test.getPassword())) {
-					// cl.getLayout()).show(contentPane, "SELECTION");
-					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
-					// cl.next(contentPane);
-				}
-				else {
+				} else {
 					lblWrong.setVisible(true);
 					passwordField.setText("");
 				}
-				*/
+				
 			}
 		});
 		GridBagConstraints gbc_btnLogInPane = new GridBagConstraints();
