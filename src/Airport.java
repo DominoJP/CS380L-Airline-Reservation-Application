@@ -12,8 +12,8 @@ public class Airport {
 	private String name;
 	private Airport child1;
 	private Airport child2;
-	private AirportFlights flights;
-	private ArrayList<String> airports;
+	private ArrayList<AirportFlights> destinations;
+	//private ArrayList<String> airports;
 	
 	/**
 	 * a constructor for the Airport class that accepts no input
@@ -24,7 +24,7 @@ public class Airport {
 		this.name = null;
 		child1 = null;
 		child2 = null;
-		flights = null;
+		destinations = null;
 	}
 	
 	/**
@@ -35,10 +35,10 @@ public class Airport {
 	
 	public Airport(String d) {
 		this.origin = d;
-		this.name = findAirport(d);
+		//this.name = findAirport(d);
 		child1 = null;
 		child2 = null;
-		flights = null;
+		destinations = null;
 	}
 	
 	/**
@@ -48,14 +48,15 @@ public class Airport {
 	 * @param f
 	 */
 	
-	public Airport(String d, Flight f) {
-		this.origin = d;
-		this.name = findAirport(d);
+	public Airport(Flight f) {
+		this.origin = f.getcityDeparture();
+		//this.name = findAirport(this.origin);
 		child1 = null;
 		child2 = null;
-		flights = null;
+		AirportFlights flights = new AirportFlights(f);
+		destinations = new ArrayList<AirportFlights>();
+		destinations.add(flights);
 	}
-	
 	/**
 	 * the findAirport method searches through the list of airports that have been saved and returns the
 	 * name of an airport depending on what city was given
@@ -63,16 +64,16 @@ public class Airport {
 	 * @return
 	 */
 	
-	public String findAirport(String o) {
-		String airport = null;
+	//public String findAirport(String o) {
+		//String airport = null;
 		
-		for(int i = 0; i < airports.size(); i++) {
-			if(airports.get(i) == o)
-				airport = airports.get(i);
-		}
+		//for(int i = 0; i < airports.size(); i++) {
+			//if(airports.get(i) == o)
+				//airport = airports.get(i);
+		//}
 		
-		return airport;
-	}
+		//return airport;
+	//}
 	
 	/**
 	 * the addFlights method either adds a new flight into the list of flights for an airport
@@ -82,26 +83,37 @@ public class Airport {
 	 */
 	
 	public void addFlight(Flight f) {
+		AirportFlights flights = new AirportFlights(f.getdateDeparture());
+		flights.addFlight(f);
 		
-		if(this.getOrigin() == null) {
-			if(this.flights == null) {
-				this.flights = new AirportFlights(f.getcityDeparture());
+		if(destinations == null)
+			destinations = new ArrayList<AirportFlights>();
+		
+		if(this.origin == null) {
+			origin = f.getcityDeparture();
+			destinations.add(flights);
+		}else if(this.origin == f.getcityDeparture()) {
+			for(int i = 0; i < destinations.size(); i++) {
+				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) == 0) {
+					destinations.get(i).addFlight(f);
+					return;
+				}
 			}
 			
-			flights.addFlight(f);;
-		}else if(this.getOrigin() == f.getcityArrival()) {
-			if(this.flights == null) {
-				this.flights = new AirportFlights(f.getcityDeparture());
+			for(int i = 0; i < destinations.size(); i++) {
+				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) < 0) {
+					destinations.add(i, flights);
+					return;
+				}else if(i + 1 == destinations.size())
+					destinations.add(flights);
 			}
-			
-			flights.addFlight(f);
 		}else {
 			Airport newChild = new Airport(f.getcityDeparture());
-			newChild.flights = new AirportFlights(f.getcityDeparture());
-			newChild.flights.addFlight(f);
+			newChild.addFlight(f);
 			
 			this.addChild(this, newChild);
 		}
+		
 	}
 	
 	/**
@@ -145,16 +157,32 @@ public class Airport {
 	 * @return
 	 */
 	
-	public Airport search(String o) {
-		Airport curr = this;
+	public AirportFlights search(String destination, String date) {
+		AirportFlights curr = null;
 		
-		while(curr.getOrigin() != o) {
-			if(o.compareTo(curr.getOrigin()) < 0)
-				curr = curr.child1;
+		for(int i = 0; i < destinations.size(); i++) {
+			if(destinations.get(i).getDestination() == destination) {
+				curr = destinations.get(i);
+			}
+		}
+		
+		while(curr.getDate()!= date) {
+			if(curr.getDate().compareTo(date) < 0)
+				curr = curr.getChild1();
 			else
-				curr = curr.child2;
+				curr = curr.getChild2();
 		}
 		
 		return curr;
+		
 	}
+	
+	public Airport getChild1() {
+		return child1;
+	}
+	
+	public Airport getChild2() {
+		return child2;
+	}
+	
 }

@@ -14,9 +14,15 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 import javax.swing.JTextField;
+
+/**
+   JPanel for account sign in.
+   Login credentials (email and password) accepted as text inputs and authenticated on button press.
+   @author
+   @verison
+ */
 
 public class AccountSignInPane extends JPanel {
 

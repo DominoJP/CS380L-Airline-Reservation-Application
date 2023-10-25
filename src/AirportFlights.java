@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 
 public class AirportFlights {
+	private String date;
 	private String destination;
 	private AirportFlights child1;
 	private AirportFlights child2;
@@ -17,9 +18,10 @@ public class AirportFlights {
 	 * null constructor for the AirportFlights class
 	 */
 	public AirportFlights() {
-		this.destination = null;
+		this.date = null;
 		this.child1 = null;
 		this.child2 = null;
+		this.destination = null;
 		this.timeDeparture = null;
 	}
 	
@@ -30,10 +32,20 @@ public class AirportFlights {
 	 */
 	
 	public AirportFlights(String a) {
-		this.destination = a;
+		this.date = a;
 		this.child1 = null;
 		this.child2 = null;
+		this.destination = null;
 		this.timeDeparture = null;
+	}
+	
+	public AirportFlights(Flight f) {
+		this.date = f.getdateDeparture();
+		this.child1 = null;
+		this.child2 = null;
+		this.destination = f.getcityArrival();
+		this.timeDeparture = new ArrayList<Flight>();
+		timeDeparture.add(f);
 	}
 	
 	/**
@@ -43,25 +55,31 @@ public class AirportFlights {
 	 */
 	
 	public void addFlight(Flight f) {
-		Flight curr = f;
-		Flight next = null;
-		if(this.destination == f.getcityArrival()) {
+		if(timeDeparture == null) {
+			if(date == null) {
+				date = f.getdateDeparture();
+				destination = f.getcityArrival();
+			}
+			timeDeparture = new ArrayList<Flight>();
+			timeDeparture.add(f);
+			return;
+		}
+		
+		if(this.date == f.getdateDeparture()) {
 			if(this.timeDeparture == null) {
 				this.timeDeparture.add(f);
 			}else {
 				for(int i = 0; i < this.timeDeparture.size(); i++){
-					if(curr.gettimeDeparture().compareTo(this.timeDeparture.get(i).gettimeDeparture()) >= 0) {
-						next = this.timeDeparture.get(i);
-						this.timeDeparture.set(i, curr);
-						curr = next;
+					if(f.gettimeDeparture().compareTo(timeDeparture.get(i).gettimeDeparture()) <= 0) {
+						timeDeparture.add(i, f);
+						i = timeDeparture.size();
 					}
+					if(i + 1 == timeDeparture.size())
+						timeDeparture.add(f);
 				}
-				
-				this.timeDeparture.add(curr);
 			}
 		}else {
-			AirportFlights newChild = new AirportFlights(f.getcityArrival());
-			newChild.addFlight(f);
+			AirportFlights newChild = new AirportFlights(f);
 			
 			this.addChild(this, newChild);
 		}
@@ -75,7 +93,7 @@ public class AirportFlights {
 	 */
 	
 	public void addChild(AirportFlights curr, AirportFlights n) {
-		if(curr.destination.compareTo(n.destination) > 0) {
+		if(curr.date.compareTo(n.date) > 0) {
 			if(curr.child1 != null) {
 				curr.addChild(curr.child1, n);
 				return;
@@ -97,6 +115,10 @@ public class AirportFlights {
 	 * @return
 	 */
 	
+	public String getDate() {
+		return this.date;
+	}
+	
 	public String getDestination() {
 		return this.destination;
 	}
@@ -117,25 +139,8 @@ public class AirportFlights {
 		return times;
 	}
 	
-	/**
-	 * the search method searches through the binary tree for the list of flights
-	 * an airport possesses that heads toward a specific destination
-	 * @param d
-	 * @return
-	 */
-	
-	public AirportFlights search(String d) {
-		AirportFlights curr = this;
-		
-		while(curr.destination != d) {
-			if(d.compareTo(curr.destination) < 0)
-				curr = curr.child1;
-			else
-				curr = curr.child2;
-		}
-		
-		return curr;
-		
+	public ArrayList<Flight> getFlights(){
+		return timeDeparture;
 	}
 	
 	/**
@@ -160,5 +165,13 @@ public class AirportFlights {
 		}
 		
 		return flight;
+	}
+	
+	public AirportFlights getChild1() {
+		return child1;
+	}
+	
+	public AirportFlights getChild2() {
+		return child2;
 	}
 }

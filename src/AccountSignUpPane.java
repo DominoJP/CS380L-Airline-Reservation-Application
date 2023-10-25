@@ -12,6 +12,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.GridBagLayout;
 
+/**
+   JPanel for account sign up.
+   Allows account creation with provided name, email, and password.
+   @author
+   @verison
+*/
+
 public class AccountSignUpPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
