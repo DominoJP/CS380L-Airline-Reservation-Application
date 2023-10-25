@@ -15,8 +15,26 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	
+
 
 	public static void main(String[] args) {
+		Flight test = new Flight("One Way","LA", "NYC", "24/10/2023", "5:30", 50, 700.0);
+		FlightSorting sort = new FlightSorting(test);
+		Flight test2 = new Flight("One Way","LA", "NYC", "24/10/2023", "7:30", 50, 700.0);
+		sort.addFlight(test2);
+		
+		sort.sortFlights("LA", "NYC", "24/10/2023");
+		
+		Flight found = sort.findFlight("5:30");
+		
+		System.out.println(found.getcityDeparture());
+		
+		found = sort.findFlight("7:30");
+		
+		System.out.println(found.gettimeDeparture());
+		
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
