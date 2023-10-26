@@ -6,6 +6,7 @@ public class FlightSorting{
 	private int totalFlightAvailable;
 	private List<Flight> flights;
 	private Airport root1;
+	private AirportFlights root2;
 	
 	public FlightSorting() {
 		root1 = null;
@@ -46,11 +47,10 @@ public class FlightSorting{
 	}
 	
 	public void sortFlights(String origin, String destination, String date) {
-		 Airport curr = root1;
-		 curr = this.search(origin);
-		 AirportFlights root2 = curr.search(destination, date);
-		 this.setFlights(root2.getFlights());
-		 this.setTotalFlightAvailable(root2.getFlights().size());
+		 Airport curr = search(origin);
+		 root2 = findFlights(origin, destination, date);
+		 flights = root2.getFlights();
+		 totalFlightAvailable = flights.size();
 	}
 	
 	public String[] displayAvaiableSeating(Flight f) {
@@ -65,6 +65,9 @@ public class FlightSorting{
 	}
 	
 	public Flight findFlight(String time) {
+		flights = root2.getFlights();
+		
+		//System.out.println(flights.size());
 		
 		for(int i = 0; i < flights.size(); i++) {
 			if(flights.get(i).gettimeDeparture() == time)
@@ -74,11 +77,13 @@ public class FlightSorting{
 		return null;
 	}
 	
-	public Airport search(String o) {
+	public Airport search(String origin) {
 		Airport curr = root1;
+		//System.out.println(curr.getOrigin());
 		
-		while(curr.getOrigin() != o) {
-			if(o.compareTo(curr.getOrigin()) < 0)
+		while(curr.getOrigin() != origin) {
+			
+			if(origin.compareTo(curr.getOrigin()) < 0)
 				curr = curr.getChild1();
 			else
 				curr = curr.getChild2();
@@ -87,8 +92,8 @@ public class FlightSorting{
 		return curr;
 	}
 	
-	public AirportFlights findFlights(String destination, String date) {
-		return this.search(destination).search(destination, date);
+	public AirportFlights findFlights(String origin, String destination, String date) {
+		return this.search(origin).search(destination, date);
 	}
 }
 

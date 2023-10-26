@@ -34,6 +34,25 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		
 		System.out.println(found.gettimeDeparture());
 		
+		Flight test3 = new Flight("One Way", "LA", "Columbia", "23/10/2023", "5:30", 50, 700.0);
+		sort.addFlight(test3);
+		
+		sort.sortFlights("LA", "Columbia", "23/10/2023");
+		
+		found = sort.findFlight("5:30");
+		
+		System.out.println(found.getdateDeparture());
+		
+		Flight test4 = new Flight("One Way", "Columbia", "LA", "23/10/2023", "5:30", 50, 700.0);
+		sort.addFlight(test4);
+		
+		sort.sortFlights("Columbia", "LA", "23/10/2023");
+		
+		found = sort.findFlight("5:30");
+		
+		System.out.println(found.getcityDeparture());
+		System.out.println(found.getdateDeparture());
+		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

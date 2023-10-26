@@ -83,8 +83,7 @@ public class Airport {
 	 */
 	
 	public void addFlight(Flight f) {
-		AirportFlights flights = new AirportFlights(f.getdateDeparture());
-		flights.addFlight(f);
+		AirportFlights flights = new AirportFlights(f);
 		
 		if(destinations == null)
 			destinations = new ArrayList<AirportFlights>();
@@ -108,8 +107,7 @@ public class Airport {
 					destinations.add(flights);
 			}
 		}else {
-			Airport newChild = new Airport(f.getcityDeparture());
-			newChild.addFlight(f);
+			Airport newChild = new Airport(f);
 			
 			this.addChild(this, newChild);
 		}
@@ -124,6 +122,7 @@ public class Airport {
 	 */
 	
 	public void addChild(Airport curr, Airport n) {
+		
 		if(curr.getOrigin().compareTo(n.getOrigin()) > 0) {
 			if(curr.child1 != null) {
 				curr.addChild(curr.child1, n);
