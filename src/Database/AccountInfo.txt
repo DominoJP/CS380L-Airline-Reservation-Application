@@ -1,0 +1,17 @@
+Account Information:
+
+Account ID: 12345
+Customer ID: 12345
+Username: test1
+Password: test2
+Account Type: Frequent Flyer
+Status: Active
+Miles Earned: 10000
+
+Account ID: 54321
+Customer ID: 54321
+Username: Josh.test
+Password: nopass
+Account Type: Premium
+Status: Active
+Miles Earned: 25000

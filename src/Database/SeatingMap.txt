@@ -1,0 +1,10 @@
+Aircraft Type: Boeing 737-800
+Total Seats: 90
+(not sure how to account for more than one seat using this map)
+Seat Map:
+[front of plane] Rows 1-15: [ ][ ][X][X][X][X][X][X][X][X][X][X][X][X][X] [back of plane]
+                 Rows 16-30: [X][X][X][X][X][X][X][X][X][X][X][X][X][X][X]
+
+Key:
+[X] - Reserved
+[ ] - Available

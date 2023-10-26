@@ -83,6 +83,10 @@ public class WindowBuilder extends JFrame {
 	private JList listScrollPaneTest;
 	private JScrollBar scrollBar;
 	private JButton btnFilterListPaneReserve;
+	private JPanel AccountReview;
+	private JLabel lblNewLabel;
+	private JPanel CancellationPanel;
+	private JLabel lblNewLabel_1;
 
 
 	public static void main(String[] args) {
@@ -171,6 +175,26 @@ public class WindowBuilder extends JFrame {
 		
 		scrollPaneTest = new JScrollPane();
 		contentPane.add(scrollPaneTest, "SCROLLTEST");
+		
+		AccountReview = new JPanel();
+		contentPane.add(AccountReview, "AccountReview");
+		GridBagLayout gbl_AccountReview = new GridBagLayout();
+		gbl_AccountReview.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_AccountReview.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_AccountReview.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_AccountReview.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		AccountReview.setLayout(gbl_AccountReview);
+		
+		CancellationPanel = new JPanel();
+		contentPane.add(CancellationPanel, "CancellationPanel");
+		GridBagLayout gbl_CancellationPanel = new GridBagLayout();
+		gbl_CancellationPanel.columnWidths = new int[]{158, 0};
+		gbl_CancellationPanel.rowHeights = new int[]{14, 0};
+		gbl_CancellationPanel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_CancellationPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		CancellationPanel.setLayout(gbl_CancellationPanel);
+		
+		
 		
 		// LogInPane components
 		
@@ -578,6 +602,26 @@ public class WindowBuilder extends JFrame {
 			}
 		});
 		scrollPaneTest.setColumnHeaderView(btnFilterListPaneReserve);
+		
+		
+		//AccountReview panel components
+		lblNewLabel = new JLabel("You are here");
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridwidth = 6;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 4;
+		gbc_lblNewLabel.gridy = 4;
+		AccountReview.add(lblNewLabel, gbc_lblNewLabel);
+		
+		
+		//CancellationPanel components
+		lblNewLabel_1 = new JLabel("Are you sure you wish to cancel?");
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 0;
+		CancellationPanel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
 		
 	}
 
