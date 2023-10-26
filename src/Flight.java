@@ -190,5 +190,9 @@ public class Flight {
 			System.out.println("Sorry that is not a seat available on the flight");
 		}
 	}
+
+	public String getpassenger() {
+		return null;
+	}
 	
 }
