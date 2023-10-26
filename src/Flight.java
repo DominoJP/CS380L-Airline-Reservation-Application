@@ -34,7 +34,7 @@ public class Flight {
 	 * @param pricing
 	 */
 	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
-			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
+			String timeDeparture, int totalPassengerCapacity, double pricing) {
 		
 	this.type = type; 
 	this.cityDeparture = cityDeparture;
