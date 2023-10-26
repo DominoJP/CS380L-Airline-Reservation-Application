@@ -166,7 +166,7 @@ public class Airport {
 		}
 		
 		while(curr.getDate()!= date) {
-			if(curr.getDate().compareTo(date) < 0)
+			if(curr.getDate().compareTo(date) > 0)
 				curr = curr.getChild1();
 			else
 				curr = curr.getChild2();
