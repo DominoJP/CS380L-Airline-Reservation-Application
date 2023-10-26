@@ -1,10 +1,17 @@
-import java.util.ArrayList;
+/**
+ * This class represents a flight sorting system for managing flights and their information. 
+ * It allows to add flights, sort them, and display their available seating 
+ * information
+ * @author 
+ * @versio 1.0
+ */
 import java.util.List;
 
 public class FlightSorting{
 	
 	private int totalFlightAvailable;
 	private List<Flight> flights;
+
 	private Airport root1;
 	private AirportFlights root2;
 	
@@ -17,26 +24,42 @@ public class FlightSorting{
 		root1 = new Airport(first);
 	}
 
-
+	/**
+	 * Get the total number available flights
+	 * @return
+	 */
 	public int getTotalFlightAvailable() {
 		return totalFlightAvailable;
 	}
 
-
+	/**
+	 * Sets the total number of available flights. 
+	 * @param totalFlightAvailable
+	 */
 	public void setTotalFlightAvailable(int totalFlightAvailable) {
 		this.totalFlightAvailable = totalFlightAvailable;
 	}
 
-
+	/**
+	 * Gets the list of flights managed by this flight sorting instance. 
+	 * @return returns the list of flights 
+	 */
 	public List<Flight> getFlights() {
 		return flights;
 	}
 
-
+	/**
+	 * Sets the list of flights. 
+	 * @param flights
+	 */
 	public void setFlights(List<Flight> flights) {
 		this.flights = flights;
 	}
 
+	/**
+	 * Adds a flight to the list of managed flights. 
+	 * @param flight
+	 */
 	public void addFlight(Flight flight) {
 		if(root1 == null) {
 			root1 = new Airport(flight);
@@ -46,13 +69,29 @@ public class FlightSorting{
 		root1.addFlight(flight);
 	}
 	
+	/**
+	 * Sorts the list of flights 
+	 */
 	public void sortFlights(String origin, String destination, String date) {
-		 Airport curr = search(origin);
+
+		 Airport curr = root1;
+		 curr = this.search(origin);
+		 AirportFlights root2 = curr.search(destination, date);
+		 this.setFlights(root2.getFlights());
+		 this.setTotalFlightAvailable(root2.getFlights().size());
+
+
+		 Airport curr1 = search(origin);
 		 root2 = findFlights(origin, destination, date);
 		 flights = root2.getFlights();
 		 totalFlightAvailable = flights.size();
 	}
 	
+	/**
+	 * Displays the available seating information for a specific flight. 
+	 * @param f ; the flight object displays the seating information
+	 * @return : returns an array of strings representing passenger names for available seats.
+	 */
 	public String[] displayAvaiableSeating(Flight f) {
 		String[] passengers = new String[f.gettotalpassengercapacity()];
 		
