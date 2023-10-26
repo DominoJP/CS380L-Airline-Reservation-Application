@@ -27,6 +27,7 @@ public class OptionSelectionPane extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
+		// comboBox parameter
 		String [] optionsArray = {
 				"Reserve",
 				"Review",
