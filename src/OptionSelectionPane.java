@@ -11,8 +11,8 @@ import java.awt.event.ActionEvent;
 
 /**
    JPanel that allows navigation between Reserving, Reviewing, or Canceling flights.
-   @author
-   @verison
+   @author Jevy Miranda
+   @version 1.1
 */
 
 public class OptionSelectionPane extends JPanel {
@@ -43,10 +43,19 @@ public class OptionSelectionPane extends JPanel {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (comboBox.getSelectedItem().equals("Reserve")) {
-					((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
+				String selection = comboBox.getSelectedItem().toString();
+				switch (selection) {
+					case "Reserve":
+						((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
+						break;
+					case "Review":
+						((CardLayout) contentPane.getLayout()).show(contentPane, "Review");
+						break;
+					case "Cancel":
+						((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
+						break;
 				}
-			}
+		}
 		});
 		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
 		gbc_btnContinue.insets = new Insets(0, 0, 5, 5);

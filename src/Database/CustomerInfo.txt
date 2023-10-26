@@ -1,0 +1,11 @@
+Customer Information:
+
+Customer ID: 12345
+Name: Josh Test
+Date of Birth: 07/27/1992
+Gender: Male
+Nationality: USA
+Email: joshjtest@gmail.com
+Phone: +1 (555) 123-4567
+
+(tie to account info)
