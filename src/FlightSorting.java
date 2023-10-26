@@ -37,13 +37,18 @@ public class FlightSorting{
 	}
 
 	public void addFlight(Flight flight) {
+		if(root1 == null) {
+			root1 = new Airport(flight);
+			return;
+		}
+		
 		root1.addFlight(flight);
 	}
 	
-	public void sortFlights(String origin, String destination) {
+	public void sortFlights(String origin, String destination, String date) {
 		 Airport curr = root1;
-		 curr = curr.search(origin);
-		 AirportFlights root2 = curr.findFlights(destination);
+		 curr = this.search(origin);
+		 AirportFlights root2 = curr.search(destination, date);
 		 this.setFlights(root2.getFlights());
 		 this.setTotalFlightAvailable(root2.getFlights().size());
 	}
@@ -59,13 +64,31 @@ public class FlightSorting{
 		return passengers;
 	}
 	
-	public Flight findFlight(String date, String time) {
+	public Flight findFlight(String time) {
+		
 		for(int i = 0; i < flights.size(); i++) {
-			if(flights.get(i).getdateDeparture() == date && flights.get(i).gettimeDeparture() == time)
+			if(flights.get(i).gettimeDeparture() == time)
 				return flights.get(i);
 		}
 		
 		return null;
+	}
+	
+	public Airport search(String o) {
+		Airport curr = root1;
+		
+		while(curr.getOrigin() != o) {
+			if(o.compareTo(curr.getOrigin()) < 0)
+				curr = curr.getChild1();
+			else
+				curr = curr.getChild2();
+		}
+		
+		return curr;
+	}
+	
+	public AirportFlights findFlights(String destination, String date) {
+		return this.search(destination).search(destination, date);
 	}
 }
 
