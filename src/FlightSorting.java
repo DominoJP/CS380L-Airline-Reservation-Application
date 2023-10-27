@@ -6,6 +6,7 @@
  * @versio 1.0
  */
 import java.util.List;
+import java.util.ArrayList;
 
 public class FlightSorting{
 	
@@ -133,6 +134,22 @@ public class FlightSorting{
 	
 	public AirportFlights findFlights(String origin, String destination, String date) {
 		return this.search(origin).search(destination, date);
+	}
+	
+	public String[] getList(String origin, String destination, String date) {
+		AirportFlights curr = findFlights(origin, destination, date);
+		
+		ArrayList<Flight> flights = curr.getFlights();
+		String[] list = new String[(flights.size()-1) * 2];
+		
+		//System.out.println(list.length);
+		
+		for(int i = 0; i < list.length; i+=2) {
+			list[i] = flights.get(i).getdateDeparture();
+			list[i+1] = flights.get(i).getDateArrival();
+		}
+		
+		return list;
 	}
 }
 

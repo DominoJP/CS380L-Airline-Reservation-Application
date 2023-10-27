@@ -19,16 +19,18 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 
 	public static void main(String[] args) {
-		Flight test = new Flight("One Way","LA", "NYC", "24/10/2023", "5:30", 50, 700.0);
+		Flight test = new Flight("One Way","LA", "NYC", "24/10/2023", "5:30", "25/10/2023", "2:30", 50, 700.0);
 		FlightSorting sort = new FlightSorting(test);
-		Flight test2 = new Flight("One Way","LA", "NYC", "23/10/2023", "7:30", 50, 700.0);
+		Flight test2 = new Flight("One Way","LA", "NYC", "24/10/2023", "7:30", "24/10/2023", "9:30", 50, 700.0);
 		sort.addFlight(test2);
 		
-		sort.sortFlights("LA", "NYC", "23/10/2023");
+		sort.sortFlights("LA", "NYC", "24/10/2023");
 		
-		Flight found = sort.findFlight("7:30");
-		
-		System.out.println(found.getdateDeparture());
+		String[] list = sort.getList("LA", "NYC", "24/10/2023");
+		for(int i = 0; i < list.length; i+=2) {
+			System.out.println("Departure: " + list[i] + "\n");
+			System.out.println("Arrival: " + list[i+1] + "\n");
+		}
 		
 		
 		EventQueue.invokeLater(new Runnable() {
