@@ -71,14 +71,6 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public WindowBuilderRefactor(FlightSorting sort) {
 		
-		// FIXME: temp. test for instantiation of flights, FlightSorting object
-		/*
-		Flight test = new Flight("One Way","LA", "NYC", "24/10/2023", "5:30", "25/10/2023", "2:30", 50, 700.0);
-		FlightSorting sort = new FlightSorting(test);
-		Flight test2 = new Flight("One Way","LA", "NYC", "24/10/2023", "7:30", "24/10/2023", "9:30", 50, 700.0);
-		sort.addFlight(test2);
-		*/
-		
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -116,15 +108,6 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 	
 		// FIXME: temp. commented out
 		// contentPane.add(ReservationCancellationPane, "Cancel");
-		
-		// FIXME: temp. Console test case, to be removed
-		/*
-		String[] list = sort.getList("LA", "NYC", "24/10/2023");
-		for(int i = 0; i < list.length; i+=2) {
-			System.out.println("Departure: " + list[i] + "\n");
-			System.out.println("Arrival: " + list[i+1] + "\n");
-		}
-		*/
 		
 	}
 
