@@ -205,22 +205,23 @@ public class FlightFilterPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				// FIXME: remove with implementation of file reader for instantiation of flights
-				Flight test = new Flight("One Way","LA", "NYC", "24/10/2023", "5:30", "25/10/2023", "2:30", 50, 700.0);
+				Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
 				FlightSorting sort = new FlightSorting(test);
-				Flight test2 = new Flight("One Way","LA", "NYC", "24/10/2023", "7:30", "24/10/2023", "9:30", 50, 700.0);
+				Flight test2 = new Flight("One Way","LA", "NYC", "2023-10-24", "07:30", "2023-10-24", "09:30", 50, 700.0);
 				sort.addFlight(test2);
+				Flight test3 = new Flight("One Way", "LA", "NYC", "2023-10-24", "03:30", "2023-10-27", "02:45", 50, 700.00);
+				sort.addFlight(test3);
 				
 				airportDepartInput = comboBoxFrom.getSelectedItem().toString();
 				airportArriveInput = comboBoxTo.getSelectedItem().toString();
 				// FIXME: adjust for LocalDateTime
-				// FIXME: temp. hardcoded
-				// dateDepartingInput = "24/10/2023";
 				
-				dateDepartingInput = comboBoxDayD.getSelectedItem().toString() + "/" +
-									 comboBoxMonthD.getSelectedItem().toString() + "/" +
-									 comboBoxYearD.getSelectedItem().toString();
+				dateDepartingInput = comboBoxYearD.getSelectedItem().toString() + "-" +
+									 comboBoxMonthD.getSelectedItem().toString() + "-" +
+									 comboBoxDayD.getSelectedItem().toString();
 				
 				
+				// sort.sortFlights("LA", "NYC", "2023-10-24");
 				sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
 				String[] list = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
 				
