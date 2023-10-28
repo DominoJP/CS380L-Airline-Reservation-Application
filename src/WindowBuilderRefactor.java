@@ -20,6 +20,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public static void main(String[] args) {
 		
+		// FIXME: commented-out blocks below are to be removed once changes communicated
 		// block moved into WindowBuilderRefactor() below
 		/*
 		Flight test = new Flight("One Way","LA", "NYC", "24/10/2023", "5:30", "25/10/2023", "2:30", 50, 700.0);
@@ -30,6 +31,15 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		
 		// sort Obj passed to FlightFilterPane to allow .sortFlights() method call based on user input
 		// sort.sortFlights("LA", "NYC", "24/10/2023");
+		
+		// block moved into WindowBuilderRefactor() below
+		/*
+		String[] list = sort.getList("LA", "NYC", "24/10/2023");
+		for(int i = 0; i < list.length; i+=2) {
+			System.out.println("Departure: " + list[i] + "\n");
+			System.out.println("Arrival: " + list[i+1] + "\n");
+		}
+		*/
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
