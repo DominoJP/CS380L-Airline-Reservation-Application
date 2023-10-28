@@ -48,6 +48,8 @@ public class FlightFilterPane extends JPanel {
 	// for use with comboBoxYearD
 	private String[] yearList = {"2023", "2024"};
 	
+	String[] flightListSorted;
+	
 	public FlightFilterPane(JPanel contentPane, FlightSorting sort) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -206,19 +208,16 @@ public class FlightFilterPane extends JPanel {
 				
 				airportDepartInput = comboBoxFrom.getSelectedItem().toString();
 				airportArriveInput = comboBoxTo.getSelectedItem().toString();
-				// FIXME: adjust for LocalDateTime
-				
 				dateDepartingInput = comboBoxYearD.getSelectedItem().toString() + "-" +
 									 comboBoxMonthD.getSelectedItem().toString() + "-" +
 									 comboBoxDayD.getSelectedItem().toString();
 				
-				
 				// sort.sortFlights("LA", "NYC", "2023-10-24");
 				sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
-				String[] flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
-				
+				flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
 				FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted);
 				contentPane.add(FilterListPane, "FILTER_LIST");
+				// Proceed to filtered list of flights, sorted by date of departure by default
 				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 
 			}

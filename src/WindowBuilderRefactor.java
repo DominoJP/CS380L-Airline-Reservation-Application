@@ -46,7 +46,6 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 		System.out.println(time3.toString());
 
-		// MOVE INTO FLIGHTFILTERPANE
 		sort.sortFlights("LA", "NYC", "2023-10-24");
 
 		String[] list = sort.getList("LA", "NYC", "2023-10-24");
@@ -84,10 +83,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort);
-		// FIXME: shuffling instantiation of FlightSorting object to FlightFilterPane
-		// FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort);
-		// FIXME: to be removed, instantiated instead in FlightFilterPane to allow passing of reference to FlightSorting Obj
-		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, sort, FilterPane);
+		// Instantiation of FLightFilterListScrollPane must happen at ActionLister of FLightFilterPane, AFTER the instantiation of the sorted list for the JList
+		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
 		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS");
 		// FIXME, add up until 9
 		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL");
@@ -101,6 +98,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		
 		// select "Reserve"
 		contentPane.add(FilterPane, "FILTER");
+		// In FlightFilterPane
 		// contentPane.add(FilterListPane, "FILTER_LIST");
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
