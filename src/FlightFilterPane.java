@@ -26,30 +26,30 @@ public class FlightFilterPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private final ButtonGroup buttonGroupTripType = new ButtonGroup();
-	private JTextField textFrom;
-	private JTextField textTo;
 	private JTextField textDepart;
 	private JTextField textReturn;
 	private JLabel lblReturn;
 	private JLabel lblDepartInvalidDateFormat;
 	private JLabel lblReturnInvalidDateFormat;
 	private JComboBox comboBoxPassengerAmount;
+	private JComboBox comboBoxFrom;
 	
 	private String airportDepartInput;
 	private String airportArriveInput;
 	private String dateDepartingInput;
-	private JComboBox comboBoxTest;
+	
+	// for use with comboBoxFrom
+	private String[] airportFromList = {"LA", "BUR"};
+	// for use with comboBoxTo
+	private String[] airportToList = {"NYC", "DAL"};;
 
 	public FlightFilterPane(JPanel contentPane) {
 		
-		//FIXME: REMOVE
-		String[] test = {"LA", "BUR"};
-		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{78, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JRadioButton rdbtnRoundTrip = new JRadioButton("Round Trip");
@@ -97,38 +97,28 @@ public class FlightFilterPane extends JPanel {
 		gbc_lblTo.gridy = 1;
 		add(lblTo, gbc_lblTo);
 		
-		textFrom = new JTextField();
-		GridBagConstraints gbc_textFrom = new GridBagConstraints();
-		gbc_textFrom.insets = new Insets(0, 0, 5, 5);
-		gbc_textFrom.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFrom.gridx = 1;
-		gbc_textFrom.gridy = 2;
-		add(textFrom, gbc_textFrom);
-		textFrom.setColumns(10);
+		comboBoxFrom = new JComboBox(airportFromList);
+		GridBagConstraints gbc_comboBoxFrom = new GridBagConstraints();
+		gbc_comboBoxFrom.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxFrom.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxFrom.gridx = 1;
+		gbc_comboBoxFrom.gridy = 2;
+		add(comboBoxFrom, gbc_comboBoxFrom);
 		
-		textTo = new JTextField();
-		GridBagConstraints gbc_textTo = new GridBagConstraints();
-		gbc_textTo.insets = new Insets(0, 0, 5, 5);
-		gbc_textTo.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textTo.gridx = 3;
-		gbc_textTo.gridy = 2;
-		add(textTo, gbc_textTo);
-		textTo.setColumns(10);
-		
-		comboBoxTest = new JComboBox(test);
-		GridBagConstraints gbc_comboBoxTest = new GridBagConstraints();
-		gbc_comboBoxTest.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxTest.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxTest.gridx = 1;
-		gbc_comboBoxTest.gridy = 3;
-		add(comboBoxTest, gbc_comboBoxTest);
+		JComboBox comboBoxTo = new JComboBox(airportToList);
+		GridBagConstraints gbc_comboBoxTo = new GridBagConstraints();
+		gbc_comboBoxTo.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxTo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxTo.gridx = 3;
+		gbc_comboBoxTo.gridy = 2;
+		add(comboBoxTo, gbc_comboBoxTo);
 		
 		JLabel lblDepart = new JLabel(" Depart (dd/mm/yyyy)");
 		GridBagConstraints gbc_lblDepart = new GridBagConstraints();
 		gbc_lblDepart.anchor = GridBagConstraints.WEST;
 		gbc_lblDepart.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDepart.gridx = 1;
-		gbc_lblDepart.gridy = 4;
+		gbc_lblDepart.gridy = 3;
 		add(lblDepart, gbc_lblDepart);
 		
 		lblReturn = new JLabel(" Return (dd/mm/yyyy)");
@@ -136,7 +126,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_lblReturn.anchor = GridBagConstraints.WEST;
 		gbc_lblReturn.insets = new Insets(0, 0, 5, 5);
 		gbc_lblReturn.gridx = 3;
-		gbc_lblReturn.gridy = 4;
+		gbc_lblReturn.gridy = 3;
 		add(lblReturn, gbc_lblReturn);
 		
 		textDepart = new JTextField();
@@ -145,7 +135,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_textDepart.insets = new Insets(0, 0, 5, 5);
 		gbc_textDepart.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textDepart.gridx = 1;
-		gbc_textDepart.gridy = 5;
+		gbc_textDepart.gridy = 4;
 		add(textDepart, gbc_textDepart);
 		
 		textReturn = new JTextField();
@@ -154,7 +144,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_textReturn.insets = new Insets(0, 0, 5, 5);
 		gbc_textReturn.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textReturn.gridx = 3;
-		gbc_textReturn.gridy = 5;
+		gbc_textReturn.gridy = 4;
 		add(textReturn, gbc_textReturn);
 		
 		lblDepartInvalidDateFormat = new JLabel("Invalid date format");
@@ -163,7 +153,7 @@ public class FlightFilterPane extends JPanel {
 		GridBagConstraints gbc_lblDepartInvalidDateFormat = new GridBagConstraints();
 		gbc_lblDepartInvalidDateFormat.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDepartInvalidDateFormat.gridx = 1;
-		gbc_lblDepartInvalidDateFormat.gridy = 7;
+		gbc_lblDepartInvalidDateFormat.gridy = 6;
 		add(lblDepartInvalidDateFormat, gbc_lblDepartInvalidDateFormat);
 		lblDepartInvalidDateFormat.setVisible(false);
 		
@@ -173,7 +163,7 @@ public class FlightFilterPane extends JPanel {
 		GridBagConstraints gbc_lblReturnInvalidDateFormat = new GridBagConstraints();
 		gbc_lblReturnInvalidDateFormat.insets = new Insets(0, 0, 5, 5);
 		gbc_lblReturnInvalidDateFormat.gridx = 3;
-		gbc_lblReturnInvalidDateFormat.gridy = 7;
+		gbc_lblReturnInvalidDateFormat.gridy = 6;
 		add(lblReturnInvalidDateFormat, gbc_lblReturnInvalidDateFormat);
 		lblReturnInvalidDateFormat.setVisible(false);
 		
@@ -181,7 +171,7 @@ public class FlightFilterPane extends JPanel {
 		GridBagConstraints gbc_lblPassengerAmount = new GridBagConstraints();
 		gbc_lblPassengerAmount.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPassengerAmount.gridx = 1;
-		gbc_lblPassengerAmount.gridy = 8;
+		gbc_lblPassengerAmount.gridy = 7;
 		add(lblPassengerAmount, gbc_lblPassengerAmount);
 		
 		Integer[] passengersAmountArray = {
@@ -192,7 +182,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_comboBoxPassengerAmount.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBoxPassengerAmount.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxPassengerAmount.gridx = 1;
-		gbc_comboBoxPassengerAmount.gridy = 9;
+		gbc_comboBoxPassengerAmount.gridy = 8;
 		add(comboBoxPassengerAmount, gbc_comboBoxPassengerAmount);
 		
 		JButton btnSearch = new JButton("Search");
@@ -205,28 +195,24 @@ public class FlightFilterPane extends JPanel {
 				Flight test2 = new Flight("One Way","LA", "NYC", "24/10/2023", "7:30", "24/10/2023", "9:30", 50, 700.0);
 				sort.addFlight(test2);
 				
-				airportDepartInput = comboBoxTest.getSelectedItem().toString();
-				airportArriveInput = "NYC";
+				airportDepartInput = comboBoxFrom.getSelectedItem().toString();
+				airportArriveInput = comboBoxTo.getSelectedItem().toString();
+				// FIXME: hardcoded, create comboBox/JSpinner to process user input
 				dateDepartingInput = "24/10/2023";
 				
-				
 				sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
-			
-
 				String[] list = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
-				
 				
 				FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, list, airportDepartInput, airportArriveInput, dateDepartingInput);
 				contentPane.add(FilterListPane, "FILTER_LIST");
 				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
-				
-				
+
 			}
 		});
 		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
 		gbc_btnSearch.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSearch.gridx = 3;
-		gbc_btnSearch.gridy = 9;
+		gbc_btnSearch.gridy = 8;
 		add(btnSearch, gbc_btnSearch);
 		
 	}
