@@ -38,6 +38,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		sort.addFlight(test3);
 		
 		
+		
 		LocalDate time = LocalDate.of(2023, 10, 20);
 		LocalTime time2 = LocalTime.of(10, 30);
 
