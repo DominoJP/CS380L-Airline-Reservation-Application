@@ -199,37 +199,18 @@ public class FlightFilterPane extends JPanel {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				// FIXME: remove with implementation of file reader for instantiation of flights
 				Flight test = new Flight("One Way","LA", "NYC", "24/10/2023", "5:30", "25/10/2023", "2:30", 50, 700.0);
 				FlightSorting sort = new FlightSorting(test);
 				Flight test2 = new Flight("One Way","LA", "NYC", "24/10/2023", "7:30", "24/10/2023", "9:30", 50, 700.0);
 				sort.addFlight(test2);
 				
-				/*
-				airportDepartInput = textFrom.getText();
-				airportArriveInput = textTo.getText();
-				dateDepartingInput = textDepart.getText();
-				*/
-				
 				airportDepartInput = comboBoxTest.getSelectedItem().toString();
 				airportArriveInput = "NYC";
 				dateDepartingInput = "24/10/2023";
 				
-				System.out.println(airportDepartInput.compareTo("LA"));
-				System.out.println(airportArriveInput);
-				System.out.println(dateDepartingInput);
 				
-	
 				sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
-				// sort.sortFlights("LA", "NYC", "24/10/2023");
-					
-				//String[] list = sort.getList(textFrom.getText(), textTo.getText(), textDepart.getText());
-				// String[] list = sort.getList("LA", "NYC", "24/10/2023");
-				/*
-				for(int i = 0; i < list.length; i+=2) {
-					System.out.println("Departure: " + list[i] + "\n");
-					System.out.println("Arrival: " + list[i+1] + "\n");
-				}
-				*/
 			
 
 				String[] list = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
