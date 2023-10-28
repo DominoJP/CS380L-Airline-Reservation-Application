@@ -215,9 +215,9 @@ public class FlightFilterPane extends JPanel {
 				
 				// sort.sortFlights("LA", "NYC", "2023-10-24");
 				sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
-				String[] list = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
+				String[] flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
 				
-				FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, list, airportDepartInput, airportArriveInput, dateDepartingInput);
+				FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted);
 				contentPane.add(FilterListPane, "FILTER_LIST");
 				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 
@@ -234,18 +234,6 @@ public class FlightFilterPane extends JPanel {
 	public int getPassengerAmount() {
 		// FIXME: temp solution
 		return Integer.parseInt(comboBoxPassengerAmount.getSelectedItem().toString());
-	}
-	
-	public String getAirportDepartInput() {
-		return this.airportDepartInput;
-	}
-	
-	public String getAirportArriveInput() {
-		return this.airportArriveInput;
-	}
-	
-	public String getDateDeparture() {
-		return this.dateDepartingInput;
 	}
 
 }

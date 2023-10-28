@@ -20,16 +20,14 @@ public class FlightFilterListScrollPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public FlightFilterListScrollPane(JPanel contentPane, String[] flightListSorted, String airportDepartingInput, String airportArrivalInput, String dateDepartingInput) {
-		// uses user inputs passed in the constructor from previous FlightFilterPane as parameters for FlightSorting .getList() method
-		// String[] flightListSorted = sort.getList(airportDepartingInput, airportArrivalInput, dateDepartingInput);
+	public FlightFilterListScrollPane(JPanel contentPane, String[] flightListSorted) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
 		
-		// SHOW: FLIGHT IDENTIFIER, PLACE OF DEPARTURE/ARRIVAL, TIME OF DEPARTURE/ARRIVAL, DURATION, CLASS COSt
+		// SHOW: FLIGHT IDENTIFIER, PLACE OF DEPARTURE/ARRIVAL, TIME OF DEPARTURE/ARRIVAL, DURATION, CLASS COST
 		JList listFlights = new JList(flightListSorted);
 		scrollPane.setViewportView(listFlights);
 		listFlights.setSelectedIndex(0);
