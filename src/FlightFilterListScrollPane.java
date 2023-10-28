@@ -18,7 +18,10 @@ public class FlightFilterListScrollPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public FlightFilterListScrollPane(JPanel contentPane) {
+	public FlightFilterListScrollPane(JPanel contentPane, String[] flightListSorted, String airportDepartingInput, String airportArrivalInput, String dateDepartingInput) {
+		// uses user inputs passed in the constructor from previous FlightFilterPane as parameters for FlightSorting .getList() method
+		// String[] flightListSorted = sort.getList(airportDepartingInput, airportArrivalInput, dateDepartingInput);
+		
 		setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -38,8 +41,8 @@ public class FlightFilterListScrollPane extends JPanel {
 		// SHOW: FLIGHT IDENTIFIER, PLACE OF DEPARTURE/ARRIVAL, TIME OF DEPARTURE/ARRIVAL, DURATION, CLASS COSt
 		// (DISREGARD) ADD CASE FOR NO FLIGHTS FOUND: RETOOL "RESERVE SELECTED FLIGHT" BUTTON INTO "GO BACK BUTTON"
 			// NEW DIRECTION: display "No Matches" message on previous JPanel (FlightFilterPane) and prompt to "Please try different search options."
-		String[] testArray = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s"};
-		JList listFlights = new JList(testArray);
+		// String[] testArray = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s"};
+		JList listFlights = new JList(flightListSorted);
 		scrollPane.setViewportView(listFlights);
 		listFlights.setSelectedIndex(0);
 		// returns Obj
