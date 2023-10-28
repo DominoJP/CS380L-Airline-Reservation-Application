@@ -48,7 +48,7 @@ public class FlightFilterPane extends JPanel {
 	// for use with comboBoxYearD
 	private String[] yearList = {"2023", "2024"};
 	
-	public FlightFilterPane(JPanel contentPane) {
+	public FlightFilterPane(JPanel contentPane, FlightSorting sort) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -203,14 +203,6 @@ public class FlightFilterPane extends JPanel {
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				// FIXME: remove with implementation of file reader for instantiation of flights
-				Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
-				FlightSorting sort = new FlightSorting(test);
-				Flight test2 = new Flight("One Way","LA", "NYC", "2023-10-24", "07:30", "2023-10-24", "09:30", 50, 700.0);
-				sort.addFlight(test2);
-				Flight test3 = new Flight("One Way", "LA", "NYC", "2023-10-24", "03:30", "2023-10-27", "02:45", 50, 700.00);
-				sort.addFlight(test3);
 				
 				airportDepartInput = comboBoxFrom.getSelectedItem().toString();
 				airportArriveInput = comboBoxTo.getSelectedItem().toString();

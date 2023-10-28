@@ -22,8 +22,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 
 	public static void main(String[] args) {
-
 		
+		// FIXME: remove with implementation of file reader for instantiation of flights
 		Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
 		FlightSorting sort = new FlightSorting(test);
 		Flight test2 = new Flight("One Way","LA", "NYC", "2023-10-24", "07:30", "2023-10-24", "09:30", 50, 700.0);
@@ -46,6 +46,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 		System.out.println(time3.toString());
 
+		// MOVE INTO FLIGHTFILTERPANE
 		sort.sortFlights("LA", "NYC", "2023-10-24");
 
 		String[] list = sort.getList("LA", "NYC", "2023-10-24");
@@ -59,7 +60,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					WindowBuilderRefactor frame = new WindowBuilderRefactor();
+					WindowBuilderRefactor frame = new WindowBuilderRefactor(sort);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -68,7 +69,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		});
 	}
 
-	public WindowBuilderRefactor() {
+	public WindowBuilderRefactor(FlightSorting sort) {
 		
 		// FIXME: temp. test for instantiation of flights, FlightSorting object
 		/*
@@ -90,7 +91,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
-		FlightFilterPane FilterPane = new FlightFilterPane(contentPane);
+		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort);
 		// FIXME: shuffling instantiation of FlightSorting object to FlightFilterPane
 		// FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort);
 		// FIXME: to be removed, instantiated instead in FlightFilterPane to allow passing of reference to FlightSorting Obj
