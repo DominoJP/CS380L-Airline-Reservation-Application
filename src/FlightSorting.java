@@ -140,13 +140,12 @@ public class FlightSorting{
 		AirportFlights curr = findFlights(origin, destination, date);
 		
 		ArrayList<Flight> flights = curr.getFlights();
-		String[] list = new String[(flights.size()-1) * 2];
+		String[] list = new String[(flights.size()-1)];
 		
 		//System.out.println(list.length);
 		
-		for(int i = 0; i < list.length; i+=2) {
-			list[i] = flights.get(i).getdateDeparture();
-			list[i+1] = flights.get(i).getDateArrival();
+		for(int i = 0; i < list.length; i++) {
+			list[i] = flights.get(i).getdateDeparture() + " - " + flights.get(i).getDateArrival();
 		}
 		
 		return list;
