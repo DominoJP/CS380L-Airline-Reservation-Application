@@ -35,7 +35,7 @@ public class FlightFilterPane extends JPanel {
 	private JLabel lblReturnInvalidDateFormat;
 	private JComboBox comboBoxPassengerAmount;
 
-	public FlightFilterPane(JPanel contentPane) {
+	public FlightFilterPane(JPanel contentPane, FlightSorting sort) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{78, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -182,7 +182,7 @@ public class FlightFilterPane extends JPanel {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME
-				// REQUIRES FILTER METHOD
+				sort.sortFlights(textFrom.getText(), textTo.getText(), textDepart.getText());
 				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 			}
 		});
