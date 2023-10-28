@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * Owner: Logan Langewisch
@@ -8,7 +10,7 @@ import java.util.ArrayList;
  */
 
 public class AirportFlights {
-	private String date;
+	private LocalDate date;
 	private String destination;
 	private AirportFlights child1;
 	private AirportFlights child2;
@@ -32,7 +34,7 @@ public class AirportFlights {
 	 */
 	
 	public AirportFlights(String a) {
-		this.date = a;
+		this.date = LocalDate.parse(a);
 		this.child1 = null;
 		this.child2 = null;
 		this.destination = null;
@@ -65,18 +67,17 @@ public class AirportFlights {
 			return;
 		}
 		
-		if(this.date == f.getdateDeparture()) {
+		if(date.equals(f.getdateDeparture())) {
 			if(this.timeDeparture == null) {
 				this.timeDeparture.add(f);
 			}else {
 				for(int i = 0; i < this.timeDeparture.size(); i++){
-					if(f.gettimeDeparture().compareTo(timeDeparture.get(i).gettimeDeparture()) <= 0) {
+					if(f.gettimeDeparture().isBefore(timeDeparture.get(i).gettimeDeparture())) {
 						timeDeparture.add(i, f);
-						i = timeDeparture.size();
+						return;
 					}
-					if(i + 1 == timeDeparture.size())
-						timeDeparture.add(f);
 				}
+				timeDeparture.add(f);
 			}
 		}else {
 			AirportFlights newChild = new AirportFlights(f);
@@ -93,7 +94,7 @@ public class AirportFlights {
 	 */
 	
 	public void addChild(AirportFlights curr, AirportFlights n) {
-		if(curr.date.compareTo(n.date) > 0) {
+		if(curr.date.isAfter(n.date)) {
 			if(curr.child1 != null) {
 				curr.addChild(curr.child1, n);
 				return;
@@ -115,7 +116,7 @@ public class AirportFlights {
 	 * @return
 	 */
 	
-	public String getDate() {
+	public LocalDate getDate() {
 		return this.date;
 	}
 	
@@ -133,7 +134,7 @@ public class AirportFlights {
 		String[] times = new String[this.timeDeparture.size()];
 		
 		for(int i = 0; i < this.timeDeparture.size(); i++) {
-			times[i] = this.timeDeparture.get(i).gettimeDeparture();
+			times[i] = this.timeDeparture.get(i).gettimeDeparture().toString();
 		}
 		
 		return times;
@@ -152,9 +153,10 @@ public class AirportFlights {
 	
 	public Flight findFlight(String t) {
 		Flight flight = null;
+		LocalTime time = LocalTime.parse(t);
 		
 		for(int i = 0; i < this.timeDeparture.size(); i++) {
-			if(this.timeDeparture.get(i).gettimeDeparture() == t) {
+			if(this.timeDeparture.get(i).gettimeDeparture().equals(time)) {
 				flight = this.timeDeparture.get(i);
 			}
 		}

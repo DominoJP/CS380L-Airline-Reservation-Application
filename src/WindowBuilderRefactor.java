@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 /**
    Swing JFrame in which initial JPanel is instantiated.
    Instantiates and adds JPanels to CardLayout, allowing switching between JPanels.
@@ -19,17 +22,35 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 
 	public static void main(String[] args) {
-		Flight test = new Flight("One Way","LA", "NYC", "24/10/2023", "5:30", "25/10/2023", "2:30", 50, 700.0);
+		Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
 		FlightSorting sort = new FlightSorting(test);
-		Flight test2 = new Flight("One Way","LA", "NYC", "24/10/2023", "7:30", "24/10/2023", "9:30", 50, 700.0);
+		Flight test2 = new Flight("One Way","LA", "NYC", "2023-10-24", "07:30", "2023-10-24", "09:30", 50, 700.0);
 		sort.addFlight(test2);
 		
-		sort.sortFlights("LA", "NYC", "24/10/2023");
+		Flight test3 = new Flight("One Way", "LA", "NYC", "2023-10-24", "03:30", "2023-10-27", "02:45", 50, 700.00);
+		sort.addFlight(test3);
 		
-		String[] list = sort.getList("LA", "NYC", "24/10/2023");
-		for(int i = 0; i < list.length; i+=2) {
-			System.out.println("Departure: " + list[i] + "\n");
-			System.out.println("Arrival: " + list[i+1] + "\n");
+		LocalDate time = LocalDate.of(2023, 10, 20);
+		LocalTime time2 = LocalTime.of(10, 30);
+		
+		time = time.plusDays(2);
+		time = time.plusMonths(4);
+		
+		System.out.println(time.toString() + " " + time2.toString());
+		
+		LocalDate time3 = LocalDate.parse("2023-03-14");
+		
+		time3 = time3.plusDays(5);
+		
+		System.out.println(time3.toString());
+		
+		sort.sortFlights("LA", "NYC", "2023-10-24");
+		
+		String[] list = sort.getList("LA", "NYC", "2023-10-24");
+		System.out.println(list.length);
+		
+		for(int i = 0; i < list.length; i++) {
+			System.out.println(list[i] + "\n");
 		}
 		
 		

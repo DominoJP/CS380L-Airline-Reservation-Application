@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 /**
  * Owner: Logan Langewisch
@@ -158,6 +159,7 @@ public class Airport {
 	
 	public AirportFlights search(String destination, String date) {
 		AirportFlights curr = null;
+		LocalDate time = LocalDate.parse(date);
 		
 		for(int i = 0; i < destinations.size(); i++) {
 			if(destinations.get(i).getDestination() == destination) {
@@ -165,8 +167,8 @@ public class Airport {
 			}
 		}
 		
-		while(curr.getDate()!= date) {
-			if(curr.getDate().compareTo(date) > 0)
+		while(!curr.getDate().equals(time)) {
+			if(curr.getDate().isAfter(time))
 				curr = curr.getChild1();
 			else
 				curr = curr.getChild2();
