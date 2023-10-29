@@ -197,6 +197,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_lblReturn.gridx = 1;
 		gbc_lblReturn.gridy = 6;
 		add(lblReturn, gbc_lblReturn);
+		lblReturn.setVisible(false);
 		
 		textReturn = new JTextField();
 		textReturn.setColumns(10);
@@ -207,6 +208,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_textReturn.gridx = 1;
 		gbc_textReturn.gridy = 7;
 		add(textReturn, gbc_textReturn);
+		textReturn.setVisible(false);
 		
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
