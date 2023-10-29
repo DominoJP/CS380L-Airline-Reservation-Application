@@ -92,7 +92,7 @@ public class Airport {
 		if(this.origin == null) {
 			origin = f.getcityDeparture();
 			destinations.add(flights);
-		}else if(this.origin == f.getcityDeparture()) {
+		}else if(this.origin.compareTo(f.getcityDeparture()) == 0) {
 			for(int i = 0; i < destinations.size(); i++) {
 				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) == 0) {
 					destinations.get(i).addFlight(f);
@@ -162,7 +162,7 @@ public class Airport {
 		LocalDate time = LocalDate.parse(date);
 		
 		for(int i = 0; i < destinations.size(); i++) {
-			if(destinations.get(i).getDestination() == destination) {
+			if(destinations.get(i).getDestination().compareTo(destination) == 0) {
 				curr = destinations.get(i);
 			}
 		}
