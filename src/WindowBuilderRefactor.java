@@ -54,6 +54,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		System.out.println(time3.toString());
 		*/
 
+		/*
 		sort.sortFlights("LA", "NYC", "2023-10-24");
 
 		String[] list = sort.getList("LA", "NYC", "2023-10-24");
@@ -62,6 +63,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		for(int i = 0; i < list.length; i++) {
 			System.out.println(list[i] + "\n");
 		}
+		*/
 		
 		
 		
