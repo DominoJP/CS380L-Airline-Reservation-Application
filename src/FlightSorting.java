@@ -122,7 +122,7 @@ public class FlightSorting{
 	public Airport search(String origin) {
 		Airport curr = root1;
 		
-		while(curr.getOrigin() != origin) {
+		while(curr.getOrigin().compareTo(origin) != 0) {
 			
 			if(origin.compareTo(curr.getOrigin()) < 0)
 				curr = curr.getChild1();
