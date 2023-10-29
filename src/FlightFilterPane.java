@@ -223,6 +223,7 @@ public class FlightFilterPane extends JPanel {
 				FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted);
 				contentPane.add(FilterListPane, "FILTER_LIST");
 				// Proceed to filtered list of flights, sorted by date of departure by default
+				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 
 			}
 		});
