@@ -32,6 +32,7 @@ public class FlightFilterPane extends JPanel {
 	private JLabel lblDepartInvalidDate;
 	private JComboBox comboBoxPassengerAmount;
 	private JComboBox comboBoxFrom;
+	private JLabel lblNoFlights;
 	
 	private String airportDepartInput;
 	private String airportArriveInput;
@@ -218,20 +219,42 @@ public class FlightFilterPane extends JPanel {
 									 comboBoxDayD.getSelectedItem().toString();
 				
 				// sort.sortFlights("LA", "NYC", "2023-10-24");
-				sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
-				flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
-				FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted);
-				contentPane.add(FilterListPane, "FILTER_LIST");
-				// Proceed to filtered list of flights, sorted by date of departure by default
-				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
-
+				try {
+					// hide Component for 'no flights found'
+					lblNoFlights.setVisible(false);
+					
+					// sort flights per user input
+					sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
+					flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
+					
+					// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
+					FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted);
+					contentPane.add(FilterListPane, "FILTER_LIST");
+					
+					// proceed to filtered list of flights, sorted by date of departure by default
+					((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
+				} catch (NullPointerException ex) {
+					// show Component 'no flights found'
+					lblNoFlights.setVisible(true);
+				}
 			}
 		});
+		
+		lblNoFlights = new JLabel("No flights found. Please choose another set of options.");
+		lblNoFlights.setForeground(Color.RED);
+		lblNoFlights.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		GridBagConstraints gbc_lblNoFlights = new GridBagConstraints();
+		gbc_lblNoFlights.gridwidth = 4;
+		gbc_lblNoFlights.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNoFlights.gridx = 1;
+		gbc_lblNoFlights.gridy = 8;
+		add(lblNoFlights, gbc_lblNoFlights);
 		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
 		gbc_btnSearch.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSearch.gridx = 5;
 		gbc_btnSearch.gridy = 8;
 		add(btnSearch, gbc_btnSearch);
+		lblNoFlights.setVisible(false);
 		
 	}
 	
