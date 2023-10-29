@@ -42,9 +42,9 @@ public class FlightFilterPane extends JPanel {
 	// for use with comboBoxTo
 	private String[] airportToList = {"NYC", "DAL"};
 	// for use with comboBoxMonthD
-	private String[] monthList = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+	private String[] monthList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	// for use with comboBoxDayD
-	private String[] dayList = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+	private String[] dayList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 	// for use with comboBoxYearD
 	private String[] yearList = {"2023", "2024"};
 	// for use with comboBoxPassengerAmount
@@ -223,7 +223,6 @@ public class FlightFilterPane extends JPanel {
 				FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted);
 				contentPane.add(FilterListPane, "FILTER_LIST");
 				// Proceed to filtered list of flights, sorted by date of departure by default
-				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 
 			}
 		});
