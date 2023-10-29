@@ -7,6 +7,10 @@
  */
 import java.util.List;
 
+import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class FlightSorting{
 	
 	private int totalFlightAvailable;
@@ -105,11 +109,10 @@ public class FlightSorting{
 	
 	public Flight findFlight(String time) {
 		flights = root2.getFlights();
-		
-		//System.out.println(flights.size());
+		LocalTime find = LocalTime.parse(time);
 		
 		for(int i = 0; i < flights.size(); i++) {
-			if(flights.get(i).gettimeDeparture() == time)
+			if(flights.get(i).gettimeDeparture().equals(find))
 				return flights.get(i);
 		}
 		
@@ -118,7 +121,6 @@ public class FlightSorting{
 	
 	public Airport search(String origin) {
 		Airport curr = root1;
-		//System.out.println(curr.getOrigin());
 		
 		while(curr.getOrigin() != origin) {
 			
@@ -133,6 +135,25 @@ public class FlightSorting{
 	
 	public AirportFlights findFlights(String origin, String destination, String date) {
 		return this.search(origin).search(destination, date);
+	}
+	
+	public String[] getList(String origin, String destination, String date) {
+		AirportFlights curr = findFlights(origin, destination, date);
+		LocalDate depart;
+		LocalDate arrive;
+		
+		
+		ArrayList<Flight> flights = curr.getFlights();
+		String[] list = new String[(flights.size())];
+		
+		
+		for(int i = 0; i < list.length; i++) {
+			depart = flights.get(i).getdateDeparture();
+			arrive = flights.get(i).getDateArrival();
+			list[i] = depart.toString() + " - " + arrive.toString();
+		}
+		
+		return list;
 	}
 }
 

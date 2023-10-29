@@ -7,15 +7,18 @@
  *@version 1.0 
  */
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Flight {
 	
 	private String type; 
 	private String cityDeparture;   
 	private String cityArrival;      
-	private String dateDeparture;      
-	private String timeDeparture;    
-	private String dateArrival;     
-	private String timeArrival;   
+	private LocalDate dateDeparture;      
+	private LocalTime timeDeparture;    
+	private LocalDate dateArrival;     
+	private LocalTime timeArrival;   
 	private int totalPassengerCapacity;  
 	private String[][] passengers; 
 	private double pricing; 
@@ -39,10 +42,10 @@ public class Flight {
 	this.type = type; 
 	this.cityDeparture = cityDeparture;
 	this.cityArrival = cityArrival;
-	this.dateDeparture = dateDeparture;
-	this.timeDeparture = timeDeparture; 
-	this.dateArrival = dateArrival;
-	this.timeArrival = timeArrival;
+	this.dateDeparture = LocalDate.parse(dateDeparture);
+	this.timeDeparture = LocalTime.parse(timeDeparture); 
+	this.dateArrival = LocalDate.parse(dateArrival);
+	this.timeArrival = LocalTime.parse(timeArrival);
 	this.totalPassengerCapacity = totalPassengerCapacity;
 	this.pricing = pricing; 
 	passengers = new String[totalPassengerCapacity][2];
@@ -77,7 +80,7 @@ public class Flight {
 	 * Getter method to retrieve the date of departure.
 	 * @return : returns the date of departure 
 	 */
-	public String getdateDeparture() {
+	public LocalDate getdateDeparture() {
 		return dateDeparture;
 	}
 	
@@ -85,7 +88,7 @@ public class Flight {
 	 * Getter method to retrieve the time of departure.
 	 * @return returns the time of departure 
 	 */
-	public String gettimeDeparture() {
+	public LocalTime gettimeDeparture() {
 		return timeDeparture;
 	}
 	
@@ -125,7 +128,7 @@ public class Flight {
 	 * Getter method to return the date of the arrival
 	 * @return
 	 */
-	public String getDateArrival() {
+	public LocalDate getDateArrival() {
 		return dateArrival;
 	}
 
@@ -134,14 +137,14 @@ public class Flight {
 	 * @param dateArrival
 	 */
 	public void setDateArrival(String dateArrival) {
-		this.dateArrival = dateArrival;
+		this.dateArrival = LocalDate.parse(dateArrival);
 	}
 
 	/**
 	 * Getter to get the time of the arrival
 	 * @return
 	 */
-	public String getTimeArrival() {
+	public LocalTime getTimeArrival() {
 		return timeArrival;
 	}
 
@@ -150,7 +153,7 @@ public class Flight {
 	 * @param timeArrival
 	 */
 	public void setTimeArrival(String timeArrival) {
-		this.timeArrival = timeArrival;
+		this.timeArrival = LocalTime.parse(timeArrival);
 	}
 
 	/**
