@@ -169,6 +169,7 @@ public class Airport {
 		
 		while(!curr.getDate().equals(time)) {
 			if(curr.getDate().isAfter(time))
+
 				curr = curr.getChild1();
 			else
 				curr = curr.getChild2();
