@@ -12,19 +12,20 @@ import java.io.IOException;
 */
 
 public class FlightsTestReader {
-	private String flightsFilePath = "src/Database/FlightsTest.txt";
+	// private String flightsFilePath = "src/Database/FlightsTest.txt";
 	private FlightSorting sort;
 	private Flight instantiatedFlight;
 	
 	public FlightsTestReader() {
 		
-		try (BufferedReader reader = new BufferedReader(new FileReader(flightsFilePath))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader("FlightsTest.txt"))) {
 		    String line;
 		    
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
 		        instantiatedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], Integer.parseInt(parts[7]), Double.parseDouble(parts[8]));
+		        // System.out.println(instantiatedFlight.getdateDeparture());
 		        //FlightSorting instantiation requires a flight as parameter
 		        if (sort == null) {
 		        	sort = new FlightSorting(instantiatedFlight);

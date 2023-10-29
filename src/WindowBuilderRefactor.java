@@ -23,12 +23,11 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public static void main(String[] args) {
 		
-		/*
 		// FIXME: remove with implementation of file reader for instantiation of flights
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
-		*/
 		
+		/*
 		FlightSorting sort;
 		Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
 		sort = new FlightSorting(test);
@@ -36,9 +35,10 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		sort.addFlight(test2);
 		Flight test3 = new Flight("One Way", "LA", "NYC", "2023-10-24", "03:30", "2023-10-27", "02:45", 50, 700.00);
 		sort.addFlight(test3);
+		*/
 		
 		
-		
+		/*
 		LocalDate time = LocalDate.of(2023, 10, 20);
 		LocalTime time2 = LocalTime.of(10, 30);
 
@@ -52,6 +52,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		time3 = time3.plusDays(5);
 
 		System.out.println(time3.toString());
+		*/
 
 		sort.sortFlights("LA", "NYC", "2023-10-24");
 
@@ -61,6 +62,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		for(int i = 0; i < list.length; i++) {
 			System.out.println(list[i] + "\n");
 		}
+		
 		
 		
 		EventQueue.invokeLater(new Runnable() {
