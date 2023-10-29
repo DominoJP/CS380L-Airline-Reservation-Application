@@ -36,6 +36,11 @@ public class FlightFilterListScrollPane extends JPanel {
 		scrollPane.setColumnHeaderView(toolBar);
 		
 		JButton btnReturn = new JButton("Return");
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
+			}
+		});
 		toolBar.add(btnReturn);
 		
 		JComboBox comboBox = new JComboBox();
@@ -45,8 +50,12 @@ public class FlightFilterListScrollPane extends JPanel {
 		toolBar.add(btnSort);
 		
 		JButton btnBook = new JButton("Book Selected Flight");
+		btnBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
+			}
+		});
 		toolBar.add(btnBook);
-		// returns Obj
 				
 	}
 
