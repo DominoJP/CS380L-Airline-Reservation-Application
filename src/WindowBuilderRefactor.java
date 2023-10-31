@@ -65,8 +65,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		}
 		*/
 		
-		
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
