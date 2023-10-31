@@ -74,6 +74,8 @@ public class Airport {
 		
 		if(this.origin == null) {
 			origin = f.getcityDeparture();
+			if(name == null)
+				name = f.getAirportName();
 			destinations.add(flights);
 		}else if(this.origin.compareTo(f.getcityDeparture()) == 0) {
 			for(int i = 0; i < destinations.size(); i++) {
