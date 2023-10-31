@@ -17,7 +17,8 @@ public class FlightSorting{
 	private List<Flight> flights;
 
 	private Airport root1;
-	private AirportFlights root2;
+	//private Airport root2;
+	private AirportFlights destination;
 	
 	public FlightSorting() {
 		root1 = null;
@@ -26,6 +27,12 @@ public class FlightSorting{
 	
 	public FlightSorting(Flight first) {
 		root1 = new Airport(first);
+	}
+	
+	public void initialize(ArrayList<Flight> list) {
+		for(int i = 0; i < list.size(); i++) {
+			this.addFlight(list.get(i));
+		}
 	}
 
 	/**
@@ -76,17 +83,16 @@ public class FlightSorting{
 	/**
 	 * Sorts the list of flights 
 	 */
-	public void sortFlights(String origin, String destination, String date) {
+	public void sortFlights(String origin, String arrival, String date) {
 
 		 Airport curr = root1;
 		 curr = this.search(origin);
-		 AirportFlights root2 = curr.search(destination, date);
+		 AirportFlights root2 = curr.search(arrival, date);
 		 this.setFlights(root2.getFlights());
 		 this.setTotalFlightAvailable(root2.getFlights().size());
 
 
-		 Airport curr1 = search(origin);
-		 root2 = findFlights(origin, destination, date);
+		 destination = findFlights(origin, arrival, date);
 		 flights = root2.getFlights();
 		 totalFlightAvailable = flights.size();
 	}
@@ -108,7 +114,7 @@ public class FlightSorting{
 	}
 	
 	public Flight findFlight(String time) {
-		flights = root2.getFlights();
+		flights = destination.getFlights();
 		LocalTime find = LocalTime.parse(time);
 		
 		for(int i = 0; i < flights.size(); i++) {

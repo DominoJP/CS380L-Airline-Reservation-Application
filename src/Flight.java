@@ -13,6 +13,7 @@ import java.time.LocalTime;
 public class Flight {
 	
 	private String type; 
+	private String airportName;
 	private String cityDeparture;   
 	private String cityArrival;      
 	private LocalDate dateDeparture;      
@@ -36,10 +37,11 @@ public class Flight {
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
-	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
+	public Flight(String type, String airportName, String cityDeparture, String cityArrival, String dateDeparture,
 			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
 		
 	this.type = type; 
+	this.airportName = airportName;
 	this.cityDeparture = cityDeparture;
 	this.cityArrival = cityArrival;
 	this.dateDeparture = LocalDate.parse(dateDeparture);
@@ -92,8 +94,12 @@ public class Flight {
 		return timeDeparture;
 	}
 	
+	public String getAirportName() {
+		return airportName;
+	}
+	
 	/**
-	 * Getter method to retrieve the total remaining pasenger capacity
+	 * Getter method to retrieve the total remaining passenger capacity
 	 * @return ; returns the total remaining passenger capacity
 	 */
 	public int gettotalremainingpassengercapacity() {

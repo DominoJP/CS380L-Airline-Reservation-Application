@@ -8,4 +8,4 @@ Reservation ID: ABC12345
 1. Name: Josh Test
    Passport: US123456
    Seat: 1A
-   Status: Confirmed
+    Status: Confirmed
