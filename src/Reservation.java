@@ -10,7 +10,7 @@ public class Reservation {
 	private Account customer; //whoever has the account and is making the reservation
 	private Flight flight;
 	private ArrayList<String> passengers; //total list of passengers in case if the reservation includes more than just the customer
-	private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
+	private ArrayList<Integer> seatNumbers; //an array containing the list of chosen seat numbers for the flight
 	private double totalPrice; //a double that keeps track of the total cost of this reservation since multiple tickets may be ordered
 	
 	/**
@@ -68,7 +68,7 @@ public class Reservation {
 					 i--;
 				 }else {
 					 this.flight.setpassenger(seat, Integer.toString(this.customer.getAccountNumber()), this.passengers.get(i-1));
-					 seatNumbers[i-1] = seat;
+					 seatNumbers.add(seat);
 					 
 				 }
 					 
@@ -132,7 +132,7 @@ public class Reservation {
 		 for(int i = 0; i < this.passengers.size(); i++) {
 			 if(this.passengers.get(i) == p) {
 				 this.passengers.remove(i);
-				 this.flight.setpassenger(this.seatNumbers[i], null, null);
+				 this.flight.setpassenger(this.seatNumbers.get(i), null, null);
 				 this.totalPrice = this.totalPrice - this.flight.getpricing();
 				 exist = true;
 			 }
