@@ -10,7 +10,7 @@ public class Reservation {
 	private Account customer; //whoever has the account and is making the reservation
 	private Flight flight;
 	private ArrayList<String> passengers; //total list of passengers in case if the reservation includes more than just the customer
-	private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
+	private ArrayList<Integer> seatNumbers; //an array containing the list of chosen seat numbers for the flight
 	private double totalPrice; //a double that keeps track of the total cost of this reservation since multiple tickets may be ordered
 	
 	/**
@@ -68,7 +68,7 @@ public class Reservation {
 					 i--;
 				 }else {
 					 this.flight.setpassenger(seat, Integer.toString(this.customer.getAccountNumber()), this.passengers.get(i-1));
-					 seatNumbers[i-1] = seat;
+					 seatNumbers.add(seat);
 					 
 				 }
 					 
@@ -86,7 +86,7 @@ public class Reservation {
 		 }
 		 
 		 //print out the total price where the total is the price per ticket for the flight multiplied by the number of passengers on the reservation
-		 System.out.println("The total for this reservation is: " + this.setTotalPrice(numPassengers));
+		 System.out.println("The total for this reservation is: " + this.setTotalPrice());
 		 
 		 return;
 	 }
@@ -98,8 +98,8 @@ public class Reservation {
 	  * @return returns the total price that was calculated by the method
 	  */
 	 
-	 public double setTotalPrice(int p) {
-		 for(int i = 0; i < p; i++) {
+	 public double setTotalPrice() {
+		 for(int i = 0; i < passengers.size(); i++) {
 			 this.totalPrice = this.totalPrice + this.flight.getpricing();
 		 }
 		 
@@ -114,7 +114,7 @@ public class Reservation {
 	 
 	 public void setFlight(Flight f) {
 		 this.flight = f;
-		 this.totalPrice = this.setTotalPrice(this.passengers.size());
+		 this.totalPrice = this.setTotalPrice();
 	 }
 	 
 	 public void addPassenger(String p) {
@@ -132,7 +132,7 @@ public class Reservation {
 		 for(int i = 0; i < this.passengers.size(); i++) {
 			 if(this.passengers.get(i) == p) {
 				 this.passengers.remove(i);
-				 this.flight.setpassenger(this.seatNumbers[i], null, null);
+				 this.flight.setpassenger(this.seatNumbers.get(i), null, null);
 				 this.totalPrice = this.totalPrice - this.flight.getpricing();
 				 exist = true;
 			 }
