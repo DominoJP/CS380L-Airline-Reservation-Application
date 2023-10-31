@@ -43,18 +43,17 @@ public class Reservation {
 		 Scanner scan = new Scanner(System.in);
 		 int numPassengers;
 		 int seat;
+		 seatNumbers = new ArrayList<Integer>();
 		 
-		 System.out.print("How many other people is going one this trip (include yourself in the total): ");
+		 System.out.print("How many people are going one this trip (include yourself in the total): ");
 		 numPassengers = Integer.parseInt(scan.nextLine());
-		 System.out.println("");
 		 
 		 this.passengers = new ArrayList<String>();
 		 this.passengers.add(this.customer.getName());
 		 
-		 for(int i = 1; i <= numPassengers; i++) {
-			 System.out.print("What is the name of this passenger: ");
-			 passengers.add(scan.nextLine());
-			 System.out.println("");
+		 for(int i = 1; i < numPassengers; i++) {	 
+			 	System.out.print("What is the name of this other passenger: ");
+			 	passengers.add(scan.nextLine());
 		 }
 		 
 		 //a for loop that is meant to allow each passenger to select what seat they want from what seats are still available on the flight
@@ -81,6 +80,7 @@ public class Reservation {
 					 i--;
 				 }else {
 					 this.flight.setpassenger(seat, null, this.passengers.get(i-1));
+					 seatNumbers.add(seat);
 				 }
 			 }
 		 }
@@ -157,7 +157,7 @@ public class Reservation {
 		 
 		 System.out.println("Number of Passengers(including customer): " + this.passengers.size());
 		 
-		 System.out.println("List of Passengers: \n");
+		 System.out.println("List of Passengers: ");
 		 for(int i = 0; i < this.passengers.size(); i++) {
 			 System.out.println("\t" + this.passengers.get(i) + " Seat Number: " + this.seatNumbers.get(i));
 		 }

@@ -190,9 +190,9 @@ public class Flight {
 		// it is then it assigns a passenger and if the seat does not exist then it provided 
 		//an error to the user. 
 		if(location <= totalPassengerCapacity) {
-			passengers[location][1] = name; 
+			passengers[location][0] = name; 
 			if(accountnumber != null) {
-				passengers[location][2] = accountnumber;
+				passengers[location][1] = accountnumber;
 			}
 		}
 		else {
