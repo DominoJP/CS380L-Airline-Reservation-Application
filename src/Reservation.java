@@ -133,7 +133,8 @@ public class Reservation {
 			 if(this.passengers.get(i) == p) {
 				 this.passengers.remove(i);
 				 this.flight.setpassenger(this.seatNumbers.get(i), null, null);
-				 this.totalPrice = this.totalPrice - this.flight.getpricing();
+				 this.seatNumbers.remove(i);
+				 this.totalPrice = this.setTotalPrice();
 				 exist = true;
 			 }
 		 }
@@ -158,7 +159,7 @@ public class Reservation {
 		 
 		 System.out.println("List of Passengers: \n");
 		 for(int i = 0; i < this.passengers.size(); i++) {
-			 System.out.println("\t" + this.passengers.get(i));
+			 System.out.println("\t" + this.passengers.get(i) + " Seat Number: " + this.seatNumbers.get(i));
 		 }
 		 
 		 System.out.println("Total cost of reservation: " + this.totalPrice);
