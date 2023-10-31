@@ -86,7 +86,7 @@ public class Reservation {
 		 }
 		 
 		 //print out the total price where the total is the price per ticket for the flight multiplied by the number of passengers on the reservation
-		 System.out.println("The total for this reservation is: " + this.setTotalPrice(numPassengers));
+		 System.out.println("The total for this reservation is: " + this.setTotalPrice());
 		 
 		 return;
 	 }
@@ -98,8 +98,8 @@ public class Reservation {
 	  * @return returns the total price that was calculated by the method
 	  */
 	 
-	 public double setTotalPrice(int p) {
-		 for(int i = 0; i < p; i++) {
+	 public double setTotalPrice() {
+		 for(int i = 0; i < passengers.size(); i++) {
 			 this.totalPrice = this.totalPrice + this.flight.getpricing();
 		 }
 		 
@@ -114,7 +114,7 @@ public class Reservation {
 	 
 	 public void setFlight(Flight f) {
 		 this.flight = f;
-		 this.totalPrice = this.setTotalPrice(this.passengers.size());
+		 this.totalPrice = this.setTotalPrice();
 	 }
 	 
 	 public void addPassenger(String p) {
