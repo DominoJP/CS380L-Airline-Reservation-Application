@@ -23,6 +23,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public static void main(String[] args) {
 		
+		// Account account;
+		
 		// FIXME: remove with implementation of file reader for instantiation of flights
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
@@ -81,6 +83,9 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public WindowBuilderRefactor(FlightSorting sort) {
 		
+		// passed as parameter of SignInPane
+		Account account = new Account(null, null, null, 0);
+		
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -90,18 +95,20 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
-		AccountSignInPane SignInPane = new AccountSignInPane(contentPane);
+		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort);
-		// Instantiation of FLightFilterListScrollPane must happen at ActionLister of FLightFilterPane, AFTER the instantiation of the sorted list for the JList
+		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
-		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS");
+		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS", account);
 		// FIXME, add up until 9
-		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL");
+		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL", account);
 		TripContactPane TripContactPane =  new TripContactPane(contentPane);
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
+		
+		
 		
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");

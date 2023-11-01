@@ -10,8 +10,15 @@ import java.io.IOException;
 */
 
 public class AccountSignIn {
+	private int id;
+	private String email;
+	private char[] password;
 	
-	public static boolean validateCredentials(String email, char[] password) {
+	public AccountSignIn() {
+		
+	}
+	
+	public boolean validateCredentials(String email, char[] password) {
 		// FIXME: temp file
 		String file = "TestAccounts";
 		
@@ -21,8 +28,12 @@ public class AccountSignIn {
             
             while (line != null) {
                 if (line.equals(email)) {
+                	// email = line;
                 	line = reader.readLine();
                 	if (line.equals(String.valueOf(password))) {
+                		// password = line.toCharArray();
+                		line = reader.readLine();
+                		id = Integer.parseInt(line);
                 		reader.close();
                 		return true;
                 	}
@@ -36,6 +47,18 @@ public class AccountSignIn {
         }
 		
 		return false;
+	}
+	
+	public int getID() {
+		return this.id;
+	}
+	
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public char[] getPassword() {
+		return this.password;
 	}
 		
 }

@@ -49,6 +49,15 @@ public class Account{
 	 public String getEmail() {
 		 return email;
 	 }
+	 
+	 /**
+	  * Setter method to set account email
+	  * @param accountNumber : new account email to be set.
+	  */
+	 public void setEmail(String email) {
+		 this.email = email;
+
+	 }
 
 	 /**
 	  * Getter method to retrieve the account number.
