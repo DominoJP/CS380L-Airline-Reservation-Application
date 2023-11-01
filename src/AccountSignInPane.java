@@ -25,10 +25,11 @@ import javax.swing.JTextField;
  */
 
 public class AccountSignInPane extends JPanel {
+	AccountSignIn signIn = new AccountSignIn();
 
 	private static final long serialVersionUID = 1L;
 
-	public AccountSignInPane(JPanel contentPane) {
+	public AccountSignInPane(JPanel contentPane, Account account) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 115, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -87,7 +88,11 @@ public class AccountSignInPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME
 				// TEMP
-				if (AccountSignIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
+				if (signIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
+					account.setaccountNumber(signIn.getID());
+					// account.setEmail(signIn.getEmail());
+					// account.setPassword(signIn.getPassword().toString());
+					System.out.println(account.getAccountNumber());
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				} else {
 					lblWrong.setVisible(true);
@@ -130,6 +135,10 @@ public class AccountSignInPane extends JPanel {
 		gbc_btnSignUp.gridy = 8;
 		add(btnSignUp, gbc_btnSignUp);
 		
+	}
+	
+	public int getID() {
+		return signIn.getID();
 	}
 
 }

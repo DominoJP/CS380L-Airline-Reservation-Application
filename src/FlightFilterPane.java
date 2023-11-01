@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -55,7 +57,7 @@ public class FlightFilterPane extends JPanel {
 	
 	String[] flightListSorted;
 	
-	public FlightFilterPane(JPanel contentPane, FlightSorting sort) {
+	public FlightFilterPane(JPanel contentPane, FlightSorting sort, Flight flight) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -228,9 +230,10 @@ public class FlightFilterPane extends JPanel {
 					// sort flights per user input
 					sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
 					flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
+					ArrayList<Flight> flightArray = sort.getFlightList(airportDepartInput, airportArriveInput, dateDepartingInput);
 					
 					// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
-					FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted);
+					FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted, flightArray, flight);
 					contentPane.add(FilterListPane, "FILTER_LIST");
 					
 					// proceed to filtered list of flights, sorted by date of departure by default

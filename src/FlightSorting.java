@@ -189,5 +189,13 @@ public class FlightSorting{
 		
 		return list;
 	}
+	
+	public ArrayList<Flight> getFlightList(String origin, String destination, String date) {
+		AirportFlights curr = findFlights(origin, destination, date);
+
+		ArrayList<Flight> flights = curr.getFlights();
+		return flights;
+		
+	}
 }
 

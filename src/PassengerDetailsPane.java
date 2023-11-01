@@ -42,7 +42,7 @@ public class PassengerDetailsPane extends JPanel {
 			"California"
 		};
 
-	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, int passengerAmount, String nextPassengerDetailsPane) {
+	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, int passengerAmount, String nextPassengerDetailsPane, Account account) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{168, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -199,7 +199,8 @@ public class PassengerDetailsPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME: LOGIC TO KEEP COUNT OF PASSENGERS
 				if (passengerIndex == passengerAmount) {
-					((CardLayout) contentPane.getLayout()).show(contentPane, "TRIP_CONTACT");
+					System.out.println(account.getAccountNumber());
+;					((CardLayout) contentPane.getLayout()).show(contentPane, "TRIP_CONTACT");
 				}
 				else {
 					((CardLayout) contentPane.getLayout()).show(contentPane, nextPassengerDetailsPane);
