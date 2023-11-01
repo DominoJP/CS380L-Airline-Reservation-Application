@@ -6,6 +6,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JToolBar;
 import javax.swing.JComboBox;
@@ -20,7 +21,7 @@ public class FlightFilterListScrollPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public FlightFilterListScrollPane(JPanel contentPane, String[] flightListSorted) {
+	public FlightFilterListScrollPane(JPanel contentPane, String[] flightListSorted, ArrayList<Flight> flightArray, Flight flight) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -52,6 +53,9 @@ public class FlightFilterListScrollPane extends JPanel {
 		JButton btnBook = new JButton("Book Selected Flight");
 		btnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Flight tempFlight = flightArray.get(listFlights.getSelectedIndex());
+				flight.setDateArrival(tempFlight.getDateArrival().toString());
+				System.out.println(flight.getDateArrival());
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
 			}
 		});

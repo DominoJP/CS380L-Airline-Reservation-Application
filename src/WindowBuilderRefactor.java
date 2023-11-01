@@ -85,6 +85,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		
 		// passed as parameter of SignInPane
 		Account account = new Account(null, null, null, 0);
+		// FIXME: temp, to be adjusted
+		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2023-10-24", "12:00", 0, 0.0);
 		
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -98,7 +100,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
-		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort);
+		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort, flight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
 		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS", account);
