@@ -12,13 +12,16 @@ import java.io.IOException;
 */
 
 public class FlightsTestReader {
-	// private String flightsFilePath = "src/Database/FlightsTest.txt";
 	private FlightSorting sort;
 	private Flight instantiatedFlight;
 	
+	/**
+	  Constructor.
+	*/
+	
 	public FlightsTestReader() {
 		
-		try (BufferedReader reader = new BufferedReader(new FileReader("FlightsTest.txt"))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
 		    String line;
 		    
 		    while ((line = reader.readLine()) != null) {
