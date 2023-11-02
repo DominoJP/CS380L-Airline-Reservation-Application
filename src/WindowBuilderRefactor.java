@@ -99,7 +99,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
-		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
+		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane, account);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort, flight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
@@ -109,6 +109,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		TripContactPane TripContactPane = new TripContactPane(contentPane);
 		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
 		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
+		// Instantiated at OptionSelectionPane to allow JList to include bookings performed since program execution
+		// ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
 		
