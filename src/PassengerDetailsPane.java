@@ -200,7 +200,7 @@ public class PassengerDetailsPane extends JPanel {
 				// FIXME: LOGIC TO KEEP COUNT OF PASSENGERS
 				if (passengerIndex == passengerAmount) {
 					System.out.println(account.getAccountNumber());
-;					((CardLayout) contentPane.getLayout()).show(contentPane, "TRIP_CONTACT");
+;					((CardLayout) contentPane.getLayout()).show(contentPane, "PAY");
 				}
 				else {
 					((CardLayout) contentPane.getLayout()).show(contentPane, nextPassengerDetailsPane);

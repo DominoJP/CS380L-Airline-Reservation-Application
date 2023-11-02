@@ -106,7 +106,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS", account);
 		// FIXME, add up until 9
 		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL", account);
-		TripContactPane TripContactPane =  new TripContactPane(contentPane);
+		TripContactPane TripContactPane = new TripContactPane(contentPane);
+		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane);
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
 		
@@ -123,6 +124,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
+		contentPane.add(PaymentPane, "PAY");
 	
 		// FIXME: temp. commented out
 		// contentPane.add(ReservationCancellationPane, "Cancel");
