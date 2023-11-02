@@ -62,13 +62,5 @@ public class ReservationCancellationPane extends JPanel {
     }
     }
 	
-	
-	
-
-        
-	
-
-
-}
 
 
