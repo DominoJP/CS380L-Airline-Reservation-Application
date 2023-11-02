@@ -42,12 +42,12 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
-<<<<<<< Updated upstream
+
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane);
 		FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
 		TravellerInformationPane TravellerInfoPane = new TravellerInformationPane(contentPane);
 		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
-=======
+
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort);
 		// Instantiation of FLightFilterListScrollPane must happen at ActionLister of FLightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
@@ -58,15 +58,15 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		// FIXME: temp. commented out
 		 ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane();
 		
->>>>>>> Stashed changes
+
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
 		contentPane.add(SelectionPane, "SELECT");
 		contentPane.add(FilterPane, "FILTER");
-<<<<<<< Updated upstream
+
 		contentPane.add(FilterListPane, "FILTER_LIST");
 		contentPane.add(TravellerInfoPane, "TRAVELLER_INFO");		
-=======
+
 		// In FlightFilterPane
 		// contentPane.add(FilterListPane, "FILTER_LIST");
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
@@ -74,7 +74,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
 	
 		// FIXME: temp. commented out
->>>>>>> Stashed changes
+
 		contentPane.add(ReservationCancellationPane, "Cancel");
 		
 	}

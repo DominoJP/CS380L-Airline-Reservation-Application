@@ -68,9 +68,7 @@ public class ReservationCancellationPane extends JPanel {
         
 	
 
-<<<<<<< Updated upstream
+
 }
 
 
-=======
->>>>>>> Stashed changes
