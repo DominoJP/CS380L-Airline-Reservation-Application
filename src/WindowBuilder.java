@@ -103,7 +103,6 @@ public class WindowBuilder extends JFrame {
 	}
 
 	public WindowBuilder() {
-		TestAccount test = new TestAccount();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
