@@ -55,7 +55,9 @@ public class FlightFilterListScrollPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Flight tempFlight = flightArray.get(listFlights.getSelectedIndex());
 				flight.setDateArrival(tempFlight.getDateArrival().toString());
+				flight.setTimeArrival(tempFlight.getTimeArrival().toString());
 				System.out.println(flight.getDateArrival());
+				System.out.println(flight.getTimeArrival());
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
 			}
 		});

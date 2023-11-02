@@ -85,7 +85,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		// passed as parameter of SignInPane
 		Account account = new Account(null, null, null, 0);
 		// FIXME: temp, to be adjusted
-		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2023-10-24", "12:00", 0, 0.0);
+		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
 		
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -98,14 +98,18 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
-		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
+		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane, account);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort, flight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
 		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS", account);
 		// FIXME, add up until 9
 		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL", account);
-		TripContactPane TripContactPane =  new TripContactPane(contentPane);
+		TripContactPane TripContactPane = new TripContactPane(contentPane);
+		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
+		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
+		// Instantiated at OptionSelectionPane to allow JList to include bookings performed since program execution
+		// ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
 		
@@ -122,6 +126,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
+		contentPane.add(PaymentPane, "PAY");
+		contentPane.add(ConfirmationPane, "CONFIRM");
 	
 		// FIXME: temp. commented out
 		// contentPane.add(ReservationCancellationPane, "Cancel");
