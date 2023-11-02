@@ -42,16 +42,39 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane);
+<<<<<<< Updated upstream
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane);
 		FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
 		TravellerInformationPane TravellerInfoPane = new TravellerInformationPane(contentPane);
 		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
+=======
+		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, sort);
+		// Instantiation of FLightFilterListScrollPane must happen at ActionLister of FLightFilterPane, AFTER the instantiation of the sorted list for the JList
+		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
+		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS");
+		// FIXME, add up until 9
+		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL");
+		TripContactPane TripContactPane =  new TripContactPane(contentPane);
+		// FIXME: temp. commented out
+		 ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane();
+		
+>>>>>>> Stashed changes
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
 		contentPane.add(SelectionPane, "SELECT");
 		contentPane.add(FilterPane, "FILTER");
+<<<<<<< Updated upstream
 		contentPane.add(FilterListPane, "FILTER_LIST");
 		contentPane.add(TravellerInfoPane, "TRAVELLER_INFO");		
+=======
+		// In FlightFilterPane
+		// contentPane.add(FilterListPane, "FILTER_LIST");
+		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
+		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
+		contentPane.add(TripContactPane, "TRIP_CONTACT");
+	
+		// FIXME: temp. commented out
+>>>>>>> Stashed changes
 		contentPane.add(ReservationCancellationPane, "Cancel");
 		
 	}

@@ -64,7 +64,7 @@ public class CancelReservation extends javax.swing.JFrame {
 
         
         // Initialize ReservationCancellationPane and add it to the CancelReservation frame
-        cancellationPane = new ReservationCancellationPane(this);
+        cancellationPane = new ReservationCancellationPane(inputPanel, this);
         add(cancellationPane, BorderLayout.NORTH);
     }
 
