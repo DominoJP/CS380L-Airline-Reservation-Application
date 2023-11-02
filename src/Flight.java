@@ -1,88 +1,100 @@
+/**
+ * The Flight class represents a flight in a flight reservation such as 
+ * the type of flight (round trip or one way), departure and arrival cities,
+ * departure and arrival dates and times, 
+ * total passenger capacity, pricing and passenger information. 
+ *@author Sayra Reyes
+ *@version 1.0 
+ */
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Flight {
 	
-	private String type; //(round trip/one way)
-	private String cityDeparture;     // (and/or airport)
-	private String cityArrival;        //(and/or airport)
-	private String dateDeparture;      //date of departure
-	private String timeDeparture;    //time of departure 
-	private String dateArrival;      //date of arrival
-	private String timeArrival;     //time of arrival
-	private int totalPassengerCapacity;  //total of passenger capacity
+	private String type; 
+	private String cityDeparture;   
+	private String cityArrival;      
+	private LocalDate dateDeparture;      
+	private LocalTime timeDeparture;    
+	private LocalDate dateArrival;     
+	private LocalTime timeArrival;   
+	private int totalPassengerCapacity;  
 	private String[][] passengers; 
-	private double pricing; //pricing 
+	private double pricing; 
 	
 
 	/**
-	 * 
+	 * Constructor for the flight class
 	 * @param type
 	 * @param cityDeparture
 	 * @param cityArrival
 	 * @param dateDeparture
 	 * @param timeDeparture
+	 * @param dateArrival
+	 * @param timeArrival
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
 	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
-			String timeDeparture, int totalPassengerCapacity, double pricing) {
+			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
 		
 	this.type = type; 
 	this.cityDeparture = cityDeparture;
 	this.cityArrival = cityArrival;
-	this.dateDeparture = dateDeparture;
-	this.timeDeparture = timeDeparture; 
+	this.dateDeparture = LocalDate.parse(dateDeparture);
+	this.timeDeparture = LocalTime.parse(timeDeparture); 
+	this.dateArrival = LocalDate.parse(dateArrival);
+	this.timeArrival = LocalTime.parse(timeArrival);
 	this.totalPassengerCapacity = totalPassengerCapacity;
 	this.pricing = pricing; 
-	
 	passengers = new String[totalPassengerCapacity][2];
 	
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Getter method to retrieve the flight type (round trip or one way) 
+	 * @return : returns the type of flight. 
 	 */
 	public String gettype(){
 		return type;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Getter method to retrieve the departure city (and/or airport)
+	 * @return : returns the departure city
 	 */
 	public String getcityDeparture() {
 		return cityDeparture;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Getter method to retrieve arrival city. 
+	 * @return : returns the city of arrival
 	 */
 	public String getcityArrival() {
 		return cityArrival;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Getter method to retrieve the date of departure.
+	 * @return : returns the date of departure 
 	 */
-	public String getdateDeparture() {
+	public LocalDate getdateDeparture() {
 		return dateDeparture;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Getter method to retrieve the time of departure.
+	 * @return returns the time of departure 
 	 */
-	public String gettimeDeparture() {
+	public LocalTime gettimeDeparture() {
 		return timeDeparture;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Getter method to retrieve the total remaining pasenger capacity
+	 * @return ; returns the total remaining passenger capacity
 	 */
 	public int gettotalremainingpassengercapacity() {
 		int available = 0; 
@@ -96,56 +108,57 @@ public class Flight {
 	
 	
     /**
-     * 
-     * @return
+     * Getter method to retrieve the pricing of the flight. 
+     * @return : returns the pricing of the flight. 
      */
 	public double getpricing() {
 		return pricing;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Getter method to retrieve passenger information at a specified location. 
+	 * @param location : the location for setting passenger information. 
+	 * @return 
 	 */
 	public String getPassenger(int location) {
 		return passengers[location][1];
 	}
 
 	/**
-	 * 
+	 * Getter method to return the date of the arrival
 	 * @return
 	 */
-	public String getDateArrival() {
+	public LocalDate getDateArrival() {
 		return dateArrival;
 	}
 
 	/**
-	 * 
+	 * Setter to set the date of the arrival 
 	 * @param dateArrival
 	 */
 	public void setDateArrival(String dateArrival) {
-		this.dateArrival = dateArrival;
+		this.dateArrival = LocalDate.parse(dateArrival);
 	}
 
 	/**
-	 * 
+	 * Getter to get the time of the arrival
 	 * @return
 	 */
-	public String getTimeArrival() {
+	public LocalTime getTimeArrival() {
 		return timeArrival;
 	}
 
 	/**
-	 * 
+	 * Setter to get the time of the arrival
 	 * @param timeArrival
 	 */
 	public void setTimeArrival(String timeArrival) {
-		this.timeArrival = timeArrival;
+		this.timeArrival = LocalTime.parse(timeArrival);
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Getter method to retrieve the total passenger capacity of the flight.
+	 * @return ; returns the total passenger capacity of the flight. 
 	 */
 	public int gettotalpassengercapacity() {
 		return totalPassengerCapacity;
@@ -153,14 +166,23 @@ public class Flight {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Method to check if the flight is full
+	 * @return , returns true if the flight is full, otherwise false. 
 	 */
 	public boolean isFull() {
 		return false;
 	}
 	
+	/**
+	 * Method to set the passenger information at a specified location. 
+	 * @param location : the location for setting passenger information
+	 * @param accountnumber : the account number of the passenger. 
+	 * @param name : the name of the passenger. 
+	 */
 	public  void setpassenger(int location, String accountnumber, String name) {
+		//if the statement checks whether location is valid seat on the flight and if
+		// it is then it assigns a passenger and if the seat does not exist then it provided 
+		//an error to the user. 
 		if(location <= totalPassengerCapacity) {
 			passengers[location][1] = name; 
 			if(accountnumber != null) {
@@ -171,6 +193,5 @@ public class Flight {
 			System.out.println("Sorry that is not a seat available on the flight");
 		}
 	}
-	
 	
 }
