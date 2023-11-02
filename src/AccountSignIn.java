@@ -14,13 +14,17 @@ public class AccountSignIn {
 	private String email;
 	private char[] password;
 	
+	/**
+	   Constructor.
+	*/
+	
 	public AccountSignIn() {
 		
 	}
 	
 	public boolean validateCredentials(String email, char[] password) {
 		// FIXME: temp file
-		String file = "TestAccounts";
+		String file = "src/Database/AccountsTemp";
 		
 		// FIXME: close BufferedReader
 		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
