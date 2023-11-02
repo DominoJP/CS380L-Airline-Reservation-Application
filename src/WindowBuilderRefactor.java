@@ -86,7 +86,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		// passed as parameter of SignInPane
 		Account account = new Account(null, null, null, 0);
 		// FIXME: temp, to be adjusted
-		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2023-10-24", "12:00", 0, 0.0);
+		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
 		
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -107,7 +107,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		// FIXME, add up until 9
 		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL", account);
 		TripContactPane TripContactPane = new TripContactPane(contentPane);
-		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane);
+		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
+		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
 		
@@ -125,6 +126,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
 		contentPane.add(PaymentPane, "PAY");
+		contentPane.add(ConfirmationPane, "CONFIRM");
 	
 		// FIXME: temp. commented out
 		// contentPane.add(ReservationCancellationPane, "Cancel");

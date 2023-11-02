@@ -35,6 +35,17 @@ public class Reservation {
 	 }
 	 
 	 /**
+	   Constructor that adds the customer account making the reservation and the flight the reservation applies to
+	   @param n is the Account making the reservation
+	   @param f is the flight that the reservation is for
+	   @param passengers is the List of passenger names
+	   and also calls the method setReservation()
+	 */
+	 public Reservation(Account a, Flight f, ArrayList<String> passengers) {
+		 
+	 }
+	 
+	 /**
 	  * the method that finishes the creation of the reservation by allowing the customer
 	  * to add all the people will be on the reservation(including themselves) and also to select the seats
 	  * that all passengers want
