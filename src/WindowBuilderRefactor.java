@@ -18,17 +18,15 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	
+
 
 
 	public static void main(String[] args) {
-		
-		// Account account;
-		
+
 		// FIXME: remove with implementation of file reader for instantiation of flights
-		FlightsTestReader flightsReader = new FlightsTestReader(); 
+		FlightsTestReader flightsReader = new FlightsTestReader();
 		FlightSorting sort = flightsReader.getFlightSorting();
-		
+
 		/*
 		FlightSorting sort;
 		Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
@@ -38,8 +36,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		Flight test3 = new Flight("One Way", "LA", "NYC", "2023-10-24", "03:30", "2023-10-27", "02:45", 50, 700.00);
 		sort.addFlight(test3);
 		*/
-		
-		
+
+
 		/*
 		LocalDate time = LocalDate.of(2023, 10, 20);
 		LocalTime time2 = LocalTime.of(10, 30);
@@ -66,7 +64,8 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 			System.out.println(list[i] + "\n");
 		}
 		*/
-		
+
+
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -81,12 +80,12 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 	}
 
 	public WindowBuilderRefactor(FlightSorting sort) {
-		
+
 		// passed as parameter of SignInPane
 		Account account = new Account(null, null, null, 0);
 		// FIXME: temp, to be adjusted
 		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
-		
+
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -95,7 +94,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
-		
+
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane, account);
@@ -112,13 +111,13 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		// ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
-		
-		
-		
+
+
+
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
 		contentPane.add(SelectionPane, "SELECT");
-		
+
 		// select "Reserve"
 		contentPane.add(FilterPane, "FILTER");
 		// In FlightFilterPane
@@ -128,10 +127,10 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
 		contentPane.add(PaymentPane, "PAY");
 		contentPane.add(ConfirmationPane, "CONFIRM");
-	
+
 		// FIXME: temp. commented out
 		// contentPane.add(ReservationCancellationPane, "Cancel");
-		
+
 	}
 
 }
