@@ -57,7 +57,7 @@ public class FlightFilterPane extends JPanel {
 	
 	String[] flightListSorted;
 	
-	public FlightFilterPane(JPanel contentPane, FlightSorting sort, Flight flight) {
+	public FlightFilterPane(JPanel contentPane, Account account, FlightSorting sort, Flight flight) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -233,7 +233,7 @@ public class FlightFilterPane extends JPanel {
 					ArrayList<Flight> flightArray = sort.getFlightList(airportDepartInput, airportArriveInput, dateDepartingInput);
 					
 					// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
-					FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, flightListSorted, flightArray, flight);
+					FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
 					contentPane.add(FilterListPane, "FILTER_LIST");
 					
 					// proceed to filtered list of flights, sorted by date of departure by default

@@ -1,16 +1,22 @@
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.BorderLayout;
 import javax.swing.JList;
 import javax.swing.JToolBar;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 //FIXME: ONLY DISPLAYS RESERVATIONS BOOKED ON CURRENT EXECUTION
-public class ReservationListPane extends JPanel {
+public class ReservationListPane extends JPanel implements PropertyChangeListener {
 	private ArrayList<Reservation> reservations;
 	private String[] reservationArray;
+	
+	private DefaultListModel model = new DefaultListModel();
+	private JList list;
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,12 +24,13 @@ public class ReservationListPane extends JPanel {
 	 * Create the panel.
 	 */
 	public ReservationListPane(JPanel contentPane, Account account) {
-		this.instantiateReservationList(account);
+		//FIXME: INSTANTIATE ACCOUNTS FROM FILE
 		
 		setLayout(new BorderLayout(0, 0));
 		
-		JList list = new JList(reservationArray);
+		list = new JList(model);
 		add(list, BorderLayout.CENTER);
+		
 		
 		JToolBar toolBar = new JToolBar();
 		add(toolBar, BorderLayout.NORTH);
@@ -36,6 +43,10 @@ public class ReservationListPane extends JPanel {
 
 	}
 	
+    // public ReservationListPane() {
+		
+	// }
+	
 	public void instantiateReservationList(Account account) {
 		Iterator<Reservation> iter = account.getReservationHistory().iterator();
 		reservationArray = new String[account.getReservationHistory().size()];
@@ -44,7 +55,23 @@ public class ReservationListPane extends JPanel {
 			reservationArray[i] = iter.next().toString();
 			i++;
 		}
-		System.out.println(reservationArray[0]);
+		
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		// reservations = acc.getReservationHistory();
+		// reservations.add((Reservation) evt.getNewValue());
+		// this.acc.setReservationHistory(reservations);
+		this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
+		System.out.println("SUCCESS");
+		
+		model.addElement(reservations.getFirst().getFlight().getcityDeparture());;
+
+	}
+	
+	private void addE(String e) {
+		model.addElement(e);
 	}
 
 }

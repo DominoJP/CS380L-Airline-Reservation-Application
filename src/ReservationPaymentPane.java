@@ -27,9 +27,16 @@ public class ReservationPaymentPane extends JPanel {
 				// FIXME: RESERVE FLIGHT
 				ArrayList<String> test = new ArrayList<>();
 				test.add("name");
+				// Flight test1 = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
+				// System.out.println(test1.getcityDeparture());
 				reservation = new Reservation(account, flight, test);
-				account.addReservationHistory(reservation);
-				System.out.println(account.getReservationHistory());
+				System.out.println(reservation.getFlight().getcityDeparture());
+				// ArrayList<Reservation> reservations = account.getReservationHistory();
+				ArrayList<Reservation> reservations = new ArrayList<>();
+				reservations.add(reservation);
+				
+				account.setReservationHistory(reservations);
+				//System.out.println(account.getReservationHistory());
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");
 			}
 		});

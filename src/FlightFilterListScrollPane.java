@@ -21,7 +21,7 @@ public class FlightFilterListScrollPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public FlightFilterListScrollPane(JPanel contentPane, String[] flightListSorted, ArrayList<Flight> flightArray, Flight flight) {
+	public FlightFilterListScrollPane(JPanel contentPane, Account account, String[] flightListSorted, ArrayList<Flight> flightArray, Flight flight) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -58,6 +58,8 @@ public class FlightFilterListScrollPane extends JPanel {
 				flight.setTimeArrival(tempFlight.getTimeArrival().toString());
 				System.out.println(flight.getDateArrival());
 				System.out.println(flight.getTimeArrival());
+				ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, tempFlight);
+				contentPane.add(PaymentPane, "PAY");
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
 			}
 		});

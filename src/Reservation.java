@@ -38,11 +38,13 @@ public class Reservation {
 	   Constructor that adds the customer account making the reservation and the flight the reservation applies to
 	   @param n is the Account making the reservation
 	   @param f is the flight that the reservation is for
-	   @param passengers is the List of passenger names
+	   @param p is the List of passenger names
 	   and also calls the method setReservation()
 	 */
-	 public Reservation(Account a, Flight f, ArrayList<String> passengers) {
-		 
+	 public Reservation(Account a, Flight f, ArrayList<String> p) {
+		 this.customer = a;
+		 this.flight = f;
+		 this.passengers = p;
 	 }
 	 
 	 /**
@@ -102,6 +104,7 @@ public class Reservation {
 		 return;
 	 }
 	 
+	 
 	 /**
 	  * method that gives the total price of the reservation using the price per ticket of the flight
 	  * and the number of passengers that was given
@@ -128,9 +131,14 @@ public class Reservation {
 		 this.totalPrice = this.setTotalPrice(this.passengers.size());
 	 }
 	 
+	 public Flight getFlight() {
+		 return this.flight;
+	 }
+	 
 	 public void addPassenger(String p) {
 		 
 	 }
+	 
 	 
 	 /**
 	  * this method allows the user to remove a passenger from the reservation
