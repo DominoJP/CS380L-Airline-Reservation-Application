@@ -1,9 +1,13 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
+ * Account Sign Up - a program to read and write.
+ * This program checks if exists in a text file and ensures that the same is not 
+ * added multiple times.
  * @author: Sayra Reyes
  * @version: 1.0
  */
@@ -20,7 +24,7 @@ public class AccountSignUp {
 		String line;
 
 		while((line = reader1.readLine()) != null) {
-			if(line.equals("0001, name, @email, password, CUSTOMER")) { //checks if line matches "email" + "password".
+			if(line.equals("0001, name, @email, password, CUSTOMER")) { //checks if line matches.
 				pairExists = true;
 				break;
 			}
