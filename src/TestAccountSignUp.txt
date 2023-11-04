@@ -1,4 +1,2 @@
-Sayra 
-Test
-@email.com
-password1234 
+
+	0001,	name,	@email.com,	password,	CUSTOMER	0001,	name,	@email.com,	password,	CUSTOMER	0001,	name,	@email.com,	password,	CUSTOMER	0001,	name,	@email.com,	password,	CUSTOMER
