@@ -12,6 +12,7 @@ import java.time.LocalTime;
 
 public class Flight {
 	
+	private String id;
 	private String type; 
 	private String cityDeparture;   
 	private String cityArrival;      
@@ -50,6 +51,34 @@ public class Flight {
 	this.pricing = pricing; 
 	passengers = new String[totalPassengerCapacity][2];
 	
+	}
+	
+	/**
+	  Constructor for the flight class
+	  @param id
+	  @param type
+	  @param cityDeparture
+	  @param cityArrival
+	  @param dateDeparture
+	  @param timeDeparture
+	  @param dateArrival
+	  @param timeArrival
+	  @param totalPassengerCapacity
+	  @param pricing
+	 */
+	public Flight(String id, String type, String cityDeparture, String cityArrival, String dateDeparture,
+				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
+		this.id = id;
+		this.type = type; 
+		this.cityDeparture = cityDeparture;
+		this.cityArrival = cityArrival;
+		this.dateDeparture = LocalDate.parse(dateDeparture);
+		this.timeDeparture = LocalTime.parse(timeDeparture); 
+		this.dateArrival = LocalDate.parse(dateArrival);
+		this.timeArrival = LocalTime.parse(timeArrival);
+		this.totalPassengerCapacity = totalPassengerCapacity;
+		this.pricing = pricing; 
+		passengers = new String[totalPassengerCapacity][2];
 	}
 	
 	/**

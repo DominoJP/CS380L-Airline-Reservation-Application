@@ -27,7 +27,9 @@ public class FlightsTestReader {
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
-		        instantiatedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], Integer.parseInt(parts[7]), Double.parseDouble(parts[8]));
+		        instantiatedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], 
+		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
+		        		                        Double.parseDouble(parts[9]));
 		        // System.out.println(instantiatedFlight.getdateDeparture());
 		        //FlightSorting instantiation requires a flight as parameter
 		        if (sort == null) {
