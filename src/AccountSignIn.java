@@ -10,7 +10,7 @@ import java.io.IOException;
 */
 
 public class AccountSignIn {
-	private int id;
+	private String id;
 	private String email;
 	private char[] password;
 	
@@ -48,7 +48,7 @@ public class AccountSignIn {
 		return false;
 	}
 	
-	public int getID() {
+	public String getID() {
 		return this.id;
 	}
 	

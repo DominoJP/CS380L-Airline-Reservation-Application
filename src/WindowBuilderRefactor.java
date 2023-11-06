@@ -23,11 +23,10 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public static void main(String[] args) {
 		
-		// Account account;
-		
 		// FIXME: remove with implementation of file reader for instantiation of flights
-		FlightsTestReader flightsReader = new FlightsTestReader(); 
-		FlightSorting sort = flightsReader.getFlightSorting();
+		// ReservationsReader reservationsReader = new ReservationsReader(account);
+		// FlightsTestReader flightsReader = new FlightsTestReader(); 
+		// FlightSorting sort = reservationsReader.getFlightSorting();
 		
 		/*
 		FlightSorting sort;
@@ -72,7 +71,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					WindowBuilderRefactor frame = new WindowBuilderRefactor(sort);
+					WindowBuilderRefactor frame = new WindowBuilderRefactor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,12 +80,16 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		});
 	}
 
-	public WindowBuilderRefactor(FlightSorting sort) {
+	public WindowBuilderRefactor() {
 		
 		// passed as parameter of SignInPane
-		Account account = new Account(null, null, null, 0);
+		Account account = new Account(null, null, null, "0001");
 		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 		account.addPropertyChangeListener(ReviewPane);
+		
+		ReservationsReader reservationsReader = new ReservationsReader(account);
+		// FlightsTestReader flightsReader = new FlightsTestReader(); 
+		FlightSorting sort = reservationsReader.getFlightSorting();
 		
 		// FIXME: temp, to be adjusted
 		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);

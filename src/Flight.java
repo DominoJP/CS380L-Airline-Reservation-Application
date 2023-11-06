@@ -82,6 +82,14 @@ public class Flight {
 	}
 	
 	/**
+	 * Getter method to retrieve the flight id
+	 * @return : returns the id of flight. 
+	 */
+	public String getID(){
+		return this.id;
+	}
+	
+	/**
 	 * Getter method to retrieve the flight type (round trip or one way) 
 	 * @return : returns the type of flight. 
 	 */
