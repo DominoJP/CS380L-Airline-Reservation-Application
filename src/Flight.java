@@ -54,6 +54,7 @@ public class Flight {
 	this.pricing = pricing; 
 	passengers = new String[totalPassengerCapacity][2];
 	
+	support = new PropertyChangeSupport(this);
 	}
 	
 	/**
@@ -82,6 +83,8 @@ public class Flight {
 		this.totalPassengerCapacity = totalPassengerCapacity;
 		this.pricing = pricing; 
 		passengers = new String[totalPassengerCapacity][2];
+		
+		support = new PropertyChangeSupport(this);
 	}
 	
 	
@@ -89,8 +92,7 @@ public class Flight {
 	 * Method that fires PropertyChange event when "assigning" to a Flight Object. For use with FlightFilterList.
 	 * @param selectedFlight
 	 */	
-	/*
-	public void setFlight(Flight selectedFlight) {
+	public void assign(Flight selectedFlight) {
 		support.firePropertyChange("flight", this, selectedFlight);
 		this.id = selectedFlight.getID();
 		this.type = selectedFlight.gettype();
@@ -105,7 +107,6 @@ public class Flight {
 		// FIXME: update as necessary
 		
 	}
-	*/
 	
 	/**
 	 * Getter method to retrieve the flight id
@@ -257,10 +258,8 @@ public class Flight {
 		}
 	}
 	
-	/*
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
 		 support.addPropertyChangeListener(pcl);
 	}
-	*/
 	
 }

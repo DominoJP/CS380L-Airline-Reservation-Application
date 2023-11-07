@@ -59,9 +59,5 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		model.addAll(reservations);
 
 	}
-	
-	private void addE(String e) {
-		model.addElement(e);
-	}
 
 }

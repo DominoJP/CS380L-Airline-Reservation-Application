@@ -78,8 +78,6 @@ public class Main extends javax.swing.JFrame {
 
 	public Main() {
 		
-		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
-		
 		setDefaultCloseOperation(Main.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -95,7 +93,9 @@ public class Main extends javax.swing.JFrame {
 		Account account = new Account(null, null, null, "0000");
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
-		account.addPropertyChangeListener(ReviewPane);
+		
+		// Placeholder Flight Object to be reassigned.
+		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
 		
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
@@ -113,12 +113,15 @@ public class Main extends javax.swing.JFrame {
 		// FIXME, add up until 9
 		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL", account);
 		TripContactPane TripContactPane = new TripContactPane(contentPane);
-		// ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
+		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
 		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
 
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
 		
+		
+		account.addPropertyChangeListener(ReviewPane);
+		flight.addPropertyChangeListener(PaymentPane);
 		
 		
 		contentPane.add(SignInPane, "SIGNIN");
@@ -132,7 +135,7 @@ public class Main extends javax.swing.JFrame {
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
-		
+		contentPane.add(PaymentPane, "PAY");
 		contentPane.add(ConfirmationPane, "CONFIRM");
 		contentPane.add(ReviewPane, "REVIEW");
 	

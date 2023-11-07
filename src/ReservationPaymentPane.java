@@ -5,10 +5,13 @@ import javax.swing.JButton;
 import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class ReservationPaymentPane extends JPanel {
+public class ReservationPaymentPane extends JPanel implements PropertyChangeListener {
+	private Flight selectedFlight;
 	private Reservation reservation;
 
 	private static final long serialVersionUID = 1L;
@@ -44,6 +47,12 @@ public class ReservationPaymentPane extends JPanel {
 		gbc_btnPay.gridy = 0;
 		add(btnPay, gbc_btnPay);
 
+	}
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		this.selectedFlight = ((Flight) evt.getNewValue());
+		System.out.println("PropertyChangeEvent");
 	}
 
 }
