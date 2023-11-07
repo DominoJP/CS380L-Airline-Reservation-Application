@@ -26,7 +26,7 @@ import javax.swing.JTextField;
    @version 1.0
  */
 
-public class AccountSignInPane extends JPanel implements PropertyChangeListener {
+public class AccountSignInPane extends JPanel {
 	AccountSignIn signIn = new AccountSignIn();
 	Account acc;
 
@@ -150,19 +150,5 @@ public class AccountSignInPane extends JPanel implements PropertyChangeListener 
 	public Account getAccount() {
 		return acc;
 	}
-
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/*
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		
-		
-	}
-	*/
 
 }

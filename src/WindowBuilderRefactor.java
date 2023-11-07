@@ -102,11 +102,9 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		
 		
 		
-		
-		Account account = new Account(null, null, null, "0001");
+		// Placeholder Account Object to be reassigned.
+		Account account = new Account(null, null, null, "0000");
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
-		//FIXME:
-		account.addPropertyChangeListener(SignInPane);
 		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 		account.addPropertyChangeListener(ReviewPane);
 		
