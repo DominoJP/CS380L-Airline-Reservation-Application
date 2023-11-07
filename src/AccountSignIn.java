@@ -10,7 +10,7 @@ import java.io.IOException;
 */
 
 public class AccountSignIn {
-	private String id;
+	private int id;
 	private String email;
 	private char[] password;
 	
@@ -31,7 +31,7 @@ public class AccountSignIn {
 				 String[] parts = line.split(", ");
 				 // compare email & password
 				 if (parts[2].equals(email) && parts[3].equals(String.valueOf(password))) {
-					 id = parts[0];
+					 id = Integer.parseInt(parts[0]);
 					 reader.close();
 					 return true;
 				 }
@@ -47,7 +47,7 @@ public class AccountSignIn {
 		return false;
 	}
 	
-	public String getID() {
+	public int getID() {
 		return this.id;
 	}
 	

@@ -14,7 +14,7 @@ import java.time.LocalTime;
 
 public class Flight {
 	
-	private String id;
+	private int id;
 	private String type; 
 	private String cityDeparture;   
 	private String cityArrival;      
@@ -70,7 +70,7 @@ public class Flight {
 	  @param totalPassengerCapacity
 	  @param pricing
 	 */
-	public Flight(String id, String type, String cityDeparture, String cityArrival, String dateDeparture,
+	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
 				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
 		this.id = id;
 		this.type = type; 
@@ -112,7 +112,7 @@ public class Flight {
 	 * Getter method to retrieve the flight id
 	 * @return : returns the id of flight. 
 	 */
-	public String getID(){
+	public int getID(){
 		return this.id;
 	}
 	

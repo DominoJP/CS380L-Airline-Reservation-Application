@@ -14,7 +14,7 @@ public class Account{
 	 private String name;
 	 private String email;
 	 private String password;
-	 private String accountNumber;
+	 private int accountNumber;
 	 private List<Reservation> reservationHistory;
 	 
 	 private PropertyChangeSupport support;
@@ -28,7 +28,7 @@ public class Account{
 	  * @param accountNumber : the account number
 	  */
 
-	 public Account(String name, String email, String password, String accountNumber) {
+	 public Account(String name, String email, String password, int accountNumber) {
 		 this.name = name;
 		 this.email = email;
 		 this.setPassword(password);
@@ -73,7 +73,7 @@ public class Account{
 	  * Getter method to retrieve the account number.
 	  * @return : account number
 	  */
-	 public String getAccountNumber() {
+	 public int getAccountNumber() {
 		 return accountNumber;
 	 }
 
@@ -81,7 +81,7 @@ public class Account{
 	  * Setter method to set account number
 	  * @param accountNumber : new account number to be set.
 	  */
-	 public void setaccountNumber(String accountNumber) {
+	 public void setaccountNumber(int accountNumber) {
 		 this.accountNumber = accountNumber;
 
 	 }

@@ -90,7 +90,7 @@ public class Main extends javax.swing.JFrame {
 		
 		
 		// Placeholder Account Object to be reassigned.
-		Account account = new Account(null, null, null, "0000");
+		Account account = new Account(null, null, null, 0000);
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 		

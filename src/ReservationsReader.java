@@ -30,7 +30,7 @@ public class ReservationsReader {
 		    // Generate ArrayList of flight IDs matching reservations associated with account.
 		    while ((line = reader.readLine()) != null) {
 		    	String[] parts = line.split(", ");
-		    	if (parts[0].equals(account.getAccountNumber())) {
+		    	if (Integer.parseInt(parts[0]) == (account.getAccountNumber())) {
 		    		flightIDs.add(parts[1]);
 		    	}
 		    }

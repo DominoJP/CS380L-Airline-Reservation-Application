@@ -28,7 +28,7 @@ public class FlightsTestReader {
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
-		        instantiatedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], 
+		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
 		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
 		        		                        Double.parseDouble(parts[9]));
 		        
@@ -61,14 +61,14 @@ public class FlightsTestReader {
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
-		        instantiatedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], 
+		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
 		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
 		        		                        Double.parseDouble(parts[9]));
 		        
 		        // Add flight to foundFlights for reservations associated with active account.
 		        iter = reservationFlightIDs.iterator();
 		        while (iter.hasNext()) {
-		        	if (instantiatedFlight.getID().equals(iter.next())) {
+		        	if (instantiatedFlight.getID() == Integer.parseInt(iter.next())) {
 		        		foundFlights.add(instantiatedFlight);
 		        	}
  		        }
