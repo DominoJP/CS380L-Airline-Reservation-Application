@@ -13,6 +13,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class ReservationListPane extends JPanel implements PropertyChangeListener {
 	private ArrayList<Reservation> reservations;
@@ -45,8 +46,16 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		});
 		toolBar.add(btnReturn);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		toolBar.add(btnNewButton_1);
+		JComboBox comboBox = new JComboBox();
+		toolBar.add(comboBox);
+		
+		JButton btnReview = new JButton("Review Selected Reservation");
+		btnReview.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// FIXME: CANCELLATION PANE
+			}
+		});
+		toolBar.add(btnReview);
 
 	}
 
