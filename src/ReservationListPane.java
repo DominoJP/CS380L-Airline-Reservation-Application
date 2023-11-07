@@ -5,10 +5,14 @@ import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+
 import javax.swing.JList;
 import javax.swing.JToolBar;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ReservationListPane extends JPanel implements PropertyChangeListener {
 	private ArrayList<Reservation> reservations;
@@ -33,8 +37,13 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		JToolBar toolBar = new JToolBar();
 		add(toolBar, BorderLayout.NORTH);
 		
-		JButton btnNewButton = new JButton("New button");
-		toolBar.add(btnNewButton);
+		JButton btnReturn = new JButton("Return");
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+			}
+		});
+		toolBar.add(btnReturn);
 		
 		JButton btnNewButton_1 = new JButton("New button");
 		toolBar.add(btnNewButton_1);
