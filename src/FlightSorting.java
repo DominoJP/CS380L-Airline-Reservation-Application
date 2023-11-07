@@ -189,7 +189,6 @@ public class FlightSorting{
 	 */
 	
 	public void findArrivalFlights(LocalDate arrival) {
-		System.out.println(this.getTotalFlightAvailable());
 		
 		ArrayList<Flight> list = new ArrayList<Flight>();
 		for(int i = 0; i < flights.size(); i++) {

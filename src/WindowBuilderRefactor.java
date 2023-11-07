@@ -27,7 +27,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
 		
-		
+		/*
 		FlightSorting sortTest;
 		Flight test = new Flight("Two-way","LAX","LA", "NYC", "2023-10-24", "05:30", "2023-10-28", "02:30", 50, 700.0);
 		sortTest = new FlightSorting(test);
@@ -35,7 +35,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		sortTest.addFlight(test2);
 		Flight test3 = new Flight("Two-way", "LAX","LA", "NYC", "2023-10-25", "10:30", "2023-11-01", "02:45", 50, 700.00);
 		sortTest.addFlight(test3);
-		
+		*/
 		
 		
 		/*
@@ -54,7 +54,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		System.out.println(time3.toString());
 		*/
 
-		
+		/*
 		sortTest.sortFlights("Two-way", "LA", "NYC", "2023-10-25", "2023-11-05");
 
 		String[] list = sortTest.getList("Two-way", "2023-11-05");
@@ -63,6 +63,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		for(int i = 0; i < list.length; i++) {
 			System.out.println(list[i]);
 		}
+		*/
 		
 		
 		
