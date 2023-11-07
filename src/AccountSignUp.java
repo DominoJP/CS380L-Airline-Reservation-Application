@@ -5,24 +5,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Account Sign Up - a program to read and write email and password pairs to a txt file.
- *
- * This program checks if the "email password" exists in a text file and ensures that
- * the same email is no added multiple times.
- *
+ * Account Sign Up - a program to read and write.
+ * This program checks if exists in a text file and ensures that the same is not
+ * added multiple times.
  * @author: Sayra Reyes
  * @version: 1.0
  */
 public class AccountSignUp {
 
 	String password;
-	String email; 
+	String email;
 
 	public static void main(String[] args) throws IOException {
 
 	//check if the "email password" pair already exists.
 	boolean pairExists = false;
-	
+
 
 	//Create a BufferedReader to read from a file text.
 	 try(BufferedReader reader1 = new BufferedReader(new FileReader("TestAccountSignUp.txt"))){
