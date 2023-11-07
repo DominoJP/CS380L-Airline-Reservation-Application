@@ -49,17 +49,6 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		toolBar.add(btnNewButton_1);
 
 	}
-	
-	public void instantiateReservationList(Account account) {
-		Iterator<Reservation> iter = account.getReservationHistory().iterator();
-		reservationArray = new String[account.getReservationHistory().size()];
-		int i = 0;
-		while (iter.hasNext()) {
-			reservationArray[i] = iter.next().toString();
-			i++;
-		}
-		
-	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
