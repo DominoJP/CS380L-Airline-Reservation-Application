@@ -27,15 +27,15 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
 		
-		/*
-		FlightSorting sort;
-		Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
-		sort = new FlightSorting(test);
-		Flight test2 = new Flight("One Way","LA", "NYC", "2023-10-24", "07:30", "2023-10-24", "09:30", 50, 700.0);
-		sort.addFlight(test2);
-		Flight test3 = new Flight("One Way", "LA", "NYC", "2023-10-24", "03:30", "2023-10-27", "02:45", 50, 700.00);
-		sort.addFlight(test3);
-		*/
+		
+		FlightSorting sortTest;
+		Flight test = new Flight("Two-way","LAX","LA", "NYC", "2023-10-24", "05:30", "2023-10-28", "02:30", 50, 700.0);
+		sortTest = new FlightSorting(test);
+		Flight test2 = new Flight("Two-way","LAX","LA", "NYC", "2023-10-25", "07:30", "2023-11-05", "09:30", 50, 700.0);
+		sortTest.addFlight(test2);
+		Flight test3 = new Flight("Two-way", "LAX","LA", "NYC", "2023-10-25", "10:30", "2023-11-01", "02:45", 50, 700.00);
+		sortTest.addFlight(test3);
+		
 		
 		
 		/*
@@ -54,16 +54,16 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		System.out.println(time3.toString());
 		*/
 
-		/*
-		sort.sortFlights("LA", "NYC", "2023-10-24");
+		
+		sortTest.sortFlights("Two-way", "LA", "NYC", "2023-10-25", "2023-11-05");
 
-		String[] list = sort.getList("LA", "NYC", "2023-10-24");
+		String[] list = sortTest.getList("Two-way", "2023-11-05");
 		System.out.println(list.length);
 
 		for(int i = 0; i < list.length; i++) {
-			System.out.println(list[i] + "\n");
+			System.out.println(list[i]);
 		}
-		*/
+		
 		
 		
 		
