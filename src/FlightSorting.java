@@ -137,8 +137,46 @@ public class FlightSorting{
 		return this.search(origin).search(destination, date);
 	}
 	
+
 	public String[] getList(String origin, String destination, String date) {
 		AirportFlights curr = findFlights(origin, destination, date);
+
+	/**
+	 * findFlights utilizes the search method of the AirportFlights class by giving it @param type and @param origin to find
+	 * an Airport being searched for by the user, then it uses the search method of the found Airport to find an instance of AirportFlights given
+	 * @param destination and @param date
+	 */
+	
+	public AirportFlights findFlights(String type, String origin, String destination, String date) {
+		return this.search(type, origin).search(destination, date);
+	}
+	
+	/**
+	 * In the case that a list of two-way flights is being searched for, the findArrivalFlights method will sort the list of Flights found
+	 * using the @param arrival to sort the list by which flights will return at a specific date
+	 * @param arrival
+	 */
+	
+	public void findArrivalFlights(LocalDate arrival) {
+		
+		ArrayList<Flight> list = new ArrayList<Flight>();
+		for(int i = 0; i < flights.size(); i++) {
+			if(flights.get(i).getDateArrival().equals(arrival)) {
+				list.add(flights.get(i));
+			}
+		}
+		
+		this.flights = list;
+		this.totalFlightAvailable = list.size();
+	}
+	
+	/**
+	 * the getList method will @return an array of String that consists of the departure and arrival times of a 
+	 * list of Flights that are found using the findFlights method with @param type, @param origin, @param destination,
+	 * @param date, and if the Flight is two-way it uses @param arrival and the findArrivalFLights method to sort the list
+	 */
+	
+	public String[] getList(String type, String arrival) {
 		LocalDate depart;
 		LocalDate arrive;
 		
