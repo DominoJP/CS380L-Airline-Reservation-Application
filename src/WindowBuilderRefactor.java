@@ -23,6 +23,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public static void main(String[] args) {
 		
+		 CancelReservation cancelReservation = new CancelReservation("Reservation.txt");
 		// FIXME: remove with implementation of file reader for instantiation of flights
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
@@ -70,7 +71,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					WindowBuilderRefactor frame = new WindowBuilderRefactor(sort);
+					WindowBuilderRefactor frame = new WindowBuilderRefactor(sort, cancelReservation);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,7 +80,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		});
 	}
 
-	public WindowBuilderRefactor(FlightSorting sort) {
+	public WindowBuilderRefactor(FlightSorting sort, CancelReservation CancelReservation) {
 		
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -101,7 +102,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL");
 		TripContactPane TripContactPane =  new TripContactPane(contentPane);
 		// FIXME: temp. commented out
-		 ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane);
+		 ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
 		
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
