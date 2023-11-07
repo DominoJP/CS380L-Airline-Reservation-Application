@@ -91,8 +91,6 @@ public class Main extends javax.swing.JFrame {
 		
 		// Placeholder Account Object to be reassigned.
 		Account account = new Account(null, null, null, 0000);
-		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
-		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 		
 		// Placeholder Flight Object to be reassigned.
 		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
@@ -103,7 +101,7 @@ public class Main extends javax.swing.JFrame {
 		
 		
 		
-		// AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
+		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane, account);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, account, sort, flight);
@@ -120,6 +118,7 @@ public class Main extends javax.swing.JFrame {
 		TripContactPane TripContactPane = new TripContactPane(contentPane);
 		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
 		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
+		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
