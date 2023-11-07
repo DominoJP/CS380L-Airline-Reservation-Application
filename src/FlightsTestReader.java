@@ -69,10 +69,7 @@ public class FlightsTestReader {
 		        iter = reservationFlightIDs.iterator();
 		        while (iter.hasNext()) {
 		        	if (instantiatedFlight.getID().equals(iter.next())) {
-		        		//FIXME:
-		        		System.out.println("ADDED");
 		        		foundFlights.add(instantiatedFlight);
-		        		System.out.println("t" + foundFlights.getLast().getcityDeparture());
 		        	}
  		        }
 		        

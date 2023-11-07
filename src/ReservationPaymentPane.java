@@ -30,7 +30,6 @@ public class ReservationPaymentPane extends JPanel {
 				// Flight test1 = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
 				// System.out.println(test1.getcityDeparture());
 				reservation = new Reservation(account, flight, test);
-				System.out.println(reservation.getFlight().getcityDeparture());
 				// ArrayList<Reservation> reservations = account.getReservationHistory();
 				ArrayList<Reservation> reservations = new ArrayList<>();
 				reservations.add(reservation);

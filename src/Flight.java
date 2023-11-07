@@ -7,6 +7,8 @@
  *@version 1.0 
  */
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -24,6 +26,7 @@ public class Flight {
 	private String[][] passengers; 
 	private double pricing; 
 	
+	private PropertyChangeSupport support;
 
 	/**
 	 * Constructor for the flight class
@@ -80,6 +83,29 @@ public class Flight {
 		this.pricing = pricing; 
 		passengers = new String[totalPassengerCapacity][2];
 	}
+	
+	
+	/**
+	 * Method that fires PropertyChange event when "assigning" to a Flight Object. For use with FlightFilterList.
+	 * @param selectedFlight
+	 */	
+	/*
+	public void setFlight(Flight selectedFlight) {
+		support.firePropertyChange("flight", this, selectedFlight);
+		this.id = selectedFlight.getID();
+		this.type = selectedFlight.gettype();
+		this.cityDeparture = selectedFlight.getcityDeparture();
+		this.cityArrival = selectedFlight.getcityArrival();
+		this.dateDeparture = selectedFlight.getdateDeparture();
+		this.timeDeparture = selectedFlight.gettimeDeparture();
+		this.dateArrival = selectedFlight.getDateArrival();
+		this.timeArrival = selectedFlight.getTimeArrival();
+		this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
+		this.pricing = selectedFlight.getpricing();
+		// FIXME: update as necessary
+		
+	}
+	*/
 	
 	/**
 	 * Getter method to retrieve the flight id
@@ -230,5 +256,11 @@ public class Flight {
 			System.out.println("Sorry that is not a seat available on the flight");
 		}
 	}
+	
+	/*
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+		 support.addPropertyChangeListener(pcl);
+	}
+	*/
 	
 }

@@ -56,8 +56,6 @@ public class FlightFilterListScrollPane extends JPanel {
 				Flight tempFlight = flightArray.get(listFlights.getSelectedIndex());
 				flight.setDateArrival(tempFlight.getDateArrival().toString());
 				flight.setTimeArrival(tempFlight.getTimeArrival().toString());
-				System.out.println(flight.getDateArrival());
-				System.out.println(flight.getTimeArrival());
 				ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, tempFlight);
 				contentPane.add(PaymentPane, "PAY");
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");

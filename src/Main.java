@@ -108,7 +108,7 @@ public class Main extends javax.swing.JFrame {
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane, account);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, account, sort, flight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
-		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane);
+		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
 		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS", account);
 		// FIXME, add up until 9
 		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL", account);
