@@ -14,7 +14,7 @@ import java.time.LocalTime;
    @version 1.0
  */
 
-public class WindowBuilderRefactor extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -67,7 +67,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					WindowBuilderRefactor frame = new WindowBuilderRefactor();
+					Main frame = new Main();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -76,11 +76,11 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		});
 	}
 
-	public WindowBuilderRefactor() {
+	public Main() {
 		
 		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
 		
-		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(Main.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane = (JPanel) new JPanel();
