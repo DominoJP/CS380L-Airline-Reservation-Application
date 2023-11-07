@@ -24,7 +24,7 @@ public class ReservationConfirmationPane extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblConfirmation = new JLabel("Reservation booked successfully. Confirmation will be sent to your account email.");
+		JLabel lblConfirmation = new JLabel("PLACEHOLDER");
 		lblConfirmation.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		GridBagConstraints gbc_lblConfirmation = new GridBagConstraints();
 		gbc_lblConfirmation.insets = new Insets(0, 0, 5, 5);
