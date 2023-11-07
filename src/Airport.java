@@ -100,15 +100,13 @@ public class Airport {
 				}
 			}
 			
-			for(int j = 0; j < destinations.size(); j++) {
-				if(f.getcityArrival().compareTo(destinations.get(j).getDestination()) < 0) {
-					destinations.add(j, flights);
+			for(int i = 0; i < destinations.size(); i++) {
+				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) < 0) {
+					destinations.add(i, flights);
 					return;
-				}
+				}else if(i + 1 == destinations.size())
+					destinations.add(flights);
 			}
-			
-			destinations.add(flights);
-			
 		}else {
 			Airport newChild = new Airport(f);
 			
@@ -169,12 +167,12 @@ public class Airport {
 			}
 		}
 		
-		while(!(curr.getDate().equals(time))) {
-			if(curr.getDate().isAfter(time)) {
+		while(!curr.getDate().equals(time)) {
+			if(curr.getDate().isAfter(time))
+
 				curr = curr.getChild1();
-			}else {
+			else
 				curr = curr.getChild2();
-			}
 		}
 		
 		return curr;
