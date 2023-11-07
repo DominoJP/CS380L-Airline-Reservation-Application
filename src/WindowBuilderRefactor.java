@@ -23,7 +23,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public static void main(String[] args) {
 		
-		 CancelReservation cancelReservation = new CancelReservation("Reservation.txt");
+		 CancelReservation cancelReservation = new CancelReservation("src/Database/Reservation.txt");
 		// FIXME: remove with implementation of file reader for instantiation of flights
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
