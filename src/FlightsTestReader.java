@@ -18,10 +18,39 @@ public class FlightsTestReader {
 	private Flight instantiatedFlight;
 	private ArrayList<Flight> foundFlights;
 	
+	public FlightsTestReader() {
+		
+		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
+		    String line;
+		    Iterator<String> iter;
+		    foundFlights = new ArrayList<>();
+		    
+		    while ((line = reader.readLine()) != null) {
+		        String[] parts = line.split(", ");
+		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
+		        instantiatedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], 
+		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
+		        		                        Double.parseDouble(parts[9]));
+		        
+		        //FlightSorting instantiation requires a flight as parameter
+		        if (sort == null) {
+		        	sort = new FlightSorting(instantiatedFlight);
+		        } else {
+	        	    sort.addFlight(instantiatedFlight);
+		        }
+		    }
+		    
+		    reader.close();
+		    
+		} catch (IOException e) {
+		    e.printStackTrace();
+		
+		}
+	}
+	
 	/**
 	  Constructor.
 	*/
-	
 	public FlightsTestReader(ArrayList<String> reservationFlightIDs) {
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
@@ -47,12 +76,14 @@ public class FlightsTestReader {
 		        	}
  		        }
 		        
+		        /*
 		        //FlightSorting instantiation requires a flight as parameter
 		        if (sort == null) {
 		        	sort = new FlightSorting(instantiatedFlight);
 		        } else {
 	        	    sort.addFlight(instantiatedFlight);
 		        }
+		        */
 		    }
 		    
 		    reader.close();

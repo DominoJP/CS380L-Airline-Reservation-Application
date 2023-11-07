@@ -10,7 +10,6 @@ import javax.swing.JToolBar;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
-//FIXME: ONLY DISPLAYS RESERVATIONS BOOKED ON CURRENT EXECUTION
 public class ReservationListPane extends JPanel implements PropertyChangeListener {
 	private ArrayList<Reservation> reservations;
 	private String[] reservationArray;

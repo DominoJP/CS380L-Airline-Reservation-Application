@@ -23,10 +23,14 @@ public class ReservationsReader {
 		Iterator<Flight> iter;
 		reservations = new ArrayList<Reservation>();
 		
+		//FIXME
+		System.out.println("inst");
+		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/Reservations.txt"))) {
 		    String line;
 		    
 		    while ((line = reader.readLine()) != null) {
+		    	System.out.println("read");
 		    	String[] parts = line.split(", ");
 		    	if (parts[0].equals(account.getAccountNumber())) {
 		    		System.out.println(parts[1]);
@@ -46,8 +50,8 @@ public class ReservationsReader {
 		    	System.out.println("SSS");
 		    }
 		    account.setReservationHistory(reservations);
-		    System.out.println("SSSS" + account.getReservationHistory().getFirst().getFlight().getDateArrival());
-		    System.out.println("SSSS" + account.getReservationHistory().getLast().getFlight().getDateArrival());
+		    // System.out.println("SSSS" + account.getReservationHistory().getFirst().getFlight().getDateArrival());
+		    // System.out.println("SSSS" + account.getReservationHistory().getLast().getFlight().getDateArrival());
 		    
 		    reader.close();
 		    

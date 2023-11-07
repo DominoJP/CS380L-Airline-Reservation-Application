@@ -82,14 +82,11 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public WindowBuilderRefactor() {
 		
-		// passed as parameter of SignInPane
-		Account account = new Account(null, null, null, "0001");
-		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
-		account.addPropertyChangeListener(ReviewPane);
 		
-		ReservationsReader reservationsReader = new ReservationsReader(account);
-		// FlightsTestReader flightsReader = new FlightsTestReader(); 
-		FlightSorting sort = reservationsReader.getFlightSorting();
+		
+		// ReservationsReader reservationsReader = new ReservationsReader(account);
+		// // FlightsTestReader flightsReader = new FlightsTestReader(); 
+		// FlightSorting sort = reservationsReader.getFlightSorting();
 		
 		// FIXME: temp, to be adjusted
 		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
@@ -103,7 +100,23 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
+		
+		
+		
+		Account account = new Account(null, null, null, "0001");
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
+		//FIXME:
+		account.addPropertyChangeListener(SignInPane);
+		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
+		account.addPropertyChangeListener(ReviewPane);
+		
+		FlightsTestReader flightsReader = new FlightsTestReader(); 
+		FlightSorting sort = flightsReader.getFlightSorting();
+		
+		
+		
+		
+		// AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane, account);
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, account, sort, flight);

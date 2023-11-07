@@ -14,6 +14,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JTextField;
 
@@ -24,8 +26,9 @@ import javax.swing.JTextField;
    @version 1.0
  */
 
-public class AccountSignInPane extends JPanel {
+public class AccountSignInPane extends JPanel implements PropertyChangeListener {
 	AccountSignIn signIn = new AccountSignIn();
+	Account acc;
 
 	private static final long serialVersionUID = 1L;
 
@@ -90,9 +93,12 @@ public class AccountSignInPane extends JPanel {
 				// TEMP
 				if (signIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
 					account.setaccountNumber(signIn.getID());
+					System.out.println(signIn.getID());
 					// account.setEmail(signIn.getEmail());
 					// account.setPassword(signIn.getPassword().toString());
 					System.out.println(account.getAccountNumber());
+					System.out.println("success");
+					ReservationsReader reservationsReader = new ReservationsReader(account);
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				} else {
 					lblWrong.setVisible(true);
@@ -137,8 +143,26 @@ public class AccountSignInPane extends JPanel {
 		
 	}
 	
-	public int getID() {
+	public String getID() {
 		return signIn.getID();
 	}
+	
+	public Account getAccount() {
+		return acc;
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		
+		
+	}
+	*/
 
 }
