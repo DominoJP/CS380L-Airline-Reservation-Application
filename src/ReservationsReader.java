@@ -17,56 +17,41 @@ public class ReservationsReader {
 	
 	/**
 	  Constructor.
+	  @param : account
 	*/
 	public ReservationsReader(Account account) {
 		flightIDs = new ArrayList<String>();
 		Iterator<Flight> iter;
 		reservations = new ArrayList<Reservation>();
 		
-		//FIXME
-		System.out.println("inst");
-		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/Reservations.txt"))) {
 		    String line;
 		    
+		    // Generate ArrayList of flight IDs matching reservations associated with account.
 		    while ((line = reader.readLine()) != null) {
 		    	System.out.println("read");
 		    	String[] parts = line.split(", ");
 		    	if (parts[0].equals(account.getAccountNumber())) {
 		    		System.out.println(parts[1]);
 		    		flightIDs.add(parts[1]);
-		    		// get list of flight numbers needed, then, instantiate all flights, passing a reference to flight obj
-		    		// with correct ids
 		    	}
 		    }
 		    
+		    // Pass ArrayList of flight IDs, compared against .txt to identify matching flights.
 		    FlightsTestReader flightsReader = new FlightsTestReader(flightIDs);
-		    // (to return to main method)
 		    sort = flightsReader.getFlightSorting();
-		    // instantiate reservations linked w/ account using found matching flights
+		    // instantiate reservations linked w/ account using found flights
 		    iter = flightsReader.getFoundFlights().iterator();
 		    while (iter.hasNext()) {
 		    	reservations.add(new Reservation(account, iter.next(), null));
-		    	System.out.println("SSS");
 		    }
 		    account.setReservationHistory(reservations);
-		    // System.out.println("SSSS" + account.getReservationHistory().getFirst().getFlight().getDateArrival());
-		    // System.out.println("SSSS" + account.getReservationHistory().getLast().getFlight().getDateArrival());
 		    
 		    reader.close();
 		    
 		} catch (IOException e) {
 		    e.printStackTrace();
-		
 		}
-	}
-	
-	/**
-	  Method returning the FlightSorting Object, allowing invocation of methods sortFlights() and getList().
-	  @return : FlightSorting Object
-	 */
-	public FlightSorting getFlightSorting() {
-		return sort;
 	}
 	
 }

@@ -89,15 +89,9 @@ public class AccountSignInPane extends JPanel {
 		btnLogInPane.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnLogInPane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME
-				// TEMP
 				if (signIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
+					// Allows instantiation of reservations using updated Account object
 					account.setaccountNumber(signIn.getID());
-					System.out.println(signIn.getID());
-					// account.setEmail(signIn.getEmail());
-					// account.setPassword(signIn.getPassword().toString());
-					System.out.println(account.getAccountNumber());
-					System.out.println("success");
 					ReservationsReader reservationsReader = new ReservationsReader(account);
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				} else {
@@ -141,14 +135,6 @@ public class AccountSignInPane extends JPanel {
 		gbc_btnSignUp.gridy = 8;
 		add(btnSignUp, gbc_btnSignUp);
 		
-	}
-	
-	public String getID() {
-		return signIn.getID();
-	}
-	
-	public Account getAccount() {
-		return acc;
 	}
 
 }

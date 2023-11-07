@@ -23,11 +23,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public static void main(String[] args) {
 		
-		// FIXME: remove with implementation of file reader for instantiation of flights
-		// ReservationsReader reservationsReader = new ReservationsReader(account);
-		// FlightsTestReader flightsReader = new FlightsTestReader(); 
-		// FlightSorting sort = reservationsReader.getFlightSorting();
-		
+		// (Test cases transcribed to .txt)
 		/*
 		FlightSorting sort;
 		Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
@@ -82,13 +78,6 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 
 	public WindowBuilderRefactor() {
 		
-		
-		
-		// ReservationsReader reservationsReader = new ReservationsReader(account);
-		// // FlightsTestReader flightsReader = new FlightsTestReader(); 
-		// FlightSorting sort = reservationsReader.getFlightSorting();
-		
-		// FIXME: temp, to be adjusted
 		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
 		
 		setDefaultCloseOperation(WindowBuilderRefactor.EXIT_ON_CLOSE);
@@ -126,7 +115,7 @@ public class WindowBuilderRefactor extends javax.swing.JFrame {
 		TripContactPane TripContactPane = new TripContactPane(contentPane);
 		// ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
 		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
-		// FIXME
+
 		// FIXME: temp. commented out
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
 		
