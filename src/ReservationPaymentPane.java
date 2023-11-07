@@ -27,17 +27,18 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		JButton btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: RESERVE FLIGHT
 				ArrayList<String> test = new ArrayList<>();
 				test.add("name");
-				// Flight test1 = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
-				// System.out.println(test1.getcityDeparture());
 				reservation = new Reservation(account, flight, test);
-				// ArrayList<Reservation> reservations = account.getReservationHistory();
-				ArrayList<Reservation> reservations = new ArrayList<>();
-				reservations.add(reservation);
 				
-				account.setReservationHistory(reservations);
+				// Write reservation to .txt.
+				ReservationsReader reader = new ReservationsReader(account);
+				if (reader.writeReservation(reservation)) {
+					// Update reservation history in active account.
+					ArrayList<Reservation> reservations = new ArrayList<>();
+					reservations.add(reservation);
+					account.setReservationHistory(reservations);
+				}
 				//System.out.println(account.getReservationHistory());
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");
 			}

@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
@@ -40,6 +42,11 @@ public class FlightFilterPane extends JPanel {
 	private String airportArriveInput;
 	private String dateDepartingInput;
 	
+	private int passengerAmount = 1;
+	private int selectedPassengerAmount;
+	
+	private PropertyChangeSupport support;
+	
 	// for use with comboBoxFrom
 	private String[] airportFromList = {"LA", "BUR"};
 	// for use with comboBoxTo
@@ -57,7 +64,14 @@ public class FlightFilterPane extends JPanel {
 	
 	String[] flightListSorted;
 	
+	
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+		 support.addPropertyChangeListener(pcl);
+	}
+	
 	public FlightFilterPane(JPanel contentPane, Account account, FlightSorting sort, Flight flight) {
+		
+		support = new PropertyChangeSupport(this);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -216,6 +230,9 @@ public class FlightFilterPane extends JPanel {
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				// update selected passengerAmount, fire PropertyChangeEvent
+				setPassengerAmount(Integer.parseInt(comboBoxPassengerAmount.getSelectedItem().toString()));
+				
 				airportDepartInput = comboBoxFrom.getSelectedItem().toString();
 				airportArriveInput = comboBoxTo.getSelectedItem().toString();
 				dateDepartingInput = comboBoxYearD.getSelectedItem().toString() + "-" +
@@ -266,6 +283,11 @@ public class FlightFilterPane extends JPanel {
 	public int getPassengerAmount() {
 		// FIXME: temp solution
 		return Integer.parseInt(comboBoxPassengerAmount.getSelectedItem().toString());
+	}
+	
+	public void setPassengerAmount(int selectedPassengerAmount) {
+		support.firePropertyChange("passengerAmount", passengerAmount, selectedPassengerAmount);
+		this.selectedPassengerAmount = selectedPassengerAmount;
 	}
 
 }

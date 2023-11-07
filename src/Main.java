@@ -109,9 +109,14 @@ public class Main extends javax.swing.JFrame {
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, account, sort, flight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
-		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, FilterPane.getPassengerAmount(), "PASSENGER2_DETAILS", account);
+		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, "PASSENGER2_DETAILS");
 		// FIXME, add up until 9
-		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, FilterPane.getPassengerAmount(), "NULL", account);
+		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, "PASSENGER3_DETAILS");
+		PassengerDetailsPane PassengerThreePane = new PassengerDetailsPane(contentPane, 3, "PASSENGER4_DETAILS");
+		PassengerDetailsPane PassengerFourPane = new PassengerDetailsPane(contentPane, 4, "PASSENGER5_DETAILS");
+		PassengerDetailsPane PassengerFivePane = new PassengerDetailsPane(contentPane, 5, "PASSENGER6_DETAILS");
+		PassengerDetailsPane PassengerSixPane = new PassengerDetailsPane(contentPane, 6, "NULL");
+		// FIXME: POSSIBLY REMOVE
 		TripContactPane TripContactPane = new TripContactPane(contentPane);
 		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
 		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
@@ -120,8 +125,15 @@ public class Main extends javax.swing.JFrame {
 		// ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(contentPane, cancelReservation);
 		
 		
+		// Observers
 		account.addPropertyChangeListener(ReviewPane);
 		flight.addPropertyChangeListener(PaymentPane);
+		FilterPane.addPropertyChangeListener(PassengerOnePane);
+		FilterPane.addPropertyChangeListener(PassengerTwoPane);
+		FilterPane.addPropertyChangeListener(PassengerThreePane);
+		FilterPane.addPropertyChangeListener(PassengerFourPane);
+		FilterPane.addPropertyChangeListener(PassengerFivePane);
+		FilterPane.addPropertyChangeListener(PassengerSixPane);
 		
 		
 		contentPane.add(SignInPane, "SIGNIN");
@@ -134,6 +146,11 @@ public class Main extends javax.swing.JFrame {
 		// contentPane.add(FilterListPane, "FILTER_LIST");
 		contentPane.add(PassengerOnePane, "PASSENGER1_DETAILS");
 		contentPane.add(PassengerTwoPane, "PASSENGER2_DETAILS");
+		contentPane.add(PassengerThreePane, "PASSENGER3_DETAILS");
+		contentPane.add(PassengerFourPane, "PASSENGER4_DETAILS");
+		contentPane.add(PassengerFivePane, "PASSENGER5_DETAILS");
+		contentPane.add(PassengerSixPane, "PASSENGER6_DETAILS");
+		// FIXME: POSSIBLY REMOVE
 		contentPane.add(TripContactPane, "TRIP_CONTACT");
 		contentPane.add(PaymentPane, "PAY");
 		contentPane.add(ConfirmationPane, "CONFIRM");

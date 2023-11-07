@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,6 +13,7 @@ import java.util.Iterator;
 */
 
 public class ReservationsReader {
+	private Account account;
 	private FlightSorting sort;
 	private ArrayList<String> flightIDs;
 	private ArrayList<Reservation> reservations;
@@ -20,6 +23,14 @@ public class ReservationsReader {
 	  @param : account
 	*/
 	public ReservationsReader(Account account) {
+		this.account = account;
+	}
+	
+	/**
+	 * Method to instantiate reservations associated with account to ArrayList<Reservation> attribute of Account Object.
+	 */
+	
+	public void instantiateReservations() {
 		flightIDs = new ArrayList<String>();
 		Iterator<Flight> iter;
 		reservations = new ArrayList<Reservation>();
@@ -50,6 +61,33 @@ public class ReservationsReader {
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
+	}
+	
+	public boolean writeReservation(Reservation reservation) {
+		Iterator<Reservation> iter;
+		iter = account.getReservationHistory().iterator();
+		boolean validReservation = true;
+		// Validate that reservation for selected flight does not already exist for this account.
+		while (iter.hasNext()) {
+			if (iter.next().getFlight().getID() == reservation.getFlight().getID()) {
+			validReservation = false;
+			return false;
+			}
+		}
+		
+		System.out.println(reservation.getFlight().getID());
+		System.out.println(validReservation);
+		
+		if (validReservation) {
+			try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Reservations.txt", true))) {
+				writer.write("\n");
+                writer.write(account.getAccountNumber() + ", " + reservation.getFlight().getID());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+		}
+		return true;
 	}
 	
 }

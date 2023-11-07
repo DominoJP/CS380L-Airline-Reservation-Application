@@ -93,6 +93,7 @@ public class AccountSignInPane extends JPanel {
 					// Allows instantiation of reservations using updated Account object
 					account.setaccountNumber(signIn.getID());
 					ReservationsReader reservationsReader = new ReservationsReader(account);
+					reservationsReader.instantiateReservations();
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				} else {
 					lblWrong.setVisible(true);
