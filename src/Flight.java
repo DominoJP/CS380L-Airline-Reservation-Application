@@ -93,7 +93,7 @@ public class Flight {
 	 * @param selectedFlight
 	 */	
 	public void assign(Flight selectedFlight) {
-		support.firePropertyChange("flight", this, selectedFlight);
+		support.firePropertyChange("selectedFlight", this, selectedFlight);
 		this.id = selectedFlight.getID();
 		this.type = selectedFlight.gettype();
 		this.cityDeparture = selectedFlight.getcityDeparture();
