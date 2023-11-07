@@ -23,7 +23,6 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 	 * Create the panel.
 	 */
 	public ReservationListPane(JPanel contentPane, Account account) {
-		//FIXME: INSTANTIATE ACCOUNTS FROM FILE
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -42,10 +41,6 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 
 	}
 	
-    // public ReservationListPane() {
-		
-	// }
-	
 	public void instantiateReservationList(Account account) {
 		Iterator<Reservation> iter = account.getReservationHistory().iterator();
 		reservationArray = new String[account.getReservationHistory().size()];
@@ -59,14 +54,9 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		// reservations = acc.getReservationHistory();
-		// reservations.add((Reservation) evt.getNewValue());
-		// this.acc.setReservationHistory(reservations);
 		this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
-		System.out.println("SUCCESS");
-		
+
 		model.addAll(reservations);
-		// model.addElement(reservations.getFirst().getFlight().getcityDeparture());;
 
 	}
 	

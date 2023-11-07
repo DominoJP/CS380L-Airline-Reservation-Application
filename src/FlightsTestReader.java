@@ -76,14 +76,6 @@ public class FlightsTestReader {
 		        	}
  		        }
 		        
-		        /*
-		        //FlightSorting instantiation requires a flight as parameter
-		        if (sort == null) {
-		        	sort = new FlightSorting(instantiatedFlight);
-		        } else {
-	        	    sort.addFlight(instantiatedFlight);
-		        }
-		        */
 		    }
 		    
 		    reader.close();
