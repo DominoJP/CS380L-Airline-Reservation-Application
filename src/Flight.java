@@ -7,11 +7,14 @@
  *@version 1.0 
  */
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Flight {
 	
+	private int id;
 	private String type; 
 	private String cityDeparture;   
 	private String cityArrival;      
@@ -23,6 +26,7 @@ public class Flight {
 	private String[][] passengers; 
 	private double pricing; 
 	
+	private PropertyChangeSupport support;
 
 	/**
 	 * Constructor for the flight class
@@ -50,6 +54,66 @@ public class Flight {
 	this.pricing = pricing; 
 	passengers = new String[totalPassengerCapacity][2];
 	
+	support = new PropertyChangeSupport(this);
+	}
+	
+	/**
+	  Constructor for the flight class
+	  @param id
+	  @param type
+	  @param cityDeparture
+	  @param cityArrival
+	  @param dateDeparture
+	  @param timeDeparture
+	  @param dateArrival
+	  @param timeArrival
+	  @param totalPassengerCapacity
+	  @param pricing
+	 */
+	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
+				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
+		this.id = id;
+		this.type = type; 
+		this.cityDeparture = cityDeparture;
+		this.cityArrival = cityArrival;
+		this.dateDeparture = LocalDate.parse(dateDeparture);
+		this.timeDeparture = LocalTime.parse(timeDeparture); 
+		this.dateArrival = LocalDate.parse(dateArrival);
+		this.timeArrival = LocalTime.parse(timeArrival);
+		this.totalPassengerCapacity = totalPassengerCapacity;
+		this.pricing = pricing; 
+		passengers = new String[totalPassengerCapacity][2];
+		
+		support = new PropertyChangeSupport(this);
+	}
+	
+	
+	/**
+	 * Method that fires PropertyChange event when "assigning" to a Flight Object. For use with FlightFilterList.
+	 * @param selectedFlight
+	 */	
+	public void assign(Flight selectedFlight) {
+		support.firePropertyChange("selectedFlight", this, selectedFlight);
+		this.id = selectedFlight.getID();
+		this.type = selectedFlight.gettype();
+		this.cityDeparture = selectedFlight.getcityDeparture();
+		this.cityArrival = selectedFlight.getcityArrival();
+		this.dateDeparture = selectedFlight.getdateDeparture();
+		this.timeDeparture = selectedFlight.gettimeDeparture();
+		this.dateArrival = selectedFlight.getDateArrival();
+		this.timeArrival = selectedFlight.getTimeArrival();
+		this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
+		this.pricing = selectedFlight.getpricing();
+		// FIXME: update as necessary
+		
+	}
+	
+	/**
+	 * Getter method to retrieve the flight id
+	 * @return : returns the id of flight. 
+	 */
+	public int getID(){
+		return this.id;
 	}
 	
 	/**
@@ -192,6 +256,10 @@ public class Flight {
 		else {
 			System.out.println("Sorry that is not a seat available on the flight");
 		}
+	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+		 support.addPropertyChangeListener(pcl);
 	}
 	
 }
