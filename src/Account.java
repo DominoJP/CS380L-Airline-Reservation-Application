@@ -202,7 +202,7 @@ public class Account{
 		  System.out.println("Departure date: " + flight.getdateDeparture());
 		  System.out.println("Arrival date: " + flight.getTimeArrival());
 		  System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
-		  System.out.println("Passengers on board: " + flight.getpassenger());
+		  System.out.println("Passengers on board: " + flight.getPassenger());
 		  System.out.println("Price of flight: " + flight.getpricing());
 
 	 }

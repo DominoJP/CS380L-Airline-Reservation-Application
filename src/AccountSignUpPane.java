@@ -119,8 +119,6 @@ public class AccountSignUpPane extends JPanel {
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// String InputEmail = txtEmail.getText();
-			    
-				
 			}
 		});
 		

@@ -3,7 +3,7 @@
  * the type of flight (round trip or one way), departure and arrival cities,
  * departure and arrival dates and times, 
  * total passenger capacity, pricing and passenger information. 
- *@author 
+ *@author Sayra Reyes
  *@version 1.0 
  */
 
@@ -16,7 +16,6 @@ public class Flight {
 	
 	private int id;
 	private String type; 
-	private String airportName;
 	private String cityDeparture;   
 	private String cityArrival;      
 	private LocalDate dateDeparture;      
@@ -41,12 +40,10 @@ public class Flight {
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
-	
-		public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
+	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
 			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
 		
 	this.type = type; 
-	this.airportName = airportName;
 	this.cityDeparture = cityDeparture;
 	this.cityArrival = cityArrival;
 	this.dateDeparture = LocalDate.parse(dateDeparture);
@@ -159,12 +156,8 @@ public class Flight {
 		return timeDeparture;
 	}
 	
-	public String getAirportName() {
-		return airportName;
-	}
-	
 	/**
-	 * Getter method to retrieve the total remaining passenger capacity
+	 * Getter method to retrieve the total remaining pasenger capacity
 	 * @return ; returns the total remaining passenger capacity
 	 */
 	public int gettotalremainingpassengercapacity() {
@@ -255,18 +248,14 @@ public class Flight {
 		// it is then it assigns a passenger and if the seat does not exist then it provided 
 		//an error to the user. 
 		if(location <= totalPassengerCapacity) {
-			passengers[location][0] = name; 
+			passengers[location][1] = name; 
 			if(accountnumber != null) {
-				passengers[location][1] = accountnumber;
+				passengers[location][2] = accountnumber;
 			}
 		}
 		else {
 			System.out.println("Sorry that is not a seat available on the flight");
 		}
-	}
-
-	public String getpassenger() {
-		return null;
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
