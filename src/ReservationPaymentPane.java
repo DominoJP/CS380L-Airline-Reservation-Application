@@ -9,6 +9,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -246,16 +248,11 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		JButton btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				reservation = new Reservation(account, flight, null, runningTotal);
+				reservation = new Reservation(account, flight, null, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 				// Write reservation to .txt
 				ReservationsReader reader = new ReservationsReader(account);
 				if (reader.writeReservation(reservation)) {
 					// Update reservation history in active account.
-					/*
-					ArrayList<Reservation> reservations = new ArrayList<>();
-					reservations.add(reservation);
-					account.setReservationHistory(reservations);
-					*/
 					account.addReservationHistory(reservation);
 				}
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");

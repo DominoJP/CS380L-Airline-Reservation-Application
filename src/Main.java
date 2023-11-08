@@ -5,9 +5,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 /**
    Swing JFrame in which initial JPanel is instantiated.
    Instantiates and adds JPanels to CardLayout, allowing switching between JPanels.
