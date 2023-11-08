@@ -101,12 +101,12 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// TripContactPane TripContactPane = new TripContactPane(contentPane);
 		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, selectedFlight);
 		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
-		ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
+		ReservationListPane ListPane = new ReservationListPane(contentPane, account);
 		 ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
 		
 		
 		// in pattern observable.addPropertyChangeListener(observer)
-		account.addPropertyChangeListener(ReviewPane);
+		account.addPropertyChangeListener(ListPane);
 		
 		// keep track of user-selected flight
 		selectedFlight.addPropertyChangeListener(PaymentPane);
@@ -154,7 +154,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		contentPane.add(ConfirmationPane, "CONFIRM");
 		
 		// Select "Review"
-		contentPane.add(ReviewPane, "REVIEW");
+		contentPane.add(ListPane, "Reservation_List");
 		
 		// Select "Cancel"
 		contentPane.add(ReservationCancellationPane, "Cancel");

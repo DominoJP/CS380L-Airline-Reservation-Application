@@ -56,7 +56,7 @@ public class OptionSelectionPane extends JPanel {
 						// FIXME: REMOVE
 						// ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
 						// contentPane.add(ReviewPane, "REVIEW");
-						((CardLayout) contentPane.getLayout()).show(contentPane, "REVIEW");
+						((CardLayout) contentPane.getLayout()).show(contentPane, "Reservation_List");
 						break;
 					case "Cancel":
 						((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
