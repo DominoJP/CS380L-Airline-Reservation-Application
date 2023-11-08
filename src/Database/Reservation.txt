@@ -1,4 +1,8 @@
-Reservation ID: ABC12345
+--Reservation End--
+
+
+
+Reservation ID: ABC12346
 Flight Number: AA101
 Date: 2023-9-15
 Departure Airport: JFK (New York)
@@ -8,10 +12,6 @@ Booking Records:
    Passport: US123456
    Seat: 1A
    Status: Confirmed
---Reservation End--
-
-
-
 --Reservation End--
 
 Reservation ID: ABC123

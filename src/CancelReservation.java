@@ -7,17 +7,22 @@ import java.util.List;
  * Utilizes BufferedReader/BufferedWriter to scan and rewrite the txt file containing reservation information.
  * 
  * @author Joshua Planovsky
- * @version 5.0
+ * @version 7.0
  */
 public class CancelReservation {
-    private String reservationFilePath = "src/Database/Reservation.txt"; // Default reservation file path
+    // Default reservation file path
+    private String reservationFilePath = "src/Database/Reservation.txt";
 
     // Constructor to set the reservation file path
     public CancelReservation(String reservationFilePath) {
         this.reservationFilePath = reservationFilePath;
     }
 
- // Method to cancel a reservation by its ID
+    /**
+     * Method to cancel a reservation by its ID.
+     * @param reservationID The ID of the reservation to be canceled.
+     * @return true if the reservation was successfully canceled, false if not found or an error occurred.
+     */
     public boolean cancelReservationAction(String reservationID) {
         List<String> reservations = new ArrayList<>();
         boolean found = false;
@@ -27,11 +32,13 @@ public class CancelReservation {
             StringBuilder currentReservation = new StringBuilder();
             boolean reservationFound = false;
 
+            // Read through the reservation file line by line
             while ((line = reader.readLine()) != null) {
                 if (line.contains("Reservation ID: " + reservationID)) {
                     found = true;
                     reservationFound = true;
-                    // Skip the current reservation
+                    
+                    // Skip the current reservation by reading until the end marker
                     while ((line = reader.readLine()) != null) {
                         if (line.contains("--Reservation End--")) {
                             break;
@@ -39,12 +46,14 @@ public class CancelReservation {
                     }
                 }
 
+                // Build the current reservation content
                 currentReservation.append(line).append("\n");
 
                 if (line.contains("--Reservation End--")) {
                     reservationFound = false;
                 }
 
+                // If not inside a reservation block, add the current reservation to the list
                 if (!reservationFound) {
                     reservations.add(currentReservation.toString());
                     currentReservation = new StringBuilder();
@@ -52,7 +61,7 @@ public class CancelReservation {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            return false; // Return false in case of an error
         }
 
         if (found) {
@@ -63,7 +72,7 @@ public class CancelReservation {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                return false;
+                return false; // Return false in case of an error
             }
 
             return true; // Reservation was successfully canceled
@@ -72,5 +81,5 @@ public class CancelReservation {
         return false; // Reservation was not found
     }
 
-    // Other methods for the reservation logic
+    // Additional methods for the reservation logic could be added here
 }

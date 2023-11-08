@@ -2,12 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.border.EtchedBorder;
 
 /**
 Swing JPanel in which initial CancelReservation object is instantiated.
 Instantiates and adds elements to JPanel including data text fields and functional button
 @author  Joshua Planovsky
-@version 3.0
+@version 4.0
 */
 
 public class ReservationCancellationPane extends JPanel {
@@ -20,18 +21,26 @@ public class ReservationCancellationPane extends JPanel {
     public ReservationCancellationPane(CancelReservation cancelReservation, JPanel contentPane) {
         setLayout(new BorderLayout());  // Set the layout of this panel to BorderLayout
 
-        dataTextArea = new JTextArea();  // Create a text area for displaying reservation data
-        reservationIDField = new JTextField(10);  // Create a text field with a width of 10 characters
+        dataTextArea = new JTextArea(2,5);
+        dataTextArea.setTabSize(5);
+        dataTextArea.setEditable(false);
         cancelReservationButton = new JButton("Cancel Reservation");  // Create a button
 
         // Create a panel for the label "Enter Reservation ID:"
         JPanel labelPanel = new JPanel();
-        labelPanel.add(new JLabel("Enter Reservation ID:"));
 
         // Add UI components to this panel
-        add(new JScrollPane(dataTextArea), BorderLayout.CENTER);  // Add a scrollable text area in the center
-        add(labelPanel, BorderLayout.NORTH);  // Add the label panel to the NORTH
-        add(reservationIDField, BorderLayout.NORTH);  // Add the text field to the NORTH
+        JScrollPane scrollPane = new JScrollPane(dataTextArea);
+        scrollPane.setViewportBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        add(scrollPane, BorderLayout.CENTER);  // Add a scrollable text area in the center
+        JLabel label = new JLabel("Enter Reservation ID:");
+        label.setHorizontalAlignment(SwingConstants.LEFT);
+        scrollPane.setColumnHeaderView(label);
+        reservationIDField = new JTextField(10);  // Create a text field with a width of 10 characters
+        scrollPane.setRowHeaderView(reservationIDField);
+        add(labelPanel, BorderLayout.NORTH);
         add(cancelReservationButton, BorderLayout.SOUTH);  // Add the cancel button to the SOUTH
 
         // Add an action listener for the cancel button
