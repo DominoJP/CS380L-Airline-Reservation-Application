@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
@@ -20,7 +22,9 @@ import javax.swing.JButton;
    @version 1.0
 */
 
-public class PassengerDetailsPane extends JPanel {
+public class PassengerDetailsPane extends JPanel implements PropertyChangeListener {
+	
+	private int selectedPassengerAmount;
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textName;
@@ -42,7 +46,9 @@ public class PassengerDetailsPane extends JPanel {
 			"California"
 		};
 
-	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, int passengerAmount, String nextPassengerDetailsPane) {
+	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, String nextPassengerDetailsPane) {
+		selectedPassengerAmount = 1;
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{168, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -198,8 +204,9 @@ public class PassengerDetailsPane extends JPanel {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME: LOGIC TO KEEP COUNT OF PASSENGERS
-				if (passengerIndex == passengerAmount) {
-					((CardLayout) contentPane.getLayout()).show(contentPane, "TRIP_CONTACT");
+				System.out.println(passengerIndex + " " + selectedPassengerAmount);
+				if (passengerIndex == selectedPassengerAmount) {
+					((CardLayout) contentPane.getLayout()).show(contentPane, "PAY");
 				}
 				else {
 					((CardLayout) contentPane.getLayout()).show(contentPane, nextPassengerDetailsPane);
@@ -211,6 +218,13 @@ public class PassengerDetailsPane extends JPanel {
 		gbc_btnContinue.gridx = 2;
 		gbc_btnContinue.gridy = 12;
 		add(btnContinue, gbc_btnContinue);
+		
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		this.selectedPassengerAmount = ((int) evt.getNewValue());
+		System.out.println("passengerAmt PropertyChangeEvent");
 		
 	}
 
