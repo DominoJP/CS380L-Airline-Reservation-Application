@@ -68,8 +68,6 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 	}
 
 	public FlightReservationSystem(CancelReservation CancelReservation) {
-
-	public FlightReservationSystem() {
 		
 		setDefaultCloseOperation(FlightReservationSystem.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
