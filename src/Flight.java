@@ -9,6 +9,7 @@
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -24,7 +25,7 @@ public class Flight {
 	private LocalTime timeArrival;   
 	private int totalPassengerCapacity;  
 	private String[][] passengers; 
-	private double pricing; 
+	private BigDecimal pricing; 
 	
 	private PropertyChangeSupport support;
 
@@ -41,7 +42,7 @@ public class Flight {
 	 * @param pricing
 	 */
 	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
-			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
+			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, BigDecimal pricing) {
 		
 	this.type = type; 
 	this.cityDeparture = cityDeparture;
@@ -71,7 +72,7 @@ public class Flight {
 	  @param pricing
 	 */
 	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
-				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
+				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, BigDecimal pricing) {
 		this.id = id;
 		this.type = type; 
 		this.cityDeparture = cityDeparture;
@@ -175,7 +176,7 @@ public class Flight {
      * Getter method to retrieve the pricing of the flight. 
      * @return : returns the pricing of the flight. 
      */
-	public double getpricing() {
+	public BigDecimal getpricing() {
 		return pricing;
 	}
 

@@ -1,4 +1,5 @@
 import java.awt.EventQueue;
+import java.math.BigDecimal;
 
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -93,7 +94,7 @@ public class Main extends javax.swing.JFrame {
 		Account account = new Account(null, null, null, 0000);
 		
 		// Placeholder Flight Object to be reassigned.
-		Flight selectedFlight = new Flight(0, null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
+		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", 0, new BigDecimal("0.00"));
 		
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();

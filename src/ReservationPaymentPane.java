@@ -22,8 +22,8 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	private Flight selectedFlight;
 	private Reservation reservation;
 	private BigDecimal runningTotal = new BigDecimal("0.00");
-	private double[] fares = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
-	private double tempRunningTotal = 0.00;
+	private BigDecimal[] fares = {new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 
+								  new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00")};
 	
 	private JLabel lblAmountDue;
 
@@ -44,7 +44,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		lblAmountDue = new JLabel(" Amount Due: " + runningTotal);
+		lblAmountDue = new JLabel(" Amount Due: _");
 		GridBagConstraints gbc_lblAmountDue = new GridBagConstraints();
 		gbc_lblAmountDue.anchor = GridBagConstraints.WEST;
 		gbc_lblAmountDue.gridwidth = 3;
@@ -246,7 +246,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		JButton btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				reservation = new Reservation(account, flight, null);
+				reservation = new Reservation(account, flight, null, runningTotal);
 				// Write reservation to .txt
 				ReservationsReader reader = new ReservationsReader(account);
 				if (reader.writeReservation(reservation)) {
@@ -288,6 +288,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		switch(evt.getPropertyName()) {
 			case "selectedCabin" + "1":
 				fares[0] = selectedFlight.getpricing();
+				System.out.println("cabin PropertyChangeEvent");
 				break;
 			case "selectedCabin" + "2":
 				fares[1] = selectedFlight.getpricing();
@@ -308,11 +309,11 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		// fires from PassengerDetails
 		if ((evt.getPropertyName().equals("sumRunningTotal"))) {
-			for (double fare : fares) {
-				tempRunningTotal += fare;
+			for (BigDecimal fare : fares) {
+				runningTotal = runningTotal.add(fare);
 			}
 			System.out.println("sum PropertyChangeEvent");
-			lblAmountDue.setText(" Amount Due: $" + tempRunningTotal);
+			lblAmountDue.setText(" Amount Due: $" + runningTotal);
 		}
 	}
 

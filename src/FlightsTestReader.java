@@ -3,6 +3,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -30,7 +31,7 @@ public class FlightsTestReader {
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
 		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
 		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
-		        		                        Double.parseDouble(parts[9]));
+		        		                        new BigDecimal(parts[9]));
 		        
 		        //FlightSorting instantiation requires a flight as parameter
 		        if (sort == null) {
@@ -63,7 +64,7 @@ public class FlightsTestReader {
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
 		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
 		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
-		        		                        Double.parseDouble(parts[9]));
+		        		                        new BigDecimal(parts[9]));
 		        
 		        // Add flight to foundFlights for reservations associated with active account.
 		        iter = reservationFlightIDs.iterator();
