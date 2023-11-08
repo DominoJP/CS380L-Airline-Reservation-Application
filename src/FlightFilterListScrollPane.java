@@ -6,9 +6,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JToolBar;
 import javax.swing.JComboBox;
@@ -20,11 +17,10 @@ import javax.swing.JComboBox;
 */
 
 public class FlightFilterListScrollPane extends JPanel {
-	private Flight selectedFlight;
 
 	private static final long serialVersionUID = 1L;
 
-	public FlightFilterListScrollPane(JPanel contentPane, Account account, String[] flightListSorted, ArrayList<Flight> flightArray, Flight flight) {
+	public FlightFilterListScrollPane(JPanel contentPane, String[] flightListSorted) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -56,13 +52,6 @@ public class FlightFilterListScrollPane extends JPanel {
 		JButton btnBook = new JButton("Book Selected Flight");
 		btnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Flight tempFlight = flightArray.get(listFlights.getSelectedIndex());
-				//
-				flight.assign(tempFlight);
-				// flight.setDateArrival(tempFlight.getDateArrival().toString());
-				// flight.setTimeArrival(tempFlight.getTimeArrival().toString());
-				// ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, tempFlight);
-				// contentPane.add(PaymentPane, "PAY");
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
 			}
 		});
