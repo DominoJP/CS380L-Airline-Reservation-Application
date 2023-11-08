@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -35,10 +36,11 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	private JTextField textField_3;
 
 	public ReservationPaymentPane(JPanel contentPane, Account account, Flight flight) {
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -78,13 +80,14 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		GridBagConstraints gbc_lblExpirationDate = new GridBagConstraints();
 		gbc_lblExpirationDate.gridwidth = 2;
 		gbc_lblExpirationDate.anchor = GridBagConstraints.WEST;
-		gbc_lblExpirationDate.insets = new Insets(0, 0, 5, 5);
+		gbc_lblExpirationDate.insets = new Insets(0, 0, 5, 0);
 		gbc_lblExpirationDate.gridx = 4;
 		gbc_lblExpirationDate.gridy = 2;
 		add(lblExpirationDate, gbc_lblExpirationDate);
 		
 		JComboBox comboBoxCardType = new JComboBox();
 		GridBagConstraints gbc_comboBoxCardType = new GridBagConstraints();
+		gbc_comboBoxCardType.gridwidth = 2;
 		gbc_comboBoxCardType.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxCardType.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxCardType.gridx = 0;
@@ -110,7 +113,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JComboBox comboBoxYear = new JComboBox();
 		GridBagConstraints gbc_comboBoxYear = new GridBagConstraints();
-		gbc_comboBoxYear.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxYear.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxYear.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxYear.gridx = 5;
 		gbc_comboBoxYear.gridy = 3;
@@ -146,7 +149,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		textField.setColumns(10);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 2;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 4;
 		gbc_textField.gridy = 5;
@@ -171,6 +174,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JComboBox comboBoxCountry = new JComboBox();
 		GridBagConstraints gbc_comboBoxCountry = new GridBagConstraints();
+		gbc_comboBoxCountry.gridwidth = 2;
 		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxCountry.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxCountry.gridx = 0;
@@ -214,6 +218,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
+		gbc_textField_2.gridwidth = 2;
 		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_2.gridx = 0;
@@ -222,6 +227,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JComboBox comboBoxState = new JComboBox();
 		GridBagConstraints gbc_comboBoxState = new GridBagConstraints();
+		gbc_comboBoxState.gridwidth = 2;
 		gbc_comboBoxState.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxState.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxState.gridx = 2;
@@ -240,10 +246,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		JButton btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ArrayList<String> test = new ArrayList<>();
-				test.add("name");
-				reservation = new Reservation(account, flight, test);
-				
+				reservation = new Reservation(account, flight, null);
 				// Write reservation to .txt.
 				ReservationsReader reader = new ReservationsReader(account);
 				if (reader.writeReservation(reservation)) {
@@ -252,68 +255,61 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 					reservations.add(reservation);
 					account.setReservationHistory(reservations);
 				}
-				//System.out.println(account.getReservationHistory());
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");
 			}
 		});
+		GridBagConstraints gbc_btnPay = new GridBagConstraints();
+		gbc_btnPay.insets = new Insets(0, 0, 5, 0);
+		gbc_btnPay.gridx = 5;
+		gbc_btnPay.gridy = 10;
+		add(btnPay, gbc_btnPay);
 		
 		JSeparator separator = new JSeparator();
 		GridBagConstraints gbc_separator = new GridBagConstraints();
-		gbc_separator.insets = new Insets(0, 0, 5, 5);
+		gbc_separator.insets = new Insets(0, 0, 5, 0);
 		gbc_separator.gridx = 5;
 		gbc_separator.gridy = 11;
 		add(separator, gbc_separator);
-		
-		JLabel lblConfirmation = new JLabel("Confirmation and a receipt will be sent to your email.");
-		lblConfirmation.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		GridBagConstraints gbc_lblConfirmation = new GridBagConstraints();
-		gbc_lblConfirmation.gridwidth = 5;
-		gbc_lblConfirmation.insets = new Insets(0, 0, 0, 5);
-		gbc_lblConfirmation.gridx = 0;
-		gbc_lblConfirmation.gridy = 12;
-		add(lblConfirmation, gbc_lblConfirmation);
-		GridBagConstraints gbc_btnPay = new GridBagConstraints();
-		gbc_btnPay.insets = new Insets(0, 0, 0, 5);
-		gbc_btnPay.gridx = 5;
-		gbc_btnPay.gridy = 12;
-		add(btnPay, gbc_btnPay);
 
 	}
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		// fires from FilterPane
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
 			System.out.println("selectedFlight PropertyChangeEvent");
 		}
 		
-		// FIXME: refactor for switch (case);
-		if ((evt.getPropertyName()).equals("selectedCabin" + "1")) {
-			fares[0] = selectedFlight.getpricing();
-			System.out.println("pricing PropertyChangeEvent");
-		}
-		if ((evt.getPropertyName()).equals("selectedCabin" + "2")) {
-			fares[1] = selectedFlight.getpricing();
-		}
-		if ((evt.getPropertyName()).equals("selectedCabin" + "3")) {
-			fares[2] = selectedFlight.getpricing();
-		}
-		if ((evt.getPropertyName()).equals("selectedCabin" + "4")) {
-			fares[3] = selectedFlight.getpricing();
-		}
-		if ((evt.getPropertyName()).equals("selectedCabin" + "5")) {
-			fares[4] = selectedFlight.getpricing();
-		}
-		if ((evt.getPropertyName()).equals("selectedCabin" + "6")) {
-			fares[5] = selectedFlight.getpricing();
+		// fires from PassengerDetails
+		switch(evt.getPropertyName()) {
+			case "selectedCabin" + "1":
+				fares[0] = selectedFlight.getpricing();
+				break;
+			case "selectedCabin" + "2":
+				fares[1] = selectedFlight.getpricing();
+				break;
+			case "selectedCabin" + "3":
+				fares[2] = selectedFlight.getpricing();
+				break;
+			case "selectedCabin" + "4":
+				fares[3] = selectedFlight.getpricing();
+				break;
+			case "selectedCabin" + "5":
+				fares[4] = selectedFlight.getpricing();
+				break;
+			case "selectedCabin" + "6":
+				fares[5] = selectedFlight.getpricing();
+				break;
 		}
 		
+		// fires from PassengerDetails
 		if ((evt.getPropertyName().equals("sumRunningTotal"))) {
 			for (double fare : fares) {
 				tempRunningTotal += fare;
 			}
 			System.out.println("sum PropertyChangeEvent");
-			lblAmountDue.setText(" Amount Due: " + tempRunningTotal);
+			lblAmountDue.setText(" Amount Due: $" + tempRunningTotal);
 		}
 	}
 
