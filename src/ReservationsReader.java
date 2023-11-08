@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,6 +17,7 @@ public class ReservationsReader {
 	private Account account;
 	private FlightSorting sort;
 	private ArrayList<String> flightIDs;
+	private ArrayList<BigDecimal> fares;
 	private ArrayList<Reservation> reservations;
 	
 	/**
@@ -32,8 +34,9 @@ public class ReservationsReader {
 	
 	public void instantiateReservations() {
 		flightIDs = new ArrayList<String>();
+		fares = new ArrayList<>();
 		Iterator<Flight> iter;
-		reservations = new ArrayList<Reservation>();
+		// reservations = new ArrayList<Reservation>();
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/Reservations.txt"))) {
 		    String line;
@@ -43,6 +46,7 @@ public class ReservationsReader {
 		    	String[] parts = line.split(", ");
 		    	if (Integer.parseInt(parts[0]) == (account.getAccountNumber())) {
 		    		flightIDs.add(parts[1]);
+		    		fares.add(new BigDecimal(parts[2]));
 		    	}
 		    }
 		    
@@ -51,10 +55,11 @@ public class ReservationsReader {
 		    sort = flightsReader.getFlightSorting();
 		    // instantiate reservations linked w/ account using found flights
 		    iter = flightsReader.getFoundFlights().iterator();
+		    int i = 0;
 		    while (iter.hasNext()) {
-		    	reservations.add(new Reservation(account, iter.next(), null));
+		    	account.addReservationHistory(new Reservation(account, iter.next(), null, fares.get(i)));
+		    	i++;
 		    }
-		    account.setReservationHistory(reservations);
 		    
 		    reader.close();
 		    
@@ -75,13 +80,10 @@ public class ReservationsReader {
 			}
 		}
 		
-		System.out.println(reservation.getFlight().getID());
-		System.out.println(validReservation);
-		
 		if (validReservation) {
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Reservations.txt", true))) {
 				writer.write("\n");
-                writer.write(account.getAccountNumber() + ", " + reservation.getFlight().getID());
+                writer.write(account.getAccountNumber() + ", " + reservation.getFlight().getID() + ", " + reservation.getTotalPrice());
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
