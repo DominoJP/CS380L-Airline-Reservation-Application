@@ -60,6 +60,7 @@ public class FlightFilterListScrollPane extends JPanel {
 				//
 				// flight.assign(tempFlight);
 				flight.assign(flightArray.get(listFlights.getSelectedIndex()));
+				System.out.println(flight.getPassengerCount());
 				// flight.setDateArrival(tempFlight.getDateArrival().toString());
 				// flight.setTimeArrival(tempFlight.getTimeArrival().toString());
 				// ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, tempFlight);

@@ -23,7 +23,8 @@ public class Flight {
 	private LocalTime timeDeparture;    
 	private LocalDate dateArrival;     
 	private LocalTime timeArrival;   
-	private int totalPassengerCapacity;  
+	private int totalPassengerCapacity;
+	private int passengerCount;
 	private String[][] passengers; 
 	private BigDecimal pricing; 
 	
@@ -69,10 +70,11 @@ public class Flight {
 	  @param dateArrival
 	  @param timeArrival
 	  @param totalPassengerCapacity
+	  @param passengerCount
 	  @param pricing
 	 */
 	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
-				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, BigDecimal pricing) {
+				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, int passengerCount, BigDecimal pricing) {
 		this.id = id;
 		this.type = type; 
 		this.cityDeparture = cityDeparture;
@@ -82,6 +84,7 @@ public class Flight {
 		this.dateArrival = LocalDate.parse(dateArrival);
 		this.timeArrival = LocalTime.parse(timeArrival);
 		this.totalPassengerCapacity = totalPassengerCapacity;
+		this.passengerCount = passengerCount;
 		this.pricing = pricing; 
 		passengers = new String[totalPassengerCapacity][2];
 		
@@ -104,6 +107,7 @@ public class Flight {
 		this.dateArrival = selectedFlight.getDateArrival();
 		this.timeArrival = selectedFlight.getTimeArrival();
 		this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
+		this.passengerCount = selectedFlight.getPassengerCount();
 		this.pricing = selectedFlight.getpricing();
 		// FIXME: update as necessary
 		
@@ -228,6 +232,14 @@ public class Flight {
 	public int gettotalpassengercapacity() {
 		return totalPassengerCapacity;
 		
+	}
+	
+	/**
+	 * Getter method to retrieve the passenger count booked for the flight.
+	 * @return returns count of booked passengers
+	 */
+	public int getPassengerCount() {
+		return passengerCount;
 	}
 	
 	/**
