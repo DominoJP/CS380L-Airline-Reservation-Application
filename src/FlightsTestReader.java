@@ -29,8 +29,8 @@ public class FlightsTestReader {
 		        String[] parts = line.split(", ");
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
 		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
-		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
-		        		                        Double.parseDouble(parts[9]));
+		        		                        parts[6], parts[7],parts[8], Integer.parseInt(parts[9]), 
+		        		                        Double.parseDouble(parts[10]));
 		        
 		        //FlightSorting instantiation requires a flight as parameter
 		        if (sort == null) {
@@ -62,8 +62,8 @@ public class FlightsTestReader {
 		        String[] parts = line.split(", ");
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
 		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
-		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
-		        		                        Double.parseDouble(parts[9]));
+		        		                        parts[6], parts[7], parts[8], Integer.parseInt(parts[9]), 
+		        		                        Double.parseDouble(parts[10]));
 		        
 		        // Add flight to foundFlights for reservations associated with active account.
 		        iter = reservationFlightIDs.iterator();

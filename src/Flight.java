@@ -16,6 +16,7 @@ public class Flight {
 	
 	private int id;
 	private String type; 
+	private String airportName;
 	private String cityDeparture;   
 	private String cityArrival;      
 	private LocalDate dateDeparture;      
@@ -40,22 +41,25 @@ public class Flight {
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
-	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
+	public Flight(int id, String type, String airportName, String cityDeparture, String cityArrival, String dateDeparture,
 			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
-		
-	this.type = type; 
-	this.cityDeparture = cityDeparture;
-	this.cityArrival = cityArrival;
-	this.dateDeparture = LocalDate.parse(dateDeparture);
-	this.timeDeparture = LocalTime.parse(timeDeparture); 
-	this.dateArrival = LocalDate.parse(dateArrival);
-	this.timeArrival = LocalTime.parse(timeArrival);
-	this.totalPassengerCapacity = totalPassengerCapacity;
-	this.pricing = pricing; 
-	passengers = new String[totalPassengerCapacity][2];
+		this.id = id;
+		this.type = type; 
+		this.airportName = airportName;
+		this.cityDeparture = cityDeparture;
+		this.cityArrival = cityArrival;
+		this.dateDeparture = LocalDate.parse(dateDeparture);
+		this.timeDeparture = LocalTime.parse(timeDeparture); 
+		this.dateArrival = LocalDate.parse(dateArrival);
+		this.timeArrival = LocalTime.parse(timeArrival);
+		this.totalPassengerCapacity = totalPassengerCapacity;
+		this.pricing = pricing; 
+		passengers = new String[totalPassengerCapacity][2];
 	
-	support = new PropertyChangeSupport(this);
+		support = new PropertyChangeSupport(this);
 	}
+	
+	
 	
 	/**
 	  Constructor for the flight class
@@ -70,6 +74,7 @@ public class Flight {
 	  @param totalPassengerCapacity
 	  @param pricing
 	 */
+	/*
 	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
 				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
 		this.id = id;
@@ -86,6 +91,7 @@ public class Flight {
 		
 		support = new PropertyChangeSupport(this);
 	}
+	*/
 	
 	
 	/**
@@ -96,6 +102,7 @@ public class Flight {
 		support.firePropertyChange("selectedFlight", this, selectedFlight);
 		this.id = selectedFlight.getID();
 		this.type = selectedFlight.gettype();
+		this.airportName = selectedFlight.getAirportName();
 		this.cityDeparture = selectedFlight.getcityDeparture();
 		this.cityArrival = selectedFlight.getcityArrival();
 		this.dateDeparture = selectedFlight.getdateDeparture();
@@ -114,6 +121,10 @@ public class Flight {
 	 */
 	public int getID(){
 		return this.id;
+	}
+	
+	public String getAirportName() {
+		return airportName;
 	}
 	
 	/**
@@ -155,6 +166,8 @@ public class Flight {
 	public LocalTime gettimeDeparture() {
 		return timeDeparture;
 	}
+	
+	
 	
 	/**
 	 * Getter method to retrieve the total remaining pasenger capacity

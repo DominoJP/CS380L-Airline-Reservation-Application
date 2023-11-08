@@ -37,11 +37,15 @@ public class FlightFilterPane extends JPanel {
 	private JLabel lblDepartInvalidDate;
 	private JComboBox comboBoxPassengerAmount;
 	private JComboBox comboBoxFrom;
+	private JComboBox comboBoxMonthA;
+	private JComboBox comboBoxDayA;
+	private JComboBox comboBoxYearA;
 	private JLabel lblNoFlights;
 	
 	private String airportDepartInput;
 	private String airportArriveInput;
 	private String dateDepartingInput;
+	private String dateReturnInput;
 	
 	private int passengerAmount = 1;
 	private int selectedPassengerAmount;
@@ -76,9 +80,9 @@ public class FlightFilterPane extends JPanel {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JRadioButton rdbtnRoundTrip = new JRadioButton("Round Trip");
@@ -228,7 +232,7 @@ public class FlightFilterPane extends JPanel {
 		add(lblDepartInvalidDate, gbc_lblDepartInvalidDate);
 		lblDepartInvalidDate.setVisible(false);
 		
-		lblReturn = new JLabel(" Return");
+		lblReturn = new JLabel(" Return (month, day, year)");
 		GridBagConstraints gbc_lblReturn = new GridBagConstraints();
 		gbc_lblReturn.anchor = GridBagConstraints.WEST;
 		gbc_lblReturn.insets = new Insets(0, 0, 5, 5);
@@ -237,6 +241,34 @@ public class FlightFilterPane extends JPanel {
 		add(lblReturn, gbc_lblReturn);
 		lblReturn.setVisible(false);
 		
+		comboBoxMonthA = new JComboBox(monthList);
+		GridBagConstraints gbc_comboBoxMonthA = new GridBagConstraints();
+		gbc_comboBoxMonthA.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxMonthA.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxMonthA.gridx = 1;
+		gbc_comboBoxMonthA.gridy = 10;
+		add(comboBoxMonthA, gbc_comboBoxMonthA);
+		comboBoxMonthA.setVisible(false);
+		
+		comboBoxDayA = new JComboBox(dayList);
+		GridBagConstraints gbc_comboBoxDayA = new GridBagConstraints();
+		gbc_comboBoxDayA.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxDayA.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxDayA.gridx = 2;
+		gbc_comboBoxDayA.gridy = 10;
+		add(comboBoxDayA, gbc_comboBoxDayA);
+		comboBoxDayA.setVisible(false);
+		
+		comboBoxYearA = new JComboBox(yearList);
+		GridBagConstraints gbc_comboBoxYearA = new GridBagConstraints();
+		gbc_comboBoxYearA.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxYearA.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxYearA.gridx = 3;
+		gbc_comboBoxYearA.gridy = 10;
+		add(comboBoxYearA, gbc_comboBoxYearA);
+		comboBoxYearA.setVisible(false);
+		
+		
 		textReturn = new JTextField();
 		textReturn.setColumns(10);
 		GridBagConstraints gbc_textReturn = new GridBagConstraints();
@@ -244,7 +276,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_textReturn.insets = new Insets(0, 0, 5, 5);
 		gbc_textReturn.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textReturn.gridx = 1;
-		gbc_textReturn.gridy = 10;
+		gbc_textReturn.gridy = 11;
 		add(textReturn, gbc_textReturn);
 		textReturn.setVisible(false);
 		
@@ -260,6 +292,9 @@ public class FlightFilterPane extends JPanel {
 				dateDepartingInput = comboBoxYearD.getSelectedItem().toString() + "-" +
 									 comboBoxMonthD.getSelectedItem().toString() + "-" +
 									 comboBoxDayD.getSelectedItem().toString();
+				dateReturnInput = comboBoxYearA.getSelectedItem().toString() + "-" +
+						 comboBoxMonthA.getSelectedItem().toString() + "-" +
+						 comboBoxDayA.getSelectedItem().toString();
 				
 				// sort.sortFlights("LA", "NYC", "2023-10-24");
 				try {
@@ -267,16 +302,35 @@ public class FlightFilterPane extends JPanel {
 					lblNoFlights.setVisible(false);
 					
 					// sort flights per user input
-					sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
-					flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
-					ArrayList<Flight> flightArray = sort.getFlightList(airportDepartInput, airportArriveInput, dateDepartingInput);
+					// sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
+					// flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
+					// ArrayList<Flight> flightArray = sort.getFlightList(airportDepartInput, airportArriveInput, dateDepartingInput);
 					
+					ArrayList<Flight> flightArray = new ArrayList<>();
+					
+					// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
+					// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
+					// contentPane.add(FilterListPane, "FILTER_LIST");
+					
+					// proceed to filtered list of flights, sorted by date of departure by default
+					// ((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
+					
+					if(rdbtnOneWay.isSelected()) {
+						sort.sortFlights("One-way", airportDepartInput, airportArriveInput, dateDepartingInput, null);
+						flightListSorted = sort.getList("One-way", null);
+						flightArray = sort.getFlightList("One-way", airportDepartInput, airportArriveInput, dateDepartingInput);
+					}else if(rdbtnRoundTrip.isSelected()) {
+						sort.sortFlights("Two-way", airportDepartInput, airportArriveInput, dateDepartingInput, dateReturnInput);
+						flightListSorted = sort.getList("Two-way", dateReturnInput);
+						flightArray = sort.getFlightList("Two-way", airportDepartInput, airportArriveInput, dateDepartingInput);
+					}
 					// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
 					FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
 					contentPane.add(FilterListPane, "FILTER_LIST");
 					
 					// proceed to filtered list of flights, sorted by date of departure by default
 					((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
+					
 				} catch (NullPointerException ex) {
 					// show Component 'no flights found'
 					lblNoFlights.setVisible(true);
@@ -291,12 +345,12 @@ public class FlightFilterPane extends JPanel {
 		gbc_lblNoFlights.gridwidth = 4;
 		gbc_lblNoFlights.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNoFlights.gridx = 1;
-		gbc_lblNoFlights.gridy = 11;
+		gbc_lblNoFlights.gridy = 12;
 		add(lblNoFlights, gbc_lblNoFlights);
 		GridBagConstraints gbc_btnSearch = new GridBagConstraints();
 		gbc_btnSearch.insets = new Insets(0, 0, 5, 5);
 		gbc_btnSearch.gridx = 5;
-		gbc_btnSearch.gridy = 11;
+		gbc_btnSearch.gridy = 12;
 		add(btnSearch, gbc_btnSearch);
 		lblNoFlights.setVisible(false);
 		
