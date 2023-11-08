@@ -21,6 +21,7 @@ import javax.swing.JSeparator;
 import java.awt.Font;
 
 public class ReservationPaymentPane extends JPanel implements PropertyChangeListener {
+	private int selectedPassengerAmount;
 	private Flight selectedFlight;
 	private Reservation reservation;
 	private BigDecimal runningTotal = new BigDecimal("0.00");
@@ -254,6 +255,8 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 				if (reader.writeReservation(reservation)) {
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
+					//FIXME: REFACTOR FLIGHTSTESTREADER
+					FlightsTestReader r = new FlightsTestReader(selectedFlight, selectedPassengerAmount);
 				}
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");
 			}
@@ -275,10 +278,16 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		// fires from FilterPane
+		// fires from FilterPaneList
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
 			System.out.println("selectedFlight PropertyChangeEvent");
+		}
+		
+		// fires from FilterPane
+		if ((evt.getPropertyName()).equals("passengerAmount")) {
+			this.selectedPassengerAmount = ((int) evt.getNewValue());
+			System.out.println("passengerAmt PropertyChangeEvent" + this.selectedPassengerAmount);
 		}
 		
 		// fires from PassengerDetails
@@ -312,6 +321,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 			System.out.println("sum PropertyChangeEvent");
 			lblAmountDue.setText(" Amount Due: $" + runningTotal);
 		}
+		
 	}
 
 }

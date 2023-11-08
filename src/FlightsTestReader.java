@@ -1,7 +1,9 @@
 // import Database.*;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ public class FlightsTestReader {
 	private FlightSorting sort;
 	private Flight instantiatedFlight;
 	private ArrayList<Flight> foundFlights;
+	private final int PASSENGER_COUNT_INDEX = 9;
+	private final int FINAL_INDEX = 10;
 	
 	public FlightsTestReader() {
 		
@@ -45,7 +49,6 @@ public class FlightsTestReader {
 		    
 		} catch (IOException e) {
 		    e.printStackTrace();
-		
 		}
 	}
 	
@@ -80,8 +83,66 @@ public class FlightsTestReader {
 		    
 		} catch (IOException e) {
 		    e.printStackTrace();
+		}
+	}
+	
+	public FlightsTestReader(Flight selectedFlight, int selectedPassengerAmount) {
+		ArrayList<String> lines = new ArrayList<>();
+		Iterator<String> iter;
+		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
+		    String line;
+		    
+		    while ((line = reader.readLine()) != null) {
+		        String[] parts = line.split(", ");
+		        StringBuilder str =  new StringBuilder();
+		        // if flight on line is selected flight
+		        System.out.println
+		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) {
+		        	System.out.println("LAYER_A");
+		        	// calculate new passengerCount
+		        	int newPassengerCount = selectedFlight.getPassengerCount() + selectedPassengerAmount;
+		        	System.out.println("new: " + newPassengerCount);
+		        	// add flight with revised passengerCount
+		        	for (int i = 0; i < FINAL_INDEX; i++) {
+		        		if (i == PASSENGER_COUNT_INDEX) {
+		        			// revise passengerCount
+		        			str.append(newPassengerCount + ", ");
+		        			System.out.println("SUCCESS");
+		        		} else {
+		        			// copy
+		        			str.append(parts[i] + ", ");
+		        		}
+		        	}
+		        	// add re-built line
+		        	lines.add(str.toString());
+		        	
+		        } else {
+		        	// re-add line
+		        	lines.add(line);
+		        }
+		        
+		    }
+		    
+		    reader.close();
+		    
+		} catch (IOException e) {
+		    e.printStackTrace();
 		
 		}
+		
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/FlightsTest.txt"))) {
+			// re-write lines into file
+			iter = lines.iterator();
+			while (iter.hasNext()) {
+				writer.write(iter.next());
+				writer.newLine();
+			}
+			
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
 	}
 	
 	/**

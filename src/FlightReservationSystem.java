@@ -12,7 +12,7 @@ import java.awt.CardLayout;
    @version 1.0
  */
 
-public class Main extends javax.swing.JFrame {
+public class FlightReservationSystem extends javax.swing.JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -65,7 +65,7 @@ public class Main extends javax.swing.JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main frame = new Main();
+					FlightReservationSystem frame = new FlightReservationSystem();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -74,9 +74,9 @@ public class Main extends javax.swing.JFrame {
 		});
 	}
 
-	public Main() {
+	public FlightReservationSystem() {
 		
-		setDefaultCloseOperation(Main.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(FlightReservationSystem.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane = (JPanel) new JPanel();
@@ -139,6 +139,7 @@ public class Main extends javax.swing.JFrame {
 		PassengerSixPane.addPropertyChangeListener(PaymentPane);
 		
 		// For passenger amount comparison
+		FilterPane.addPropertyChangeListener(PaymentPane);
 		FilterPane.addPropertyChangeListener(PassengerOnePane);
 		FilterPane.addPropertyChangeListener(PassengerTwoPane);
 		FilterPane.addPropertyChangeListener(PassengerThreePane);
