@@ -33,7 +33,7 @@ public class ReservationsReader {
 	public void instantiateReservations() {
 		flightIDs = new ArrayList<String>();
 		Iterator<Flight> iter;
-		reservations = new ArrayList<Reservation>();
+		// reservations = new ArrayList<Reservation>();
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/Reservations.txt"))) {
 		    String line;
@@ -52,9 +52,8 @@ public class ReservationsReader {
 		    // instantiate reservations linked w/ account using found flights
 		    iter = flightsReader.getFoundFlights().iterator();
 		    while (iter.hasNext()) {
-		    	reservations.add(new Reservation(account, iter.next(), null));
+		    	account.addReservationHistory(new Reservation(account, iter.next(), null));
 		    }
-		    account.setReservationHistory(reservations);
 		    
 		    reader.close();
 		    
@@ -74,9 +73,6 @@ public class ReservationsReader {
 			return false;
 			}
 		}
-		
-		System.out.println(reservation.getFlight().getID());
-		System.out.println(validReservation);
 		
 		if (validReservation) {
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Reservations.txt", true))) {

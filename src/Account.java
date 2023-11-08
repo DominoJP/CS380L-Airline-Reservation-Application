@@ -101,15 +101,8 @@ public class Account{
 	  * @param reservation : reservation to be added.
 	  */
 	 public void addReservationHistory(Reservation reservation) {
-		//FIXME: 
-		// support.firePropertyChange("reservationHistory", null, reservation);
+		support.firePropertyChange("newReservation", null, reservation);
 		reservationHistory.add(reservation);
-	 }
-	 
-	 //FIXME
-	 public void setReservationHistory(ArrayList<Reservation> reservations) {
-		 support.firePropertyChange("reservationHistory", this.reservationHistory, reservations);
-		 this.reservationHistory = reservations;
 	 }
 
 	 /**
@@ -202,7 +195,7 @@ public class Account{
 		  System.out.println("Departure date: " + flight.getdateDeparture());
 		  System.out.println("Arrival date: " + flight.getTimeArrival());
 		  System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
-		  System.out.println("Passengers on board: " + flight.getPassenger());
+		  // System.out.println("Passengers on board: " + flight.getPassenger());
 		  System.out.println("Price of flight: " + flight.getpricing());
 
 	 }

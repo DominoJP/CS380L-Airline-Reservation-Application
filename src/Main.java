@@ -97,10 +97,9 @@ public class Main extends javax.swing.JFrame {
 		
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
+
 		
-		
-		
-		
+		// Instantiation of JPanels
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);
 		AccountSignUpPane SignUpPane = new AccountSignUpPane(contentPane);
 		OptionSelectionPane SelectionPane = new OptionSelectionPane(contentPane, account);
