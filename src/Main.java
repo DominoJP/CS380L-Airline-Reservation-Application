@@ -93,7 +93,7 @@ public class Main extends javax.swing.JFrame {
 		Account account = new Account(null, null, null, 0000);
 		
 		// Placeholder Flight Object to be reassigned.
-		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
+		Flight flight = new Flight(0, null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
 		
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
@@ -107,13 +107,13 @@ public class Main extends javax.swing.JFrame {
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, account, sort, flight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
-		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, "PASSENGER2_DETAILS");
+		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, "PASSENGER2_DETAILS", flight);
 		// FIXME, add up until 9
-		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, "PASSENGER3_DETAILS");
-		PassengerDetailsPane PassengerThreePane = new PassengerDetailsPane(contentPane, 3, "PASSENGER4_DETAILS");
-		PassengerDetailsPane PassengerFourPane = new PassengerDetailsPane(contentPane, 4, "PASSENGER5_DETAILS");
-		PassengerDetailsPane PassengerFivePane = new PassengerDetailsPane(contentPane, 5, "PASSENGER6_DETAILS");
-		PassengerDetailsPane PassengerSixPane = new PassengerDetailsPane(contentPane, 6, "NULL");
+		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, "PASSENGER3_DETAILS", flight);
+		PassengerDetailsPane PassengerThreePane = new PassengerDetailsPane(contentPane, 3, "PASSENGER4_DETAILS", flight);
+		PassengerDetailsPane PassengerFourPane = new PassengerDetailsPane(contentPane, 4, "PASSENGER5_DETAILS", flight);
+		PassengerDetailsPane PassengerFivePane = new PassengerDetailsPane(contentPane, 5, "PASSENGER6_DETAILS", flight);
+		PassengerDetailsPane PassengerSixPane = new PassengerDetailsPane(contentPane, 6, "NULL", flight);
 		// FIXME: POSSIBLY REMOVE
 		TripContactPane TripContactPane = new TripContactPane(contentPane);
 		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, flight);
@@ -127,6 +127,22 @@ public class Main extends javax.swing.JFrame {
 		// Observers
 		account.addPropertyChangeListener(ReviewPane);
 		flight.addPropertyChangeListener(PaymentPane);
+		flight.addPropertyChangeListener(PassengerOnePane);
+		flight.addPropertyChangeListener(PassengerTwoPane);
+		flight.addPropertyChangeListener(PassengerThreePane);
+		flight.addPropertyChangeListener(PassengerFourPane);
+		flight.addPropertyChangeListener(PassengerFivePane);
+		flight.addPropertyChangeListener(PassengerSixPane);
+		
+		// calculate running totals
+		PassengerOnePane.addPropertyChangeListener(PaymentPane);
+		PassengerTwoPane.addPropertyChangeListener(PaymentPane);
+		PassengerThreePane.addPropertyChangeListener(PaymentPane);
+		PassengerFourPane.addPropertyChangeListener(PaymentPane);
+		PassengerFivePane.addPropertyChangeListener(PaymentPane);
+		PassengerSixPane.addPropertyChangeListener(PaymentPane);
+		
+		// For passenger amount comparison
 		FilterPane.addPropertyChangeListener(PassengerOnePane);
 		FilterPane.addPropertyChangeListener(PassengerTwoPane);
 		FilterPane.addPropertyChangeListener(PassengerThreePane);

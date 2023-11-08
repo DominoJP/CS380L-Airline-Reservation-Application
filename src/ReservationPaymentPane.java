@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -19,6 +20,11 @@ import java.awt.Font;
 public class ReservationPaymentPane extends JPanel implements PropertyChangeListener {
 	private Flight selectedFlight;
 	private Reservation reservation;
+	private BigDecimal runningTotal = new BigDecimal("0.00");
+	private double[] fares = {0.00, 0.00, 0.00, 0.00, 0.00, 0.00};
+	private double tempRunningTotal = 0.00;
+	
+	private JLabel lblAmountDue;
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textFirstName;
@@ -36,7 +42,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblAmountDue = new JLabel(" Amount Due: _");
+		lblAmountDue = new JLabel(" Amount Due: " + runningTotal);
 		GridBagConstraints gbc_lblAmountDue = new GridBagConstraints();
 		gbc_lblAmountDue.anchor = GridBagConstraints.WEST;
 		gbc_lblAmountDue.gridwidth = 3;
@@ -276,8 +282,39 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		this.selectedFlight = ((Flight) evt.getNewValue());
-		System.out.println("PropertyChangeEvent");
+		if ((evt.getPropertyName()).equals("selectedFlight")) {
+			this.selectedFlight = ((Flight) evt.getNewValue());
+			System.out.println("selectedFlight PropertyChangeEvent");
+		}
+		
+		// FIXME: refactor for switch (case);
+		if ((evt.getPropertyName()).equals("selectedCabin" + "1")) {
+			fares[0] = selectedFlight.getpricing();
+			System.out.println("pricing PropertyChangeEvent");
+		}
+		if ((evt.getPropertyName()).equals("selectedCabin" + "2")) {
+			fares[1] = selectedFlight.getpricing();
+		}
+		if ((evt.getPropertyName()).equals("selectedCabin" + "3")) {
+			fares[2] = selectedFlight.getpricing();
+		}
+		if ((evt.getPropertyName()).equals("selectedCabin" + "4")) {
+			fares[3] = selectedFlight.getpricing();
+		}
+		if ((evt.getPropertyName()).equals("selectedCabin" + "5")) {
+			fares[4] = selectedFlight.getpricing();
+		}
+		if ((evt.getPropertyName()).equals("selectedCabin" + "6")) {
+			fares[5] = selectedFlight.getpricing();
+		}
+		
+		if ((evt.getPropertyName().equals("sumRunningTotal"))) {
+			for (double fare : fares) {
+				tempRunningTotal += fare;
+			}
+			System.out.println("sum PropertyChangeEvent");
+			lblAmountDue.setText(" Amount Due: " + tempRunningTotal);
+		}
 	}
 
 }
