@@ -63,7 +63,7 @@ public class FlightSorting{
 	 * Sets the list of flights. 
 	 * @param flights
 	 */
-	public void setFlights(List<Flight> flights) {
+	public void setFlights(ArrayList<Flight> flights) {
 		this.flights = flights;
 	}
 
