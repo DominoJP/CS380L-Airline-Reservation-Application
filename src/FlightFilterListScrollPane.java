@@ -24,7 +24,7 @@ public class FlightFilterListScrollPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public FlightFilterListScrollPane(JPanel contentPane, Account account, String[] flightListSorted, ArrayList<Flight> flightArray, Flight flight) {
+	public FlightFilterListScrollPane(JPanel contentPane, Account account, ArrayList<Flight> flightArray, Flight flight) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
@@ -32,7 +32,7 @@ public class FlightFilterListScrollPane extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		
 		// SHOW: FLIGHT IDENTIFIER, PLACE OF DEPARTURE/ARRIVAL, TIME OF DEPARTURE/ARRIVAL, DURATION, CLASS COST
-		JList listFlights = new JList(flightListSorted);
+		JList listFlights = new JList(flightArray.toArray());
 		scrollPane.setViewportView(listFlights);
 		listFlights.setSelectedIndex(0);
 		
@@ -56,9 +56,11 @@ public class FlightFilterListScrollPane extends JPanel {
 		JButton btnBook = new JButton("Book Selected Flight");
 		btnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Flight tempFlight = flightArray.get(listFlights.getSelectedIndex());
+				// Flight tempFlight = flightArray.get(listFlights.getSelectedIndex());
 				//
-				flight.assign(tempFlight);
+				// flight.assign(tempFlight);
+				flight.assign(flightArray.get(listFlights.getSelectedIndex()));
+				System.out.println(flight.getPassengerCount());
 				// flight.setDateArrival(tempFlight.getDateArrival().toString());
 				// flight.setTimeArrival(tempFlight.getTimeArrival().toString());
 				// ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, tempFlight);

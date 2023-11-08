@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 import java.time.LocalDate;
 import java.time.LocalTime;
+
 /**
    Swing JFrame in which initial JPanel is instantiated.
    Instantiates and adds JPanels to CardLayout, allowing switching between JPanels.
@@ -65,7 +66,10 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 			}
 		});
 	}
+
 	public FlightReservationSystem(CancelReservation CancelReservation) {
+
+	public FlightReservationSystem() {
 		
 		setDefaultCloseOperation(FlightReservationSystem.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -75,13 +79,11 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
-		
-		
 		// Placeholder Account Object to be reassigned.
 		Account account = new Account(null, null, null, 0000);
 		
 		// Placeholder Flight Object to be reassigned.
-		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", 0, new BigDecimal("0.00"));
+		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", 0, 0, new BigDecimal("0.00"));
 		
 		FlightsTestReader flightsReader = new FlightsTestReader(); 
 		FlightSorting sort = flightsReader.getFlightSorting();
@@ -127,6 +129,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PassengerSixPane.addPropertyChangeListener(PaymentPane);
 		
 		// For passenger amount comparison
+		FilterPane.addPropertyChangeListener(PaymentPane);
 		FilterPane.addPropertyChangeListener(PassengerOnePane);
 		FilterPane.addPropertyChangeListener(PassengerTwoPane);
 		FilterPane.addPropertyChangeListener(PassengerThreePane);

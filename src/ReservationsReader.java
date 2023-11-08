@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -57,7 +59,7 @@ public class ReservationsReader {
 		    iter = flightsReader.getFoundFlights().iterator();
 		    int i = 0;
 		    while (iter.hasNext()) {
-		    	account.addReservationHistory(new Reservation(account, iter.next(), null, fares.get(i)));
+		    	account.addReservationHistory(new Reservation(account, iter.next(), null, fares.get(i), LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES)));
 		    	i++;
 		    }
 		    
@@ -83,7 +85,8 @@ public class ReservationsReader {
 		if (validReservation) {
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Reservations.txt", true))) {
 				writer.write("\n");
-                writer.write(account.getAccountNumber() + ", " + reservation.getFlight().getID() + ", " + reservation.getTotalPrice());
+                writer.write(account.getAccountNumber() + ", " + reservation.getFlight().getID() + ", " + reservation.getTotalPrice() + ", " +
+                			 reservation.getDateTimeAtBooking());
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
