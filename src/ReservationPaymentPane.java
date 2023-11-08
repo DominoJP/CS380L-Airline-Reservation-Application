@@ -39,6 +39,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	private JTextField textField_3;
 
 	public ReservationPaymentPane(JPanel contentPane, Account account, Flight flight) {
+		selectedPassengerAmount = 1;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};

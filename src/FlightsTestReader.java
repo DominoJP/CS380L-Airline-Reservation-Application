@@ -96,14 +96,15 @@ public class FlightsTestReader {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
 		        // if flight on line is selected flight
-		        System.out.println
+		        System.out.println(parts[0] + " " + selectedFlight.getID());
 		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) {
 		        	System.out.println("LAYER_A");
 		        	// calculate new passengerCount
 		        	int newPassengerCount = selectedFlight.getPassengerCount() + selectedPassengerAmount;
+		        	System.out.println(selectedFlight.getPassengerCount() + " " + selectedPassengerAmount);
 		        	System.out.println("new: " + newPassengerCount);
 		        	// add flight with revised passengerCount
-		        	for (int i = 0; i < FINAL_INDEX; i++) {
+		        	for (int i = 0; i <= FINAL_INDEX; i++) {
 		        		if (i == PASSENGER_COUNT_INDEX) {
 		        			// revise passengerCount
 		        			str.append(newPassengerCount + ", ");
