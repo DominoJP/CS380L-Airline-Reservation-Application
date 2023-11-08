@@ -263,4 +263,11 @@ public class Flight {
 		 support.addPropertyChangeListener(pcl);
 	}
 	
+	@Override
+    public String toString() {
+        return "Departs: " + timeDeparture +
+        ", Arrives: " + dateArrival.getMonthValue() + "/" + dateArrival.getDayOfMonth() + " " + timeArrival +
+        ", $" + pricing;
+    }
+	
 }

@@ -207,12 +207,12 @@ public class Reservation {
 		 return;
 	 }
 	 
-	 @Override
-	    public String toString() {
-	        return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + 
-	        ", DEPARTS " + this.flight.getdateDeparture() + " " + this.flight.gettimeDeparture() +
-	        ", ARRIVES " + this.flight.getDateArrival() + " " + this.flight.getTimeArrival();
-	    }
+	@Override
+    public String toString() {
+        return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + 
+        ", DEPARTS " + this.flight.getdateDeparture() + " " + this.flight.gettimeDeparture() +
+        ", ARRIVES " + this.flight.getDateArrival() + " " + this.flight.getTimeArrival();
+    }
 	 
 	
 }
