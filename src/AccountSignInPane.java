@@ -14,6 +14,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JTextField;
 
@@ -25,10 +27,12 @@ import javax.swing.JTextField;
  */
 
 public class AccountSignInPane extends JPanel {
+	AccountSignIn signIn = new AccountSignIn();
+	Account acc;
 
 	private static final long serialVersionUID = 1L;
 
-	public AccountSignInPane(JPanel contentPane) {
+	public AccountSignInPane(JPanel contentPane, Account account) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 115, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -85,9 +89,11 @@ public class AccountSignInPane extends JPanel {
 		btnLogInPane.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnLogInPane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME
-				// TEMP
-				if (AccountSignIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
+				if (signIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
+					// Allows instantiation of reservations using updated Account object
+					account.setaccountNumber(signIn.getID());
+					ReservationsReader reservationsReader = new ReservationsReader(account);
+					reservationsReader.instantiateReservations();
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				} else {
 					lblWrong.setVisible(true);

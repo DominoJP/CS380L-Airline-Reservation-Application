@@ -1,27 +1,83 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Core logic for cancel reservation functionality.
- * Utilizes BufferedReader/BufferedWriter to scan and rewrite the txt file containing reservation information.
- * 
- * @author Joshua Planovsky
- * @version 7.0
+ * Cancel reservation class
+ * Allows canceling reservations and displays reservation data on a JPanel for WindowBuilder
+ *
+ * @author Planovsky Joshua
+ * Version 2.2
  */
-public class CancelReservation {
-    // Default reservation file path
-    private String reservationFilePath = "src/Database/Reservation.txt";
+public class CancelReservation extends javax.swing.JFrame {
+    private JTextField reservationIDField;
+    private JButton cancelReservationButton;
+    private String reservationFilePath;
+    private ReservationCancellationPane cancellationPane; // Add a reference to ReservationCancellationPane
 
-    // Constructor to set the reservation file path
+    /**
+     * Constructor for CancelReservation
+     *
+     * @param reservationFilePath Path to the reservations data file
+     */
     public CancelReservation(String reservationFilePath) {
         this.reservationFilePath = reservationFilePath;
+
+        setTitle("Reservation System");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        dataTextArea = new JTextArea();
+        add(new JScrollPane(dataTextArea), BorderLayout.CENTER);
+
+        JPanel inputPanel = new JPanel();
+        reservationIDField = new JTextField(10);
+        cancelReservationButton = new JButton("Cancel Reservation");
+
+        // Add an action listener to the cancel button
+        cancelReservationButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Get the reservation ID to cancel from the text field
+                String reservationIDToCancel = reservationIDField.getText();
+
+                // Call the cancelReservation method from the CancelReservation class
+                if (cancelReservationAction(reservationIDToCancel)) {
+                    // Update the text area with a success message
+                    dataTextArea.setText("Reservation with ID " + reservationIDToCancel + " has been canceled.");
+                } else {
+                    // Update the text area with a failure message
+                    dataTextArea.setText("Reservation with ID " + reservationIDToCancel + " was not found or could not be canceled.");
+                }
+            }
+        });
+
+        // Add components to the input panel
+        inputPanel.add(new JLabel("Enter Reservation ID:"));
+        inputPanel.add(reservationIDField);
+        inputPanel.add(cancelReservationButton);
+        add(inputPanel, BorderLayout.SOUTH);
+
+        
+        // Initialize ReservationCancellationPane and add it to the CancelReservation frame
+        cancellationPane = new ReservationCancellationPane(this);
+        add(cancellationPane, BorderLayout.NORTH);
     }
 
     /**
-     * Method to cancel a reservation by its ID.
-     * @param reservationID The ID of the reservation to be canceled.
-     * @return true if the reservation was successfully canceled, false if not found or an error occurred.
+     * Load data from the file and display it in the text area
+     */
+    
+
+    /**
+     * Implement your reservation cancellation logic here
+     *
+     * @param reservationID Reservation ID to be canceled
+     * @return true if the cancellation is successful; otherwise, return false
      */
     public boolean cancelReservationAction(String reservationID) {
         List<String> reservations = new ArrayList<>();
@@ -29,39 +85,18 @@ public class CancelReservation {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(this.reservationFilePath))) {
             String line;
-            StringBuilder currentReservation = new StringBuilder();
-            boolean reservationFound = false;
-
-            // Read through the reservation file line by line
             while ((line = reader.readLine()) != null) {
-                if (line.contains("Reservation ID: " + reservationID)) {
+                String[] parts = line.split(",");
+                if (parts.length > 0 && parts[0].equals(reservationID)) {
+                    // Skip the line to "cancel" the reservation
                     found = true;
-                    reservationFound = true;
-                    
-                    // Skip the current reservation by reading until the end marker
-                    while ((line = reader.readLine()) != null) {
-                        if (line.contains("--Reservation End--")) {
-                            break;
-                        }
-                    }
+                    continue;
                 }
-
-                // Build the current reservation content
-                currentReservation.append(line).append("\n");
-
-                if (line.contains("--Reservation End--")) {
-                    reservationFound = false;
-                }
-
-                // If not inside a reservation block, add the current reservation to the list
-                if (!reservationFound) {
-                    reservations.add(currentReservation.toString());
-                    currentReservation = new StringBuilder();
-                }
+                reservations.add(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return false; // Return false in case of an error
+            return false;
         }
 
         if (found) {
@@ -69,10 +104,11 @@ public class CancelReservation {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(this.reservationFilePath))) {
                 for (String reservation : reservations) {
                     writer.write(reservation);
+                    writer.newLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                return false; // Return false in case of an error
+                return false;
             }
 
             return true; // Reservation was successfully canceled
@@ -81,5 +117,11 @@ public class CancelReservation {
         return false; // Reservation was not found
     }
 
-    // Additional methods for the reservation logic could be added here
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            // Create and configure the reservation system application
+            CancelReservation app = new CancelReservation("Reservation.txt");
+            app.setVisible(true);
+        });
+    }
 }
