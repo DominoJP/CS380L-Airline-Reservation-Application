@@ -19,6 +19,10 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 	
 	public static void main(String[] args) {
 		
+		IDGenerator reservationIDFactory = new IDGenerator("RESERVATIONS");
+		System.out.println(reservationIDFactory.generateID());
+		
+		
 		//Instantiation of cancel reservation object.
 		 CancelReservation cancelReservation = new CancelReservation("src/Database/Reservation.txt");
 		
