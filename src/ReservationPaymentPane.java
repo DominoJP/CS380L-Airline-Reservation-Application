@@ -250,7 +250,8 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		JButton btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				reservation = new Reservation(account, flight, null, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+				IDGenerator reservationIDFactory = new IDGenerator("RESERVATIONS");
+				reservation = new Reservation(reservationIDFactory.generateID(), account, flight, null, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 				// Write reservation to .txt
 				ReservationsReader reader = new ReservationsReader(account);
 				if (reader.writeReservation(reservation)) {

@@ -55,7 +55,7 @@ public class FlightsTestReader {
 	/**
 	  Constructor.
 	*/
-	public FlightsTestReader(ArrayList<String> reservationFlightIDs) {
+	public FlightsTestReader(Object[] reservationFlightIDs) {
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
 		    String line;
@@ -70,12 +70,19 @@ public class FlightsTestReader {
 		        		                        new BigDecimal(parts[10]));
 		        
 		        // Add flight to foundFlights for reservations associated with active account.
+		        /*
 		        iter = reservationFlightIDs.iterator();
 		        while (iter.hasNext()) {
 		        	if (instantiatedFlight.getID() == Integer.parseInt(iter.next())) {
 		        		foundFlights.add(instantiatedFlight);
 		        	}
  		        }
+ 		        */
+		        for (Object id : reservationFlightIDs) {
+		        	if (instantiatedFlight.getID() == Integer.parseInt((String) id)) {
+		        		foundFlights.add(instantiatedFlight);
+		        	}
+		        }
 		        
 		    }
 		    

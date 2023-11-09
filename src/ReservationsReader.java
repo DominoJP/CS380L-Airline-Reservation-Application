@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 /**
   Class that uses BufferedReader to instantiate reservations to attribute List<Reservation> in Account Object.
@@ -18,7 +19,8 @@ import java.util.Iterator;
 public class ReservationsReader {
 	private Account account;
 	private FlightSorting sort;
-	private ArrayList<String> flightIDs;
+	private ArrayList<Integer> reservationIDs;
+	private TreeSet<String> flightIDs;
 	private ArrayList<BigDecimal> fares;
 	private ArrayList<Reservation> reservations;
 	
@@ -35,7 +37,8 @@ public class ReservationsReader {
 	 */
 	
 	public void instantiateReservations() {
-		flightIDs = new ArrayList<String>();
+		reservationIDs = new ArrayList<>();
+		flightIDs = new TreeSet<String>();
 		fares = new ArrayList<>();
 		Iterator<Flight> iter;
 		// reservations = new ArrayList<Reservation>();
@@ -46,20 +49,22 @@ public class ReservationsReader {
 		    // Generate ArrayList of flight IDs matching reservations associated with account.
 		    while ((line = reader.readLine()) != null) {
 		    	String[] parts = line.split(", ");
-		    	if (Integer.parseInt(parts[0]) == (account.getAccountNumber())) {
-		    		flightIDs.add(parts[1]);
-		    		fares.add(new BigDecimal(parts[2]));
+		    	if (Integer.parseInt(parts[1]) == (account.getAccountNumber())) {
+		    		reservationIDs.add(Integer.parseInt(parts[0]));
+		    		//assumes flights.txt is in ascending order of ids
+		    		flightIDs.add(parts[2]);
+		    		fares.add(new BigDecimal(parts[3]));
 		    	}
 		    }
 		    
 		    // Pass ArrayList of flight IDs, compared against .txt to identify matching flights.
-		    FlightsTestReader flightsReader = new FlightsTestReader(flightIDs);
+		    FlightsTestReader flightsReader = new FlightsTestReader(flightIDs.toArray());
 		    sort = flightsReader.getFlightSorting();
 		    // instantiate reservations linked w/ account using found flights
 		    iter = flightsReader.getFoundFlights().iterator();
 		    int i = 0;
 		    while (iter.hasNext()) {
-		    	account.addReservationHistory(new Reservation(account, iter.next(), null, fares.get(i), LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES)));
+		    	account.addReservationHistory(new Reservation(reservationIDs.get(i), account, iter.next(), null, fares.get(i), LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES)));
 		    	i++;
 		    }
 		    
@@ -85,7 +90,7 @@ public class ReservationsReader {
 		if (validReservation) {
 			try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Reservations.txt", true))) {
 				writer.write("\n");
-                writer.write(account.getAccountNumber() + ", " + reservation.getFlight().getID() + ", " + reservation.getTotalPrice() + ", " +
+                writer.write(reservation.getID() + ", " + account.getAccountNumber() + ", " + reservation.getFlight().getID() + ", " + reservation.getTotalPrice() + ", " +
                 			 reservation.getDateTimeAtBooking());
                 writer.close();
             } catch (IOException e) {

@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 
 public class Reservation {
+	private int id;
 	private Account customer; //whoever has the account and is making the reservation
 	private Flight flight;
 	private ArrayList<String> passengers; //total list of passengers in case if the reservation includes more than just the customer
@@ -39,6 +40,7 @@ public class Reservation {
 	 
 	 /**
 	   Constructor that adds the customer account making the reservation and the flight the reservation applies to
+	   @param i is the id
 	   @param n is the Account making the reservation
 	   @param f is the flight that the reservation is for
 	   @param p is the List of passenger names
@@ -46,7 +48,8 @@ public class Reservation {
 	   @param b is the date&time at booking
 	   and also calls the method setReservation()
 	 */
-	 public Reservation(Account a, Flight f, ArrayList<String> p, BigDecimal t, LocalDateTime b) {
+	 public Reservation(int id, Account a, Flight f, ArrayList<String> p, BigDecimal t, LocalDateTime b) {
+		 this.id = id;
 		 this.customer = a;
 		 this.flight = f;
 		 this.passengers = p;
@@ -111,6 +114,16 @@ public class Reservation {
 		 return;
 	 }
 	 
+	 /**
+	  * Method returning unique reservation ID.
+	  */
+	 public int getID() {
+		 return this.id;
+	 }
+	 
+	 /**
+	  * Method returning total pricing of reservation.
+	  */
 	 public BigDecimal getTotalPrice() {
 		 return this.totalPrice;
 		 
@@ -155,7 +168,7 @@ public class Reservation {
 	 }
 	 
 	 /**
-	  * Method returning LocalDateTime
+	  * Method returning LocalDateTime at booking.
 	  */
 	 public LocalDateTime getDateTimeAtBooking() {
 		 return this.dateTimeAtBooking;
