@@ -32,6 +32,7 @@ public class AccountSignIn {
 				 // compare email & password
 				 if (parts[2].equals(email) && parts[3].equals(String.valueOf(password))) {
 					 id = Integer.parseInt(parts[0]);
+					 email = parts[2];
 					 reader.close();
 					 return true;
 				 }
