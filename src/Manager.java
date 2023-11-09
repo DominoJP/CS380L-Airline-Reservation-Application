@@ -6,14 +6,13 @@
  */
 
 import java.util.ArrayList;
-import java.util.List;
-
+import java.io.BufferedReader;
 
 class Manager {
 	 
 	private int employeeID;   /** stores the employee's ID */
 	private String employeepassword; /** Stores the employee password */
-	private List<Reservation> reservations; /** Stores a list of reservations */
+	private ArrayList<Reservation> reservations; /** Stores a list of reservations */
 	
 
 public void accessReservationInfo() {
@@ -26,7 +25,7 @@ public void accessReservationInfo() {
  * @param employeeID : unique ID
  * @param employeepassword : the password associated with the employee ID. 
  */
-public Manager(int employeeID, String employeepassword, List<Reservation> reservations) {
+public Manager(int employeeID, String employeepassword, ArrayList<Reservation> reservations) {
 	 this.employeeID = employeeID;
 	 this.employeepassword = employeepassword;
 	 this.setReservations(new ArrayList<Reservation>());
@@ -52,7 +51,7 @@ public Manager(int employeeID, String employeepassword, List<Reservation> reserv
  * Retrieves a list of reservations managed by the manager. 
  * @return ; returns the list of reservations. 
  */
-public List<Reservation> getReservations() {
+public ArrayList<Reservation> getReservations() {
 	return reservations;
 }
 
@@ -60,10 +59,10 @@ public List<Reservation> getReservations() {
  * Setter method to set reservations. 
  * @param reservations
  */
-public void setReservations(List<Reservation> reservations) {
+public void setReservations(ArrayList<Reservation> reservations) {
 	this.reservations = reservations;
 }
- 
+
  
 
  

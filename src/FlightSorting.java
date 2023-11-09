@@ -17,7 +17,9 @@ public class FlightSorting{
 	private ArrayList<Flight> flights;
 
 	private Airport root1;
+	/*
 	private Airport root2;
+	*/
 	private AirportFlights destination;
 	
 	public FlightSorting() {
@@ -55,7 +57,7 @@ public class FlightSorting{
 	 * Gets the list of flights managed by this flight sorting instance. 
 	 * @return returns the list of flights 
 	 */
-	public List<Flight> getFlights() {
+	public ArrayList<Flight> getFlights() {
 		return flights;
 	}
 
@@ -72,7 +74,7 @@ public class FlightSorting{
 	 * @param flight
 	 */
 	public void addFlight(Flight flight) {
-		
+		/*
 		if(flight.gettype().equals("One-way")) {	
 			if(root1 == null) {
 				root1 = new Airport(flight);
@@ -89,17 +91,33 @@ public class FlightSorting{
 			
 			root2.addFlight(flight);
 		}
+		*/
+		
+		if(root1 == null) {
+			root1 = new Airport(flight);
+			return;
+		}
+		
+		root1.addFlight(flight);
 	}
 	
 	/**
 	 * Sorts the list of flights 
 	 */
+	/*
 	public void sortFlights(String type, String origin, String arrival, String date, String arrivalTime) {
 
 		 this.destination = findFlights(type, origin, arrival, date);
 		 this.flights = destination.getFlights();
 		 this.totalFlightAvailable = flights.size();
 	}
+	*/
+	
+	public void sortFlights(String origin, String arrival, String date) {
+		this.destination= findFlights(origin, arrival, date);
+		this.flights = destination.getFlights();
+		this.totalFlightAvailable = flights.size();
+		}
 	
 	/**
 	 * Displays the available seating information for a specific flight. 
@@ -132,7 +150,7 @@ public class FlightSorting{
 	/**
 	 * Searches through either tree created with root1 or root2 depending on @param type and @return an Airport given the @param origin
 	 */
-	
+	/*
 	public Airport search(String type, String origin) {
 		Airport curr = null;
 		if(type.equals("One-way")) {
@@ -143,8 +161,9 @@ public class FlightSorting{
 		
 		return curr;
 	}
+	*/
 	
-	public Airport searchOneWay(String origin) {
+	public Airport search(String origin) {
 		Airport curr = root1;
 		
 		while(curr.getOrigin().compareTo(origin) != 0) {
@@ -158,6 +177,7 @@ public class FlightSorting{
 		return curr;
 	}
 	
+	/*
 	public Airport searchTwoWay(String origin) {
 		Airport curr = root2;
 		
@@ -171,6 +191,7 @@ public class FlightSorting{
 		
 		return curr;
 	}
+	*/
 	
 	/**
 	 * findFlights utilizes the search method of the AirportFlights class by giving it @param type and @param origin to find
@@ -178,8 +199,8 @@ public class FlightSorting{
 	 * @param destination and @param date
 	 */
 	
-	public AirportFlights findFlights(String type, String origin, String destination, String date) {
-		return this.search(type, origin).search(destination, date);
+	public AirportFlights findFlights(String origin, String destination, String date) {
+		return this.search(origin).search(destination, date);
 	}
 	
 	/**
@@ -188,6 +209,7 @@ public class FlightSorting{
 	 * @param arrival
 	 */
 	
+	/*
 	public void findArrivalFlights(LocalDate arrival) {
 		
 		ArrayList<Flight> list = new ArrayList<Flight>();
@@ -200,6 +222,7 @@ public class FlightSorting{
 		this.flights = list;
 		this.totalFlightAvailable = list.size();
 	}
+	*/
 	
 	/**
 	 * the getList method will @return an array of String that consists of the departure and arrival times of a 
@@ -207,13 +230,15 @@ public class FlightSorting{
 	 * @param date, and if the Flight is two-way it uses @param arrival and the findArrivalFLights method to sort the list
 	 */
 	
-	public String[] getList(String type, String arrival) {
+	public String[] getList(String arrival) {
 		LocalDate depart;
 		LocalDate arrive;
 		
+		/*
 		if(type.equals("Two-way")) {
 			this.findArrivalFlights(LocalDate.parse(arrival));
 		}
+		*/
 		
 		String[] list = new String[(flights.size())];
 

@@ -269,7 +269,7 @@ public class FlightFilterPane extends JPanel {
 					// sort flights per user input
 					sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
 					// flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
-					ArrayList<Flight> flightArray = sort.getFlightList(airportDepartInput, airportArriveInput, dateDepartingInput);
+					ArrayList<Flight> flightArray = sort.getFlights();
 					
 					// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
 					FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightArray, flight);
