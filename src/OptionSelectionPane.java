@@ -7,6 +7,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.awt.event.ActionEvent;
 
 /**
@@ -19,7 +21,8 @@ public class OptionSelectionPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public OptionSelectionPane(JPanel contentPane) {
+	public OptionSelectionPane(JPanel contentPane, Account account) {
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{137, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
@@ -50,7 +53,10 @@ public class OptionSelectionPane extends JPanel {
 						((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
 						break;
 					case "Review":
-						((CardLayout) contentPane.getLayout()).show(contentPane, "Review");
+						// FIXME: REMOVE
+						// ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
+						// contentPane.add(ReviewPane, "REVIEW");
+						((CardLayout) contentPane.getLayout()).show(contentPane, "REVIEW");
 						break;
 					case "Cancel":
 						((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
@@ -66,5 +72,6 @@ public class OptionSelectionPane extends JPanel {
 		
 
 	}
+	
 
 }

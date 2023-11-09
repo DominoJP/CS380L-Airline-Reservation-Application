@@ -14,6 +14,7 @@ public class Airport {
 	private Airport child1;
 	private Airport child2;
 	private ArrayList<AirportFlights> destinations;
+	//private ArrayList<String> airports;
 	
 	/**
 	 * a constructor for the Airport class that accepts no input
@@ -35,7 +36,7 @@ public class Airport {
 	
 	public Airport(String d) {
 		this.origin = d;
-		name = null;
+		//this.name = findAirport(d);
 		child1 = null;
 		child2 = null;
 		destinations = null;
@@ -50,14 +51,30 @@ public class Airport {
 	
 	public Airport(Flight f) {
 		this.origin = f.getcityDeparture();
-		this.name = f.getAirportName();
+		//this.name = findAirport(this.origin);
 		child1 = null;
 		child2 = null;
 		AirportFlights flights = new AirportFlights(f);
 		destinations = new ArrayList<AirportFlights>();
 		destinations.add(flights);
 	}
-
+	/**
+	 * the findAirport method searches through the list of airports that have been saved and returns the
+	 * name of an airport depending on what city was given
+	 * @param o
+	 * @return
+	 */
+	
+	//public String findAirport(String o) {
+		//String airport = null;
+		
+		//for(int i = 0; i < airports.size(); i++) {
+			//if(airports.get(i) == o)
+				//airport = airports.get(i);
+		//}
+		
+		//return airport;
+	//}
 	
 	/**
 	 * the addFlights method either adds a new flight into the list of flights for an airport
@@ -74,8 +91,6 @@ public class Airport {
 		
 		if(this.origin == null) {
 			origin = f.getcityDeparture();
-			if(name == null)
-				name = f.getAirportName();
 			destinations.add(flights);
 		}else if(this.origin.compareTo(f.getcityDeparture()) == 0) {
 			for(int i = 0; i < destinations.size(); i++) {
@@ -85,15 +100,13 @@ public class Airport {
 				}
 			}
 			
-			for(int j = 0; j < destinations.size(); j++) {
-				if(f.getcityArrival().compareTo(destinations.get(j).getDestination()) < 0) {
-					destinations.add(j, flights);
+			for(int i = 0; i < destinations.size(); i++) {
+				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) < 0) {
+					destinations.add(i, flights);
 					return;
-				}
+				}else if(i + 1 == destinations.size())
+					destinations.add(flights);
 			}
-			
-			destinations.add(flights);
-			
 		}else {
 			Airport newChild = new Airport(f);
 			
@@ -154,12 +167,12 @@ public class Airport {
 			}
 		}
 		
-		while(!(curr.getDate().equals(time))) {
-			if(curr.getDate().isAfter(time)) {
+		while(!curr.getDate().equals(time)) {
+			if(curr.getDate().isAfter(time))
+
 				curr = curr.getChild1();
-			}else {
+			else
 				curr = curr.getChild2();
-			}
 		}
 		
 		return curr;
@@ -174,7 +187,4 @@ public class Airport {
 		return child2;
 	}
 	
-	public String getName() {
-		return name;
-	}
 }

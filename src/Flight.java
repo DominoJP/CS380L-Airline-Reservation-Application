@@ -7,23 +7,28 @@
  *@version 1.0 
  */
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Flight {
 	
+	private int id;
 	private String type; 
-	private String airportName;
 	private String cityDeparture;   
 	private String cityArrival;      
 	private LocalDate dateDeparture;      
 	private LocalTime timeDeparture;    
 	private LocalDate dateArrival;     
 	private LocalTime timeArrival;   
-	private int totalPassengerCapacity;  
+	private int totalPassengerCapacity;
+	private int passengerCount;
 	private String[][] passengers; 
-	private double pricing; 
+	private BigDecimal pricing; 
 	
+	private PropertyChangeSupport support;
 
 	/**
 	 * Constructor for the flight class
@@ -37,11 +42,10 @@ public class Flight {
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
-	public Flight(String type, String airportName, String cityDeparture, String cityArrival, String dateDeparture,
-			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
+	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
+			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, BigDecimal pricing) {
 		
 	this.type = type; 
-	this.airportName = airportName;
 	this.cityDeparture = cityDeparture;
 	this.cityArrival = cityArrival;
 	this.dateDeparture = LocalDate.parse(dateDeparture);
@@ -52,6 +56,69 @@ public class Flight {
 	this.pricing = pricing; 
 	passengers = new String[totalPassengerCapacity][2];
 	
+	support = new PropertyChangeSupport(this);
+	}
+	
+	/**
+	  Constructor for the flight class
+	  @param id
+	  @param type
+	  @param cityDeparture
+	  @param cityArrival
+	  @param dateDeparture
+	  @param timeDeparture
+	  @param dateArrival
+	  @param timeArrival
+	  @param totalPassengerCapacity
+	  @param passengerCount
+	  @param pricing
+	 */
+	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
+				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, int passengerCount, BigDecimal pricing) {
+		this.id = id;
+		this.type = type; 
+		this.cityDeparture = cityDeparture;
+		this.cityArrival = cityArrival;
+		this.dateDeparture = LocalDate.parse(dateDeparture);
+		this.timeDeparture = LocalTime.parse(timeDeparture); 
+		this.dateArrival = LocalDate.parse(dateArrival);
+		this.timeArrival = LocalTime.parse(timeArrival);
+		this.totalPassengerCapacity = totalPassengerCapacity;
+		this.passengerCount = passengerCount;
+		this.pricing = pricing; 
+		passengers = new String[totalPassengerCapacity][2];
+		
+		support = new PropertyChangeSupport(this);
+	}
+	
+	
+	/**
+	 * Method that fires PropertyChange event when "assigning" to a Flight Object. For use with FlightFilterList.
+	 * @param selectedFlight
+	 */	
+	public void assign(Flight selectedFlight) {
+		support.firePropertyChange("selectedFlight", this, selectedFlight);
+		this.id = selectedFlight.getID();
+		this.type = selectedFlight.gettype();
+		this.cityDeparture = selectedFlight.getcityDeparture();
+		this.cityArrival = selectedFlight.getcityArrival();
+		this.dateDeparture = selectedFlight.getdateDeparture();
+		this.timeDeparture = selectedFlight.gettimeDeparture();
+		this.dateArrival = selectedFlight.getDateArrival();
+		this.timeArrival = selectedFlight.getTimeArrival();
+		this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
+		this.passengerCount = selectedFlight.getPassengerCount();
+		this.pricing = selectedFlight.getpricing();
+		// FIXME: update as necessary
+		
+	}
+	
+	/**
+	 * Getter method to retrieve the flight id
+	 * @return : returns the id of flight. 
+	 */
+	public int getID(){
+		return this.id;
 	}
 	
 	/**
@@ -94,12 +161,8 @@ public class Flight {
 		return timeDeparture;
 	}
 	
-	public String getAirportName() {
-		return airportName;
-	}
-	
 	/**
-	 * Getter method to retrieve the total remaining passenger capacity
+	 * Getter method to retrieve the total remaining pasenger capacity
 	 * @return ; returns the total remaining passenger capacity
 	 */
 	public int gettotalremainingpassengercapacity() {
@@ -117,7 +180,7 @@ public class Flight {
      * Getter method to retrieve the pricing of the flight. 
      * @return : returns the pricing of the flight. 
      */
-	public double getpricing() {
+	public BigDecimal getpricing() {
 		return pricing;
 	}
 
@@ -172,6 +235,14 @@ public class Flight {
 	}
 	
 	/**
+	 * Getter method to retrieve the passenger count booked for the flight.
+	 * @return returns count of booked passengers
+	 */
+	public int getPassengerCount() {
+		return passengerCount;
+	}
+	
+	/**
 	 * Method to check if the flight is full
 	 * @return , returns true if the flight is full, otherwise false. 
 	 */
@@ -190,14 +261,25 @@ public class Flight {
 		// it is then it assigns a passenger and if the seat does not exist then it provided 
 		//an error to the user. 
 		if(location <= totalPassengerCapacity) {
-			passengers[location][0] = name; 
+			passengers[location][1] = name; 
 			if(accountnumber != null) {
-				passengers[location][1] = accountnumber;
+				passengers[location][2] = accountnumber;
 			}
 		}
 		else {
 			System.out.println("Sorry that is not a seat available on the flight");
 		}
 	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+		 support.addPropertyChangeListener(pcl);
+	}
+	
+	@Override
+    public String toString() {
+        return "Departs: " + timeDeparture +
+        ", Arrives: " + dateArrival.getMonthValue() + "/" + dateArrival.getDayOfMonth() + " " + timeArrival +
+        ", $" + pricing;
+    }
 	
 }

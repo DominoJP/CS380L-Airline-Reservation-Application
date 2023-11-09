@@ -1,3 +1,5 @@
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,8 @@ public class Account{
 	 private String password;
 	 private int accountNumber;
 	 private List<Reservation> reservationHistory;
+	 
+	 private PropertyChangeSupport support;
 
 
 	 /**
@@ -30,6 +34,12 @@ public class Account{
 		 this.setPassword(password);
 		 this.accountNumber = accountNumber;
 		 this.reservationHistory = new ArrayList<>();
+		 
+		 support = new PropertyChangeSupport(this);
+	 }
+	 
+	 public void addPropertyChangeListener(PropertyChangeListener pcl) {
+		 support.addPropertyChangeListener(pcl);
 	 }
 
 
@@ -48,6 +58,15 @@ public class Account{
 	  */
 	 public String getEmail() {
 		 return email;
+	 }
+	 
+	 /**
+	  * Setter method to set account email
+	  * @param accountNumber : new account email to be set.
+	  */
+	 public void setEmail(String email) {
+		 this.email = email;
+
 	 }
 
 	 /**
@@ -82,6 +101,7 @@ public class Account{
 	  * @param reservation : reservation to be added.
 	  */
 	 public void addReservationHistory(Reservation reservation) {
+		support.firePropertyChange("newReservation", null, reservation);
 		reservationHistory.add(reservation);
 	 }
 
@@ -89,8 +109,8 @@ public class Account{
 	  * Method to retrieve customer's reservation history.
 	  * @return The list of reservation made by the customer.
 	  */
-	 public List<Reservation> getReservationHistory() {
-		return reservationHistory;
+	 public ArrayList<Reservation> getReservationHistory() {
+		return (ArrayList<Reservation>) reservationHistory;
 	 }
 
 	 /**
@@ -175,7 +195,7 @@ public class Account{
 		  System.out.println("Departure date: " + flight.getdateDeparture());
 		  System.out.println("Arrival date: " + flight.getTimeArrival());
 		  System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
-		  System.out.println("Passengers on board: " + flight.getPassenger());
+		  // System.out.println("Passengers on board: " + flight.getPassenger());
 		  System.out.println("Price of flight: " + flight.getpricing());
 
 	 }

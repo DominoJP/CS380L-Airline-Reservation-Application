@@ -1,11 +1,40 @@
+--Reservation End--
+
+
+
+Reservation ID: ABC12346
 Flight Number: AA101
 Date: 2023-9-15
 Departure Airport: JFK (New York)
 Arrival Airport: LAX (Los Angeles)
-
 Booking Records:
-Reservation ID: ABC12345
 1. Name: Josh Test
    Passport: US123456
    Seat: 1A
-    Status: Confirmed
+   Status: Confirmed
+--Reservation End--
+
+Reservation ID: ABC123
+Flight Number: AA101
+Date: 2023-9-15
+Departure Airport: JFK (New York)
+Arrival Airport: LAX (Los Angeles)
+Booking Records:
+1. Name: Josh Test
+   Passport: US123456
+   Seat: 1A
+   Status: Confirmed
+--Reservation End--
+
+
+   
+   
+
+   
+   
+   
+
+   
+   
+
+

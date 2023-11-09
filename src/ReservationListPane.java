@@ -1,13 +1,69 @@
 import javax.swing.JPanel;
+import java.awt.GridBagLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 
-public class ReservationListPane extends JPanel {
+import javax.swing.JList;
+import javax.swing.JToolBar;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+
+public class ReservationListPane extends JPanel implements PropertyChangeListener {
+	private ArrayList<Reservation> reservations;
+	
+	private DefaultListModel model = new DefaultListModel();
+	private JList list;
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Create the panel.
 	 */
-	public ReservationListPane() {
+	public ReservationListPane(JPanel contentPane, Account account) {
+		
+		setLayout(new BorderLayout(0, 0));
+		
+		list = new JList(model);
+		add(list, BorderLayout.CENTER);
+		
+		
+		JToolBar toolBar = new JToolBar();
+		add(toolBar, BorderLayout.NORTH);
+		
+		JButton btnReturn = new JButton("Return");
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+			}
+		});
+		toolBar.add(btnReturn);
+		
+		JComboBox comboBox = new JComboBox();
+		toolBar.add(comboBox);
+		
+		JButton btnReview = new JButton("Review Selected Reservation");
+		btnReview.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// FIXME: CANCELLATION PANE
+			}
+		});
+		toolBar.add(btnReview);
+
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		if ((evt.getPropertyName()).equals("newReservation")) {
+			// this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
+			model.addElement((Reservation) evt.getNewValue());
+		}
 
 	}
 
