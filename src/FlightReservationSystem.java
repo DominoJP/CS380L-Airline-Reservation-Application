@@ -77,10 +77,10 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
-		// Placeholder Account Object to be reassigned.
+		// Placeholder Account object to be reassigned at sign in.
 		Account account = new Account(null, null, null, 0000);
 		
-		// Placeholder Flight Object to be reassigned.
+		// Placeholder Flight object to be reassigned at flight selection.
 		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", 0, 0, new BigDecimal("0.00"));
 		
 		// FlightsTestReader flightsReader = new FlightsTestReader(); 
