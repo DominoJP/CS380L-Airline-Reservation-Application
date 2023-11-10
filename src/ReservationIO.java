@@ -12,14 +12,9 @@ import java.util.ArrayList;
  */
 public class ReservationIO {
 	private static final String FILE_PATH = "src/Database/Reservation.txt";
-	// private static final int RESERVATION_ID_INDEX = 0;
 	private Account account;
 	private boolean isAssociatedReservation;
 	private int reservationID;
-	// private ArrayList<Integer> reservationIDs;
-	// private TreeSet<Integer> flightIDs;
-	// private ArrayList<BigDecimal> pricing;
-	private int accountID;
 	private int flightID;
 	private LocalDateTime bookingDateTime;
 	private BigDecimal totalPricing;
@@ -31,20 +26,15 @@ public class ReservationIO {
 	 */
 	public ReservationIO(Account account) {
 		this.account = account;
-		accountID = account.getAccountNumber();
 	}
 	
 	/**
 	 * Method to instantiate reservations associated with account to ArrayList<Reservation> attribute of Account Object.
 	 */
 	public void instantiateReservations() {
-		// reservationIDs = new ArrayList<>();
-		// flightIDs = new TreeSet<Integer>();
-		// pricing = new ArrayList<>();
 		passengers = new ArrayList<>();
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
-			// ArrayList<String> lines = new ArrayList<>();
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		    	if(line.length() == 0) { // Skip whitespace.
@@ -61,8 +51,6 @@ public class ReservationIO {
 		    		case "Account ID":
 		    			if (Integer.parseInt(parts[1]) == account.getAccountNumber()) {
 		    				isAssociatedReservation = true;
-		    			} else {
-		    				isAssociatedReservation = false;
 		    			}
 		    			break;
 		    		case "Flight Number":
@@ -82,7 +70,6 @@ public class ReservationIO {
 		    			break;
 		    		case "--Reservation End--":
 		    			if (isAssociatedReservation) {
-		    			// BUILD RESERVATION & ADD TO RESERVATION HISTOY HERE
 		    				FlightsTestReader flightsReader = new FlightsTestReader(flightID);
 		    				account.addReservationHistory(new Reservation(reservationID, account, flightsReader.getFlight(), passengers, totalPricing, bookingDateTime));
 		    				isAssociatedReservation = false;
