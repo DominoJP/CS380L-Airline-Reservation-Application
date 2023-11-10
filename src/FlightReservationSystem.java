@@ -83,8 +83,9 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// Placeholder Flight Object to be reassigned.
 		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", 0, 0, new BigDecimal("0.00"));
 		
-		FlightsTestReader flightsReader = new FlightsTestReader(); 
-		FlightSorting sort = flightsReader.getFlightSorting();
+		// FlightsTestReader flightsReader = new FlightsTestReader(); 
+		// FlightSorting sort = flightsReader.getFlightSorting();
+		FlightSorting sort = FlightIO.instantiateFlights();
 		
 		// Instantiation of JPanels
 		AccountSignInPane SignInPane = new AccountSignInPane(contentPane, account);

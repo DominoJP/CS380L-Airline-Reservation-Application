@@ -18,6 +18,7 @@ import java.util.Iterator;
 
 //FIXME: DUE FOR REFACTORING
 
+@Deprecated
 public class FlightsTestReader {
 	private FlightSorting sort;
 	private Flight instantiatedFlight;
