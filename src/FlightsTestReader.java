@@ -153,6 +153,7 @@ public class FlightsTestReader {
 	}
 	
 	// used by reservation IO, refactor
+	@Deprecated
 	public FlightsTestReader(int id) {
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
 		    String line;

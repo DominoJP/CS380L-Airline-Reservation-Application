@@ -25,8 +25,8 @@ public class FlightIO {
 	*/
 	
 	/**
-	 * Instantiates a FlightSorting Object to which instantiated flights are added.
-	 * @return FlightSorting Object 
+	 * Returns a FlightSorting object to which instantiated flights are added.
+	 * @return FlightSorting object
 	 */
 	public static FlightSorting instantiateFlights() {
 		FlightSorting sort = new FlightSorting();
@@ -53,6 +53,10 @@ public class FlightIO {
 		return sort;
 	}
 	
+	/**
+	 * Updates flight passenger count one new reservation booking.
+	 * @see class ReservationPaymentPane.java
+	 */
 	public static void updatePassengerCount(Flight selectedFlight, int selectedPassengerAmount) {
 		final int PASSENGER_COUNT_INDEX = 9;
 		final int LAST_INDEX = 1;
@@ -104,6 +108,30 @@ public class FlightIO {
             e.printStackTrace();
         }
 		
+	}
+	
+	/**
+	 * Returns Flight object with corresponding @param ID.
+	 */
+	public static Flight findFlight(int flightID) {
+		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", 0, 0, new BigDecimal("0.00"));
+		
+		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+		    String line;
+		    while ((line = reader.readLine()) != null) {
+		        String[] parts = line.split(", ");
+		        if (Integer.parseInt(parts[0]) == flightID) {
+		        	// Instantiate flight with parameters corresponding to String[] indices generated from the current line
+		        	foundFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
+		        		          	     parts[6], parts[7], Integer.parseInt(parts[8]), Integer.parseInt(parts[9]),
+		        		          	     new BigDecimal(parts[10]));
+		        }
+		    }
+		    reader.close();   
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		return foundFlight;
 	}
 	
 }

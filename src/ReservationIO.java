@@ -70,8 +70,8 @@ public class ReservationIO {
 		    			break;
 		    		case "--Reservation End--":
 		    			if (isAssociatedReservation) {
-		    				FlightsTestReader flightsReader = new FlightsTestReader(flightID);
-		    				account.addReservationHistory(new Reservation(reservationID, account, flightsReader.getFlight(), passengers, totalPricing, bookingDateTime));
+		    				Flight matchingFlight = FlightIO.findFlight(flightID);
+		    				account.addReservationHistory(new Reservation(reservationID, account, matchingFlight, passengers, totalPricing, bookingDateTime));
 		    				isAssociatedReservation = false;
 		    			}
 		    			break;
