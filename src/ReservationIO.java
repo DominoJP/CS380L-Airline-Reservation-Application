@@ -85,29 +85,25 @@ public class ReservationIO {
 	 * @param pending reservation
 	 * @return true if write successful
 	 */
-	public static boolean writeReservation(Account account, Reservation reservation) {
-		if (isUniqueReservation(account, reservation)) {
-			try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
-				writer.write("\n");
-				// FIXME: System.out.println(String.format("%010d", Integer.valueOf("999999999999999"))); throws format exception error
-				writer.write("Reservation ID: " + reservation.getID() + "\n");
-				writer.write("Account ID: " + account.getAccountNumber() + "\n");
-				writer.write("Flight Number: " + reservation.getFlight() + "\n");
-				writer.write("Date of Booking: " + reservation.getDateTimeAtBooking() + "\n");
-				writer.write("Date of Departure: " + reservation.getFlight().getdateDeparture() + "\n");
-				writer.write("Departure Airport: " + reservation.getFlight().getcityDeparture() + "\n");
-				writer.write("Arrival Airport: " + reservation.getFlight().getcityArrival() + "\n");
-				writer.write("Cabin Class: " + "NULL" + "\n");
-				writer.write("Total Pricing: " + reservation.getTotalPrice() + "\n");
-				writer.write("Passenger: " + "NULL" + "\n");
-                writer.write("--Reservation End--" + "\n");
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-			return true;
-		}
-		return false;
+	public static void writeReservation(Account account, Reservation reservation) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
+			writer.write("\n");
+			// FIXME: System.out.println(String.format("%010d", Integer.valueOf("999999999999999"))); throws format exception error
+			writer.write("Reservation ID: " + reservation.getID() + "\n");
+			writer.write("Account ID: " + account.getAccountNumber() + "\n");
+			writer.write("Flight Number: " + reservation.getFlight() + "\n");
+			writer.write("Date of Booking: " + reservation.getDateTimeAtBooking() + "\n");
+			writer.write("Date of Departure: " + reservation.getFlight().getdateDeparture() + "\n");
+			writer.write("Departure Airport: " + reservation.getFlight().getcityDeparture() + "\n");
+			writer.write("Arrival Airport: " + reservation.getFlight().getcityArrival() + "\n");
+			writer.write("Cabin Class: " + "NULL" + "\n");
+			writer.write("Total Pricing: " + reservation.getTotalPrice() + "\n");
+			writer.write("Passenger: " + "NULL" + "\n");
+            writer.write("--Reservation End--" + "\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	
 	/**
@@ -116,6 +112,7 @@ public class ReservationIO {
 	 * @param pending reservation
 	 * @return true if is a unique reservation
 	 */
+	@Deprecated
 	private static boolean isUniqueReservation(Account account, Reservation reservation) {
 		Iterator<Reservation> iter;
 		iter = account.getReservationHistory().iterator();

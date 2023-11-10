@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Insets;
@@ -250,18 +251,12 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		JButton btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: REFACTOR
-				// FIXME: only increment if reservation accepted
-				IDGenerator reservationIDFactory = new IDGenerator("RESERVATIONS");
-				reservation = new Reservation(reservationIDFactory.generateID(), account, flight, null, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
-				// Write reservation to .txt
-				// ReservationsReader reader = new ReservationsReader(account);
-				// if (reader.writeReservation(reservation)) {
-				if (ReservationIO.writeReservation(account, reservation)) {
+				if (isUniqueReservation(account, selectedFlight.getID())) {
+					IDGenerator reservationIDFactory = new IDGenerator("RESERVATIONS");
+					reservation = new Reservation(reservationIDFactory.generateID(), account, flight, null, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
-					//FIXME: REFACTOR FLIGHTSTESTREADER
-					// FlightsTestReader r = new FlightsTestReader(selectedFlight, selectedPassengerAmount);
+					ReservationIO.writeReservation(account, reservation);
 					FlightIO.updatePassengerCount(selectedFlight, selectedPassengerAmount);
 				}
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");
@@ -284,12 +279,6 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		
-		/*
-		if ((evt.getPropertyName()).equals("newReservation")) {
-			//
-		}
-		*/
 		
 		// fires from FilterListPane
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
@@ -335,6 +324,23 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 			lblAmountDue.setText(" Amount Due: $" + runningTotal);
 		}
 		
+	}
+	
+	/**
+	 * Validates that reservation for selected flight does not already exist for this account.
+	 * @param active account
+	 * @param pending reservation
+	 * @return true if is a unique reservation
+	 */
+	private static boolean isUniqueReservation(Account account, int flightID) {
+		Iterator<Reservation> iter;
+		iter = account.getReservationHistory().iterator();
+		while (iter.hasNext()) {
+			if (iter.next().getFlight().getID() == flightID) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }
