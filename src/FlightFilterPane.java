@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -49,9 +50,9 @@ public class FlightFilterPane extends JPanel {
 	private PropertyChangeSupport support;
 	
 	// for use with comboBoxFrom
-	private String[] airportFromList = {"LAX", "BUR"};
+	private ArrayList<String> airportsFrom;
 	// for use with comboBoxTo
-	private String[] airportToList = {"JFK", "LAX"};
+	private ArrayList<String> airportsTo;
 	// for use with comboBoxMonthD
 	private String[] monthList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	// for use with comboBoxDayD
@@ -70,8 +71,15 @@ public class FlightFilterPane extends JPanel {
 		 support.addPropertyChangeListener(pcl);
 	}
 	
-	public FlightFilterPane(JPanel contentPane, Account account, FlightSorting sort, Flight flight) {
-		
+	public FlightFilterPane(JPanel contentPane, Account account, FlightSorting sort, Flight flight, TreeSet<String> airportsDeparting, TreeSet<String> airportsArriving) {
+		airportsFrom = new ArrayList<>();
+		for (String airport : airportsDeparting) {
+			airportsFrom.add(airport);
+		}
+		airportsTo = new ArrayList<>();
+		for (String airport : airportsArriving) {
+			airportsTo.add(airport);
+		}
 		support = new PropertyChangeSupport(this);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -152,7 +160,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_lblTo.gridy = 4;
 		add(lblTo, gbc_lblTo);
 		
-		comboBoxFrom = new JComboBox(airportFromList);
+		comboBoxFrom = new JComboBox(airportsFrom.toArray());
 		GridBagConstraints gbc_comboBoxFrom = new GridBagConstraints();
 		gbc_comboBoxFrom.gridwidth = 2;
 		gbc_comboBoxFrom.insets = new Insets(0, 0, 5, 5);
@@ -161,7 +169,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_comboBoxFrom.gridy = 5;
 		add(comboBoxFrom, gbc_comboBoxFrom);
 		
-		JComboBox comboBoxTo = new JComboBox(airportToList);
+		JComboBox comboBoxTo = new JComboBox(airportsTo.toArray());
 		GridBagConstraints gbc_comboBoxTo = new GridBagConstraints();
 		gbc_comboBoxTo.gridwidth = 2;
 		gbc_comboBoxTo.insets = new Insets(0, 0, 5, 5);
