@@ -16,6 +16,8 @@ import java.util.Iterator;
   @version 1.0
 */
 
+//FIXME: DUE FOR REFACTORING
+
 public class FlightsTestReader {
 	private FlightSorting sort;
 	private Flight instantiatedFlight;
@@ -148,6 +150,29 @@ public class FlightsTestReader {
 		
 	}
 	
+	// used by reservation IO, refactor
+	public FlightsTestReader(int id) {
+		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
+		    String line;
+		    
+		    while ((line = reader.readLine()) != null) {
+		        String[] parts = line.split(", ");
+		        if (Integer.parseInt(parts[0]) == id) {
+		        	// Instantiate flight with parameters corresponding to String[] indices generated from the current line
+		        	instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
+		        		          	     parts[6], parts[7], Integer.parseInt(parts[8]), Integer.parseInt(parts[9]),
+		        		          	     new BigDecimal(parts[10]));
+		        }
+		    }
+		  
+		    reader.close();
+		    
+		    
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+	}
+	
 	/**
 	  Method returning the FlightSorting Object, allowing invocation of methods sortFlights() and getList().
 	  @return : FlightSorting Object
@@ -162,6 +187,10 @@ public class FlightsTestReader {
 	 */
 	public ArrayList<Flight> getFoundFlights() {
 		return foundFlights;
+	}
+	
+	public Flight getFlight() {
+		return instantiatedFlight;
 	}
 	
 }

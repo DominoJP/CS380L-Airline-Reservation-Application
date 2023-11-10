@@ -16,6 +16,7 @@ import java.util.TreeSet;
   @version 1.0
 */
 
+@Deprecated
 public class ReservationsReader {
 	private Account account;
 	private FlightSorting sort;
@@ -26,7 +27,7 @@ public class ReservationsReader {
 	
 	/**
 	  Constructor.
-	  @param : account
+	  @param : active account
 	*/
 	public ReservationsReader(Account account) {
 		this.account = account;

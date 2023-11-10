@@ -2,28 +2,34 @@
 
 
 
-Reservation ID: ABC12346
-Flight Number: AA101
-Date: 2023-9-15
-Departure Airport: JFK (New York)
-Arrival Airport: LAX (Los Angeles)
+Reservation ID: 0000000001
+Account ID: 0000000001
+Flight Number: 0000000001
+Date of Booking: 2023-10-15T10:30
+Date of Departure: 2023-10-24
+Departure Airport: LAX (Los Angeles)
+Arrival Airport: JFK (New York)
+Cabin Class: Economy
+Total Pricing: 300.00
 Booking Records:
-1. Name: Josh Test
-   Passport: US123456
-   Seat: 1A
-   Status: Confirmed
+	Name: Josh Test
+	Passport: US123456
+	Status: Confirmed
 --Reservation End--
 
-Reservation ID: ABC123
-Flight Number: AA101
-Date: 2023-9-15
-Departure Airport: JFK (New York)
-Arrival Airport: LAX (Los Angeles)
+Reservation ID: 0000000002
+Account ID: 0000000001
+Flight Number: 0000000002
+Date of Booking: 2023-10-20T10:45
+Date of Departure: 2023-10-24
+Departure Airport: LAX (Los Angeles)
+Arrival Airport: JFK (New York)
+Total Pricing: 280.00
+Cabin Class: Economy
 Booking Records:
-1. Name: Josh Test
-   Passport: US123456
-   Seat: 1A
-   Status: Confirmed
+	Name: Josh Test
+	Passport: US123456
+	Status: Confirmed
 --Reservation End--
 
 

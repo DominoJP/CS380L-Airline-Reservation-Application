@@ -1,6 +1,5 @@
 
-// TO BE DELETED; allows demo of Sign In GUI in the meantime
-
+@Deprecated
 public class TestAccount {
 	private String email = "test1";
 	private char[] password = {'t', 'e', 's', 't', '1'};
