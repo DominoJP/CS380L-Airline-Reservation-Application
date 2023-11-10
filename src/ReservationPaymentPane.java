@@ -258,7 +258,8 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					//FIXME: REFACTOR FLIGHTSTESTREADER
-					FlightsTestReader r = new FlightsTestReader(selectedFlight, selectedPassengerAmount);
+					// FlightsTestReader r = new FlightsTestReader(selectedFlight, selectedPassengerAmount);
+					FlightIO.updatePassengerCount(selectedFlight, selectedPassengerAmount);
 				}
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");
 			}

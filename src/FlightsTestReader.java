@@ -58,6 +58,7 @@ public class FlightsTestReader {
 	/**
 	  Constructor.
 	*/
+	@Deprecated
 	public FlightsTestReader(Object[] reservationFlightIDs) {
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {

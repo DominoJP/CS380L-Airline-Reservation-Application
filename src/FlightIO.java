@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,9 +18,11 @@ public class FlightIO {
 	/**
 	 * Constructor.
 	 */
+	/*
 	public FlightIO() {
 		
 	}
+	*/
 	
 	/**
 	 * Instantiates a FlightSorting Object to which instantiated flights are added.
@@ -26,7 +30,7 @@ public class FlightIO {
 	 */
 	public static FlightSorting instantiateFlights() {
 		FlightSorting sort = new FlightSorting();
-		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
@@ -47,6 +51,59 @@ public class FlightIO {
 		    e.printStackTrace();
 		}
 		return sort;
+	}
+	
+	public static void updatePassengerCount(Flight selectedFlight, int selectedPassengerAmount) {
+		final int PASSENGER_COUNT_INDEX = 9;
+		final int LAST_INDEX = 1;
+		ArrayList<String> lines = new ArrayList<>();
+		Iterator<String> iter;
+		
+		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+		    String line;
+		    
+		    while ((line = reader.readLine()) != null) {
+		        String[] parts = line.split(", ");
+		        StringBuilder str =  new StringBuilder();
+		        // if flight on line is selected flight
+		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) {
+		        	// calculate new passengerCount
+		        	int newPassengerCount = selectedFlight.getPassengerCount() + selectedPassengerAmount;
+		        	// add flight with revised passengerCount
+		        	for (int i = 0; i <= LAST_INDEX; i++) {
+		        		if (i == PASSENGER_COUNT_INDEX) {
+		        			// revise passengerCount
+		        			str.append(newPassengerCount + ", ");
+		        		} else {
+		        			// copy
+		        			str.append(parts[i] + ", ");
+		        		}
+		        	}
+		        	// add re-built line
+		        	lines.add(str.toString());
+		        } else { // if not the Flight to update
+		        	// re-add line unchanged
+		        	lines.add(line);
+		        }
+		    }
+		    reader.close();
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+			// re-write lines into file
+			iter = lines.iterator();
+			while (iter.hasNext()) {
+				writer.write(iter.next());
+				writer.newLine();
+			}
+			
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		
 	}
 	
 }
