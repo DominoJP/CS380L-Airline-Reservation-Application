@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.TreeSet;
 
 /**
  * Class to instantiate or update flights line-by-line from .txt file via BufferedReader & BufferedWriter.
@@ -15,28 +14,23 @@ import java.util.TreeSet;
 
 public class FlightIO {
 	private static final String FILE_PATH = "src/Database/FlightsTest.txt";
-	private static final int AIRPORT_DEPARTING_INDEX = 2;
-	private static final int AIRPORT_ARRIVING_INDEX = 3;
 	private static final int PASSENGER_COUNT_INDEX = 9;
 	private static final int LAST_INDEX = 10;
-	private TreeSet<String> airportsDeparting;
-	private TreeSet<String> airportsArriving;
 	
 	/**
 	 * Constructor.
 	 */
-	
+	/*
 	public FlightIO() {
-		airportsDeparting = new TreeSet<>();
-		airportsArriving = new TreeSet<>();
+		
 	}
-	
+	*/
 	
 	/**
 	 * Returns a FlightSorting object to which instantiated flights are added.
 	 * @return FlightSorting object
 	 */
-	public FlightSorting instantiateFlights() {
+	public static FlightSorting instantiateFlights() {
 		FlightSorting sort = new FlightSorting();
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
@@ -46,8 +40,6 @@ public class FlightIO {
 		        Flight instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
 		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), Integer.parseInt(parts[9]),
 		        		                        new BigDecimal(parts[10]));
-		        airportsDeparting.add(parts[AIRPORT_DEPARTING_INDEX]);
-		        airportsArriving.add(parts[AIRPORT_ARRIVING_INDEX]);
 		        
 		        //FlightSorting instantiation requires a flight as parameter
 		        if (sort == null) {
@@ -86,9 +78,6 @@ public class FlightIO {
 		        		if (i == PASSENGER_COUNT_INDEX) {
 		        			// revise passengerCount
 		        			str.append(newPassengerCount + ", ");
-		        		} else if (i == LAST_INDEX){
-		        			// comma throws NumberFormatException
-		        			str.append(parts[i]);
 		        		} else {
 		        			// copy
 		        			str.append(parts[i] + ", ");
@@ -143,14 +132,6 @@ public class FlightIO {
 		    e.printStackTrace();
 		}
 		return foundFlight;
-	}
-	
-	public TreeSet<String> getAirportsDeparting() {
-		return airportsDeparting;
-	}
-	
-	public TreeSet<String> getAirportsArriving() {
-		return airportsArriving;
 	}
 	
 }
