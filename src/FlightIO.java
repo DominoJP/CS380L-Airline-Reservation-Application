@@ -14,6 +14,8 @@ import java.util.Iterator;
 
 public class FlightIO {
 	private static final String FILE_PATH = "src/Database/FlightsTest.txt";
+	private static final int PASSENGER_COUNT_INDEX = 9;
+	private static final int LAST_INDEX = 10;
 	
 	/**
 	 * Constructor.
@@ -58,8 +60,6 @@ public class FlightIO {
 	 * @see class ReservationPaymentPane.java
 	 */
 	public static void updatePassengerCount(Flight selectedFlight, int selectedPassengerAmount) {
-		final int PASSENGER_COUNT_INDEX = 9;
-		final int LAST_INDEX = 1;
 		ArrayList<String> lines = new ArrayList<>();
 		Iterator<String> iter;
 		

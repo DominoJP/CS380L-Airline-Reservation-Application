@@ -49,9 +49,9 @@ public class FlightFilterPane extends JPanel {
 	private PropertyChangeSupport support;
 	
 	// for use with comboBoxFrom
-	private String[] airportFromList = {"LA", "BUR"};
+	private String[] airportFromList = {"LAX", "BUR"};
 	// for use with comboBoxTo
-	private String[] airportToList = {"NYC", "DAL"};
+	private String[] airportToList = {"JFK", "LAX"};
 	// for use with comboBoxMonthD
 	private String[] monthList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	// for use with comboBoxDayD

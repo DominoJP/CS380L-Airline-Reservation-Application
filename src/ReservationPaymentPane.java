@@ -250,11 +250,14 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		JButton btnPay = new JButton("Pay");
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// FIXME: REFACTOR
+				// FIXME: only increment if reservation accepted
 				IDGenerator reservationIDFactory = new IDGenerator("RESERVATIONS");
 				reservation = new Reservation(reservationIDFactory.generateID(), account, flight, null, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 				// Write reservation to .txt
-				ReservationsReader reader = new ReservationsReader(account);
-				if (reader.writeReservation(reservation)) {
+				// ReservationsReader reader = new ReservationsReader(account);
+				// if (reader.writeReservation(reservation)) {
+				if (ReservationIO.writeReservation(account, reservation)) {
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					//FIXME: REFACTOR FLIGHTSTESTREADER
@@ -281,7 +284,14 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		// fires from FilterPaneList
+		
+		/*
+		if ((evt.getPropertyName()).equals("newReservation")) {
+			//
+		}
+		*/
+		
+		// fires from FilterListPane
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
 			System.out.println("selectedFlight PropertyChangeEvent");

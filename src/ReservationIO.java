@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -77,15 +79,38 @@ public class ReservationIO {
 		}
 	}
 	
-
-	public static void writeReservation(Account account, Reservation reservation) {
+	/**
+	 * Writes the pending reservation to Reservation.txt
+	 * @param active account
+	 * @param pending reservation
+	 * @return true if write successful
+	 */
+	public static boolean writeReservation(Account account, Reservation reservation) {
 		if (isUniqueReservation(account, reservation)) {
-			
+			try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
+				writer.write("\n");
+				writer.write("Reservation ID: " + String.format("%010d", reservation.getID()) + "\n");
+				writer.write("Account ID: " + String.format("%010d", account.getAccountNumber()) + "\n");
+				writer.write("Flight Number: " + String.format("%010d", reservation.getFlight().getID()) + "\n");
+				writer.write("Date of Booking: " + reservation.getDateTimeAtBooking() + "\n");
+				writer.write("Date of Departure: " + reservation.getFlight().getdateDeparture() + "\n");
+				writer.write("Departure Airport: " + reservation.getFlight().getcityDeparture() + "\n");
+				writer.write("Arrival Airport: " + reservation.getFlight().getcityArrival() + "\n");
+				writer.write("Cabin Class: " + "NULL" + "\n");
+				writer.write("Total Pricing: " + reservation.getTotalPrice() + "\n");
+				writer.write("Passenger: " + "NULL" + "\n");
+                writer.write("--Reservation End--" + "\n");
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+			return true;
 		}
+		return false;
 	}
 	
 	/**
-	 * // Validates that reservation for selected flight does not already exist for this account.
+	 * Validates that reservation for selected flight does not already exist for this account.
 	 * @param active account
 	 * @param pending reservation
 	 * @return true if is a unique reservation
