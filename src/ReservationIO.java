@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Class with BufferedReader to instantiate reservations to attribute List<Reservation> of Account Object.
@@ -12,27 +13,18 @@ import java.util.ArrayList;
  */
 public class ReservationIO {
 	private static final String FILE_PATH = "src/Database/Reservation.txt";
-	private Account account;
-	private boolean isAssociatedReservation;
-	private int reservationID;
-	private int flightID;
-	private LocalDateTime bookingDateTime;
-	private BigDecimal totalPricing;
-	private ArrayList<String> passengers;
 	
 	/**
-	 * Constructor.
+	 * Instantiate reservations associated with account to ArrayList<Reservation> attribute of Account Object.
 	 * @param : active account
 	 */
-	public ReservationIO(Account account) {
-		this.account = account;
-	}
-	
-	/**
-	 * Method to instantiate reservations associated with account to ArrayList<Reservation> attribute of Account Object.
-	 */
-	public void instantiateReservations() {
-		passengers = new ArrayList<>();
+	public static void instantiateReservations(Account account) {
+		boolean isAssociatedReservation = false;
+		int reservationID = 0;
+		int flightID = 0;
+		LocalDateTime bookingDateTime = LocalDateTime.parse("2000-01-01T12:00");
+		BigDecimal totalPricing = new BigDecimal("0.00");
+		ArrayList<String> passengers = new ArrayList<>();
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
@@ -85,4 +77,28 @@ public class ReservationIO {
 		}
 	}
 	
+
+	public static void writeReservation(Account account, Reservation reservation) {
+		if (isUniqueReservation(account, reservation)) {
+			
+		}
+	}
+	
+	/**
+	 * // Validates that reservation for selected flight does not already exist for this account.
+	 * @param active account
+	 * @param pending reservation
+	 * @return true if is a unique reservation
+	 */
+	private static boolean isUniqueReservation(Account account, Reservation reservation) {
+		Iterator<Reservation> iter;
+		iter = account.getReservationHistory().iterator();
+		while (iter.hasNext()) {
+			if (iter.next().getFlight().getID() == reservation.getFlight().getID()) {
+				return false;
+			}
+		}
+		return true;
+	}
+ 	
 }

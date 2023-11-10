@@ -27,9 +27,7 @@ import javax.swing.JTextField;
  */
 
 public class AccountSignInPane extends JPanel {
-	AccountSignIn signIn = new AccountSignIn();
-	Account acc;
-
+	private AccountSignIn signIn = new AccountSignIn();
 	private static final long serialVersionUID = 1L;
 
 	public AccountSignInPane(JPanel contentPane, Account account) {
@@ -95,8 +93,7 @@ public class AccountSignInPane extends JPanel {
 					account.setEmail(signIn.getEmail());
 					// ReservationsReader reservationsReader = new ReservationsReader(account);
 					// reservationsReader.instantiateReservations();
-					ReservationIO reader = new ReservationIO(account);
-					reader.instantiateReservations();
+					ReservationIO.instantiateReservations(account);
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				} else {
 					lblWrong.setVisible(true);

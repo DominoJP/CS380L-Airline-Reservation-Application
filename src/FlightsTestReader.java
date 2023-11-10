@@ -16,8 +16,6 @@ import java.util.Iterator;
   @version 1.0
 */
 
-//FIXME: DUE FOR REFACTORING
-
 @Deprecated
 public class FlightsTestReader {
 	private FlightSorting sort;
