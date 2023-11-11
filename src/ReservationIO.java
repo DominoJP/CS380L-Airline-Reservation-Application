@@ -24,6 +24,7 @@ public class ReservationIO {
 		boolean isAssociatedReservation = false;
 		int reservationID = 0;
 		int flightID = 0;
+		String cabin = "";
 		LocalDateTime bookingDateTime = LocalDateTime.parse("2000-01-01T12:00");
 		BigDecimal totalPricing = new BigDecimal("0.00");
 		ArrayList<String> passengers = new ArrayList<>();
@@ -54,7 +55,7 @@ public class ReservationIO {
 		    			bookingDateTime = LocalDateTime.parse(parts[1]);
 		    			break;
 		    		case "Cabin Class":
-		    			//
+		    			cabin = parts[1];
 		    			break;
 		    		case "Total Pricing":
 		    			totalPricing = new BigDecimal(parts[1]);
@@ -65,7 +66,7 @@ public class ReservationIO {
 		    		case "--Reservation End--":
 		    			if (isAssociatedReservation) {
 		    				Flight matchingFlight = FlightIO.findFlight(flightID);
-		    				account.addReservationHistory(new Reservation(reservationID, account, matchingFlight, passengers, totalPricing, bookingDateTime));
+		    				account.addReservationHistory(new Reservation(reservationID, account, matchingFlight, cabin, passengers, totalPricing, bookingDateTime));
 		    				isAssociatedReservation = false;
 		    			}
 		    			break;
@@ -96,7 +97,7 @@ public class ReservationIO {
 			writer.write("Date of Departure: " + reservation.getFlight().getdateDeparture() + "\n");
 			writer.write("Departure Airport: " + reservation.getFlight().getcityDeparture() + "\n");
 			writer.write("Arrival Airport: " + reservation.getFlight().getcityArrival() + "\n");
-			writer.write("Cabin Class: " + "NULL" + "\n");
+			writer.write("Cabin Class: " + reservation.getCabin() + "\n");
 			writer.write("Total Pricing: " + reservation.getTotalPrice() + "\n");
 			writer.write("Passenger: " + "NULL" + "\n");
             writer.write("--Reservation End--" + "\n");

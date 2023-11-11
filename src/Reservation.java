@@ -12,9 +12,10 @@ public class Reservation {
 	private int id;
 	private Account customer; //whoever has the account and is making the reservation
 	private Flight flight;
+	private String cabin;
 	private ArrayList<String> passengers; //total list of passengers in case if the reservation includes more than just the customer
 	private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
-	private BigDecimal totalPrice; // a BigDecimal keeps track of the total cost of this reservation since multiple tickets may be ordered
+	private BigDecimal totalPrice; // keeps track of the total cost of this reservation since multiple tickets may be ordered
 	private LocalDateTime dateTimeAtBooking;
 	
 	/**
@@ -48,10 +49,11 @@ public class Reservation {
 	   @param b is the date&time at booking
 	   and also calls the method setReservation()
 	 */
-	 public Reservation(int id, Account a, Flight f, ArrayList<String> p, BigDecimal t, LocalDateTime b) {
+	 public Reservation(int id, Account a, Flight f, String c, ArrayList<String> p, BigDecimal t, LocalDateTime b) {
 		 this.id = id;
 		 this.customer = a;
 		 this.flight = f;
+		 this.cabin = c;
 		 this.passengers = p;
 		 this.totalPrice = t;
 		 this.dateTimeAtBooking = b;
@@ -161,6 +163,14 @@ public class Reservation {
 	 
 	 public Flight getFlight() {
 		 return this.flight;
+	 }
+	 
+	 public String getCabin() {
+		 return this.cabin;
+	 }
+	 
+	 public void setCabin(String cabin) {
+		 this.cabin = cabin;
 	 }
 	 
 	 public void addPassenger(String p) {
