@@ -91,7 +91,7 @@ public class ReservationIO {
 			// FIXME: System.out.println(String.format("%010d", Integer.valueOf("999999999999999"))); throws format exception error
 			writer.write("Reservation ID: " + reservation.getID() + "\n");
 			writer.write("Account ID: " + account.getAccountNumber() + "\n");
-			writer.write("Flight Number: " + reservation.getFlight() + "\n");
+			writer.write("Flight Number: " + reservation.getFlight().getID() + "\n");
 			writer.write("Date of Booking: " + reservation.getDateTimeAtBooking() + "\n");
 			writer.write("Date of Departure: " + reservation.getFlight().getdateDeparture() + "\n");
 			writer.write("Departure Airport: " + reservation.getFlight().getcityDeparture() + "\n");

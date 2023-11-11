@@ -48,7 +48,7 @@ public class Flight {
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
-	@Deprecated
+	/*
 	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
 			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, BigDecimal pricing) {
 		
@@ -63,27 +63,36 @@ public class Flight {
 	this.pricing = pricing; 
 	passengers = new String[totalPassengerCapacity][2];
 	
-	support = new PropertyChangeSupport(this);
+	// support = new PropertyChangeSupport(this);
 	}
+	*/
 	
 	/**
-	  Constructor for the flight class
-	  @param id
-	  @param type
-	  @param cityDeparture
-	  @param cityArrival
-	  @param dateDeparture
-	  @param timeDeparture
-	  @param dateArrival
-	  @param timeArrival
-	  @param totalPassengerCapacity
-	  @param passengerCount
-	  @param pricing
+	 * Constructor.
+	 * @param id
+	 * @param type
+	 * @param cityDeparture
+	 * @param cityArrival
+	 * @param dateDeparture
+	 * @param timeDeparture
+	 * @param dateArrival
+	 * @param timeArrival
+	 * @param economyCapacity
+	 * @param economyPassengerCount
+	 * @param economyPricing
+	 * @param businessCapacity
+	 * @param businessPassengerCount
+	 * @param businessPricing
+	 * @param firstClassCapacity
+	 * @param firstClassPassengerCount
+	 * @param firstClassPricing
 	 */
-	
-	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
-				  String timeDeparture, String dateArrival, String timeArrival, 
-				  int totalPassengerCapacity, int passengerCount, BigDecimal pricing) {
+	public Flight(int id, String type, String cityDeparture, String cityArrival, 
+				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, 
+				  int economyCapacity, int economyPassengerCount, BigDecimal economyPricing,
+				  int businessCapacity, int businessPassengerCount, BigDecimal businessPricing,
+				  int firstClassCapacity, int firstClassPassengerCount, BigDecimal firstClassPricing) 
+	{
 		this.id = id;
 		this.type = type; 
 		this.cityDeparture = cityDeparture;
@@ -92,10 +101,16 @@ public class Flight {
 		this.timeDeparture = LocalTime.parse(timeDeparture); 
 		this.dateArrival = LocalDate.parse(dateArrival);
 		this.timeArrival = LocalTime.parse(timeArrival);
-		this.economyCapacity = totalPassengerCapacity;
-		this.economyPassengerCount = passengerCount;
-		this.pricing = pricing; 
-		passengers = new String[totalPassengerCapacity][2];
+		this.economyCapacity = economyCapacity;
+		this.economyPassengerCount = economyPassengerCount;
+		this.economyPricing = economyPricing; 
+		this.businessCapacity = businessCapacity;
+		this.businessPassengerCount = businessPassengerCount;
+		this.businessPricing = businessPricing;
+		this.firstClassCapacity = firstClassCapacity;
+		this.firstClassPassengerCount = firstClassPassengerCount;
+		this.firstClassPricing = firstClassPricing;
+		// passengers = new String[totalPassengerCapacity][2];
 		
 		support = new PropertyChangeSupport(this);
 	}
@@ -115,9 +130,18 @@ public class Flight {
 		this.timeDeparture = selectedFlight.gettimeDeparture();
 		this.dateArrival = selectedFlight.getDateArrival();
 		this.timeArrival = selectedFlight.getTimeArrival();
-		this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
-		this.passengerCount = selectedFlight.getPassengerCount();
-		this.pricing = selectedFlight.getpricing();
+		// this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
+		// this.passengerCount = selectedFlight.getPassengerCount();
+		// this.pricing = selectedFlight.getpricing();
+		this.economyCapacity = selectedFlight.getEconomyCapacity();
+		this.economyPassengerCount = selectedFlight.getEconomyPassengerCount();
+		this.economyPricing = selectedFlight.getEconomyPricing();
+		this.businessCapacity = selectedFlight.getBusinessCapacity();
+		this.businessPassengerCount = selectedFlight.getBusinessPassengerCount();
+		this.businessPricing = selectedFlight.getBusinessPricing();
+		this.firstClassCapacity = selectedFlight.getFirstClassCapacity();
+		this.firstClassPassengerCount = selectedFlight.getFirstClassPassengerCount();
+		this.firstClassPricing = selectedFlight.getFirstClassPricing();
 		// FIXME: update as necessary
 		
 	}
@@ -361,8 +385,7 @@ public class Flight {
 	@Override
     public String toString() {
         return "Departs: " + timeDeparture +
-        ", Arrives: " + dateArrival.getMonthValue() + "/" + dateArrival.getDayOfMonth() + " " + timeArrival +
-        ", $" + pricing;
+        ", Arrives: " + dateArrival.getMonthValue() + "/" + dateArrival.getDayOfMonth() + " " + timeArrival;
     }
 	
 }

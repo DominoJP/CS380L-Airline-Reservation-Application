@@ -259,7 +259,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
-					FlightIO.updatePassengerCount(selectedFlight, selectedPassengerAmount);
+					FlightIO.updatePassengerCount(selectedFlight, selectedPassengerAmount, selectedCabin);
 				}
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");
 			}
@@ -296,7 +296,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		// fires from CabinClassPane
 		if ((evt.getPropertyName()).equals("selectedCabin")) {
-			this.selectedFlight = ((Flight) evt.getNewValue());
+			this.selectedCabin = ((String) evt.getNewValue());
 			System.out.println("selectedCabin PropertyChangeEvent");
 			lblAmountDue.setText(" Amount Due: $" + "TEST");
 		}

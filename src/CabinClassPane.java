@@ -22,6 +22,11 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 	private PropertyChangeSupport support;
 	
 	private JLabel lblEconomyPricing;
+	private JLabel lblBusinessPricing;
+	private JLabel lblFirstClassPricing;
+	private JLabel lblEconomySeating;
+	private JLabel lblBusinessSeating;
+	private JLabel lblFirstClassSeating;
 
 	private static final long serialVersionUID = 1L;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -34,7 +39,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		selectedPassengerAmount = 1;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{50, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{50, 0, 0, 0, 20, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -75,12 +80,12 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		gbc_lblEconomyPricing.gridy = 3;
 		add(lblEconomyPricing, gbc_lblEconomyPricing);
 		
-		JLabel lblEconomySeats = new JLabel("0 seats");
-		GridBagConstraints gbc_lblEconomySeats = new GridBagConstraints();
-		gbc_lblEconomySeats.insets = new Insets(0, 0, 5, 5);
-		gbc_lblEconomySeats.gridx = 3;
-		gbc_lblEconomySeats.gridy = 3;
-		add(lblEconomySeats, gbc_lblEconomySeats);
+		lblEconomySeating = new JLabel("0 seats");
+		GridBagConstraints gbc_lblEconomySeating = new GridBagConstraints();
+		gbc_lblEconomySeating.insets = new Insets(0, 0, 5, 5);
+		gbc_lblEconomySeating.gridx = 3;
+		gbc_lblEconomySeating.gridy = 3;
+		add(lblEconomySeating, gbc_lblEconomySeating);
 		
 		JRadioButton rdbtnEconomy = new JRadioButton("Economy");
 		buttonGroup.add(rdbtnEconomy);
@@ -92,14 +97,14 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		add(rdbtnEconomy, gbc_rdbtnEconomy);
 		
 		
-		JLabel lblBusinessPricing = new JLabel("$0.00");
+		lblBusinessPricing = new JLabel("$0.00");
 		GridBagConstraints gbc_lblBusinessPricing = new GridBagConstraints();
 		gbc_lblBusinessPricing.insets = new Insets(0, 0, 5, 5);
 		gbc_lblBusinessPricing.gridx = 2;
 		gbc_lblBusinessPricing.gridy = 4;
 		add(lblBusinessPricing, gbc_lblBusinessPricing);
 		
-		JLabel lblBusinessSeating = new JLabel("0 seats");
+		lblBusinessSeating = new JLabel("0 seats");
 		GridBagConstraints gbc_lblBusinessSeating = new GridBagConstraints();
 		gbc_lblBusinessSeating.insets = new Insets(0, 0, 5, 5);
 		gbc_lblBusinessSeating.gridx = 3;
@@ -115,14 +120,14 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		gbc_rdbtnBusiness.gridy = 4;
 		add(rdbtnBusiness, gbc_rdbtnBusiness);
 		
-		JLabel lblFirstClassPricing = new JLabel("$0.00");
+		lblFirstClassPricing = new JLabel("$0.00");
 		GridBagConstraints gbc_lblFirstClassPricing = new GridBagConstraints();
 		gbc_lblFirstClassPricing.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFirstClassPricing.gridx = 2;
 		gbc_lblFirstClassPricing.gridy = 5;
 		add(lblFirstClassPricing, gbc_lblFirstClassPricing);
 		
-		JLabel lblFirstClassSeating = new JLabel("0 seats");
+		lblFirstClassSeating = new JLabel("0 seats");
 		GridBagConstraints gbc_lblFirstClassSeating = new GridBagConstraints();
 		gbc_lblFirstClassSeating.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFirstClassSeating.gridx = 3;
@@ -148,13 +153,6 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		JButton btnContinue = new JButton("Continue with selection");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
-			}
-		});
-		
-		JButton btnBack = new JButton("Go back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 				if (rdbtnFirstClass.isSelected()) {
 					support.firePropertyChange("selectedCabin", null, "First Class");
 				} else if (rdbtnBusiness.isSelected()) {
@@ -162,6 +160,13 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 				} else {
 					support.firePropertyChange("selectedCabin", null, "Economy");
 				}
+				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
+			}
+		});
+		
+		JButton btnBack = new JButton("Go back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 			}
 		});
@@ -196,6 +201,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		
 		
 		rdbtnEconomy.setSelected(true);
+		lblSeatingWarning.setVisible(false);
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
@@ -211,7 +217,12 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
-			lblEconomyPricing.setText("$" + selectedFlight.getpricing().toString());
+			lblEconomyPricing.setText("$" + selectedFlight.getEconomyPricing().toString());
+			lblBusinessPricing.setText("$" + selectedFlight.getBusinessPricing().toString());
+			lblFirstClassPricing.setText("$" + selectedFlight.getFirstClassPricing().toString());
+			lblEconomySeating.setText(selectedFlight.getEconomyCapacity() - selectedFlight.getEconomyPassengerCount() + " seats");
+			lblBusinessSeating.setText(selectedFlight.getBusinessCapacity() - selectedFlight.getBusinessPassengerCount() + " seats");
+			lblFirstClassSeating.setText(selectedFlight.getFirstClassCapacity() - selectedFlight.getFirstClassPassengerCount() + " seats");
 		}
 		
 	}
