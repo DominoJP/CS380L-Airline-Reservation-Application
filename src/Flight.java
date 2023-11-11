@@ -23,10 +23,16 @@ public class Flight {
 	private LocalTime timeDeparture;    
 	private LocalDate dateArrival;     
 	private LocalTime timeArrival;   
-	private int totalPassengerCapacity;
-	private int passengerCount;
-	private String[][] passengers; 
-	private BigDecimal pricing; 
+	private int economyCapacity;
+	private int economyPassengerCount;
+	private BigDecimal economyPricing;
+	private int businessCapacity;
+	private int businessPassengerCount;
+	private BigDecimal businessPricing; 
+	private int firstClassCapacity;
+	private int firstClassPassengerCount;
+	private BigDecimal firstClassPricing; 
+	private String[][] passengers;  
 	
 	private PropertyChangeSupport support;
 
@@ -42,6 +48,7 @@ public class Flight {
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
+	@Deprecated
 	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
 			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, BigDecimal pricing) {
 		
@@ -73,8 +80,10 @@ public class Flight {
 	  @param passengerCount
 	  @param pricing
 	 */
+	
 	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
-				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, int passengerCount, BigDecimal pricing) {
+				  String timeDeparture, String dateArrival, String timeArrival, 
+				  int totalPassengerCapacity, int passengerCount, BigDecimal pricing) {
 		this.id = id;
 		this.type = type; 
 		this.cityDeparture = cityDeparture;
@@ -83,8 +92,8 @@ public class Flight {
 		this.timeDeparture = LocalTime.parse(timeDeparture); 
 		this.dateArrival = LocalDate.parse(dateArrival);
 		this.timeArrival = LocalTime.parse(timeArrival);
-		this.totalPassengerCapacity = totalPassengerCapacity;
-		this.passengerCount = passengerCount;
+		this.economyCapacity = totalPassengerCapacity;
+		this.economyPassengerCount = passengerCount;
 		this.pricing = pricing; 
 		passengers = new String[totalPassengerCapacity][2];
 		
@@ -229,6 +238,7 @@ public class Flight {
 	 * Getter method to retrieve the total passenger capacity of the flight.
 	 * @return ; returns the total passenger capacity of the flight. 
 	 */
+	@Deprecated
 	public int gettotalpassengercapacity() {
 		return totalPassengerCapacity;
 		
@@ -238,8 +248,81 @@ public class Flight {
 	 * Getter method to retrieve the passenger count booked for the flight.
 	 * @return returns count of booked passengers
 	 */
+	@Deprecated
 	public int getPassengerCount() {
 		return passengerCount;
+	}
+	
+	/**
+	 * Returns total amount of seats in 'Economy' cabin
+	 * @return seating total in Economy
+	 */
+	public int getEconomyCapacity() {
+		return this.economyCapacity;
+	}
+	
+	/**
+	 * Returns total amount of seats in 'Business' cabin
+	 * @return seating total in Business
+	 */
+	public int getBusinessCapacity() {
+		return this.businessCapacity;
+	}
+	
+	/**
+	 * Returns total amount of seats in 'First Class' cabin
+	 * @return seating total in First Class
+	 */
+	public int getFirstClassCapacity() {
+		return this.firstClassCapacity;
+	}
+	
+	/**
+	 * Returns booked passenger count in 'Economy' cabin
+	 * @return booked seat count in Economy
+	 */
+	public int getEconomyPassengerCount() {
+		return this.economyPassengerCount;
+	}
+	
+	/**
+	 * Returns booked passenger count in 'Business' cabin
+	 * @return booked seat count in Business
+	 */
+	public int getBusinessPassengerCount() {
+		return this.businessPassengerCount;
+	}
+	
+	/**
+	 * Returns booked passenger count in 'First Class' cabin
+	 * @return booked seat count in First Class
+	 */
+	public int getFirstClassPassengerCount() {
+		return this.firstClassPassengerCount;
+	}
+	
+	/**
+	 * Returns pricing for 'Economy' cabin
+	 * @return pricing for Economy
+	 */
+	public BigDecimal getEconomyPricing() {
+		return this.economyPricing;
+	}
+	
+	/**
+	 * Returns pricing for 'Business' cabin
+	 * @return pricing for Business
+	 */
+	public BigDecimal getBusinessPricing() {
+		return this.businessPricing;
+	}
+	
+	/**
+	 * Returns pricing for 'First Class' cabin
+	 * @return pricing for First Class
+	 */
+	public BigDecimal getFirstClassPricing() {
+		return this.firstClassPricing;
 	}
 	
 	/**
