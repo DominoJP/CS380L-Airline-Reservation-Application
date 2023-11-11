@@ -78,6 +78,9 @@ public class FlightIO {
 		        		if (i == PASSENGER_COUNT_INDEX) {
 		        			// revise passengerCount
 		        			str.append(newPassengerCount + ", ");
+		        		} else if (i == LAST_INDEX) {
+		        			// copy without delimiter
+		        			str.append(parts[i]);
 		        		} else {
 		        			// copy
 		        			str.append(parts[i] + ", ");
