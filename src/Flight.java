@@ -350,6 +350,30 @@ public class Flight {
 	}
 	
 	/**
+	 * Adds passenger amount booked.
+	 * @param passenger amount as selected by customer
+	 */
+	public void addEconomyPassengerCount(int selectedPassengerCount) {
+		economyPassengerCount += selectedPassengerCount;
+	}
+	
+	/**
+	 * Adds passenger amount booked.
+	 * @param passenger amount as selected by customer
+	 */
+	public void addBusinessPassengerCount(int selectedPassengerCount) {
+		businessPassengerCount += selectedPassengerCount;
+	}
+	
+	/**
+	 * Adds passenger amount booked.
+	 * @param passenger amount as selected by customer
+	 */
+	public void addFirstClassPassengerCount(int selectedPassengerCount) {
+		firstClassPassengerCount += selectedPassengerCount;
+	}
+	
+	/**
 	 * Method to check if the flight is full
 	 * @return , returns true if the flight is full, otherwise false. 
 	 */

@@ -27,8 +27,8 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	private String selectedCabin;
 	private Reservation reservation;
 	private BigDecimal runningTotal = new BigDecimal("0.00");
-	private BigDecimal[] fares = {new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 
-								  new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00")};
+	// private BigDecimal[] fares = {new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 
+	//							  new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00")};
 	
 	private JLabel lblAmountDue;
 
@@ -327,15 +327,24 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		*/
 		
 		// fires from PassengerDetails
-		/*
+		
 		if ((evt.getPropertyName().equals("sumRunningTotal"))) {
-			for (BigDecimal fare : fares) {
-				runningTotal = runningTotal.add(fare);
+			BigDecimal passengerAmount = new BigDecimal(String.valueOf(selectedPassengerAmount));
+			switch (selectedCabin) {
+				case "Economy":
+					runningTotal = selectedFlight.getEconomyPricing().multiply(passengerAmount);
+					lblAmountDue.setText(" Amount Due: $" + runningTotal);
+					break;
+				case "Business":
+					runningTotal = selectedFlight.getBusinessPricing().multiply(passengerAmount);
+					lblAmountDue.setText(" Amount Due: $" + runningTotal);
+					break;
+				case "First Class":
+					runningTotal = selectedFlight.getFirstClassPricing().multiply(passengerAmount);
+					lblAmountDue.setText(" Amount Due: $" + runningTotal);
+					break;
 			}
-			System.out.println("sum PropertyChangeEvent");
-			lblAmountDue.setText(" Amount Due: $" + runningTotal);
-		}
-		*/
+    	}
 		
 	}
 	

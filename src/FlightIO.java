@@ -80,19 +80,22 @@ public class FlightIO {
 		        // if flight on line is selected flight
 		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) {
 		        	switch (selectedCabin) {
-					case "Economy":
-						passengerCountIndex = ECONOMY_COUNT_INDEX;
-						// calculate new passenger count
-						newPassengerCount = selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount;
-						break;
-					case "Business":
-						passengerCountIndex = BUSINESS_COUNT_INDEX;
-						newPassengerCount = selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount;
-						break;
-					case "First Class":
-						passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
-						newPassengerCount = selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount;
-						break;
+						case "Economy":
+							passengerCountIndex = ECONOMY_COUNT_INDEX;
+							// calculate new passenger count
+							newPassengerCount = selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount;
+							selectedFlight.addEconomyPassengerCount(selectedPassengerAmount);
+							break;
+						case "Business":
+							passengerCountIndex = BUSINESS_COUNT_INDEX;
+							newPassengerCount = selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount;
+							selectedFlight.addBusinessPassengerCount(selectedPassengerAmount);
+							break;
+						case "First Class":
+							passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
+							newPassengerCount = selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount;
+							selectedFlight.addFirstClassPassengerCount(selectedPassengerAmount);
+							break;
 		        	}
 		        	// add flight with revised passengerCount
 		        	for (int i = 0; i <= LAST_INDEX; i++) {
