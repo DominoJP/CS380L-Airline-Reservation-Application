@@ -3,7 +3,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,21 +17,26 @@ public class FlightsTestReader {
 	private FlightSorting sort;
 	private Flight instantiatedFlight;
 	private ArrayList<Flight> foundFlights;
-
+	
 	public FlightsTestReader() {
-
+		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
 		    String line;
 		    Iterator<String> iter;
 		    foundFlights = new ArrayList<>();
-
+		    
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
-		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5],
-		        		                        parts[6], parts[7], Integer.parseInt(parts[8]),
-		        		                        new BigDecimal(parts[9]));
-
+		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
+<<<<<<< HEAD
+		        		                        parts[6], parts[7],parts[8], Integer.parseInt(parts[9]), 
+		        		                        Double.parseDouble(parts[10]));
+=======
+		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
+		        		                        Double.parseDouble(parts[9]));
+>>>>>>> parent of d2601a7 (Merge branch 'feature/payment')
+		        
 		        //FlightSorting instantiation requires a flight as parameter
 		        if (sort == null) {
 		        	sort = new FlightSorting(instantiatedFlight);
@@ -40,32 +44,37 @@ public class FlightsTestReader {
 	        	    sort.addFlight(instantiatedFlight);
 		        }
 		    }
-
+		    
 		    reader.close();
-
+		    
 		} catch (IOException e) {
 		    e.printStackTrace();
-
+		
 		}
 	}
-
+	
 	/**
 	  Constructor.
 	*/
 	public FlightsTestReader(ArrayList<String> reservationFlightIDs) {
-
+		
 		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/FlightsTest.txt"))) {
 		    String line;
 		    Iterator<String> iter;
 		    foundFlights = new ArrayList<>();
-
+		    
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
-		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5],
-		        		                        parts[6], parts[7], Integer.parseInt(parts[8]),
-		        		                        new BigDecimal(parts[9]));
-
+		        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], 
+<<<<<<< HEAD
+		        		                        parts[6], parts[7], parts[8], Integer.parseInt(parts[9]), 
+		        		                        Double.parseDouble(parts[10]));
+=======
+		        		                        parts[6], parts[7], Integer.parseInt(parts[8]), 
+		        		                        Double.parseDouble(parts[9]));
+>>>>>>> parent of d2601a7 (Merge branch 'feature/payment')
+		        
 		        // Add flight to foundFlights for reservations associated with active account.
 		        iter = reservationFlightIDs.iterator();
 		        while (iter.hasNext()) {
@@ -73,17 +82,17 @@ public class FlightsTestReader {
 		        		foundFlights.add(instantiatedFlight);
 		        	}
  		        }
-
+		        
 		    }
-
+		    
 		    reader.close();
-
+		    
 		} catch (IOException e) {
 		    e.printStackTrace();
-
+		
 		}
 	}
-
+	
 	/**
 	  Method returning the FlightSorting Object, allowing invocation of methods sortFlights() and getList().
 	  @return : FlightSorting Object
@@ -91,7 +100,7 @@ public class FlightsTestReader {
 	public FlightSorting getFlightSorting() {
 		return sort;
 	}
-
+	
 	/**
 	  Method returning ArrayList of flights with IDs corresponding to reservations of active account.
 	  @return : ArrayList of Flight Objects.
@@ -99,5 +108,5 @@ public class FlightsTestReader {
 	public ArrayList<Flight> getFoundFlights() {
 		return foundFlights;
 	}
-
+	
 }
