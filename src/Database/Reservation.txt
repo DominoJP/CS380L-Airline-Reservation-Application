@@ -9,8 +9,8 @@ Date of Booking: 2023-10-15T10:30
 Date of Departure: 2023-10-24
 Departure Airport: LAX (Los Angeles)
 Arrival Airport: JFK (New York)
-Cabin Class: Economy
 Total Pricing: 300.00
+Cabin Class: Economy
 Booking Records:
 	Passenger Name: Josh Test
 	Passport: US123456
@@ -24,8 +24,8 @@ Date of Booking: 2023-10-20T10:45
 Date of Departure: 2023-10-24
 Departure Airport: LAX (Los Angeles)
 Arrival Airport: JFK (New York)
-Total Pricing: 280.00
 Cabin Class: Economy
+Total Pricing: 280.00
 Booking Records:
 	Passenger Name: Josh Test
 	Passport: US123456

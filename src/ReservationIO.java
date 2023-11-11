@@ -99,9 +99,10 @@ public class ReservationIO {
 			writer.write("Arrival Airport: " + reservation.getFlight().getcityArrival() + "\n");
 			writer.write("Cabin Class: " + reservation.getCabin() + "\n");
 			writer.write("Total Pricing: " + reservation.getTotalPrice() + "\n");
+			writer.write("Booking Records: " + "\n");
 			for (String passengerName : reservation.getPassengers()) {
 				if (!passengerName.equals(""))
-				writer.write("\t" + "Passenger: " + passengerName + "\n");
+				writer.write("\t" + "Passenger Name: " + passengerName + "\n");
 			}
             writer.write("--Reservation End--" + "\n");
             writer.close();
