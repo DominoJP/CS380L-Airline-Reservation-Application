@@ -24,10 +24,10 @@ public class OptionSelectionPane extends JPanel {
 	public OptionSelectionPane(JPanel contentPane, Account account) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{137, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{95, 100, 100, 100, 95};
+		gridBagLayout.rowHeights = new int[]{75, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		// comboBox parameter
@@ -40,8 +40,8 @@ public class OptionSelectionPane extends JPanel {
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 0;
-		gbc_comboBox.gridy = 0;
+		gbc_comboBox.gridx = 2;
+		gbc_comboBox.gridy = 2;
 		add(comboBox, gbc_comboBox);
 		
 		JButton btnContinue = new JButton("Continue");
@@ -66,8 +66,8 @@ public class OptionSelectionPane extends JPanel {
 		});
 		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
 		gbc_btnContinue.insets = new Insets(0, 0, 5, 5);
-		gbc_btnContinue.gridx = 0;
-		gbc_btnContinue.gridy = 1;
+		gbc_btnContinue.gridx = 2;
+		gbc_btnContinue.gridy = 3;
 		add(btnContinue, gbc_btnContinue);
 		
 

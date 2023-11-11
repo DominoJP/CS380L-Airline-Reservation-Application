@@ -65,7 +65,7 @@ public class FlightFilterListScrollPane extends JPanel {
 				// flight.setTimeArrival(tempFlight.getTimeArrival().toString());
 				// ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, tempFlight);
 				// contentPane.add(PaymentPane, "PAY");
-				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "CABIN");
 			}
 		});
 		toolBar.add(btnBook);

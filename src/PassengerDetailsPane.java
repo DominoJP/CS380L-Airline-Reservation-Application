@@ -78,22 +78,6 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_lblPassengerNumber.gridy = 0;
 		add(lblPassengerNumber, gbc_lblPassengerNumber);
 		
-		JLabel lblCabin = new JLabel(" Cabin");
-		GridBagConstraints gbc_lblCabin = new GridBagConstraints();
-		gbc_lblCabin.anchor = GridBagConstraints.WEST;
-		gbc_lblCabin.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCabin.gridx = 2;
-		gbc_lblCabin.gridy = 0;
-		add(lblCabin, gbc_lblCabin);
-		
-		JComboBox comboBoxCabin = new JComboBox(cabinArray);
-		GridBagConstraints gbc_comboBoxCabin = new GridBagConstraints();
-		gbc_comboBoxCabin.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxCabin.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxCabin.gridx = 2;
-		gbc_comboBoxCabin.gridy = 1;
-		add(comboBoxCabin, gbc_comboBoxCabin);
-		
 		JLabel lblFullName = new JLabel(" Full Name");
 		GridBagConstraints gbc_lblFullName = new GridBagConstraints();
 		gbc_lblFullName.anchor = GridBagConstraints.WEST;
