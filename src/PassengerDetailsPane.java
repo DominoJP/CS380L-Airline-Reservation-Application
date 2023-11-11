@@ -35,6 +35,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 	private static final long serialVersionUID = 1L;
 	private JTextField textName;
 	private JComboBox comboBoxState;
+	private JLabel lblFullName;
 	String[] DepartmentofStateGenderMarkerArray = {
 			"Male (M)",
 			"Female (F)",
@@ -93,14 +94,24 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_separator.gridy = 1;
 		add(separator, gbc_separator);
 		
-		JLabel lblFullName = new JLabel(" Full Name (*)");
+		lblFullName = new JLabel(" Full Name (*)");
 		GridBagConstraints gbc_lblFullName = new GridBagConstraints();
 		gbc_lblFullName.anchor = GridBagConstraints.WEST;
-		gbc_lblFullName.gridwidth = 3;
 		gbc_lblFullName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFullName.gridx = 0;
 		gbc_lblFullName.gridy = 2;
 		add(lblFullName, gbc_lblFullName);
+		
+		JLabel lblNameRequired = new JLabel("Name is required.");
+		lblNameRequired.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		lblNameRequired.setForeground(Color.RED);
+		GridBagConstraints gbc_lblNameRequired = new GridBagConstraints();
+		gbc_lblNameRequired.anchor = GridBagConstraints.WEST;
+		gbc_lblNameRequired.gridwidth = 2;
+		gbc_lblNameRequired.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNameRequired.gridx = 1;
+		gbc_lblNameRequired.gridy = 2;
+		add(lblNameRequired, gbc_lblNameRequired);
 		
 		JLabel lblGender = new JLabel(" Gender (*)");
 		GridBagConstraints gbc_lblGender = new GridBagConstraints();
@@ -154,6 +165,17 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_lblDoB.gridy = 6;
 		add(lblDoB, gbc_lblDoB);
 		
+		JLabel lblDoBInvalidDateFormat = new JLabel("  Unattended minor.");
+		lblDoBInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		lblDoBInvalidDateFormat.setForeground(Color.RED);
+		GridBagConstraints gbc_lblDoBInvalidDateFormat = new GridBagConstraints();
+		gbc_lblDoBInvalidDateFormat.anchor = GridBagConstraints.WEST;
+		gbc_lblDoBInvalidDateFormat.insets = new Insets(0, 0, 5, 0);
+		gbc_lblDoBInvalidDateFormat.gridx = 4;
+		gbc_lblDoBInvalidDateFormat.gridy = 6;
+		add(lblDoBInvalidDateFormat, gbc_lblDoBInvalidDateFormat);
+		lblDoBInvalidDateFormat.setVisible(false);
+		
 		JComboBox comboBox_1 = new JComboBox();
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
@@ -177,17 +199,6 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_comboBox_3.gridx = 2;
 		gbc_comboBox_3.gridy = 7;
 		add(comboBox_3, gbc_comboBox_3);
-		
-		JLabel lblDoBInvalidDateFormat = new JLabel("  Unattended minor.");
-		lblDoBInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		lblDoBInvalidDateFormat.setForeground(Color.RED);
-		GridBagConstraints gbc_lblDoBInvalidDateFormat = new GridBagConstraints();
-		gbc_lblDoBInvalidDateFormat.anchor = GridBagConstraints.WEST;
-		gbc_lblDoBInvalidDateFormat.insets = new Insets(0, 0, 5, 0);
-		gbc_lblDoBInvalidDateFormat.gridx = 4;
-		gbc_lblDoBInvalidDateFormat.gridy = 7;
-		add(lblDoBInvalidDateFormat, gbc_lblDoBInvalidDateFormat);
-		lblDoBInvalidDateFormat.setVisible(false);
 		
 		JLabel lblCountry = new JLabel(" Country/Region of Residence (*)");
 		GridBagConstraints gbc_lblCountry = new GridBagConstraints();
@@ -257,13 +268,18 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		JButton btnNext = new JButton("Continue");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				support.firePropertyChange("passengerName" + passengerIndex, null, textName.getText());
-				if (passengerIndex == selectedPassengerAmount) {
-					support.firePropertyChange("sumRunningTotal", null, null);
-					((CardLayout) contentPane.getLayout()).show(contentPane, "PAY");
-				}
-				else {
-					((CardLayout) contentPane.getLayout()).show(contentPane, nextPassengerDetailsPane);
+				if (textName.getText().equals("")) {
+					lblNameRequired.setVisible(true);
+				} else {
+					lblNameRequired.setVisible(false);
+					support.firePropertyChange("passengerName" + passengerIndex, null, textName.getText());
+					if (passengerIndex == selectedPassengerAmount) {
+						support.firePropertyChange("sumRunningTotal", null, null);
+						((CardLayout) contentPane.getLayout()).show(contentPane, "PAY");
+					}
+					else {
+						((CardLayout) contentPane.getLayout()).show(contentPane, nextPassengerDetailsPane);
+					}
 				}
 			}
 		});
@@ -273,6 +289,8 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_btnNext.gridy = 11;
 		add(btnNext, gbc_btnNext);
 		
+		// CUSTOM
+		lblNameRequired.setVisible(false);
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
