@@ -174,7 +174,11 @@ public class Reservation {
 	 }
 	 
 	 public void addPassenger(String p) {
-		 
+		 passengers.add(p);
+	 }
+	 
+	 public ArrayList<String> getPassengers(){
+		 return this.passengers;
 	 }
 	 
 	 /**

@@ -22,6 +22,7 @@ import javax.swing.JSeparator;
 import java.awt.Font;
 
 public class ReservationPaymentPane extends JPanel implements PropertyChangeListener {
+	private static final int MAXIMUM_PASSENERS_PER_BOOKING = 6;
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
 	private String selectedCabin;
@@ -29,6 +30,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	private BigDecimal runningTotal = new BigDecimal("0.00");
 	// private BigDecimal[] fares = {new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 
 	//							  new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00")};
+	private ArrayList<String> passengerNames;
 	
 	private JLabel lblAmountDue;
 
@@ -43,6 +45,11 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	public ReservationPaymentPane(JPanel contentPane, Account account, Flight flight) {
 		selectedPassengerAmount = 1;
 		selectedCabin = "Economy";
+		passengerNames = new ArrayList<>();
+		for (int i = 0; i < MAXIMUM_PASSENERS_PER_BOOKING; i++) {
+			passengerNames.add("");
+		}
+		
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
@@ -255,7 +262,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 			public void actionPerformed(ActionEvent e) {
 				if (isUniqueReservation(account, selectedFlight.getID())) {
 					IDGenerator reservationIDFactory = new IDGenerator("RESERVATIONS");
-					reservation = new Reservation(reservationIDFactory.generateID(), account, flight, selectedCabin, null, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+					reservation = new Reservation(reservationIDFactory.generateID(), account, flight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
@@ -302,29 +309,26 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		}
 		
 		// fires from PassengerDetails
-		/*
 		switch(evt.getPropertyName()) {
-			case "selectedCabin" + "1":
-				fares[0] = selectedFlight.getpricing();
-				System.out.println("cabin PropertyChangeEvent");
+			case "passengerName" + "1":
+				passengerNames.set(0, ((String) evt.getNewValue()));
 				break;
-			case "selectedCabin" + "2":
-				fares[1] = selectedFlight.getpricing();
+			case "passengerName" + "2":
+				passengerNames.set(1, ((String) evt.getNewValue()));
 				break;
-			case "selectedCabin" + "3":
-				fares[2] = selectedFlight.getpricing();
+			case "passengerName" + "3":
+				passengerNames.set(2, ((String) evt.getNewValue()));
 				break;
-			case "selectedCabin" + "4":
-				fares[3] = selectedFlight.getpricing();
+			case "passengerName" + "4":
+				passengerNames.set(3, ((String) evt.getNewValue()));
 				break;
-			case "selectedCabin" + "5":
-				fares[4] = selectedFlight.getpricing();
+			case "passengerName" + "5":
+				passengerNames.set(4, ((String) evt.getNewValue()));
 				break;
-			case "selectedCabin" + "6":
-				fares[5] = selectedFlight.getpricing();
+			case "passengerName" + "6":
+				passengerNames.set(5, ((String) evt.getNewValue()));
 				break;
 		}
-		*/
 		
 		// fires from PassengerDetails
 		

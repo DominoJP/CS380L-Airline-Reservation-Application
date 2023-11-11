@@ -12,7 +12,7 @@ Arrival Airport: JFK (New York)
 Cabin Class: Economy
 Total Pricing: 300.00
 Booking Records:
-	Name: Josh Test
+	Passenger Name: Josh Test
 	Passport: US123456
 	Status: Confirmed
 --Reservation End--
@@ -27,7 +27,7 @@ Arrival Airport: JFK (New York)
 Total Pricing: 280.00
 Cabin Class: Economy
 Booking Records:
-	Name: Josh Test
+	Passenger Name: Josh Test
 	Passport: US123456
 	Status: Confirmed
 --Reservation End--

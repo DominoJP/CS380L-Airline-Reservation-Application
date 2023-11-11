@@ -60,7 +60,7 @@ public class ReservationIO {
 		    		case "Total Pricing":
 		    			totalPricing = new BigDecimal(parts[1]);
 		    			break;
-		    		case "/t" + "Name":
+		    		case "/t" + "Passenger Name":
 		    			passengers.add(parts[1]);
 		    			break;
 		    		case "--Reservation End--":
@@ -99,7 +99,10 @@ public class ReservationIO {
 			writer.write("Arrival Airport: " + reservation.getFlight().getcityArrival() + "\n");
 			writer.write("Cabin Class: " + reservation.getCabin() + "\n");
 			writer.write("Total Pricing: " + reservation.getTotalPrice() + "\n");
-			writer.write("Passenger: " + "NULL" + "\n");
+			for (String passengerName : reservation.getPassengers()) {
+				if (!passengerName.equals(""))
+				writer.write("\t" + "Passenger: " + passengerName + "\n");
+			}
             writer.write("--Reservation End--" + "\n");
             writer.close();
         } catch (IOException e) {
