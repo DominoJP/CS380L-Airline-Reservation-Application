@@ -7,13 +7,21 @@ import javax.swing.JLabel;
 import javax.swing.JSeparator;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.ButtonGroup;
 
-public class CabinClassPane extends JPanel {
+public class CabinClassPane extends JPanel implements PropertyChangeListener {
+	private int selectedPassengerAmount;
+	private Flight selectedFlight;
+	private PropertyChangeSupport support;
+	
+	private JLabel lblEconomyPricing;
 
 	private static final long serialVersionUID = 1L;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -22,6 +30,9 @@ public class CabinClassPane extends JPanel {
 	 * Create the panel.
 	 */
 	public CabinClassPane(JPanel contentPane, Flight selectedFlight) {
+		support = new PropertyChangeSupport(this);
+		selectedPassengerAmount = 1;
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{50, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -57,7 +68,7 @@ public class CabinClassPane extends JPanel {
 		gbc_separator_2.gridy = 2;
 		add(separator_2, gbc_separator_2);
 		
-		JLabel lblEconomyPricing = new JLabel("$0.00");
+		lblEconomyPricing = new JLabel("$0.00");
 		GridBagConstraints gbc_lblEconomyPricing = new GridBagConstraints();
 		gbc_lblEconomyPricing.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEconomyPricing.gridx = 2;
@@ -144,6 +155,13 @@ public class CabinClassPane extends JPanel {
 		JButton btnBack = new JButton("Go back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (rdbtnFirstClass.isSelected()) {
+					support.firePropertyChange("selectedCabin", null, "First Class");
+				} else if (rdbtnBusiness.isSelected()) {
+					support.firePropertyChange("selectedCabin", null, "Business");
+				} else {
+					support.firePropertyChange("selectedCabin", null, "Economy");
+				}
 				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 			}
 		});
@@ -177,7 +195,25 @@ public class CabinClassPane extends JPanel {
 		add(btnContinue, gbc_btnContinue);
 		
 		
-		rdbtnBusiness.setSelected(true);
+		rdbtnEconomy.setSelected(true);
+	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		if ((evt.getPropertyName()).equals("passengerAmount")) {
+			this.selectedPassengerAmount = ((int) evt.getNewValue());
+			// FIXME: add check
+		}
+		
+		if ((evt.getPropertyName()).equals("selectedFlight")) {
+			this.selectedFlight = ((Flight) evt.getNewValue());
+			lblEconomyPricing.setText("$" + selectedFlight.getpricing().toString());
+		}
+		
 	}
 
 }

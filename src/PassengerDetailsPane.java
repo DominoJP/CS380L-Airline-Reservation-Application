@@ -216,7 +216,6 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selectedCabin = comboBoxCabin.getSelectedItem().toString();
 				support.firePropertyChange("selectedCabin" + passengerIndex, null, selectedCabin);
 				if (passengerIndex == selectedPassengerAmount) {
 					support.firePropertyChange("sumRunningTotal", null, null);

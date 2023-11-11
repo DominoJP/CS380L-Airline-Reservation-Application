@@ -114,6 +114,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		
 		// keep track of user-selected flight
 		selectedFlight.addPropertyChangeListener(PaymentPane);
+		selectedFlight.addPropertyChangeListener(CabinClassPane);
 		selectedFlight.addPropertyChangeListener(PassengerOnePane);
 		selectedFlight.addPropertyChangeListener(PassengerTwoPane);
 		selectedFlight.addPropertyChangeListener(PassengerThreePane);
@@ -122,6 +123,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		selectedFlight.addPropertyChangeListener(PassengerSixPane);
 		
 		// calculate running totals
+		CabinClassPane.addPropertyChangeListener(PaymentPane);
 		PassengerOnePane.addPropertyChangeListener(PaymentPane);
 		PassengerTwoPane.addPropertyChangeListener(PaymentPane);
 		PassengerThreePane.addPropertyChangeListener(PaymentPane);
@@ -131,6 +133,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		
 		// For passenger amount comparison
 		FilterPane.addPropertyChangeListener(PaymentPane);
+		FilterPane.addPropertyChangeListener(CabinClassPane);
 		FilterPane.addPropertyChangeListener(PassengerOnePane);
 		FilterPane.addPropertyChangeListener(PassengerTwoPane);
 		FilterPane.addPropertyChangeListener(PassengerThreePane);

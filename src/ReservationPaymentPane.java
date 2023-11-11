@@ -24,6 +24,7 @@ import java.awt.Font;
 public class ReservationPaymentPane extends JPanel implements PropertyChangeListener {
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
+	private String selectedCabin;
 	private Reservation reservation;
 	private BigDecimal runningTotal = new BigDecimal("0.00");
 	private BigDecimal[] fares = {new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 
@@ -41,6 +42,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 
 	public ReservationPaymentPane(JPanel contentPane, Account account, Flight flight) {
 		selectedPassengerAmount = 1;
+		selectedCabin = "Economy";
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
@@ -292,7 +294,15 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 			System.out.println("passengerAmt PropertyChangeEvent" + this.selectedPassengerAmount);
 		}
 		
+		// fires from CabinClassPane
+		if ((evt.getPropertyName()).equals("selectedCabin")) {
+			this.selectedFlight = ((Flight) evt.getNewValue());
+			System.out.println("selectedCabin PropertyChangeEvent");
+			lblAmountDue.setText(" Amount Due: $" + "TEST");
+		}
+		
 		// fires from PassengerDetails
+		/*
 		switch(evt.getPropertyName()) {
 			case "selectedCabin" + "1":
 				fares[0] = selectedFlight.getpricing();
@@ -314,8 +324,10 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 				fares[5] = selectedFlight.getpricing();
 				break;
 		}
+		*/
 		
 		// fires from PassengerDetails
+		/*
 		if ((evt.getPropertyName().equals("sumRunningTotal"))) {
 			for (BigDecimal fare : fares) {
 				runningTotal = runningTotal.add(fare);
@@ -323,6 +335,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 			System.out.println("sum PropertyChangeEvent");
 			lblAmountDue.setText(" Amount Due: $" + runningTotal);
 		}
+		*/
 		
 	}
 	
