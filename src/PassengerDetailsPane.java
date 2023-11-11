@@ -49,34 +49,40 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
  	
 	//FIXME: populate from .txt
 	String[] countryArray = {
-		"Afghanistan",
-		"United States"
+		"United States",
+		"Afghanistan"
 	};
 	//FIXME: populate from .txt
 	String[] stateArray = {
 			"California"
 		};
 
-	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, String nextPassengerDetailsPane, Flight flight) {
+	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{168, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblPassengerNumber = new JLabel(" Passenger " + passengerIndex);
-		lblPassengerNumber.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		JLabel lblPassengerNumber = new JLabel(" Passenger " + passengerIndex + " Details: ");
+		lblPassengerNumber.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		GridBagConstraints gbc_lblPassengerNumber = new GridBagConstraints();
 		gbc_lblPassengerNumber.anchor = GridBagConstraints.WEST;
-		gbc_lblPassengerNumber.gridheight = 2;
 		gbc_lblPassengerNumber.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPassengerNumber.gridx = 0;
 		gbc_lblPassengerNumber.gridy = 0;
 		add(lblPassengerNumber, gbc_lblPassengerNumber);
+		
+		JSeparator separator = new JSeparator();
+		GridBagConstraints gbc_separator = new GridBagConstraints();
+		gbc_separator.insets = new Insets(0, 0, 5, 5);
+		gbc_separator.gridx = 0;
+		gbc_separator.gridy = 1;
+		add(separator, gbc_separator);
 		
 		JLabel lblFullName = new JLabel(" Full Name");
 		GridBagConstraints gbc_lblFullName = new GridBagConstraints();
@@ -121,19 +127,12 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_lblFullNameAndGender.gridy = 4;
 		add(lblFullNameAndGender, gbc_lblFullNameAndGender);
 		
-		JSeparator separatorFullName = new JSeparator();
-		GridBagConstraints gbc_separatorFullName = new GridBagConstraints();
-		gbc_separatorFullName.insets = new Insets(0, 0, 5, 5);
-		gbc_separatorFullName.gridx = 0;
-		gbc_separatorFullName.gridy = 5;
-		add(separatorFullName, gbc_separatorFullName);
-		
 		JLabel lblDoB = new JLabel(" Date of Birth (mm/dd/yyyy)");
 		GridBagConstraints gbc_lblDoB = new GridBagConstraints();
 		gbc_lblDoB.anchor = GridBagConstraints.WEST;
 		gbc_lblDoB.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDoB.gridx = 0;
-		gbc_lblDoB.gridy = 6;
+		gbc_lblDoB.gridy = 5;
 		add(lblDoB, gbc_lblDoB);
 		
 		textDoB = new JTextField();
@@ -141,7 +140,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_textDoB.insets = new Insets(0, 0, 5, 5);
 		gbc_textDoB.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textDoB.gridx = 0;
-		gbc_textDoB.gridy = 7;
+		gbc_textDoB.gridy = 6;
 		add(textDoB, gbc_textDoB);
 		textDoB.setColumns(10);
 		
@@ -151,24 +150,16 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		GridBagConstraints gbc_lblDoBInvalidDateFormat = new GridBagConstraints();
 		gbc_lblDoBInvalidDateFormat.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDoBInvalidDateFormat.gridx = 2;
-		gbc_lblDoBInvalidDateFormat.gridy = 7;
+		gbc_lblDoBInvalidDateFormat.gridy = 6;
 		add(lblDoBInvalidDateFormat, gbc_lblDoBInvalidDateFormat);
 		lblDoBInvalidDateFormat.setVisible(false);
-		
-		JSeparator separatorDoB = new JSeparator();
-		GridBagConstraints gbc_separatorDoB = new GridBagConstraints();
-		gbc_separatorDoB.gridwidth = 3;
-		gbc_separatorDoB.insets = new Insets(0, 0, 5, 5);
-		gbc_separatorDoB.gridx = 0;
-		gbc_separatorDoB.gridy = 8;
-		add(separatorDoB, gbc_separatorDoB);
 		
 		JLabel lblCountry = new JLabel(" Country or Region of Residence");
 		GridBagConstraints gbc_lblCountry = new GridBagConstraints();
 		gbc_lblCountry.anchor = GridBagConstraints.WEST;
 		gbc_lblCountry.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCountry.gridx = 0;
-		gbc_lblCountry.gridy = 9;
+		gbc_lblCountry.gridy = 7;
 		add(lblCountry, gbc_lblCountry);
 		
 		JLabel lblState = new JLabel(" State of Residence");
@@ -176,10 +167,8 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_lblState.anchor = GridBagConstraints.WEST;
 		gbc_lblState.insets = new Insets(0, 0, 5, 5);
 		gbc_lblState.gridx = 2;
-		gbc_lblState.gridy = 9;
+		gbc_lblState.gridy = 7;
 		add(lblState, gbc_lblState);
-		// lblState
-		lblState.setVisible(false);
 		
 		JComboBox comboBoxCountry = new JComboBox(countryArray);
 		comboBoxCountry.addActionListener(new ActionListener() {
@@ -187,6 +176,9 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 				if (comboBoxCountry.getSelectedItem().toString().equals("United States")) {
 					lblState.setVisible(true);
 					comboBoxState.setVisible(true);
+				} else {
+					lblState.setVisible(false);
+					comboBoxState.setVisible(false);
 				}
 			}
 		});
@@ -194,7 +186,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxCountry.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxCountry.gridx = 0;
-		gbc_comboBoxCountry.gridy = 10;
+		gbc_comboBoxCountry.gridy = 8;
 		add(comboBoxCountry, gbc_comboBoxCountry);
 		
 		comboBoxState = new JComboBox(stateArray);
@@ -202,16 +194,15 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_comboBoxState.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxState.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxState.gridx = 2;
-		gbc_comboBoxState.gridy = 10;
+		gbc_comboBoxState.gridy = 8;
 		add(comboBoxState, gbc_comboBoxState);
 		
-		JButton btnPlaceholder = new JButton("Placeholder");
-		GridBagConstraints gbc_btnPlaceholder = new GridBagConstraints();
-		gbc_btnPlaceholder.anchor = GridBagConstraints.WEST;
-		gbc_btnPlaceholder.insets = new Insets(0, 0, 0, 5);
-		gbc_btnPlaceholder.gridx = 0;
-		gbc_btnPlaceholder.gridy = 11;
-		add(btnPlaceholder, gbc_btnPlaceholder);
+		JSeparator separator_1 = new JSeparator();
+		GridBagConstraints gbc_separator_1 = new GridBagConstraints();
+		gbc_separator_1.insets = new Insets(0, 0, 5, 5);
+		gbc_separator_1.gridx = 0;
+		gbc_separator_1.gridy = 9;
+		add(separator_1, gbc_separator_1);
 		
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
@@ -226,13 +217,25 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 				}
 			}
 		});
+		
+		JButton btnBack = new JButton("Go back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((CardLayout) contentPane.getLayout()).show(contentPane, previousPane);
+			}
+		});
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.anchor = GridBagConstraints.WEST;
+		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
+		gbc_btnBack.gridx = 0;
+		gbc_btnBack.gridy = 10;
+		add(btnBack, gbc_btnBack);
 		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
 		gbc_btnContinue.anchor = GridBagConstraints.EAST;
 		gbc_btnContinue.insets = new Insets(0, 0, 0, 5);
 		gbc_btnContinue.gridx = 2;
-		gbc_btnContinue.gridy = 11;
+		gbc_btnContinue.gridy = 10;
 		add(btnContinue, gbc_btnContinue);
-		comboBoxState.setVisible(false);
 		
 	}
 	

@@ -96,12 +96,12 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
 		CabinClassPane CabinClassPane = new CabinClassPane(contentPane, selectedFlight);
-		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, "PASSENGER2_DETAILS", selectedFlight);
-		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, "PASSENGER3_DETAILS", selectedFlight);
-		PassengerDetailsPane PassengerThreePane = new PassengerDetailsPane(contentPane, 3, "PASSENGER4_DETAILS", selectedFlight);
-		PassengerDetailsPane PassengerFourPane = new PassengerDetailsPane(contentPane, 4, "PASSENGER5_DETAILS", selectedFlight);
-		PassengerDetailsPane PassengerFivePane = new PassengerDetailsPane(contentPane, 5, "PASSENGER6_DETAILS", selectedFlight);
-		PassengerDetailsPane PassengerSixPane = new PassengerDetailsPane(contentPane, 6, "NULL", selectedFlight);
+		PassengerDetailsPane PassengerOnePane = new PassengerDetailsPane(contentPane, 1, "CABIN", "PASSENGER2_DETAILS", selectedFlight);
+		PassengerDetailsPane PassengerTwoPane = new PassengerDetailsPane(contentPane, 2, "PASSENGER1_DETAILS", "PASSENGER3_DETAILS", selectedFlight);
+		PassengerDetailsPane PassengerThreePane = new PassengerDetailsPane(contentPane, 3, "PASSENGER2_DETAILS", "PASSENGER4_DETAILS", selectedFlight);
+		PassengerDetailsPane PassengerFourPane = new PassengerDetailsPane(contentPane, 4, "PASSENGER3_DETAILS", "PASSENGER5_DETAILS", selectedFlight);
+		PassengerDetailsPane PassengerFivePane = new PassengerDetailsPane(contentPane, 5, "PASSENGER4_DETAILS", "PASSENGER6_DETAILS", selectedFlight);
+		PassengerDetailsPane PassengerSixPane = new PassengerDetailsPane(contentPane, 6, "PASSENGER5_DETAILS", "NULL", selectedFlight);
 		// TripContactPane TripContactPane = new TripContactPane(contentPane);
 		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, selectedFlight);
 		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);

@@ -52,9 +52,9 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -76,6 +76,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JLabel lblCardType = new JLabel(" Card Type");
 		GridBagConstraints gbc_lblCardType = new GridBagConstraints();
+		gbc_lblCardType.gridwidth = 2;
 		gbc_lblCardType.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCardType.anchor = GridBagConstraints.WEST;
 		gbc_lblCardType.gridx = 0;
@@ -84,24 +85,25 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JLabel lblCardNumber = new JLabel(" Card Number");
 		GridBagConstraints gbc_lblCardNumber = new GridBagConstraints();
+		gbc_lblCardNumber.gridwidth = 2;
 		gbc_lblCardNumber.anchor = GridBagConstraints.WEST;
 		gbc_lblCardNumber.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCardNumber.gridx = 2;
+		gbc_lblCardNumber.gridx = 3;
 		gbc_lblCardNumber.gridy = 2;
 		add(lblCardNumber, gbc_lblCardNumber);
 		
-		JLabel lblExpirationDate = new JLabel(" Expiration Date (MM/YYYY)");
+		JLabel lblExpirationDate = new JLabel(" Expiration Date");
 		GridBagConstraints gbc_lblExpirationDate = new GridBagConstraints();
-		gbc_lblExpirationDate.gridwidth = 2;
+		gbc_lblExpirationDate.gridwidth = 3;
 		gbc_lblExpirationDate.anchor = GridBagConstraints.WEST;
 		gbc_lblExpirationDate.insets = new Insets(0, 0, 5, 0);
-		gbc_lblExpirationDate.gridx = 4;
+		gbc_lblExpirationDate.gridx = 5;
 		gbc_lblExpirationDate.gridy = 2;
 		add(lblExpirationDate, gbc_lblExpirationDate);
 		
 		JComboBox comboBoxCardType = new JComboBox();
 		GridBagConstraints gbc_comboBoxCardType = new GridBagConstraints();
-		gbc_comboBoxCardType.gridwidth = 2;
+		gbc_comboBoxCardType.gridwidth = 3;
 		gbc_comboBoxCardType.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxCardType.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxCardType.gridx = 0;
@@ -111,9 +113,10 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		textCardNumber = new JTextField();
 		textCardNumber.setColumns(10);
 		GridBagConstraints gbc_textCardNumber = new GridBagConstraints();
+		gbc_textCardNumber.gridwidth = 2;
 		gbc_textCardNumber.insets = new Insets(0, 0, 5, 5);
 		gbc_textCardNumber.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textCardNumber.gridx = 2;
+		gbc_textCardNumber.gridx = 3;
 		gbc_textCardNumber.gridy = 3;
 		add(textCardNumber, gbc_textCardNumber);
 		
@@ -121,15 +124,15 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		GridBagConstraints gbc_comboBoxMonth = new GridBagConstraints();
 		gbc_comboBoxMonth.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMonth.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxMonth.gridx = 4;
+		gbc_comboBoxMonth.gridx = 5;
 		gbc_comboBoxMonth.gridy = 3;
 		add(comboBoxMonth, gbc_comboBoxMonth);
 		
 		JComboBox comboBoxYear = new JComboBox();
 		GridBagConstraints gbc_comboBoxYear = new GridBagConstraints();
-		gbc_comboBoxYear.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBoxYear.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxYear.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxYear.gridx = 5;
+		gbc_comboBoxYear.gridx = 6;
 		gbc_comboBoxYear.gridy = 3;
 		add(comboBoxYear, gbc_comboBoxYear);
 		
@@ -143,9 +146,10 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JLabel lblLastName = new JLabel(" Last Name");
 		GridBagConstraints gbc_lblLastName = new GridBagConstraints();
+		gbc_lblLastName.gridwidth = 2;
 		gbc_lblLastName.anchor = GridBagConstraints.WEST;
 		gbc_lblLastName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblLastName.gridx = 4;
+		gbc_lblLastName.gridx = 3;
 		gbc_lblLastName.gridy = 4;
 		add(lblLastName, gbc_lblLastName);
 		
@@ -162,12 +166,19 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		textField = new JTextField();
 		textField.setColumns(10);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 2;
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
+		gbc_textField.gridwidth = 3;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 4;
+		gbc_textField.gridx = 3;
 		gbc_textField.gridy = 5;
 		add(textField, gbc_textField);
+		
+		JSeparator separator_2 = new JSeparator();
+		GridBagConstraints gbc_separator_2 = new GridBagConstraints();
+		gbc_separator_2.insets = new Insets(0, 0, 5, 5);
+		gbc_separator_2.gridx = 0;
+		gbc_separator_2.gridy = 6;
+		add(separator_2, gbc_separator_2);
 		
 		JLabel lblCountry = new JLabel(" Country");
 		GridBagConstraints gbc_lblCountry = new GridBagConstraints();
@@ -179,16 +190,16 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JLabel lblBillingAddress = new JLabel(" Billing Address");
 		GridBagConstraints gbc_lblBillingAddress = new GridBagConstraints();
-		gbc_lblBillingAddress.gridwidth = 3;
+		gbc_lblBillingAddress.gridwidth = 2;
 		gbc_lblBillingAddress.anchor = GridBagConstraints.WEST;
 		gbc_lblBillingAddress.insets = new Insets(0, 0, 5, 5);
-		gbc_lblBillingAddress.gridx = 2;
+		gbc_lblBillingAddress.gridx = 3;
 		gbc_lblBillingAddress.gridy = 7;
 		add(lblBillingAddress, gbc_lblBillingAddress);
 		
 		JComboBox comboBoxCountry = new JComboBox();
 		GridBagConstraints gbc_comboBoxCountry = new GridBagConstraints();
-		gbc_comboBoxCountry.gridwidth = 2;
+		gbc_comboBoxCountry.gridwidth = 3;
 		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxCountry.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxCountry.gridx = 0;
@@ -201,7 +212,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		gbc_textField_1.gridwidth = 3;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 2;
+		gbc_textField_1.gridx = 3;
 		gbc_textField_1.gridy = 8;
 		add(textField_1, gbc_textField_1);
 		
@@ -215,24 +226,25 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JLabel lblState = new JLabel(" State");
 		GridBagConstraints gbc_lblState = new GridBagConstraints();
+		gbc_lblState.gridwidth = 2;
 		gbc_lblState.anchor = GridBagConstraints.WEST;
 		gbc_lblState.insets = new Insets(0, 0, 5, 5);
-		gbc_lblState.gridx = 2;
+		gbc_lblState.gridx = 3;
 		gbc_lblState.gridy = 9;
 		add(lblState, gbc_lblState);
 		
-		JLabel lblPostalCode = new JLabel(" Postal Code");
+		JLabel lblPostalCode = new JLabel(" ZIP Code");
 		GridBagConstraints gbc_lblPostalCode = new GridBagConstraints();
 		gbc_lblPostalCode.anchor = GridBagConstraints.WEST;
 		gbc_lblPostalCode.insets = new Insets(0, 0, 5, 5);
-		gbc_lblPostalCode.gridx = 4;
+		gbc_lblPostalCode.gridx = 6;
 		gbc_lblPostalCode.gridy = 9;
 		add(lblPostalCode, gbc_lblPostalCode);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.gridwidth = 2;
+		gbc_textField_2.gridwidth = 3;
 		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_2.gridx = 0;
@@ -241,10 +253,10 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		
 		JComboBox comboBoxState = new JComboBox();
 		GridBagConstraints gbc_comboBoxState = new GridBagConstraints();
-		gbc_comboBoxState.gridwidth = 2;
+		gbc_comboBoxState.gridwidth = 3;
 		gbc_comboBoxState.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxState.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxState.gridx = 2;
+		gbc_comboBoxState.gridx = 3;
 		gbc_comboBoxState.gridy = 10;
 		add(comboBoxState, gbc_comboBoxState);
 		
@@ -253,7 +265,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
 		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 4;
+		gbc_textField_3.gridx = 6;
 		gbc_textField_3.gridy = 10;
 		add(textField_3, gbc_textField_3);
 		
@@ -272,17 +284,10 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 			}
 		});
 		GridBagConstraints gbc_btnPay = new GridBagConstraints();
-		gbc_btnPay.insets = new Insets(0, 0, 5, 0);
-		gbc_btnPay.gridx = 5;
-		gbc_btnPay.gridy = 10;
+		gbc_btnPay.insets = new Insets(0, 0, 5, 5);
+		gbc_btnPay.gridx = 6;
+		gbc_btnPay.gridy = 11;
 		add(btnPay, gbc_btnPay);
-		
-		JSeparator separator = new JSeparator();
-		GridBagConstraints gbc_separator = new GridBagConstraints();
-		gbc_separator.insets = new Insets(0, 0, 5, 0);
-		gbc_separator.gridx = 5;
-		gbc_separator.gridy = 11;
-		add(separator, gbc_separator);
 
 	}
 	
