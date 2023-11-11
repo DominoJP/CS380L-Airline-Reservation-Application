@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class Reservation {
 	private Flight flight;
 	private ArrayList<String> passengers; //total list of passengers in case if the reservation includes more than just the customer
 	private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
-	private double totalPrice; //a double that keeps track of the total cost of this reservation since multiple tickets may be ordered
+	private BigDecimal totalPrice; // a BigDecimal keeps track of the total cost of this reservation since multiple tickets may be ordered
 	
 	/**
 	 * a constructor that accepts nothing
@@ -39,12 +40,14 @@ public class Reservation {
 	   @param n is the Account making the reservation
 	   @param f is the flight that the reservation is for
 	   @param p is the List of passenger names
+	   @param t is total price
 	   and also calls the method setReservation()
 	 */
-	 public Reservation(Account a, Flight f, ArrayList<String> p) {
+	 public Reservation(Account a, Flight f, ArrayList<String> p, BigDecimal t) {
 		 this.customer = a;
 		 this.flight = f;
 		 this.passengers = p;
+		 this.totalPrice = t;
 	 }
 	 
 	 /**
@@ -104,6 +107,11 @@ public class Reservation {
 		 return;
 	 }
 	 
+	 public BigDecimal getTotalPrice() {
+		 return this.totalPrice;
+		 
+	 }
+	 
 	 
 	 /**
 	  * method that gives the total price of the reservation using the price per ticket of the flight
@@ -112,12 +120,15 @@ public class Reservation {
 	  * @return returns the total price that was calculated by the method
 	  */
 	 
-	 public double setTotalPrice(int p) {
+	 public BigDecimal setTotalPrice(int p) {
+		 /*
 		 for(int i = 0; i < p; i++) {
 			 this.totalPrice = this.totalPrice + this.flight.getpricing();
 		 }
+		 */
 		 
 		 return this.totalPrice;
+		 
 	 }
 	 
 	 /**

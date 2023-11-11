@@ -10,53 +10,32 @@ import java.io.IOException;
 */
 
 public class AccountSignIn {
-	private int id;
-	private String email;
-	private char[] password;
 	
-	/**
-	   Constructor.
-	*/
-	
-	public AccountSignIn() {
+	// FIXME: MOVE AWAY FROM STATIC METHOD
+	public static boolean validateCredentials(String email, char[] password) {
+		// FIXME: temp file
+		String file = "TestAccounts";
 		
-	}
-	
-	public boolean validateCredentials(String email, char[] password) {
-
-		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/AccountsTemp"))) {
+		// FIXME: close BufferedReader
+		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 			 String line;
-			 
 			 while ((line = reader.readLine()) != null) {
 				 String[] parts = line.split(", ");
 				 // compare email & password
 				 if (parts[2].equals(email) && parts[3].equals(String.valueOf(password))) {
-					 id = Integer.parseInt(parts[0]);
 					 reader.close();
 					 return true;
 				 }
+                line = reader.readLine();
 
             }
-			 
             reader.close();
-            
+            return false;
 	    } catch (IOException e) {
 	    	e.printStackTrace();
         }
 		
 		return false;
-	}
-	
-	public int getID() {
-		return this.id;
-	}
-	
-	public String getEmail() {
-		return this.email;
-	}
-	
-	public char[] getPassword() {
-		return this.password;
 	}
 		
 }

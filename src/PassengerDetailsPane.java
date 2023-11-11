@@ -232,14 +232,13 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// FIXME: LOGIC TO KEEP COUNT OF PASSENGERS
+				selectedCabin = comboBoxCabin.getSelectedItem().toString();
+				support.firePropertyChange("selectedCabin" + passengerIndex, null, selectedCabin);
 				if (passengerIndex == selectedPassengerAmount) {
 					support.firePropertyChange("sumRunningTotal", null, null);
 					((CardLayout) contentPane.getLayout()).show(contentPane, "PAY");
 				}
 				else {
-					selectedCabin = comboBoxCabin.getSelectedItem().toString();
-					support.firePropertyChange("selectedCabin" + passengerIndex, null, selectedCabin);
 					((CardLayout) contentPane.getLayout()).show(contentPane, nextPassengerDetailsPane);
 				}
 			}
@@ -250,13 +249,14 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_btnContinue.gridx = 2;
 		gbc_btnContinue.gridy = 11;
 		add(btnContinue, gbc_btnContinue);
-		// comboBoxState
 		comboBoxState.setVisible(false);
 		
 	}
 	
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
 	
-
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
@@ -265,7 +265,6 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
-			System.out.println("selectedFlight PropertyChangeEvent");
 		}
 		
 	}
