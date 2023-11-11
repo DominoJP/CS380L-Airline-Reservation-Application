@@ -1,4 +1,1 @@
-Sayra 
-Test
-@email.com
-password1234 
+test1 , 1234 , @email , test2 , 
