@@ -53,8 +53,8 @@ public class FlightFilterListScrollPane extends JPanel {
 		JButton btnSort = new JButton("Sort");
 		toolBar.add(btnSort);
 		
-		JButton btnBook = new JButton("Book Selected Flight");
-		btnBook.addActionListener(new ActionListener() {
+		JButton btnContinue = new JButton("Continue to Cabin Selection");
+		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Flight tempFlight = flightArray.get(listFlights.getSelectedIndex());
 				//
@@ -67,7 +67,7 @@ public class FlightFilterListScrollPane extends JPanel {
 				((CardLayout) contentPane.getLayout()).show(contentPane, "CABIN");
 			}
 		});
-		toolBar.add(btnBook);
+		toolBar.add(btnContinue);
 				
 	}
 

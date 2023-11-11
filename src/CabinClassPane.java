@@ -39,10 +39,10 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		selectedPassengerAmount = 1;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{50, 0, 0, 0, 20, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{60, 0, 0, 0, 20, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel lblPricing = new JLabel("PRICING");
@@ -164,43 +164,45 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 			}
 		});
 		
-		JButton btnBack = new JButton("Go back");
+		JButton btnBack = new JButton("Return");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 			}
 		});
+		GridBagConstraints gbc_btnBack = new GridBagConstraints();
+		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
+		gbc_btnBack.gridx = 2;
+		gbc_btnBack.gridy = 7;
+		add(btnBack, gbc_btnBack);
+		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
+		gbc_btnContinue.anchor = GridBagConstraints.EAST;
+		gbc_btnContinue.gridwidth = 3;
+		gbc_btnContinue.insets = new Insets(0, 0, 5, 5);
+		gbc_btnContinue.gridx = 3;
+		gbc_btnContinue.gridy = 7;
+		add(btnContinue, gbc_btnContinue);
+		
+		
+		rdbtnEconomy.setSelected(true);
+		
+		JSeparator separator = new JSeparator();
+		GridBagConstraints gbc_separator = new GridBagConstraints();
+		gbc_separator.gridwidth = 4;
+		gbc_separator.insets = new Insets(0, 0, 5, 5);
+		gbc_separator.gridx = 2;
+		gbc_separator.gridy = 8;
+		add(separator, gbc_separator);
 		
 		JLabel lblSeatingWarning = new JLabel("Insufficient seating for passenger selection.");
 		lblSeatingWarning.setForeground(Color.RED);
 		lblSeatingWarning.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		GridBagConstraints gbc_lblSeatingWarning = new GridBagConstraints();
-		gbc_lblSeatingWarning.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSeatingWarning.insets = new Insets(0, 0, 0, 5);
 		gbc_lblSeatingWarning.gridwidth = 4;
 		gbc_lblSeatingWarning.gridx = 2;
-		gbc_lblSeatingWarning.gridy = 7;
+		gbc_lblSeatingWarning.gridy = 9;
 		add(lblSeatingWarning, gbc_lblSeatingWarning);
-		
-		JSeparator separator_4 = new JSeparator();
-		GridBagConstraints gbc_separator_4 = new GridBagConstraints();
-		gbc_separator_4.insets = new Insets(0, 0, 5, 5);
-		gbc_separator_4.gridx = 2;
-		gbc_separator_4.gridy = 8;
-		add(separator_4, gbc_separator_4);
-		GridBagConstraints gbc_btnBack = new GridBagConstraints();
-		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBack.gridx = 2;
-		gbc_btnBack.gridy = 9;
-		add(btnBack, gbc_btnBack);
-		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
-		gbc_btnContinue.gridwidth = 3;
-		gbc_btnContinue.insets = new Insets(0, 0, 5, 5);
-		gbc_btnContinue.gridx = 3;
-		gbc_btnContinue.gridy = 9;
-		add(btnContinue, gbc_btnContinue);
-		
-		
-		rdbtnEconomy.setSelected(true);
 		lblSeatingWarning.setVisible(false);
 	}
 	

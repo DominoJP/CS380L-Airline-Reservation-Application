@@ -61,10 +61,10 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		selectedPassengerAmount = 1;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{75, 73, 85, 20, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{75, 73, 85, 20, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 0.0, 1.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel lblPassengerNumber = new JLabel(" Passenger " + passengerIndex + " Details:");
@@ -182,7 +182,6 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		lblDoBInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		lblDoBInvalidDateFormat.setForeground(Color.RED);
 		GridBagConstraints gbc_lblDoBInvalidDateFormat = new GridBagConstraints();
-		gbc_lblDoBInvalidDateFormat.gridwidth = 2;
 		gbc_lblDoBInvalidDateFormat.anchor = GridBagConstraints.WEST;
 		gbc_lblDoBInvalidDateFormat.insets = new Insets(0, 0, 5, 0);
 		gbc_lblDoBInvalidDateFormat.gridx = 4;
@@ -196,7 +195,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_lblCountry.anchor = GridBagConstraints.WEST;
 		gbc_lblCountry.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCountry.gridx = 0;
-		gbc_lblCountry.gridy = 9;
+		gbc_lblCountry.gridy = 8;
 		add(lblCountry, gbc_lblCountry);
 		
 		JLabel lblState = new JLabel(" State of Residence (*)");
@@ -204,7 +203,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_lblState.anchor = GridBagConstraints.WEST;
 		gbc_lblState.insets = new Insets(0, 0, 5, 0);
 		gbc_lblState.gridx = 4;
-		gbc_lblState.gridy = 9;
+		gbc_lblState.gridy = 8;
 		add(lblState, gbc_lblState);
 		
 		JComboBox comboBoxCountry = new JComboBox(countryArray);
@@ -224,7 +223,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxCountry.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxCountry.gridx = 0;
-		gbc_comboBoxCountry.gridy = 10;
+		gbc_comboBoxCountry.gridy = 9;
 		add(comboBoxCountry, gbc_comboBoxCountry);
 		
 		comboBoxState = new JComboBox(stateArray);
@@ -232,17 +231,17 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_comboBoxState.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxState.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxState.gridx = 4;
-		gbc_comboBoxState.gridy = 10;
+		gbc_comboBoxState.gridy = 9;
 		add(comboBoxState, gbc_comboBoxState);
 		
 		JSeparator separator_1 = new JSeparator();
 		GridBagConstraints gbc_separator_1 = new GridBagConstraints();
 		gbc_separator_1.insets = new Insets(0, 0, 5, 5);
 		gbc_separator_1.gridx = 0;
-		gbc_separator_1.gridy = 11;
+		gbc_separator_1.gridy = 10;
 		add(separator_1, gbc_separator_1);
 		
-		JButton btnBack = new JButton("RETURN");
+		JButton btnBack = new JButton("Return");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				((CardLayout) contentPane.getLayout()).show(contentPane, previousPane);
@@ -252,10 +251,10 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_btnBack.anchor = GridBagConstraints.WEST;
 		gbc_btnBack.insets = new Insets(0, 0, 0, 5);
 		gbc_btnBack.gridx = 0;
-		gbc_btnBack.gridy = 12;
+		gbc_btnBack.gridy = 11;
 		add(btnBack, gbc_btnBack);
 		
-		JButton btnNext = new JButton("CONTINUE");
+		JButton btnNext = new JButton("Continue");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				support.firePropertyChange("passengerName" + passengerIndex, null, textName.getText());
@@ -271,7 +270,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		GridBagConstraints gbc_btnNext = new GridBagConstraints();
 		gbc_btnNext.anchor = GridBagConstraints.EAST;
 		gbc_btnNext.gridx = 4;
-		gbc_btnNext.gridy = 12;
+		gbc_btnNext.gridy = 11;
 		add(btnNext, gbc_btnNext);
 		
 	}

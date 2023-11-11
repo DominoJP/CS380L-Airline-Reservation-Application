@@ -33,23 +33,25 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 	//							  new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00")};
 	private ArrayList<String> passengerNames;
 	private JButton btnPay;
-
-	private static final long serialVersionUID = 1L;
 	private JTextField textFirstName;
 	private JTextField textCardNumber;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	
+	private PropertyChangeSupport support;
+
+	private static final long serialVersionUID = 1L;
 
 	public ReservationPaymentPane(JPanel contentPane, Account account, Flight flight) {
+		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		selectedCabin = "Economy";
 		passengerNames = new ArrayList<>();
 		for (int i = 0; i < MAXIMUM_PASSENERS_PER_BOOKING; i++) {
 			passengerNames.add("");
 		}
-		
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 53, 99, 81, 80};
@@ -273,8 +275,11 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
 					FlightIO.updatePassengerCount(selectedFlight, selectedPassengerAmount, selectedCabin);
+					support.firePropertyChange("reservationBooked", null, true);
+				} else {
+					
 				}
-				((CardLayout) contentPane.getLayout()).show(contentPane, "CONFIRM");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 			}
 		});
 		GridBagConstraints gbc_btnPay = new GridBagConstraints();
@@ -285,6 +290,10 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		add(btnPay, gbc_btnPay);
 
 	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
