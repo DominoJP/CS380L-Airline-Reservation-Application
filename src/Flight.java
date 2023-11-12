@@ -12,6 +12,8 @@ import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 public class Flight {
 	
@@ -23,6 +25,9 @@ public class Flight {
 	private LocalTime timeDeparture;    
 	private LocalDate dateArrival;     
 	private LocalTime timeArrival;   
+	private ZoneId zone;
+	private ZonedDateTime dateTimeDeparture;
+	private ZonedDateTime dateTimeArrival;
 	private int economyCapacity;
 	private int economyPassengerCount;
 	private BigDecimal economyPricing;
@@ -88,7 +93,7 @@ public class Flight {
 	 * @param firstClassPricing
 	 */
 	public Flight(int id, String type, String cityDeparture, String cityArrival, 
-				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, 
+				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone,
 				  int economyCapacity, int economyPassengerCount, BigDecimal economyPricing,
 				  int businessCapacity, int businessPassengerCount, BigDecimal businessPricing,
 				  int firstClassCapacity, int firstClassPassengerCount, BigDecimal firstClassPricing) 
@@ -97,10 +102,16 @@ public class Flight {
 		this.type = type; 
 		this.cityDeparture = cityDeparture;
 		this.cityArrival = cityArrival;
+		
 		this.dateDeparture = LocalDate.parse(dateDeparture);
 		this.timeDeparture = LocalTime.parse(timeDeparture); 
 		this.dateArrival = LocalDate.parse(dateArrival);
 		this.timeArrival = LocalTime.parse(timeArrival);
+		
+		this.zone = ZoneId.of(zone);
+		this.dateTimeDeparture = ZonedDateTime.of(this.dateDeparture, this.timeDeparture, ZonedDateTime.now().getZone());
+		this.dateTimeArrival = ZonedDateTime.of(this.dateArrival, this.timeArrival, ZonedDateTime.now().getZone());
+		
 		this.economyCapacity = economyCapacity;
 		this.economyPassengerCount = economyPassengerCount;
 		this.economyPricing = economyPricing; 
@@ -130,6 +141,9 @@ public class Flight {
 		this.timeDeparture = selectedFlight.gettimeDeparture();
 		this.dateArrival = selectedFlight.getDateArrival();
 		this.timeArrival = selectedFlight.getTimeArrival();
+		this.zone = selectedFlight.getZone();
+		// ZonedDateTime
+		// ZonedDateTime
 		// this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
 		// this.passengerCount = selectedFlight.getPassengerCount();
 		// this.pricing = selectedFlight.getpricing();
@@ -143,7 +157,6 @@ public class Flight {
 		this.firstClassPassengerCount = selectedFlight.getFirstClassPassengerCount();
 		this.firstClassPricing = selectedFlight.getFirstClassPricing();
 		// FIXME: update as necessary
-		
 	}
 	
 	/**
@@ -256,6 +269,14 @@ public class Flight {
 	 */
 	public void setTimeArrival(String timeArrival) {
 		this.timeArrival = LocalTime.parse(timeArrival);
+	}
+	
+	/**
+	 * Returns time zone of LocalDate departure & arrival, LocalTime departure & arrival
+	 * @return time zone of departure
+	 */
+	public ZoneId getZone() {
+		return this.zone;
 	}
 
 	/**
@@ -408,8 +429,10 @@ public class Flight {
 	
 	@Override
     public String toString() {
-        return "Departs: " + timeDeparture +
-        ", Arrives: " + dateArrival.getMonthValue() + "/" + dateArrival.getDayOfMonth() + " " + timeArrival;
+        return "Departs: " + dateTimeDeparture.getHour() + ":" + dateTimeDeparture.getMinute() +
+        	   "Arrives: " + dateTimeArrival.getMonthValue() + "/" +  dateTimeArrival.getDayOfMonth() +
+        	   dateTimeArrival.getHour() + ":" + dateTimeArrival.getMinute();
+        // ", Arrives: " + dateArrival.getMonthValue() + "/" + dateArrival.getDayOfMonth() + " " + timeArrival;
     }
 	
 }
