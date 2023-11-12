@@ -80,9 +80,8 @@ public class AirportFlights {
 				timeDeparture.add(f);
 			}
 		}else {
-			AirportFlights newChild = new AirportFlights(f);
-			
-			this.addChild(this, newChild);
+			this.addChild(this, f);
+			return;
 		}
 	}
 	
@@ -93,21 +92,35 @@ public class AirportFlights {
 	 * @param n
 	 */
 	
-	public void addChild(AirportFlights curr, AirportFlights n) {
-		if(curr.date.isAfter(n.date)) {
+	public void addChild(AirportFlights curr, Flight n) {
+		if(curr.date.isAfter(n.getdateDeparture())) {
 			if(curr.child1 != null) {
+				if(curr.child1.getDate().equals(n.getdateDeparture())) {
+					curr.child1.addFlight(n);
+					return;
+				}
+				
 				curr.addChild(curr.child1, n);
 				return;
 			}
 			
-			curr.child1 = n;
+			AirportFlights newChild = new AirportFlights(n);
+			
+			curr.child1 = newChild;
 		}else {
 			if(curr.child2 != null) {
+				if(curr.child2.getDate().equals(n.getdateDeparture())) {
+					curr.child2.addFlight(n);
+					return;
+				}
+				
 				curr.addChild(curr.child2, n);
 				return;
 			}
 			
-			curr.child2 = n;
+			AirportFlights newChild = new AirportFlights(n);
+			
+			curr.child2 = newChild;
 		}
 	}
 	

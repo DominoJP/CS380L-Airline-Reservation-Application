@@ -36,7 +36,7 @@ public class Airport {
 	
 	public Airport(String d) {
 		this.origin = d;
-		//this.name = findAirport(d);
+		name = null;
 		child1 = null;
 		child2 = null;
 		destinations = null;
@@ -51,7 +51,7 @@ public class Airport {
 	
 	public Airport(Flight f) {
 		this.origin = f.getcityDeparture();
-		//this.name = findAirport(this.origin);
+		this.name = f.getAirportName();
 		child1 = null;
 		child2 = null;
 		AirportFlights flights = new AirportFlights(f);
@@ -86,27 +86,42 @@ public class Airport {
 	public void addFlight(Flight f) {
 		AirportFlights flights = new AirportFlights(f);
 		
-		if(destinations == null)
+		if(destinations == null) {
 			destinations = new ArrayList<AirportFlights>();
+			// FIXME
+			System.out.println("destinations");
+		}
 		
 		if(this.origin == null) {
 			origin = f.getcityDeparture();
+			// FIXME
+			System.out.println("origin");
+			if(name == null)
+				name = f.getAirportName();
 			destinations.add(flights);
 		}else if(this.origin.compareTo(f.getcityDeparture()) == 0) {
+			// FIXME
+			System.out.println("pass1");
 			for(int i = 0; i < destinations.size(); i++) {
 				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) == 0) {
 					destinations.get(i).addFlight(f);
+					// FIXME
+					System.out.println("pass2");
 					return;
 				}
 			}
 			
-			for(int i = 0; i < destinations.size(); i++) {
-				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) < 0) {
-					destinations.add(i, flights);
+			for(int j = 0; j < destinations.size(); j++) {
+				if(f.getcityArrival().compareTo(destinations.get(j).getDestination()) < 0) {
+					destinations.add(j, flights);
+					// FIXME
+					System.out.println("pass3");
 					return;
-				}else if(i + 1 == destinations.size())
-					destinations.add(flights);
+				}
 			}
+			
+			destinations.add(flights);
+			
 		}else {
 			Airport newChild = new Airport(f);
 			
@@ -167,12 +182,12 @@ public class Airport {
 			}
 		}
 		
-		while(!curr.getDate().equals(time)) {
-			if(curr.getDate().isAfter(time))
-
+		while(!(curr.getDate().equals(time))) {
+			if(curr.getDate().isAfter(time)) {
 				curr = curr.getChild1();
-			else
+			}else {
 				curr = curr.getChild2();
+			}
 		}
 		
 		return curr;
@@ -185,6 +200,10 @@ public class Airport {
 	
 	public Airport getChild2() {
 		return child2;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 }

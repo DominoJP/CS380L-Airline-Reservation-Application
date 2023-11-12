@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 
 public class ReservationListPane extends JPanel implements PropertyChangeListener {
 	private ArrayList<Reservation> reservations;
+	private String[] reservationArray;
 	
 	private DefaultListModel model = new DefaultListModel();
 	private JList list;
@@ -60,10 +61,9 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		if ((evt.getPropertyName()).equals("newReservation")) {
-			// this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
-			model.addElement((Reservation) evt.getNewValue());
-		}
+		this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
+
+		model.addAll(reservations);
 
 	}
 
