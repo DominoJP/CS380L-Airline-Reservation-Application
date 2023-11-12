@@ -10,7 +10,7 @@ import java.util.Iterator;
  * Class from which new unique IDs are generated, reading from/writing to IDGeneratorHelper.txt.
  */
 public class IDGenerator {
-	private final String filePath = "src/Database/IDGeneratorHelper.txt";
+	private final String filePath = "IDGeneratorHelper.txt";
 	private int lastReservationID;
 	private int lastAccountID;
 	
