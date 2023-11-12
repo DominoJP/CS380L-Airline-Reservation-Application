@@ -37,20 +37,23 @@ public class FlightIO {
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
-		        String[] parts = line.split(", ");
-		        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
-		        Flight instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
-		        									   parts[4], parts[5], parts[6], parts[7], parts[8],
-					        						   Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), new BigDecimal(parts[11]),
-								          	     	   Integer.parseInt(parts[12]), Integer.parseInt(parts[13]), new BigDecimal(parts[14]),
-								          	     	   Integer.parseInt(parts[15]), Integer.parseInt(parts[16]), new BigDecimal(parts[17]));
-		        
-		        //FlightSorting instantiation requires a flight as parameter
-		        if (sort == null) {
-		        	sort = new FlightSorting(instantiatedFlight);
-		        } else {
-	        	    sort.addFlight(instantiatedFlight);
-		        }
+		    	Flight instantiatedFlight;
+		    	if (line.length() > 0) {	
+		    		String[] parts = line.split(", ");
+			        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
+			        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
+			        									   parts[4], parts[5], parts[6], parts[7], parts[8],
+						        						   Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), new BigDecimal(parts[11]),
+									          	     	   Integer.parseInt(parts[12]), Integer.parseInt(parts[13]), new BigDecimal(parts[14]),
+									          	     	   Integer.parseInt(parts[15]), Integer.parseInt(parts[16]), new BigDecimal(parts[17]));
+		    	
+			        //FlightSorting instantiation requires a flight as parameter
+			        if (sort == null) {
+			        	sort = new FlightSorting(instantiatedFlight);
+			        } else {
+		        	    sort.addFlight(instantiatedFlight);
+			        }
+		    	}
 		    }
 		    reader.close();  
 		} catch (IOException e) {
@@ -147,8 +150,8 @@ public class FlightIO {
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
-		        String[] parts = line.split(", ");
-		        if (Integer.parseInt(parts[0]) == flightID) {
+		    	String[] parts = line.split(", ");
+		    	if (line.length() > 0 && Integer.parseInt(parts[0]) == flightID) {
 		        	// Instantiate flight with parameters corresponding to String[] indices generated from the current line
 		        	foundFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
 							   				 parts[4], parts[5], parts[6], parts[7], parts[8],

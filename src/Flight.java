@@ -111,8 +111,8 @@ public class Flight {
 		this.timeArrival = LocalTime.parse(timeArrival);
 		
 		this.zone = ZoneId.of(zone);
-		this.dateTimeDeparture = ZonedDateTime.of(this.dateDeparture, this.timeDeparture, ZonedDateTime.now().getZone());
-		this.dateTimeArrival = ZonedDateTime.of(this.dateArrival, this.timeArrival, ZonedDateTime.now().getZone());
+		this.dateTimeDeparture = ZonedDateTime.of(this.dateDeparture, this.timeDeparture, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
+		this.dateTimeArrival = ZonedDateTime.of(this.dateArrival, this.timeArrival, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
 		
 		this.economyCapacity = economyCapacity;
 		this.economyPassengerCount = economyPassengerCount;
