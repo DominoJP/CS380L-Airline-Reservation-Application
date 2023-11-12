@@ -14,20 +14,20 @@ import java.util.Scanner;
 /**
  * AccountSignUp is a java program that allows the user to input their email and password,
  * writes to the text file, and later reads and displays from the text file using BufferedReader and BufferedWriter.
- * 
+ *
  * Note: This is a simple example for educational purposes. In a real-world scenario, consider more robust practices for security.
- * @author Sayra Reyes 
+ * @author Sayra Reyes
  * @version 1.0
  */
 
 public class AccountSignUp {
-    
+
     private String email;
     private String password;
     private String firstname;
     private String lastname;
     private int id;
-    
+
 
     public AccountSignUp() {
 
@@ -35,7 +35,7 @@ public class AccountSignUp {
 
  /*
     public static void main(String[] args) {
-        
+
     	Scanner scanner = new Scanner(System.in);
 
         // Get email, password, name, and id from the user
@@ -63,27 +63,33 @@ public class AccountSignUp {
             // Write email and password to a text file
             accountSignUp.writeToFile();
         } else {
-            System.out.println("Email already exists. Email is not saved."); //displays message 
+            System.out.println("Email already exists. Email is not saved."); //displays message
         }
 
         // Read and display email and password from the text file
         accountSignUp.readFromFile();
-        
+
         // Close scanner
         scanner.close();
     }
 */
     public static void writeToFile(String email, String password, String firstname, String lastname) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("TestAccountSignUp.txt", true))) {
-        	writer.write(firstname);
-            writer.write(" , ");
+        	IDGenerator idGen = new IDGenerator();
+        	int id = idGen.generateAccountID();
+        	// + "" typecasts int to String
+        	writer.write(id + "");
+        	writer.write(", ");
+        	writer.write(firstname + " " + lastname);
+            writer.write(", ");
+            writer.write(email);
+            writer.write(", ");
             writer.write(password);
-            writer.write(" , ");
-        	writer.write(email);
-            writer.write(" , ");
-            writer.write(lastname);
-            writer.write(" , ");
-            
+            writer.write(", ");
+            writer.write("CUSTOMER");
+            // , on last index reads into String[] parts last index, causing read error
+            // writer.write(", ");
+
            // writer.write(Integer.toString(id));
             writer.newLine();     // Add a newline character to separate entries
 
@@ -105,9 +111,9 @@ public class AccountSignUp {
         }
     }
 */
-    
-    
-    
+
+
+
    /*
     private boolean isEmailDuplicate() {
         try (BufferedReader reader = new BufferedReader(new FileReader("TestAccountSignUp.txt"))) {
@@ -124,10 +130,10 @@ public class AccountSignUp {
         return false;
     }
     */
-    
-    
-    
-    
+
+
+
+
 
     // Getter and Setter methods
     public void setEmail(String email) {
@@ -141,7 +147,7 @@ public class AccountSignUp {
     public void FirstName(String firstname) {
         this.firstname = firstname;
     }
-    
+
     public void setLastName(String lastname) {
         this.lastname = lastname;
     }
@@ -150,26 +156,20 @@ public class AccountSignUp {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public void getEmail(String email) {
-    	return; 
+    	return;
     }
-    
+
     public void getPassword(String password) {
     	return;
     }
-    
+
     public void getName(String name) {
-    	return; 
+    	return;
     }
-    
+
     public void getId(int id) {
-    	return; 
+    	return;
     }
 }
-
-
-
-
-
-

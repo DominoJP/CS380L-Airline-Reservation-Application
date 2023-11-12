@@ -27,16 +27,14 @@ import javax.swing.JTextField;
  */
 
 public class AccountSignInPane extends JPanel {
-	AccountSignIn signIn = new AccountSignIn();
-	Account acc;
-
+	private AccountSignIn signIn = new AccountSignIn();
 	private static final long serialVersionUID = 1L;
 
 	public AccountSignInPane(JPanel contentPane, Account account) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 0, 0, 115, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{140, 170, 140, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		
@@ -92,8 +90,10 @@ public class AccountSignInPane extends JPanel {
 				if (signIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
 					// Allows instantiation of reservations using updated Account object
 					account.setaccountNumber(signIn.getID());
-					ReservationsReader reservationsReader = new ReservationsReader(account);
-					reservationsReader.instantiateReservations();
+					account.setEmail(signIn.getEmail());
+					// ReservationsReader reservationsReader = new ReservationsReader(account);
+					// reservationsReader.instantiateReservations();
+					ReservationIO.instantiateReservations(account);
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				} else {
 					lblWrong.setVisible(true);
@@ -131,7 +131,7 @@ public class AccountSignInPane extends JPanel {
 		});
 		btnSignUp.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		GridBagConstraints gbc_btnSignUp = new GridBagConstraints();
-		gbc_btnSignUp.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSignUp.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSignUp.gridx = 1;
 		gbc_btnSignUp.gridy = 8;
 		add(btnSignUp, gbc_btnSignUp);
