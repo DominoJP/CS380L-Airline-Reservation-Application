@@ -1,1 +1,1 @@
-test ,  ,  ,  , 
+3, First Last, @email.com, password, CUSTOMER

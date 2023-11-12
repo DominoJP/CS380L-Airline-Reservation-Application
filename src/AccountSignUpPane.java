@@ -120,7 +120,8 @@ public class AccountSignUpPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// String InputEmail = txtEmail.getText();
 			    // AccountSignUp signUp = new AccountSignUp();
-				AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
+				IDGenerator idGen = new IDGenerator();
+				AccountSignUp.writeToFile(idGen.generateAccountID(), txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
 
 			}
 		});

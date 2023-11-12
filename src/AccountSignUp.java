@@ -73,16 +73,20 @@ public class AccountSignUp {
         scanner.close();
     }
 */
-    public static void writeToFile(String email, String password, String firstname, String lastname) {
+    public static void writeToFile(int id, String email, String password, String firstname, String lastname) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("TestAccountSignUp.txt", true))) {
-        	writer.write(firstname);
-            writer.write(" , ");
+        	// + "" typecasts int to String
+        	writer.write(id + "");
+        	writer.write(", ");
+        	writer.write(firstname + " " + lastname);
+            writer.write(", ");
+            writer.write(email);
+            writer.write(", ");
             writer.write(password);
-            writer.write(" , ");
-        	writer.write(email);
-            writer.write(" , ");
-            writer.write(lastname);
-            writer.write(" , ");
+            writer.write(", ");
+            writer.write("CUSTOMER");
+            // , on last index reads into String[] parts last index, causing read error
+            // writer.write(", ");
             
            // writer.write(Integer.toString(id));
             writer.newLine();     // Add a newline character to separate entries
