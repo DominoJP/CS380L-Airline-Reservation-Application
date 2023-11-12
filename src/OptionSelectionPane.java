@@ -41,7 +41,7 @@ public class OptionSelectionPane extends JPanel implements PropertyChangeListene
 				"Cancel",
 		};
 		
-		lblConfirmation = new JLabel("Reservation booked. Confirmation will be sent to your email.");
+		lblConfirmation = new JLabel("");
 		lblConfirmation.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		GridBagConstraints gbc_lblConfirmation = new GridBagConstraints();
 		gbc_lblConfirmation.gridwidth = 3;
@@ -95,8 +95,15 @@ public class OptionSelectionPane extends JPanel implements PropertyChangeListene
 	}
 	
 	public void propertyChange(PropertyChangeEvent evt) {
+		// fires from PaymentPane
 		if (evt.getPropertyName().equals("reservationBooked")) {
 			lblConfirmation.setVisible((boolean) evt.getNewValue());
+			lblConfirmation.setText("Reservation booked. Confirmation will be sent to your email.");
+		}
+		// fires from 
+		if (evt.getPropertyName().equals("successfulSignUp")) {
+			lblConfirmation.setVisible((boolean) evt.getNewValue());
+			lblConfirmation.setText("Sign up successful.");
 		}
 	}
 	

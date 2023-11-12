@@ -142,8 +142,9 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		FilterPane.addPropertyChangeListener(PassengerFivePane);
 		FilterPane.addPropertyChangeListener(PassengerSixPane);
 		
-		// For email confirmation message
+		// For confirmation message
 		PaymentPane.addPropertyChangeListener(SelectionPane);
+		SignUpPane.addPropertyChangeListener(SelectionPane);
 		
 		
 		// Program start

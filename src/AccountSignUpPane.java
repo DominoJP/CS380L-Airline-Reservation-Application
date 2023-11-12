@@ -4,6 +4,8 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,10 +25,14 @@ import java.awt.Color;
 
 public class AccountSignUpPane extends JPanel {
 	private JLabel lblError;
+	
+	private PropertyChangeSupport support;
 
 	private static final long serialVersionUID = 1L;
 
 	public AccountSignUpPane(JPanel contentPane) {
+		support = new PropertyChangeSupport(this);
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{110, 0, 115, 90, 0};
 		gridBagLayout.rowHeights = new int[]{16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -145,15 +151,18 @@ public class AccountSignUpPane extends JPanel {
 					lblError.setVisible(true);
 					lblError.setText("Name Required.");
 				// } else if (txtEmail empty) {
-					// setVisible & setText "Email Required"
+					// setVisible true & setText "Email required."
+				// } else if (!txtEmail.getText().contains("@"){
+					// setVisible true & SetText "Invalid email."
 				// } else if (passwordField password too short, less than 8 characters) {
-					// setVisible & setText "..."
+					// setVisible true & setText "..."
 				// } else if (passwordField and passwordFieldRetype do not match) {	
-					// setVisible & setText "..."
+					// setVisible true & setText "..."
 				} else {
 					// if (email is unique) {
 						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
 						lblError.setVisible(false);
+						support.firePropertyChange("successfulSignUp", null, true);
 						((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 					// }
 				}
@@ -185,5 +194,9 @@ public class AccountSignUpPane extends JPanel {
 		
 		lblError.setVisible(false);
 	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
+    }
 
 }
