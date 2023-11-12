@@ -34,7 +34,7 @@ public class AccountSignUpPane extends JPanel {
 		support = new PropertyChangeSupport(this);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{110, 0, 115, 90, 0};
+		gridBagLayout.columnWidths = new int[]{98, 129, 133, 90, 0};
 		gridBagLayout.rowHeights = new int[]{16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
