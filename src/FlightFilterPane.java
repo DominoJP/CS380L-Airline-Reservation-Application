@@ -34,8 +34,6 @@ public class FlightFilterPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private final ButtonGroup buttonGroupTripType = new ButtonGroup();
-	private JTextField textReturn;
-	private JLabel lblReturn;
 	private JComboBox comboBoxPassengerAmount;
 	private JComboBox comboBoxFrom;
 	private JLabel lblNoFlights;
@@ -80,9 +78,9 @@ public class FlightFilterPane extends JPanel {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{30, 56, 33, 0, 74, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{50, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		rdbtnRoundTrip = new JRadioButton("Round Trip");
@@ -207,38 +205,25 @@ public class FlightFilterPane extends JPanel {
 		gbc_comboBoxPassengerAmount.gridy = 5;
 		add(comboBoxPassengerAmount, gbc_comboBoxPassengerAmount);
 		
-		lblReturn = new JLabel(" Return");
-		GridBagConstraints gbc_lblReturn = new GridBagConstraints();
-		gbc_lblReturn.gridwidth = 2;
-		gbc_lblReturn.anchor = GridBagConstraints.WEST;
-		gbc_lblReturn.insets = new Insets(0, 0, 5, 5);
-		gbc_lblReturn.gridx = 1;
-		gbc_lblReturn.gridy = 6;
-		add(lblReturn, gbc_lblReturn);
-		lblReturn.setVisible(false);
-		
-		textReturn = new JTextField();
-		textReturn.setColumns(10);
-		GridBagConstraints gbc_textReturn = new GridBagConstraints();
-		gbc_textReturn.gridwidth = 2;
-		gbc_textReturn.insets = new Insets(0, 0, 5, 5);
-		gbc_textReturn.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textReturn.gridx = 1;
-		gbc_textReturn.gridy = 7;
-		add(textReturn, gbc_textReturn);
-		textReturn.setVisible(false);
-		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 			}
 		});
+		
+		JSeparator separator = new JSeparator();
+		GridBagConstraints gbc_separator = new GridBagConstraints();
+		gbc_separator.gridwidth = 6;
+		gbc_separator.insets = new Insets(0, 0, 5, 5);
+		gbc_separator.gridx = 1;
+		gbc_separator.gridy = 6;
+		add(separator, gbc_separator);
 		GridBagConstraints gbc_btnBack = new GridBagConstraints();
 		gbc_btnBack.anchor = GridBagConstraints.WEST;
 		gbc_btnBack.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBack.gridx = 1;
-		gbc_btnBack.gridy = 8;
+		gbc_btnBack.gridy = 7;
 		add(btnBack, gbc_btnBack);
 		
 		lblNoFlights = new JLabel("No flights with selected criteria.");
@@ -248,7 +233,7 @@ public class FlightFilterPane extends JPanel {
 		gbc_lblNoFlights.gridwidth = 4;
 		gbc_lblNoFlights.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNoFlights.gridx = 2;
-		gbc_lblNoFlights.gridy = 8;
+		gbc_lblNoFlights.gridy = 7;
 		add(lblNoFlights, gbc_lblNoFlights);
 		
 		JButton btnFilter = new JButton("Filter");
@@ -299,7 +284,7 @@ public class FlightFilterPane extends JPanel {
 		GridBagConstraints gbc_btnFilter = new GridBagConstraints();
 		gbc_btnFilter.insets = new Insets(0, 0, 5, 5);
 		gbc_btnFilter.gridx = 6;
-		gbc_btnFilter.gridy = 8;
+		gbc_btnFilter.gridy = 7;
 		add(btnFilter, gbc_btnFilter);
 		
 		lblNoFlights.setVisible(false);
