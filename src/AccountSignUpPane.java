@@ -145,9 +145,11 @@ public class AccountSignUpPane extends JPanel {
 					lblError.setVisible(true);
 					lblError.setText("Name Required.");
 				// } else if (txtEmail empty) {
-					// setVisible & setText for Email
+					// setVisible & setText "Email Required"
+				// } else if (passwordField password too short, less than 8 characters) {
+					// setVisible & setText "..."
 				// } else if (passwordField and passwordFieldRetype do not match) {	
-					// setVisible & setText for passwordField
+					// setVisible & setText "..."
 				} else {
 					// if (email is unique) {
 						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
