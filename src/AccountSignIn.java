@@ -10,6 +10,7 @@ import java.io.IOException;
 */
 
 public class AccountSignIn {
+	private static final String FILE_PATH = "TestAccountSignUp.txt";
 	private int id;
 	private String email;
 	private char[] password;
@@ -24,7 +25,7 @@ public class AccountSignIn {
 	
 	public boolean validateCredentials(String email, char[] password) {
 
-		try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/AccountsTemp"))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			 String line;
 			 
 			 while ((line = reader.readLine()) != null) {
