@@ -14,10 +14,10 @@ import java.util.Iterator;
 
 public class FlightIO {
 	private static final String FILE_PATH = "FlightsTest.txt";
-	private static final int ECONOMY_COUNT_INDEX = 9;
-	private static final int BUSINESS_COUNT_INDEX = 12;
-	private static final int FIRST_CLASS_COUNT_INDEX = 15;
-	private static final int LAST_INDEX = 16;
+	private static final int ECONOMY_COUNT_INDEX = 10;
+	private static final int BUSINESS_COUNT_INDEX = 13;
+	private static final int FIRST_CLASS_COUNT_INDEX = 16;
+	private static final int LAST_INDEX = 17;
 	
 	/**
 	 * Constructor.

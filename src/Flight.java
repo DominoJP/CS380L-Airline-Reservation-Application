@@ -11,9 +11,11 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Flight {
 	
@@ -429,10 +431,31 @@ public class Flight {
 	
 	@Override
     public String toString() {
-        return "Departs: " + dateTimeDeparture.getHour() + ":" + dateTimeDeparture.getMinute() +
-        	   "Arrives: " + dateTimeArrival.getMonthValue() + "/" +  dateTimeArrival.getDayOfMonth() +
-        	   dateTimeArrival.getHour() + ":" + dateTimeArrival.getMinute();
-        // ", Arrives: " + dateArrival.getMonthValue() + "/" + dateArrival.getDayOfMonth() + " " + timeArrival;
+		String departPeriod = "";
+		int timeDepartureHour = dateTimeDeparture.getHour();
+		if (timeDepartureHour < 12) {
+			departPeriod = "AM";
+		} else {
+			departPeriod = "PM";
+			timeDepartureHour -= 12;
+			if (timeDepartureHour == 0)
+				timeDepartureHour = 12;
+		}
+		
+		String arrivePeriod = "";
+		int timeArrivalHour = dateTimeArrival.getHour();
+		if (timeArrivalHour < 12) {
+			arrivePeriod = "AM";
+		} else {
+			arrivePeriod = "PM";
+			timeArrivalHour -= 12;
+			if (timeArrivalHour == 0)
+				timeArrivalHour = 12;
+		}
+		
+        return "DEPARTS: " + timeDepartureHour + ":" + dateTimeDeparture.getMinute() + " " + departPeriod + " " +
+        		" - ARRIVES: " + timeArrivalHour + ":" + dateTimeArrival.getMinute() + " " + arrivePeriod + ", " +
+        	    dateTimeArrival.getMonthValue() + "/" +  dateTimeArrival.getDayOfMonth();
     }
 	
 }
