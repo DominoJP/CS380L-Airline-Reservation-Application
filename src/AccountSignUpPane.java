@@ -149,7 +149,7 @@ public class AccountSignUpPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (txtFirstName.getText().equals("") || txtLastName.getText().equals("")) {
 					lblError.setVisible(true);
-					lblError.setText("Name Required.");
+					lblError.setText("First & Last Name required.");
 				// } else if (txtEmail empty) {
 					// setVisible true & setText "Email required."
 				// } else if (!txtEmail.getText().contains("@"){
