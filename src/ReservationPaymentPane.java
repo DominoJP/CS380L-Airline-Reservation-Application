@@ -269,8 +269,8 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (isUniqueReservation(account, selectedFlight.getID())) {
-					IDGenerator reservationIDFactory = new IDGenerator("RESERVATIONS");
-					reservation = new Reservation(reservationIDFactory.generateID(), account, flight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+					IDGenerator IDGen = new IDGenerator();
+					reservation = new Reservation(IDGen.generateReservationID(), account, flight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
