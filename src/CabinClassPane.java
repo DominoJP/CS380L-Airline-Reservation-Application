@@ -45,14 +45,14 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
-		JLabel lblPricing = new JLabel("PRICING");
+		JLabel lblPricing = new JLabel("FARES");
 		GridBagConstraints gbc_lblPricing = new GridBagConstraints();
 		gbc_lblPricing.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPricing.gridx = 2;
 		gbc_lblPricing.gridy = 1;
 		add(lblPricing, gbc_lblPricing);
 		
-		JLabel lblSeats = new JLabel("AVAILABLE");
+		JLabel lblSeats = new JLabel("SEATS");
 		GridBagConstraints gbc_lblSeats = new GridBagConstraints();
 		gbc_lblSeats.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSeats.gridx = 3;
@@ -80,7 +80,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		gbc_lblEconomyPricing.gridy = 3;
 		add(lblEconomyPricing, gbc_lblEconomyPricing);
 		
-		lblEconomySeating = new JLabel("0 seats");
+		lblEconomySeating = new JLabel("0 left");
 		GridBagConstraints gbc_lblEconomySeating = new GridBagConstraints();
 		gbc_lblEconomySeating.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEconomySeating.gridx = 3;
@@ -104,7 +104,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		gbc_lblBusinessPricing.gridy = 4;
 		add(lblBusinessPricing, gbc_lblBusinessPricing);
 		
-		lblBusinessSeating = new JLabel("0 seats");
+		lblBusinessSeating = new JLabel("0 left");
 		GridBagConstraints gbc_lblBusinessSeating = new GridBagConstraints();
 		gbc_lblBusinessSeating.insets = new Insets(0, 0, 5, 5);
 		gbc_lblBusinessSeating.gridx = 3;
@@ -127,7 +127,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		gbc_lblFirstClassPricing.gridy = 5;
 		add(lblFirstClassPricing, gbc_lblFirstClassPricing);
 		
-		lblFirstClassSeating = new JLabel("0 seats");
+		lblFirstClassSeating = new JLabel("0 left");
 		GridBagConstraints gbc_lblFirstClassSeating = new GridBagConstraints();
 		gbc_lblFirstClassSeating.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFirstClassSeating.gridx = 3;
@@ -150,7 +150,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		gbc_separator_3.gridy = 6;
 		add(separator_3, gbc_separator_3);
 		
-		JButton btnContinue = new JButton("Continue with selection");
+		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (rdbtnFirstClass.isSelected()) {
@@ -177,9 +177,9 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 		add(btnBack, gbc_btnBack);
 		GridBagConstraints gbc_btnContinue = new GridBagConstraints();
 		gbc_btnContinue.anchor = GridBagConstraints.EAST;
-		gbc_btnContinue.gridwidth = 3;
+		gbc_btnContinue.gridwidth = 2;
 		gbc_btnContinue.insets = new Insets(0, 0, 5, 5);
-		gbc_btnContinue.gridx = 3;
+		gbc_btnContinue.gridx = 4;
 		gbc_btnContinue.gridy = 7;
 		add(btnContinue, gbc_btnContinue);
 		
@@ -222,9 +222,9 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 			lblEconomyPricing.setText("$" + selectedFlight.getEconomyPricing().toString());
 			lblBusinessPricing.setText("$" + selectedFlight.getBusinessPricing().toString());
 			lblFirstClassPricing.setText("$" + selectedFlight.getFirstClassPricing().toString());
-			lblEconomySeating.setText(selectedFlight.getEconomyCapacity() - selectedFlight.getEconomyPassengerCount() + " seats");
-			lblBusinessSeating.setText(selectedFlight.getBusinessCapacity() - selectedFlight.getBusinessPassengerCount() + " seats");
-			lblFirstClassSeating.setText(selectedFlight.getFirstClassCapacity() - selectedFlight.getFirstClassPassengerCount() + " seats");
+			lblEconomySeating.setText(selectedFlight.getEconomyCapacity() - selectedFlight.getEconomyPassengerCount() + " left");
+			lblBusinessSeating.setText(selectedFlight.getBusinessCapacity() - selectedFlight.getBusinessPassengerCount() + " left");
+			lblFirstClassSeating.setText(selectedFlight.getFirstClassCapacity() - selectedFlight.getFirstClassPassengerCount() + " left");
 		}
 		
 	}
