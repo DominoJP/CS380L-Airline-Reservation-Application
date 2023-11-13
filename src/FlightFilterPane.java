@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +38,10 @@ public class FlightFilterPane extends JPanel {
 	private final ButtonGroup buttonGroupTripType = new ButtonGroup();
 	private JComboBox comboBoxPassengerAmount;
 	private JComboBox comboBoxDepart;
+	JComboBox comboBoxMonthD;
+	JComboBox comboBoxDayD;
+	JComboBox comboBoxYearD;
+	
 	private JLabel lblNoFlights;
 	
 	private String airportDepartInput;
@@ -59,6 +64,7 @@ public class FlightFilterPane extends JPanel {
 									  "ORD - O'Hare International Airport",
 									  "SLC - Salt Lake City Airport"};
 	// for use with comboBoxMonthD
+	// private String[] monthList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	private String[] monthList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	// for use with comboBoxDayD
 	private String[] dayList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
@@ -172,21 +178,21 @@ public class FlightFilterPane extends JPanel {
 		gbc_lblPassengerAmount.gridy = 6;
 		add(lblPassengerAmount, gbc_lblPassengerAmount);
 		
-		JComboBox comboBoxMonthD = new JComboBox(monthList);
+		comboBoxMonthD = new JComboBox(monthList);
 		GridBagConstraints gbc_comboBoxMonthD = new GridBagConstraints();
 		gbc_comboBoxMonthD.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMonthD.gridx = 1;
 		gbc_comboBoxMonthD.gridy = 7;
 		add(comboBoxMonthD, gbc_comboBoxMonthD);
 		
-		JComboBox comboBoxDayD = new JComboBox(dayList);
+		comboBoxDayD = new JComboBox(dayList);
 		GridBagConstraints gbc_comboBoxDayD = new GridBagConstraints();
 		gbc_comboBoxDayD.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxDayD.gridx = 2;
 		gbc_comboBoxDayD.gridy = 7;
 		add(comboBoxDayD, gbc_comboBoxDayD);
 		
-		JComboBox comboBoxYearD = new JComboBox(yearList);
+		comboBoxYearD = new JComboBox(yearList);
 		GridBagConstraints gbc_comboBoxYearD = new GridBagConstraints();
 		gbc_comboBoxYearD.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxYearD.gridwidth = 3;
@@ -305,6 +311,7 @@ public class FlightFilterPane extends JPanel {
 		add(btnFilter, gbc_btnFilter);
 		
 		lblNoFlights.setVisible(false);
+		this.getCurrentDate();
 	}
 	
 	public int getPassengerAmount() {
@@ -315,6 +322,12 @@ public class FlightFilterPane extends JPanel {
 	public void setPassengerAmount(int selectedPassengerAmount) {
 		support.firePropertyChange("passengerAmount", passengerAmount, selectedPassengerAmount);
 		this.selectedPassengerAmount = selectedPassengerAmount;
+	}
+	
+	public void getCurrentDate() {
+		comboBoxMonthD.setSelectedItem(String.format("%02d", ZonedDateTime.now().getMonthValue()));
+		comboBoxDayD.setSelectedItem(String.format("%02d", ZonedDateTime.now().getDayOfMonth()));
+		comboBoxYearD.setSelectedItem(String.valueOf(ZonedDateTime.now().getYear()));
 	}
 
 }
