@@ -82,10 +82,10 @@ public class FlightFilterPane extends JPanel {
 		
 		support = new PropertyChangeSupport(this);
 		
-		airports.put("New York", "JFK - John F. Kennedy International Airport");
-		airports.put("Los Angeles", "LAX - Los Angeles International Airport");
-		airports.put("Chicago", "ORD - O'Hare International Airport");
-		airports.put("Salt Lake City", "SLC - Salt Lake City Airport");
+		airports.put("New York", "JFK");
+		airports.put("Los Angeles", "LAX");
+		airports.put("Chicago", "ORD");
+		airports.put("Salt Lake City", "SLC");
 		
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -240,18 +240,25 @@ public class FlightFilterPane extends JPanel {
 				try {
 					airportDepartInput = airports.get(airportDepartInput).substring(0,3);
 				} catch (NullPointerException ex) {
-					lblNoFlights.setVisible(true);
-					lblNoFlights.setText("No flights from city of departure.");
-					return;
+					
+					// lblNoFlights.setVisible(true);
+					// lblNoFlights.setText("No flights from city of departure.");
+					// return;
 				}
+				
+				airportDepartInput = airportDepartInput.substring(0, 3);
+				
 				airportArriveInput = comboBoxArrive.getSelectedItem().toString();
 				try {
 					airportArriveInput = airports.get(airportArriveInput).substring(0,3);
 				} catch (NullPointerException ex) {
 					lblNoFlights.setVisible(true);
 					lblNoFlights.setText("No flights to city of arrival.");
-					return;
+					// return;
 				}
+				
+				airportArriveInput = airportArriveInput.substring(0, 3);
+				
 				dateDepartingInput = comboBoxYearD.getSelectedItem().toString() + "-" +
 									 comboBoxMonthD.getSelectedItem().toString() + "-" +
 									 comboBoxDayD.getSelectedItem().toString();
