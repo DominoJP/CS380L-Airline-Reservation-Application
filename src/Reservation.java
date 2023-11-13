@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,11 +9,14 @@ import java.util.Scanner;
  */
 
 public class Reservation {
+	private int id;
 	private Account customer; //whoever has the account and is making the reservation
 	private Flight flight;
+	private String cabin;
 	private ArrayList<String> passengers; //total list of passengers in case if the reservation includes more than just the customer
 	private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
-	private BigDecimal totalPrice; // a BigDecimal keeps track of the total cost of this reservation since multiple tickets may be ordered
+	private BigDecimal totalPrice; // keeps track of the total cost of this reservation since multiple tickets may be ordered
+	private LocalDateTime dateTimeAtBooking;
 	
 	/**
 	 * a constructor that accepts nothing
@@ -37,17 +41,22 @@ public class Reservation {
 	 
 	 /**
 	   Constructor that adds the customer account making the reservation and the flight the reservation applies to
+	   @param i is the id
 	   @param n is the Account making the reservation
 	   @param f is the flight that the reservation is for
 	   @param p is the List of passenger names
 	   @param t is total price
+	   @param b is the date&time at booking
 	   and also calls the method setReservation()
 	 */
-	 public Reservation(Account a, Flight f, ArrayList<String> p, BigDecimal t) {
+	 public Reservation(int id, Account a, Flight f, String c, ArrayList<String> p, BigDecimal t, LocalDateTime b) {
+		 this.id = id;
 		 this.customer = a;
 		 this.flight = f;
+		 this.cabin = c;
 		 this.passengers = p;
 		 this.totalPrice = t;
+		 this.dateTimeAtBooking = b;
 	 }
 	 
 	 /**
@@ -107,6 +116,16 @@ public class Reservation {
 		 return;
 	 }
 	 
+	 /**
+	  * Method returning unique reservation ID.
+	  */
+	 public int getID() {
+		 return this.id;
+	 }
+	 
+	 /**
+	  * Method returning total pricing of reservation.
+	  */
 	 public BigDecimal getTotalPrice() {
 		 return this.totalPrice;
 		 
@@ -146,8 +165,27 @@ public class Reservation {
 		 return this.flight;
 	 }
 	 
+	 public String getCabin() {
+		 return this.cabin;
+	 }
+	 
+	 public void setCabin(String cabin) {
+		 this.cabin = cabin;
+	 }
+	 
 	 public void addPassenger(String p) {
-		 
+		 passengers.add(p);
+	 }
+	 
+	 public ArrayList<String> getPassengers(){
+		 return this.passengers;
+	 }
+	 
+	 /**
+	  * Method returning LocalDateTime at booking.
+	  */
+	 public LocalDateTime getDateTimeAtBooking() {
+		 return this.dateTimeAtBooking;
 	 }
 	 
 	 
@@ -196,12 +234,12 @@ public class Reservation {
 		 return;
 	 }
 	 
-	 @Override
-	    public String toString() {
-	        return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + 
-	        ", DEPARTS " + this.flight.getdateDeparture() + " " + this.flight.gettimeDeparture() +
-	        ", ARRIVES " + this.flight.getDateArrival() + " " + this.flight.getTimeArrival();
-	    }
+	@Override
+    public String toString() {
+        return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + 
+        ", DEPARTS " + this.flight.getdateDeparture() + " " + this.flight.gettimeDeparture() +
+        ", ARRIVES " + this.flight.getDateArrival() + " " + this.flight.getTimeArrival();
+    }
 	 
 	
 }
