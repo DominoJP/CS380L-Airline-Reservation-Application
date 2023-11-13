@@ -86,6 +86,10 @@ public class FlightFilterPane extends JPanel {
 		airports.put("Los Angeles", "LAX");
 		airports.put("Chicago", "ORD");
 		airports.put("Salt Lake City", "SLC");
+		airports.put("John F. Kennedy International Airport", "JFK");
+		airports.put("Los Angeles International Airport", "LAX");
+		airports.put("O'Hare International Airport", "ORD");
+		airports.put("Salt Lake City Airport", "SLC");
 		
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -240,7 +244,6 @@ public class FlightFilterPane extends JPanel {
 				try {
 					airportDepartInput = airports.get(airportDepartInput).substring(0,3);
 				} catch (NullPointerException ex) {
-					
 					// lblNoFlights.setVisible(true);
 					// lblNoFlights.setText("No flights from city of departure.");
 					// return;
@@ -252,8 +255,8 @@ public class FlightFilterPane extends JPanel {
 				try {
 					airportArriveInput = airports.get(airportArriveInput).substring(0,3);
 				} catch (NullPointerException ex) {
-					lblNoFlights.setVisible(true);
-					lblNoFlights.setText("No flights to city of arrival.");
+					// lblNoFlights.setVisible(true);
+					// lblNoFlights.setText("No flights to city of arrival.");
 					// return;
 				}
 				
