@@ -67,7 +67,8 @@ public class FlightFilterPane extends JPanel {
 	// private String[] monthList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	private String[] monthList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	// for use with comboBoxDayD
-	private String[] dayList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+	private String[] dayList = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", 
+								"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 	// for use with comboBoxYearD
 	private String[] yearList = {"2023", "2024"};
 	// for use with comboBoxPassengerAmount
@@ -311,7 +312,7 @@ public class FlightFilterPane extends JPanel {
 		add(btnFilter, gbc_btnFilter);
 		
 		lblNoFlights.setVisible(false);
-		this.getCurrentDate();
+		this.setToCurrentDate();
 	}
 	
 	public int getPassengerAmount() {
@@ -324,7 +325,10 @@ public class FlightFilterPane extends JPanel {
 		this.selectedPassengerAmount = selectedPassengerAmount;
 	}
 	
-	public void getCurrentDate() {
+	/**
+	 * Sets JComboBoxes for Date of Departure (Month, Day, Year) to current date.
+	 */
+	private void setToCurrentDate() {
 		comboBoxMonthD.setSelectedItem(String.format("%02d", ZonedDateTime.now().getMonthValue()));
 		comboBoxDayD.setSelectedItem(String.format("%02d", ZonedDateTime.now().getDayOfMonth()));
 		comboBoxYearD.setSelectedItem(String.valueOf(ZonedDateTime.now().getYear()));

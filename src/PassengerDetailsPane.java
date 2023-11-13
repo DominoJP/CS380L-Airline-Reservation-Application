@@ -15,7 +15,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 /**
@@ -29,6 +33,11 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
 	private String selectedCabin;
+	
+	private ArrayList<String> years = new ArrayList<>();
+	private String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+	private String[] days = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", 
+								"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 	
 	private PropertyChangeSupport support;
 
@@ -47,22 +56,30 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 			"First Class"
 	};
  	
-	//FIXME: populate from .txt
 	String[] countryArray = {
 		"United States",
-		"Afghanistan"
+		"Canada",
+		"Mexico",
 	};
-	//FIXME: populate from .txt
-	String[] stateArray = {
-			"California"
-		};
+
+	String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", 
+	                   "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", 
+	                   "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", 
+	                   "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", 
+	                   "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", 
+	                   "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", 
+	                   "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"};
 
 	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		
+		for (int i = 1900; i < ZonedDateTime.now().getYear(); i++) {
+			years.add(String.valueOf(i));
+		}
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{75, 73, 85, 20, 0};
+		gridBagLayout.columnWidths = new int[]{70, 71, 85, 20, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 0.0, 1.0};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -106,12 +123,15 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		lblNameRequired.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		lblNameRequired.setForeground(Color.RED);
 		GridBagConstraints gbc_lblNameRequired = new GridBagConstraints();
-		gbc_lblNameRequired.anchor = GridBagConstraints.WEST;
 		gbc_lblNameRequired.gridwidth = 2;
+		gbc_lblNameRequired.anchor = GridBagConstraints.WEST;
 		gbc_lblNameRequired.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNameRequired.gridx = 1;
 		gbc_lblNameRequired.gridy = 2;
 		add(lblNameRequired, gbc_lblNameRequired);
+		
+		// CUSTOM
+		lblNameRequired.setVisible(false);
 		
 		JLabel lblGender = new JLabel(" Gender (*)");
 		GridBagConstraints gbc_lblGender = new GridBagConstraints();
@@ -156,7 +176,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_separator_2.gridy = 5;
 		add(separator_2, gbc_separator_2);
 		
-		JLabel lblDoB = new JLabel(" Date of Birth (MM/DD/YYYY) (*)");
+		JLabel lblDoB = new JLabel(" Date of Birth (Month, Day, Year) (*)");
 		GridBagConstraints gbc_lblDoB = new GridBagConstraints();
 		gbc_lblDoB.anchor = GridBagConstraints.WEST;
 		gbc_lblDoB.gridwidth = 3;
@@ -176,29 +196,29 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		add(lblDoBInvalidDateFormat, gbc_lblDoBInvalidDateFormat);
 		lblDoBInvalidDateFormat.setVisible(false);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
-		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_1.gridx = 0;
-		gbc_comboBox_1.gridy = 7;
-		add(comboBox_1, gbc_comboBox_1);
+		JComboBox comboBoxBirthMonth = new JComboBox(months);
+		GridBagConstraints gbc_comboBoxBirthMonth = new GridBagConstraints();
+		gbc_comboBoxBirthMonth.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxBirthMonth.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxBirthMonth.gridx = 0;
+		gbc_comboBoxBirthMonth.gridy = 7;
+		add(comboBoxBirthMonth, gbc_comboBoxBirthMonth);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		GridBagConstraints gbc_comboBox_2 = new GridBagConstraints();
-		gbc_comboBox_2.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_2.gridx = 1;
-		gbc_comboBox_2.gridy = 7;
-		add(comboBox_2, gbc_comboBox_2);
+		JComboBox comboBoxBirthDay = new JComboBox(days);
+		GridBagConstraints gbc_comboBoxBirthDay = new GridBagConstraints();
+		gbc_comboBoxBirthDay.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxBirthDay.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxBirthDay.gridx = 1;
+		gbc_comboBoxBirthDay.gridy = 7;
+		add(comboBoxBirthDay, gbc_comboBoxBirthDay);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		GridBagConstraints gbc_comboBox_3 = new GridBagConstraints();
-		gbc_comboBox_3.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_3.gridx = 2;
-		gbc_comboBox_3.gridy = 7;
-		add(comboBox_3, gbc_comboBox_3);
+		JComboBox comboBoxBirthYear = new JComboBox(years.toArray());
+		GridBagConstraints gbc_comboBoxBirthYear = new GridBagConstraints();
+		gbc_comboBoxBirthYear.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxBirthYear.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxBirthYear.gridx = 2;
+		gbc_comboBoxBirthYear.gridy = 7;
+		add(comboBoxBirthYear, gbc_comboBoxBirthYear);
 		
 		JLabel lblCountry = new JLabel(" Country/Region of Residence (*)");
 		GridBagConstraints gbc_lblCountry = new GridBagConstraints();
@@ -237,7 +257,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_comboBoxCountry.gridy = 9;
 		add(comboBoxCountry, gbc_comboBoxCountry);
 		
-		comboBoxState = new JComboBox(stateArray);
+		comboBoxState = new JComboBox(states);
 		GridBagConstraints gbc_comboBoxState = new GridBagConstraints();
 		gbc_comboBoxState.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxState.fill = GridBagConstraints.HORIZONTAL;
@@ -289,8 +309,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_btnNext.gridy = 11;
 		add(btnNext, gbc_btnNext);
 		
-		// CUSTOM
-		lblNameRequired.setVisible(false);
+		comboBoxBirthYear.setSelectedItem("2000");
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
