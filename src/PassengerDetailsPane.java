@@ -15,6 +15,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -44,31 +46,40 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 	private static final long serialVersionUID = 1L;
 	private JTextField textName;
 	private JComboBox comboBoxState;
+	private JComboBox comboBoxBirthDay;
+	private JComboBox comboBoxBirthMonth;
+	private JComboBox comboBoxBirthYear;
+	
 	private JLabel lblFullName;
-	String[] DepartmentofStateGenderMarkerArray = {
+	private JLabel lblDoBInvalidDateFormat;
+	private String[] DepartmentofStateGenderMarkerArray = {
 			"Male (M)",
 			"Female (F)",
 			"Unspecified (X)",
 			"Undisclosed (U)"
 	};
-	String[] cabinArray = {
+	private String[] cabinArray = {
 			"Economy",
 			"First Class"
 	};
  	
-	String[] countryArray = {
+	private String[] countryArray = {
 		"United States",
 		"Canada",
 		"Mexico",
 	};
 
-	String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", 
+	private String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", 
 	                   "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", 
 	                   "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", 
 	                   "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", 
 	                   "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", 
 	                   "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", 
 	                   "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"};
+	
+	private boolean[] areMinors = {false, false, false, false, false, false};
+	
+	
 
 	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
 		support = new PropertyChangeSupport(this);
@@ -113,20 +124,19 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		
 		lblFullName = new JLabel(" Full Name (*)");
 		GridBagConstraints gbc_lblFullName = new GridBagConstraints();
+		gbc_lblFullName.gridwidth = 2;
 		gbc_lblFullName.anchor = GridBagConstraints.WEST;
 		gbc_lblFullName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFullName.gridx = 0;
 		gbc_lblFullName.gridy = 2;
 		add(lblFullName, gbc_lblFullName);
 		
-		JLabel lblNameRequired = new JLabel("Name is required.");
+		JLabel lblNameRequired = new JLabel("Required.");
 		lblNameRequired.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		lblNameRequired.setForeground(Color.RED);
 		GridBagConstraints gbc_lblNameRequired = new GridBagConstraints();
-		gbc_lblNameRequired.gridwidth = 2;
-		gbc_lblNameRequired.anchor = GridBagConstraints.WEST;
 		gbc_lblNameRequired.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNameRequired.gridx = 1;
+		gbc_lblNameRequired.gridx = 2;
 		gbc_lblNameRequired.gridy = 2;
 		add(lblNameRequired, gbc_lblNameRequired);
 		
@@ -185,7 +195,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_lblDoB.gridy = 6;
 		add(lblDoB, gbc_lblDoB);
 		
-		JLabel lblDoBInvalidDateFormat = new JLabel("  Unattended minor.");
+		lblDoBInvalidDateFormat = new JLabel("  Unattended minor(s).");
 		lblDoBInvalidDateFormat.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		lblDoBInvalidDateFormat.setForeground(Color.RED);
 		GridBagConstraints gbc_lblDoBInvalidDateFormat = new GridBagConstraints();
@@ -196,7 +206,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		add(lblDoBInvalidDateFormat, gbc_lblDoBInvalidDateFormat);
 		lblDoBInvalidDateFormat.setVisible(false);
 		
-		JComboBox comboBoxBirthMonth = new JComboBox(months);
+		comboBoxBirthMonth = new JComboBox(months);
 		GridBagConstraints gbc_comboBoxBirthMonth = new GridBagConstraints();
 		gbc_comboBoxBirthMonth.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxBirthMonth.insets = new Insets(0, 0, 5, 5);
@@ -204,7 +214,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_comboBoxBirthMonth.gridy = 7;
 		add(comboBoxBirthMonth, gbc_comboBoxBirthMonth);
 		
-		JComboBox comboBoxBirthDay = new JComboBox(days);
+		comboBoxBirthDay = new JComboBox(days);
 		GridBagConstraints gbc_comboBoxBirthDay = new GridBagConstraints();
 		gbc_comboBoxBirthDay.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxBirthDay.insets = new Insets(0, 0, 5, 5);
@@ -212,7 +222,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		gbc_comboBoxBirthDay.gridy = 7;
 		add(comboBoxBirthDay, gbc_comboBoxBirthDay);
 		
-		JComboBox comboBoxBirthYear = new JComboBox(years.toArray());
+		comboBoxBirthYear = new JComboBox(years.toArray());
 		GridBagConstraints gbc_comboBoxBirthYear = new GridBagConstraints();
 		gbc_comboBoxBirthYear.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxBirthYear.insets = new Insets(0, 0, 5, 5);
@@ -312,6 +322,17 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		comboBoxBirthYear.setSelectedItem("2000");
 	}
 	
+	/**
+	 * Fires PropertyChangeEvent if passenger is a minor (under 16 for airline accommodation purposes).
+	 */
+	private void checkMinor() {
+		int year = Integer.parseInt(comboBoxBirthYear.getSelectedItem().toString());
+		int month = Integer.parseInt(comboBoxBirthMonth.getSelectedItem().toString());
+		int day = Integer.parseInt(comboBoxBirthMonth.getSelectedItem().toString());
+		LocalDate ld = LocalDate.of(year, month, day);
+		// FIXME
+	}
+	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
@@ -326,6 +347,27 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
 		}
+		
+		switch(evt.getPropertyName()) {
+		case "isMinor" + "1":
+			areMinors[0] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "2":
+			// passengerNames.set(1, ((String) evt.getNewValue()));
+			break;
+		case "isMinor" + "3":
+			// passengerNames.set(2, ((String) evt.getNewValue()));
+			break;
+		case "isMinor" + "4":
+			// passengerNames.set(3, ((String) evt.getNewValue()));
+			break;
+		case "isMinor" + "5":
+			// passengerNames.set(4, ((String) evt.getNewValue()));
+			break;
+		case "isMinor" + "6":
+			// passengerNames.set(5, ((String) evt.getNewValue()));
+			break;
+	}
 		
 	}
 
