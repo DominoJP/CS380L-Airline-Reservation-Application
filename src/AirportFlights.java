@@ -57,34 +57,32 @@ public class AirportFlights {
 	 */
 	
 	public void addFlight(Flight f) {
-		if(timeDeparture == null) {
-			if(date == null) {
-				date = f.getdateDeparture();
-				destination = f.getcityArrival();
-			}
-			timeDeparture = new ArrayList<Flight>();
-			timeDeparture.add(f);
-			return;
-		}
-		
-		if(date.equals(f.getdateDeparture())) {
-			if(this.timeDeparture == null) {
-				this.timeDeparture.add(f);
-			}else {
-				for(int i = 0; i < this.timeDeparture.size(); i++){
-					if(f.gettimeDeparture().isBefore(timeDeparture.get(i).gettimeDeparture())) {
-						timeDeparture.add(i, f);
-						return;
-					}
-				}
-				timeDeparture.add(f);
-			}
-		}else {
-			AirportFlights newChild = new AirportFlights(f);
-			
-			this.addChild(this, newChild);
-		}
-	}
+        if(timeDeparture == null) {
+            if(date == null) {
+                date = f.getdateDeparture();
+                destination = f.getcityArrival();
+            }
+            timeDeparture = new ArrayList<Flight>();
+            timeDeparture.add(f);
+            return;
+        }
+
+        if(date.equals(f.getdateDeparture())) {
+            if(this.timeDeparture == null) {
+                this.timeDeparture.add(f);
+            }else {
+                for(int i = 0; i < this.timeDeparture.size(); i++){
+                    if(f.gettimeDeparture().isBefore(timeDeparture.get(i).gettimeDeparture())) {
+                        timeDeparture.add(i, f);
+                        return;
+                    }
+                }
+                timeDeparture.add(f);
+            }
+        }else {
+            this.addChild(this, f);
+        }
+    } 
 	
 	/**
 	 * the addChild method will take two instances of the AirportFlights class and will recursively add
@@ -93,23 +91,35 @@ public class AirportFlights {
 	 * @param n
 	 */
 	
-	public void addChild(AirportFlights curr, AirportFlights n) {
-		if(curr.date.isAfter(n.date)) {
-			if(curr.child1 != null) {
-				curr.addChild(curr.child1, n);
-				return;
-			}
-			
-			curr.child1 = n;
-		}else {
-			if(curr.child2 != null) {
-				curr.addChild(curr.child2, n);
-				return;
-			}
-			
-			curr.child2 = n;
-		}
-	}
+	public void addChild(AirportFlights curr, Flight n) {
+        if(curr.date.isAfter(n.getdateDeparture())) {
+            if(curr.child1 != null) {
+                if(curr.child1.getDate().equals(n.getdateDeparture())) {
+                    curr.child1.addFlight(n);
+                    return;
+                }
+                curr.addChild(curr.child1, n);
+                return;
+            }
+
+            AirportFlights newChild = new AirportFlights(n);
+
+            curr.child1 = newChild;
+        }else {
+            if(curr.child2 != null) {
+                if(curr.child2.getDate().equals(n.getdateDeparture())) {
+                    curr.child2.addFlight(n);
+                    return;
+                }
+                curr.addChild(curr.child2, n);
+                return;
+            }
+
+            AirportFlights newChild = new AirportFlights(n);
+
+            curr.child2 = newChild;
+        }
+    }
 	
 	/**
 	 * the getDestination method returns the destination that the list of flights heads to
