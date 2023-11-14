@@ -106,7 +106,8 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, selectedFlight);
 		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
-		 ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
+		ReviewPane ReviewPane = new ReviewPane(contentPane, account);
+		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
 		
 		
 		// in pattern observable.addPropertyChangeListener(observer)
@@ -169,7 +170,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		
 		// Select "Review"
 		contentPane.add(ReservationListPane, "REVIEW_LIST");
-		
+		contentPane.add(ReviewPane, "Review");
 		// Select "Cancel"
 		contentPane.add(ReservationCancellationPane, "Cancel");
 		
