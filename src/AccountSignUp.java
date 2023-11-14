@@ -74,7 +74,7 @@ public class AccountSignUp {
     }
 */
     public static void writeToFile(String email, String password, String firstname, String lastname) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("TestAccountSignUp.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/TestAccountSignUp.txt", true))) {
         	IDGenerator idGen = new IDGenerator();
         	int id = idGen.generateAccountID();
         	// + "" typecasts int to String
