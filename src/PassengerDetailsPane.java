@@ -13,6 +13,7 @@ import javax.swing.JSeparator;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
@@ -314,7 +315,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 
 	}
 
-=======
+
 
 	}
 
@@ -325,5 +326,4 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 
 	}
 
->>>>>>> parent of d2601a7 (Merge branch 'feature/payment')
 }

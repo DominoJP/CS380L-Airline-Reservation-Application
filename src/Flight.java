@@ -9,6 +9,7 @@
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -48,7 +49,7 @@ public class Flight {
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
-=======
+	
 	/*
 	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
 			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, double pricing) {
@@ -63,7 +64,6 @@ public class Flight {
 	this.totalPassengerCapacity = totalPassengerCapacity;
 	this.pricing = pricing;
 	passengers = new String[totalPassengerCapacity][2];
->>>>>>> parent of d2601a7 (Merge branch 'feature/payment')
 
 	// support = new PropertyChangeSupport(this);
 	}
@@ -118,7 +118,7 @@ public class Flight {
 
 		support = new PropertyChangeSupport(this);
 	}
-	*/
+	
 
 
 	/**
@@ -212,7 +212,7 @@ public class Flight {
 	 */
 	public int gettotalremainingpassengercapacity() {
 		int available = 0;
-		for(int i = 0; i < totalPassengerCapacity; i++) {
+		for(int i = 0; i < gettotalpassengercapacity(); i++) {
 			if(passengers[i][1] == null ) {
 				available++;
 			}
@@ -226,7 +226,7 @@ public class Flight {
      * @return : returns the pricing of the flight.
      */
 	public double getpricing() {
-		return pricing;
+		return getpricing();
 	}
 
 	/**
@@ -276,7 +276,7 @@ public class Flight {
 	 */
 	@Deprecated
 	public int gettotalpassengercapacity() {
-		return totalPassengerCapacity;
+		return gettotalpassengercapacity();
 
 	}
 
@@ -286,7 +286,7 @@ public class Flight {
 	 */
 	@Deprecated
 	public int getPassengerCount() {
-		return passengerCount;
+		return getPassengerCount();
 	}
 
 	/**
@@ -403,7 +403,7 @@ public class Flight {
 		//if the statement checks whether location is valid seat on the flight and if
 		// it is then it assigns a passenger and if the seat does not exist then it provided
 		//an error to the user.
-		if(location <= totalPassengerCapacity) {
+		if(location <= gettotalpassengercapacity()) {
 			passengers[location][1] = name;
 			if(accountnumber != null) {
 				passengers[location][2] = accountnumber;

@@ -80,7 +80,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// Placeholder Account object to be reassigned at sign in.
 		Account account = new Account(null, null, null, 0000);
 
-		Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
+		//Flight flight = new Flight(null, null, null, "2023-10-24", "12:00", "2000-01-01", "12:00", 0, 0.0);
 
 		FlightsTestReader flightsReader = new FlightsTestReader();
 		FlightSorting sort = flightsReader.getFlightSorting();
