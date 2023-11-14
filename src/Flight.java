@@ -162,6 +162,22 @@ public class Flight {
 	}
 	
 	/**
+	 * Setter method to set the date of departure for a flight using @param depart
+	 */
+	
+	public void setDateDeparture(String depart) {
+		this.dateDeparture = LocalDate.parse(depart);
+	}
+	
+	/**
+	 * Setter method to set the time of departure for a flight using @param depart
+	 */
+	
+	public void setTimeDeparture(String depart) {
+		this.timeDeparture = LocalTime.parse(depart);
+	}
+	
+	/**
 	 * Getter method to retrieve the total remaining pasenger capacity
 	 * @return ; returns the total remaining passenger capacity
 	 */

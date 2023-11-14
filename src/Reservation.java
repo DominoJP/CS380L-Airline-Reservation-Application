@@ -13,9 +13,11 @@ public class Reservation {
 	private Account customer; //whoever has the account and is making the reservation
 	private Flight flight;
 	private ArrayList<String> passengers; //total list of passengers in case if the reservation includes more than just the customer
-	private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
+	private ArrayList<Integer> seatNumbers; //an array containing the list of chosen seat numbers for the flight
 	private BigDecimal totalPrice; // a BigDecimal keeps track of the total cost of this reservation since multiple tickets may be ordered
-	private LocalDateTime dateTimeAtBooking;
+	private LocalDateTime dateOfDeparture;
+	private String origin;
+	private String destination;
 	
 	/**
 	 * a constructor that accepts nothing
@@ -34,8 +36,6 @@ public class Reservation {
 	 public Reservation(Account n, Flight f) {
 		 this.customer = n;
 		 this.flight = f;
-		 
-		 this.setReservation();
 	 }
 	 
 	 /**
@@ -54,7 +54,7 @@ public class Reservation {
 		 this.flight = f;
 		 this.passengers = p;
 		 this.totalPrice = t;
-		 this.dateTimeAtBooking = b;
+		 this.dateOfDeparture = b;
 	 }
 	 
 	 /**
@@ -62,54 +62,21 @@ public class Reservation {
 	  * to add all the people will be on the reservation(including themselves) and also to select the seats
 	  * that all passengers want
 	  */
-	 public void setReservation() {
-		 Scanner scan = new Scanner(System.in);
-		 int numPassengers;
-		 int seat;
+	 public void setReservation(int id, ArrayList<String> people, ArrayList<Integer> seats, String departure, String arrival, LocalDateTime depart) {
+		 this.id = id;
+		 this.passengers = people;
+		 this.seatNumbers = seats;
+		 this.origin = departure;
+		 this.destination = arrival;
+		 this.dateOfDeparture = depart;
 		 
-		 System.out.print("How many other people is going one this trip (include yourself in the total): ");
-		 numPassengers = Integer.parseInt(scan.nextLine());
-		 System.out.println("");
-		 
-		 this.passengers = new ArrayList<String>();
-		 this.passengers.add(this.customer.getName());
-		 
-		 for(int i = 1; i <= numPassengers; i++) {
-			 System.out.print("What is the name of this passenger: ");
-			 passengers.add(scan.nextLine());
-			 System.out.println("");
+		 for(int i = 0; i < passengers.size(); i++) {
+			 if(this.customer != null && i == 0) {
+				 String customerNumber = "" + this.customer.getAccountNumber();
+				 this.flight.setpassenger(this.seatNumbers.get(i).intValue(), customerNumber, this.customer.getName());
+			 }else
+				 this.flight.setpassenger(this.seatNumbers.get(i).intValue(), null, this.passengers.get(i));
 		 }
-		 
-		 //a for loop that is meant to allow each passenger to select what seat they want from what seats are still available on the flight
-		 for (int i = 1; i <= numPassengers; i++) {
-			 if(i == 1) { //I thought it might be good to give a different prompt to the customer making the reservation from the other passengers
-				 System.out.print("What seat would you like: ");
-				 seat = Integer.parseInt(scan.nextLine());
-				 System.out.println("");
-				 if(seat >= this.flight.gettotalpassengercapacity() || this.flight.getPassenger(seat) != null) {
-					 System.out.println("Sorry but that is not an available seat");
-					 i--;
-				 }else {
-					 this.flight.setpassenger(seat, Integer.toString(this.customer.getAccountNumber()), this.passengers.get(i-1));
-					 seatNumbers[i-1] = seat;
-					 
-				 }
-					 
-			 }else {
-				 System.out.print("What seat would " + this.passengers.get(i-1) + " like: ");
-				 seat = Integer.parseInt(scan.nextLine());
-				 System.out.println("");
-				 if(seat >= this.flight.gettotalpassengercapacity() || this.flight.getPassenger(seat) != null) {
-					 System.out.println("Sorry but that is not an available seat");
-					 i--;
-				 }else {
-					 this.flight.setpassenger(seat, null, this.passengers.get(i-1));
-				 }
-			 }
-		 }
-		 
-		 //print out the total price where the total is the price per ticket for the flight multiplied by the number of passengers on the reservation
-		 System.out.println("The total for this reservation is: " + this.setTotalPrice(numPassengers));
 		 
 		 return;
 	 }
@@ -137,14 +104,13 @@ public class Reservation {
 	  * @return returns the total price that was calculated by the method
 	  */
 	 
-	 public BigDecimal setTotalPrice(int p) {
-		 /*
-		 for(int i = 0; i < p; i++) {
-			 this.totalPrice = this.totalPrice + this.flight.getpricing();
-		 }
-		 */
+	 public void setTotalPrice() {
 		 
-		 return this.totalPrice;
+		 for(int i = 0; i < this.passengers.size(); i++) {
+			 this.totalPrice = this.totalPrice.add(this.flight.getpricing());
+		 }
+		 
+		 return;
 		 
 	 }
 	 
@@ -156,7 +122,7 @@ public class Reservation {
 	 
 	 public void setFlight(Flight f) {
 		 this.flight = f;
-		 this.totalPrice = this.setTotalPrice(this.passengers.size());
+		 this.setTotalPrice();
 	 }
 	 
 	 public Flight getFlight() {
@@ -171,7 +137,7 @@ public class Reservation {
 	  * Method returning LocalDateTime at booking.
 	  */
 	 public LocalDateTime getDateTimeAtBooking() {
-		 return this.dateTimeAtBooking;
+		 return this.dateOfDeparture;
 	 }
 	 
 	 
@@ -186,8 +152,8 @@ public class Reservation {
 		 for(int i = 0; i < this.passengers.size(); i++) {
 			 if(this.passengers.get(i) == p) {
 				 this.passengers.remove(i);
-				 this.flight.setpassenger(this.seatNumbers[i], null, null);
-				 this.totalPrice = this.totalPrice - this.flight.getpricing();
+				 this.flight.setpassenger(this.seatNumbers.get(i), null, null);
+				 this.totalPrice = this.totalPrice.add(flight.getpricing().negate());
 				 exist = true;
 			 }
 		 }

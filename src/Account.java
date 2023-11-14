@@ -2,6 +2,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
+import java.math.BigDecimal;
 
 /**
    Account class represents a user account for a flight reservation system.
@@ -16,6 +17,7 @@ public class Account{
 	 private String password;
 	 private int accountNumber;
 	 private List<Reservation> reservationHistory;
+	 private BigDecimal accountBalance;
 	 
 	 private PropertyChangeSupport support;
 
@@ -36,6 +38,7 @@ public class Account{
 		 this.reservationHistory = new ArrayList<>();
 		 
 		 support = new PropertyChangeSupport(this);
+		 this.accountBalance = new BigDecimal(0);
 	 }
 	 
 	 public void addPropertyChangeListener(PropertyChangeListener pcl) {
@@ -172,14 +175,14 @@ public class Account{
      */
      public void changeReservation(Reservation reservation, Flight newflight){
 
-      if(reservation != null & newflight != null) {
-		 reservation.setFlight(newflight);
-		 System.out.println("Reservation changed successfully!");
-	 }
-	 else {
-		 System.out.println("Invalid reservation. Reservation is not to be changed!");
-	  }
-   }
+    	 if(reservation != null & newflight != null) {
+    		 reservation.setFlight(newflight);
+    		 System.out.println("Reservation changed successfully!");
+    	 }
+    	 else {
+    		 System.out.println("Invalid reservation. Reservation is not to be changed!");
+    	 }
+      }
 
      /**
       * Method to review flight details.
@@ -188,25 +191,33 @@ public class Account{
      public void reviewFlightDetails(Flight flight) {
 
     	 if(flight != null) {
-		  System.out.println("Flight Details: ");
-		  System.out.println("Type of flight: " + flight.gettype());
-		  System.out.println("Departure cty: " + flight.getcityDeparture());
-		  System.out.println("Arrival city: " + flight.getcityArrival());
-		  System.out.println("Departure date: " + flight.getdateDeparture());
-		  System.out.println("Arrival date: " + flight.getTimeArrival());
-		  System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
-		  // System.out.println("Passengers on board: " + flight.getPassenger());
-		  System.out.println("Price of flight: " + flight.getpricing());
+    		 System.out.println("Flight Details: ");
+    		 System.out.println("Type of flight: " + flight.gettype());
+    		 System.out.println("Departure cty: " + flight.getcityDeparture());
+    		 System.out.println("Arrival city: " + flight.getcityArrival());
+    		 System.out.println("Departure date: " + flight.getdateDeparture());
+    		 System.out.println("Arrival date: " + flight.getTimeArrival());
+    		 System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
+    		 // System.out.println("Passengers on board: " + flight.getPassenger());
+    		 System.out.println("Price of flight: " + flight.getpricing());
 
-	 }
-	 else {
-		 System.out.println("Invalid flight. You cannot review details of flight");
+    	 }
+    	 else {
+    		 System.out.println("Invalid flight. You cannot review details of flight");
 
-	 }
+    	 }
+     }
 
-
- }
-
-
+     public void addToBalance(BigDecimal amount) {
+    	 this.accountBalance = accountBalance.add(amount);
+     }
+     
+     public void removeFromBalance(BigDecimal amount) {
+    	 this.accountBalance = accountBalance.add(amount.negate());
+     }
+     
+     public BigDecimal getAccountBalance() {
+    	 return this.accountBalance;
+     }
 
 }
