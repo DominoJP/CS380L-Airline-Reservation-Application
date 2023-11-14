@@ -455,7 +455,7 @@ public class Flight {
 		
         return "DEPARTS: " + timeDepartureHour + ":" + dateTimeDeparture.getMinute() + " " + departPeriod + " " +
         		" - ARRIVES: " + timeArrivalHour + ":" + dateTimeArrival.getMinute() + " " + arrivePeriod + ", " +
-        	    dateTimeArrival.getMonthValue() + "/" +  dateTimeArrival.getDayOfMonth();
+        	    dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
     }
 	
 }
