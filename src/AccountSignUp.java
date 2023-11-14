@@ -74,6 +74,26 @@ public class AccountSignUp {
     }
 */
     public static void writeToFile(String email, String password, String firstname, String lastname) {
+    	
+    	if(firstname.isEmpty() || lastname.isEmpty()) {
+    		//System.out.println("First & Last name are required, account not saved!");
+    		return;
+    	}
+    	
+    	if(!ValidEmail(email)) {
+    		//System.out.println("Invalid email format!");
+    	}
+    	
+    	if(password.length() < 8) {
+    		//System.out.println("Password must be atleast 8 characters");
+    		return;
+    	}
+    	
+    	if(!PasswordMatch(password, password)) {
+    		//System.out.println("Passwords do not match!");
+    		return;
+    	}
+    	
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("TestAccountSignUp.txt", true))) {
         	IDGenerator idGen = new IDGenerator();
         	int id = idGen.generateAccountID();
@@ -135,6 +155,16 @@ public class AccountSignUp {
     
     
 
+    private static boolean ValidEmail(String email) {
+		return email.contains("@");
+    }
+
+    
+    private static boolean PasswordMatch(String password, String confirmPassword) {
+		return password.equals(confirmPassword);
+    	
+    }
+
     // Getter and Setter methods
     public void setEmail(String email) {
         this.email = email;
@@ -147,7 +177,7 @@ public class AccountSignUp {
     public void FirstName(String firstname) {
         this.firstname = firstname;
     }
-    
+
     public void setLastName(String lastname) {
         this.lastname = lastname;
     }
@@ -156,25 +186,20 @@ public class AccountSignUp {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public void getEmail(String email) {
-    	return; 
+    	return;
     }
-    
+
     public void getPassword(String password) {
     	return;
     }
-    
+
     public void getName(String name) {
-    	return; 
+    	return;
     }
-    
+
     public void getId(int id) {
-    	return; 
+    	return;
     }
 }
-
-
-
-
-
