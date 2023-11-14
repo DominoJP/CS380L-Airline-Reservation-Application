@@ -280,6 +280,22 @@ public class Flight {
 	public ZoneId getZone() {
 		return this.zone;
 	}
+	
+	/**
+	 * Returns ZonedDateTime from LocalDate of departure, LocalTime of departure, and zone of machine compared against zone of departure.
+	 * @return ZonedDateTime of departure
+	 */
+	public ZonedDateTime getZonedDateTimeDeparture() {
+		return this.dateTimeDeparture;
+	}
+	
+	/**
+	 * Returns ZonedDateTime from LocalDate of arrival, LocalTime of arrival, and zone of machine  compared against zone of departure.
+	 * @return ZonedDateTime of departure
+	 */
+	public ZonedDateTime getZonedDateTimeArrival() {
+		return this.dateTimeArrival;
+	}
 
 	/**
 	 * Getter method to retrieve the total passenger capacity of the flight.
