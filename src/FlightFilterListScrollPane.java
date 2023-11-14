@@ -53,22 +53,21 @@ public class FlightFilterListScrollPane extends JPanel {
 		JButton btnSort = new JButton("Sort");
 		toolBar.add(btnSort);
 		
-		JButton btnBook = new JButton("Book Selected Flight");
-		btnBook.addActionListener(new ActionListener() {
+		JButton btnContinue = new JButton("Continue to Cabin Selection");
+		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Flight tempFlight = flightArray.get(listFlights.getSelectedIndex());
 				//
 				// flight.assign(tempFlight);
 				flight.assign(flightArray.get(listFlights.getSelectedIndex()));
-				System.out.println(flight.getPassengerCount());
 				// flight.setDateArrival(tempFlight.getDateArrival().toString());
 				// flight.setTimeArrival(tempFlight.getTimeArrival().toString());
 				// ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, tempFlight);
 				// contentPane.add(PaymentPane, "PAY");
-				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "CABIN");
 			}
 		});
-		toolBar.add(btnBook);
+		toolBar.add(btnContinue);
 				
 	}
 

@@ -11,7 +11,11 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Flight {
 	
@@ -23,10 +27,19 @@ public class Flight {
 	private LocalTime timeDeparture;    
 	private LocalDate dateArrival;     
 	private LocalTime timeArrival;   
-	private int totalPassengerCapacity;
-	private int passengerCount;
-	private String[][] passengers; 
-	private BigDecimal pricing; 
+	private ZoneId zone;
+	private ZonedDateTime dateTimeDeparture;
+	private ZonedDateTime dateTimeArrival;
+	private int economyCapacity;
+	private int economyPassengerCount;
+	private BigDecimal economyPricing;
+	private int businessCapacity;
+	private int businessPassengerCount;
+	private BigDecimal businessPricing; 
+	private int firstClassCapacity;
+	private int firstClassPassengerCount;
+	private BigDecimal firstClassPricing; 
+	private String[][] passengers;  
 	
 	private PropertyChangeSupport support;
 
@@ -42,6 +55,7 @@ public class Flight {
 	 * @param totalPassengerCapacity
 	 * @param pricing
 	 */
+	/*
 	public Flight(String type, String cityDeparture, String cityArrival, String dateDeparture,
 			String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, BigDecimal pricing) {
 		
@@ -56,37 +70,60 @@ public class Flight {
 	this.pricing = pricing; 
 	passengers = new String[totalPassengerCapacity][2];
 	
-	support = new PropertyChangeSupport(this);
+	// support = new PropertyChangeSupport(this);
 	}
+	*/
 	
 	/**
-	  Constructor for the flight class
-	  @param id
-	  @param type
-	  @param cityDeparture
-	  @param cityArrival
-	  @param dateDeparture
-	  @param timeDeparture
-	  @param dateArrival
-	  @param timeArrival
-	  @param totalPassengerCapacity
-	  @param passengerCount
-	  @param pricing
+	 * Constructor.
+	 * @param id
+	 * @param type
+	 * @param cityDeparture
+	 * @param cityArrival
+	 * @param dateDeparture
+	 * @param timeDeparture
+	 * @param dateArrival
+	 * @param timeArrival
+	 * @param economyCapacity
+	 * @param economyPassengerCount
+	 * @param economyPricing
+	 * @param businessCapacity
+	 * @param businessPassengerCount
+	 * @param businessPricing
+	 * @param firstClassCapacity
+	 * @param firstClassPassengerCount
+	 * @param firstClassPricing
 	 */
-	public Flight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
-				  String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, int passengerCount, BigDecimal pricing) {
+	public Flight(int id, String type, String cityDeparture, String cityArrival, 
+				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone,
+				  int economyCapacity, int economyPassengerCount, BigDecimal economyPricing,
+				  int businessCapacity, int businessPassengerCount, BigDecimal businessPricing,
+				  int firstClassCapacity, int firstClassPassengerCount, BigDecimal firstClassPricing) 
+	{
 		this.id = id;
 		this.type = type; 
 		this.cityDeparture = cityDeparture;
 		this.cityArrival = cityArrival;
+		
 		this.dateDeparture = LocalDate.parse(dateDeparture);
 		this.timeDeparture = LocalTime.parse(timeDeparture); 
 		this.dateArrival = LocalDate.parse(dateArrival);
 		this.timeArrival = LocalTime.parse(timeArrival);
-		this.totalPassengerCapacity = totalPassengerCapacity;
-		this.passengerCount = passengerCount;
-		this.pricing = pricing; 
-		passengers = new String[totalPassengerCapacity][2];
+		
+		this.zone = ZoneId.of(zone);
+		this.dateTimeDeparture = ZonedDateTime.of(this.dateDeparture, this.timeDeparture, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
+		this.dateTimeArrival = ZonedDateTime.of(this.dateArrival, this.timeArrival, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
+		
+		this.economyCapacity = economyCapacity;
+		this.economyPassengerCount = economyPassengerCount;
+		this.economyPricing = economyPricing; 
+		this.businessCapacity = businessCapacity;
+		this.businessPassengerCount = businessPassengerCount;
+		this.businessPricing = businessPricing;
+		this.firstClassCapacity = firstClassCapacity;
+		this.firstClassPassengerCount = firstClassPassengerCount;
+		this.firstClassPricing = firstClassPricing;
+		// passengers = new String[totalPassengerCapacity][2];
 		
 		support = new PropertyChangeSupport(this);
 	}
@@ -106,11 +143,22 @@ public class Flight {
 		this.timeDeparture = selectedFlight.gettimeDeparture();
 		this.dateArrival = selectedFlight.getDateArrival();
 		this.timeArrival = selectedFlight.getTimeArrival();
-		this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
-		this.passengerCount = selectedFlight.getPassengerCount();
-		this.pricing = selectedFlight.getpricing();
+		this.zone = selectedFlight.getZone();
+		// ZonedDateTime
+		// ZonedDateTime
+		// this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
+		// this.passengerCount = selectedFlight.getPassengerCount();
+		// this.pricing = selectedFlight.getpricing();
+		this.economyCapacity = selectedFlight.getEconomyCapacity();
+		this.economyPassengerCount = selectedFlight.getEconomyPassengerCount();
+		this.economyPricing = selectedFlight.getEconomyPricing();
+		this.businessCapacity = selectedFlight.getBusinessCapacity();
+		this.businessPassengerCount = selectedFlight.getBusinessPassengerCount();
+		this.businessPricing = selectedFlight.getBusinessPricing();
+		this.firstClassCapacity = selectedFlight.getFirstClassCapacity();
+		this.firstClassPassengerCount = selectedFlight.getFirstClassPassengerCount();
+		this.firstClassPricing = selectedFlight.getFirstClassPricing();
 		// FIXME: update as necessary
-		
 	}
 	
 	/**
@@ -240,11 +288,36 @@ public class Flight {
 	public void setTimeArrival(String timeArrival) {
 		this.timeArrival = LocalTime.parse(timeArrival);
 	}
+	
+	/**
+	 * Returns time zone of LocalDate departure & arrival, LocalTime departure & arrival
+	 * @return time zone of departure
+	 */
+	public ZoneId getZone() {
+		return this.zone;
+	}
+	
+	/**
+	 * Returns ZonedDateTime from LocalDate of departure, LocalTime of departure, and zone of machine compared against zone of departure.
+	 * @return ZonedDateTime of departure
+	 */
+	public ZonedDateTime getZonedDateTimeDeparture() {
+		return this.dateTimeDeparture;
+	}
+	
+	/**
+	 * Returns ZonedDateTime from LocalDate of arrival, LocalTime of arrival, and zone of machine  compared against zone of departure.
+	 * @return ZonedDateTime of departure
+	 */
+	public ZonedDateTime getZonedDateTimeArrival() {
+		return this.dateTimeArrival;
+	}
 
 	/**
 	 * Getter method to retrieve the total passenger capacity of the flight.
 	 * @return ; returns the total passenger capacity of the flight. 
 	 */
+	@Deprecated
 	public int gettotalpassengercapacity() {
 		return totalPassengerCapacity;
 		
@@ -254,8 +327,105 @@ public class Flight {
 	 * Getter method to retrieve the passenger count booked for the flight.
 	 * @return returns count of booked passengers
 	 */
+	@Deprecated
 	public int getPassengerCount() {
 		return passengerCount;
+	}
+	
+	/**
+	 * Returns total amount of seats in 'Economy' cabin
+	 * @return seating total in Economy
+	 */
+	public int getEconomyCapacity() {
+		return this.economyCapacity;
+	}
+	
+	/**
+	 * Returns total amount of seats in 'Business' cabin
+	 * @return seating total in Business
+	 */
+	public int getBusinessCapacity() {
+		return this.businessCapacity;
+	}
+	
+	/**
+	 * Returns total amount of seats in 'First Class' cabin
+	 * @return seating total in First Class
+	 */
+	public int getFirstClassCapacity() {
+		return this.firstClassCapacity;
+	}
+	
+	/**
+	 * Returns booked passenger count in 'Economy' cabin
+	 * @return booked seat count in Economy
+	 */
+	public int getEconomyPassengerCount() {
+		return this.economyPassengerCount;
+	}
+	
+	/**
+	 * Returns booked passenger count in 'Business' cabin
+	 * @return booked seat count in Business
+	 */
+	public int getBusinessPassengerCount() {
+		return this.businessPassengerCount;
+	}
+	
+	/**
+	 * Returns booked passenger count in 'First Class' cabin
+	 * @return booked seat count in First Class
+	 */
+	public int getFirstClassPassengerCount() {
+		return this.firstClassPassengerCount;
+	}
+	
+	/**
+	 * Returns pricing for 'Economy' cabin
+	 * @return pricing for Economy
+	 */
+	public BigDecimal getEconomyPricing() {
+		return this.economyPricing;
+	}
+	
+	/**
+	 * Returns pricing for 'Business' cabin
+	 * @return pricing for Business
+	 */
+	public BigDecimal getBusinessPricing() {
+		return this.businessPricing;
+	}
+	
+	/**
+	 * Returns pricing for 'First Class' cabin
+	 * @return pricing for First Class
+	 */
+	public BigDecimal getFirstClassPricing() {
+		return this.firstClassPricing;
+	}
+	
+	/**
+	 * Adds passenger amount booked.
+	 * @param passenger amount as selected by customer
+	 */
+	public void addEconomyPassengerCount(int selectedPassengerCount) {
+		economyPassengerCount += selectedPassengerCount;
+	}
+	
+	/**
+	 * Adds passenger amount booked.
+	 * @param passenger amount as selected by customer
+	 */
+	public void addBusinessPassengerCount(int selectedPassengerCount) {
+		businessPassengerCount += selectedPassengerCount;
+	}
+	
+	/**
+	 * Adds passenger amount booked.
+	 * @param passenger amount as selected by customer
+	 */
+	public void addFirstClassPassengerCount(int selectedPassengerCount) {
+		firstClassPassengerCount += selectedPassengerCount;
 	}
 	
 	/**
@@ -293,9 +463,31 @@ public class Flight {
 	
 	@Override
     public String toString() {
-        return "Departs: " + timeDeparture +
-        ", Arrives: " + dateArrival.getMonthValue() + "/" + dateArrival.getDayOfMonth() + " " + timeArrival +
-        ", $" + pricing;
+		String departPeriod = "";
+		int timeDepartureHour = dateTimeDeparture.getHour();
+		if (timeDepartureHour < 12) {
+			departPeriod = "AM";
+		} else {
+			departPeriod = "PM";
+			timeDepartureHour -= 12;
+			if (timeDepartureHour == 0)
+				timeDepartureHour = 12;
+		}
+		
+		String arrivePeriod = "";
+		int timeArrivalHour = dateTimeArrival.getHour();
+		if (timeArrivalHour < 12) {
+			arrivePeriod = "AM";
+		} else {
+			arrivePeriod = "PM";
+			timeArrivalHour -= 12;
+			if (timeArrivalHour == 0)
+				timeArrivalHour = 12;
+		}
+		
+        return "DEPARTS: " + timeDepartureHour + ":" + dateTimeDeparture.getMinute() + " " + departPeriod + " " +
+        		" - ARRIVES: " + timeArrivalHour + ":" + dateTimeArrival.getMinute() + " " + arrivePeriod + ", " +
+        	    dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
     }
 	
 }

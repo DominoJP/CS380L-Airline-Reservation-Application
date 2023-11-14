@@ -10,20 +10,14 @@ import java.util.Iterator;
  * Class from which new unique IDs are generated, reading from/writing to IDGeneratorHelper.txt.
  */
 public class IDGenerator {
-	private final String filePath = "src/Database/IDGeneratorHelper.txt";
-	private String idType;
-	private int lastID;
-	ArrayList<String> lines = new ArrayList<>();
-	StringBuilder rewrittenFile;
+	private final String filePath = "IDGeneratorHelper.txt";
+	private int lastReservationID;
+	private int lastAccountID;
 	
 	/**
 	 * Constructor.
-	 * @param type of Class for which to generate ID
 	 */
-	public IDGenerator(String type) {
-		idType = type;
-		lines = new ArrayList<>();
-		rewrittenFile = new StringBuilder();
+	public IDGenerator() {
 		setLastID();
 	}
 	
@@ -31,26 +25,34 @@ public class IDGenerator {
 	 * Method which generates ID based on running count, updated into IDGeneratorHelper.txt.
 	 * @return newly-generated unique ID
 	 */
-	public int generateID() {
-		lastID++;
-		updateFile();
-		return lastID;
+	public int generateAccountID() {
+		lastAccountID++;
+		updateFile("Accounts");
+		return lastAccountID;
 	}
 	
 	/**
-	 * Method to read the last ID generated and assign it as local variable int lastID.
+	 * Method which generates ID based on running count, updated into IDGeneratorHelper.txt.
+	 * @return newly-generated unique ID
+	 */
+	public int generateReservationID() {
+		lastReservationID++;
+		updateFile("Reservations");
+		return lastReservationID;
+	}
+	
+	/**
+	 * Method to read the last IDs generated and assign them as local variables.
 	 */
 	private void setLastID() {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] parts = line.split(": ");
-				switch (idType) {
-					case "RESERVATIONS":
-						if (parts[0].equals("Reservations"))
-							this.lastID = Integer.parseInt(parts[1]);
-						break;
-					// case ...
+				if (parts[0].equals("Reservations")) {
+					this.lastReservationID = Integer.parseInt(parts[1]);
+				} else if (parts[0].equals("Accounts")) {
+					this.lastAccountID = Integer.parseInt(parts[1]);
 				}
 		    }
 			reader.close();
@@ -62,24 +64,19 @@ public class IDGenerator {
 	/**
 	 * Method to update the IDGeneratorHelper.txt with newly-generated lastID.
 	 */
-	private void updateFile() {
+	private void updateFile(String type) {
+		ArrayList<String> lines = new ArrayList<>();
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] parts = line.split(": ");
-				switch (idType) {
-					case "RESERVATIONS":
-						if (parts[0].equals("Reservations")) {
-							StringBuilder str = new StringBuilder();
-							// substitutes in newly-generated ID
-							str.append(parts[0] + ": " + this.lastID);
-							lines.add(str.toString());
-						} else {
-							// otherwise, copies line to be re-added
-							lines.add(line);
-						}
-						break;
-					// case ...
+				if (type.equals("Reservations") && parts[0].equals("Reservations")) {
+					lines.add(parts[0] + ": " + this.lastReservationID);
+				} else  if (type.equals("Accounts") && parts[0].equals("Accounts")){
+					lines.add(parts[0] + ": " + this.lastAccountID);
+				} else {
+					// otherwise, copies line to be re-added
+					lines.add(line);
 				}
 		    }
 			reader.close();	
