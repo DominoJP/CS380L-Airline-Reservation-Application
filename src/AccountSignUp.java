@@ -94,7 +94,7 @@ public class AccountSignUp {
     		return;
     	}
     	
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("TestAccountSignUp.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Database/TestAccountSignUp.txt", true))) {
         	IDGenerator idGen = new IDGenerator();
         	int id = idGen.generateAccountID();
         	// + "" typecasts int to String
