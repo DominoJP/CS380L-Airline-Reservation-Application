@@ -82,6 +82,7 @@ public class Account{
 	  * @param accountNumber : new account number to be set.
 	  */
 	 public void setaccountNumber(int accountNumber) {
+		 support.firePropertyChange("accountNumber", null, accountNumber);
 		 this.accountNumber = accountNumber;
 
 	 }
