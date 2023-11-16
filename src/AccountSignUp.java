@@ -75,25 +75,6 @@ public class AccountSignUp {
 */
     public static void writeToFile(String email, String password, String firstname, String lastname) {
     	
-    	if(firstname.isEmpty() || lastname.isEmpty()) {
-    		//System.out.println("First & Last name are required, account not saved!");
-    		return;
-    	}
-    	
-    	if(!ValidEmail(email)) {
-    		//System.out.println("Invalid email format!");
-    	}
-    	
-    	if(password.length() < 8) {
-    		//System.out.println("Password must be atleast 8 characters");
-    		return;
-    	}
-    	
-    	if(!PasswordMatch(password, password)) {
-    		//System.out.println("Passwords do not match!");
-    		return;
-    	}
-    	
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("Database/TestAccountSignUp.txt", true))) {
         	IDGenerator idGen = new IDGenerator();
         	int id = idGen.generateAccountID();
@@ -113,13 +94,13 @@ public class AccountSignUp {
            // writer.write(Integer.toString(id));
             writer.newLine();     // Add a newline character to separate entries
 
-           // System.out.println("Account information saved to " + "TestAccountSignUp.txt");
+           System.out.println("Account information saved to " + "TestAccountSignUp.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-/*
+
     private void readFromFile() {
         try (BufferedReader reader = new BufferedReader(new FileReader("TestAccountSignUp.txt"))) {
             String line;
@@ -130,17 +111,17 @@ public class AccountSignUp {
             e.printStackTrace();
         }
     }
-*/
+
     
     
     
-   /*
+
     private boolean isEmailDuplicate() {
         try (BufferedReader reader = new BufferedReader(new FileReader("TestAccountSignUp.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 1 && parts[0].equals(email)) {
+                String[] parts = line.split(", ");
+                if (parts.length >= 3 && parts[2].trim().equals(email.trim())) {
                     return true;
                 }
             }
@@ -149,22 +130,8 @@ public class AccountSignUp {
         }
         return false;
     }
-    */
+  
     
-    
-    
-    
-
-    private static boolean ValidEmail(String email) {
-		return email.contains("@");
-    }
-
-    
-    private static boolean PasswordMatch(String password, String confirmPassword) {
-		return password.equals(confirmPassword);
-    	
-    }
-
     // Getter and Setter methods
     public void setEmail(String email) {
         this.email = email;
@@ -203,3 +170,4 @@ public class AccountSignUp {
     	return;
     }
 }
+
