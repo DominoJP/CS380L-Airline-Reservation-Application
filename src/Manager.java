@@ -8,8 +8,7 @@
 import java.util.ArrayList;
 import java.io.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 class Manager {
 	 
@@ -20,7 +19,9 @@ class Manager {
 	private Account customer;
 	private Flight flight;
 	private ArrayList<Flight> flightList;
-	private String filePath = "src/Database/Resrvation.txt";
+	private String reservationPath = "src/Resrvation.txt";
+	private String flightPath = "src/FlightsTest.txt";
+	private FlightIO finder;
 	
 
 public void accessReservationInfo() {
@@ -57,7 +58,28 @@ public Manager(int employeeID, String employeepassword, FlightSorting sortedFlig
  public String getemployeepassword() {
 	 return employeepassword;
  }
-
+ 
+ /*
+ public void initialize() {
+	 sorted = new FlightSorting();
+	 
+	 try(BufferedReader in = new BufferedReader(new FileReader(this.flightPath))){
+		 String line;
+		 while((line = in.readLine()) != null) {
+			 if(line.length() > 0) {
+			 	String[] description = line.split(", ");
+			 	Flight newF = new Flight();
+			 }
+			 
+		 }
+		 
+		 
+	 }catch(IOException e) {
+		 e.printStackTrace();
+		 return;
+	 }
+ }
+*/
 /**
  * Retrieves a list of reservations managed by the manager. 
  * @return ; returns the list of reservations. 
@@ -74,28 +96,39 @@ public void setReservations(ArrayList<Reservation> reservations) {
 	this.reservations = reservations;
 }
 
-public ArrayList<String> totalReservations(){
-	ArrayList<String> reservationList = new ArrayList<String>();
+public void totalReservations(){	
+	int reservationID = -1;
+	int accountID = -1;
+	int flightID = -1;
+	ArrayList<String> people = new ArrayList<String>();
+	String type = null;
+	BigDecimal price = new BigDecimal(0);
+	LocalDateTime current = null;
 	
-	try(BufferedReader in = new BufferedReader(new FileReader(this.filePath))){
+	try(BufferedReader in = new BufferedReader(new FileReader(this.reservationPath))){
 		while(in.ready()) {
-			reservationList.add(in.readLine());
+			String line = in.readLine();
+			if(!line.equals(null)) {
+				String[] r = line.split(": ");
+				
+				switch(r[0]){
+				case "Reservation ID:":
+					reservationID = Integer.parseInt(r[1]);
+					break;
+				case "Account ID:":
+					accountID = Integer.parseInt(r[1]);
+					break;
+				case "Flight Number:":
+					flightID = Integer.parseInt(r[1]);
+					break;
+				case "Date of Booking:":
+					current = LocalDateTime.parse(r[1]);
+					break;
+				}
+			}
 		}
 	}catch(IOException e){
-		return null;
-	}
-	
-	return reservationList;
-}
-
-public void setResrvations() {
-	try(BufferedReader in = new BufferedReader(new FileReader(this.filePath))){
-		Reservation curr = new Reservation();
-		this.reservations = new ArrayList<Reservation>();
-		
-		
-	}catch(IOException e) {
-		return;
+		e.printStackTrace();
 	}
 }
 /**

@@ -95,10 +95,7 @@ public class Flight {
 	 * @param firstClassPricing
 	 */
 	public Flight(int id, String type, String cityDeparture, String cityArrival, 
-				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone,
-				  int economyCapacity, int economyPassengerCount, BigDecimal economyPricing,
-				  int businessCapacity, int businessPassengerCount, BigDecimal businessPricing,
-				  int firstClassCapacity, int firstClassPassengerCount, BigDecimal firstClassPricing) 
+				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone) 
 	{
 		this.id = id;
 		this.type = type; 
@@ -114,19 +111,36 @@ public class Flight {
 		this.dateTimeDeparture = ZonedDateTime.of(this.dateDeparture, this.timeDeparture, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
 		this.dateTimeArrival = ZonedDateTime.of(this.dateArrival, this.timeArrival, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
 		
-		this.economyCapacity = economyCapacity;
-		this.economyPassengerCount = economyPassengerCount;
-		this.economyPricing = economyPricing; 
-		this.businessCapacity = businessCapacity;
-		this.businessPassengerCount = businessPassengerCount;
-		this.businessPricing = businessPricing;
-		this.firstClassCapacity = firstClassCapacity;
-		this.firstClassPassengerCount = firstClassPassengerCount;
-		this.firstClassPricing = firstClassPricing;
+		this.economyCapacity = 0;
+		this.economyPassengerCount = 0;
+		this.economyPricing = new BigDecimal(0); 
+		this.businessCapacity = 0;
+		this.businessPassengerCount = 0;
+		this.businessPricing = new BigDecimal(0);
+		this.firstClassCapacity = 0;
+		this.firstClassPassengerCount = 0;
+		this.firstClassPricing = new BigDecimal(0);
+		
 		// passengers = new String[totalPassengerCapacity][2];
 		
 		support = new PropertyChangeSupport(this);
 	}
+	
+	public void setEconomy(int capacity, BigDecimal price) {
+		this.economyCapacity = capacity;
+		this.economyPricing = price;
+	}
+	
+	public void setBusiness(int capacity, BigDecimal price) {
+		this.businessCapacity = capacity;
+		this.businessPricing = price;
+	}
+	
+	public void setFirstClass(int capacity, BigDecimal price) {
+		this.firstClassCapacity = capacity;
+		this.firstClassPricing = price;
+	}
+	
 	
 	
 	/**
@@ -229,6 +243,7 @@ public class Flight {
 	 * Getter method to retrieve the total remaining pasenger capacity
 	 * @return ; returns the total remaining passenger capacity
 	 */
+	@Deprecated
 	public int gettotalremainingpassengercapacity() {
 		int available = 0; 
 		for(int i = 0; i < totalPassengerCapacity; i++) {
@@ -244,6 +259,7 @@ public class Flight {
      * Getter method to retrieve the pricing of the flight. 
      * @return : returns the pricing of the flight. 
      */
+	@Deprecated
 	public BigDecimal getpricing() {
 		return pricing;
 	}
@@ -253,6 +269,7 @@ public class Flight {
 	 * @param location : the location for setting passenger information. 
 	 * @return 
 	 */
+	@Deprecated
 	public String getPassenger(int location) {
 		return passengers[location][1];
 	}
@@ -409,7 +426,9 @@ public class Flight {
 	 * @param passenger amount as selected by customer
 	 */
 	public void addEconomyPassengerCount(int selectedPassengerCount) {
-		economyPassengerCount += selectedPassengerCount;
+		if(!this.isFull("Economy") && (this.economyPassengerCount + selectedPassengerCount) <= this.economyCapacity) {
+			economyPassengerCount += selectedPassengerCount;
+		}
 	}
 	
 	/**
@@ -417,7 +436,9 @@ public class Flight {
 	 * @param passenger amount as selected by customer
 	 */
 	public void addBusinessPassengerCount(int selectedPassengerCount) {
-		businessPassengerCount += selectedPassengerCount;
+		if(!this.isFull("Business") && (this.businessPassengerCount + selectedPassengerCount) <= this.businessCapacity) {
+			businessPassengerCount += selectedPassengerCount;
+		}
 	}
 	
 	/**
@@ -425,15 +446,40 @@ public class Flight {
 	 * @param passenger amount as selected by customer
 	 */
 	public void addFirstClassPassengerCount(int selectedPassengerCount) {
-		firstClassPassengerCount += selectedPassengerCount;
+		if(!this.isFull("First Class") && (this.firstClassPassengerCount + selectedPassengerCount) <= this.firstClassCapacity) {
+			firstClassPassengerCount += selectedPassengerCount;
+		}
 	}
 	
+	public void removeEconomyPassenger() {
+		if(this.economyPassengerCount != 0)
+			this.economyPassengerCount--;
+	}
+	
+	public void removeBusinessPassenger() {
+		if(this.businessPassengerCount != 0)
+			this.businessPassengerCount--;
+	}
+	
+	public void removeFirstClassPassenger() {
+		if(this.firstClassPassengerCount != 0)
+			this.firstClassPassengerCount--;
+	}
 	/**
 	 * Method to check if the flight is full
 	 * @return , returns true if the flight is full, otherwise false. 
 	 */
-	public boolean isFull() {
-		return false;
+	public boolean isFull(String type) {
+		switch(type) {
+		case "Economy":
+			return this.economyCapacity == this.economyPassengerCount;
+		case "Business":
+			return this.businessCapacity == this.businessPassengerCount;
+		case "First Class":
+			return this.firstClassCapacity == this.firstClassPassengerCount;
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -442,6 +488,7 @@ public class Flight {
 	 * @param accountnumber : the account number of the passenger. 
 	 * @param name : the name of the passenger. 
 	 */
+	@Deprecated
 	public  void setpassenger(int location, String accountnumber, String name) {
 		//if the statement checks whether location is valid seat on the flight and if
 		// it is then it assigns a passenger and if the seat does not exist then it provided 

@@ -108,9 +108,7 @@ public class Airport {
 					destinations.add(flights);
 			}
 		}else {
-			Airport newChild = new Airport(f);
-			
-			this.addChild(this, newChild);
+			this.addChild(this, f);
 		}
 		
 	}
@@ -122,22 +120,34 @@ public class Airport {
 	 * @param n
 	 */
 	
-	public void addChild(Airport curr, Airport n) {
+	public void addChild(Airport curr, Flight n) {
 		
-		if(curr.getOrigin().compareTo(n.getOrigin()) > 0) {
+		if(curr.getOrigin().compareTo(n.getcityDeparture()) > 0) {
 			if(curr.child1 != null) {
+				if(curr.child1.getOrigin().equals(n.getcityDeparture())) {
+					curr.child1.addFlight(n);
+					return;
+				}
+				
 				curr.addChild(curr.child1, n);
 				return;
 			}
+			Airport newChild = new Airport(n);
 			
-			curr.child1 = n;
+			curr.child1 = newChild;
 		}else {
 			if(curr.child2 != null) {
+				if(curr.child2.getOrigin().equals(n.getcityDeparture())) {
+					curr.child2.addFlight(n);
+					return;
+				}
+				
 				curr.addChild(curr.child2, n);
 				return;
 			}
+			Airport newChild = new Airport(n);
 			
-			curr.child2 = n;
+			curr.child2 = newChild;
 		}
 	}
 	
