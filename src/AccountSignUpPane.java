@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -150,24 +151,37 @@ public class AccountSignUpPane extends JPanel {
 				if (txtFirstName.getText().equals("") || txtLastName.getText().equals("")) {
 					lblError.setVisible(true);
 					lblError.setText("First & Last Name required.");
-				// } else if (txtEmail empty) {
-					// setVisible true & setText "Email required."
-				// } else if (!txtEmail.getText().contains("@"){
-					// setVisible true & SetText "Invalid email."
-				// } else if (passwordField password too short, less than 8 characters) {
-					// setVisible true & setText "..."
-				// } else if (passwordField and passwordFieldRetype do not match) {	
-					// setVisible true & setText "..."
+				 } else if (txtEmail.getText().isEmpty()) {
+					 lblError.setVisible(true); 
+					 lblError.setText("Email required.");
+				 } else if (!txtEmail.getText().contains("@")){
+					 lblError.setVisible(true);
+					 lblError.setText("Invalid email.");
+				 } else if (passwordField.getPassword().length < 8) {
+					 lblError.setVisible(true);
+					 lblError.setText("Password is required!");
+				 } else if (!Arrays.equals(passwordField.getPassword(), passwordFieldRetype.getPassword())) {	
+					 lblError.setVisible(true);
+					 lblError.setText("Retype password!");
 				} else {
-					// if (email is unique) {
+					 if (!emailIsUnique(txtEmail.getText())) {
+						 lblError.setVisible(true);
+						 lblError.setText("Email is already used! try again!");
+					 }else {
 						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
 						lblError.setVisible(false);
-						support.firePropertyChange("successfulSignUp", null, true);
+						support.firePropertyChange("successful SignUp!", null, true);
 						((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
-					// }
+					 }
 				}
 			}
+
+			private boolean emailIsUnique(String email) {
+				return false;
+			}
+			
 		});
+				
 		GridBagConstraints gbc_btnSignUp = new GridBagConstraints();
 		gbc_btnSignUp.insets = new Insets(0, 0, 5, 5);
 		gbc_btnSignUp.gridx = 2;

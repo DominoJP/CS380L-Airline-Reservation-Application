@@ -10,7 +10,7 @@ import java.io.IOException;
 */
 
 public class AccountSignIn {
-	private static final String FILE_PATH = "src/Database/TestAccountSignUp.txt";
+	private static final String FILE_PATH = "Database/TestAccountSignUp.txt";
 	private int id;
 	private String email;
 	private char[] password;
