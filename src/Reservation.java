@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 /**
  * Owner: Logan Langewisch
@@ -144,6 +144,9 @@ public class Reservation {
 		 
 	 }
 	 
+	 public void setTotalPrice(BigDecimal price) {
+		 this.totalPrice = price;
+	 }
 	 
 	 /**
 	  * method that gives the total price of the reservation using the price per ticket of the flight

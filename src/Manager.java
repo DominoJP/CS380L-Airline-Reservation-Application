@@ -124,12 +124,55 @@ public void totalReservations(){
 				case "Date of Booking:":
 					current = LocalDateTime.parse(r[1]);
 					break;
+				case "Total Pricing:":
+					price = new BigDecimal(Integer.parseInt(r[1]));
+					break;
+				case "Cabin Class:":
+					type = r[1];
+					break;
+				case "--Reservation End--":
+					Reservation store = new Reservation();
+					store.setId(reservationID);
+					store.setCustomerId(accountID);
+					store.setFlightId(flightID);
+					store.setBooking(current);
+					store.setTotalPrice(price);
+					store.setCabin(type);
+					
+					this.reservations.add(store);
+				default:
 				}
 			}
 		}
 	}catch(IOException e){
 		e.printStackTrace();
 	}
+}
+
+public BigDecimal getTotalRevenue() {
+	BigDecimal revenue = new BigDecimal(0);
+	
+	for(int i = 0; i < this.reservations.size(); i++) {
+		revenue.add(this.reservations.get(i).getTotalPrice());
+	}
+	
+	return revenue;
+}
+
+public BigDecimal getRevenue(LocalDateTime start, LocalDateTime end) {
+	BigDecimal revenue = new BigDecimal(0);
+	
+	for(int i = 0; i < this.reservations.size(); i++) {
+		LocalDateTime current = this.reservations.get(i).getDateTimeAtBooking();
+		
+		if(current.equals(start) || current.equals(end)) {
+			revenue.add(this.reservations.get(i).getTotalPrice());
+		}else if(current.isAfter(start) && current.isBefore(end)) {
+			revenue.add(this.reservations.get(i).getTotalPrice());
+		}
+	}
+	
+	return revenue;
 }
 /**
 public void createFlight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
