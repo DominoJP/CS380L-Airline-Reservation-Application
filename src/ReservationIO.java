@@ -14,7 +14,7 @@ import java.util.Iterator;
  * @version 1.0
  */
 public class ReservationIO {
-	private static final String FILE_PATH = "Database/Reservation.txt";
+	private static final String FILE_PATH = "src/Database/Reservation.txt";
 	
 	/**
 	 * Instantiate reservations associated with account to ArrayList<Reservation> attribute of Account Object.
