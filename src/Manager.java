@@ -59,27 +59,6 @@ public Manager(int employeeID, String employeepassword, FlightSorting sortedFlig
 	 return employeepassword;
  }
  
- /*
- public void initialize() {
-	 sorted = new FlightSorting();
-	 
-	 try(BufferedReader in = new BufferedReader(new FileReader(this.flightPath))){
-		 String line;
-		 while((line = in.readLine()) != null) {
-			 if(line.length() > 0) {
-			 	String[] description = line.split(", ");
-			 	Flight newF = new Flight();
-			 }
-			 
-		 }
-		 
-		 
-	 }catch(IOException e) {
-		 e.printStackTrace();
-		 return;
-	 }
- }
-*/
 /**
  * Retrieves a list of reservations managed by the manager. 
  * @return ; returns the list of reservations. 
@@ -95,6 +74,11 @@ public ArrayList<Reservation> getReservations() {
 public void setReservations(ArrayList<Reservation> reservations) {
 	this.reservations = reservations;
 }
+
+/**
+ * The totalReservation class reads from the Reservations.txt file to create and ArrayList<Reservation> that can be used to create documentation
+ * on all reservations that have been made.
+ */
 
 public void totalReservations(){	
 	int reservationID = -1;
@@ -149,6 +133,10 @@ public void totalReservations(){
 	}
 }
 
+/**
+ * The getTotalRevenue method takes the ArrayList<Reservation> reservations and calculates the total revenue made from all reservations that are stored
+ */
+
 public BigDecimal getTotalRevenue() {
 	BigDecimal revenue = new BigDecimal(0);
 	
@@ -159,6 +147,12 @@ public BigDecimal getTotalRevenue() {
 	return revenue;
 }
 
+/*
+ * This getRevenue method is similar to the getTotalRevenue method except it restricts what revenue made from the reservations depending on @param start
+ * and @param end, instances of LocalDateTime, which are dates that will be compared to each reservation on the list to determine revenue made within a certain
+ * time frame
+ * Currently not in use
+ * 
 public BigDecimal getRevenue(LocalDateTime start, LocalDateTime end) {
 	BigDecimal revenue = new BigDecimal(0);
 	
@@ -174,35 +168,6 @@ public BigDecimal getRevenue(LocalDateTime start, LocalDateTime end) {
 	
 	return revenue;
 }
-/**
-public void createFlight(int id, String type, String cityDeparture, String cityArrival, String dateDeparture,
-							String timeDeparture, String dateArrival, String timeArrival, int totalPassengerCapacity, int passengerCount, BigDecimal pricing) {
-	
-	Flight newFlight = new Flight(id, type, cityDeparture, cityArrival, dateDeparture, timeDeparture, dateArrival, timeArrival, totalPassengerCapacity, 
-			passengerCount, pricing);
-	this.sorted.addFlight(newFlight);
-	
-}
-
-public Flight modifyFlightSchedule(Flight f, String departDate, String departTime, String arriveDate, String arriveTime) {
-	f.setDateDeparture(departDate);
-	f.setTimeDeparture(departTime);
-	f.setDateArrival(arriveDate);
-	f.setTimeArrival(arriveTime);
-	
-	return f;
-}
-
-public void manageCustomer() {
-	
-}
-
-public void refund(BigDecimal amount) {
-	this.customer.removeFromBalance(amount);
-}
 */
-
-
-
  
 }
