@@ -149,28 +149,22 @@ public class AccountSignUpPane extends JPanel {
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtFirstName.getText().equals("") || txtLastName.getText().equals("")) {
-					lblError.setVisible(true);
-					lblError.setText("First & Last Name required.");
+					setError("First & Last Name required.");
 				 } else if (txtEmail.getText().isEmpty()) {
-					 lblError.setVisible(true); 
-					 lblError.setText("Email required.");
+					 setError("Email required.");
 				 } else if (!txtEmail.getText().contains("@")){
-					 lblError.setVisible(true);
-					 lblError.setText("Invalid email.");
+					 setError("Invalid email.");
 				 } else if (passwordField.getPassword().length < 8) {
-					 lblError.setVisible(true);
-					 lblError.setText("Password is required!");
+					 setError("Password is required!");
 				 } else if (!Arrays.equals(passwordField.getPassword(), passwordFieldRetype.getPassword())) {	
-					 lblError.setVisible(true);
-					 lblError.setText("Retype password!");
+					 setError("Retype password!");
 				} else {
 					 if (!emailIsUnique(txtEmail.getText())) {
-						 lblError.setVisible(true);
-						 lblError.setText("Email is already used! try again!");
+						 setError("Email is already used! try again!");
 					 }else {
 						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
 						lblError.setVisible(false);
-						support.firePropertyChange("successful SignUp!", null, true);
+						support.firePropertyChange("Successful SignUp!", null, true);
 						((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 					 }
 				}
@@ -208,6 +202,18 @@ public class AccountSignUpPane extends JPanel {
 		
 		lblError.setVisible(false);
 	}
+	
+	/**
+	 * Method to set error message and visibility 
+	 * @param message
+	 */
+	private void setError(String message) {
+		lblError.setVisible(true);
+		lblError.setText(message);
+	}
+	
+	
+	
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
