@@ -104,7 +104,6 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PassengerDetailsPane PassengerSixPane = new PassengerDetailsPane(contentPane, 6, "PASSENGER5_DETAILS", "NULL", selectedFlight);
 		// TripContactPane TripContactPane = new TripContactPane(contentPane);
 		ReservationPaymentPane PaymentPane = new ReservationPaymentPane(contentPane, account, selectedFlight);
-		ReservationConfirmationPane ConfirmationPane = new ReservationConfirmationPane(contentPane);
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
 		 ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
 		
@@ -165,8 +164,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		contentPane.add(PassengerSixPane, "PASSENGER6_DETAILS");
 		// contentPane.add(TripContactPane, "TRIP_CONTACT");
 		contentPane.add(PaymentPane, "PAY");
-		contentPane.add(ConfirmationPane, "CONFIRM");
-		
+
 		// Select "Review"
 		contentPane.add(ReservationListPane, "REVIEW_LIST");
 		
