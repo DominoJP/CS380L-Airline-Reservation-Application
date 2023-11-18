@@ -20,14 +20,14 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JTextField;
 
 /**
-   JPanel for account sign in.
-   Login credentials (email and password) accepted as text inputs and authenticated on button press.
-   @author Jevy Miranda
-   @version 1.0
+ *  JPanel for account sign in.
+ *  Login credentials (email and password) accepted as text inputs and authenticated on button press.
+ *  @author Jevy Miranda
+ *  @version 1.0
  */
 
 public class AccountSignInPane extends JPanel {
-	private AccountSignIn signIn = new AccountSignIn();
+
 	private static final long serialVersionUID = 1L;
 
 	public AccountSignInPane(JPanel contentPane, Account account) {
@@ -87,12 +87,9 @@ public class AccountSignInPane extends JPanel {
 		btnLogInPane.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnLogInPane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (signIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
-					// Allows instantiation of reservations using updated Account object
-					account.setaccountNumber(signIn.getID());
-					account.setEmail(signIn.getEmail());
-					// ReservationsReader reservationsReader = new ReservationsReader(account);
-					// reservationsReader.instantiateReservations();
+				// if sign in successful
+				if (account.signIn(textField.getText(), passwordField.getPassword())) {
+					// instantiate reservations from .txt
 					ReservationIO.instantiateReservations(account);
 					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
 				} else {

@@ -1,5 +1,8 @@
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +68,7 @@ public class Account{
 	  * @param accountNumber : new account email to be set.
 	  */
 	 public void setEmail(String email) {
+		 support.firePropertyChange("accountEmail", null, email);
 		 this.email = email;
 
 	 }
@@ -208,6 +212,31 @@ public class Account{
 
  }
 
-
+     /**
+      * Compares input email & password against email-password pairs stored in .txt.
+      * @param email
+      * @param password
+      * @return whether sign in was successful
+      */
+     public boolean signIn(String email, char[] password) {
+    	 final String FILE_PATH = "src/Database/TestAccountSignUp.txt";
+    	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+			 String line;
+			 while ((line = reader.readLine()) != null) {
+				 String[] parts = line.split(", ");
+				 // compare email-password pairs
+				 if (parts[2].equals(email) && parts[3].equals(String.valueOf(password))) {
+					 setaccountNumber(Integer.parseInt(parts[0]));
+					 setEmail(parts[2]);
+					 reader.close();
+					 return true;
+				 }
+            }
+            reader.close();
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+        }
+		return false;
+     }
 
 }
