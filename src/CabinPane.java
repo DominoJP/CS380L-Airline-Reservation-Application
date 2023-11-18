@@ -24,7 +24,7 @@ import javax.swing.ButtonGroup;
  * 	  JLabels for fares and available seating in table alignment.
  * 	  JRadioButtons (grouped) for cabin class selection between 'Economy,' 'Business,' and 'First-Class.'
  * e) Functions: PropertyChangeListener observes selected flight. Updates fares and open seating displayed.
- * 	  Cabin class selection (observable) fires PropertyChangeEvent for pricing in PaymentPane.
+ * 	  User cabin class selection (observable) fires PropertyChangeEvent for pricing in PaymentPane.
  * f) Data Structures: N/A
  * g) Algorithms: N/A
  */
