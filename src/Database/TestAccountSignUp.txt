@@ -1,3 +1,5 @@
 1, name, @email.com, password, CUSTOMER
 2, test, test, test, CUSTOMER
 3, First Last, @email.com, password, CUSTOMER
+12, Sayra Reyes, @done, password, CUSTOMER
+

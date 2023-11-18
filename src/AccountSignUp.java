@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -102,7 +103,7 @@ public class AccountSignUp {
 
 
     private void readFromFile() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("TestAccountSignUp.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Database/TestAccountSignUp.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
@@ -115,7 +116,7 @@ public class AccountSignUp {
     
     
     
-
+/*
     private boolean isEmailDuplicate() {
         try (BufferedReader reader = new BufferedReader(new FileReader("TestAccountSignUp.txt"))) {
             String line;
@@ -130,7 +131,7 @@ public class AccountSignUp {
         }
         return false;
     }
-  
+  */
     
     // Getter and Setter methods
     public void setEmail(String email) {
@@ -169,5 +170,7 @@ public class AccountSignUp {
     public void getId(int id) {
     	return;
     }
+
+	
 }
 
