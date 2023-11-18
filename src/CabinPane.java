@@ -26,7 +26,7 @@ import javax.swing.ButtonGroup;
  * e) Functions: PropertyChangeListener observes selected flight. Updates fares and open seating displayed.
  * 	  Cabin class selection (observable) fires PropertyChangeEvent for pricing in PaymentPane.
  * f) Data Structures: N/A
- * g) Algorithms: N/a
+ * g) Algorithms: N/A
  */
 public class CabinPane extends JPanel implements PropertyChangeListener {
 	private int selectedPassengerAmount;
