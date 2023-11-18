@@ -19,12 +19,12 @@ import javax.swing.JComboBox;
    @version 1.0
 */
 
-public class FlightFilterListScrollPane extends JPanel {
+public class FlightsScrollPane extends JPanel {
 	private Flight selectedFlight;
 
 	private static final long serialVersionUID = 1L;
 
-	public FlightFilterListScrollPane(JPanel contentPane, Account account, ArrayList<Flight> flightArray, Flight flight) {
+	public FlightsScrollPane(JPanel contentPane, Account account, ArrayList<Flight> flightArray, Flight flight) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
