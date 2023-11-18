@@ -16,7 +16,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.ButtonGroup;
 
-public class CabinClassPane extends JPanel implements PropertyChangeListener {
+public class CabinPane extends JPanel implements PropertyChangeListener {
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
 	private PropertyChangeSupport support;
@@ -34,7 +34,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 	/**
 	 * Create the panel.
 	 */
-	public CabinClassPane(JPanel contentPane, Flight selectedFlight) {
+	public CabinPane(JPanel contentPane, Flight selectedFlight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		

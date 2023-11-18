@@ -95,7 +95,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		FlightFilterPane FilterPane = new FlightFilterPane(contentPane, account, sort, selectedFlight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
-		CabinClassPane CabinClassPane = new CabinClassPane(contentPane, selectedFlight);
+		CabinPane CabinClassPane = new CabinPane(contentPane, selectedFlight);
 		PassengerPane PassengerOnePane = new PassengerPane(contentPane, 1, "CABIN", "PASSENGER2_DETAILS", selectedFlight);
 		PassengerPane PassengerTwoPane = new PassengerPane(contentPane, 2, "PASSENGER1_DETAILS", "PASSENGER3_DETAILS", selectedFlight);
 		PassengerPane PassengerThreePane = new PassengerPane(contentPane, 3, "PASSENGER2_DETAILS", "PASSENGER4_DETAILS", selectedFlight);
