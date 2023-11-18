@@ -81,8 +81,9 @@ public class FlightSorting{
 	}
 	
 	/**
-	 * Sorts the list of flights 
-	 */
+	 * this version of the sortFlights method was made to sort flights for both One-Way and Round-Trip flights
+	 *  
+	 *
 	/*
 	public void sortFlights(String type, String origin, String arrival, String date, String arrivalTime) {
 
@@ -91,6 +92,13 @@ public class FlightSorting{
 		 this.totalFlightAvailable = flights.size();
 	}
 	*/
+	
+	/**
+	 * The sortFlights method uses @param origin, a String that is meant to be the name of the location
+	 * that the flight originates from, @param arrival, a String that represents the area the flight is heading
+	 * towards, @param date, a String that is meant to be the date when the flight leaves, this date must
+	 * be written in a fashion that can be accepted by the LocalDate API
+	 */
 	
 	public void sortFlights(String origin, String arrival, String date) {
 		this.destination = findFlights(origin, arrival, date);
@@ -113,6 +121,17 @@ public class FlightSorting{
 		}
 		
 		return null;
+	}
+	
+	/**
+	 * findFlights utilizes the search method of the AirportFlights class by giving it @param type and @param origin to find
+	 * an Airport being searched for by the user, then it uses the search method of the found Airport to find an instance of AirportFlights given
+	 * @param destination and @param date
+	 */
+	
+	public AirportFlights findFlights(String origin, String destination, String date) {
+		return this.search(origin).search(destination, date);
+		
 	}
 	
 	/**
@@ -148,17 +167,6 @@ public class FlightSorting{
 		}
 		
 		return curr;
-	}
-	
-	/**
-	 * findFlights utilizes the search method of the AirportFlights class by giving it @param type and @param origin to find
-	 * an Airport being searched for by the user, then it uses the search method of the found Airport to find an instance of AirportFlights given
-	 * @param destination and @param date
-	 */
-	
-	public AirportFlights findFlights(String origin, String destination, String date) {
-		return this.search(origin).search(destination, date);
-		
 	}
 
 	/**

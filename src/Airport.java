@@ -84,33 +84,43 @@ public class Airport {
 	 */
 	
 	public void addFlight(Flight f) {
-		AirportFlights flights = new AirportFlights(f);
-		
 		if(destinations == null)
 			destinations = new ArrayList<AirportFlights>();
 		
 		if(this.origin == null) {
 			origin = f.getcityDeparture();
-			destinations.add(flights);
+			destinations.add(new AirportFlights(f));
 		}else if(this.origin.compareTo(f.getcityDeparture()) == 0) {
-			for(int i = 0; i < destinations.size(); i++) {
-				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) == 0) {
-					destinations.get(i).addFlight(f);
-					return;
-				}
-			}
-			
-			for(int i = 0; i < destinations.size(); i++) {
-				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) < 0) {
-					destinations.add(i, flights);
-					return;
-				}else if(i + 1 == destinations.size())
-					destinations.add(flights);
-			}
+			this.addToList(f);
 		}else {
 			this.addChild(this, f);
 		}
 		
+	}
+	
+	/**
+	 * The addToList method adds @param flight, an instance of the Flight class, into either the one of the instances of AiportFlights that is stored
+	 * in the ArrayList<AirportFlights> destinations or it will be used to create a new instance of AiportFlights and is then added to destinations
+	 */
+	
+	public void addToList(Flight flight) {
+		for(int i = 0; i < destinations.size(); i++) {
+			if(flight.getcityArrival().compareTo(destinations.get(i).getDestination()) == 0) {
+				destinations.get(i).addFlight(flight);
+				return;
+			}
+		}
+		
+		AirportFlights flights = new AirportFlights(flight);
+		
+		for(int i = 0; i < destinations.size(); i++) {
+			if(flight.getcityArrival().compareTo(destinations.get(i).getDestination()) < 0) {
+				destinations.add(i, flights);
+				return;
+			}
+		}
+		
+		destinations.add(flights);
 	}
 	
 	/**

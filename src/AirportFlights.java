@@ -68,19 +68,29 @@ public class AirportFlights {
 		}
 		
 		if(date.equals(f.getdateDeparture())) {
-			if(this.timeDeparture == null) {
-				this.timeDeparture.add(f);
-			}else {
-				for(int i = 0; i < this.timeDeparture.size(); i++){
-					if(f.gettimeDeparture().isBefore(timeDeparture.get(i).gettimeDeparture())) {
-						timeDeparture.add(i, f);
-						return;
-					}
-				}
-				timeDeparture.add(f);
-			}
+			this.addToList(f);
 		}else {
 			this.addChild(this, f);
+		}
+	}
+	
+	/**
+	 * The method addToList takes @param flight, and instance of the Flight class, and adds it to the
+	 * ArrayList<Flight> timeDeparture which is an ArrayList that is sorted based on what time the flight
+	 * leaves
+	 */
+	
+	public void addToList(Flight flight) {
+		if(this.timeDeparture == null) {
+			this.timeDeparture.add(flight);
+		}else {
+			for(int i = 0; i < this.timeDeparture.size(); i++){
+				if(flight.gettimeDeparture().isBefore(timeDeparture.get(i).gettimeDeparture())) {
+					timeDeparture.add(i, flight);
+					return;
+				}
+			}
+			timeDeparture.add(flight);
 		}
 	}
 	
