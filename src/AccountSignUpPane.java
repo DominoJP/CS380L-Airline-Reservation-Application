@@ -6,7 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -170,9 +175,28 @@ public class AccountSignUpPane extends JPanel {
 				}
 			}
 
+			
+			/**
+			 * Method reads through the file and checks if the provided email matches any existing emails. 
+			 * @param email
+			 * @return
+			 */
 			private boolean emailIsUnique(String email) {
-				return false;
+			    try (BufferedReader reader = new BufferedReader(new FileReader("Database/TestAccountSignUp.txt"))) {
+			        String line;
+			        while ((line = reader.readLine()) != null) {
+			            String[] parts = line.split(", ");
+			            if (parts.length >= 4 && parts[2].trim().equals(email.trim())) {
+			                return false; 
+			            }
+			        }
+			    } catch (IOException e) {
+			        e.printStackTrace();
+			        return false; 
+			    }
+			    return true; 
 			}
+			
 			
 		});
 				
@@ -211,8 +235,6 @@ public class AccountSignUpPane extends JPanel {
 		lblError.setVisible(true);
 		lblError.setText(message);
 	}
-	
-	
 	
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
