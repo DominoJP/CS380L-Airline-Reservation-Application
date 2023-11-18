@@ -26,11 +26,11 @@ import javax.swing.JTextField;
  *  @version 1.0
  */
 
-public class AccountSignInPane extends JPanel {
+public class SignInPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public AccountSignInPane(JPanel contentPane, Account account) {
+	public SignInPane(JPanel contentPane, Account account) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{140, 170, 140, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};

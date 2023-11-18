@@ -22,7 +22,7 @@ import javax.swing.JSeparator;
 import java.awt.Font;
 import java.awt.Color;
 
-public class ReservationPaymentPane extends JPanel implements PropertyChangeListener {
+public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private static final int MAXIMUM_PASSENERS_PER_BOOKING = 6;
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
@@ -44,7 +44,7 @@ public class ReservationPaymentPane extends JPanel implements PropertyChangeList
 
 	private static final long serialVersionUID = 1L;
 
-	public ReservationPaymentPane(JPanel contentPane, Account account, Flight flight) {
+	public PaymentPane(JPanel contentPane, Account account, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		selectedCabin = "Economy";

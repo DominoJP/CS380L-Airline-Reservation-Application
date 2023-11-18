@@ -30,7 +30,7 @@ import javax.swing.JButton;
    @version 1.0
 */
 
-public class PassengerDetailsPane extends JPanel implements PropertyChangeListener {
+public class PassengerPane extends JPanel implements PropertyChangeListener {
 	
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
@@ -81,7 +81,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 	
 	
 
-	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
+	public PassengerPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		

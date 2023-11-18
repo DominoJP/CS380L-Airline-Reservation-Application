@@ -29,14 +29,14 @@ import java.awt.Color;
    @version 1.0
 */
 
-public class AccountSignUpPane extends JPanel {
+public class SignUpPane extends JPanel {
 	private JLabel lblError;
 	
 	private PropertyChangeSupport support;
 
 	private static final long serialVersionUID = 1L;
 
-	public AccountSignUpPane(JPanel contentPane) {
+	public SignUpPane(JPanel contentPane) {
 		support = new PropertyChangeSupport(this);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();

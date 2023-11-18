@@ -213,10 +213,10 @@ public class Account{
  }
 
      /**
-      * Compares input email & password against email-password pairs stored in .txt.
+      * Compares user inputs for email & password against email-password pairs stored in .txt.
       * @param email
       * @param password
-      * @return whether sign in was successful
+      * @return whether sign in successful
       */
      public boolean signIn(String email, char[] password) {
     	 final String FILE_PATH = "src/Database/TestAccountSignUp.txt";

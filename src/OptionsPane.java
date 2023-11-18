@@ -21,11 +21,11 @@ import javax.swing.JSeparator;
    @version 1.1
 */
 
-public class OptionSelectionPane extends JPanel implements PropertyChangeListener {
+public class OptionsPane extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel lblConfirmation;
 
-	public OptionSelectionPane(JPanel contentPane, Account account) {
+	public OptionsPane(JPanel contentPane, Account account) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{95, 100, 100, 100, 95};
