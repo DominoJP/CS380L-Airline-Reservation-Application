@@ -60,7 +60,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// Instantiation of JPanels
 		SignInPane SignInPane = new SignInPane(contentPane, account);
 		SignUpPane SignUpPane = new SignUpPane(contentPane);
-		OptionsPane SelectionPane = new OptionsPane(contentPane, account);
+		MenuPane SelectionPane = new MenuPane(contentPane, account);
 		FilterPane FilterPane = new FilterPane(contentPane, account, sort, selectedFlight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);

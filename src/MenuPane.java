@@ -16,16 +16,19 @@ import java.awt.Font;
 import javax.swing.JSeparator;
 
 /**
-   JPanel that allows navigation between Reserving, Reviewing, or Canceling flights.
-   @author Jevy Miranda
-   @version 1.1
-*/
-
-public class OptionsPane extends JPanel implements PropertyChangeListener {
+ * a) Design Documentation: 'NavigationUI'
+ * b) Date of Creation: October 10, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass serving as a navigation hub between flight booking, review, and cancellation.
+ * e) Functions: Displays JLabel feedback text upon successful sign up and flight booking.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
+ */
+public class MenuPane extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel lblConfirmation;
 
-	public OptionsPane(JPanel contentPane, Account account) {
+	public MenuPane(JPanel contentPane, Account account) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{95, 100, 100, 100, 95};
