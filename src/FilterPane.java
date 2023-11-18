@@ -1,5 +1,4 @@
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,7 +15,6 @@ import java.util.HashMap;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 import java.awt.Font;
 import java.awt.CardLayout;
@@ -26,21 +24,27 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 
 /**
-   JPanel accepting user input (round trip/oneway, airport/city of departure/arrival, date of departure and/or arrival, number of passengers)
-   as criteria for filtering flights.
-   @author Jevy Miranda
-   @version 1.0
-*/
-
+ * a) 'FilterUI'
+ * b) Date of Creation: October 11, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass accepting user input as flight filtering criteria.
+ *    JComboBoxes (editable) for airport/city of departure arrival.
+ *    JComboBoxes for date of departure in MM/DD/YYYY format and passenger amount (up to 6).
+ * e) Functions: Instantiates FlightListPane, passing in Flight ArrayList generated from FlightSorting object.
+ *    User passenger amount selection fires PropertyChangeEvent "passengerAmount" to determine amount of
+ *    passenger details Panes to be used.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
+ */
 public class FilterPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private final ButtonGroup buttonGroupTripType = new ButtonGroup();
 	private JComboBox comboBoxPassengerAmount;
 	private JComboBox comboBoxDepart;
-	JComboBox comboBoxMonthD;
-	JComboBox comboBoxDayD;
-	JComboBox comboBoxYearD;
+	private JComboBox comboBoxMonthD;
+	private JComboBox comboBoxDayD;
+	private JComboBox comboBoxYearD;
 	
 	private JLabel lblNoFlights;
 	
@@ -313,11 +317,6 @@ public class FilterPane extends JPanel {
 		
 		lblNoFlights.setVisible(false);
 		this.setToCurrentDate();
-	}
-	
-	public int getPassengerAmount() {
-		// FIXME: temp solution
-		return Integer.parseInt(comboBoxPassengerAmount.getSelectedItem().toString());
 	}
 	
 	public void setPassengerAmount(int selectedPassengerAmount) {
