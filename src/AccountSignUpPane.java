@@ -182,7 +182,7 @@ public class AccountSignUpPane extends JPanel {
 			 * @return
 			 */
 			private boolean emailIsUnique(String email) {
-			    try (BufferedReader reader = new BufferedReader(new FileReader("Database/TestAccountSignUp.txt"))) {
+			    try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/TestAccountSignUp.txt"))) {
 			        String line;
 			        while ((line = reader.readLine()) != null) {
 			            String[] parts = line.split(", ");
