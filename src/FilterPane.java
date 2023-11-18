@@ -32,7 +32,7 @@ import javax.swing.JSeparator;
    @version 1.0
 */
 
-public class FlightFilterPane extends JPanel {
+public class FilterPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private final ButtonGroup buttonGroupTripType = new ButtonGroup();
@@ -85,7 +85,7 @@ public class FlightFilterPane extends JPanel {
 		 support.addPropertyChangeListener(pcl);
 	}
 	
-	public FlightFilterPane(JPanel contentPane, Account account, FlightSorting sort, Flight flight) {
+	public FilterPane(JPanel contentPane, Account account, FlightSorting sort, Flight flight) {
 		
 		support = new PropertyChangeSupport(this);
 		
