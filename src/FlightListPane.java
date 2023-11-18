@@ -26,10 +26,11 @@ public class FlightListPane extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public FlightListPane(JPanel contentPane, Account account, ArrayList<Flight> flightArray, Flight flight) {
-		JScrollPane scrollPane = new JScrollPane();
-		add(scrollPane, BorderLayout.CENTER);
 		
 		setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		add(scrollPane, BorderLayout.CENTER);
 		
 		JList listFlights = new JList(flightArray.toArray());
 		scrollPane.setViewportView(listFlights);
