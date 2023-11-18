@@ -1,17 +1,19 @@
-
 import java.awt.EventQueue;
 import java.math.BigDecimal;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 /**
-   Swing JFrame in which initial JPanel is instantiated.
-   Instantiates and adds JPanels to CardLayout, allowing switching between JPanels.
-   @author Jevy Miranda, Joshua Planovsky
-   @version 3.0
+ * a) Design Documentation: 'FlightReservationSystem'
+ * b) Date of Creation: October 8, 2023
+ * c) @author Jevy Miranda, Joshua Planovsky
+ * d) Description: JFrame subclass in which initial JPanel is instantiated.
+ * 	  Containing main method, it is also the control class in which most JPanels are instantiated.
+ * e) Functions: Instantiation of JPanels passes the current JPanel contentPane, allowing switching via CardLayout.
+ * 	  Dummy objects for the observable Account and Flight class are also passed to observer panes.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
  */
 public class FlightReservationSystem extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
