@@ -15,6 +15,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
+/**
+ * a) Design Documentation: 'PaymentUI'
+ * b) Date of Creation: October 12, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass to displays the list of active reservations associated with current account.
+ *    Reservation selected on 'Review' JButton press has details shown in another Pane. 
+ * e) Functions: PropertyChangeListener for "newReservation" allows reservations booked in the current JVM
+ *    instance to appear in the list alongside reservations instantiated from .txt at log in.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
+ */
+
 public class ReservationListPane extends JPanel implements PropertyChangeListener {
 	private ArrayList<Reservation> reservations;
 	
