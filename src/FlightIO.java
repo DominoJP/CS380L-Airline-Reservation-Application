@@ -19,7 +19,7 @@ import java.util.Iterator;
  * g) Algorithms: N/A
  */
 public class FlightIO {
-	private static final String FILE_PATH = "src/Database/FlightsTest.txt";
+	private static final String FILE_PATH = "src/Database/Flights.txt";
 	private static final int ECONOMY_COUNT_INDEX = 10;
 	private static final int BUSINESS_COUNT_INDEX = 13;
 	private static final int FIRST_CLASS_COUNT_INDEX = 16;
