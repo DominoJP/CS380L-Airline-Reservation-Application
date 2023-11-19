@@ -22,7 +22,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 	public static void main(String[] args) {	
 		
 		//Instantiation of cancel reservation object.
-		CancelReservation cancelReservation = new CancelReservation("src/Database/Reservation.txt");
+		CancelReservation cancelReservation = new CancelReservation("src/Database/Reservations.txt");
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
