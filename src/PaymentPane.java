@@ -19,8 +19,6 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
-import java.awt.Font;
-import java.awt.Color;
 
 public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private static final int MAXIMUM_PASSENERS_PER_BOOKING = 6;
