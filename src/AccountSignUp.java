@@ -76,7 +76,7 @@ public class AccountSignUp {
 */
     public static void writeToFile(String email, String password, String firstname, String lastname) {
     	
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/TestAccountSignUp.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Customers.txt", true))) {
         	IDGenerator idGen = new IDGenerator();
         	int id = idGen.generateAccountID();
         	// + "" typecasts int to String
@@ -95,7 +95,7 @@ public class AccountSignUp {
            // writer.write(Integer.toString(id));
             writer.newLine();     // Add a newline character to separate entries
 
-           System.out.println("Account information saved to " + "TestAccountSignUp.txt");
+           System.out.println("Account information saved to " + "Customers.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,7 +103,7 @@ public class AccountSignUp {
 
 
     private void readFromFile() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("Database/TestAccountSignUp.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Database/Customers.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
@@ -118,7 +118,7 @@ public class AccountSignUp {
     
 /*
     private boolean isEmailDuplicate() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("TestAccountSignUp.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Customers.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(", ");
