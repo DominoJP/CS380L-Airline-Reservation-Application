@@ -20,6 +20,19 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 
+/**
+ * a) Design Documentation: 'PaymentUI'
+ * b) Date of Creation: October 12, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass for payment and billing information. 
+ *    Displays total sum of fares + fees for all passengers.
+ *    JComboBoxes for Card Type, Expiry Date (MM/YY), Country, and State. 
+ * 	  JTextFields for Card Number, First/Last Name, Billing Address, and ZIP Code.
+ * e) Functions: Determines sum total pricing from PropertyChangeEvents "selectedFlight," "passengerAmount," and "selectedCabin."
+ *    isUniqueReservation() validates that the pending reservation is not already booked for the same cabin of the same flight.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
+ */
 public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private static final int MAXIMUM_PASSENERS_PER_BOOKING = 6;
 	private int selectedPassengerAmount;
@@ -75,7 +88,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblCardNumber.gridy = 0;
 		add(lblCardNumber, gbc_lblCardNumber);
 		
-		JLabel lblExpirationDate = new JLabel(" Expiry Date (MM/YYYY)");
+		JLabel lblExpirationDate = new JLabel(" Expiry Date (MM/YY)");
 		GridBagConstraints gbc_lblExpirationDate = new GridBagConstraints();
 		gbc_lblExpirationDate.gridwidth = 2;
 		gbc_lblExpirationDate.anchor = GridBagConstraints.WEST;

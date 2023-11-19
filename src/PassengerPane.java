@@ -38,7 +38,6 @@ import javax.swing.JButton;
  * f) Data Structures: N/A
  * g) Algorithms: N/A
  */
-
 public class PassengerPane extends JPanel implements PropertyChangeListener {
 	
 	private int selectedPassengerAmount;
