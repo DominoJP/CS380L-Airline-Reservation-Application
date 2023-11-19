@@ -19,10 +19,11 @@ import javax.swing.JComboBox;
  * a) Design Documentation: 'PaymentUI'
  * b) Date of Creation: October 12, 2023
  * c) @author Jevy Miranda
- * d) Description: JPanel subclass to displays the list of active reservations associated with current account.
- *    Reservation selected on 'Review' JButton press has details shown in another Pane. 
+ * d) Description: JPanel subclass in BorderLayout with JScrollPane. 
+ *    Pane displays the list of active reservations associated with current account. 
  * e) Functions: PropertyChangeListener for "newReservation" allows reservations booked in the current JVM
  *    instance to appear in the list alongside reservations instantiated from .txt at log in.
+ *    Reservation selected on 'Review' JButton press has details shown in another Pane.
  * f) Data Structures: N/A
  * g) Algorithms: N/A
  */

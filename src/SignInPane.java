@@ -20,10 +20,15 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JTextField;
 
 /**
- *  JPanel for account sign in.
- *  Login credentials (email and password) accepted as text inputs and authenticated on button press.
- *  @author Jevy Miranda
- *  @version 1.0
+ * a) Design Documentation: 'SignInUI'
+ * b) Date Created: October 9, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass for account sign in.
+ * e) Function: Login credentials (email and password) accepted as text inputs.
+ *    Calls method signIn() (another class) with parameters email input and password input, returning true if successful.
+ *    Method signIn() fires PropertyChangeEvents for account attributes email and id, observed by Panes of the booking process.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
  */
 
 public class SignInPane extends JPanel {
