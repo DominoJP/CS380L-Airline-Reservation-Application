@@ -72,13 +72,13 @@ public class FlightIO {
 	 * Updates flight passenger count on new reservation booking.
 	 * @see class ReservationPaymentPane.java
 	 */
-	public static void updatePassengerCount(Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
+	public static boolean updatePassengerCount(String filePath, Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
 		Iterator<String> iter;
 		int passengerCountIndex = ECONOMY_COUNT_INDEX;
 		int newPassengerCount = 0;
 		
-		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
@@ -102,6 +102,8 @@ public class FlightIO {
 							newPassengerCount = selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount;
 							selectedFlight.addFirstClassPassengerCount(selectedPassengerAmount);
 							break;
+						default:
+							return false;
 		        	}
 		        	// add flight with revised passengerCount
 		        	for (int i = 0; i <= LAST_INDEX; i++) {
@@ -127,20 +129,18 @@ public class FlightIO {
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
-		
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 			// re-write lines into file
 			iter = lines.iterator();
 			while (iter.hasNext()) {
 				writer.write(iter.next());
 				writer.newLine();
 			}
-			
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-		
+		return true;
 	}
 	
 	/**
