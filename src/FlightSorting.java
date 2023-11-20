@@ -102,7 +102,7 @@ public class FlightSorting{
 	 */
 	
 	public void sortFlights(String origin, String arrival, String date) {
-		this.destination = findFlights(origin, arrival, date);
+		this.destination = findAirportFlights(origin, arrival, date);
 		this.flights = destination.getFlights();
 		this.totalFlightsAvailable = flights.size();
 	}
