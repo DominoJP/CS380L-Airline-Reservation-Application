@@ -96,7 +96,7 @@ public class SignInPane extends JPanel {
 				if (account.signIn(textField.getText(), passwordField.getPassword())) {
 					// instantiate reservations from .txt
 					ReservationIO.instantiateReservations(account);
-					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 				} else {
 					lblWrong.setVisible(true);
 					passwordField.setText("");

@@ -172,7 +172,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 				} else {
 					support.firePropertyChange("selectedCabin", null, "Economy");
 				}
-				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1");
 			}
 		});
 		

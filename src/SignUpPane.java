@@ -181,7 +181,7 @@ public class SignUpPane extends JPanel {
 						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
 						lblError.setVisible(false);
 						support.firePropertyChange("Successful SignUp!", null, true);
-						((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 					 }
 				}
 			}

@@ -53,7 +53,7 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		JButton btnReturn = new JButton("Return");
 		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 			}
 		});
 		toolBar.add(btnReturn);

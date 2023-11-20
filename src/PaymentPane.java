@@ -259,7 +259,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		JButton btnNewButton = new JButton("Return");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER" + selectedPassengerAmount + "_DETAILS");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER" + selectedPassengerAmount + "");
 			}
 		});
 		
@@ -290,7 +290,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 				} else {
 					
 				}
-				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 			}
 		});
 		GridBagConstraints gbc_btnPay = new GridBagConstraints();

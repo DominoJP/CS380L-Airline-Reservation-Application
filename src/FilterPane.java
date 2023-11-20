@@ -209,7 +209,7 @@ public class FilterPane extends JPanel {
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 			}
 		});
 		
