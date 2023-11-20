@@ -24,11 +24,11 @@ import javax.swing.JSeparator;
  * f) Data Structures: N/A
  * g) Algorithms: N/A
  */
-public class MenuPane extends JPanel implements PropertyChangeListener {
+public class NavigationPane extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel lblConfirmation;
 
-	public MenuPane(JPanel contentPane, Account account) {
+	public NavigationPane(JPanel contentPane, Account account) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{95, 100, 100, 100, 95};

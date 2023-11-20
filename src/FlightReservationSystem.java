@@ -59,7 +59,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// Instantiation of JPanels
 		SignInPane SignInPane = new SignInPane(contentPane, account);
 		SignUpPane SignUpPane = new SignUpPane(contentPane);
-		MenuPane MenuPane = new MenuPane(contentPane, account);
+		NavigationPane NavigationPane = new NavigationPane(contentPane, account);
 		FilterPane FilterPane = new FilterPane(contentPane, account, sort, selectedFlight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
@@ -78,7 +78,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// Program start
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
-		contentPane.add(MenuPane, "MENU");
+		contentPane.add(NavigationPane, "MENU");
 		
 		// Select "Reserve"
 		contentPane.add(FilterPane, "FILTER");
@@ -136,8 +136,8 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		FilterPane.addPropertyChangeListener(PassengerSixPane);
 		
 		// confirmation message
-		PaymentPane.addPropertyChangeListener(MenuPane);
-		SignUpPane.addPropertyChangeListener(MenuPane);
+		PaymentPane.addPropertyChangeListener(NavigationPane);
+		SignUpPane.addPropertyChangeListener(NavigationPane);
 		
 	}
 }
