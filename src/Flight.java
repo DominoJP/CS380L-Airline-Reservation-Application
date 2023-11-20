@@ -95,10 +95,7 @@ public class Flight {
 	 * @param firstClassPricing
 	 */
 	public Flight(int id, String type, String cityDeparture, String cityArrival, 
-				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone,
-				  int economyCapacity, int economyPassengerCount, BigDecimal economyPricing,
-				  int businessCapacity, int businessPassengerCount, BigDecimal businessPricing,
-				  int firstClassCapacity, int firstClassPassengerCount, BigDecimal firstClassPricing) 
+				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone) 
 	{
 		this.id = id;
 		this.type = type; 
@@ -114,15 +111,15 @@ public class Flight {
 		this.dateTimeDeparture = ZonedDateTime.of(this.dateDeparture, this.timeDeparture, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
 		this.dateTimeArrival = ZonedDateTime.of(this.dateArrival, this.timeArrival, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
 		
-		this.economyCapacity = economyCapacity;
-		this.economyPassengerCount = economyPassengerCount;
-		this.economyPricing = economyPricing; 
-		this.businessCapacity = businessCapacity;
-		this.businessPassengerCount = businessPassengerCount;
-		this.businessPricing = businessPricing;
-		this.firstClassCapacity = firstClassCapacity;
-		this.firstClassPassengerCount = firstClassPassengerCount;
-		this.firstClassPricing = firstClassPricing;
+		//this.economyCapacity = economyCapacity;
+		//this.economyPassengerCount = economyPassengerCount;
+		//this.economyPricing = economyPricing; 
+		//this.businessCapacity = businessCapacity;
+		//this.businessPassengerCount = businessPassengerCount;
+		//this.businessPricing = businessPricing;
+		//this.firstClassCapacity = firstClassCapacity;
+		//this.firstClassPassengerCount = firstClassPassengerCount;
+		//this.firstClassPricing = firstClassPricing;
 		// passengers = new String[totalPassengerCapacity][2];
 		
 		support = new PropertyChangeSupport(this);
@@ -149,7 +146,7 @@ public class Flight {
 		// this.totalPassengerCapacity = selectedFlight.gettotalpassengercapacity();
 		// this.passengerCount = selectedFlight.getPassengerCount();
 		// this.pricing = selectedFlight.getpricing();
-		this.economyCapacity = selectedFlight.getEconomyCapacity();
+		//this.economyCapacity = selectedFlight.getEconomyCapacity();
 		this.economyPassengerCount = selectedFlight.getEconomyPassengerCount();
 		this.economyPricing = selectedFlight.getEconomyPricing();
 		this.businessCapacity = selectedFlight.getBusinessCapacity();
@@ -215,7 +212,7 @@ public class Flight {
 	 */
 	public int gettotalremainingpassengercapacity() {
 		int available = 0; 
-		for(int i = 0; i < totalPassengerCapacity; i++) {
+		for(int i = 0; i < gettotalpassengercapacity(); i++) {
 			if(passengers[i][1] == null ) {
 				available++;
 			}
@@ -229,7 +226,7 @@ public class Flight {
      * @return : returns the pricing of the flight. 
      */
 	public BigDecimal getpricing() {
-		return pricing;
+		return getpricing();
 	}
 
 	/**
@@ -303,7 +300,7 @@ public class Flight {
 	 */
 	@Deprecated
 	public int gettotalpassengercapacity() {
-		return totalPassengerCapacity;
+		return gettotalpassengercapacity();
 		
 	}
 	
@@ -313,7 +310,7 @@ public class Flight {
 	 */
 	@Deprecated
 	public int getPassengerCount() {
-		return passengerCount;
+		return getPassengerCount();
 	}
 	
 	/**
@@ -426,11 +423,12 @@ public class Flight {
 	 * @param accountnumber : the account number of the passenger. 
 	 * @param name : the name of the passenger. 
 	 */
+	@Deprecated
 	public  void setpassenger(int location, String accountnumber, String name) {
 		//if the statement checks whether location is valid seat on the flight and if
 		// it is then it assigns a passenger and if the seat does not exist then it provided 
 		//an error to the user. 
-		if(location <= totalPassengerCapacity) {
+		if(location <= gettotalpassengercapacity()) {
 			passengers[location][1] = name; 
 			if(accountnumber != null) {
 				passengers[location][2] = accountnumber;
