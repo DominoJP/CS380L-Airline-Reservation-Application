@@ -5,8 +5,8 @@ import java.time.LocalTime;
 /**
  * Owner: Logan Langewisch
  * The AirportFlights class sorts all the flights that take off at an airport
- * in order of where the flights are heading to and then what time they
- * leave using a binary tree
+ * in order of what date the flights and leaves and then from what time on that date
+ * they take off
  */
 
 public class AirportFlights {
@@ -95,6 +95,31 @@ public class AirportFlights {
 	}
 	
 	/**
+	 * the findFlight method searches through the list of flights that leave to a specific destination
+	 * and returns the flight that matches the time of departure that was given
+	 * @param t
+	 * @return
+	 */
+	
+	public Flight findFlight(String t) {
+		Flight flight = null;
+		LocalTime time = LocalTime.parse(t);
+		
+		for(int i = 0; i < this.timeDeparture.size(); i++) {
+			if(this.timeDeparture.get(i).gettimeDeparture().equals(time)) {
+				flight = this.timeDeparture.get(i);
+			}
+		}
+		
+		if(flight == null) {
+			System.out.println("No Results \n");
+			return null;
+		}
+		
+		return flight;
+	}
+	
+	/**
 	 * the addChild method will take two instances of the AirportFlights class and will recursively add
 	 * and new list of flights when a flight is leaving to a city that has not been added to the tree
 	 * @param curr
@@ -162,31 +187,6 @@ public class AirportFlights {
 	
 	public ArrayList<Flight> getFlights(){
 		return timeDeparture;
-	}
-	
-	/**
-	 * the findFlight method searches through the list of flights that leave to a specific destination
-	 * and returns the flight that matches the time of departure that was given
-	 * @param t
-	 * @return
-	 */
-	
-	public Flight findFlight(String t) {
-		Flight flight = null;
-		LocalTime time = LocalTime.parse(t);
-		
-		for(int i = 0; i < this.timeDeparture.size(); i++) {
-			if(this.timeDeparture.get(i).gettimeDeparture().equals(time)) {
-				flight = this.timeDeparture.get(i);
-			}
-		}
-		
-		if(flight == null) {
-			System.out.println("No Results \n");
-			return null;
-		}
-		
-		return flight;
 	}
 	
 	public AirportFlights getChild1() {

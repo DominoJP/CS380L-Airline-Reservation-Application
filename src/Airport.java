@@ -4,7 +4,7 @@ import java.time.LocalDate;
 /**
  * Owner: Logan Langewisch
  * The Airport Class holds a list of all airports that are saved in the software and also sorts the airports
- * depending on where they are located by using a binary tree.
+ * depending on where they are located and by where they are heading using a binary tree.
  * Each Airport also contains a list of the flights that leave it.
  */
 

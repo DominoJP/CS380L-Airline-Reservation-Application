@@ -139,13 +139,20 @@ public class Account{
 	  * @param flight : flight to be reserved.
 	  * @param passengers : list of passengers for reservation.
 	  */
-	 public void reserve(Flight flight, List<Passenger> passengers) {
+	 public void reserve(Flight flight, ArrayList<Passenger> passengers, String type) {
 	 //Implementation to make a reservation flight
-	 if(flight.isFull()) {
+	 if(flight.isFull(type)) {
 		 System.out.println("Sorry, the flight is full!");
 	 }
 	 else {
-		 Reservation reservation = new Reservation(this, flight);
+		 ArrayList<String> people = new ArrayList<String>();
+		 
+		 for(int i = 0; i < passengers.size(); i++) {
+			 people.add(passengers.get(i).getname());
+		 }
+		 
+		 Reservation reservation = new Reservation(this);
+		 reservation.setReservation(flight, type, people);
 		 reservationHistory.add(reservation);
 		 System.out.println("Reservation sucessfully!");
 	 }

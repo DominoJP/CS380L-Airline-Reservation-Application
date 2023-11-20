@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+
 public class FlightSorting{
 	
 	private int totalFlightsAvailable;
@@ -48,8 +49,8 @@ public class FlightSorting{
 
 	/**
 	 * Adds @param flight, an instance of the Flight class, to the list of sorted fliights
-	 */
-	public void addFlight(Flight flight) {
+	 */public void addFlight(Flight flight) {
+	
 		/*
 		 * This area of code is to allow FlightSorting to also sort flights classified as "Round-trop", or "Two-Way" depending
 		 * on what we decide to call these flights when this gets fully implemented
@@ -129,8 +130,8 @@ public class FlightSorting{
 	 * @param destination and @param date
 	 */
 	
-	public AirportFlights findFlights(String origin, String destination, String date) {
-		return this.search(origin).search(destination, date);
+	public AirportFlights findAirportFlights(String origin, String destination, String date) {
+		return this.findAirport(origin).search(destination, date);
 		
 	}
 	
@@ -155,7 +156,7 @@ public class FlightSorting{
 	 * that Airport.
 	 */
 	
-	public Airport search(String origin) {
+	public Airport findAirport(String origin) {
 		Airport curr = root1;
 		
 		while(curr.getOrigin().compareTo(origin) != 0) {
