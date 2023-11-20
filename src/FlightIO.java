@@ -13,21 +13,21 @@ import java.util.Iterator;
  */
 
 public class FlightIO {
-	private static final String FILE_PATH = "src/Database/FlightsTest.txt";
+	private static final String FILE_PATH = "Database/Flights.txt";
 	private static final int ECONOMY_COUNT_INDEX = 10;
 	private static final int BUSINESS_COUNT_INDEX = 13;
 	private static final int FIRST_CLASS_COUNT_INDEX = 16;
 	private static final int LAST_INDEX = 17;
-	
+
 	/**
 	 * Constructor.
 	 */
 	/*
 	public FlightIO() {
-		
+
 	}
 	*/
-	
+
 	/**
 	 * Returns a FlightSorting object to which instantiated flights are added.
 	 * @return FlightSorting object
@@ -38,15 +38,15 @@ public class FlightIO {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		    	Flight instantiatedFlight;
-		    	if (line.length() > 0) {	
+		    	if (line.length() > 0) {
 		    		String[] parts = line.split(", ");
 			        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
-			        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
+			        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3],
 			        									   parts[4], parts[5], parts[6], parts[7], parts[8],
 						        						   Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), new BigDecimal(parts[11]),
 									          	     	   Integer.parseInt(parts[12]), Integer.parseInt(parts[13]), new BigDecimal(parts[14]),
 									          	     	   Integer.parseInt(parts[15]), Integer.parseInt(parts[16]), new BigDecimal(parts[17]));
-		    	
+
 			        //FlightSorting instantiation requires a flight as parameter
 			        if (sort == null) {
 			        	sort = new FlightSorting(instantiatedFlight);
@@ -55,13 +55,13 @@ public class FlightIO {
 			        }
 		    	}
 		    }
-		    reader.close();  
+		    reader.close();
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
 		return sort;
 	}
-	
+
 	/**
 	 * Updates flight passenger count one new reservation booking.
 	 * @see class ReservationPaymentPane.java
@@ -71,12 +71,12 @@ public class FlightIO {
 		Iterator<String> iter;
 		int passengerCountIndex = ECONOMY_COUNT_INDEX;
 		int newPassengerCount = 0;
-		
-		
-		
+
+
+
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
-		    
+
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
@@ -124,7 +124,7 @@ public class FlightIO {
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
-		
+
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
 			// re-write lines into file
 			iter = lines.iterator();
@@ -132,39 +132,39 @@ public class FlightIO {
 				writer.write(iter.next());
 				writer.newLine();
 			}
-			
+
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-		
+
 	}
-	
+
 	/**
 	 * Returns Flight object with corresponding @param ID.
 	 */
 	public static Flight findFlight(int flightID) {
 		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC",
 										0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"));
-		
+
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		    	String[] parts = line.split(", ");
 		    	if (line.length() > 0 && Integer.parseInt(parts[0]) == flightID) {
 		        	// Instantiate flight with parameters corresponding to String[] indices generated from the current line
-		        	foundFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
+		        	foundFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3],
 							   				 parts[4], parts[5], parts[6], parts[7], parts[8],
 							   				 Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), new BigDecimal(parts[11]),
 							   				 Integer.parseInt(parts[12]), Integer.parseInt(parts[13]), new BigDecimal(parts[14]),
 							   				 Integer.parseInt(parts[15]), Integer.parseInt(parts[16]), new BigDecimal(parts[17]));
 		        }
 		    }
-		    reader.close();   
+		    reader.close();
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
 		return foundFlight;
 	}
-	
+
 }
