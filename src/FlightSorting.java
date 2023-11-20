@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.io.*;
 
 
 public class FlightSorting{
@@ -113,15 +114,22 @@ public class FlightSorting{
 	 */
 	
 	public Flight findFlight(String time) {
-		flights = destination.getFlights();
-		LocalTime find = LocalTime.parse(time);
-		
-		for(int i = 0; i < flights.size(); i++) {
-			if(flights.get(i).gettimeDeparture().equals(find))
-				return flights.get(i);
+		try {	
+			if(destination == null) {
+				throw new IOException("There is no destination");
+			}
+			flights = destination.getFlights();
+			LocalTime find = LocalTime.parse(time);
+			
+			for(int i = 0; i < flights.size(); i++) {
+				if(flights.get(i).gettimeDeparture().equals(find))
+					return flights.get(i);
+			}
+			
+			return null;
+		}catch(IOException e) {
+			return null;
 		}
-		
-		return null;
 	}
 	
 	/**
