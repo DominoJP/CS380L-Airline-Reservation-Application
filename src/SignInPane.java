@@ -20,17 +20,22 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JTextField;
 
 /**
-   JPanel for account sign in.
-   Login credentials (email and password) accepted as text inputs and authenticated on button press.
-   @author Jevy Miranda
-   @version 1.0
+ * a) Design Documentation: 'SignInUI'
+ * b) Date Created: October 9, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass for account sign in.
+ * e) Function: Login credentials (email and password) accepted as text inputs.
+ *    Calls method signIn() (another class) with parameters email input and password input, returning true if successful.
+ *    Method signIn() fires PropertyChangeEvents for account attributes email and id, observed by Panes of the booking process.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
  */
 
-public class AccountSignInPane extends JPanel {
-	private AccountSignIn signIn = new AccountSignIn();
+public class SignInPane extends JPanel {
+
 	private static final long serialVersionUID = 1L;
 
-	public AccountSignInPane(JPanel contentPane, Account account) {
+	public SignInPane(JPanel contentPane, Account account) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{140, 170, 140, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -87,14 +92,11 @@ public class AccountSignInPane extends JPanel {
 		btnLogInPane.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		btnLogInPane.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (signIn.validateCredentials(textField.getText(), passwordField.getPassword())) {
-					// Allows instantiation of reservations using updated Account object
-					account.setaccountNumber(signIn.getID());
-					account.setEmail(signIn.getEmail());
-					// ReservationsReader reservationsReader = new ReservationsReader(account);
-					// reservationsReader.instantiateReservations();
+				// if sign in successful
+				if (account.signIn(textField.getText(), passwordField.getPassword())) {
+					// instantiate reservations from .txt
 					ReservationIO.instantiateReservations(account);
-					((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 				} else {
 					lblWrong.setVisible(true);
 					passwordField.setText("");

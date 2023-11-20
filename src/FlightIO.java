@@ -8,12 +8,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Class to instantiate or update flights line-by-line from .txt file via BufferedReader & BufferedWriter.
- * @author Jevy Miranda
+ * a) 'FlightIO'
+ * b) Date of Creation: Nov 10, 2023 (refactor of a class made in October)
+ * c) @author Jevy Miranda
+ * d) Description: Utility class for reading/writing from/to Flights.txt. Uses BufferedReader & BufferedWriter.
+ * e) Functions: Instantiates flights from .txt file at program execution and outputs a FlightSorting object.
+ *    Updates the passenger count in the .txt of the corresponding cabin class on successful reservation booking,
+ *    taking selected flight, selected passenger amount, and selected cabin class as inputs.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
  */
-
 public class FlightIO {
-	private static final String FILE_PATH = "src/Database/FlightsTest.txt";
+	private static final String FILE_PATH = "src/Database/Flights.txt";
 	private static final int ECONOMY_COUNT_INDEX = 10;
 	private static final int BUSINESS_COUNT_INDEX = 13;
 	private static final int FIRST_CLASS_COUNT_INDEX = 16;
@@ -63,7 +69,7 @@ public class FlightIO {
 	}
 	
 	/**
-	 * Updates flight passenger count one new reservation booking.
+	 * Updates flight passenger count on new reservation booking.
 	 * @see class ReservationPaymentPane.java
 	 */
 	public static void updatePassengerCount(Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
@@ -72,11 +78,8 @@ public class FlightIO {
 		int passengerCountIndex = ECONOMY_COUNT_INDEX;
 		int newPassengerCount = 0;
 		
-		
-		
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
-		    
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
