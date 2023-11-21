@@ -134,7 +134,7 @@ public class FlightIO {
 	
 	/**
 	 * Rewrites Flights.txt with re-built file.
-	 * @param iter iter of ArrayList<String> lines that comprise the file
+	 * @param lines ArrayList<String> of lines that comprise the file
 	 */
 	private static void rewrite(String filePath, ArrayList<String> lines) {
 		Iterator<String> iter;
