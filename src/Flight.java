@@ -1,10 +1,15 @@
 /**
- * The Flight class represents a flight in a flight reservation such as 
- * the type of flight (round trip or one way), departure and arrival cities,
- * departure and arrival dates and times, 
- * total passenger capacity, pricing and passenger information. 
- *@author Sayra Reyes
- *@version 1.0 
+ * a) Design documentation: "Flight" 
+ * b) Date of creation: October 3, 2023
+ * c) Programmer's name: Sayra (Original),  Logan Lagewisch (Modified).
+ * d) Description: This class represents a flight in a flight reservation system. It encopasses flight details 
+ * 	  such as ID, type, departure/arrival cities, date/times, passenger capacity, pricing and 
+ * 	  methods to manage passenger booking. 
+ * e) Functions: Methods like flight details, capacity, pricing, booking status and specify information. 
+ * f) Data Structures: There are several used to manage and store information related to flights and passengers methods like: 
+ * 	  Managing Booking, DataTime Handiling and Support for Listeners. 
+ * g) Algorithm: N/A
+ *
  */
 
 import java.beans.PropertyChangeListener;
@@ -95,10 +100,7 @@ public class Flight {
 	 * @param firstClassPricing
 	 */
 	public Flight(int id, String type, String cityDeparture, String cityArrival, 
-				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone,
-				  int economyCapacity, int economyPassengerCount, BigDecimal economyPricing,
-				  int businessCapacity, int businessPassengerCount, BigDecimal businessPricing,
-				  int firstClassCapacity, int firstClassPassengerCount, BigDecimal firstClassPricing) 
+				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone) 
 	{
 		this.id = id;
 		this.type = type; 
@@ -114,19 +116,36 @@ public class Flight {
 		this.dateTimeDeparture = ZonedDateTime.of(this.dateDeparture, this.timeDeparture, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
 		this.dateTimeArrival = ZonedDateTime.of(this.dateArrival, this.timeArrival, ZonedDateTime.now().getZone()).withZoneSameInstant(this.zone);
 		
-		this.economyCapacity = economyCapacity;
-		this.economyPassengerCount = economyPassengerCount;
-		this.economyPricing = economyPricing; 
-		this.businessCapacity = businessCapacity;
-		this.businessPassengerCount = businessPassengerCount;
-		this.businessPricing = businessPricing;
-		this.firstClassCapacity = firstClassCapacity;
-		this.firstClassPassengerCount = firstClassPassengerCount;
-		this.firstClassPricing = firstClassPricing;
+		this.economyCapacity = 0;
+		this.economyPassengerCount = 0;
+		this.economyPricing = new BigDecimal(0); 
+		this.businessCapacity = 0;
+		this.businessPassengerCount = 0;
+		this.businessPricing = new BigDecimal(0);
+		this.firstClassCapacity = 0;
+		this.firstClassPassengerCount = 0;
+		this.firstClassPricing = new BigDecimal(0);
+		
 		// passengers = new String[totalPassengerCapacity][2];
 		
 		support = new PropertyChangeSupport(this);
 	}
+	
+	public void setEconomy(int capacity, BigDecimal price) {
+		this.economyCapacity = capacity;
+		this.economyPricing = price;
+	}
+	
+	public void setBusiness(int capacity, BigDecimal price) {
+		this.businessCapacity = capacity;
+		this.businessPricing = price;
+	}
+	
+	public void setFirstClass(int capacity, BigDecimal price) {
+		this.firstClassCapacity = capacity;
+		this.firstClassPricing = price;
+	}
+	
 	
 	
 	/**
@@ -210,12 +229,29 @@ public class Flight {
 	}
 	
 	/**
+	 * Setter method to set the date of departure for a flight using @param depart
+	 */
+	
+	public void setDateDeparture(String depart) {
+		this.dateDeparture = LocalDate.parse(depart);
+	}
+	
+	/**
+	 * Setter method to set the time of departure for a flight using @param depart
+	 */
+	
+	public void setTimeDeparture(String depart) {
+		this.timeDeparture = LocalTime.parse(depart);
+	}
+	
+	/**
 	 * Getter method to retrieve the total remaining pasenger capacity
 	 * @return ; returns the total remaining passenger capacity
 	 */
+	@Deprecated
 	public int gettotalremainingpassengercapacity() {
 		int available = 0; 
-		for(int i = 0; i < totalPassengerCapacity; i++) {
+		for(int i = 0; i < gettotalpassengercapacity(); i++) {
 			if(passengers[i][1] == null ) {
 				available++;
 			}
@@ -228,8 +264,9 @@ public class Flight {
      * Getter method to retrieve the pricing of the flight. 
      * @return : returns the pricing of the flight. 
      */
+	@Deprecated
 	public BigDecimal getpricing() {
-		return pricing;
+		return getpricing();
 	}
 
 	/**
@@ -237,6 +274,7 @@ public class Flight {
 	 * @param location : the location for setting passenger information. 
 	 * @return 
 	 */
+	@Deprecated
 	public String getPassenger(int location) {
 		return passengers[location][1];
 	}
@@ -303,7 +341,7 @@ public class Flight {
 	 */
 	@Deprecated
 	public int gettotalpassengercapacity() {
-		return totalPassengerCapacity;
+		return gettotalpassengercapacity();
 		
 	}
 	
@@ -313,7 +351,7 @@ public class Flight {
 	 */
 	@Deprecated
 	public int getPassengerCount() {
-		return passengerCount;
+		return getPassengerCount();
 	}
 	
 	/**
@@ -393,7 +431,9 @@ public class Flight {
 	 * @param passenger amount as selected by customer
 	 */
 	public void addEconomyPassengerCount(int selectedPassengerCount) {
-		economyPassengerCount += selectedPassengerCount;
+		if(!this.isFull("Economy") && (this.economyPassengerCount + selectedPassengerCount) <= this.economyCapacity) {
+			economyPassengerCount += selectedPassengerCount;
+		}
 	}
 	
 	/**
@@ -401,7 +441,9 @@ public class Flight {
 	 * @param passenger amount as selected by customer
 	 */
 	public void addBusinessPassengerCount(int selectedPassengerCount) {
-		businessPassengerCount += selectedPassengerCount;
+		if(!this.isFull("Business") && (this.businessPassengerCount + selectedPassengerCount) <= this.businessCapacity) {
+			businessPassengerCount += selectedPassengerCount;
+		}
 	}
 	
 	/**
@@ -409,16 +451,44 @@ public class Flight {
 	 * @param passenger amount as selected by customer
 	 */
 	public void addFirstClassPassengerCount(int selectedPassengerCount) {
-		firstClassPassengerCount += selectedPassengerCount;
+		if(!this.isFull("First Class") && (this.firstClassPassengerCount + selectedPassengerCount) <= this.firstClassCapacity) {
+			firstClassPassengerCount += selectedPassengerCount;
+		}
 	}
 	
+	public void removeEconomyPassenger() {
+		if(this.economyPassengerCount != 0)
+			this.economyPassengerCount--;
+	}
+	
+	public void removeBusinessPassenger() {
+		if(this.businessPassengerCount != 0)
+			this.businessPassengerCount--;
+	}
+	
+	public void removeFirstClassPassenger() {
+		if(this.firstClassPassengerCount != 0)
+			this.firstClassPassengerCount--;
+	}
+	
+
 	/**
 	 * Method to check if the flight is full
 	 * @return , returns true if the flight is full, otherwise false. 
 	 */
-	public boolean isFull() {
-		return false;
+	public boolean isFull(String type) {
+		switch(type) {
+		case "Economy":
+			return this.economyCapacity == this.economyPassengerCount;
+		case "Business":
+			return this.businessCapacity == this.businessPassengerCount;
+		case "First Class":
+			return this.firstClassCapacity == this.firstClassPassengerCount;
+		}
+		
+		return true;
 	}
+	
 	
 	/**
 	 * Method to set the passenger information at a specified location. 
@@ -426,11 +496,12 @@ public class Flight {
 	 * @param accountnumber : the account number of the passenger. 
 	 * @param name : the name of the passenger. 
 	 */
+	@Deprecated
 	public  void setpassenger(int location, String accountnumber, String name) {
 		//if the statement checks whether location is valid seat on the flight and if
 		// it is then it assigns a passenger and if the seat does not exist then it provided 
 		//an error to the user. 
-		if(location <= totalPassengerCapacity) {
+		if(location <= gettotalpassengercapacity()) {
 			passengers[location][1] = name; 
 			if(accountnumber != null) {
 				passengers[location][2] = accountnumber;
@@ -469,9 +540,8 @@ public class Flight {
 				timeArrivalHour = 12;
 		}
 		
-		
-        return "DEPARTS: " + timeDepartureHour + ":" + String.format("%02d", dateTimeDeparture.getMinute()) + " " + departPeriod + " " +
-        		" - ARRIVES: " + timeArrivalHour + ":" + String.format("%02d", dateTimeArrival.getMinute()) + " " + arrivePeriod + ", " +
+        return "DEPARTS: " + timeDepartureHour + ":" + dateTimeDeparture.getMinute() + " " + departPeriod + " " +
+        		" - ARRIVES: " + timeArrivalHour + ":" + dateTimeArrival.getMinute() + " " + arrivePeriod + ", " +
         	    dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
     }
 	

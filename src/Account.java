@@ -7,12 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-   Account class represents a user account for a flight reservation system.
-   It stores information such as user's name, email, password, account number
-   and reservation history.
-   @author Sayra Reyes
-   @version 1.0
+ * a) Design documentation: "Account" 
+ * b) Date of creation: October 3, 2023
+ * c) Programmer's Name: Sayra Reyes (Original) , Logan Lagewisch (Modified).
+ * d) Description: Account class represents a user account within a flight reservation system.
+ * 	  It stores account details such as name, email, password, account number, 
+ * 	  and reservation history. 
+ * 	  It provides functionality to manage reservations, update account information and perform 
+ * 	  signin operations. 
+ * e) Functions: reserve method, cancelReservation, changeReservation, reviewFlightDetails and SignIn. 
+ * 	  This classes manages user account details and provides methods for managing. 
+ * f) Data Structures: List(Reservation) this data structure stores the history of
+ *    reservations made by the account holder. It also allows for easy management and retrieval
+ *    of reservation data associated with the account. 
+ * g) Algorithm: N/A
+ * 
  */
+
 public class Account{
 	 private String name;
 	 private String email;
@@ -41,6 +52,10 @@ public class Account{
 		 support = new PropertyChangeSupport(this);
 	 }
 	 
+	 /**
+	  * Adds a property change listener to the account. 
+	  * @param pcl 
+	  */
 	 public void addPropertyChangeListener(PropertyChangeListener pcl) {
 		 support.addPropertyChangeListener(pcl);
 	 }
@@ -143,7 +158,7 @@ public class Account{
 	  */
 	 public void reserve(Flight flight, List<Passenger> passengers) {
 	 //Implementation to make a reservation flight
-	 if(flight.isFull()) {
+	 if(flight.isFull(email)) {
 		 System.out.println("Sorry, the flight is full!");
 	 }
 	 else {
@@ -219,7 +234,7 @@ public class Account{
       * @return whether sign in successful
       */
      public boolean signIn(String email, char[] password) {
-    	 final String FILE_PATH = "src/Database/Customers.txt";
+    	 final String FILE_PATH = "Database/Customers.txt";
     	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			 String line;
 			 while ((line = reader.readLine()) != null) {
@@ -240,3 +255,4 @@ public class Account{
      }
 
 }
+

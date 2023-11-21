@@ -10,11 +10,19 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
- /** Java program to send email with message. 
-   * TO DO: Need to download Java Mail : after add that library to the project . 
-   * @author Sayra Reyes
-   * @version 1.0
+ /** 
+  * a) Design Documentation: "Java Mail"
+  * b) Date of creation: JavaMail is a program that facilitates 
+  * c) Programmer's name: Sayra Reyes
+  * d) Description: This class facilitates the use of sending emails using JavaMail API. 
+       It allows configuration of sender and recipient email addresses, 
+       sets up the properties for the email server, constructs an email message 
+       and it sends it to the recipient’s email address.
+  * e) Functions: sendMail() : sets up the necessary properties for the email server, 
+  * 	creates a session usig the sender's credentials with a message and send's
+  * 	to the recipient email address. 
+  * f) Data Structures: N/A
+  * g) Algorithm: N/A
  **/
 
 public class JavaMail {
@@ -63,3 +71,4 @@ public class JavaMail {
 	}
 	
 }
+
