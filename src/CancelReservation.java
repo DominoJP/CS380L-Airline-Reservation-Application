@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class CancelReservation {
     // Default reservation file path
-    private String reservationFilePath = "src/Database/Reservation.txt";
+    private String reservationFilePath = "src/Database/Reservations.txt";
 
     // Constructor to set the reservation file path
     public CancelReservation(String reservationFilePath) {

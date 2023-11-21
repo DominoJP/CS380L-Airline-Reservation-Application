@@ -1,2 +1,2 @@
-Accounts: 3
+Accounts: 2
 Reservations: 3

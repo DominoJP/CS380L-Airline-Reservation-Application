@@ -7,22 +7,30 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Class from which new unique IDs are generated, reading from/writing to IDGeneratorHelper.txt.
+ * a) Design Documentation: 'IDGenerator'
+ * b) Date of Creation: November 11, 2023
+ * c) @author Jevy Miranda
+ * d) Description: Solution to generate user-readable unique ID generation across JVM instances.
+ * e) Functions: setLastID() reads the last IDs generated (as saved in IDGeneratorHelper.txt) into local variables.
+ *    generateAccountID() and generateReservationID() increment their respective lastID local variables and
+ *    return a new unique ID of data type int.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
  */
 public class IDGenerator {
-	private final String filePath = "IDGeneratorHelper.txt";
+	private final String filePath = "src/Database/IDGeneratorHelper.txt";
 	private int lastReservationID;
 	private int lastAccountID;
 	
 	/**
-	 * Constructor.
+	 * Class Constructor.
 	 */
 	public IDGenerator() {
 		setLastID();
 	}
 	
 	/**
-	 * Method which generates ID based on running count, updated into IDGeneratorHelper.txt.
+	 * Generates ID based on running count, updated into IDGeneratorHelper.txt.
 	 * @return newly-generated unique ID
 	 */
 	public int generateAccountID() {
@@ -32,7 +40,7 @@ public class IDGenerator {
 	}
 	
 	/**
-	 * Method which generates ID based on running count, updated into IDGeneratorHelper.txt.
+	 * Generates ID based on running count, updated into IDGeneratorHelper.txt.
 	 * @return newly-generated unique ID
 	 */
 	public int generateReservationID() {
@@ -42,7 +50,7 @@ public class IDGenerator {
 	}
 	
 	/**
-	 * Method to read the last IDs generated and assign them as local variables.
+	 * Read the last IDs generated and assign them as local variables.
 	 */
 	private void setLastID() {
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -62,7 +70,7 @@ public class IDGenerator {
 	}
 	
 	/**
-	 * Method to update the IDGeneratorHelper.txt with newly-generated lastID.
+	 * Updates IDGeneratorHelper.txt with newly-generated lastID.
 	 */
 	private void updateFile(String type) {
 		ArrayList<String> lines = new ArrayList<>();

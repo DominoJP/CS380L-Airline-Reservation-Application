@@ -6,6 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,14 +29,25 @@ import java.awt.Color;
    @version 1.0
 */
 
-public class AccountSignUpPane extends JPanel {
+/**
+ * a) Design Documentation: "SignUpUI"
+ * b) Date Created: October 9, 2023
+ * c) @author Jevy Miranda, Sayra Reyes
+ * d) Description: JPanel subclass for new account sign up. JTextFields for all inputs.
+ * e) Functions: Displays JLabel error message with corresponding issue for the following issues:
+ * 	  name field empty, email invalid, password too short, and re-typed password does not match.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
+ */
+
+public class SignUpPane extends JPanel {
 	private JLabel lblError;
 	
 	private PropertyChangeSupport support;
 
 	private static final long serialVersionUID = 1L;
 
-	public AccountSignUpPane(JPanel contentPane) {
+	public SignUpPane(JPanel contentPane) {
 		support = new PropertyChangeSupport(this);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -148,26 +165,52 @@ public class AccountSignUpPane extends JPanel {
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (txtFirstName.getText().equals("") || txtLastName.getText().equals("")) {
-					lblError.setVisible(true);
-					lblError.setText("First & Last Name required.");
-				// } else if (txtEmail empty) {
-					// setVisible true & setText "Email required."
-				// } else if (!txtEmail.getText().contains("@"){
-					// setVisible true & SetText "Invalid email."
-				// } else if (passwordField password too short, less than 8 characters) {
-					// setVisible true & setText "..."
-				// } else if (passwordField and passwordFieldRetype do not match) {	
-					// setVisible true & setText "..."
+					setError("First & Last Name required.");
+				 } else if (txtEmail.getText().isEmpty()) {
+					 setError("Email required.");
+				 } else if (!txtEmail.getText().contains("@")){
+					 setError("Invalid email.");
+				 } else if (passwordField.getPassword().length < 8) {
+					 setError("Password is required!");
+				 } else if (!Arrays.equals(passwordField.getPassword(), passwordFieldRetype.getPassword())) {	
+					 setError("Retype password!");
 				} else {
-					// if (email is unique) {
+					 if (!emailIsUnique(txtEmail.getText())) {
+						 setError("Email is already used! try again!");
+					 }else {
 						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
 						lblError.setVisible(false);
-						support.firePropertyChange("successfulSignUp", null, true);
-						((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
-					// }
+						support.firePropertyChange("Successful SignUp!", null, true);
+						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
+					 }
 				}
 			}
+
+			
+			/**
+			 * Method reads through the file and checks if the provided email matches any existing emails. 
+			 * @param email
+			 * @return
+			 */
+			private boolean emailIsUnique(String email) {
+			    try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/Customers.txt"))) {
+			        String line;
+			        while ((line = reader.readLine()) != null) {
+			            String[] parts = line.split(", ");
+			            if (parts.length >= 4 && parts[2].trim().equals(email.trim())) {
+			                return false; 
+			            }
+			        }
+			    } catch (IOException e) {
+			        e.printStackTrace();
+			        return false; 
+			    }
+			    return true; 
+			}
+			
+			
 		});
+				
 		GridBagConstraints gbc_btnSignUp = new GridBagConstraints();
 		gbc_btnSignUp.insets = new Insets(0, 0, 5, 5);
 		gbc_btnSignUp.gridx = 2;
@@ -194,6 +237,16 @@ public class AccountSignUpPane extends JPanel {
 		
 		lblError.setVisible(false);
 	}
+	
+	/**
+	 * Method to set error message and visibility 
+	 * @param message
+	 */
+	private void setError(String message) {
+		lblError.setVisible(true);
+		lblError.setText(message);
+	}
+	
 	
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);

@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -74,7 +75,8 @@ public class AccountSignUp {
     }
 */
     public static void writeToFile(String email, String password, String firstname, String lastname) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("TestAccountSignUp.txt", true))) {
+    	
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Customers.txt", true))) {
         	IDGenerator idGen = new IDGenerator();
         	int id = idGen.generateAccountID();
         	// + "" typecasts int to String
@@ -93,15 +95,15 @@ public class AccountSignUp {
            // writer.write(Integer.toString(id));
             writer.newLine();     // Add a newline character to separate entries
 
-           // System.out.println("Account information saved to " + "TestAccountSignUp.txt");
+           System.out.println("Account information saved to " + "Customers.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-/*
+
     private void readFromFile() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("TestAccountSignUp.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Database/Customers.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
@@ -110,17 +112,17 @@ public class AccountSignUp {
             e.printStackTrace();
         }
     }
-*/
+
     
     
     
-   /*
+/*
     private boolean isEmailDuplicate() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("TestAccountSignUp.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Customers.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 1 && parts[0].equals(email)) {
+                String[] parts = line.split(", ");
+                if (parts.length >= 3 && parts[2].trim().equals(email.trim())) {
                     return true;
                 }
             }
@@ -129,12 +131,8 @@ public class AccountSignUp {
         }
         return false;
     }
-    */
+  */
     
-    
-    
-    
-
     // Getter and Setter methods
     public void setEmail(String email) {
         this.email = email;
@@ -147,7 +145,7 @@ public class AccountSignUp {
     public void FirstName(String firstname) {
         this.firstname = firstname;
     }
-    
+
     public void setLastName(String lastname) {
         this.lastname = lastname;
     }
@@ -156,25 +154,23 @@ public class AccountSignUp {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public void getEmail(String email) {
-    	return; 
+    	return;
     }
-    
+
     public void getPassword(String password) {
     	return;
     }
-    
+
     public void getName(String name) {
-    	return; 
+    	return;
     }
-    
+
     public void getId(int id) {
-    	return; 
+    	return;
     }
+
+	
 }
-
-
-
-
 

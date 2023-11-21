@@ -1,8 +1,10 @@
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.math.BigDecimal;
 
 /**
    Account class represents a user account for a flight reservation system.
@@ -17,7 +19,6 @@ public class Account{
 	 private String password;
 	 private int accountNumber;
 	 private List<Reservation> reservationHistory;
-	 private BigDecimal accountBalance;
 	 
 	 private PropertyChangeSupport support;
 
@@ -38,7 +39,6 @@ public class Account{
 		 this.reservationHistory = new ArrayList<>();
 		 
 		 support = new PropertyChangeSupport(this);
-		 this.accountBalance = new BigDecimal(0);
 	 }
 	 
 	 public void addPropertyChangeListener(PropertyChangeListener pcl) {
@@ -68,6 +68,7 @@ public class Account{
 	  * @param accountNumber : new account email to be set.
 	  */
 	 public void setEmail(String email) {
+		 support.firePropertyChange("accountEmail", null, email);
 		 this.email = email;
 
 	 }
@@ -85,6 +86,7 @@ public class Account{
 	  * @param accountNumber : new account number to be set.
 	  */
 	 public void setaccountNumber(int accountNumber) {
+		 support.firePropertyChange("accountNumber", null, accountNumber);
 		 this.accountNumber = accountNumber;
 
 	 }
@@ -139,20 +141,13 @@ public class Account{
 	  * @param flight : flight to be reserved.
 	  * @param passengers : list of passengers for reservation.
 	  */
-	 public void reserve(Flight flight, ArrayList<Passenger> passengers, String type) {
+	 public void reserve(Flight flight, List<Passenger> passengers) {
 	 //Implementation to make a reservation flight
-	 if(flight.isFull(type)) {
+	 if(flight.isFull()) {
 		 System.out.println("Sorry, the flight is full!");
 	 }
 	 else {
-		 ArrayList<String> people = new ArrayList<String>();
-		 
-		 for(int i = 0; i < passengers.size(); i++) {
-			 people.add(passengers.get(i).getname());
-		 }
-		 
-		 Reservation reservation = new Reservation(this);
-		 reservation.setReservation(flight, type, people);
+		 Reservation reservation = new Reservation(this, flight);
 		 reservationHistory.add(reservation);
 		 System.out.println("Reservation sucessfully!");
 	 }
@@ -182,14 +177,14 @@ public class Account{
      */
      public void changeReservation(Reservation reservation, Flight newflight){
 
-    	 if(reservation != null & newflight != null) {
-    		 reservation.setFlight(newflight);
-    		 System.out.println("Reservation changed successfully!");
-    	 }
-    	 else {
-    		 System.out.println("Invalid reservation. Reservation is not to be changed!");
-    	 }
-      }
+      if(reservation != null & newflight != null) {
+		 reservation.setFlight(newflight);
+		 System.out.println("Reservation changed successfully!");
+	 }
+	 else {
+		 System.out.println("Invalid reservation. Reservation is not to be changed!");
+	  }
+   }
 
      /**
       * Method to review flight details.
@@ -198,33 +193,50 @@ public class Account{
      public void reviewFlightDetails(Flight flight) {
 
     	 if(flight != null) {
-    		 System.out.println("Flight Details: ");
-    		 System.out.println("Type of flight: " + flight.gettype());
-    		 System.out.println("Departure cty: " + flight.getcityDeparture());
-    		 System.out.println("Arrival city: " + flight.getcityArrival());
-    		 System.out.println("Departure date: " + flight.getdateDeparture());
-    		 System.out.println("Arrival date: " + flight.getTimeArrival());
-    		 System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
-    		 // System.out.println("Passengers on board: " + flight.getPassenger());
-    		 System.out.println("Price of flight: " + flight.getpricing());
+		  System.out.println("Flight Details: ");
+		  System.out.println("Type of flight: " + flight.gettype());
+		  System.out.println("Departure cty: " + flight.getcityDeparture());
+		  System.out.println("Arrival city: " + flight.getcityArrival());
+		  System.out.println("Departure date: " + flight.getdateDeparture());
+		  System.out.println("Arrival date: " + flight.getTimeArrival());
+		  System.out.println("Total Passenger Caapcity: " + flight.gettotalpassengercapacity());
+		  // System.out.println("Passengers on board: " + flight.getPassenger());
+		  System.out.println("Price of flight: " + flight.getpricing());
 
-    	 }
-    	 else {
-    		 System.out.println("Invalid flight. You cannot review details of flight");
+	 }
+	 else {
+		 System.out.println("Invalid flight. You cannot review details of flight");
 
-    	 }
-     }
+	 }
 
-     public void addToBalance(BigDecimal amount) {
-    	 this.accountBalance = accountBalance.add(amount);
-     }
-     
-     public void removeFromBalance(BigDecimal amount) {
-    	 this.accountBalance = accountBalance.add(amount.negate());
-     }
-     
-     public BigDecimal getAccountBalance() {
-    	 return this.accountBalance;
+
+ }
+
+     /**
+      * Compares user inputs for email & password against email-password pairs stored in .txt.
+      * @param email
+      * @param password
+      * @return whether sign in successful
+      */
+     public boolean signIn(String email, char[] password) {
+    	 final String FILE_PATH = "src/Database/Customers.txt";
+    	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+			 String line;
+			 while ((line = reader.readLine()) != null) {
+				 String[] parts = line.split(", ");
+				 // compare email-password pairs
+				 if (parts[2].equals(email) && parts[3].equals(String.valueOf(password))) {
+					 setaccountNumber(Integer.parseInt(parts[0]));
+					 setEmail(parts[2]);
+					 reader.close();
+					 return true;
+				 }
+            }
+            reader.close();
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+        }
+		return false;
      }
 
 }

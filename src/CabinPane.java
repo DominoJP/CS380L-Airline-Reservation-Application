@@ -16,7 +16,19 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.ButtonGroup;
 
-public class CabinClassPane extends JPanel implements PropertyChangeListener {
+/**
+ * a) 'CabinUI'
+ * b) Date of Creation: Nov 11, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass supplying UI for cabin class selection.
+ * 	  JLabels for fares and available seating in table alignment.
+ * 	  JRadioButtons (grouped) for cabin class selection between 'Economy,' 'Business,' and 'First-Class.'
+ * e) Functions: PropertyChangeListener observes selected flight. Updates fares and open seating displayed.
+ * 	  User cabin class selection (observable) fires PropertyChangeEvent for pricing in PaymentPane.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
+ */
+public class CabinPane extends JPanel implements PropertyChangeListener {
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
 	private PropertyChangeSupport support;
@@ -34,7 +46,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 	/**
 	 * Create the panel.
 	 */
-	public CabinClassPane(JPanel contentPane, Flight selectedFlight) {
+	public CabinPane(JPanel contentPane, Flight selectedFlight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		
@@ -160,7 +172,7 @@ public class CabinClassPane extends JPanel implements PropertyChangeListener {
 				} else {
 					support.firePropertyChange("selectedCabin", null, "Economy");
 				}
-				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1_DETAILS");
+				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1");
 			}
 		});
 		
