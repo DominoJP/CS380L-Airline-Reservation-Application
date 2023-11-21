@@ -533,7 +533,7 @@ public class Flight {
 		}
 		
 		
-        return "DEPARTS: " + timeDepartureHour + ":" + String.format("%02d", dateTimeDeparture.getMinute()) + " " + departPeriod + " " +
+        return "DEPARTS: " + timeDepartureHour + ":" + String.format("%02d", dateTimeDeparture.getMinute()) + " " + departPeriod +
         		" - ARRIVES: " + timeArrivalHour + ":" + String.format("%02d", dateTimeArrival.getMinute()) + " " + arrivePeriod + ", " +
         	    dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
     }
