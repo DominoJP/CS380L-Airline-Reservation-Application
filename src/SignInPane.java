@@ -35,6 +35,11 @@ public class SignInPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 */
 	public SignInPane(JPanel contentPane, Account account) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{140, 170, 140, 0};
