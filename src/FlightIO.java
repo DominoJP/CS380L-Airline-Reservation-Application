@@ -149,7 +149,7 @@ public class FlightIO {
 	/**
 	 * Returns Flight object with corresponding @param ID.
 	 * @param flightID
-	 * @return
+	 * @return Flight
 	 */
 	public static Flight findFlight(int flightID) {
 		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC",
