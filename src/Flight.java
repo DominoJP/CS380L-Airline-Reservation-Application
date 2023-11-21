@@ -1,10 +1,15 @@
 /**
- * The Flight class represents a flight in a flight reservation such as 
- * the type of flight (round trip or one way), departure and arrival cities,
- * departure and arrival dates and times, 
- * total passenger capacity, pricing and passenger information. 
- *@author Sayra Reyes
- *@version 1.0 
+ * a) Design documentation: "Flight" 
+ * b) Date of creation: October 3, 2023
+ * c) Programmer's name: Sayra (Original),  Logan Lagewisch (Modified).
+ * d) Description: This class represents a flight in a flight reservation system. It encopasses flight details 
+ * 	  such as ID, type, departure/arrival cities, date/times, passenger capacity, pricing and 
+ * 	  methods to manage passenger booking. 
+ * e) Functions: Methods like flight details, capacity, pricing, booking status and specify information. 
+ * f) Data Structures: There are several used to manage and store information related to flights and passengers methods like: 
+ * 	  Managing Booking, DataTime Handiling and Support for Listeners. 
+ * g) Algorithm: N/A
+ *
  */
 
 import java.beans.PropertyChangeListener;

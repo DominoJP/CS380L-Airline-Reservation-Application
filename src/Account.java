@@ -14,10 +14,10 @@ import java.util.List;
  * 	  It stores account details such as name, email, password, account number, 
  * 	  and reservation history. 
  * 	  It provides functionality to manage reservations, update account information and perform 
- * 	  sign-in operations. 
+ * 	  signin operations. 
  * e) Functions: reserve method, cancelReservation, changeReservation, reviewFlightDetails and SignIn. 
  * 	  This classes manages user account details and provides methods for managing. 
- * f) Data Structures: List<Reservation> this data structure stores the history of
+ * f) Data Structures: List(Reservation) this data structure stores the history of
  *    reservations made by the account holder. It also allows for easy management and retrieval
  *    of reservation data associated with the account. 
  * g) Algorithm: N/A
