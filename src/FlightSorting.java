@@ -167,7 +167,7 @@ public class FlightSorting{
 	public Airport findAirport(String origin) {
 		Airport curr = root1;
 		
-		while(curr.getOrigin().compareTo(origin) != 0) {
+		while(curr != null && curr.getOrigin().compareTo(origin) != 0) {
 			
 			if(origin.compareTo(curr.getOrigin()) < 0)
 				curr = curr.getChild1();

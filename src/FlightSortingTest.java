@@ -5,36 +5,22 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.time.*;
 
 class FlightSortingTest {
-<<<<<<< Updated upstream
-	private FlightSorting sort1;
-	private FlightSorting sort2;
-	
-=======
-	
 	private FlightSorting sort1;
 	private FlightSorting sort2;
 	
 
-	
->>>>>>> Stashed changes
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
 
 	@AfterAll
-<<<<<<< Updated upstream
 	static void tearDownAfterClass() throws Exception {
-=======
-	static void tearDownAfterClass() throws Exception{
->>>>>>> Stashed changes
+
 	}
 
 	@BeforeEach
@@ -199,25 +185,15 @@ class FlightSortingTest {
 	@Test
 	void testFindFlight5() {
 		sort2.sortFlights("LAX", "NYC", "2023-01-21");
-		
-<<<<<<< Updated upstream
-		if(sort2.findFlight("08:00") == null) {
-=======
+
 		if(sort2.findFlight("08:00") != null) {
->>>>>>> Stashed changes
+
 			fail("This is supposed to return nothing");
 		}
 	}
 
-	@Test
-<<<<<<< Updated upstream
-	void testSearch() {
-		fail("Not yet implemented");
-	}
 
-}
-=======
-	//Test for finding existing aiport 
+	@Test
 	void testFindAirport1() {
 		Airport root = new Airport("LAX");
 		Airport leftChild = new Airport("NYC");
@@ -278,7 +254,6 @@ class FlightSortingTest {
 	}
 
 	@Test
-	//Test for Right Child Node 
 	void testFindAirport5() {
 		Airport root = new Airport("LAX");
 		Airport rightChild = new Airport("SAN");
@@ -293,6 +268,3 @@ class FlightSortingTest {
 	}
 
 }
-
-
->>>>>>> Stashed changes
