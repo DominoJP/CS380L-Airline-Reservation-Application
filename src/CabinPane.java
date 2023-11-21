@@ -218,10 +218,16 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		lblSeatingWarning.setVisible(false);
 	}
 	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {

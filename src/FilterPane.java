@@ -84,11 +84,20 @@ public class FilterPane extends JPanel {
 	
 	HashMap<String, String> airports = new HashMap<String, String>();
 	
-	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
 		 support.addPropertyChangeListener(pcl);
 	}
 	
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 * @param sort
+	 * @param flight
+	 */
 	public FilterPane(JPanel contentPane, Account account, FlightSorting sort, Flight flight) {
 		
 		support = new PropertyChangeSupport(this);
@@ -319,7 +328,11 @@ public class FilterPane extends JPanel {
 		this.setToCurrentDate();
 	}
 	
-	public void setPassengerAmount(int selectedPassengerAmount) {
+	/**
+	 * Fire PropertyChangeEvent for selected passenger amount.
+	 * @param selectedPassengerAmount
+	 */
+	private void setPassengerAmount(int selectedPassengerAmount) {
 		support.firePropertyChange("passengerAmount", passengerAmount, selectedPassengerAmount);
 		this.selectedPassengerAmount = selectedPassengerAmount;
 	}

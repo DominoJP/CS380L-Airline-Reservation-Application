@@ -55,6 +55,12 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 * @param flight
+	 */
 	public PaymentPane(JPanel contentPane, Account account, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
@@ -302,10 +308,16 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 
 	}
 	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 	
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		

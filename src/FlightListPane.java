@@ -25,6 +25,13 @@ import javax.swing.JComboBox;
 public class FlightListPane extends JPanel {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 * @param flightArray
+	 * @param flight
+	 */
 	public FlightListPane(JPanel contentPane, Account account, ArrayList<Flight> flightArray, Flight flight) {
 		
 		setLayout(new BorderLayout(0, 0));

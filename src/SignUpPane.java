@@ -41,6 +41,10 @@ public class SignUpPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 */
 	public SignUpPane(JPanel contentPane) {
 		support = new PropertyChangeSupport(this);
 		
@@ -241,7 +245,9 @@ public class SignUpPane extends JPanel {
 		lblError.setText(message);
 	}
 	
-	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
