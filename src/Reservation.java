@@ -237,7 +237,8 @@ public class Reservation {
 	 }
 	 
 	 /**
-	  * this method prints all the set values for the reservation so that the customer is notified of their reservation
+	  * this method gives and ArrayList<String> that is composed of all information that had been stored by this instance of
+	  * the Reservation class
 	  */
 	 
 	 public ArrayList<String> getReservation() {
