@@ -25,8 +25,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 /**
- * a) Design Documentation: 'PassengerInfoUI'
- * b) Date of Creation: October 12, 2023
+ * a) Design Documentation: "PassengerInfoUI"
+ * b) Created: October 12, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass for passenger information. 
  * 	  JTextFields for Full Name. 

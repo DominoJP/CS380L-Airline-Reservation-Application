@@ -23,19 +23,13 @@ import javax.swing.JSeparator;
 import java.awt.Color;
 
 /**
-   JPanel for account sign up.
-   Allows account creation with provided name, email, and password.
-   @author Jevy Miranda
-   @version 1.0
-*/
-
-/**
  * a) Design Documentation: "SignUpUI"
- * b) Date Created: October 9, 2023
+ * b) Created: October 9, 2023
  * c) @author Jevy Miranda, Sayra Reyes
  * d) Description: JPanel subclass for new account sign up. JTextFields for all inputs.
  * e) Functions: Displays JLabel error message with corresponding issue for the following issues:
  * 	  name field empty, email invalid, password too short, and re-typed password does not match.
+ * 	  Invokes method to write to Customers.txt given valid inputs.
  * f) Data Structures: N/A
  * g) Algorithms: N/A
  */

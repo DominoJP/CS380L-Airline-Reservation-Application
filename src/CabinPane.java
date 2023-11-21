@@ -17,8 +17,8 @@ import java.awt.Color;
 import javax.swing.ButtonGroup;
 
 /**
- * a) 'CabinUI'
- * b) Date of Creation: Nov 11, 2023
+ * a) Design Documentation: "CabinUI"
+ * b) Created: Nov 11, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass supplying UI for cabin class selection.
  * 	  JLabels for fares and available seating in table alignment.

@@ -20,8 +20,8 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JTextField;
 
 /**
- * a) Design Documentation: 'SignInUI'
- * b) Date Created: October 9, 2023
+ * a) Design Documentation: "SignInUI"
+ * b) Created: October 9, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass for account sign in.
  * e) Function: Login credentials (email and password) accepted as text inputs.
