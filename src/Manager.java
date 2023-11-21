@@ -25,9 +25,10 @@ class Manager {
 	private Account customer;
 	private Flight flight;
 	private ArrayList<Flight> flightList;
-	private String reservationPath = "src/Resrvation.txt";
-	private String flightPath = "src/FlightsTest.txt";
+	private String reservationPath = "src/Database/Resrvations.txt";
+	private String flightPath = "src/Database/Flights.txt";
 	private FlightIO finder;
+	private ArrayList<Account> accounts;
 
 /**
  * Constructor that creates a manager instance with the specified employee ID and password
@@ -45,6 +46,9 @@ class Manager {
 	 this.customer = null;
 	 this.flight = null;
 	 this.flightList = null;
+	 
+	 this.reservations = new ArrayList<Reservation>();
+	 this.accounts = new ArrayList<Account>();
    }
 	 
 	/**
@@ -137,9 +141,23 @@ class Manager {
 					}
 				}
 			}
+			in.close();
 		}catch(IOException e){
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * The getAllAccounts() method uses the AccountIO class to set the ArrayList of accounts to all accounts stored
+	 * in the system
+	 */
+	
+	public void getAllAccounts() {
+		AccountIO data = new AccountIO();
+		
+		data.readAccounts();
+		
+		this.accounts = data.getAccounts();
 	}
 	
 	/**
@@ -153,6 +171,25 @@ class Manager {
 			revenue.add(this.reservations.get(i).getTotalPrice());
 		}
 		
+		return revenue;
+	}
+	
+	/**
+	 * the getAccountRevenue() method allows a manager to calculate the total revenue made by one account that is searched
+	 * for using @param name, an instance of a String that represents the name of a customer being searched for,
+	 * and @return a BigDecimal that represents the total amount of money made by that customer
+	 */
+	
+	public BigDecimal getAccountRevenue(String name) {
+		BigDecimal revenue = new BigDecimal(0);
+		
+		for(int i = 0; i < accounts.size(); i++) {
+			if(accounts.get(i).getName().equals(name)) {
+				revenue = accounts.get(i).totalBalance();
+				return revenue;
+			}
+		}
+				
 		return revenue;
 	}
 	

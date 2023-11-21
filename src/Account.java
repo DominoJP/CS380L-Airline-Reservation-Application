@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.math.BigDecimal;
 
 /**
    Account class represents a user account for a flight reservation system.
@@ -19,6 +20,7 @@ public class Account{
 	 private String password;
 	 private int accountNumber;
 	 private List<Reservation> reservationHistory;
+	 private BigDecimal accountBalance;
 	 
 	 private PropertyChangeSupport support;
 
@@ -184,7 +186,27 @@ public class Account{
 	 else {
 		 System.out.println("Invalid reservation. Reservation is not to be changed!");
 	  }
-   }
+     }
+     
+     /**
+      * The totalBalance method uses the ArrayList<Reservation> reservationHistory variable to 
+      * calculate the total balance that the customer owes on their account by adding
+      * the total cost of each individual reservation together
+      */
+     
+     public BigDecimal totalBalance() {
+    	 BigDecimal total = new BigDecimal(0);
+    	 
+    	 if(reservationHistory == null || reservationHistory.size() == 0) {
+    		 return total;
+    	 }
+    	 
+    	 for(int i = 0; i < reservationHistory.size(); i++) {
+    		 total.add(reservationHistory.get(i).getTotalPrice());
+    	 }
+    	 
+    	 return total;
+     }
 
      /**
       * Method to review flight details.
