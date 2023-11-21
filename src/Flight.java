@@ -540,9 +540,9 @@ public class Flight {
 				timeArrivalHour = 12;
 		}
 		
-        return "DEPARTS: " + timeDepartureHour + ":" + dateTimeDeparture.getMinute() + " " + departPeriod + " " +
-        		" - ARRIVES: " + timeArrivalHour + ":" + dateTimeArrival.getMinute() + " " + arrivePeriod + ", " +
-        	    dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
+		return "DEPARTS: " + timeDepartureHour + ":" + String.format("%02d", dateTimeDeparture.getMinute()) + " " + departPeriod + " " +
+			   " - ARRIVES: " + timeArrivalHour + ":" + String.format("%02d", dateTimeArrival.getMinute()) + " " + arrivePeriod + ", " +
+			   dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
     }
 	
 }
