@@ -25,12 +25,20 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 /**
-   JPanel for Passenger Details, based on aa.com.
-   @author Jevy Miranda
-   @version 1.0
-*/
-
-public class PassengerDetailsPane extends JPanel implements PropertyChangeListener {
+ * a) Design Documentation: 'PassengerInfoUI'
+ * b) Date of Creation: October 12, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass for passenger information. 
+ * 	  JTextFields for Full Name. 
+ * 	  JComboBoxes for Gender, Date of Birth, and Country of Residence.
+ * e) Functions: fires PropertyChangeEvent "passengerName" for use by PaymentPane when booking.
+ *    PropertyChanges for "passengerAmount" determine the amount of PassengerPanes to be used.
+ *    Method checkMinor(), taking DoB as input from JComboBoxes, determines whether the current Passenger
+ *    is a minor (under 16 for airline accommodation purposes).
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
+ */
+public class PassengerPane extends JPanel implements PropertyChangeListener {
 	
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
@@ -81,7 +89,7 @@ public class PassengerDetailsPane extends JPanel implements PropertyChangeListen
 	
 	
 
-	public PassengerDetailsPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
+	public PassengerPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		

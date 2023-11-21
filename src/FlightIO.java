@@ -42,10 +42,7 @@ public class FlightIO {
 		    		String[] parts = line.split(", ");
 			        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
 			        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3],
-			        									   parts[4], parts[5], parts[6], parts[7], parts[8],
-						        						   Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), new BigDecimal(parts[11]),
-									          	     	   Integer.parseInt(parts[12]), Integer.parseInt(parts[13]), new BigDecimal(parts[14]),
-									          	     	   Integer.parseInt(parts[15]), Integer.parseInt(parts[16]), new BigDecimal(parts[17]));
+			        									   parts[4], parts[5], parts[6], parts[7], parts[8]);
 
 			        //FlightSorting instantiation requires a flight as parameter
 			        if (sort == null) {
@@ -144,8 +141,7 @@ public class FlightIO {
 	 * Returns Flight object with corresponding @param ID.
 	 */
 	public static Flight findFlight(int flightID) {
-		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC",
-										0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"));
+		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");
 
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
@@ -154,10 +150,7 @@ public class FlightIO {
 		    	if (line.length() > 0 && Integer.parseInt(parts[0]) == flightID) {
 		        	// Instantiate flight with parameters corresponding to String[] indices generated from the current line
 		        	foundFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3],
-							   				 parts[4], parts[5], parts[6], parts[7], parts[8],
-							   				 Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), new BigDecimal(parts[11]),
-							   				 Integer.parseInt(parts[12]), Integer.parseInt(parts[13]), new BigDecimal(parts[14]),
-							   				 Integer.parseInt(parts[15]), Integer.parseInt(parts[16]), new BigDecimal(parts[17]));
+							   				 parts[4], parts[5], parts[6], parts[7], parts[8]);
 		        }
 		    }
 		    reader.close();

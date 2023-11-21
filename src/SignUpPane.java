@@ -29,14 +29,25 @@ import java.awt.Color;
    @version 1.0
 */
 
-public class AccountSignUpPane extends JPanel {
+/**
+ * a) Design Documentation: "SignUpUI"
+ * b) Date Created: October 9, 2023
+ * c) @author Jevy Miranda, Sayra Reyes
+ * d) Description: JPanel subclass for new account sign up. JTextFields for all inputs.
+ * e) Functions: Displays JLabel error message with corresponding issue for the following issues:
+ * 	  name field empty, email invalid, password too short, and re-typed password does not match.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A
+ */
+
+public class SignUpPane extends JPanel {
 	private JLabel lblError;
 	
 	private PropertyChangeSupport support;
 
 	private static final long serialVersionUID = 1L;
 
-	public AccountSignUpPane(JPanel contentPane) {
+	public SignUpPane(JPanel contentPane) {
 		support = new PropertyChangeSupport(this);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -170,7 +181,7 @@ public class AccountSignUpPane extends JPanel {
 						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
 						lblError.setVisible(false);
 						support.firePropertyChange("Successful SignUp!", null, true);
-						((CardLayout) contentPane.getLayout()).show(contentPane, "SELECT");
+						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 					 }
 				}
 			}
@@ -182,7 +193,7 @@ public class AccountSignUpPane extends JPanel {
 			 * @return
 			 */
 			private boolean emailIsUnique(String email) {
-			    try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/TestAccountSignUp.txt"))) {
+			    try (BufferedReader reader = new BufferedReader(new FileReader("src/Database/Customers.txt"))) {
 			        String line;
 			        while ((line = reader.readLine()) != null) {
 			            String[] parts = line.split(", ");

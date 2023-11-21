@@ -6,32 +6,32 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JToolBar;
 import javax.swing.JComboBox;
 
 /**
-   JPanel in BorderLayout with JScrollPane, allowing use of JList to display and select flights.
-   @author Jevy Miranda
-   @version 1.0
-*/
-
-public class FlightFilterListScrollPane extends JPanel {
-	private Flight selectedFlight;
-
+ * a) 'FlightListUI'
+ * b) Date of Creation: October 11, 2023
+ * c) @author Jevy Miranda
+ * d) Description: JPanel subclass in BorderLayout with JScrollPane, 
+ *    allowing use of JList for flight display and selection.
+ * e) Functions: Invokes a Flight method which fires the PropertyChangeEvent for "selectedFlight"
+ *    based on user selection.
+ * f) Data Structures: N/A
+ * g) Algorithms: N/A	  
+ */
+public class FlightListPane extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	public FlightFilterListScrollPane(JPanel contentPane, Account account, ArrayList<Flight> flightArray, Flight flight) {
+	public FlightListPane(JPanel contentPane, Account account, ArrayList<Flight> flightArray, Flight flight) {
 		
 		setLayout(new BorderLayout(0, 0));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		add(scrollPane, BorderLayout.CENTER);
 		
-		// SHOW: FLIGHT IDENTIFIER, PLACE OF DEPARTURE/ARRIVAL, TIME OF DEPARTURE/ARRIVAL, DURATION, CLASS COST
 		JList listFlights = new JList(flightArray.toArray());
 		scrollPane.setViewportView(listFlights);
 		listFlights.setSelectedIndex(0);
