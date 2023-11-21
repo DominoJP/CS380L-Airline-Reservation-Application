@@ -143,6 +143,7 @@ public class Airport {
 	
 	/**
 	 * the getOrigin methods return the city this instance of the airport resides in
+	 * @param string 
 	 * @return
 	 */
 	
