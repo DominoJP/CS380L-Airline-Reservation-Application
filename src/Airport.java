@@ -3,9 +3,12 @@ import java.time.LocalDate;
 
 /**
  * Owner: Logan Langewisch
+ * Created: October 8, 2023
  * The Airport Class holds a list of all airports that are saved in the software and also sorts the airports
  * depending on where they are located and by where they are heading using a binary tree.
- * Each Airport also contains a list of the flights that leave it.
+ * A binary tree was chosen because it was easy to create, would allow for more efficient sorting and searching
+ * of flights, and it did not seem as if any more complex data structures were required
+ * Each Airport also contains an array list of the flights that leave it that is sorted by flights' destinations
  */
 
 public class Airport {

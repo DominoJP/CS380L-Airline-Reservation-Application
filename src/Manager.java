@@ -1,8 +1,9 @@
 /**
+ * Owner: Sayra Reyes
+ * Modified by Logan Langewisch
+ * Created: October 3, 2023
  * A class that represents a managet with the ability to store employee ID
- * and password as well as access and manage reservation information. 
- * @author
- * @version
+ * and password as well as access and manage reservation information.
  */
 
 import java.util.ArrayList;

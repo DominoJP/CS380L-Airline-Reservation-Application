@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 /**
  * Owner: Logan Langewisch
+ * Created: October 3, 2023
  * The Reservation class handles the creation of a reservation for a customer and also holds information
  * on the reservation in case if a manager chooses to view it
  */
