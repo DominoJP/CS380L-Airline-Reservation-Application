@@ -285,7 +285,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
-					FlightIO.updatePassengerCount(selectedFlight, selectedPassengerAmount, selectedCabin);
+					FlightIO.updatePassengerCount("src/Database/Flights.txt", selectedFlight, selectedPassengerAmount, selectedCabin);
 					support.firePropertyChange("reservationBooked", null, true);
 				} else {
 					
