@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 /**
  * Owner: Logan Langewisch
- * Created: October 8, 2023
+ * Date Last Modified: November 21, 2023
  * The AirportFlights class sorts all the flights that take off at an airport
  * in order of what date the flights depart using a binary tree
  * A binary tree was chosen because it was easy to implement, it would allow for more efficient
@@ -33,8 +33,8 @@ public class AirportFlights {
 	
 	/**
 	 * a constructor for the AirportFlights class that accepts the name of the
-	 * location all flights in this instance of the class are heading towards
-	 * @param a
+	 * location all flights in this instance of the class are heading towards, String a
+	 * @param String a
 	 */
 	
 	public AirportFlights(String a) {
@@ -44,6 +44,12 @@ public class AirportFlights {
 		this.destination = null;
 		this.timeDeparture = null;
 	}
+	
+	/**
+	 * a constructor that accepts an instance of the Flight class, f, in order to initialize
+	 * some of its variables
+	 * @param Flight f
+	 */
 	
 	public AirportFlights(Flight f) {
 		this.date = f.getdateDeparture();
@@ -55,9 +61,9 @@ public class AirportFlights {
 	}
 	
 	/**
-	 * the addFlight method for the AirportFlights class adds a flight into the list of planes from
+	 * the addFlight method for the AirportFlights class adds a Flight, f, into the list of planes from
 	 * for the airport and sorts them based on what time they leave
-	 * @param f
+	 * @param Flight f
 	 */
 	
 	public void addFlight(Flight f) {
@@ -79,9 +85,10 @@ public class AirportFlights {
 	}
 	
 	/**
-	 * The method addToList takes @param flight, and instance of the Flight class, and adds it to the
+	 * The method addToList takes flight, and instance of the Flight class, and adds it to the
 	 * ArrayList<Flight> timeDeparture which is an ArrayList that is sorted based on what time the flight
 	 * leaves
+	 * @param Flight flight
 	 */
 	
 	public void addToList(Flight flight) {
@@ -100,9 +107,9 @@ public class AirportFlights {
 	
 	/**
 	 * the findFlight method searches through the list of flights that leave to a specific destination
-	 * and returns the flight that matches the time of departure that was given
-	 * @param t
-	 * @return
+	 * and returns the flight that matches the time of departure that was given, String t
+	 * @param String t
+	 * @return Flight
 	 */
 	
 	public Flight findFlight(String t) {
@@ -124,10 +131,11 @@ public class AirportFlights {
 	}
 	
 	/**
-	 * the addChild method will take two instances of the AirportFlights class and will recursively add
-	 * and new list of flights when a flight is leaving to a city that has not been added to the tree
-	 * @param curr
-	 * @param n
+	 * the addChild method will take an instance of the Flight class, n, and will attempt to recursively
+	 * add it into the binary tree by keeping track of its current location in the tree with
+	 * an instance of the AirportFlights class, curr 
+	 * @param AirportFlights curr
+	 * @param Flight n
 	 */
 	
 	public void addChild(AirportFlights curr, Flight n) {
@@ -162,12 +170,17 @@ public class AirportFlights {
 	
 	/**
 	 * the getDestination method returns the destination that the list of flights heads to
-	 * @return
+	 * @return LocalDate
 	 */
 	
 	public LocalDate getDate() {
 		return this.date;
 	}
+	
+	/**
+	 * The getDestination() method will return the destination that this list of flights flies towards
+	 * @return String
+	 */
 	
 	public String getDestination() {
 		return this.destination;
@@ -176,7 +189,7 @@ public class AirportFlights {
 	/**
 	 * this method returns a String array that possesses the time of departure for each flight that
 	 * is heading towards this instance of the AirportFlights' destination
-	 * @return
+	 * @return String[]
 	 */
 	
 	public String[] getTimes() {
@@ -189,13 +202,28 @@ public class AirportFlights {
 		return times;
 	}
 	
+	/**
+	 * this method gets the list of flights this instance of AirportFlights stores
+	 * @return ArrayList<Flight>
+	 */
+	
 	public ArrayList<Flight> getFlights(){
 		return timeDeparture;
 	}
 	
+	/**
+	 * this method returns the left child of this current instance of AirportFlights
+	 * @return AirportFlights
+	 */
+	
 	public AirportFlights getChild1() {
 		return child1;
 	}
+	
+	/**
+	 * this method returns the right child of this current instance of AirportFlights
+	 * @return AirportFlights
+	 */
 	
 	public AirportFlights getChild2() {
 		return child2;

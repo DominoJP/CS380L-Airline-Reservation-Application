@@ -1,12 +1,3 @@
-/**
- * The Flight class represents a flight in a flight reservation such as 
- * the type of flight (round trip or one way), departure and arrival cities,
- * departure and arrival dates and times, 
- * total passenger capacity, pricing and passenger information. 
- *@author Sayra Reyes
- *@version 1.0 
- */
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
@@ -16,6 +7,16 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+
+/**
+ * The Flight class represents a flight in a flight reservation such as 
+ * the type of flight (round trip or one way), departure and arrival cities,
+ * departure and arrival dates and times, 
+ * total passenger capacity, pricing and passenger information. 
+ *@author Sayra Reyes
+ *@version 1.0 
+ */
+
 
 public class Flight {
 	

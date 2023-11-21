@@ -32,9 +32,9 @@ public class Airport {
 	}
 	
 	/**
-	 * a constructor for the Airport class that takes a String input to set the city the airport resides in
+	 * a constructor for the Airport class that takes a String input, d, to set the city the airport resides in
 	 * and also finds the name of the airport depending on what city was inputed
-	 * @param d
+	 * @param String d
 	 */
 	
 	public Airport(String d) {
@@ -46,10 +46,9 @@ public class Airport {
 	}
 	
 	/**
-	 * a constructor for the Airport that takes a String and a Flight input to set the city the airport
-	 * exists in and also sets a flight that takes off at the airport
-	 * @param d
-	 * @param f
+	 * a constructor for the Airport that takes an instance of Flight, f, and sets the information for
+	 * this instance of Airport to some of the Flight information
+	 * @param Flight f
 	 */
 	
 	public Airport(Flight f) {
@@ -80,10 +79,10 @@ public class Airport {
 	//}
 	
 	/**
-	 * the addFlights method either adds a new flight into the list of flights for an airport
+	 * the addFlights method either adds a new flight, f, into the list of flights for an airport
 	 * or it adds a new airport into the binary tree and creates its list of flights starting
 	 * with the flight that was given to the airport
-	 * @param f
+	 * @param Flight f
 	 */
 	
 	public void addFlight(Flight f) {
@@ -102,8 +101,9 @@ public class Airport {
 	}
 	
 	/**
-	 * The addToList method adds @param flight, an instance of the Flight class, into either the one of the instances of AiportFlights that is stored
+	 * The addToList method adds flight, an instance of the Flight class, into either the one of the instances of AiportFlights that is stored
 	 * in the ArrayList<AirportFlights> destinations or it will be used to create a new instance of AiportFlights and is then added to destinations
+	 * @param Flight flight
 	 */
 	
 	public void addToList(Flight flight) {
@@ -127,10 +127,10 @@ public class Airport {
 	}
 	
 	/**
-	 * the addChild method adds a new airport to the binary tree and sorts it depending on the
-	 * city the airport resides in
-	 * @param curr
-	 * @param n
+	 * the addChild method adds a new instance of Flight, n, by recursively going through the binary tree
+	 * by keeping track of the current Airport the class is viewing, curr
+	 * @param Airport curr
+	 * @param Flight n
 	 */
 	
 	public void addChild(Airport curr, Flight n) {
@@ -166,7 +166,7 @@ public class Airport {
 	
 	/**
 	 * the getOrigin methods return the city this instance of the airport resides in
-	 * @return
+	 * @return String
 	 */
 	
 	public String getOrigin() {
@@ -174,10 +174,11 @@ public class Airport {
 	}
 	
 	/**
-	 * the search method takes the city you are going to leave from and then searches
-	 * the binary tree and returns what airport you are looking for
-	 * @param o
-	 * @return
+	 * the search method takes the city you are going to leave from, String destination, and the date
+	 * of departure, String date, then searches the binary tree and returns what airport you are looking for
+	 * @param String destination
+	 * @param String date
+	 * @return AirportFlights
 	 */
 	
 	public AirportFlights search(String destination, String date) {
@@ -202,9 +203,19 @@ public class Airport {
 		
 	}
 	
+	/**
+	 * The getChild1() method returns the left child of this instance of Airport
+	 * @return Airport
+	 */
+	
 	public Airport getChild1() {
 		return child1;
 	}
+	
+	/**
+	 * The getChild2() method returns the right child of this instance of Airport
+	 * @return Airport
+	 */
 	
 	public Airport getChild2() {
 		return child2;
