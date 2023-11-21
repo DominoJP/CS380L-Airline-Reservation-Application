@@ -17,7 +17,7 @@ import javax.swing.JSeparator;
 
 /**
  * a) Design Documentation: "NavigationUI"
- * b) Created: October 10, 2023
+ * b) Last Modified: November 18, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass serving as a navigation hub between flight booking, review, and cancellation.
  * e) Functions: Displays JLabel feedback text upon successful sign up and flight booking.

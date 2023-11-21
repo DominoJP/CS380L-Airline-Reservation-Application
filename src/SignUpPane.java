@@ -24,7 +24,7 @@ import java.awt.Color;
 
 /**
  * a) Design Documentation: "SignUpUI"
- * b) Created: October 9, 2023
+ * b) Last Modified: November 18, 2023
  * c) @author Jevy Miranda, Sayra Reyes
  * d) Description: JPanel subclass for new account sign up. JTextFields for all inputs.
  * e) Functions: Displays JLabel error message with corresponding issue for the following issues:
