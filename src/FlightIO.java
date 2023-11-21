@@ -71,6 +71,9 @@ public class FlightIO {
 	/**
 	 * Updates flight passenger count on new reservation booking.
 	 * @see class ReservationPaymentPane.java
+	 * @param selectedFlight
+	 * @param selectedPassengerAmount
+	 * @param selectedCabin
 	 */
 	public static boolean updatePassengerCount(String filePath, Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
@@ -153,6 +156,8 @@ public class FlightIO {
 	
 	/**
 	 * Returns Flight object with corresponding @param ID.
+	 * @param flightID
+	 * @return
 	 */
 	public static Flight findFlight(int flightID) {
 		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC",
