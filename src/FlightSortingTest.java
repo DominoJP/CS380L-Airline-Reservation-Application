@@ -5,20 +5,36 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.time.*;
 
 class FlightSortingTest {
+<<<<<<< Updated upstream
 	private FlightSorting sort1;
 	private FlightSorting sort2;
 	
+=======
+	
+	private FlightSorting sort1;
+	private FlightSorting sort2;
+	
+
+	
+>>>>>>> Stashed changes
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
 
 	@AfterAll
+<<<<<<< Updated upstream
 	static void tearDownAfterClass() throws Exception {
+=======
+	static void tearDownAfterClass() throws Exception{
+>>>>>>> Stashed changes
 	}
 
 	@BeforeEach
@@ -184,14 +200,99 @@ class FlightSortingTest {
 	void testFindFlight5() {
 		sort2.sortFlights("LAX", "NYC", "2023-01-21");
 		
+<<<<<<< Updated upstream
 		if(sort2.findFlight("08:00") == null) {
+=======
+		if(sort2.findFlight("08:00") != null) {
+>>>>>>> Stashed changes
 			fail("This is supposed to return nothing");
 		}
 	}
 
 	@Test
+<<<<<<< Updated upstream
 	void testSearch() {
 		fail("Not yet implemented");
 	}
 
 }
+=======
+	//Test for finding existing aiport 
+	void testFindAirport1() {
+		Airport root = new Airport("LAX");
+		Airport leftChild = new Airport("NYC");
+		Airport rightChild = new Airport("JFK");
+		
+		
+		FlightSorting flight = new FlightSorting();
+		Airport foundAirport = sort2.findAirport("LAX");
+		
+		if(foundAirport == null) {
+		   fail("This supposed to find existing airport");
+		}
+	}
+	
+	@Test
+	//Test for Non-Existent Airport  
+	void testFindAirport2() {
+		
+		
+		FlightSortingTest flight = new FlightSortingTest();
+		
+		Airport nonExistent = sort2.findAirport("SFO");
+		
+		if(nonExistent != null) {
+		    fail("This supposed to find non-existing airport");
+		}
+	}
+
+	@Test
+	//Test for Root nodes as Target 
+	void testFindAirport3() {
+
+		FlightSortingTest flight = new FlightSortingTest();
+		
+		Airport foundRoot = sort2.findAirport("LAX");
+		
+		if(foundRoot == null) {
+		fail("This supposed to find root nodes as target");
+		}
+		
+	}
+	
+	@Test
+	//Test for Left Child Node
+	void testFindAirport4() {
+		Airport root = new Airport("LAX");
+		Airport leftChild = new Airport("NYC");
+		
+		Flight flight = new Flight(1, "One-Way", "JFK", "LAX","2023-10-12", "09:00", "2023-10-12", "12:00", "America/Los_Angeles" );
+		
+		sort2.addFlight(flight);
+		leftChild = sort2.findAirport("JFK");
+		
+		if(leftChild == null) {
+		fail("This supposed to find the left child node");
+		}
+		
+	}
+
+	@Test
+	//Test for Right Child Node 
+	void testFindAirport5() {
+		Airport root = new Airport("LAX");
+		Airport rightChild = new Airport("SAN");
+		
+		Flight flight = new Flight(1, "One-Way", "SAN", "LAX","2023-10-12", "09:00", "2023-10-12", "12:00", "America/Los_Angeles");
+		
+		sort2.addFlight(flight);
+		rightChild = sort2.findAirport("SAN");
+		if(rightChild == null) {
+		fail("This supposed to find the right child node");
+		}
+	}
+
+}
+
+
+>>>>>>> Stashed changes
