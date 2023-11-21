@@ -3,7 +3,8 @@
  * Modified by Logan Langewisch
  * Created: October 3, 2023
  * This class represents a flight sorting system for managing flights and their information. 
- * It allows the system to add flights, sort them, and also retrieve flights that were sorted
+ * It allows the system to add flights, sort them, and also retrieve flights that were sorted by using
+ * the Airport and AirportFlights classes
  */
 import java.util.List;
 
