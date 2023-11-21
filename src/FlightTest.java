@@ -46,7 +46,7 @@ class FlightTest {
 		
 		String test = flight.toString();
 	   
-		if(!test.equals("DEPARTS: 5:0 AM  - ARRIVES: 7:0 AM, OCTOBER 24")) {
+		if(!test.equals("DEPARTS: 5:00 AM - ARRIVES: 7:00 AM, OCTOBER 24")) {
 			fail("Not the correct period");
 		}
 	}
@@ -57,7 +57,7 @@ class FlightTest {
 		
 				String test = flight.toString();
 	   
-				if(!test.equals("DEPARTS: 5:0 PM  - ARRIVES: 7:0 PM, OCTOBER 24")) {
+				if(!test.equals("DEPARTS: 5:00 PM - ARRIVES: 7:00 PM, OCTOBER 24")) {
 					fail("Not the correct period");
 		}	
 	}
@@ -68,7 +68,7 @@ class FlightTest {
 		
 		String test = flight.toString();
 	   
-		if(!test.equals("DEPARTS: 5:0 AM  - ARRIVES: 7:0 PM, OCTOBER 24")) {
+		if(!test.equals("DEPARTS: 5:00 AM - ARRIVES: 7:00 PM, OCTOBER 24")) {
 			fail("Not the correct period");
 		}
 	}
@@ -79,7 +79,7 @@ class FlightTest {
 		
 		String test = flight.toString();
 	   
-		if(!test.equals("DEPARTS: 5:0 PM  - ARRIVES: 1:0 AM, OCTOBER 24")) {
+		if(!test.equals("DEPARTS: 5:00 PM - ARRIVES: 1:00 AM, OCTOBER 24")) {
 			fail("Not the correct period");
 		}	
 	}
@@ -90,7 +90,7 @@ class FlightTest {
 		
 		String test = flight.toString();
 	   
-		if(!test.equals("DEPARTS: 12:0 PM  - ARRIVES: 12:0 PM, OCTOBER 24")) {
+		if(!test.equals("DEPARTS: 12:00 PM - ARRIVES: 12:00 PM, OCTOBER 24")) {
 			fail("Not the correct period");
 		}
 	}
