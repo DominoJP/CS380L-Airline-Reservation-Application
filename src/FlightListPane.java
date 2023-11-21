@@ -12,8 +12,8 @@ import javax.swing.JToolBar;
 import javax.swing.JComboBox;
 
 /**
- * a) 'FlightListUI'
- * b) Date of Creation: October 11, 2023
+ * a) Design Documentation: "FlightListUI"
+ * b) Created: October 11, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass in BorderLayout with JScrollPane, 
  *    allowing use of JList for flight display and selection.

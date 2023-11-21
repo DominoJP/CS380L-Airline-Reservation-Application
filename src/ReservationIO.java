@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * a) Design Documentation: 'FlightIO'
- * b) Date Created: November 10, 2023 (refactor of a class created late October)
+ * a) Design Documentation: "FlightIO"
+ * b) Created: November 10, 2023 (refactor of a class created late October)
  * c) @author Jevy Miranda
  * d) Description: Utility class for reading from/writing to Reservations.txt
  * e) Functions: Method instantiateReservations() reads in reservations from the .txt and adds them to

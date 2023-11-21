@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * a) 'FlightIO'
- * b) Date of Creation: Nov 10, 2023 (refactor of a class made in October)
+ * a) Design Documentation: "FlightIO"
+ * b) Created: Nov 10, 2023 (refactor of a class made in October)
  * c) @author Jevy Miranda
- * d) Description: Utility class for reading/writing from/to Flights.txt. Uses BufferedReader & BufferedWriter.
- * e) Functions: Instantiates flights from .txt file at program execution and outputs a FlightSorting object.
- *    Updates the passenger count in the .txt of the corresponding cabin class on successful reservation booking,
- *    taking selected flight, selected passenger amount, and selected cabin class as inputs.
+ * d) Description: Utility class for reading from/writing to Flights.txt. Uses BufferedReader & BufferedWriter.
+ * e) Functions: Method instantiateFlights() reads from .txt file at program execution and outputs a FlightSorting object.
+ *    Method updatePassengerCount() updates the passenger count in the .txt of the corresponding cabin class on 
+ *    successful reservation booking, taking selected flight, selected passenger amount, and selected cabin class as inputs.
  * f) Data Structures: N/A
  * g) Algorithms: N/A
  */
