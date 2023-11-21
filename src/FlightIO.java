@@ -74,7 +74,6 @@ public class FlightIO {
 	 */
 	public static boolean updatePassengerCount(String filePath, Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
-		Iterator<String> iter;
 		int passengerCountIndex = ECONOMY_COUNT_INDEX;
 		int newPassengerCount = 0;
 		
@@ -129,6 +128,16 @@ public class FlightIO {
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
+		rewrite(filePath, lines);
+		return true;
+	}
+	
+	/**
+	 * Rewrites Flights.txt with re-built file.
+	 * @param iter iter of ArrayList<String> lines that comprise the file
+	 */
+	private static void rewrite(String filePath, ArrayList<String> lines) {
+		Iterator<String> iter;
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 			// re-write lines into file
 			iter = lines.iterator();
@@ -140,7 +149,6 @@ public class FlightIO {
         } catch (IOException e) {
             e.printStackTrace();
         }
-		return true;
 	}
 	
 	/**
