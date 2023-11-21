@@ -28,6 +28,11 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel lblConfirmation;
 
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 */
 	public NavigationPane(JPanel contentPane, Account account) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -97,6 +102,9 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 		lblConfirmation.setVisible(false);
 	}
 	
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		// fires from PaymentPane
 		if (evt.getPropertyName().equals("reservationBooked")) {

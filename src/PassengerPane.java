@@ -88,7 +88,14 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 	private boolean[] areMinors = {false, false, false, false, false, false};
 	
 	
-
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param passengerIndex
+	 * @param previousPane
+	 * @param nextPassengerDetailsPane
+	 * @param flight
+	 */
 	public PassengerPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
@@ -341,10 +348,16 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 		// FIXME
 	}
 	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 	
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
