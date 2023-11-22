@@ -7,15 +7,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * a) Design Documentation: "IDGenerator"
- * b) Last Modified: November 16, 2023
- * c) @author Jevy Miranda
- * d) Description: Solution to generate user-readable unique ID generation across JVM instances.
- * e) Functions: setLastID() reads the last IDs generated (as saved in IDGeneratorHelper.txt) into local variables.
- *    generateAccountID() and generateReservationID() increment their respective lastID local variables and
- *    return a new unique ID of data type int.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "IDGenerator."
+ * Description: Solution to generate user-readable unique ID generation across JVM instances.
+ * <p>
+ * Functions: setLastID() reads the last IDs generated (as saved in IDGeneratorHelper.txt) into local variables.
+ * generateAccountID() and generateReservationID() increment their respective lastID local variables and
+ * return a new unique ID of data type int.
+ * <p>
+ * Data Structures: ArrayList stores re-built lines to write back into .txt..
+ * Algorithms: N/A.
+ * @version 1.2, Last Modified: November 16, 2023
+ * @author Jevy Miranda
  */
 public class IDGenerator {
 	private final String filePath = "src/Database/IDGeneratorHelper.txt";

@@ -2,10 +2,13 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 
 /**
- * Owner: Logan Langewisch
  * The Airport Class holds a list of all airports that are saved in the software and also sorts the airports
- * depending on where they are located by using a binary tree.
- * Each Airport also contains a list of the flights that leave it.
+ * depending on there names using a binary tree.
+ * A binary tree was chosen because it was easy to create, would allow for more efficient sorting and searching
+ * of flights, and it did not seem as if any more complex data structures were required
+ * Each Airport also contains an array list of the flights that leave it and is sorted by the flights' destinations
+ * @author Logan Langewisch
+ * @version 3.0, last updated November 21, 2023
  */
 
 public class Airport {
@@ -29,9 +32,9 @@ public class Airport {
 	}
 	
 	/**
-	 * a constructor for the Airport class that takes a String input to set the city the airport resides in
+	 * a constructor for the Airport class that takes a String input, d, to set the city the airport resides in
 	 * and also finds the name of the airport depending on what city was inputed
-	 * @param d
+	 * @param String d
 	 */
 	
 	public Airport(String d) {
@@ -43,10 +46,9 @@ public class Airport {
 	}
 	
 	/**
-	 * a constructor for the Airport that takes a String and a Flight input to set the city the airport
-	 * exists in and also sets a flight that takes off at the airport
-	 * @param d
-	 * @param f
+	 * a constructor for the Airport that takes an instance of Flight, f, and sets the information for
+	 * this instance of Airport to some of the Flight information
+	 * @param Flight f
 	 */
 	
 	public Airport(Flight f) {
@@ -77,73 +79,94 @@ public class Airport {
 	//}
 	
 	/**
-	 * the addFlights method either adds a new flight into the list of flights for an airport
+	 * the addFlights method either adds a new flight, f, into the list of flights for an airport
 	 * or it adds a new airport into the binary tree and creates its list of flights starting
 	 * with the flight that was given to the airport
-	 * @param f
+	 * @param Flight f
 	 */
 	
 	public void addFlight(Flight f) {
-		AirportFlights flights = new AirportFlights(f);
-		
 		if(destinations == null)
 			destinations = new ArrayList<AirportFlights>();
 		
 		if(this.origin == null) {
 			origin = f.getcityDeparture();
-			destinations.add(flights);
+			destinations.add(new AirportFlights(f));
 		}else if(this.origin.compareTo(f.getcityDeparture()) == 0) {
-			for(int i = 0; i < destinations.size(); i++) {
-				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) == 0) {
-					destinations.get(i).addFlight(f);
-					return;
-				}
-			}
-			
-			for(int i = 0; i < destinations.size(); i++) {
-				if(f.getcityArrival().compareTo(destinations.get(i).getDestination()) < 0) {
-					destinations.add(i, flights);
-					return;
-				}else if(i + 1 == destinations.size())
-					destinations.add(flights);
-			}
+			this.addToList(f);
 		}else {
-			Airport newChild = new Airport(f);
-			
-			this.addChild(this, newChild);
+			this.addChild(this, f);
 		}
 		
 	}
 	
 	/**
-	 * the addChild method adds a new airport to the binary tree and sorts it depending on the
-	 * city the airport resides in
-	 * @param curr
-	 * @param n
+	 * The addToList method adds flight, an instance of the Flight class, into either the one of the instances of AiportFlights that is stored
+	 * in the ArrayList<AirportFlights> destinations or it will be used to create a new instance of AiportFlights and is then added to destinations
+	 * @param Flight flight
 	 */
 	
-	public void addChild(Airport curr, Airport n) {
+	public void addToList(Flight flight) {
+		for(int i = 0; i < destinations.size(); i++) {
+			if(flight.getcityArrival().compareTo(destinations.get(i).getDestination()) == 0) {
+				destinations.get(i).addFlight(flight);
+				return;
+			}
+		}
 		
-		if(curr.getOrigin().compareTo(n.getOrigin()) > 0) {
+		AirportFlights flights = new AirportFlights(flight);
+		
+		for(int i = 0; i < destinations.size(); i++) {
+			if(flight.getcityArrival().compareTo(destinations.get(i).getDestination()) < 0) {
+				destinations.add(i, flights);
+				return;
+			}
+		}
+		
+		destinations.add(flights);
+	}
+	
+	/**
+	 * the addChild method adds a new instance of Flight, n, by recursively going through the binary tree
+	 * by keeping track of the current Airport the class is viewing, curr
+	 * @param Airport curr
+	 * @param Flight n
+	 */
+	
+	public void addChild(Airport curr, Flight n) {
+		
+		if(curr.getOrigin().compareTo(n.getcityDeparture()) > 0) {
 			if(curr.child1 != null) {
+				if(curr.child1.getOrigin().equals(n.getcityDeparture())) {
+					curr.child1.addFlight(n);
+					return;
+				}
+				
 				curr.addChild(curr.child1, n);
 				return;
 			}
+			Airport newChild = new Airport(n);
 			
-			curr.child1 = n;
+			curr.child1 = newChild;
 		}else {
 			if(curr.child2 != null) {
+				if(curr.child2.getOrigin().equals(n.getcityDeparture())) {
+					curr.child2.addFlight(n);
+					return;
+				}
+				
 				curr.addChild(curr.child2, n);
 				return;
 			}
+			Airport newChild = new Airport(n);
 			
-			curr.child2 = n;
+			curr.child2 = newChild;
 		}
 	}
 	
 	/**
 	 * the getOrigin methods return the city this instance of the airport resides in
-	 * @return
+	 * @return String
 	 */
 	
 	public String getOrigin() {
@@ -151,10 +174,11 @@ public class Airport {
 	}
 	
 	/**
-	 * the search method takes the city you are going to leave from and then searches
-	 * the binary tree and returns what airport you are looking for
-	 * @param o
-	 * @return
+	 * the search method takes the city you are going to leave from, String destination, and the date
+	 * of departure, String date, then searches the binary tree and returns what airport you are looking for
+	 * @param String destination
+	 * @param String date
+	 * @return AirportFlights
 	 */
 	
 	public AirportFlights search(String destination, String date) {
@@ -179,9 +203,19 @@ public class Airport {
 		
 	}
 	
+	/**
+	 * The getChild1() method returns the left child of this instance of Airport
+	 * @return Airport
+	 */
+	
 	public Airport getChild1() {
 		return child1;
 	}
+	
+	/**
+	 * The getChild2() method returns the right child of this instance of Airport
+	 * @return Airport
+	 */
 	
 	public Airport getChild2() {
 		return child2;

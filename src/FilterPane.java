@@ -24,17 +24,20 @@ import javax.swing.JButton;
 import javax.swing.JSeparator;
 
 /**
- * a) Design Documentation: "FilterUI"
- * b) Last Modified: November 18, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass accepting user input as flight filtering criteria.
- *    JComboBoxes (editable) for airport/city of departure arrival.
- *    JComboBoxes for date of departure in MM/DD/YYYY format and passenger amount (up to 6).
- * e) Functions: Instantiates FlightListPane, passing in Flight ArrayList generated from FlightSorting object.
- *    User passenger amount selection fires PropertyChangeEvent "passengerAmount" to determine amount of
- *    passenger details Panes to be used.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "FilterUI."
+ * Description: JPanel subclass accepting user input as flight filtering criteria.
+ * JComboBoxes (editable) for airport/city of departure arrival.
+ * JComboBoxes for date of departure in MM/DD/YYYY format and passenger amount (up to 6).
+ * <p>
+ * Functions: Instantiates FlightListPane, passing in Flight ArrayList generated from FlightSorting object.
+ * User passenger amount selection fires PropertyChangeEvent "passengerAmount" to determine amount of
+ * passenger details Panes to be used.
+ * <p>
+ * Data Structures: Arrays as input for airport and date JComboBoxes. 
+ * ArrayList of flights filtered by user-provided criteria.
+ * Algorithms: N/A.
+ * @version 4.3, Last Modified: November 18, 2023
+ * @author Jevy Miranda
  */
 public class FilterPane extends JPanel {
 
@@ -303,7 +306,7 @@ public class FilterPane extends JPanel {
 					// sort flights per user input
 					sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
 					// flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
-					ArrayList<Flight> flightArray = sort.getFlightList(airportDepartInput, airportArriveInput, dateDepartingInput);
+					ArrayList<Flight> flightArray = sort.getFlights();
 					
 					// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
 					FlightListPane FilterListPane = new FlightListPane(contentPane, account, flightArray, flight);

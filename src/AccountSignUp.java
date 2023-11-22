@@ -1,4 +1,4 @@
-import java.io.BufferedReader;
+import  java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,12 +13,21 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * AccountSignUp is a java program that allows the user to input their email and password,
- * writes to the text file, and later reads and displays from the text file using BufferedReader and BufferedWriter.
- * 
- * Note: This is a simple example for educational purposes. In a real-world scenario, consider more robust practices for security.
- * @author Sayra Reyes 
- * @version 1.0
+ * Design Documentation: "AccountSignUp"
+ *  @author Sayra Reyes 
+ *  @version 2.2 , Last modified: November 21, 2023.
+ *  
+ * Description: this class enables users to input their first and last name, email, password and id, 
+ * 	  writes this information to a text file and later reads and displays the contents of the file
+ * 	  using the BufferedReader and BufferedWriter. 
+ * Function: writeToFile method, readFromFile, Setters and Getters these functions enable users to
+ *	  to store their personal information and later retrieve and display. 
+ * Data Structures: N/A
+ * Algorithms: N/A 
+ *
+ *
+ * Note: This is a simple example for educational purposes. 
+ * In a real-world scenario, consider more robust practices for security.
  */
 
 public class AccountSignUp {
@@ -34,46 +43,7 @@ public class AccountSignUp {
 
     }
 
- /*
-    public static void main(String[] args) {
-        
-    	Scanner scanner = new Scanner(System.in);
 
-        // Get email, password, name, and id from the user
-        System.out.print("Enter email: ");
-        String email = scanner.nextLine();
-
-        System.out.print("Enter password: ");
-        String password = scanner.nextLine();
-
-        System.out.print("Enter name: ");
-        String name = scanner.nextLine();
-
-        System.out.print("Enter Id: ");
-        int id = scanner.nextInt();
-
-        // Create an instance of the class to utilize instance methods
-        AccountSignUp accountSignUp = new AccountSignUp();
-        accountSignUp.setEmail(email);
-        accountSignUp.setPassword(password);
-        accountSignUp.setName(name);
-        accountSignUp.setId(id);
-
-        // Check for duplicates
-        if (!accountSignUp.isEmailDuplicate()) {
-            // Write email and password to a text file
-            accountSignUp.writeToFile();
-        } else {
-            System.out.println("Email already exists. Email is not saved."); //displays message 
-        }
-
-        // Read and display email and password from the text file
-        accountSignUp.readFromFile();
-        
-        // Close scanner
-        scanner.close();
-    }
-*/
     public static void writeToFile(String email, String password, String firstname, String lastname) {
     	
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Customers.txt", true))) {
@@ -113,60 +83,75 @@ public class AccountSignUp {
         }
     }
 
-    
-    
-    
-/*
-    private boolean isEmailDuplicate() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("Customers.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(", ");
-                if (parts.length >= 3 && parts[2].trim().equals(email.trim())) {
-                    return true;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-  */
-    
-    // Getter and Setter methods
+
+    /**
+     * Setter method to set email. 
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Setter method to set password. 
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void FirstName(String firstname) {
+    /**
+     * Setter method to set first name.
+     * @param firstname
+     */
+    public void setFirstName(String firstname) {
         this.firstname = firstname;
     }
 
+    /**
+     * Setter method to set last name. 
+     * @param lastname
+     */
     public void setLastName(String lastname) {
         this.lastname = lastname;
     }
 
-
+    /**
+     * Settet method to set id. 
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
-
+    
+    /**
+     * Getter method 
+     * @param email
+     */
     public void getEmail(String email) {
     	return;
     }
 
+    /**
+     * Getter method 
+     * @param password
+     */
     public void getPassword(String password) {
     	return;
     }
 
+    /**
+     * Getter method 
+     * @param name
+     */
     public void getName(String name) {
     	return;
     }
 
+    /**
+     * Getter method 
+     * @param id
+     */
     public void getId(int id) {
     	return;
     }

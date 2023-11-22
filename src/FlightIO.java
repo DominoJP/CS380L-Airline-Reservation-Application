@@ -8,17 +8,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * a) Design Documentation: "FlightIO"
- * b) Last Modified: Nov 16, 2023
- * c) @author Jevy Miranda
- * d) Description: Utility class for reading from/writing to Flights.txt. Uses BufferedReader & BufferedWriter.
- * e) Functions: Method instantiateFlights() reads from .txt file at program execution and outputs a FlightSorting object.
- *    Method updatePassengerCount() updates the passenger count in the .txt of the corresponding cabin class on 
- *    successful reservation booking, taking selected flight, selected passenger amount, and selected cabin class as inputs.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "FlightIO."
+ * Description: Utility class for reading from/writing to Flights.txt. Uses BufferedReader and BufferedWriter.
+ * <p>
+ * Functions: Method instantiateFlights() reads from .txt file at program execution and outputs a FlightSorting object.
+ * Method updatePassengerCount() updates the passenger count in the .txt of the corresponding cabin class on 
+ * successful reservation booking, taking selected flight, selected passenger amount, and selected cabin class as inputs.
+ * <p>
+ * Data Structures: ArrayList stores re-built lines to write back into .txt. 
+ * Array takes elements of a line, separated by delimiter.
+ * Algorithms: N/A.
+ * @version 2.3, Last Modified: Nov 16, 2023
+ * @author Jevy Miranda
  */
-public class FlightIO {
+public final class FlightIO {
 	private static final String FILE_PATH = "src/Database/Flights.txt";
 	private static final int ECONOMY_COUNT_INDEX = 10;
 	private static final int BUSINESS_COUNT_INDEX = 13;
@@ -26,13 +29,11 @@ public class FlightIO {
 	private static final int LAST_INDEX = 17;
 	
 	/**
-	 * Constructor.
+	 * Private Constructor.
 	 */
-	/*
-	public FlightIO() {
+	private FlightIO() {
 		
 	}
-	*/
 	
 	/**
 	 * Returns a FlightSorting object to which instantiated flights are added.
@@ -48,10 +49,15 @@ public class FlightIO {
 		    		String[] parts = line.split(", ");
 			        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
 			        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
-			        									   parts[4], parts[5], parts[6], parts[7], parts[8],
-						        						   Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), new BigDecimal(parts[11]),
-									          	     	   Integer.parseInt(parts[12]), Integer.parseInt(parts[13]), new BigDecimal(parts[14]),
-									          	     	   Integer.parseInt(parts[15]), Integer.parseInt(parts[16]), new BigDecimal(parts[17]));
+			        									   parts[4], parts[5], parts[6], parts[7], parts[8]);
+			        
+       	     		instantiatedFlight.setEconomy(Integer.parseInt(parts[9]), new BigDecimal(parts[11]));
+       	     	   	instantiatedFlight.setBusiness(Integer.parseInt(parts[12]), new BigDecimal(parts[14]));
+       	     	   	instantiatedFlight.setFirstClass(Integer.parseInt(parts[15]), new BigDecimal(parts[17]));
+       	     	   	
+       	     	   	instantiatedFlight.addEconomyPassengerCount(Integer.parseInt(parts[10]));
+       	     	   	instantiatedFlight.addBusinessPassengerCount(Integer.parseInt(parts[13]));
+       	     	   	instantiatedFlight.addFirstClassPassengerCount(Integer.parseInt(parts[16]));
 		    	
 			        //FlightSorting instantiation requires a flight as parameter
 			        if (sort == null) {
@@ -160,8 +166,7 @@ public class FlightIO {
 	 * @return Flight
 	 */
 	public static Flight findFlight(int flightID) {
-		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC",
-										0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"));
+		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
@@ -170,10 +175,14 @@ public class FlightIO {
 		    	if (line.length() > 0 && Integer.parseInt(parts[0]) == flightID) {
 		        	// Instantiate flight with parameters corresponding to String[] indices generated from the current line
 		        	foundFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
-							   				 parts[4], parts[5], parts[6], parts[7], parts[8],
-							   				 Integer.parseInt(parts[9]), Integer.parseInt(parts[10]), new BigDecimal(parts[11]),
-							   				 Integer.parseInt(parts[12]), Integer.parseInt(parts[13]), new BigDecimal(parts[14]),
-							   				 Integer.parseInt(parts[15]), Integer.parseInt(parts[16]), new BigDecimal(parts[17]));
+							   				 parts[4], parts[5], parts[6], parts[7], parts[8]);
+		        	foundFlight.setEconomy(Integer.parseInt(parts[9]), new BigDecimal(parts[11]));
+       	     	   	foundFlight.setBusiness(Integer.parseInt(parts[12]), new BigDecimal(parts[14]));
+       	     	   	foundFlight.setFirstClass(Integer.parseInt(parts[15]), new BigDecimal(parts[17]));
+       	     	   	
+       	     	   	foundFlight.addEconomyPassengerCount(Integer.parseInt(parts[10]));
+       	     	   	foundFlight.addBusinessPassengerCount(Integer.parseInt(parts[13]));
+       	     	   	foundFlight.addFirstClassPassengerCount(Integer.parseInt(parts[16]));
 		        }
 		    }
 		    reader.close();   
