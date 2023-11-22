@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
@@ -10,99 +13,93 @@ import java.util.ArrayList;
 
 
 /**
- * Author: Joshua Planovsky
- * ReviewPane class (current implementation assumes Reservation refactor)
+ * 
+ * This class is responsible for displaying the details of a list of reservations. It uses a JPanel and a JList to display
+ * the list of reservations and the details of the selected reservation. Additionally, it uses a DefaultListModel to hold the reservations
+ * and a JList to display them. Passing the data to the JPanel allows for the display of the selected reservation which should coincide with
+ * the users AccountID. 
+ * 
+ * The details of the displayed reservation include the reservation ID, account ID, date of departure, departure
+ * airport, arrival airport, total pricing, and the names of the passengers.
+ * 
+ * 
+ * The class uses the getPassengers() method of the Reservation class to get the names of the passengers.
+ * Module Name: ReviewPane
+ * @author Joshua Planovsky
+ * @version 4.0 last updated: 11/21/2023
+ *
+ *
  */
 public class ReviewPane extends JPanel implements PropertyChangeListener {
-	 private ArrayList<Reservation> reservations;
-	 private DefaultListModel model = new DefaultListModel();
-	 private JList list;
+	  private ArrayList<Reservation> reservations;
+	  private DefaultListModel model = new DefaultListModel();
+	  private JList list;
+	  private JPanel detailsPanel = new JPanel(new GridLayout(0, 2)); // Panel to hold the JLabels
 
-	 private static final long serialVersionUID = 1L;
+	  private static final long serialVersionUID = 1L;
 
-	 public ReviewPane(JPanel contentPane, Account account) {
-	     setLayout(new BorderLayout(0, 0));
+	  /**
+	   * Constructor to initialize the ReviewPane.
+	   *
+	   * @param JPanel contentPane The content pane.
+	   * @param Account account The account.
+	   * @param List<> reservations The list of reservations.
+	   */
+	  public ReviewPane(JPanel contentPane, Account account, List<Reservation> reservations) {
+	      this.reservations = new ArrayList<>(reservations);
 
-	     list = new JList(model);
-	     //FIXME: ListSelectionListener errors
-	     list.addListSelectionListener(new ListSelectionListener() {
-	         public void rListValueChanged(ListSelectionEvent event) {
-	             if (!event.getValueIsAdjusting()) {
-	               // Get the selected reservation
-	               Reservation selectedReservation = reservations.get(list.getSelectedIndex());
-	               // Display the reservation
-	               System.out.println(selectedReservation);
-	             }
-	         }
-	     });
-	     add(list, BorderLayout.CENTER);
+	      setLayout(new BorderLayout());
+	      setPreferredSize(new Dimension(500, 300));
 
-	     JToolBar toolBar = new JToolBar();
-	     add(toolBar, BorderLayout.NORTH);
+	      list = new JList(model);
+	      list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+	      list.setLayoutOrientation(JList.VERTICAL);
+	      list.setVisibleRowCount(-1);
+	      JScrollPane listScrollPane = new JScrollPane(list);
+	      listScrollPane.setPreferredSize(new Dimension(250, 100));
+	      listScrollPane.setAlignmentX(LEFT_ALIGNMENT);
 
-	     JButton btnReturn = new JButton("Return");
-	     toolBar.add(btnReturn);
+	      add(listScrollPane, BorderLayout.WEST);
 
-	     JComboBox comboBox = new JComboBox();
-	     toolBar.add(comboBox);
+	      list.addListSelectionListener(new ListSelectionListener() {
+	          public void valueChanged(ListSelectionEvent event) {
+	              if (!event.getValueIsAdjusting()) {
+	                 Reservation selectedReservation = reservations.get(list.getSelectedIndex());
+	                 displayReservation(selectedReservation);
+	              }
+	          }
+	      });
 
-	     JButton btnReview = new JButton("Cancel Selected Reservation");
-	     btnReview.addActionListener(new ActionListener() {
-	         public void actionPerformed(ActionEvent e) {
-	             // FIXME: CANCELLATION PANE
-	             ((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
-	         }
-	     });
-	     toolBar.add(btnReview);
+	      detailsPanel = new JPanel(new GridLayout(0, 2)); // Panel to hold the JLabels
+	      add(detailsPanel, BorderLayout.SOUTH);
+	  }
 
-	     reservations = new ArrayList<>();
-	     String file = "src/Database/Reservation.txt";
-	     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-	         String line;
-	         String reservationId = "";
-	         String accountId = "";
-	         String flightNumber = "";
-	         String dateOfBooking = "";
-	         String dateOfDeparture = "";
-	         String departureAirport = "";
-	         String arrivalAirport = "";
-	         double totalPricing = 0.0;
-	         String cabinClass = "";
-	         String passengerName = "";
-	         while ((line = br.readLine()) != null) {
-	             if (line.startsWith("Reservation ID:")) {
-	               reservationId = line.substring("Reservation ID:".length()).trim();
-	             } else if (line.startsWith("Account ID:")) {
-	               accountId = line.substring("Account ID:".length()).trim();
-	             } else if (line.startsWith("Flight Number:")) {
-	               flightNumber = line.substring("Flight Number:".length()).trim();
-	             } else if (line.startsWith("Date of Booking:")) {
-	               dateOfBooking = line.substring("Date of Booking:".length()).trim();
-	             } else if (line.startsWith("Date of Departure:")) {
-	               dateOfDeparture = line.substring("Date of Departure:".length()).trim();
-	             } else if (line.startsWith("Departure Airport:")) {
-	               departureAirport = line.substring("Departure Airport:".length()).trim();
-	             } else if (line.startsWith("Arrival Airport:")) {
-	               arrivalAirport = line.substring("Arrival Airport:".length()).trim();
-	             } else if (line.startsWith("Total Pricing:")) {
-	               totalPricing = Double.parseDouble(line.substring("Total Pricing:".length()).trim());
-	             } else if (line.startsWith("Cabin Class:")) {
-	               cabinClass = line.substring("Cabin Class:".length()).trim();
-	             } else if (line.startsWith("Passenger Name:")) {
-	               passengerName = line;
-	               
-               }
-           }
-       } catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-   }
+	  /**
+	    * Method to display the details of a reservation.
+	    * @param Reservation reservation The reservation to be displayed.
+	    */
+	  public void displayReservation(Reservation reservation) {
+	      detailsPanel.removeAll(); // Clear the panel
 
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
+	      detailsPanel.add(new JLabel("Reservation ID:"));
+	      detailsPanel.add(new JLabel(reservation.getID()));
+	      detailsPanel.add(new JLabel("Account ID:"));
+	      detailsPanel.add(new JLabel(reservation.getID()));
+	      detailsPanel.add(new JLabel("Date of Departure:"));
+	      detailsPanel.add(new JLabel(reservation.getFlight().getdateDeparture()));
+	      detailsPanel.add(new JLabel("Departure Airport:"));
+	      detailsPanel.add(new JLabel(reservation.getFlight().getcityDeparture()));
+	      detailsPanel.add(new JLabel("Arrival Airport:"));
+	      detailsPanel.add(new JLabel(reservation.getFlight().getcityArrival()));
+	      detailsPanel.add(new JLabel("Total Pricing:"));
+	      
+	      for (String passengerName : reservation.getPassengers()) {
+	          detailsPanel.add(new JLabel(""));
+	          detailsPanel.add(new JLabel(passengerName));
+	      }
+
+	      revalidate(); // Refresh the panel
+	      repaint(); // Repaint the panel
+	  }
 }
-              
+

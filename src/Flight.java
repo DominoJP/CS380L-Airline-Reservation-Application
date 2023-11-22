@@ -80,9 +80,9 @@ public class Flight {
 	 * @param type
 	 * @param cityDeparture
 	 * @param cityArrival
-	 * @param dateDeparture
+	 * @param departureDate
 	 * @param timeDeparture
-	 * @param dateArrival
+	 * @param localDate
 	 * @param timeArrival
 	 * @param economyCapacity
 	 * @param economyPassengerCount
@@ -95,7 +95,7 @@ public class Flight {
 	 * @param firstClassPricing
 	 */
 	public Flight(int id, String type, String cityDeparture, String cityArrival, 
-				  String dateDeparture, String timeDeparture, String dateArrival, String timeArrival, String zone,
+				  CharSequence departureDate, String timeDeparture, CharSequence localDate, String timeArrival, String zone,
 				  int economyCapacity, int economyPassengerCount, BigDecimal economyPricing,
 				  int businessCapacity, int businessPassengerCount, BigDecimal businessPricing,
 				  int firstClassCapacity, int firstClassPassengerCount, BigDecimal firstClassPricing) 
@@ -105,9 +105,9 @@ public class Flight {
 		this.cityDeparture = cityDeparture;
 		this.cityArrival = cityArrival;
 		
-		this.dateDeparture = LocalDate.parse(dateDeparture);
+		this.dateDeparture = LocalDate.parse(departureDate);
 		this.timeDeparture = LocalTime.parse(timeDeparture); 
-		this.dateArrival = LocalDate.parse(dateArrival);
+		this.dateArrival = LocalDate.parse(localDate);
 		this.timeArrival = LocalTime.parse(timeArrival);
 		
 		this.zone = ZoneId.of(zone);
@@ -129,6 +129,8 @@ public class Flight {
 	}
 	
 	
+
+
 	/**
 	 * Method that fires PropertyChange event when "assigning" to a Flight Object. For use with FlightFilterList.
 	 * @param selectedFlight
