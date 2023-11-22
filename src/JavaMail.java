@@ -11,18 +11,19 @@ import java.util.logging.Logger;
 //import javax.mail.internet.MimeMessage;
 
  /** 
-  * a) Design Documentation: "Java Mail"
-  * b) Date of creation: JavaMail is a program that facilitates 
-  * c) Programmer's name: Sayra Reyes
-  * d) Description: This class facilitates the use of sending emails using JavaMail API. 
+  * Design Documentation: "Java Mail"
+  * @author Sayra Reyes
+  * @version 2.2  Last Modified: November 21, 2023.
+  *  
+  * Description: This class facilitates the use of sending emails using JavaMail API. 
        It allows configuration of sender and recipient email addresses, 
        sets up the properties for the email server, constructs an email message 
-       and it sends it to the recipient’s email address.
-  * e) Functions: sendMail() : sets up the necessary properties for the email server, 
+       and it sends it to the recipient’s email address. 
+  * Functions: sendMail() : sets up the necessary properties for the email server, 
   * 	creates a session usig the sender's credentials with a message and send's
   * 	to the recipient email address. 
-  * f) Data Structures: N/A
-  * g) Algorithm: N/A
+  * Data Structures: N/A
+  * Algorithm: N/A
  **/
 
 public class JavaMail {

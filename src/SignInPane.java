@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 
 /**
  * a) Design Documentation: "SignInUI"
- * b) Last Modified: November 18, 2023
+ * b) @version 1.2.2, Last Modified: November 18, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass for account sign in.
  * e) Function: Login credentials (email and password) accepted as text inputs.

@@ -11,7 +11,7 @@ import java.util.Iterator;
 /**
  * a) Design Documentation: "FlightIO"
  * b) Last Modified: November 16, 2023
- * c) @author Jevy Miranda
+ * c) @version 2.1, @author Jevy Miranda
  * d) Description: Utility class for reading from/writing to Reservations.txt
  * e) Functions: Method instantiateReservations() reads in reservations from the .txt and adds them to
  *    the reservation history attribute of the active Account object.

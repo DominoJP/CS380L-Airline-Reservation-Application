@@ -17,7 +17,7 @@ import javax.swing.JComboBox;
 
 /**
  * a) Design Documentation: "PaymentUI"
- * b) Last Modified: November 8, 2023
+ * b) @version 1.2, Last Modified: November 8, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass in BorderLayout with JScrollPane. 
  *    Pane displays the list of active reservations associated with current account. 

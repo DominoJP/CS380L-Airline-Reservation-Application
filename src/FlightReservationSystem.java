@@ -6,7 +6,7 @@ import java.awt.CardLayout;
 
 /**
  * a) Design Documentation: "FlightReservationSystem"
- * b) Last Modified: November 18, 2023
+ * b) @version 4.4.2, Last Modified: November 18, 2023
  * c) @author Jevy Miranda, Joshua Planovsky
  * d) Description: JFrame subclass in which initial JPanel is instantiated.
  * 	  Containing the main method, it is also the control class in which JPanels are instantiated.

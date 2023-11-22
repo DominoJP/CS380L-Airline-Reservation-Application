@@ -18,7 +18,7 @@ import javax.swing.ButtonGroup;
 
 /**
  * a) Design Documentation: "CabinUI"
- * b) Last Modified: Nov 18, 2023
+ * b) @version 2.2, Last Modified: Nov 18, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass supplying UI for cabin class selection.
  * 	  JLabels for fares and available seating in table alignment.
