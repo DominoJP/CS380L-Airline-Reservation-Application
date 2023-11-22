@@ -3,14 +3,14 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- * Owner: Logan Langewisch
- * Date Last Modified: November 21, 2023
  * The AirportFlights class sorts all the flights that take off at an airport
  * in order of what date the flights depart using a binary tree
  * A binary tree was chosen because it was easy to implement, it would allow for more efficient
  * sorting and searching, and it did not seem that a more complex data structure was required
  * The class also possesses an array list of flights that is sorted by what time the flight
  * leaves by
+ * @author Logan Langewisch
+ * @version 3.0, last updated November 21, 2023
  */
 
 public class AirportFlights {

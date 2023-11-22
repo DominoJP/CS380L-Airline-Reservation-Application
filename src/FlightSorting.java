@@ -6,12 +6,12 @@ import java.time.LocalTime;
 import java.io.*;
 
 /**
- * Owner: Sayra Reyes
- * Modified by Logan Langewisch
- * Date Last Modified: November 21, 2023
  * This class represents a flight sorting system for managing flights and their information. 
  * It allows the system to add flights, sort them, and also retrieve flights that were sorted by using
  * the Airport and AirportFlights classes
+ * @author Sayra Reyes and Logan Langewisch
+ * @version 2.0, last updated November 21, 2023
+ * 
  */
 
 

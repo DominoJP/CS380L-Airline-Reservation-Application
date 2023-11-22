@@ -1,11 +1,3 @@
-/**
- * Owner: Sayra Reyes
- * Modified by Logan Langewisch
- * Date Last Modified: November 21, 2023
- * A class that represents a managet with the ability to store employee ID
- * and password as well as access and manage reservation information.
- */
-
 import java.util.ArrayList;
 
 import java.io.*;
@@ -14,8 +6,14 @@ import java.time.LocalDateTime;
 
 import java.io.BufferedReader;
 
+/**
+ * A class that represents a manager with the ability to store employee ID
+ * and password as well as access and manage reservation information.
+ * @author Sayra Reyes and Logan Langewisch
+ * @version 2.0, last updated November 21, 2023
+ */
 
-class Manager {
+public class Manager {
 	 
 	private int employeeID;   /** stores the employee's ID */
 	private String employeepassword; /** Stores the employee password */
