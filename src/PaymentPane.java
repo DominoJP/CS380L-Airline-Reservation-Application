@@ -22,7 +22,7 @@ import javax.swing.JSeparator;
 
 /**
  * a) Design Documentation: "PaymentUI"
- * b) Last Modified: November 17, 2023
+ * b) @version 2.2, Last Modified: November 17, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass for payment and billing information. 
  *    Displays total sum of fares + fees for all passengers.

@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 /**
  * a) Design Documentation: "FlightIO"
- * b) Last Modified: Nov 16, 2023
+ * b) Version 2.3, Last Modified: Nov 16, 2023
  * c) @author Jevy Miranda
  * d) Description: Utility class for reading from/writing to Flights.txt. Uses BufferedReader & BufferedWriter.
  * e) Functions: Method instantiateFlights() reads from .txt file at program execution and outputs a FlightSorting object.

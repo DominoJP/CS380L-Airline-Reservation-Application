@@ -25,7 +25,7 @@ import javax.swing.JSeparator;
 
 /**
  * a) Design Documentation: "FilterUI"
- * b) Last Modified: November 18, 2023
+ * b) @version 4.3, Last Modified: November 18, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass accepting user input as flight filtering criteria.
  *    JComboBoxes (editable) for airport/city of departure arrival.

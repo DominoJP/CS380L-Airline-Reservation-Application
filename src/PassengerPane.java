@@ -26,7 +26,7 @@ import javax.swing.JButton;
 
 /**
  * a) Design Documentation: "PassengerInfoUI"
- * b) Created: November 18, 2023
+ * b) @version 3.2, Created: November 18, 2023
  * c) @author Jevy Miranda
  * d) Description: JPanel subclass for passenger information. 
  * 	  JTextFields for Full Name. 

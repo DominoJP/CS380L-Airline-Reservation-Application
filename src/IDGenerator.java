@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 /**
  * a) Design Documentation: "IDGenerator"
- * b) Last Modified: November 16, 2023
+ * b) @version 1.2, Last Modified: November 16, 2023
  * c) @author Jevy Miranda
  * d) Description: Solution to generate user-readable unique ID generation across JVM instances.
  * e) Functions: setLastID() reads the last IDs generated (as saved in IDGeneratorHelper.txt) into local variables.
