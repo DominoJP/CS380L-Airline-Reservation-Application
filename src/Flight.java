@@ -312,7 +312,7 @@ public class Flight {
 	}
 	
 	/**
-	 * Returns time zone of LocalDate departure & arrival, LocalTime departure & arrival
+	 * Returns time zone of LocalDate departure and arrival, LocalTime departure and arrival
 	 * @return time zone of departure
 	 */
 	public ZoneId getZone() {

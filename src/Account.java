@@ -229,7 +229,7 @@ public class Account{
  }
 
      /**
-      * Compares user inputs for email & password against email-password pairs stored in .txt.
+      * Compares user inputs for email and password against email-password pairs stored in .txt.
       * @param email
       * @param password
       * @return whether sign in successful

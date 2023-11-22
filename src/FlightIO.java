@@ -21,7 +21,7 @@ import java.util.Iterator;
  * @version 2.3, Last Modified: Nov 16, 2023
  * @author Jevy Miranda
  */
-public class FlightIO {
+public final class FlightIO {
 	private static final String FILE_PATH = "src/Database/Flights.txt";
 	private static final int ECONOMY_COUNT_INDEX = 10;
 	private static final int BUSINESS_COUNT_INDEX = 13;
@@ -29,13 +29,11 @@ public class FlightIO {
 	private static final int LAST_INDEX = 17;
 	
 	/**
-	 * Constructor.
+	 * Private Constructor.
 	 */
-	/*
-	public FlightIO() {
+	private FlightIO() {
 		
 	}
-	*/
 	
 	/**
 	 * Returns a FlightSorting object to which instantiated flights are added.

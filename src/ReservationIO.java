@@ -21,11 +21,11 @@ import java.util.Iterator;
  * @version 2.1,Last Modified: November 16, 2023
  * @author Jevy Miranda
  */
-public class ReservationIO {
+public final class ReservationIO {
 	private static final String FILE_PATH = "src/Database/Reservations.txt";
 	
 	/**
-	 * Instantiate reservations associated with account to ArrayList<Reservation> attribute of Account Object.
+	 * Instantiate reservations associated with account to Reservation ArrayList attribute of Account object.
 	 * @param : active account
 	 */
 	public static void instantiateReservations(Account account) {
