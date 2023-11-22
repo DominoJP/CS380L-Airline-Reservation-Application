@@ -7,21 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * a) Design documentation: "Account" 
- * b) Date of creation: October 3, 2023
- * c) Programmer's Name: Sayra Reyes (Original) , Logan Lagewisch (Modified).
- * d) Description: Account class represents a user account within a flight reservation system.
+ * Design documentation: "Account" 
+ * @author Sayra Reyes (Original) , Logan Lagewisch (Modified).
+ * @version 2.2 , Last Modified: November 21, 2023.
+ * 
+ * Description: Account class represents a user account within a flight reservation system.
  * 	  It stores account details such as name, email, password, account number, 
  * 	  and reservation history. 
  * 	  It provides functionality to manage reservations, update account information and perform 
  * 	  signin operations. 
- * e) Functions: reserve method, cancelReservation, changeReservation, reviewFlightDetails and SignIn. 
+ * Functions: reserve method, cancelReservation, changeReservation, reviewFlightDetails and SignIn. 
  * 	  This classes manages user account details and provides methods for managing. 
- * f) Data Structures: List(Reservation) this data structure stores the history of
+ * Data Structures: List(Reservation) this data structure stores the history of
  *    reservations made by the account holder. It also allows for easy management and retrieval
  *    of reservation data associated with the account. 
- * g) Algorithm: N/A
- * 
+ * Algorithm: N/A
+ 
  */
 
 public class Account{
