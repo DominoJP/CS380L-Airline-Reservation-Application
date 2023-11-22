@@ -1,8 +1,5 @@
 /**
  * Design documentation: "Flight" 
- * @author Sayra (Original),  Logan Lagewisch (Modified).
- * @version 2.2 , Last modified: November 21, 2023.
- * 
  * Description: This class represents a flight in a flight reservation system. It encopasses flight details 
  * 	  such as ID, type, departure/arrival cities, date/times, passenger capacity, pricing and 
  * 	  methods to manage passenger booking. 
@@ -10,6 +7,8 @@
  * Data Structures: There are several used to manage and store information related to flights and passengers methods like: 
  * 	  Managing Booking, DataTime Handiling and Support for Listeners. 
  * Algorithm: N/A
+ * @author Sayra (Original),  Logan Lagewisch (Modified).
+ * @version 2.2 , Last modified: November 21, 2023.
  */
 
 import java.beans.PropertyChangeListener;

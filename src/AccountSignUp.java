@@ -14,9 +14,6 @@ import java.util.Scanner;
 
 /**
  * Design Documentation: "AccountSignUp"
- *  @author Sayra Reyes 
- *  @version 2.2 , Last modified: November 21, 2023.
- *  
  * Description: this class enables users to input their first and last name, email, password and id, 
  * 	  writes this information to a text file and later reads and displays the contents of the file
  * 	  using the BufferedReader and BufferedWriter. 
@@ -28,6 +25,8 @@ import java.util.Scanner;
  *
  * Note: This is a simple example for educational purposes. 
  * In a real-world scenario, consider more robust practices for security.
+ *  @author Sayra Reyes 
+ *  @version 2.2 , Last modified: November 21, 2023.
  */
 
 public class AccountSignUp {
