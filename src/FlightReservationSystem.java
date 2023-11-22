@@ -5,15 +5,17 @@ import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
 /**
- * a) Design Documentation: "FlightReservationSystem"
- * b) @version 4.4.2, Last Modified: November 18, 2023
- * c) @author Jevy Miranda, Joshua Planovsky
- * d) Description: JFrame subclass in which initial JPanel is instantiated.
- * 	  Containing the main method, it is also the control class in which JPanels are instantiated.
- * e) Functions: When instantiating JPanels, the current JPanel contentPane is passed as a parameter, allowing switching via CardLayout.
- * 	  Dummy objects for the observable Account and Flight class are also passed to observer panes.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "FlightReservationSystem."
+ * Description: JFrame subclass in which initial JPanel is instantiated.
+ * Containing the main method, it is also the control class in which JPanels are instantiated.
+ * <p>
+ * Functions: When instantiating JPanels, the current JPanel contentPane is passed as a parameter, allowing switching via CardLayout.
+ * Dummy objects for the observable Account and Flight class are also passed to observer panes.
+ * <p>
+ * Data Structures: N/A.
+ * Algorithms: N/A.
+ * @version 4.4.2, Last Modified: November 18, 2023
+ * @author Jevy Miranda, Joshua Planovsky
  */
 public class FlightReservationSystem extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
