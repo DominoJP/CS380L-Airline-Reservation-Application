@@ -13,17 +13,19 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * a) Design Documentation: "AccountSignUp"
- * b) Date of Creation: November 3, 2023
- * c) @author Sayra Reyes 
- * d) Description: this class enables users to input their first and last name, email, password and id, 
+ * Design Documentation: "AccountSignUp"
+ *  @author Sayra Reyes 
+ *  @version 2.2 , Last modified: November 21, 2023.
+ *  
+ * Description: this class enables users to input their first and last name, email, password and id, 
  * 	  writes this information to a text file and later reads and displays the contents of the file
  * 	  using the BufferedReader and BufferedWriter. 
- * e) Function: writeToFile method, readFromFile, Setters and Getters these functions enable users to
+ * Function: writeToFile method, readFromFile, Setters and Getters these functions enable users to
  *	  to store their personal information and later retrieve and display. 
- * f) Data Structures: N/A
- * g) Algorithms: N/A 
- * 
+ * Data Structures: N/A
+ * Algorithms: N/A 
+ *
+ *
  * Note: This is a simple example for educational purposes. 
  * In a real-world scenario, consider more robust practices for security.
  */
