@@ -1,3 +1,13 @@
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+
 /**
  * Design documentation: "Flight" 
  * Description: This class represents a flight in a flight reservation system. It encopasses flight details 
@@ -10,16 +20,6 @@
  * @author Sayra (Original),  Logan Lagewisch (Modified).
  * @version 2.2 , Last modified: November 21, 2023.
  */
-
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 
 public class Flight {
 	

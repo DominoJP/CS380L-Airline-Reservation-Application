@@ -30,7 +30,7 @@ import java.util.ArrayList;
  *
  *
  */
-public class ReviewPane extends JPanel implements PropertyChangeListener {
+public abstract class ReviewPane extends JPanel implements PropertyChangeListener {
 	  private ArrayList<Reservation> reservations;
 	  private DefaultListModel model = new DefaultListModel();
 	  private JList list;
@@ -45,7 +45,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	   * @param Account account The account.
 	   * @param List<> reservations The list of reservations.
 	   */
-	  public ReviewPane(JPanel contentPane, Account account, List<Reservation> reservations) {
+	  public ReviewPane(JPanel contentPane, Account account, ArrayList<Reservation> reservations) {
 	      this.reservations = new ArrayList<>(reservations);
 
 	      setLayout(new BorderLayout());
