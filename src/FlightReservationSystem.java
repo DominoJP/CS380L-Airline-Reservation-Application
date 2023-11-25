@@ -5,29 +5,31 @@ import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
 /**
- * a) Design Documentation: 'FlightReservationSystem'
- * b) Date of Creation: October 8, 2023
- * c) @author Jevy Miranda, Joshua Planovsky
- * d) Description: JFrame subclass in which initial JPanel is instantiated.
- * 	  Containing main method, it is also the control class in which most JPanels are instantiated.
- * e) Functions: In instantiating the JPanels, the current JPanel contentPane is passed as a parameter, allowing switching via CardLayout.
- * 	  Dummy objects for the observable Account and Flight class are also passed to observer panes.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "FlightReservationSystem."
+ * Description: JFrame subclass in which initial JPanel is instantiated.
+ * Containing the main method, it is also the control class in which JPanels are instantiated.
+ * <p>
+ * Functions: When instantiating JPanels, the current JPanel contentPane is passed as a parameter, allowing switching via CardLayout.
+ * Dummy objects for the observable Account and Flight class are also passed to observer panes.
+ * <p>
+ * Data Structures: N/A.
+ * Algorithms: N/A.
+ * @version 4.4.2, Last Modified: November 18, 2023
+ * @author Jevy Miranda, Joshua Planovsky
  */
 public class FlightReservationSystem extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	
-	public static void main(String[] args) {	
-		
+
+	public static void main(String[] args) {
+
 		//Instantiation of cancel reservation object.
 		CancelReservation cancelReservation = new CancelReservation("src/Database/Reservations.txt");
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FlightReservationSystem frame = new FlightReservationSystem( cancelReservation);
+					FlightReservationSystem frame = new FlightReservationSystem(cancelReservation);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +39,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 	}
 
 	public FlightReservationSystem(CancelReservation CancelReservation) {
-		
+
 		setDefaultCloseOperation(FlightReservationSystem.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -45,16 +47,16 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
-		
+
 		// Placeholder Account object to be reassigned at sign in.
 		Account account = new Account(null, null, null, 0000);
-		
+
 		// Placeholder Flight object to be reassigned at flight selection.
 		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");
-		
+
 		// Sorted Flights
 		FlightSorting sort = FlightIO.instantiateFlights();
-		
+
 		// Instantiation of JPanels
 		SignInPane SignInPane = new SignInPane(contentPane, account);
 		SignUpPane SignUpPane = new SignUpPane(contentPane);
@@ -72,13 +74,13 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PaymentPane PaymentPane = new PaymentPane(contentPane, account, selectedFlight);
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
 		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
-		
-		
+
+
 		// Program start
 		contentPane.add(SignInPane, "SIGNIN");
 		contentPane.add(SignUpPane, "SIGNUP");
 		contentPane.add(NavigationPane, "MENU");
-		
+
 		// Select "Reserve"
 		contentPane.add(FilterPane, "FILTER");
 		// In FlightFilterPane
@@ -95,16 +97,16 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 
 		// Select "Review"
 		contentPane.add(ReservationListPane, "REVIEW_LIST");
-		
+
 		// Select "Cancel"
 		contentPane.add(ReservationCancellationPane, "Cancel");
-		
-		
+
+
 		// in pattern observable.addPropertyChangeListener(observer)
 		// id & email
 		account.addPropertyChangeListener(ReservationListPane);
 		account.addPropertyChangeListener(PaymentPane);
-		
+
 		// user-selected flight
 		selectedFlight.addPropertyChangeListener(PaymentPane);
 		selectedFlight.addPropertyChangeListener(CabinClassPane);
@@ -114,7 +116,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		selectedFlight.addPropertyChangeListener(PassengerFourPane);
 		selectedFlight.addPropertyChangeListener(PassengerFivePane);
 		selectedFlight.addPropertyChangeListener(PassengerSixPane);
-		
+
 		// running total
 		CabinClassPane.addPropertyChangeListener(PaymentPane);
 		PassengerOnePane.addPropertyChangeListener(PaymentPane);
@@ -123,7 +125,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PassengerFourPane.addPropertyChangeListener(PaymentPane);
 		PassengerFivePane.addPropertyChangeListener(PaymentPane);
 		PassengerSixPane.addPropertyChangeListener(PaymentPane);
-		
+
 		// selected passenger amount
 		FilterPane.addPropertyChangeListener(PaymentPane);
 		FilterPane.addPropertyChangeListener(CabinClassPane);
@@ -133,10 +135,10 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		FilterPane.addPropertyChangeListener(PassengerFourPane);
 		FilterPane.addPropertyChangeListener(PassengerFivePane);
 		FilterPane.addPropertyChangeListener(PassengerSixPane);
-		
+
 		// confirmation message
 		PaymentPane.addPropertyChangeListener(NavigationPane);
 		SignUpPane.addPropertyChangeListener(NavigationPane);
-		
+
 	}
 }

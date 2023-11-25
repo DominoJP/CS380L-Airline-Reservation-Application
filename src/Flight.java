@@ -1,12 +1,3 @@
-/**
- * The Flight class represents a flight in a flight reservation such as 
- * the type of flight (round trip or one way), departure and arrival cities,
- * departure and arrival dates and times, 
- * total passenger capacity, pricing and passenger information. 
- *@author Sayra Reyes
- *@version 1.0 
- */
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
@@ -16,6 +7,19 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+
+/**
+ * Design documentation: "Flight" 
+ * Description: This class represents a flight in a flight reservation system. It encopasses flight details 
+ * 	  such as ID, type, departure/arrival cities, date/times, passenger capacity, pricing and 
+ * 	  methods to manage passenger booking. 
+ * Functions: Methods like flight details, capacity, pricing, booking status and specify information. 
+ * Data Structures: There are several used to manage and store information related to flights and passengers methods like: 
+ * 	  Managing Booking, DataTime Handiling and Support for Listeners. 
+ * Algorithm: N/A
+ * @author Sayra (Original),  Logan Lagewisch (Modified).
+ * @version 2.2 , Last modified: November 21, 2023.
+ */
 
 public class Flight {
 	
@@ -246,7 +250,7 @@ public class Flight {
 	@Deprecated
 	public int gettotalremainingpassengercapacity() {
 		int available = 0; 
-		for(int i = 0; i < totalPassengerCapacity; i++) {
+		for(int i = 0; i < gettotalpassengercapacity(); i++) {
 			if(passengers[i][1] == null ) {
 				available++;
 			}
@@ -261,7 +265,7 @@ public class Flight {
      */
 	@Deprecated
 	public BigDecimal getpricing() {
-		return pricing;
+		return getpricing();
 	}
 
 	/**
@@ -307,7 +311,7 @@ public class Flight {
 	}
 	
 	/**
-	 * Returns time zone of LocalDate departure & arrival, LocalTime departure & arrival
+	 * Returns time zone of LocalDate departure and arrival, LocalTime departure and arrival
 	 * @return time zone of departure
 	 */
 	public ZoneId getZone() {
@@ -336,7 +340,7 @@ public class Flight {
 	 */
 	@Deprecated
 	public int gettotalpassengercapacity() {
-		return totalPassengerCapacity;
+		return gettotalpassengercapacity();
 		
 	}
 	
@@ -346,7 +350,7 @@ public class Flight {
 	 */
 	@Deprecated
 	public int getPassengerCount() {
-		return passengerCount;
+		return getPassengerCount();
 	}
 	
 	/**
@@ -465,6 +469,8 @@ public class Flight {
 		if(this.firstClassPassengerCount != 0)
 			this.firstClassPassengerCount--;
 	}
+	
+
 	/**
 	 * Method to check if the flight is full
 	 * @return , returns true if the flight is full, otherwise false. 
@@ -482,6 +488,7 @@ public class Flight {
 		return true;
 	}
 	
+	
 	/**
 	 * Method to set the passenger information at a specified location. 
 	 * @param location : the location for setting passenger information
@@ -493,7 +500,7 @@ public class Flight {
 		//if the statement checks whether location is valid seat on the flight and if
 		// it is then it assigns a passenger and if the seat does not exist then it provided 
 		//an error to the user. 
-		if(location <= totalPassengerCapacity) {
+		if(location <= gettotalpassengercapacity()) {
 			passengers[location][1] = name; 
 			if(accountnumber != null) {
 				passengers[location][2] = accountnumber;
@@ -532,10 +539,9 @@ public class Flight {
 				timeArrivalHour = 12;
 		}
 		
-		
-        return "DEPARTS: " + timeDepartureHour + ":" + String.format("%02d", dateTimeDeparture.getMinute()) + " " + departPeriod +
-        		" - ARRIVES: " + timeArrivalHour + ":" + String.format("%02d", dateTimeArrival.getMinute()) + " " + arrivePeriod + ", " +
-        	    dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
+		return "DEPARTS: " + timeDepartureHour + ":" + String.format("%02d", dateTimeDeparture.getMinute()) + " " + departPeriod +
+			   " - ARRIVES: " + timeArrivalHour + ":" + String.format("%02d", dateTimeArrival.getMinute()) + " " + arrivePeriod + ", " +
+			   dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
     }
 	
 }

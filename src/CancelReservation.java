@@ -7,25 +7,35 @@ import java.util.List;
  * Utilizes BufferedReader/BufferedWriter to scan and rewrite the txt file containing reservation information.
  * 
  * @author Joshua Planovsky
- * @version 7.0
+ * @version 8.0, last updated: 11/21/2023
  */
 public class CancelReservation {
-    // Default reservation file path
-    private String reservationFilePath = "src/Database/Reservations.txt";
+	
+	 /**
+	  * The default reservation file path.
+	  */
+    private String reservationFilePath = "src/Database/Reservation.txt";
 
-    // Constructor to set the reservation file path
+    /**
+     * Constructor to set the reservation file path.
+     * @param string reservationFilePath The path of the reservation file.
+     */
     public CancelReservation(String reservationFilePath) {
         this.reservationFilePath = reservationFilePath;
     }
 
     /**
      * Method to cancel a reservation by its ID.
-     * @param reservationID The ID of the reservation to be canceled.
+     * @param string reservationID The ID of the reservation to be canceled.
      * @return true if the reservation was successfully canceled, false if not found or an error occurred.
      */
     public boolean cancelReservationAction(String reservationID) {
         List<String> reservations = new ArrayList<>();
         boolean found = false;
+        
+        if (reservationID == null) {
+            throw new IllegalArgumentException("Reservation ID cannot be null");
+        }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(this.reservationFilePath))) {
             String line;
@@ -80,6 +90,4 @@ public class CancelReservation {
 
         return false; // Reservation was not found
     }
-
-    // Additional methods for the reservation logic could be added here
 }

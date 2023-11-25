@@ -8,17 +8,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * a) 'FlightIO'
- * b) Date of Creation: Nov 10, 2023 (refactor of a class made in October)
- * c) @author Jevy Miranda
- * d) Description: Utility class for reading/writing from/to Flights.txt. Uses BufferedReader & BufferedWriter.
- * e) Functions: Instantiates flights from .txt file at program execution and outputs a FlightSorting object.
- *    Updates the passenger count in the .txt of the corresponding cabin class on successful reservation booking,
- *    taking selected flight, selected passenger amount, and selected cabin class as inputs.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "FlightIO."
+ * Description: Utility class for reading from/writing to Flights.txt. Uses BufferedReader and BufferedWriter.
+ * <p>
+ * Functions: Method instantiateFlights() reads from .txt file at program execution and outputs a FlightSorting object.
+ * Method updatePassengerCount() updates the passenger count in the .txt of the corresponding cabin class on 
+ * successful reservation booking, taking selected flight, selected passenger amount, and selected cabin class as inputs.
+ * <p>
+ * Data Structures: ArrayList stores re-built lines to write back into .txt. 
+ * Array takes elements of a line, separated by delimiter.
+ * Algorithms: N/A.
+ * @version 2.3, Last Modified: Nov 16, 2023
+ * @author Jevy Miranda
  */
-public class FlightIO {
+public final class FlightIO {
 	private static final String FILE_PATH = "src/Database/Flights.txt";
 	private static final int ECONOMY_COUNT_INDEX = 10;
 	private static final int BUSINESS_COUNT_INDEX = 13;
@@ -26,13 +29,11 @@ public class FlightIO {
 	private static final int LAST_INDEX = 17;
 	
 	/**
-	 * Constructor.
+	 * Private Constructor.
 	 */
-	/*
-	public FlightIO() {
+	private FlightIO() {
 		
 	}
-	*/
 	
 	/**
 	 * Returns a FlightSorting object to which instantiated flights are added.
@@ -76,6 +77,9 @@ public class FlightIO {
 	/**
 	 * Updates flight passenger count on new reservation booking.
 	 * @see class ReservationPaymentPane.java
+	 * @param selectedFlight
+	 * @param selectedPassengerAmount
+	 * @param selectedCabin
 	 */
 	public static void updatePassengerCount(Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
@@ -150,6 +154,8 @@ public class FlightIO {
 	
 	/**
 	 * Returns Flight object with corresponding @param ID.
+	 * @param flightID
+	 * @return Flight
 	 */
 	public static Flight findFlight(int flightID) {
 		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");

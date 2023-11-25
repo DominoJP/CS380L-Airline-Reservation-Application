@@ -12,19 +12,28 @@ import javax.swing.JToolBar;
 import javax.swing.JComboBox;
 
 /**
- * a) 'FlightListUI'
- * b) Date of Creation: October 11, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass in BorderLayout with JScrollPane, 
- *    allowing use of JList for flight display and selection.
- * e) Functions: Invokes a Flight method which fires the PropertyChangeEvent for "selectedFlight"
- *    based on user selection.
- * f) Data Structures: N/A
- * g) Algorithms: N/A	  
+ * Design Documentation: "FlightListUI."
+ * Description: JPanel subclass in BorderLayout with JScrollPane, 
+ * allowing use of JList for flight display and selection.
+ * <p>
+ * Functions: Invokes a Flight method which fires the PropertyChangeEvent for "selectedFlight"
+ * based on user selection.
+ * <p>
+ * Data Structures: ArrayList of flights filtered by user-provided criteria.
+ * Algorithms: N/A.
+ * @version 1.3, Last Modified: November 18, 2023
+ * @author Jevy Miranda 
  */
 public class FlightListPane extends JPanel {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 * @param flightArray
+	 * @param flight
+	 */
 	public FlightListPane(JPanel contentPane, Account account, ArrayList<Flight> flightArray, Flight flight) {
 		
 		setLayout(new BorderLayout(0, 0));

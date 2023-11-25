@@ -9,21 +9,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * a) Design Documentation: 'FlightIO'
- * b) Date Created: November 10, 2023 (refactor of a class created late October)
- * c) @author Jevy Miranda
- * d) Description: Utility class for reading from/writing to Reservations.txt
- * e) Functions: Method instantiateReservations() reads in reservations from the .txt and adds them to
- *    the reservation history attribute of the active Account object.
- *    Method writeReservation() writes the valid new booking into the .txt in its specific user-readable format.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "FlightIO."
+ * Description: Utility class for reading from/writing to Reservations.txt
+ * <p>
+ * Functions: Method instantiateReservations() reads in reservations from the .txt and adds them to
+ * the reservation history attribute of the active Account object.
+ * Method writeReservation() writes the valid new booking into the .txt in its specific user-readable format.
+ * <p>
+ * Data Structures: N/A.
+ * Algorithms: N/A.
+ * @version 2.1,Last Modified: November 16, 2023
+ * @author Jevy Miranda
  */
-public class ReservationIO {
+public final class ReservationIO {
 	private static final String FILE_PATH = "src/Database/Reservations.txt";
 	
 	/**
-	 * Instantiate reservations associated with account to ArrayList<Reservation> attribute of Account Object.
+	 * Instantiate reservations associated with account to Reservation ArrayList attribute of Account object.
 	 * @param : active account
 	 */
 	public static void instantiateReservations(Account account) {

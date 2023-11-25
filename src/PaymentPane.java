@@ -21,17 +21,19 @@ import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 
 /**
- * a) Design Documentation: 'PaymentUI'
- * b) Date of Creation: October 12, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass for payment and billing information. 
- *    Displays total sum of fares + fees for all passengers.
- *    JComboBoxes for Card Type, Expiry Date (MM/YY), Country, and State. 
- * 	  JTextFields for Card Number, First/Last Name, Billing Address, and ZIP Code.
- * e) Functions: Determines sum total pricing from PropertyChangeEvents "selectedFlight," "passengerAmount," and "selectedCabin."
- *    isUniqueReservation() validates that the pending reservation is not already booked for the same cabin of the same flight.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "PaymentUI."
+ * Description: JPanel subclass for payment and billing information. 
+ * Displays total sum of fares + fees for all passengers.
+ * JComboBoxes for Card Type, Expiry Date (MM/YY), Country, and State. 
+ * JTextFields for Card Number, First/Last Name, Billing Address, and ZIP Code.
+ * <p>
+ * Functions: Determines sum total pricing from PropertyChangeEvents "selectedFlight," "passengerAmount," and "selectedCabin."
+ * isUniqueReservation() validates that the pending reservation is not already booked for the same cabin of the same flight.
+ * <p>
+ * Data Structures: Arrays as inputs for card type, card date, country, and state.
+ * Algorithms: N/A.
+ * @version 2.2, Last Modified: November 17, 2023
+ * @author Jevy Miranda
  */
 public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private static final int MAXIMUM_PASSENERS_PER_BOOKING = 6;
@@ -55,6 +57,12 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 * @param flight
+	 */
 	public PaymentPane(JPanel contentPane, Account account, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
@@ -302,10 +310,16 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 
 	}
 	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 	
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		

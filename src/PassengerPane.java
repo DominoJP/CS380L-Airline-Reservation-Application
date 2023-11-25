@@ -25,18 +25,20 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 /**
- * a) Design Documentation: 'PassengerInfoUI'
- * b) Date of Creation: October 12, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass for passenger information. 
- * 	  JTextFields for Full Name. 
- * 	  JComboBoxes for Gender, Date of Birth, and Country of Residence.
- * e) Functions: fires PropertyChangeEvent "passengerName" for use by PaymentPane when booking.
- *    PropertyChanges for "passengerAmount" determine the amount of PassengerPanes to be used.
- *    Method checkMinor(), taking DoB as input from JComboBoxes, determines whether the current Passenger
- *    is a minor (under 16 for airline accommodation purposes).
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "PassengerInfoUI."
+ * Description: JPanel subclass for passenger information. 
+ * JTextFields for Full Name. 
+ * JComboBoxes for Gender, Date of Birth, and Country of Residence.
+ * <p>
+ * Functions: fires PropertyChangeEvent "passengerName" for use by PaymentPane when booking.
+ * PropertyChanges for "passengerAmount" determine the amount of PassengerPanes to be used.
+ * Method checkMinor(), taking DoB as input from JComboBoxes, determines whether the current Passenger
+ * is a minor (under 16 for airline accommodation purposes).
+ * <p>
+ * Data Structures: Arrays as input for gender, date of birth, and region of residence JComboBoxes.
+ * Algorithms: N/A.
+ * @version 3.2, Created: November 18, 2023
+ * @author Jevy Miranda
  */
 public class PassengerPane extends JPanel implements PropertyChangeListener {
 	
@@ -88,7 +90,14 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 	private boolean[] areMinors = {false, false, false, false, false, false};
 	
 	
-
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param passengerIndex
+	 * @param previousPane
+	 * @param nextPassengerDetailsPane
+	 * @param flight
+	 */
 	public PassengerPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
@@ -341,10 +350,16 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 		// FIXME
 	}
 	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 	
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {

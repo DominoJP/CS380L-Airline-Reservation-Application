@@ -1,11 +1,3 @@
-/**
- * Owner: Sayra Reyes
- * Modified by Logan Langewisch
- * Created: October 3, 2023
- * A class that represents a managet with the ability to store employee ID
- * and password as well as access and manage reservation information.
- */
-
 import java.util.ArrayList;
 
 import java.io.*;
@@ -14,8 +6,14 @@ import java.time.LocalDateTime;
 
 import java.io.BufferedReader;
 
+/**
+ * A class that represents a manager with the ability to store employee ID
+ * and password as well as access and manage reservation information.
+ * @author Sayra Reyes and Logan Langewisch
+ * @version 2.0, last updated November 21, 2023
+ */
 
-class Manager {
+public class Manager {
 	 
 	private int employeeID;   /** stores the employee's ID */
 	private String employeepassword; /** Stores the employee password */
@@ -31,9 +29,11 @@ class Manager {
 	private ArrayList<Account> accounts;
 
 /**
- * Constructor that creates a manager instance with the specified employee ID and password
- * @param employeeID : unique ID
- * @param employeepassword : the password associated with the employee ID. 
+ * Constructor that creates a manager instance with the specified employee ID and password.
+ * It also initializes this instance of the Manager class with an ArrayList<Reservation>
+ * @param int employeeID
+ * @param String employeepassword
+ * @param ArrayList<Reservation> reservations 
  */
 
 
@@ -61,7 +61,7 @@ class Manager {
 	 
 	/**
 	* Getter to get employee password 
-	* @return: returns employee password. 
+	* @return String
 	*/
 	public String getemployeepassword() {
 		return employeepassword;
@@ -69,7 +69,7 @@ class Manager {
 	 
 	/**
 	 * Retrieves a list of reservations managed by the manager. 
-	 * @return ; returns the list of reservations. 
+	 * @return ArrayList<Reservation>
 	 */
 	public ArrayList<Reservation> getReservations() {
 		return reservations;
@@ -77,11 +77,16 @@ class Manager {
 	
 	/**
 	 * Setter method to set reservations. 
-	 * @param reservations
+	 * @param ArrayList<Reservation> reservations
 	 */
 	public void setReservations(ArrayList<Reservation> reservations) {
 		this.reservations = reservations;
 	}
+	
+	/**
+	 * The accessReservationInfo() method sets the list of reservations currently viewed by the manager
+	 * to the reservation history of the customer the manager is currently viewing
+	 */
 	
 	public void accessReservationInfo() {
 		this.reservations = customer.getReservationHistory();
@@ -162,6 +167,7 @@ class Manager {
 	
 	/**
 	 * The getTotalRevenue method takes the ArrayList<Reservation> reservations and calculates the total revenue made from all reservations that are stored
+	 * @return BigDecimal
 	 */
 	
 	public BigDecimal getTotalRevenue() {

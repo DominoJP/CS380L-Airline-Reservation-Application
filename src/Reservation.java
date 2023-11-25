@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 
 /**
- * Owner: Logan Langewisch
- * Created: October 3, 2023
  * The Reservation class handles the creation of a reservation for a customer and also holds information
  * on the reservation in case if a manager chooses to view it
+ * @author Logan Langewisch
+ * @version 3.0, last updated November 21, 2023
  */
 
 public class Reservation {
@@ -25,15 +25,20 @@ public class Reservation {
 	
 	/**
 	 * a constructor that accepts nothing
+	 * @param bookingDate 
+	 * @param cabinClass 
+	 * @param flight2 
+	 * @param accountId 
+	 * @param i 
 	 */
-	public Reservation() {
+	public Reservation(int i, String accountId, Flight flight2, String cabinClass, LocalDateTime bookingDate) {
 		this.customer = null;
 		this.flight = null;
 	}
 	
 	/**
-	 * a constructor that adds the customer account making the reservation and the flight the reservation applies to
-	 * @param n is the Account making the reservation
+	 * a constructor that takes an instance of the Account class, n, to assign who is making the reservation
+	 * @param Account n
 	 */
 	 public Reservation(Account n) {
 		 this.customer = n;
@@ -41,14 +46,14 @@ public class Reservation {
 	 }
 	 
 	 /**
-	   Constructor that adds the customer account making the reservation and the flight the reservation applies to
-	   @param i is the id
-	   @param n is the Account making the reservation
-	   @param f is the flight that the reservation is for
-	   @param p is the List of passenger names
-	   @param t is total price
-	   @param b is the date&time at booking
-	   and also calls the method setReservation()
+	  * A constructor that takes individually inputed customer information to set the reservation to
+	  * @param int reservationID
+	  * @param Account account
+	  * @param Flight matchingFlight
+	  * @param String cabin
+	  * @param ArrayList<String> passengers
+	  * @param BigDecimal totalPricing
+	  * @param LocalDateTime bookingDateTime
 	 */
 	 
 	 public Reservation(int reservationID, Account account, Flight matchingFlight, String cabin, ArrayList<String> passengers, BigDecimal totalPricing, 
@@ -153,8 +158,6 @@ public class Reservation {
 	 /**
 	  * method that gives the total price of the reservation using the price per ticket of the flight
 	  * and the number of passengers that was given
-	  * @param p is the number of passengers for the reservation
-	  * @return returns the total price that was calculated by the method
 	  */
 	 
 	 public void setTotalPrice() {
@@ -179,30 +182,54 @@ public class Reservation {
 	 }
 	 
 	 /**
-	  * This method allows the user to change the flight that is being reserved
-	  * and allows recalculates the total price for the new flight
-	  * @param f is the new flight that is going to be added to the reservation
+	  * This method allows the user to manually set what Flight, f, is being reserved
+	  * @param Flight f
 	  */
 	 
 	 public void setFlight(Flight f) {
 		 this.flight = f;
 	 }
 	 
+	 /**
+	  * This method returns the flight being reserved
+	  * @return Flight
+	  */
+	 
 	 public Flight getFlight() {
 		 return this.flight;
 	 }
+	 
+	 /**
+	  * This method returns what type of ticket is being purchased
+	  * @return String
+	  */
 	 
 	 public String getCabin() {
 		 return this.cabin;
 	 }
 	 
+	 /**
+	  * This method sets what type of ticket is being purchased
+	  * @param String cabin
+	  */
+	 
 	 public void setCabin(String cabin) {
 		 this.cabin = cabin;
 	 }
 	 
+	 /**
+	  * This method adds a person to the list of passengers for this reservation by adding their name, String p
+	  * @param String p
+	  */
+	 
 	 public void addPassenger(String p) {
 		 passengers.add(p);
 	 }
+	 
+	 /**
+	  * This method returns the list of people that have been saved onto the reservation
+	  * @return ArrayList<String>
+	  */
 	 
 	 public ArrayList<String> getPassengers(){
 		 return this.passengers;
@@ -210,6 +237,7 @@ public class Reservation {
 	 
 	 /**
 	  * Method returning LocalDateTime at booking.
+	  * @return LocalDateTime
 	  */
 	 public LocalDateTime getDateTimeAtBooking() {
 		 return this.dateTimeAtBooking;
@@ -217,8 +245,8 @@ public class Reservation {
 	 
 	 
 	 /**
-	  * this method allows the user to remove a passenger from the reservation
-	  * @param p is the name of the passenger that is being removed
+	  * this method allows the user to remove a passenger from the reservation by inputting their name, String p
+	  * @param String p
 	  */
 	 
 	 public void removePassenger(String p) {
@@ -239,6 +267,7 @@ public class Reservation {
 	 /**
 	  * this method gives and ArrayList<String> that is composed of all information that had been stored by this instance of
 	  * the Reservation class
+	  * @return ArrayList<String>
 	  */
 	 
 	 public ArrayList<String> getReservation() {
@@ -264,6 +293,12 @@ public class Reservation {
 		 return reservation;
 	 }
 	 
+	 /**
+	  * The toString() method takes all information that has been stored on this instance of the Reservation class
+	  * and converts it all into one String
+	  * @return String
+	  */
+	 
 	@Override
     public String toString() {
 		String departPeriod = "";
@@ -288,11 +323,11 @@ public class Reservation {
 				timeArrivalHour = 12;
 		}
 		
-        return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + ", " + 
-        	   this.flight.getZonedDateTimeDeparture().getMonth() + " " +  this.flight.getZonedDateTimeDeparture().getDayOfMonth() + " " +
-        	   timeDepartureHour + ":" + String.format("%02d", this.flight.getZonedDateTimeDeparture().getMinute()) + " " + departPeriod + " - " +
-        	   this.flight.getZonedDateTimeArrival().getMonth() + " " +  this.flight.getZonedDateTimeArrival().getDayOfMonth() + " " + 
-               timeArrivalHour + ":" + String.format("%02d", this.flight.getZonedDateTimeArrival().getMinute()) + " " + arrivePeriod;
+		return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + ", " + 
+ 	   		   this.flight.getZonedDateTimeDeparture().getMonth() + " " +  this.flight.getZonedDateTimeDeparture().getDayOfMonth() + " " +
+ 	   		   timeDepartureHour + ":" + String.format("%02d", this.flight.getZonedDateTimeDeparture().getMinute()) + " " + departPeriod + " - " +
+ 	   		   this.flight.getZonedDateTimeArrival().getMonth() + " " +  this.flight.getZonedDateTimeArrival().getDayOfMonth() + " " + 
+ 	   		   timeArrivalHour + ":" + String.format("%02d", this.flight.getZonedDateTimeArrival().getMinute()) + " " + arrivePeriod;
     }
 	 
 	

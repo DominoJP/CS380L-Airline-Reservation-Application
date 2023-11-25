@@ -4,17 +4,27 @@ import java.net.PasswordAuthentication;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.Session;
-import javax.mail.Message;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+//import javax.mail.Session;
+//import javax.mail.Message;
+//import javax.mail.Transport;
+//import javax.mail.internet.InternetAddress;
+//import javax.mail.internet.MimeMessage;
 
-
- /** Java program to send email with message. 
-   * TO DO: Need to download Java Mail : after add that library to the project . 
-   * @author Sayra Reyes
-   * @version 1.0
+ /** 
+  * Design Documentation: "Java Mail"
+  * Description: This class facilitates the use of sending emails using JavaMail API. 
+       It allows configuration of sender and recipient email addresses, 
+       sets up the properties for the email server, constructs an email message 
+       and it sends it to the recipient’s email address. 
+  * Functions: sendMail() : sets up the necessary properties for the email server, 
+  * 	creates a session usig the sender's credentials with a message and send's
+  * 	to the recipient email address. 
+  * Data Structures: N/A
+  * Algorithm: N/A
+  * @author Sayra Reyes
+  * @version 2.2  Last Modified: November 21, 2023.
+  *  
+  * 
  **/
 
 public class JavaMail {
@@ -63,3 +73,4 @@ public class JavaMail {
 	}
 	
 }
+
