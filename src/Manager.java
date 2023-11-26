@@ -4,8 +4,6 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import java.io.BufferedReader;
-
 /**
  * A class that represents a manager with the ability to store employee ID
  * and password as well as access and manage reservation information.
@@ -185,5 +183,30 @@ public class Manager {
 		return revenue;
 	}
 	*/
+	
+	/**
+     * Compares user inputs for email and password against email-password pairs stored in .txt.
+     * @param email
+     * @param password
+     * @return whether sign in successful
+     */
+    public boolean signIn(String email, char[] password) {
+   	 final String FILE_PATH = "src/Database/Managers.txt";
+   	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+			 String line;
+			 while ((line = reader.readLine()) != null) {
+				 String[] parts = line.split(", ");
+				 // compare email-password pairs
+				 if (parts[0].equals(email) && parts[1].equals(String.valueOf(password))) {
+					 reader.close();
+					 return true;
+				 }
+           }
+           reader.close();
+	    } catch (IOException e) {
+	    	e.printStackTrace();
+       }
+		return false;
+    }
  
 }
