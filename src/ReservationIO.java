@@ -20,7 +20,7 @@ import java.util.Iterator;
  * g) Algorithms: N/A
  */
 public class ReservationIO {
-	private static final String FILE_PATH = "src/Database/Reservations.txt";
+	private static final String FILE_PATH = "Database/Reservations.txt";
 	
 	/**
 	 * Instantiate reservations associated with account to ArrayList<Reservation> attribute of Account Object.
