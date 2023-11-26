@@ -15,6 +15,10 @@ public class Manager {
 	 
 	private int employeeID;   /** stores the employee's ID */
 	private String employeepassword; /** Stores the employee password */
+	private String employeeEmail;
+	private String employeeUsername;
+	private String employeePhoneNumber;
+	
 	private ArrayList<Reservation> reservations; /** Stores a list of reservations */
 
 	private FlightSorting sorted;
@@ -35,6 +39,16 @@ public class Manager {
  */
 
 
+	public Manager(int employeeID, String employeepassword) {
+		this.employeeID = employeeID;
+		this.employeepassword = employeepassword;
+		this.sorted = null;
+		this.reservations = null;
+		this.customer = null;
+		this.flight = null;
+		this.flightList = null;
+	}
+	
 	public Manager(int employeeID, String employeepassword, ArrayList<Reservation> reservations) {
 
 	 this.employeeID = employeeID;
@@ -45,7 +59,7 @@ public class Manager {
 	 this.flight = null;
 	 this.flightList = null;
 	 
-	 this.reservations = new ArrayList<Reservation>();
+	 this.reservations = reservations;
 	 this.accounts = new ArrayList<Account>();
    }
 	 
