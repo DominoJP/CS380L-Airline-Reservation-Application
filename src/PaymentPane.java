@@ -289,7 +289,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 			public void actionPerformed(ActionEvent e) {
 				if (isUniqueReservation(account, selectedFlight.getID())) {
 					IDGenerator IDGen = new IDGenerator();
-					reservation = new Reservation(IDGen.generateReservationID(), account, flight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
@@ -326,7 +326,6 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		// fires from FilterListPane
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
-			System.out.println("selectedFlight PropertyChangeEvent");
 		}
 		
 		// fires from FilterPane
@@ -338,7 +337,6 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		// fires from CabinClassPane
 		if ((evt.getPropertyName()).equals("selectedCabin")) {
 			this.selectedCabin = ((String) evt.getNewValue());
-			System.out.println("selectedCabin PropertyChangeEvent");
 		}
 		
 		// fires from PassengerDetails
