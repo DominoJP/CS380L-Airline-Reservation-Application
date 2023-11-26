@@ -19,6 +19,8 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
+import java.awt.Font;
+import java.awt.Color;
 
 /**
  * Design Documentation: "PaymentUI."
@@ -45,6 +47,8 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	// private BigDecimal[] fares = {new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 
 	//							  new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00")};
 	private ArrayList<String> passengerNames;
+	private boolean[] areMinors = {true, true, true, true, true, true};
+	private boolean hasAdult;
 	private JButton btnPay;
 	private JTextField textFirstName;
 	private JTextField textCardNumber;
@@ -52,7 +56,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	
+	private JLabel lblError;
 	private PropertyChangeSupport support;
 
 	private static final long serialVersionUID = 1L;
@@ -70,6 +74,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		for (int i = 0; i < MAXIMUM_PASSENERS_PER_BOOKING; i++) {
 			passengerNames.add("");
 		}
+		hasAdult = false;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 53, 99, 81, 80};
@@ -286,6 +291,18 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		btnPay = new JButton("PAY $" + 0.00);
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < selectedPassengerAmount; i++) {
+					if (areMinors[i] == false) {
+						hasAdult = true;
+					}
+				}
+				
+				if (hasAdult == false) {
+					lblError.setVisible(true);
+					lblError.setText("Unaccompanied minors.");
+					return;
+				}
+			
 				if (isUniqueReservation(account, selectedFlight.getID())) {
 					IDGenerator IDGen = new IDGenerator();
 					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
@@ -294,12 +311,23 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 					ReservationIO.writeReservation(account, reservation);
 					FlightIO.updatePassengerCount("src/Database/Flights.txt", selectedFlight, selectedPassengerAmount, selectedCabin);
 					support.firePropertyChange("reservationBooked", null, true);
+					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 				} else {
-					
+					lblError.setVisible(true);
+					lblError.setText("Error.");
 				}
-				((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 			}
 		});
+		
+		lblError = new JLabel("Error message.");
+		lblError.setForeground(Color.RED);
+		lblError.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		GridBagConstraints gbc_lblError = new GridBagConstraints();
+		gbc_lblError.gridwidth = 3;
+		gbc_lblError.insets = new Insets(0, 0, 0, 5);
+		gbc_lblError.gridx = 1;
+		gbc_lblError.gridy = 9;
+		add(lblError, gbc_lblError);
 		GridBagConstraints gbc_btnPay = new GridBagConstraints();
 		gbc_btnPay.anchor = GridBagConstraints.EAST;
 		gbc_btnPay.gridwidth = 2;
@@ -307,6 +335,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_btnPay.gridy = 9;
 		add(btnPay, gbc_btnPay);
 
+		lblError.setVisible(false);
 	}
 	
 	/**
@@ -336,6 +365,28 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		// fires from CabinClassPane
 		if ((evt.getPropertyName()).equals("selectedCabin")) {
 			this.selectedCabin = ((String) evt.getNewValue());
+		}
+		
+		// fires from PassengerDetails
+		switch(evt.getPropertyName()) {
+		case "isMinor" + "1":
+			areMinors[0] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "2":
+			areMinors[1] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "3":
+			areMinors[2] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "4":
+			areMinors[3] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "5":
+			areMinors[4] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "6":
+			areMinors[5] = (boolean) evt.getNewValue();
+			break;
 		}
 		
 		// fires from PassengerDetails
