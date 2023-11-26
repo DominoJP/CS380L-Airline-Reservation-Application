@@ -16,16 +16,18 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
 /**
- * a) Design Documentation: 'PaymentUI'
- * b) Date of Creation: October 12, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass in BorderLayout with JScrollPane. 
- *    Pane displays the list of active reservations associated with current account. 
- * e) Functions: PropertyChangeListener for "newReservation" allows reservations booked in the current JVM
- *    instance to appear in the list alongside reservations instantiated from .txt at log in.
- *    Reservation selected on 'Review' JButton press has details shown in another Pane.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "ReservationListUI."
+ * Description: JPanel subclass in BorderLayout with JScrollPane.
+ * Pane displays the list of active reservations associated with current account.
+ * <p>
+ * Functions: PropertyChangeListener for "newReservation" allows reservations booked in the current JVM
+ * instance to appear in the list alongside reservations instantiated from .txt at log in.
+ * Reservation selected on 'Review' JButton press has details shown in another Pane.
+ * <p>
+ * Data Structures: N/A.
+ * Algorithms: N/A.
+ * @version 1.2, Last Modified: November 8, 2023
+ * @author Jevy Miranda
  */
 
 public class ReservationListPane extends JPanel implements PropertyChangeListener {
@@ -65,12 +67,16 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		btnReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME: CANCELLATION PANE
+				((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
 			}
 		});
 		toolBar.add(btnReview);
 
 	}
 
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("newReservation")) {

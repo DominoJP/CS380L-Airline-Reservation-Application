@@ -1,16 +1,18 @@
-/**
- * This class represents a flight sorting system for managing flights and their information. 
- * It allows to add flights, sort them, and display their available seating 
- * information
- * @author 
- * @versio 1.0
- */
 import java.util.List;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.io.*;
+
+/**
+ * This class represents a flight sorting system for managing flights and their information. 
+ * It allows the system to add flights, sort them, and also retrieve flights that were sorted by using
+ * the Airport and AirportFlights classes
+ * @author Sayra Reyes and Logan Langewisch
+ * @version 2.0, last updated November 21, 2023
+ * 
+ */
 
 
 public class FlightSorting{
@@ -24,13 +26,18 @@ public class FlightSorting{
 	*/
 	private AirportFlights destination;
 	
+	/**
+	 * A null constructor for the FlightSorting class
+	 */
+	
 	public FlightSorting() {
 		root1 = null;
 		flights = null;
 	}
 	
 	/**
-	 * A constructor that initializes the list with @param first, an instance of the Flight class
+	 * A constructor that initializes the list with first, an instance of the Flight class
+	 * @param Flight first
 	 */
 	
 	public FlightSorting(Flight first) {
@@ -38,8 +45,9 @@ public class FlightSorting{
 	}
 	
 	/**
-	 * The initialize method takes @param list, and ArrayList<Flight>, that will be used to create a binary tree
+	 * The initialize method takes list, and ArrayList<Flight>, that will be used to create a binary tree
 	 * when there is already a stored list of flights that needs to be added back into the sorting system
+	 * @param ArrayList<Flight> list
 	 */
 	
 	public void initialize(ArrayList<Flight> list) {
@@ -49,8 +57,10 @@ public class FlightSorting{
 	}
 
 	/**
-	 * Adds @param flight, an instance of the Flight class, to the list of sorted fliights
-	 */public void addFlight(Flight flight) {
+	 * Adds flight, an instance of the Flight class, to the list of sorted flights
+	 * @param Flight flight
+	 */
+	public void addFlight(Flight flight) {
 	
 		/*
 		 * This area of code is to allow FlightSorting to also sort flights classified as "Round-trop", or "Two-Way" depending
@@ -96,10 +106,13 @@ public class FlightSorting{
 	*/
 	
 	/**
-	 * The sortFlights method uses @param origin, a String that is meant to be the name of the location
-	 * that the flight originates from, @param arrival, a String that represents the area the flight is heading
-	 * towards, @param date, a String that is meant to be the date when the flight leaves, this date must
+	 * The sortFlights method uses origin, a String that is meant to be the name of the location
+	 * that the flight originates from, arrival, a String that represents the area the flight is heading
+	 * towards, date, a String that is meant to be the date when the flight leaves, this date must
 	 * be written in a fashion that can be accepted by the LocalDate API
+	 * @param String origin
+	 * @param String arrival
+	 * @param String date
 	 */
 	
 	public void sortFlights(String origin, String arrival, String date) {
@@ -133,9 +146,14 @@ public class FlightSorting{
 	}
 	
 	/**
-	 * findFlights utilizes the search method of the AirportFlights class by giving it @param type and @param origin to find
+	 * findFlights utilizes the search method of the AirportFlights class by giving it type and origin, two Strings that represent
+	 * where the flight originates from and where it is heading towards, to find
 	 * an Airport being searched for by the user, then it uses the search method of the found Airport to find an instance of AirportFlights given
-	 * @param destination and @param date
+	 * a specific destination and a specific date
+	 * @param String origin
+	 * @param String destination
+	 * @param String date
+	 * 
 	 */
 	
 	public AirportFlights findAirportFlights(String origin, String destination, String date) {
@@ -160,14 +178,16 @@ public class FlightSorting{
 	*/
 	
 	/**
-	 * The search method goes through the tree that contains all Aiports and uses the @param origin, a string, to find a specific Airprot and the method then returns
+	 * The search method goes through the tree that contains all Airports and uses origin, a string, to find a specific Airport and the method then returns
 	 * that Airport.
+	 * @param String origin
+	 * @return Airport
 	 */
 	
 	public Airport findAirport(String origin) {
 		Airport curr = root1;
 		
-		while(curr.getOrigin().compareTo(origin) != 0) {
+		while(curr != null && curr.getOrigin().compareTo(origin) != 0) {
 			
 			if(origin.compareTo(curr.getOrigin()) < 0)
 				curr = curr.getChild1();
@@ -179,15 +199,17 @@ public class FlightSorting{
 	}
 
 	/**
-	 * Sets the list of flights. 
-	 * @param flights
+	 * Sets the list of flights using flightList, and ArrayList<Flight> that represents a list of flights. 
+	 * @param ArrayList<Flight> flightList
 	 */
 	public void setFlights(ArrayList<Flight> flightList) {
 		this.flights = flightList;
 	}
 
 	/**
-	 * Sets the total number of available flights with @param totalFlights, an integer
+	 * Sets the total number of available flights with totalFlights, an integer that represents the total number of flights
+	 * that were found by the sorting system
+	 * @param int totalFlights
 	 */
 	public void setTotalFlightAvailable(int totalFlights) {
 		this.totalFlightsAvailable = totalFlights;
@@ -253,3 +275,4 @@ public class FlightSorting{
 	}
 	*/
 }
+

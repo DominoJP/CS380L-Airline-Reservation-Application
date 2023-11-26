@@ -1,17 +1,3 @@
-/**
- * Design documentation: "Flight" 
- * @author Sayra (Original),  Logan Lagewisch (Modified).
- * @version 2.2 , Last modified: November 21, 2023.
- * 
- * Description: This class represents a flight in a flight reservation system. It encopasses flight details 
- * 	  such as ID, type, departure/arrival cities, date/times, passenger capacity, pricing and 
- * 	  methods to manage passenger booking. 
- * Functions: Methods like flight details, capacity, pricing, booking status and specify information. 
- * Data Structures: There are several used to manage and store information related to flights and passengers methods like: 
- * 	  Managing Booking, DataTime Handiling and Support for Listeners. 
- * Algorithm: N/A
- */
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
@@ -21,6 +7,19 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+
+/**
+ * Design documentation: "Flight" 
+ * Description: This class represents a flight in a flight reservation system. It encopasses flight details 
+ * 	  such as ID, type, departure/arrival cities, date/times, passenger capacity, pricing and 
+ * 	  methods to manage passenger booking. 
+ * Functions: Methods like flight details, capacity, pricing, booking status and specify information. 
+ * Data Structures: There are several used to manage and store information related to flights and passengers methods like: 
+ * 	  Managing Booking, DataTime Handiling and Support for Listeners. 
+ * Algorithm: N/A
+ * @author Sayra (Original),  Logan Lagewisch (Modified).
+ * @version 2.2 , Last modified: November 21, 2023.
+ */
 
 public class Flight {
 	
@@ -312,7 +311,7 @@ public class Flight {
 	}
 	
 	/**
-	 * Returns time zone of LocalDate departure & arrival, LocalTime departure & arrival
+	 * Returns time zone of LocalDate departure and arrival, LocalTime departure and arrival
 	 * @return time zone of departure
 	 */
 	public ZoneId getZone() {
@@ -540,9 +539,9 @@ public class Flight {
 				timeArrivalHour = 12;
 		}
 		
-        return "DEPARTS: " + timeDepartureHour + ":" + dateTimeDeparture.getMinute() + " " + departPeriod + " " +
-        		" - ARRIVES: " + timeArrivalHour + ":" + dateTimeArrival.getMinute() + " " + arrivePeriod + ", " +
-        	    dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
+		return "DEPARTS: " + timeDepartureHour + ":" + String.format("%02d", dateTimeDeparture.getMinute()) + " " + departPeriod +
+			   " - ARRIVES: " + timeArrivalHour + ":" + String.format("%02d", dateTimeArrival.getMinute()) + " " + arrivePeriod + ", " +
+			   dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();
     }
 	
 }

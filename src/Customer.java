@@ -1,11 +1,13 @@
+
+
+import java.util.Date;
+
 /**
  *The customer class represents a customer on a system. It stores infomation.
  *such as the customer's name, email, date of birth and password number.  
  @author Sayra Reyes
  @version 1.0
  */
-
-import java.util.Date;
 
 public class Customer {
 	

@@ -5,15 +5,17 @@ import javax.swing.border.EmptyBorder;
 import java.awt.CardLayout;
 
 /**
- * a) Design Documentation: 'FlightReservationSystem'
- * b) Date of Creation: October 8, 2023
- * c) @author Jevy Miranda, Joshua Planovsky
- * d) Description: JFrame subclass in which initial JPanel is instantiated.
- * 	  Containing main method, it is also the control class in which most JPanels are instantiated.
- * e) Functions: In instantiating the JPanels, the current JPanel contentPane is passed as a parameter, allowing switching via CardLayout.
- * 	  Dummy objects for the observable Account and Flight class are also passed to observer panes.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "FlightReservationSystem."
+ * Description: JFrame subclass in which initial JPanel is instantiated.
+ * Containing the main method, it is also the control class in which JPanels are instantiated.
+ * <p>
+ * Functions: When instantiating JPanels, the current JPanel contentPane is passed as a parameter, allowing switching via CardLayout.
+ * Dummy objects for the observable Account and Flight class are also passed to observer panes.
+ * <p>
+ * Data Structures: N/A.
+ * Algorithms: N/A.
+ * @version 4.4.2, Last Modified: November 18, 2023
+ * @author Jevy Miranda, Joshua Planovsky
  */
 public class FlightReservationSystem extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
@@ -22,39 +24,8 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 	public static void main(String[] args) {
 
 		//Instantiation of cancel reservation object.
-		 CancelReservation cancelReservation = new CancelReservation("Database/Reservations.txt");
+		CancelReservation cancelReservation = new CancelReservation("src/Database/Reservations.txt");
 
-		// (Test cases transcribed to .txt)
-		/*
-		FlightSorting sort;
-		Flight test = new Flight("One Way","LA", "NYC", "2023-10-24", "05:30", "2023-10-25", "02:30", 50, 700.0);
-		sort = new FlightSorting(test);
-		Flight test2 = new Flight("One Way","LA", "NYC", "2023-10-24", "07:30", "2023-10-24", "09:30", 50, 700.0);
-		sort.addFlight(test2);
-		Flight test3 = new Flight("One Way", "LA", "NYC", "2023-10-24", "03:30", "2023-10-27", "02:45", 50, 700.00);
-		sort.addFlight(test3);
-		*/
-
-
-		/*
-		LocalDate time = LocalDate.of(2023, 10, 20);
-		LocalTime time2 = LocalTime.of(10, 30);
-		time = time.plusDays(2);
-		time = time.plusMonths(4);
-		System.out.println(time.toString() + " " + time2.toString());
-		LocalDate time3 = LocalDate.parse("2023-03-14");
-		time3 = time3.plusDays(5);
-		System.out.println(time3.toString());
-		*/
-		/*
-		sort.sortFlights("LA", "NYC", "2023-10-24");
-		String[] list = sort.getList("LA", "NYC", "2023-10-24");
-		System.out.println(list.length);
-		for(int i = 0; i < list.length; i++) {
-			System.out.println(list[i] + "\n");
-		}
-		*/
-	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -100,7 +71,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PassengerPane PassengerFourPane = new PassengerPane(contentPane, 4, "PASSENGER3", "PASSENGER5", selectedFlight);
 		PassengerPane PassengerFivePane = new PassengerPane(contentPane, 5, "PASSENGER4", "PASSENGER6", selectedFlight);
 		PassengerPane PassengerSixPane = new PassengerPane(contentPane, 6, "PASSENGER5", "NULL", selectedFlight);
-		PaymentPane PaymentPane = new PaymentPane(contentPane, account, selectedFlight);
+		PaymentPane PaymentPane = new PaymentPane(contentPane, account);
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
 		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
 

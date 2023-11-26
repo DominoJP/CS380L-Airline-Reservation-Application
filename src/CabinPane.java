@@ -17,16 +17,18 @@ import java.awt.Color;
 import javax.swing.ButtonGroup;
 
 /**
- * a) 'CabinUI'
- * b) Date of Creation: Nov 11, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass supplying UI for cabin class selection.
- * 	  JLabels for fares and available seating in table alignment.
- * 	  JRadioButtons (grouped) for cabin class selection between 'Economy,' 'Business,' and 'First-Class.'
- * e) Functions: PropertyChangeListener observes selected flight. Updates fares and open seating displayed.
- * 	  User cabin class selection (observable) fires PropertyChangeEvent for pricing in PaymentPane.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "CabinUI."
+ * Description: JPanel subclass supplying UI for cabin class selection.
+ * JLabels for fares and available seating in table alignment.
+ * JRadioButtons (grouped) for cabin class selection between 'Economy,' 'Business,' and 'First-Class.'
+ * <p>
+ * Functions: PropertyChangeListener observes selected flight, then updates fares and open seating displayed.
+ * User cabin class selection (observable) fires PropertyChangeEvent for pricing in PaymentPane.
+ * <p>
+ * Data Structures: N/A.
+ * Algorithms: N/A.
+ * @version 2.2, Last Modified: Nov 18, 2023
+ * @author Jevy Miranda
  */
 public class CabinPane extends JPanel implements PropertyChangeListener {
 	private int selectedPassengerAmount;
@@ -218,10 +220,16 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		lblSeatingWarning.setVisible(false);
 	}
 	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {

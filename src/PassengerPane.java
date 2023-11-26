@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -25,18 +26,20 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
 /**
- * a) Design Documentation: 'PassengerInfoUI'
- * b) Date of Creation: October 12, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass for passenger information. 
- * 	  JTextFields for Full Name. 
- * 	  JComboBoxes for Gender, Date of Birth, and Country of Residence.
- * e) Functions: fires PropertyChangeEvent "passengerName" for use by PaymentPane when booking.
- *    PropertyChanges for "passengerAmount" determine the amount of PassengerPanes to be used.
- *    Method checkMinor(), taking DoB as input from JComboBoxes, determines whether the current Passenger
- *    is a minor (under 16 for airline accommodation purposes).
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "PassengerInfoUI."
+ * Description: JPanel subclass for passenger information. 
+ * JTextFields for Full Name. 
+ * JComboBoxes for Gender, Date of Birth, and Country of Residence.
+ * <p>
+ * Functions: fires PropertyChangeEvent "passengerName" for use by PaymentPane when booking.
+ * PropertyChanges for "passengerAmount" determine the amount of PassengerPanes to be used.
+ * Method checkMinor(), taking DoB as input from JComboBoxes, determines whether the current Passenger
+ * is a minor (under 16 for airline accommodation purposes).
+ * <p>
+ * Data Structures: Arrays as input for gender, date of birth, and region of residence JComboBoxes.
+ * Algorithms: N/A.
+ * @version 3.2, Created: November 18, 2023
+ * @author Jevy Miranda
  */
 public class PassengerPane extends JPanel implements PropertyChangeListener {
 	
@@ -85,10 +88,15 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 	                   "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", 
 	                   "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"};
 	
-	private boolean[] areMinors = {false, false, false, false, false, false};
 	
-	
-
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param passengerIndex
+	 * @param previousPane
+	 * @param nextPassengerDetailsPane
+	 * @param flight
+	 */
 	public PassengerPane(JPanel contentPane, int passengerIndex, String previousPane, String nextPassengerDetailsPane, Flight flight) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
@@ -313,6 +321,7 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 					support.firePropertyChange("passengerName" + passengerIndex, null, textName.getText());
 					if (passengerIndex == selectedPassengerAmount) {
 						support.firePropertyChange("sumRunningTotal", null, null);
+						checkMinor(passengerIndex);
 						((CardLayout) contentPane.getLayout()).show(contentPane, "PAY");
 					}
 					else {
@@ -333,18 +342,29 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 	/**
 	 * Fires PropertyChangeEvent if passenger is a minor (under 16 for airline accommodation purposes).
 	 */
-	private void checkMinor() {
+	private void checkMinor(int passengerIndex) {
 		int year = Integer.parseInt(comboBoxBirthYear.getSelectedItem().toString());
 		int month = Integer.parseInt(comboBoxBirthMonth.getSelectedItem().toString());
 		int day = Integer.parseInt(comboBoxBirthMonth.getSelectedItem().toString());
-		LocalDate ld = LocalDate.of(year, month, day);
-		// FIXME
+		LocalDateTime ldt = LocalDateTime.of(year, month, day, 00, 00);
+		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
+		if (ChronoUnit.YEARS.between(zdt, ZonedDateTime.now()) < 16) {
+			support.firePropertyChange("isMinor" + passengerIndex, null, true);
+		} else {
+			support.firePropertyChange("isMinor" + passengerIndex, null, false);
+		}
 	}
 	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 	
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
@@ -355,28 +375,6 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
 		}
-		
-		switch(evt.getPropertyName()) {
-		case "isMinor" + "1":
-			areMinors[0] = (boolean) evt.getNewValue();
-			break;
-		case "isMinor" + "2":
-			// passengerNames.set(1, ((String) evt.getNewValue()));
-			break;
-		case "isMinor" + "3":
-			// passengerNames.set(2, ((String) evt.getNewValue()));
-			break;
-		case "isMinor" + "4":
-			// passengerNames.set(3, ((String) evt.getNewValue()));
-			break;
-		case "isMinor" + "5":
-			// passengerNames.set(4, ((String) evt.getNewValue()));
-			break;
-		case "isMinor" + "6":
-			// passengerNames.set(5, ((String) evt.getNewValue()));
-			break;
-	}
-		
 	}
 
 }

@@ -19,19 +19,23 @@ import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
+import java.awt.Font;
+import java.awt.Color;
 
 /**
- * a) Design Documentation: 'PaymentUI'
- * b) Date of Creation: October 12, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass for payment and billing information. 
- *    Displays total sum of fares + fees for all passengers.
- *    JComboBoxes for Card Type, Expiry Date (MM/YY), Country, and State. 
- * 	  JTextFields for Card Number, First/Last Name, Billing Address, and ZIP Code.
- * e) Functions: Determines sum total pricing from PropertyChangeEvents "selectedFlight," "passengerAmount," and "selectedCabin."
- *    isUniqueReservation() validates that the pending reservation is not already booked for the same cabin of the same flight.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "PaymentUI."
+ * Description: JPanel subclass for payment and billing information. 
+ * Displays total sum of fares + fees for all passengers.
+ * JComboBoxes for Card Type, Expiry Date (MM/YY), Country, and State. 
+ * JTextFields for Card Number, First/Last Name, Billing Address, and ZIP Code.
+ * <p>
+ * Functions: Determines sum total pricing from PropertyChangeEvents "selectedFlight," "passengerAmount," and "selectedCabin."
+ * isUniqueReservation() validates that the pending reservation is not already booked for the same cabin of the same flight.
+ * <p>
+ * Data Structures: Arrays as inputs for card type, card date, country, and state.
+ * Algorithms: N/A.
+ * @version 2.2, Last Modified: November 17, 2023
+ * @author Jevy Miranda
  */
 public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private static final int MAXIMUM_PASSENERS_PER_BOOKING = 6;
@@ -43,6 +47,8 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	// private BigDecimal[] fares = {new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00"), 
 	//							  new BigDecimal("0.00"), new BigDecimal("0.00"), new BigDecimal("0.00")};
 	private ArrayList<String> passengerNames;
+	private boolean[] areMinors = {true, true, true, true, true, true};
+	private boolean hasAdult;
 	private JButton btnPay;
 	private JTextField textFirstName;
 	private JTextField textCardNumber;
@@ -50,12 +56,17 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	
+	private JLabel lblError;
 	private PropertyChangeSupport support;
 
 	private static final long serialVersionUID = 1L;
 
-	public PaymentPane(JPanel contentPane, Account account, Flight flight) {
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 */
+	public PaymentPane(JPanel contentPane, Account account) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		selectedCabin = "Economy";
@@ -63,6 +74,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		for (int i = 0; i < MAXIMUM_PASSENERS_PER_BOOKING; i++) {
 			passengerNames.add("");
 		}
+		hasAdult = false;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 53, 99, 81, 80};
@@ -279,20 +291,43 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		btnPay = new JButton("PAY $" + 0.00);
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				for (int i = 0; i < selectedPassengerAmount; i++) {
+					if (areMinors[i] == false) {
+						hasAdult = true;
+					}
+				}
+				
+				if (hasAdult == false) {
+					lblError.setVisible(true);
+					lblError.setText("Unaccompanied minors.");
+					return;
+				}
+			
 				if (isUniqueReservation(account, selectedFlight.getID())) {
 					IDGenerator IDGen = new IDGenerator();
-					reservation = new Reservation(IDGen.generateReservationID(), account, flight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
 					FlightIO.updatePassengerCount(selectedFlight, selectedPassengerAmount, selectedCabin);
 					support.firePropertyChange("reservationBooked", null, true);
+					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 				} else {
-					
+					lblError.setVisible(true);
+					lblError.setText("Error.");
 				}
-				((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 			}
 		});
+		
+		lblError = new JLabel("Error message.");
+		lblError.setForeground(Color.RED);
+		lblError.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		GridBagConstraints gbc_lblError = new GridBagConstraints();
+		gbc_lblError.gridwidth = 3;
+		gbc_lblError.insets = new Insets(0, 0, 0, 5);
+		gbc_lblError.gridx = 1;
+		gbc_lblError.gridy = 9;
+		add(lblError, gbc_lblError);
 		GridBagConstraints gbc_btnPay = new GridBagConstraints();
 		gbc_btnPay.anchor = GridBagConstraints.EAST;
 		gbc_btnPay.gridwidth = 2;
@@ -300,19 +335,25 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_btnPay.gridy = 9;
 		add(btnPay, gbc_btnPay);
 
+		lblError.setVisible(false);
 	}
 	
+	/**
+	 * Adds PropertyChangeListener.
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 	
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		
 		// fires from FilterListPane
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
-			System.out.println("selectedFlight PropertyChangeEvent");
 		}
 		
 		// fires from FilterPane
@@ -324,7 +365,28 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		// fires from CabinClassPane
 		if ((evt.getPropertyName()).equals("selectedCabin")) {
 			this.selectedCabin = ((String) evt.getNewValue());
-			System.out.println("selectedCabin PropertyChangeEvent");
+		}
+		
+		// fires from PassengerDetails
+		switch(evt.getPropertyName()) {
+		case "isMinor" + "1":
+			areMinors[0] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "2":
+			areMinors[1] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "3":
+			areMinors[2] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "4":
+			areMinors[3] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "5":
+			areMinors[4] = (boolean) evt.getNewValue();
+			break;
+		case "isMinor" + "6":
+			areMinors[5] = (boolean) evt.getNewValue();
+			break;
 		}
 		
 		// fires from PassengerDetails

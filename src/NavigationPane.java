@@ -16,18 +16,25 @@ import java.awt.Font;
 import javax.swing.JSeparator;
 
 /**
- * a) Design Documentation: 'NavigationUI'
- * b) Date of Creation: October 10, 2023
- * c) @author Jevy Miranda
- * d) Description: JPanel subclass serving as a navigation hub between flight booking, review, and cancellation.
- * e) Functions: Displays JLabel feedback text upon successful sign up and flight booking.
- * f) Data Structures: N/A
- * g) Algorithms: N/A
+ * Design Documentation: "NavigationUI."
+ * Description: JPanel subclass serving as a navigation hub between flight booking, review, and cancellation.
+ * <p>
+ * Functions: Displays JLabel feedback text upon successful sign up and flight booking.
+ * <p>
+ * Data Structures: N/A.
+ * Algorithms: N/A.
+ * @version 1.3.2, Last Modified: November 18, 2023
+ * @author Jevy Miranda
  */
 public class NavigationPane extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel lblConfirmation;
 
+	/**
+	 * Constructor.
+	 * @param contentPane
+	 * @param account
+	 */
 	public NavigationPane(JPanel contentPane, Account account) {
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -97,6 +104,9 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 		lblConfirmation.setVisible(false);
 	}
 	
+	/**
+	 * Listens for PropertyChangeEvent.
+	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		// fires from PaymentPane
 		if (evt.getPropertyName().equals("reservationBooked")) {

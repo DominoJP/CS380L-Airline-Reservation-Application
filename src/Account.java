@@ -8,9 +8,6 @@ import java.util.List;
 
 /**
  * Design documentation: "Account" 
- * @author Sayra Reyes (Original) , Logan Lagewisch (Modified).
- * @version 2.2 , Last Modified: November 21, 2023.
- * 
  * Description: Account class represents a user account within a flight reservation system.
  * 	  It stores account details such as name, email, password, account number, 
  * 	  and reservation history. 
@@ -22,7 +19,8 @@ import java.util.List;
  *    reservations made by the account holder. It also allows for easy management and retrieval
  *    of reservation data associated with the account. 
  * Algorithm: N/A
- 
+ * @author Sayra Reyes (Original) , Logan Lagewisch (Modified).
+ * @version 2.2 , Last Modified: November 21, 2023.
  */
 
 public class Account{
@@ -229,13 +227,13 @@ public class Account{
  }
 
      /**
-      * Compares user inputs for email & password against email-password pairs stored in .txt.
+      * Compares user inputs for email and password against email-password pairs stored in .txt.
       * @param email
       * @param password
       * @return whether sign in successful
       */
      public boolean signIn(String email, char[] password) {
-    	 final String FILE_PATH = "Database/Customers.txt";
+    	 final String FILE_PATH = "src/Database/Customers.txt";
     	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			 String line;
 			 while ((line = reader.readLine()) != null) {

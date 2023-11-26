@@ -8,26 +8,33 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Class to instantiate or update flights line-by-line from .txt file via BufferedReader & BufferedWriter.
+ * Design Documentation: "FlightIO."
+ * Description: Utility class for reading from/writing to Flights.txt. Uses BufferedReader and BufferedWriter.
+ * <p>
+ * Functions: Method instantiateFlights() reads from .txt file at program execution and outputs a FlightSorting object.
+ * Method updatePassengerCount() updates the passenger count in the .txt of the corresponding cabin class on 
+ * successful reservation booking, taking selected flight, selected passenger amount, and selected cabin class as inputs.
+ * <p>
+ * Data Structures: ArrayList stores re-built lines to write back into .txt. 
+ * Array takes elements of a line, separated by delimiter.
+ * Algorithms: N/A.
+ * @version 2.3, Last Modified: Nov 16, 2023
  * @author Jevy Miranda
  */
-
-public class FlightIO {
-	private static final String FILE_PATH = "Database/Flights.txt";
+public final class FlightIO {
+	private static final String FILE_PATH = "src/Database/Flights.txt";
 	private static final int ECONOMY_COUNT_INDEX = 10;
 	private static final int BUSINESS_COUNT_INDEX = 13;
 	private static final int FIRST_CLASS_COUNT_INDEX = 16;
 	private static final int LAST_INDEX = 17;
-
+	
 	/**
-	 * Constructor.
+	 * Private Constructor.
 	 */
-	/*
-	public FlightIO() {
-
+	private FlightIO() {
+		
 	}
-	*/
-
+	
 	/**
 	 * Returns a FlightSorting object to which instantiated flights are added.
 	 * @return FlightSorting object
@@ -38,12 +45,20 @@ public class FlightIO {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		    	Flight instantiatedFlight;
-		    	if (line.length() > 0) {
+		    	if (line.length() > 0) {	
 		    		String[] parts = line.split(", ");
 			        // Instantiate flight with parameters corresponding to String[] indices generated from the current line
-			        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3],
+			        instantiatedFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
 			        									   parts[4], parts[5], parts[6], parts[7], parts[8]);
-
+			        
+       	     		instantiatedFlight.setEconomy(Integer.parseInt(parts[9]), new BigDecimal(parts[11]));
+       	     	   	instantiatedFlight.setBusiness(Integer.parseInt(parts[12]), new BigDecimal(parts[14]));
+       	     	   	instantiatedFlight.setFirstClass(Integer.parseInt(parts[15]), new BigDecimal(parts[17]));
+       	     	   	
+       	     	   	instantiatedFlight.addEconomyPassengerCount(Integer.parseInt(parts[10]));
+       	     	   	instantiatedFlight.addBusinessPassengerCount(Integer.parseInt(parts[13]));
+       	     	   	instantiatedFlight.addFirstClassPassengerCount(Integer.parseInt(parts[16]));
+		    	
 			        //FlightSorting instantiation requires a flight as parameter
 			        if (sort == null) {
 			        	sort = new FlightSorting(instantiatedFlight);
@@ -52,28 +67,28 @@ public class FlightIO {
 			        }
 		    	}
 		    }
-		    reader.close();
+		    reader.close();  
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
 		return sort;
 	}
-
+	
 	/**
-	 * Updates flight passenger count one new reservation booking.
+	 * Updates flight passenger count on new reservation booking.
 	 * @see class ReservationPaymentPane.java
+	 * @param selectedFlight
+	 * @param selectedPassengerAmount
+	 * @param selectedCabin
 	 */
 	public static void updatePassengerCount(Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
 		Iterator<String> iter;
 		int passengerCountIndex = ECONOMY_COUNT_INDEX;
 		int newPassengerCount = 0;
-
-
-
+		
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
-
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
@@ -121,7 +136,7 @@ public class FlightIO {
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
-
+		
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
 			// re-write lines into file
 			iter = lines.iterator();
@@ -129,35 +144,44 @@ public class FlightIO {
 				writer.write(iter.next());
 				writer.newLine();
 			}
-
+			
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+		
 	}
-
+	
 	/**
 	 * Returns Flight object with corresponding @param ID.
+	 * @param flightID
+	 * @return Flight
 	 */
 	public static Flight findFlight(int flightID) {
 		Flight foundFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");
-
+		
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		    	String[] parts = line.split(", ");
 		    	if (line.length() > 0 && Integer.parseInt(parts[0]) == flightID) {
 		        	// Instantiate flight with parameters corresponding to String[] indices generated from the current line
-		        	foundFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3],
+		        	foundFlight = new Flight(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], 
 							   				 parts[4], parts[5], parts[6], parts[7], parts[8]);
+		        	foundFlight.setEconomy(Integer.parseInt(parts[9]), new BigDecimal(parts[11]));
+       	     	   	foundFlight.setBusiness(Integer.parseInt(parts[12]), new BigDecimal(parts[14]));
+       	     	   	foundFlight.setFirstClass(Integer.parseInt(parts[15]), new BigDecimal(parts[17]));
+       	     	   	
+       	     	   	foundFlight.addEconomyPassengerCount(Integer.parseInt(parts[10]));
+       	     	   	foundFlight.addBusinessPassengerCount(Integer.parseInt(parts[13]));
+       	     	   	foundFlight.addFirstClassPassengerCount(Integer.parseInt(parts[16]));
 		        }
 		    }
-		    reader.close();
+		    reader.close();   
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
 		return foundFlight;
 	}
-
+	
 }
