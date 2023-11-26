@@ -66,6 +66,7 @@ public class Reservation {
 		 this.cabin = cabin;
 		 this.passengers = passengers;
 		 this.totalPrice = totalPricing;
+		 this.dateTimeAtBooking = bookingDateTime;
 	 }
 	 
 	 /*

@@ -71,7 +71,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PassengerPane PassengerFourPane = new PassengerPane(contentPane, 4, "PASSENGER3", "PASSENGER5", selectedFlight);
 		PassengerPane PassengerFivePane = new PassengerPane(contentPane, 5, "PASSENGER4", "PASSENGER6", selectedFlight);
 		PassengerPane PassengerSixPane = new PassengerPane(contentPane, 6, "PASSENGER5", "NULL", selectedFlight);
-		PaymentPane PaymentPane = new PaymentPane(contentPane, account, selectedFlight);
+		PaymentPane PaymentPane = new PaymentPane(contentPane, account);
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
 		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
 
