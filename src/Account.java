@@ -8,9 +8,6 @@ import java.util.List;
 
 /**
  * Design documentation: "Account" 
- * @author Sayra Reyes (Original) , Logan Lagewisch (Modified).
- * @version 2.2 , Last Modified: November 21, 2023.
- * 
  * Description: Account class represents a user account within a flight reservation system.
  * 	  It stores account details such as name, email, password, account number, 
  * 	  and reservation history. 
@@ -22,7 +19,8 @@ import java.util.List;
  *    reservations made by the account holder. It also allows for easy management and retrieval
  *    of reservation data associated with the account. 
  * Algorithm: N/A
- 
+ * @author Sayra Reyes (Original) , Logan Lagewisch (Modified).
+ * @version 2.2 , Last Modified: November 21, 2023.
  */
 
 public class Account{

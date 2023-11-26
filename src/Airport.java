@@ -6,7 +6,9 @@ import java.time.LocalDate;
  * depending on there names using a binary tree.
  * A binary tree was chosen because it was easy to create, would allow for more efficient sorting and searching
  * of flights, and it did not seem as if any more complex data structures were required
- * Each Airport also contains an array list of the flights that leave it and is sorted by the flights' destinations
+ * Each Airport also contains an array list of AiprotFlights that represents the list of flights that leave each airport
+ * and is sorted by where the flights are heading towards.
+ * An array list was chosen since there would only be a finite amount locations that flights from one location may head towards.
  * @author Logan Langewisch
  * @version 3.0, last updated November 21, 2023
  */

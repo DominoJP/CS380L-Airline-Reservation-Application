@@ -12,9 +12,6 @@ import java.util.logging.Logger;
 
  /** 
   * Design Documentation: "Java Mail"
-  * @author Sayra Reyes
-  * @version 2.2  Last Modified: November 21, 2023.
-  *  
   * Description: This class facilitates the use of sending emails using JavaMail API. 
        It allows configuration of sender and recipient email addresses, 
        sets up the properties for the email server, constructs an email message 
@@ -24,6 +21,10 @@ import java.util.logging.Logger;
   * 	to the recipient email address. 
   * Data Structures: N/A
   * Algorithm: N/A
+  * @author Sayra Reyes
+  * @version 2.2  Last Modified: November 21, 2023.
+  *  
+  * 
  **/
 
 public class JavaMail {

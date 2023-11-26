@@ -25,8 +25,13 @@ public class Reservation {
 	
 	/**
 	 * a constructor that accepts nothing
+	 * @param bookingDate 
+	 * @param cabinClass 
+	 * @param flight2 
+	 * @param accountId 
+	 * @param i 
 	 */
-	public Reservation() {
+	public Reservation(int i, String accountId, Flight flight2, String cabinClass, LocalDateTime bookingDate) {
 		this.customer = null;
 		this.flight = null;
 	}

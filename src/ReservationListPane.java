@@ -67,6 +67,7 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		btnReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME: CANCELLATION PANE
+				((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
 			}
 		});
 		toolBar.add(btnReview);
