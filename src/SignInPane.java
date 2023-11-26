@@ -87,8 +87,8 @@ public class SignInPane extends JPanel {
 		gbc_rdbtnCustomer.gridy = 1;
 		add(rdbtnCustomer, gbc_rdbtnCustomer);
 		
-		JRadioButton rdbtnEmployee = new JRadioButton("Employee");
-		rdbtnEmployee.addChangeListener(new ChangeListener() {
+		JRadioButton rdbtnManager = new JRadioButton("Manager");
+		rdbtnManager.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
 				// hides "Sign Up" if "Employee" selected
 				btnSignUp.setVisible(false);
@@ -96,13 +96,13 @@ public class SignInPane extends JPanel {
 				passwordField.setText("");
 			}
 		});
-		buttonGroup.add(rdbtnEmployee);
-		rdbtnEmployee.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		GridBagConstraints gbc_rdbtnEmployee = new GridBagConstraints();
-		gbc_rdbtnEmployee.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnEmployee.gridx = 3;
-		gbc_rdbtnEmployee.gridy = 1;
-		add(rdbtnEmployee, gbc_rdbtnEmployee);
+		buttonGroup.add(rdbtnManager);
+		rdbtnManager.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		GridBagConstraints gbc_rdbtnManager = new GridBagConstraints();
+		gbc_rdbtnManager.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnManager.gridx = 3;
+		gbc_rdbtnManager.gridy = 1;
+		add(rdbtnManager, gbc_rdbtnManager);
 		
 		JSeparator separator_1 = new JSeparator();
 		GridBagConstraints gbc_separator_1 = new GridBagConstraints();
@@ -165,7 +165,7 @@ public class SignInPane extends JPanel {
 						lblWrong.setVisible(true);
 						passwordField.setText("");
 					}
-				} else if (rdbtnEmployee.isSelected()) {
+				} else if (rdbtnManager.isSelected()) {
 					if (account.signIn(textField.getText(), passwordField.getPassword())) {
 						lblWrong.setVisible(false);
 						// FIXME: REPORTS PANE
