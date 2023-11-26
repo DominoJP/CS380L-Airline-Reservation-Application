@@ -61,9 +61,8 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	 * Constructor.
 	 * @param contentPane
 	 * @param account
-	 * @param flight
 	 */
-	public PaymentPane(JPanel contentPane, Account account, Flight flight) {
+	public PaymentPane(JPanel contentPane, Account account) {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		selectedCabin = "Economy";
