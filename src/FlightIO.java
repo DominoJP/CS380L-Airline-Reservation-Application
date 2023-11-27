@@ -83,21 +83,19 @@ public final class FlightIO {
 	 */
 	public static boolean updatePassengerCount(String filePath, Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
-		int passengerCountIndex = ECONOMY_COUNT_INDEX;
-		int newPassengerCount = 0;
+		int passengerCountIndex;
+		int newPassengerCount;
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
-		        // if flight on line is selected flight
-		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) {
+		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // if flight on current line is selected flight
 		        	switch (selectedCabin) {
 						case "Economy":
 							passengerCountIndex = ECONOMY_COUNT_INDEX;
-							// calculate new passenger count
-							newPassengerCount = selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount;
+							newPassengerCount = selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount; // calculate new passenger count
 							selectedFlight.addEconomyPassengerCount(selectedPassengerAmount);
 							break;
 						case "Business":
@@ -113,24 +111,10 @@ public final class FlightIO {
 						default:
 							return false;
 		        	}
-		        	// add flight with revised passengerCount
-		        	for (int i = 0; i <= LAST_INDEX; i++) {
-		        		if (i == passengerCountIndex) {
-		        			// revise passengerCount
-		        			str.append(newPassengerCount + ", ");
-		        		} else if (i == LAST_INDEX) {
-		        			// copy without delimiter
-		        			str.append(parts[i]);
-		        		} else {
-		        			// copy
-		        			str.append(parts[i] + ", ");
-		        		}
-		        	}
-		        	// add re-built line
-		        	lines.add(str.toString());
+		        	str = rewriteLine(parts, str, passengerCountIndex, newPassengerCount);
+		        	lines.add(str.toString()); // add re-built line
 		        } else { // if not the Flight to update
-		        	// re-add line unchanged
-		        	lines.add(line);
+		        	lines.add(line); // re-add line unchanged
 		        }
 		    }
 		    reader.close();
@@ -158,6 +142,37 @@ public final class FlightIO {
         } catch (IOException e) {
             e.printStackTrace();
         }
+	}
+	
+	/**
+	 * Writes
+	 * @param parts String array of elements in a line from a delimiter.
+	 * @param str Line to be re-built.
+	 * @param passengerCountIndex Changes depending on cabin class.
+	 * @param newPassengerCount Passenger count of selected flight added to selectedPassengerAmount;
+	 */
+	private static StringBuilder rewriteLine(String[] parts, StringBuilder str, int passengerCountIndex, int newPassengerCount) {
+		for (int i = 0; i <= LAST_INDEX; i++) {
+			if (i == passengerCountIndex) {
+				str.append(newPassengerCount + ", "); // copy revised passengerCount
+			} else if (i == LAST_INDEX) {
+				str.append(parts[i]); // copy without delimiter
+			} else {
+				str.append(parts[i] + ", "); // copy in full
+			}
+		}
+		return str;
+	}
+	
+	/**
+	 * Calculates new passenger count for selected flight's cabin class given the new selectedPassengerAmount.
+	 * @param selectedFlight
+	 * @param selectedPassengerAmount
+	 * @param selectedCabin
+	 * @return newPassengerCount
+	 */
+	private int calculateNewPassengerCount(Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
+		
 	}
 	
 	/**
