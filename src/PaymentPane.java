@@ -482,7 +482,6 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	 * @return whether sucessful
 	 */
 	private boolean updatePassengerCount() {
-		int newPassengerCount = -1;
 		switch (selectedCabin) {
 			case "Economy":
 				return selectedFlight.addEconomyPassengerCount(selectedPassengerAmount);

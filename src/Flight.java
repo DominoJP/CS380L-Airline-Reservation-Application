@@ -434,8 +434,9 @@ public class Flight {
 		if(!this.isFull("Economy") && (this.economyPassengerCount + selectedPassengerCount) <= this.economyCapacity) {
 			economyPassengerCount += selectedPassengerCount;
 			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 	
 	/**
@@ -447,8 +448,9 @@ public class Flight {
 		if(!this.isFull("Business") && (this.businessPassengerCount + selectedPassengerCount) <= this.businessCapacity) {
 			businessPassengerCount += selectedPassengerCount;
 			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 	
 	/**
@@ -460,8 +462,9 @@ public class Flight {
 		if(!this.isFull("First Class") && (this.firstClassPassengerCount + selectedPassengerCount) <= this.firstClassCapacity) {
 			firstClassPassengerCount += selectedPassengerCount;
 			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 	
 	public void removeEconomyPassenger() {

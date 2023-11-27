@@ -75,13 +75,13 @@ public final class FlightIO {
 	}
 	
 	/**
-	 * Updates flight passenger count on new reservation booking.
+	 * Updates cabin passenger count upon reservation booking to reflect already-updated flight object.
 	 * @see class ReservationPaymentPane.java
-	 * @param selectedFlight
-	 * @param selectedPassengerAmount
-	 * @param selectedCabin
+	 * @param filePath to read to and write from
+	 * @param selectedFlight by user
+	 * @param selectedCabin by user
 	 */
-	public static boolean rewritePassengerCount(String filePath, Flight selectedFlight, String selectedCabin) {
+	public static void rewritePassengerCount(String filePath, Flight selectedFlight, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
 		int passengerCountIndex;
 		int updatedPassengerCount;
@@ -97,15 +97,16 @@ public final class FlightIO {
 			case "First Class":
 				passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
 				updatedPassengerCount = selectedFlight.getFirstClassPassengerCount();
+				break;
 			default:
-				return false;
+				return;
 		}
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
-		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // if flight on current line is selected flight
+		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // current flight is selected flight
 		        	str = rewriteLine(parts, str, passengerCountIndex, updatedPassengerCount);
 		        	lines.add(str.toString()); // add re-built line
 		        } else { // if not the Flight to update
@@ -117,7 +118,6 @@ public final class FlightIO {
 		    e.printStackTrace();
 		}
 		rewrite(filePath, lines);
-		return true;
 	}
 	
 	/**

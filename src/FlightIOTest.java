@@ -32,22 +32,35 @@ class FlightIOTest {
 	}
 
 	@Test
-	void testUpdatePassengerCountAction() {
-		Flight selectedFlight = new Flight(4, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC",
-										   0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"));
-		int selectedPassengerAmount = 1;
+	void testRewritePassengerCount() {
+		Flight selectedFlight = new Flight(4, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");
+		selectedFlight.setEconomy(100, new BigDecimal("200.00"));
+		selectedFlight.addEconomyPassengerCount(10);
 		String selectedCabin = "Economy";
-		assertTrue(FlightIO.updatePassengerCount(FILE_PATH, selectedFlight, selectedPassengerAmount, selectedCabin));
+		
+		selectedFlight.addEconomyPassengerCount(2);
+		FlightIO.rewritePassengerCount(FILE_PATH, selectedFlight, selectedCabin);
+		
+		String line;
+		String[] parts;
+		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+			line = reader.readLine();
+			System.out.println(line);
+			parts = line.split(", ");
+			assertEquals(10 + 2, Integer.parseInt(parts[ECONOMY_COUNT_INDEX]));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
-	void testUpdatePassengerCountActionIDNotFound() {
-		Flight selectedFlight = new Flight(3, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC",
-										   0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"), 0, 0, new BigDecimal("0.00"));
-		int selectedPassengerAmount = 1;
+	void testRewritePassengerCountIDNotFound() {
+		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");
+		selectedFlight.setEconomy(100, new BigDecimal("200.00"));
+		selectedFlight.addEconomyPassengerCount(10);
 		String selectedCabin = "Economy";
 		
-		FlightIO.updatePassengerCount(FILE_PATH, selectedFlight, selectedPassengerAmount, selectedCabin);
+		FlightIO.rewritePassengerCount(FILE_PATH, selectedFlight, selectedCabin);
 		// read updated line
 		String line;
 		String[] parts;
