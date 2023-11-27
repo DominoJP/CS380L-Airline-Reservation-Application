@@ -487,21 +487,15 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		switch (selectedCabin) {
 			case "Economy":
 				if (selectedFlight.addEconomyPassengerCount(selectedPassengerAmount))
-					newPassengerCount = selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount; // calculate new passenger count
-				else
-					return -1;
+					return selectedFlight.getEconomyPassengerCount();
 				break;
 			case "Business":
 				if (selectedFlight.addBusinessPassengerCount(selectedPassengerAmount))
-					newPassengerCount = selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount;
-				else
-					return -1;
+					return selectedFlight.getBusinessPassengerCount();
 				break;
 			case "First Class":
 				if (selectedFlight.addFirstClassPassengerCount(selectedPassengerAmount))
-					newPassengerCount = selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount;
-				else
-					return -1;
+					return selectedFlight.getFirstClassPassengerCount();
 				break;
 			default:
 				return -1;
