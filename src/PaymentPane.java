@@ -464,7 +464,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
 		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
 		System.out.println(ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()));
-		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) < 3) {
+		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) < 3 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) >= 0) {
 			return true;
 		}
 			return false;

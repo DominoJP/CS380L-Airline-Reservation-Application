@@ -318,7 +318,8 @@ public class FilterPane extends JPanel {
 						((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 					} else {
 						lblNoFlights.setVisible(true);
-						lblNoFlights.setText("Invalid date.");
+						lblNoFlights.setText("Date passed.");
+						
 					}
 				} catch (NullPointerException ex) {
 					// show Component 'no flights found'
