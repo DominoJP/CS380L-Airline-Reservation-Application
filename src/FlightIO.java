@@ -81,18 +81,22 @@ public final class FlightIO {
 	 * @param selectedPassengerAmount
 	 * @param selectedCabin
 	 */
-	public static boolean rewritePassengerCount(String filePath, Flight selectedFlight, int updatedPassengerCount, String selectedCabin) {
+	public static boolean rewritePassengerCount(String filePath, Flight selectedFlight, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
 		int passengerCountIndex;
+		int updatedPassengerCount;
 		switch (selectedCabin) {
 			case "Economy":
 				passengerCountIndex = ECONOMY_COUNT_INDEX;
+				updatedPassengerCount = selectedFlight.getEconomyPassengerCount();
 				break;
 			case "Business":
 				passengerCountIndex = BUSINESS_COUNT_INDEX;
+				updatedPassengerCount = selectedFlight.getBusinessPassengerCount();
 				break;
 			case "First Class":
 				passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
+				updatedPassengerCount = selectedFlight.getFirstClassPassengerCount();
 			default:
 				return false;
 		}
@@ -136,16 +140,17 @@ public final class FlightIO {
 	}
 	
 	/**
-	 * Writes
+	 * Rewrites current line with updated passenger count.
 	 * @param parts String array of elements in a line from a delimiter.
 	 * @param str Line to be re-built.
 	 * @param passengerCountIndex Changes depending on cabin class.
-	 * @param newPassengerCount Passenger count of selected flight added to selectedPassengerAmount;
+	 * @param updatedPassengerCount from getter method for corresponding cabin class;
+	 * @return StringBuilder with elements ofs current line.
 	 */
-	private static StringBuilder rewriteLine(String[] parts, StringBuilder str, int passengerCountIndex, int newPassengerCount) {
+	private static StringBuilder rewriteLine(String[] parts, StringBuilder str, int passengerCountIndex, int updatedPassengerCount) {
 		for (int i = 0; i <= LAST_INDEX; i++) {
 			if (i == passengerCountIndex) {
-				str.append(newPassengerCount + ", "); // copy revised passengerCount
+				str.append(updatedPassengerCount + ", "); // copy revised passengerCount
 			} else if (i == LAST_INDEX) {
 				str.append(parts[i]); // copy without delimiter
 			} else {

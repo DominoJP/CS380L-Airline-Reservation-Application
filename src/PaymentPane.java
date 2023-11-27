@@ -311,14 +311,13 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 				}
 			
 				if (isUniqueReservation(account, selectedFlight.getID())) {
-					int updatedPassengerCount = updatePassengerCount();
-					if (updatePassengerCount() != -1) {
+					if (updatePassengerCount() == true) {
 						IDGenerator IDGen = new IDGenerator();
 						reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 						// Update reservation history in active account.
 						account.addReservationHistory(reservation);
 						ReservationIO.writeReservation(account, reservation);
-						FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, updatedPassengerCount, selectedCabin);
+						FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, selectedCabin);
 						support.firePropertyChange("reservationBooked", null, true);
 						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 					} else {
@@ -480,27 +479,20 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	 * Calls corresponding method to update passenger count of selected cabin.
 	 * @param selectedFlight
 	 * @param selectedCabin
-	 * @return passenger count as updated
+	 * @return whether sucessful
 	 */
-	private int updatePassengerCount() {
+	private boolean updatePassengerCount() {
 		int newPassengerCount = -1;
 		switch (selectedCabin) {
 			case "Economy":
-				if (selectedFlight.addEconomyPassengerCount(selectedPassengerAmount))
-					return selectedFlight.getEconomyPassengerCount();
-				break;
+				return selectedFlight.addEconomyPassengerCount(selectedPassengerAmount);
 			case "Business":
-				if (selectedFlight.addBusinessPassengerCount(selectedPassengerAmount))
-					return selectedFlight.getBusinessPassengerCount();
-				break;
+				return selectedFlight.addBusinessPassengerCount(selectedPassengerAmount);
 			case "First Class":
-				if (selectedFlight.addFirstClassPassengerCount(selectedPassengerAmount))
-					return selectedFlight.getFirstClassPassengerCount();
-				break;
+				return selectedFlight.addFirstClassPassengerCount(selectedPassengerAmount);
 			default:
-				return -1;
+				return false;
 		}
-		return newPassengerCount;
 	}
 
 }
