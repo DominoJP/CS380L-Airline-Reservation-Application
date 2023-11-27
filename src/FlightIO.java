@@ -81,37 +81,28 @@ public final class FlightIO {
 	 * @param selectedPassengerAmount
 	 * @param selectedCabin
 	 */
-	public static boolean updatePassengerCount(String filePath, Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
+	public static boolean rewritePassengerCount(String filePath, Flight selectedFlight, int updatedPassengerCount, String selectedCabin) {
 		ArrayList<String> lines = new ArrayList<>();
 		int passengerCountIndex;
-		int newPassengerCount;
-		
+		switch (selectedCabin) {
+			case "Economy":
+				passengerCountIndex = ECONOMY_COUNT_INDEX;
+				break;
+			case "Business":
+				passengerCountIndex = BUSINESS_COUNT_INDEX;
+				break;
+			case "First Class":
+				passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
+			default:
+				return false;
+		}
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
 		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // if flight on current line is selected flight
-		        	switch (selectedCabin) {
-						case "Economy":
-							passengerCountIndex = ECONOMY_COUNT_INDEX;
-							newPassengerCount = selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount; // calculate new passenger count
-							selectedFlight.addEconomyPassengerCount(selectedPassengerAmount);
-							break;
-						case "Business":
-							passengerCountIndex = BUSINESS_COUNT_INDEX;
-							newPassengerCount = selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount;
-							selectedFlight.addBusinessPassengerCount(selectedPassengerAmount);
-							break;
-						case "First Class":
-							passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
-							newPassengerCount = selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount;
-							selectedFlight.addFirstClassPassengerCount(selectedPassengerAmount);
-							break;
-						default:
-							return false;
-		        	}
-		        	str = rewriteLine(parts, str, passengerCountIndex, newPassengerCount);
+		        	str = rewriteLine(parts, str, passengerCountIndex, updatedPassengerCount);
 		        	lines.add(str.toString()); // add re-built line
 		        } else { // if not the Flight to update
 		        	lines.add(line); // re-add line unchanged
@@ -171,9 +162,11 @@ public final class FlightIO {
 	 * @param selectedCabin
 	 * @return newPassengerCount
 	 */
+	/*
 	private int calculateNewPassengerCount(Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
 		
 	}
+	*/
 	
 	/**
 	 * Returns Flight object with corresponding @param ID.

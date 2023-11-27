@@ -311,14 +311,20 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 				}
 			
 				if (isUniqueReservation(account, selectedFlight.getID())) {
-					IDGenerator IDGen = new IDGenerator();
-					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
-					// Update reservation history in active account.
-					account.addReservationHistory(reservation);
-					ReservationIO.writeReservation(account, reservation);
-					FlightIO.updatePassengerCount("src/Database/Flights.txt", selectedFlight, selectedPassengerAmount, selectedCabin);
-					support.firePropertyChange("reservationBooked", null, true);
-					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
+					int updatedPassengerCount = updatePassengerCount();
+					if (updatePassengerCount() != -1) {
+						IDGenerator IDGen = new IDGenerator();
+						reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+						// Update reservation history in active account.
+						account.addReservationHistory(reservation);
+						ReservationIO.writeReservation(account, reservation);
+						FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, updatedPassengerCount, selectedCabin);
+						support.firePropertyChange("reservationBooked", null, true);
+						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
+					} else {
+						lblError.setVisible(true);
+						lblError.setText("Insufficient seating.");
+					}
 				} else {
 					lblError.setVisible(true);
 					lblError.setText("Account already booked class for flight.");
@@ -468,6 +474,39 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 			return true;
 		}
 			return false;
+	}
+	
+	/**
+	 * Calls corresponding method to update passenger count of selected cabin.
+	 * @param selectedFlight
+	 * @param selectedCabin
+	 * @return passenger count as updated
+	 */
+	private int updatePassengerCount() {
+		int newPassengerCount = -1;
+		switch (selectedCabin) {
+			case "Economy":
+				if (selectedFlight.addEconomyPassengerCount(selectedPassengerAmount))
+					newPassengerCount = selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount; // calculate new passenger count
+				else
+					return -1;
+				break;
+			case "Business":
+				if (selectedFlight.addBusinessPassengerCount(selectedPassengerAmount))
+					newPassengerCount = selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount;
+				else
+					return -1;
+				break;
+			case "First Class":
+				if (selectedFlight.addFirstClassPassengerCount(selectedPassengerAmount))
+					newPassengerCount = selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount;
+				else
+					return -1;
+				break;
+			default:
+				return -1;
+		}
+		return newPassengerCount;
 	}
 
 }
