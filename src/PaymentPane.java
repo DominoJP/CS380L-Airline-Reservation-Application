@@ -458,13 +458,13 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	
 	/**
 	 * Checks whether flight, if on same day, will be booked within three hours of departure.
-	 * @return
+	 * @return true if flight would be within three hours of booking
 	 */
 	private boolean threeHoursBefore() {
 		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
 		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
 		System.out.println(ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()));
-		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) < 3 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) >= 0) {
+		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) >= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) < 3) {
 			return true;
 		}
 			return false;
