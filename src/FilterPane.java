@@ -10,6 +10,7 @@ import java.beans.PropertyChangeSupport;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -36,7 +37,7 @@ import javax.swing.JSeparator;
  * Data Structures: Arrays as input for airport and date JComboBoxes. 
  * ArrayList of flights filtered by user-provided criteria.
  * Algorithms: N/A.
- * @version 4.3, Last Modified: November 18, 2023
+ * @version 4.3.1, Last Modified: November 27, 2023
  * @author Jevy Miranda
  */
 public class FilterPane extends JPanel {
@@ -300,20 +301,25 @@ public class FilterPane extends JPanel {
 				
 				// sort.sortFlights("LA", "NYC", "2023-10-24");
 				try {
-					// hide Component for 'no flights found'
-					lblNoFlights.setVisible(false);
-					
-					// sort flights per user input
-					sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
-					// flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
-					ArrayList<Flight> flightArray = sort.getFlights();
-					
-					// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
-					FlightListPane FilterListPane = new FlightListPane(contentPane, account, flightArray, flight);
-					contentPane.add(FilterListPane, "FILTER_LIST");
-					
-					// proceed to filtered list of flights, sorted by date of departure by default
-					((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
+					if (afterDateTime()) {
+						// hide Component for 'no flights found'
+						lblNoFlights.setVisible(false);
+						
+						// sort flights per user input
+						sort.sortFlights(airportDepartInput, airportArriveInput, dateDepartingInput);
+						// flightListSorted = sort.getList(airportDepartInput, airportArriveInput, dateDepartingInput);
+						ArrayList<Flight> flightArray = sort.getFlights();
+						
+						// instantiate a FlightFilterScrollPane with generated flightListSorted as a parameter
+						FlightListPane FilterListPane = new FlightListPane(contentPane, account, flightArray, flight);
+						contentPane.add(FilterListPane, "FILTER_LIST");
+						
+						// proceed to filtered list of flights, sorted by date of departure by default
+						((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
+					} else {
+						lblNoFlights.setVisible(true);
+						lblNoFlights.setText("Invalid date.");
+					}
 				} catch (NullPointerException ex) {
 					// show Component 'no flights found'
 					lblNoFlights.setVisible(true);
@@ -347,6 +353,23 @@ public class FilterPane extends JPanel {
 		comboBoxMonthD.setSelectedItem(String.format("%02d", ZonedDateTime.now().getMonthValue()));
 		comboBoxDayD.setSelectedItem(String.format("%02d", ZonedDateTime.now().getDayOfMonth()));
 		comboBoxYearD.setSelectedItem(String.valueOf(ZonedDateTime.now().getYear()));
+	}
+	
+	/**
+	 * Checks whether selected date and time of departure is after the current date.
+	 * @return true if selected date and time is after the current date
+	 */
+	private boolean afterDateTime() {
+		int year = Integer.parseInt(comboBoxYearD.getSelectedItem().toString());
+		int month = Integer.parseInt(comboBoxMonthD.getSelectedItem().toString());
+		int day = Integer.parseInt(comboBoxDayD.getSelectedItem().toString());
+		LocalDateTime ldt = LocalDateTime.of(year, month, day, 00, 00);
+		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
+		if (ChronoUnit.DAYS.between(zdt, ZonedDateTime.now()) > 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 }

@@ -10,6 +10,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -299,7 +300,13 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 				
 				if (hasAdult == false) {
 					lblError.setVisible(true);
-					lblError.setText("Unaccompanied minors.");
+					lblError.setText("Unaccompanied minor(s).");
+					return;
+				}
+				
+				if (threeHoursBefore()) {
+					lblError.setVisible(true);
+					lblError.setText("Cannot book, flight leaves within 3 hr.");
 					return;
 				}
 			
@@ -314,7 +321,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 				} else {
 					lblError.setVisible(true);
-					lblError.setText("Error.");
+					lblError.setText("Account already booked class for flight.");
 				}
 			}
 		});
@@ -447,6 +454,20 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 			}
 		}
 		return true;
+	}
+	
+	/**
+	 * Checks whether flight, if on same day, will be booked within three hours of departure.
+	 * @return
+	 */
+	private boolean threeHoursBefore() {
+		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
+		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
+		System.out.println(ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()));
+		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) < 3) {
+			return true;
+		}
+			return false;
 	}
 
 }
