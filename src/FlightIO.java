@@ -85,21 +85,17 @@ public final class FlightIO {
 		ArrayList<String> lines = new ArrayList<>();
 		int passengerCountIndex;
 		int updatedPassengerCount;
-		switch (selectedCabin) {
-			case "Economy":
+		if (selectedCabin.equals("Economy")) {
 				passengerCountIndex = ECONOMY_COUNT_INDEX;
 				updatedPassengerCount = selectedFlight.getEconomyPassengerCount();
-				break;
-			case "Business":
+		} else if (selectedCabin.equals("Business")) {
 				passengerCountIndex = BUSINESS_COUNT_INDEX;
 				updatedPassengerCount = selectedFlight.getBusinessPassengerCount();
-				break;
-			case "First Class":
+		} else if (selectedCabin.equals("First Class")) {
 				passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
 				updatedPassengerCount = selectedFlight.getFirstClassPassengerCount();
-				break;
-			default:
-				return;
+		} else {
+			return;
 		}
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 		    String line;
