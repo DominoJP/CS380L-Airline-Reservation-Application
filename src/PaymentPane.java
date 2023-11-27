@@ -60,7 +60,34 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private PropertyChangeSupport support;
 
 	private static final long serialVersionUID = 1L;
+	
+	private String[] states = {"Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", 
+            "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", 
+            "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", 
+            "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", 
+            "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", 
+            "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", 
+            "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"};
 
+	private String[] countryArray = {
+			"United States",
+			"Canada",
+			"Mexico",
+		};
+	
+	private String [] years = { "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34"};
+	
+	private String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
+	
+	
+	private String[] cardType = {
+		"Visa",
+		"Mastercard",
+		"American Express",
+		"Discover",
+	};
+	
+	
 	/**
 	 * Constructor.
 	 * @param contentPane
@@ -91,6 +118,8 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblCardType.gridy = 0;
 		add(lblCardType, gbc_lblCardType);
 		
+		
+		
 		JLabel lblCardNumber = new JLabel(" Card Number");
 		GridBagConstraints gbc_lblCardNumber = new GridBagConstraints();
 		gbc_lblCardNumber.gridwidth = 3;
@@ -109,7 +138,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblExpirationDate.gridy = 0;
 		add(lblExpirationDate, gbc_lblExpirationDate);
 		
-		JComboBox comboBoxCardType = new JComboBox();
+		JComboBox comboBoxCardType = new JComboBox(cardType);
 		GridBagConstraints gbc_comboBoxCardType = new GridBagConstraints();
 		gbc_comboBoxCardType.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxCardType.fill = GridBagConstraints.HORIZONTAL;
@@ -127,7 +156,8 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_textCardNumber.gridy = 1;
 		add(textCardNumber, gbc_textCardNumber);
 		
-		JComboBox comboBoxMonth = new JComboBox();
+		
+		JComboBox comboBoxMonth = new JComboBox(months);
 		GridBagConstraints gbc_comboBoxMonth = new GridBagConstraints();
 		gbc_comboBoxMonth.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMonth.fill = GridBagConstraints.HORIZONTAL;
@@ -135,7 +165,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_comboBoxMonth.gridy = 1;
 		add(comboBoxMonth, gbc_comboBoxMonth);
 		
-		JComboBox comboBoxYear = new JComboBox();
+		JComboBox comboBoxYear = new JComboBox(years);
 		GridBagConstraints gbc_comboBoxYear = new GridBagConstraints();
 		gbc_comboBoxYear.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxYear.fill = GridBagConstraints.HORIZONTAL;
@@ -188,6 +218,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblCountry.gridy = 4;
 		add(lblCountry, gbc_lblCountry);
 		
+		
 		JLabel lblBillingAddress = new JLabel(" Billing Address");
 		GridBagConstraints gbc_lblBillingAddress = new GridBagConstraints();
 		gbc_lblBillingAddress.gridwidth = 2;
@@ -197,7 +228,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblBillingAddress.gridy = 4;
 		add(lblBillingAddress, gbc_lblBillingAddress);
 		
-		JComboBox comboBoxCountry = new JComboBox();
+		JComboBox comboBoxCountry = new JComboBox(countryArray);
 		GridBagConstraints gbc_comboBoxCountry = new GridBagConstraints();
 		gbc_comboBoxCountry.gridwidth = 3;
 		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
@@ -231,6 +262,8 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblState.gridx = 3;
 		gbc_lblState.gridy = 6;
 		add(lblState, gbc_lblState);
+					
+		
 		
 		JLabel lblPostalCode = new JLabel(" ZIP Code");
 		GridBagConstraints gbc_lblPostalCode = new GridBagConstraints();
@@ -250,7 +283,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_textField_2.gridy = 7;
 		add(textField_2, gbc_textField_2);
 		
-		JComboBox comboBoxState = new JComboBox();
+		JComboBox comboBoxState = new JComboBox(states);
 		GridBagConstraints gbc_comboBoxState = new GridBagConstraints();
 		gbc_comboBoxState.gridwidth = 2;
 		gbc_comboBoxState.insets = new Insets(0, 0, 5, 5);
@@ -450,3 +483,4 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	}
 
 }
+
