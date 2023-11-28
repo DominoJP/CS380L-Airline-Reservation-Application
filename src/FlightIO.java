@@ -75,7 +75,7 @@ public final class FlightIO {
 	}
 	
 	/**
-	 * Updates cabin passenger count upon reservation booking to reflect already-updated flight object.
+	 * Updates cabin passenger count in .txt upon reservation booking to reflect already-updated flight object.
 	 * @see class ReservationPaymentPane.java
 	 * @param filePath to read to and write from
 	 * @param selectedFlight by user
@@ -86,14 +86,14 @@ public final class FlightIO {
 		int passengerCountIndex;
 		int updatedPassengerCount;
 		if (selectedCabin.equals("Economy")) {
-				passengerCountIndex = ECONOMY_COUNT_INDEX;
-				updatedPassengerCount = selectedFlight.getEconomyPassengerCount();
+			passengerCountIndex = ECONOMY_COUNT_INDEX;
+			updatedPassengerCount = selectedFlight.getEconomyPassengerCount();
 		} else if (selectedCabin.equals("Business")) {
-				passengerCountIndex = BUSINESS_COUNT_INDEX;
-				updatedPassengerCount = selectedFlight.getBusinessPassengerCount();
+			passengerCountIndex = BUSINESS_COUNT_INDEX;
+			updatedPassengerCount = selectedFlight.getBusinessPassengerCount();
 		} else if (selectedCabin.equals("First Class")) {
-				passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
-				updatedPassengerCount = selectedFlight.getFirstClassPassengerCount();
+			passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
+			updatedPassengerCount = selectedFlight.getFirstClassPassengerCount();
 		} else {
 			return;
 		}
@@ -102,7 +102,7 @@ public final class FlightIO {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
 		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // current flight is selected flight
-		        	str = rewriteLine(parts, str, passengerCountIndex, updatedPassengerCount);
+		        	str = rewriteLine(parts, passengerCountIndex, updatedPassengerCount);
 		        	lines.add(str.toString()); // add re-built line
 		        } else { // if not the Flight to update
 		        	lines.add(line); // re-add line unchanged
@@ -110,7 +110,7 @@ public final class FlightIO {
 		    }
 		    reader.close();
 		} catch (IOException e) {
-		    e.printStackTrace();
+		    handleIOException(e);
 		}
 		rewrite(filePath, lines);
 	}
@@ -140,9 +140,10 @@ public final class FlightIO {
 	 * @param str Line to be re-built.
 	 * @param passengerCountIndex Changes depending on cabin class.
 	 * @param updatedPassengerCount from getter method for corresponding cabin class;
-	 * @return StringBuilder with elements ofs current line.
+	 * @return StringBuilder with elements of current line.
 	 */
-	private static StringBuilder rewriteLine(String[] parts, StringBuilder str, int passengerCountIndex, int updatedPassengerCount) {
+	private static StringBuilder rewriteLine(String[] parts, int passengerCountIndex, int updatedPassengerCount) {
+		StringBuilder str = new StringBuilder();
 		for (int i = 0; i <= LAST_INDEX; i++) {
 			if (i == passengerCountIndex) {
 				str.append(updatedPassengerCount + ", "); // copy revised passengerCount
@@ -156,17 +157,12 @@ public final class FlightIO {
 	}
 	
 	/**
-	 * Calculates new passenger count for selected flight's cabin class given the new selectedPassengerAmount.
-	 * @param selectedFlight
-	 * @param selectedPassengerAmount
-	 * @param selectedCabin
-	 * @return newPassengerCount
-	 */
-	/*
-	private int calculateNewPassengerCount(Flight selectedFlight, int selectedPassengerAmount, String selectedCabin) {
-		
+     * Handles IOException by printing the stack trace.
+     * @param e The IOException to be handled.
+     */
+	private static void handleIOException(IOException e) {
+		e.printStackTrace();
 	}
-	*/
 	
 	/**
 	 * Returns Flight object with corresponding @param ID.

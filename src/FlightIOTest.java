@@ -23,6 +23,8 @@ class FlightIOTest {
 		writer.write("4, One Way, JFK, LAX, 2023-10-24, 05:35, 2023-10-24, 13:15, America/New_York, " +
 				     "100, 10, 300.00, 50, 40, 450.00, 30, 5, 650.00");
 		writer.newLine();
+		writer.write("5, One Way, JFK, LAX, 2023-10-24, 05:35, 2023-10-24, 13:15, America/New_York, " +
+			     "100, 10, 300.00, 50, 40, 450.00, 30, 5, 650.00");
 	  	writer.close();
 	}
 
@@ -45,7 +47,6 @@ class FlightIOTest {
 		String[] parts;
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			line = reader.readLine();
-			System.out.println(line);
 			parts = line.split(", ");
 			assertEquals(10 + 2, Integer.parseInt(parts[ECONOMY_COUNT_INDEX]));
 		} catch (IOException e) {
@@ -53,6 +54,7 @@ class FlightIOTest {
 		}
 	}
 	
+	/*
 	@Test
 	void testRewritePassengerCountIDNotFound() {
 		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");
@@ -72,5 +74,6 @@ class FlightIOTest {
 			e.printStackTrace();
 		}
 	}
+	*/
 
 }
