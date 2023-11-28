@@ -240,7 +240,7 @@ public class Manager {
      * @param password
      * @return whether sign in successful
      */
-    public boolean signIn(String email, char[] password) {
+    public static boolean signIn(String email, char[] password) {
    	 final String FILE_PATH = "src/Database/Managers.txt";
    	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			 String line;
