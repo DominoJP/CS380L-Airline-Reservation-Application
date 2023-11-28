@@ -1,99 +1,87 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
+
+import java.awt.GridBagLayout;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
 import javax.swing.JTextPane;
 
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Map;
 
-public class ManagerPane extends JFrame {
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import java.awt.SystemColor;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.DefaultComboBoxModel;
+
+public class ManagerPane extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * Create the panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ManagerIO managers = new ManagerIO();
-					
-					managers.getManagers();
-					
-					ManagerPane frame = new ManagerPane(managers.getList().get(0));
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ManagerPane(Manager owner) {
-		owner.totalReservations();
+	public ManagerPane(JPanel contentPane, Manager owner) {
+		owner.getReservations();
 		
-		setTitle("Manager");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setLayout(null);
+		
+		JLabel lblOptions = new JLabel("Options");
+		lblOptions.setBounds(36, 61, 55, 14);
+		add(lblOptions);
 		
 		JComboBox comboBoxOptions = new JComboBox();
-		comboBoxOptions.setToolTipText("");
-		comboBoxOptions.setModel(new DefaultComboBoxModel(new String[] {"Get Total Revenue", "Get Partial Revenue", "Get Customer Revenue", "Approve Refund", "Cancel Reservation"}));
-		comboBoxOptions.setSelectedIndex(0);
-		comboBoxOptions.setBounds(144, 65, 146, 22);
-		contentPane.add(comboBoxOptions);
-		
-		JLabel lblOptions = new JLabel("Manager Options");
-		lblOptions.setBounds(22, 65, 97, 22);
-		contentPane.add(lblOptions);
-		
-		JButton btnSelect = new JButton("Select");
-		btnSelect.setBounds(166, 227, 89, 23);
-		contentPane.add(btnSelect);
-		
-		JLabel lblRevenue = new JLabel("Revenue");
-		lblRevenue.setBounds(22, 176, 97, 22);
-		contentPane.add(lblRevenue);
-		
-		JLabel lblCurrentRevenue = new JLabel("");
-		lblCurrentRevenue.setBounds(144, 176, 146, 22);
-		contentPane.add(lblCurrentRevenue);
+		comboBoxOptions.setModel(new DefaultComboBoxModel(new String[] {"Get Total Revenue", "Get Customer Revenue", "Review Reservations", "Review Customer Reservations"}));
+		comboBoxOptions.setBounds(157, 57, 166, 22);
+		add(comboBoxOptions);
 		
 		JLabel lblCustomer = new JLabel("Customer");
-		lblCustomer.setBounds(22, 128, 97, 22);
-		contentPane.add(lblCustomer);
+		lblCustomer.setBounds(36, 124, 55, 14);
+		add(lblCustomer);
 		lblCustomer.setVisible(false);
-
 		
 		JTextPane textCustomerName = new JTextPane();
-		textCustomerName.setBounds(144, 130, 146, 20);
-		contentPane.add(textCustomerName);
+		textCustomerName.setBounds(157, 124, 166, 20);
+		add(textCustomerName);
 		textCustomerName.setVisible(false);
+		
+		JLabel lblRevenue = new JLabel("Revenue");
+		lblRevenue.setBounds(36, 203, 46, 14);
+		add(lblRevenue);
+		
+		JLabel lblCurrentRevenue = new JLabel("");
+		lblCurrentRevenue.setBounds(157, 203, 166, 14);
+		add(lblCurrentRevenue);
+		
+		JButton btnSelect = new JButton("Select");
+		btnSelect.setBounds(157, 248, 89, 23);
+		add(btnSelect);
+		owner.totalReservations();
 		
 		comboBoxOptions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(comboBoxOptions.getSelectedItem().toString().equals("Get Customer Revenue")) {
+				if(comboBoxOptions.getSelectedItem().toString.equals("Get Customer Revenue")) {
 					lblCustomer.setVisible(true);
 					textCustomerName.setVisible(true);
 				}else {
 					lblCustomer.setVisible(false);
-					textCustomerName.setVisible(false);				}
+					textCustomerName.setVisible(false);
+				}
 			}
 		});
 		

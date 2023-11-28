@@ -50,6 +50,8 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 
 		// Placeholder Account object to be reassigned at sign in.
 		Account account = new Account(null, null, null, 0000);
+		
+		Manager manager = new Manager(-1, null, null);
 
 		// Placeholder Flight object to be reassigned at flight selection.
 		Flight selectedFlight = new Flight(0, null, null, null, "2000-01-01", "12:00", "2000-01-01", "12:00", "UTC");
@@ -74,6 +76,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PaymentPane PaymentPane = new PaymentPane(contentPane, account);
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
 		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
+		ManagerPane managerPane = new ManagerPane(contentPane, manager);
 
 
 		// Program start
@@ -100,6 +103,9 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 
 		// Select "Cancel"
 		contentPane.add(ReservationCancellationPane, "Cancel");
+		
+		// Select "Manager"
+		contentPane.add(managerPane, "MANAGER");
 
 
 		// in pattern observable.addPropertyChangeListener(observer)
