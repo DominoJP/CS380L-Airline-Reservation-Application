@@ -23,7 +23,7 @@ import java.util.Iterator;
  */
 public final class ReservationIO {
 	private static final String FILE_PATH = "src/Database/Reservations.txt";
-	
+
 	/**
 	 * Instantiate reservations associated with account to Reservation ArrayList attribute of Account object.
 	 * @param : active account
@@ -36,14 +36,14 @@ public final class ReservationIO {
 		LocalDateTime bookingDateTime = LocalDateTime.parse("2000-01-01T12:00");
 		BigDecimal totalPricing = new BigDecimal("0.00");
 		ArrayList<String> passengers = new ArrayList<>();
-		
+
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		    	if(line.length() == 0) { // Skip whitespace.
 		    		continue;
 		    	}
-		    	
+
 		    	// switch-case for flexibility in event of changes to format
 		    	// once format is finalized, can simply read line-by-line
 		    	String[] parts = line.split(": ");
@@ -80,14 +80,14 @@ public final class ReservationIO {
 		    			break;
 	    			default:
 		    	}
-		    	
+
 		    }
 		    reader.close();
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Writes the pending reservation to Reservations.txt
 	 * @param active account
@@ -118,7 +118,7 @@ public final class ReservationIO {
             e.printStackTrace();
         }
 	}
-	
+
 	/**
 	 * Validates that reservation for selected flight does not already exist for this account.
 	 * @param active account
@@ -136,5 +136,5 @@ public final class ReservationIO {
 		}
 		return true;
 	}
- 	
+
 }
