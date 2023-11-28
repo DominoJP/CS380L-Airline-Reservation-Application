@@ -41,7 +41,11 @@ class FlightIOTest {
 		String selectedCabin = "Economy";
 		
 		selectedFlight.addEconomyPassengerCount(2);
+		try {
 		FlightIO.rewritePassengerCount(FILE_PATH, selectedFlight, selectedCabin);
+		} catch (IOException e) {
+	        e.printStackTrace();
+	    }
 		
 		String line;
 		String[] parts;

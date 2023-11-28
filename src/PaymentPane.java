@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -317,7 +318,11 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 						// Update reservation history in active account.
 						account.addReservationHistory(reservation);
 						ReservationIO.writeReservation(account, reservation);
+						try {
 						FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, selectedCabin);
+						} catch (IOException ioe) {
+					        ioe.printStackTrace();
+					    }
 						support.firePropertyChange("reservationBooked", null, true);
 						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 					} else {

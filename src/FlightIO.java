@@ -81,82 +81,146 @@ public final class FlightIO {
 	 * @param selectedFlight by user
 	 * @param selectedCabin by user
 	 */
-	public static void rewritePassengerCount(String filePath, Flight selectedFlight, String selectedCabin) {
-		ArrayList<String> lines = new ArrayList<>();
-		int passengerCountIndex;
-		int updatedPassengerCount;
-		if (selectedCabin.equals("Economy")) {
-			passengerCountIndex = ECONOMY_COUNT_INDEX;
-			updatedPassengerCount = selectedFlight.getEconomyPassengerCount();
-		} else if (selectedCabin.equals("Business")) {
-			passengerCountIndex = BUSINESS_COUNT_INDEX;
-			updatedPassengerCount = selectedFlight.getBusinessPassengerCount();
-		} else if (selectedCabin.equals("First Class")) {
-			passengerCountIndex = FIRST_CLASS_COUNT_INDEX;
-			updatedPassengerCount = selectedFlight.getFirstClassPassengerCount();
-		} else {
+	public static void rewritePassengerCount(String filePath, Flight selectedFlight, String selectedCabin) throws IOException {
+		if (invalidCabin(selectedCabin)) { // if cabin does not exist
 			return;
 		}
-		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-			String line;
-		    while ((line = reader.readLine()) != null) {
-		        String[] parts = line.split(", ");
-		        StringBuilder str =  new StringBuilder();
-		        lines.add(rewriteLine(lines, line, selectedFlight, passengerCountIndex, updatedPassengerCount));
-		    }
-		    reader.close();
-		} catch (IOException e) {
-		    handleIOException(e);
+		ArrayList<String> lines = new ArrayList<>();
+		int passengerCountIndex = getPassengerCountIndex(selectedCabin);
+		int updatedPassengerCount = getUpdatedPassengerCount(selectedFlight, selectedCabin);
+		BufferedReader reader = new BufferedReader(new FileReader(filePath));
+		String line;
+	    while ((line = reader.readLine()) != null) { // read through the file line-by-line
+			String[] parts  = line.split(", ");
+			StringBuilder str = new StringBuilder();
+			if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // if line is flight selected for booking
+				for (int i = 0; i < parts.length; i++) { // iterate through the parts of the line, determined by delimiter
+					str.append(rewritePart(parts, i, passengerCountIndex, updatedPassengerCount)); // rewrite for updatedPassengerCount
+				}
+				lines.add(str.toString()); // add updated flight
+			} else { // if line is not flight selected for booking
+				lines.add(line); // re-add unchanged flight
+			}
+	    }
+	    reader.close();
+	    rewriteFile(filePath, lines);
+	}
+	
+	/**
+	 * Checks whether the selected cabin is available from the airline.
+	 * @param selectedCabin
+	 * @return true if cabin not an available option
+	 */
+	private static boolean invalidCabin(String selectedCabin) {
+		if (selectedCabin.equals("Economy") || selectedCabin.equals("Business") || selectedCabin.equals("First Class")) {
+			return false;
+		} else {
+			return true;
 		}
-		rewrite(filePath, lines);
+	}
+	
+	/**
+	 * Retrieves the corresponding cabin passenger count index for Flights.txt.
+	 * @param selectedCabin by the user
+	 * @return index of passenger count for the corresponding cabin
+	 */
+	private static int getPassengerCountIndex(String selectedCabin) {
+		if (selectedCabin.equals("Business")) {
+			return BUSINESS_COUNT_INDEX;
+		} else if (selectedCabin.equals("First Class")) {
+			return FIRST_CLASS_COUNT_INDEX;
+		} else {
+			return ECONOMY_COUNT_INDEX;
+		}
+	}
+	
+	/**
+	 * Updates passenger count to reflect the already-updated flight object.
+	 * @param selectedFlight by the user
+	 * @param selectedCabin by the user
+	 * @return updated passenger count from flight object
+	 */
+	private static int getUpdatedPassengerCount(Flight selectedFlight, String selectedCabin) {
+		if (selectedCabin.equals("Business")) {
+			return selectedFlight.getBusinessPassengerCount();
+		} else if (selectedCabin.equals("First Class")) {
+			return selectedFlight.getFirstClassPassengerCount();
+		} else {
+			return selectedFlight.getEconomyPassengerCount();
+		}
 	}
 	
 	/**
 	 * Rewrites Flights.txt with re-built file.
 	 * @param lines ArrayList<String> of lines that comprise the file
 	 */
-	private static void rewrite(String filePath, ArrayList<String> lines) {
-		Iterator<String> iter;
+	private static void rewriteFile(String filePath, ArrayList<String> lines) {
+		// Iterator<String> iter;
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 			// re-write lines into file
+			/*
 			iter = lines.iterator();
 			while (iter.hasNext()) {
 				writer.write(iter.next());
 				writer.newLine();
 			}
+			*/
+            for (int i = 0; i < lines.size(); i++) {
+            	if (i == (lines.size() - 1)) {
+            		writer.write(lines.get(i));
+            	} else {
+            		writer.write(lines.get(i));
+            		writer.newLine();
+            	}
+            }
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 	}
 	
+	private static String rewritePart(String[] parts, int i, int passengerCountIndex, int updatedPassengerCount) {
+		if (i == passengerCountIndex) {
+			return updatedPassengerCount + ", "; // insert updated passengerCount, include delimiter
+		} else if (i == (parts.length - 1)) {
+			return parts[i]; // copy without delimiter
+		} else {
+			return parts[i] + ", "; // copy with delimiter
+		}
+	}
+	
 	/**
 	 * Rewrites current line with updated passenger count.
-	 * @param lines saved
 	 * @param line current
 	 * @param selectedFlight by user
 	 * @param passengerCountIndex in .txt
-	 * @param updatedPassengerCount of selectedFlight
+	 * @param updatedPassengerCount of selected flight
 	 * @return String of re-built line
 	 */
-	private static String rewriteLine(ArrayList<String> lines, String line, Flight selectedFlight, int passengerCountIndex, int updatedPassengerCount) {
+	/*
+	private static String rewriteLine(String line, Flight selectedFlight, int passengerCountIndex, int updatedPassengerCount) {
 		StringBuilder str = new StringBuilder();
 		String[] parts  = line.split(", ");
-		if (Integer.parseInt(parts[0]) == selectedFlight.getID()) {
-			for (int i = 0; i <= LAST_INDEX; i++) {
+		int i = 0;
+		if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // flight selected for booking
+			for (String part : parts) {
 				if (i == passengerCountIndex) {
-					str.append(updatedPassengerCount + ", "); // copy revised passengerCount
-				} else if (i == LAST_INDEX) {
-					str.append(parts[i]); // copy without delimiter
+					str.append(updatedPassengerCount); // insert updated passengerCount
+					str.append(", "); // include delimiter
+				} else if (i == (parts.length - 1)) {
+					str.append(part); // copy without delimiter
 				} else {
-					str.append(parts[i] + ", "); // copy in full
+					str.append(part); // copy with delimiter
+					str.append(", ");
 				}
+				i++;
 			}
-		} else {
-			return line;
+		} else { // not flight selected for booking
+			return line; // leave line unchanged
 		}
 		return str.toString();
 	}
+	*/
 	
 	/**
      * Handles IOException by printing the stack trace.
