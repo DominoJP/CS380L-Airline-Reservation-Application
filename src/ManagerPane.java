@@ -1,29 +1,56 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
-
-import java.awt.Font;
-import java.awt.CardLayout;
-import java.awt.Color;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
-import javax.swing.JSeparator;
+import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
 
+public class ManagerPane extends JFrame {
 
-public class ManagerPane extends JPanel {
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
 
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ManagerPane frame = new ManagerPane();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ManagerPane() {
+		setTitle("Manager");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JComboBox comboBoxOptions = new JComboBox();
+		comboBoxOptions.setToolTipText("");
+		comboBoxOptions.setModel(new DefaultComboBoxModel(new String[] {"Get Total Revenue", "Get Partial Revenue", "Approve Refund", "Cancel Reservation"}));
+		comboBoxOptions.setSelectedIndex(0);
+		comboBoxOptions.setBounds(144, 65, 146, 22);
+		contentPane.add(comboBoxOptions);
+		
+		JLabel lblOptions = new JLabel("Manager Options");
+		lblOptions.setBounds(22, 65, 97, 22);
+		contentPane.add(lblOptions);
+	}
 }
