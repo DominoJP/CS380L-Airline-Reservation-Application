@@ -98,8 +98,7 @@ public final class FlightIO {
 			return;
 		}
 		try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-		    String line;
-		    while ((line = reader.readLine()) != null) {
+		    for (String line : lines) {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
 		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // current flight is selected flight
