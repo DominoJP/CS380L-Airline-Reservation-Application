@@ -216,7 +216,7 @@ public class Account{
     	 }
     	 
     	 for(int i = 0; i < reservationHistory.size(); i++) {
-    		 total.add(reservationHistory.get(i).getTotalPrice());
+    		 total = total.add(reservationHistory.get(i).getTotalPrice());
     	 }
     	 
     	 return total;

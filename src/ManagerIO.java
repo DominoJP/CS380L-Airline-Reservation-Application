@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ManagerIO {
 	private ArrayList<Manager> managers;
-	private String managerPath = "src/sample.database/ManagerAccount.txt";
+	private String managerPath = "src/Database/Managers.txt";
 	
 	public ManagerIO() {
 		managers = new ArrayList<Manager>();
@@ -17,11 +17,17 @@ public class ManagerIO {
 		try(BufferedReader in = new BufferedReader(new FileReader(managerPath))){
 			while(in.ready()) {
 				String line = in.readLine();
-				String[] managerInfo = line.split(": ");
+				String[] managerInfo = line.split(", ");
+				
+				managers.add(new Manager(managerInfo[0], managerInfo[1]));
 			}
 		}catch(IOException e){
 			e.printStackTrace();
 			return;
 		}
+	}
+	
+	public ArrayList<Manager> getList(){
+		return managers;
 	}
 }

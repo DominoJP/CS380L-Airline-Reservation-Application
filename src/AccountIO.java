@@ -96,4 +96,18 @@ public class AccountIO {
 		return this.accounts;
 	}
 	
+	public void writeAccount(Account account) {
+		try(BufferedWriter write = new BufferedWriter(new FileWriter(accountsPath, true))){
+			write.write("\n");
+			
+			write.write(account.getAccountNumber() + ", " + account.getName()
+				+ ", " + account.getEmail() + ", " + account.getPassword() + ", CUSTOMER");
+			
+			write.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+			return;
+		}
+	}
+	
 }

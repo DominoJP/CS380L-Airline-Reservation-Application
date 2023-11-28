@@ -25,7 +25,7 @@ public class Manager {
 	private Account customer;
 	private Flight flight;
 	private ArrayList<Flight> flightList;
-	private String reservationPath = "src/Database/Resrvations.txt";
+	private String reservationPath = "src/Database/Reservations.txt";
 	private String flightPath = "src/Database/Flights.txt";
 	private FlightIO finder;
 	private ArrayList<Account> accounts;
@@ -42,6 +42,17 @@ public class Manager {
 	public Manager(int employeeID, String employeepassword) {
 		this.employeeID = employeeID;
 		this.employeepassword = employeepassword;
+		this.sorted = null;
+		this.reservations = null;
+		this.customer = null;
+		this.flight = null;
+		this.flightList = null;
+	}
+	
+	public Manager(String employeeEmail, String employeepassword) {
+		this.employeeID = -1;
+		this.employeepassword = employeepassword;
+		this.employeeEmail = employeeEmail;
 		this.sorted = null;
 		this.reservations = null;
 		this.customer = null;
@@ -111,6 +122,8 @@ public class Manager {
 	 */
 	
 	public void totalReservations(){	
+		this.reservations = new ArrayList<Reservation>();
+		
 		int reservationID = -1;
 		int accountID = -1;
 		int flightID = -1;
@@ -126,34 +139,41 @@ public class Manager {
 					String[] r = line.split(": ");
 					
 					switch(r[0]){
-					case "Reservation ID:":
+					case "Reservation ID":
 						reservationID = Integer.parseInt(r[1]);
 						break;
-					case "Account ID:":
+					case "Account ID":
 						accountID = Integer.parseInt(r[1]);
 						break;
-					case "Flight Number:":
+					case "Flight Number":
 						flightID = Integer.parseInt(r[1]);
 						break;
-					case "Date of Booking:":
+					case "Date of Booking":
 						current = LocalDateTime.parse(r[1]);
 						break;
-					case "Total Pricing:":
-						price = new BigDecimal(Integer.parseInt(r[1]));
+					case "Total Pricing":
+						price = BigDecimal.valueOf(Double.parseDouble(r[1]));
 						break;
-					case "Cabin Class:":
+					case "Cabin Class":
 						type = r[1];
 						break;
+					case "\tPassenger Name":
+						people.add(r[1]);
+						break;
 					case "--Reservation End--":
-						Reservation store = new Reservation();
-						store.setId(reservationID);
-						store.setCustomerId(accountID);
-						store.setFlightId(flightID);
-						store.setBooking(current);
-						store.setTotalPrice(price);
-						store.setCabin(type);
-						
-						this.reservations.add(store);
+						if(reservationID != -1) {
+							Reservation store = new Reservation();
+							store.setId(reservationID);
+							store.setCustomerId(accountID);
+							store.setFlightId(flightID);
+							store.setBooking(current);
+							store.setTotalPrice(price);
+							store.setCabin(type);
+							
+							this.reservations.add(store);
+							break;
+						}else
+							break;
 					default:
 					}
 				}
@@ -186,7 +206,7 @@ public class Manager {
 		BigDecimal revenue = new BigDecimal(0);
 		
 		for(int i = 0; i < this.reservations.size(); i++) {
-			revenue.add(this.reservations.get(i).getTotalPrice());
+			 revenue = revenue.add(this.reservations.get(i).getTotalPrice());
 		}
 		
 		return revenue;

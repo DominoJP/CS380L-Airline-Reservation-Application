@@ -189,7 +189,7 @@ public class Reservation {
 		 }
 		 
 		 for(int i = 0; i < this.passengers.size(); i++) {
-			 this.totalPrice.add(price);
+			 this.totalPrice = this.totalPrice.add(price);
 		 }
 		 
 	 }
@@ -268,6 +268,7 @@ public class Reservation {
 		 for(int i = 0; i < this.passengers.size(); i++) {
 			 if(this.passengers.get(i) == p) {
 				 this.passengers.remove(i);
+				 this.setTotalPrice();
 				 exist = true;
 			 }
 		 }
