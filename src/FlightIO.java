@@ -102,12 +102,7 @@ public final class FlightIO {
 		    while ((line = reader.readLine()) != null) {
 		        String[] parts = line.split(", ");
 		        StringBuilder str =  new StringBuilder();
-		        if (Integer.parseInt(parts[0]) == selectedFlight.getID()) { // current flight is selected flight
-		        	str = rewriteLine(parts, passengerCountIndex, updatedPassengerCount);
-		        	lines.add(str.toString()); // add re-built line
-		        } else { // if not the Flight to update
-		        	lines.add(line); // re-add line unchanged
-		        }
+		        lines.add(rewriteLine(lines, line, selectedFlight, passengerCountIndex, updatedPassengerCount));
 		    }
 		    reader.close();
 		} catch (IOException e) {
@@ -137,24 +132,30 @@ public final class FlightIO {
 	
 	/**
 	 * Rewrites current line with updated passenger count.
-	 * @param parts String array of elements in a line from a delimiter.
-	 * @param str Line to be re-built.
-	 * @param passengerCountIndex Changes depending on cabin class.
-	 * @param updatedPassengerCount from getter method for corresponding cabin class;
-	 * @return StringBuilder with elements of current line.
+	 * @param lines saved
+	 * @param line current
+	 * @param selectedFlight by user
+	 * @param passengerCountIndex in .txt
+	 * @param updatedPassengerCount of selectedFlight
+	 * @return String of re-built line
 	 */
-	private static StringBuilder rewriteLine(String[] parts, int passengerCountIndex, int updatedPassengerCount) {
+	private static String rewriteLine(ArrayList<String> lines, String line, Flight selectedFlight, int passengerCountIndex, int updatedPassengerCount) {
 		StringBuilder str = new StringBuilder();
-		for (int i = 0; i <= LAST_INDEX; i++) {
-			if (i == passengerCountIndex) {
-				str.append(updatedPassengerCount + ", "); // copy revised passengerCount
-			} else if (i == LAST_INDEX) {
-				str.append(parts[i]); // copy without delimiter
-			} else {
-				str.append(parts[i] + ", "); // copy in full
+		String[] parts  = line.split(", ");
+		if (Integer.parseInt(parts[0]) == selectedFlight.getID()) {
+			for (int i = 0; i <= LAST_INDEX; i++) {
+				if (i == passengerCountIndex) {
+					str.append(updatedPassengerCount + ", "); // copy revised passengerCount
+				} else if (i == LAST_INDEX) {
+					str.append(parts[i]); // copy without delimiter
+				} else {
+					str.append(parts[i] + ", "); // copy in full
+				}
 			}
+		} else {
+			return line;
 		}
-		return str;
+		return str.toString();
 	}
 	
 	/**
