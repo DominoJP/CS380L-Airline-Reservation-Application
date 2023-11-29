@@ -49,6 +49,7 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 				"Reserve",
 				"Review",
 				"Cancel",
+				"EXIT"
 		};
 		
 		lblConfirmation = new JLabel("");
@@ -84,13 +85,13 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 						((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER");
 						break;
 					case "Review":
-						// FIXME: REMOVE
-						// ReservationListPane ReviewPane = new ReservationListPane(contentPane, account);
-						// contentPane.add(ReviewPane, "REVIEW");
 						((CardLayout) contentPane.getLayout()).show(contentPane, "REVIEW_LIST");
 						break;
 					case "Cancel":
 						((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
+						break;
+					case "EXIT":
+						System.exit(0);
 						break;
 				}
 		}

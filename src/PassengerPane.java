@@ -369,7 +369,6 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
 			this.selectedPassengerAmount = ((int) evt.getNewValue());
-			System.out.print("amt");
 		}
 		
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
