@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 
@@ -21,7 +22,7 @@ public class Reservation {
 	//private ArrayList<String> passports; //variable in case if we decide to add passports to the reservations
 	//private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
 	private BigDecimal totalPrice; // keeps track of the total cost of this reservation since multiple tickets may be ordered
-	private LocalDateTime dateTimeAtBooking;
+	private ZonedDateTime dateTimeAtBooking;
 	
 	/**
 	 * a constructor that accepts nothing
@@ -57,7 +58,7 @@ public class Reservation {
 	 */
 	 
 	 public Reservation(int reservationID, Account account, Flight matchingFlight, String cabin, ArrayList<String> passengers, BigDecimal totalPricing, 
-			 LocalDateTime bookingDateTime) {
+			 ZonedDateTime bookingDateTime) {
 		 this.reservationId = reservationID;
 		 this.customer = account;
 		 this.customerId = account.getAccountNumber();
@@ -87,7 +88,7 @@ public class Reservation {
 	  * that all passengers want
 	  */
 	 public void setReservation(Flight f, String type, ArrayList<String> people) {
-		 this.dateTimeAtBooking = LocalDateTime.now();
+		 this.dateTimeAtBooking = ZonedDateTime.now();
 		 this.flight = f;
 		 this.flightId = f.getID();
 		 this.cabin = type;
@@ -133,7 +134,7 @@ public class Reservation {
 	 }
 	 */
 	 
-	 public void setBooking(LocalDateTime current) {
+	 public void setBooking(ZonedDateTime current) {
 		 this.dateTimeAtBooking = current;
 	 }
 	 
@@ -240,7 +241,7 @@ public class Reservation {
 	  * Method returning LocalDateTime at booking.
 	  * @return LocalDateTime
 	  */
-	 public LocalDateTime getDateTimeAtBooking() {
+	 public ZonedDateTime getDateTimeAtBooking() {
 		 return this.dateTimeAtBooking;
 	 }
 	 

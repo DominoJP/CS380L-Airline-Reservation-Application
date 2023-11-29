@@ -357,7 +357,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 			
 				if (isUniqueReservation(account, selectedFlight.getID())) {
 					IDGenerator IDGen = new IDGenerator();
-					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, ZonedDateTime.now());
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
