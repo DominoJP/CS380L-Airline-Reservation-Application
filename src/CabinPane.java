@@ -27,7 +27,7 @@ import javax.swing.ButtonGroup;
  * <p>
  * Data Structures: N/A.
  * Algorithms: N/A.
- * @version 2.2, Last Modified: Nov 18, 2023
+ * @version 2.2.2, Last Modified: Nov 28, 2023
  * @author Jevy Miranda
  */
 public class CabinPane extends JPanel implements PropertyChangeListener {
@@ -41,6 +41,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 	private JLabel lblEconomySeating;
 	private JLabel lblBusinessSeating;
 	private JLabel lblFirstClassSeating;
+	private JLabel lblSeatingWarning;
 
 	private static final long serialVersionUID = 1L;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -168,6 +169,22 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (rdbtnFirstClass.isSelected()) {
+					if (selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount > selectedFlight.getFirstClassCapacity()) {
+						displayErrorMessage();
+						return;
+					}
+				} else if (rdbtnBusiness.isSelected()) {
+					if (selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount > selectedFlight.getBusinessCapacity()) {
+						displayErrorMessage();
+						return;
+					}
+				} else {
+					if (selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount > selectedFlight.getEconomyCapacity()) {
+						displayErrorMessage();
+						return;
+					}
+				}
+				if (rdbtnFirstClass.isSelected()) {
 					support.firePropertyChange("selectedCabin", null, "First Class");
 				} else if (rdbtnBusiness.isSelected()) {
 					support.firePropertyChange("selectedCabin", null, "Business");
@@ -208,7 +225,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		gbc_separator.gridy = 8;
 		add(separator, gbc_separator);
 		
-		JLabel lblSeatingWarning = new JLabel("Insufficient seating for passenger selection.");
+		lblSeatingWarning = new JLabel("Insufficient seating for passenger selection.");
 		lblSeatingWarning.setForeground(Color.RED);
 		lblSeatingWarning.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		GridBagConstraints gbc_lblSeatingWarning = new GridBagConstraints();
@@ -234,7 +251,6 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
 			this.selectedPassengerAmount = ((int) evt.getNewValue());
-			// FIXME: add check
 		}
 		
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
@@ -247,6 +263,13 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 			lblFirstClassSeating.setText(selectedFlight.getFirstClassCapacity() - selectedFlight.getFirstClassPassengerCount() + " left");
 		}
 		
+	}
+	
+	/**
+	 * Sets message JLabel visibility to true.
+	 */
+	private void displayErrorMessage() {
+		lblSeatingWarning.setVisible(true);
 	}
 
 }

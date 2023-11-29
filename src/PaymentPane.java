@@ -405,7 +405,6 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		// fires from FilterPane
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
 			this.selectedPassengerAmount = ((int) evt.getNewValue());
-			System.out.println("passengerAmt PropertyChangeEvent" + this.selectedPassengerAmount);
 		}
 		
 		// fires from CabinClassPane
