@@ -173,7 +173,6 @@ public final class FlightIO {
             		writer.newLine();
             	}
             }
-            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
