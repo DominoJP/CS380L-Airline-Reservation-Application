@@ -345,7 +345,13 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 				
 				if (threeHoursBefore()) {
 					lblError.setVisible(true);
-					lblError.setText("Cannot book, flight leaves within 3 hr.");
+					lblError.setText("Cannot book, departs within 3 hr.");
+					return;
+				}
+				
+				if (flightHasPassed()) {
+					lblError.setVisible(true);
+					lblError.setText("Cannot book, already departed.");
 					return;
 				}
 			
@@ -501,11 +507,23 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private boolean threeHoursBefore() {
 		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
 		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
-		System.out.println(ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()));
-		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) >= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) < 3) {
+		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) <= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) > -3) {
 			return true;
 		}
-			return false;
+		return false;
+	}
+	
+	/**
+	 * Checks whether flight on departure date would have already departed.
+	 * @return true if flight would have already departed
+	 */
+	private boolean flightHasPassed() {
+		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
+		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
+		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) >= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) > 0) {
+			return true;
+		}
+		return false;
 	}
 
 }

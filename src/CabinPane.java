@@ -54,7 +54,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		selectedPassengerAmount = 1;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{60, 0, 0, 0, 20, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{70, 0, 0, 0, 20, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
