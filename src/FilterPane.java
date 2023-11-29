@@ -56,9 +56,6 @@ public class FilterPane extends JPanel {
 	private String airportArriveInput;
 	private String dateDepartingInput;
 	
-	private int passengerAmount = 1;
-	private int selectedPassengerAmount;
-	
 	private PropertyChangeSupport support;
 	
 	// for use with comboBoxFrom
@@ -343,8 +340,7 @@ public class FilterPane extends JPanel {
 	 * @param selectedPassengerAmount
 	 */
 	private void setPassengerAmount(int selectedPassengerAmount) {
-		support.firePropertyChange("passengerAmount", passengerAmount, selectedPassengerAmount);
-		this.selectedPassengerAmount = selectedPassengerAmount;
+		support.firePropertyChange("passengerAmount", null, selectedPassengerAmount);
 	}
 	
 	/**

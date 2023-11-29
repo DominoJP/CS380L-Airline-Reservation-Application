@@ -51,7 +51,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 	 */
 	public CabinPane(JPanel contentPane, Flight selectedFlight) {
 		support = new PropertyChangeSupport(this);
-		selectedPassengerAmount = 1;
+		selectedPassengerAmount = 0;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{70, 0, 0, 0, 20, 0, 0, 0};
@@ -169,28 +169,26 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (rdbtnFirstClass.isSelected()) {
+					support.firePropertyChange("selectedCabin", null, "First Class");
 					if (selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount > selectedFlight.getFirstClassCapacity()) {
 						displayErrorMessage();
 						return;
 					}
 				} else if (rdbtnBusiness.isSelected()) {
+					support.firePropertyChange("selectedCabin", null, "Business");
 					if (selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount > selectedFlight.getBusinessCapacity()) {
 						displayErrorMessage();
 						return;
 					}
-				} else {
+				} else if (rdbtnEconomy.isSelected()){
+					support.firePropertyChange("selectedCabin", null, "Economy");
 					if (selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount > selectedFlight.getEconomyCapacity()) {
+						System.out.println(selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount);
 						displayErrorMessage();
 						return;
 					}
 				}
-				if (rdbtnFirstClass.isSelected()) {
-					support.firePropertyChange("selectedCabin", null, "First Class");
-				} else if (rdbtnBusiness.isSelected()) {
-					support.firePropertyChange("selectedCabin", null, "Business");
-				} else {
-					support.firePropertyChange("selectedCabin", null, "Economy");
-				}
+				lblSeatingWarning.setVisible(false);
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1");
 			}
 		});
@@ -251,6 +249,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
 			this.selectedPassengerAmount = ((int) evt.getNewValue());
+			System.out.println("r");
 		}
 		
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
