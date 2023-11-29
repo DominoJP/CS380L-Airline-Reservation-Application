@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 /**
  * A class that represents a manager with the ability to store employee ID
@@ -100,7 +99,7 @@ public class Manager {
 		ArrayList<String> people = new ArrayList<String>();
 		String type = null;
 		BigDecimal price = new BigDecimal(0);
-		ZonedDateTime current = null;
+		LocalDateTime current = null;
 		
 		try(BufferedReader in = new BufferedReader(new FileReader(this.reservationPath))){
 			while(in.ready()) {
@@ -119,7 +118,7 @@ public class Manager {
 						flightID = Integer.parseInt(r[1]);
 						break;
 					case "Date of Booking:":
-						current = ZonedDateTime.parse(r[1]);
+						current = LocalDateTime.parse(r[1]);
 						break;
 					case "Total Pricing:":
 						price = new BigDecimal(Integer.parseInt(r[1]));
