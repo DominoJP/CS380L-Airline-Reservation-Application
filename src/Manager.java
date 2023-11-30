@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * A class that represents a manager with the ability to store employee ID
@@ -15,20 +16,15 @@ public class Manager {
 	 
 	private int employeeID;   /** stores the employee's ID */
 	private String employeepassword; /** Stores the employee password */
-	private String employeeEmail;
-	private String employeeUsername;
-	private String employeePhoneNumber;
-	
 	private ArrayList<Reservation> reservations; /** Stores a list of reservations */
 
 	private FlightSorting sorted;
 	private Account customer;
 	private Flight flight;
 	private ArrayList<Flight> flightList;
-	private String reservationPath = "src/Database/Reservations.txt";
-	private String flightPath = "src/Database/Flights.txt";
+	private String reservationPath = "src/Resrvation.txt";
+	private String flightPath = "src/FlightsTest.txt";
 	private FlightIO finder;
-	private ArrayList<Account> accounts;
 
 /**
  * Constructor that creates a manager instance with the specified employee ID and password.
@@ -39,27 +35,6 @@ public class Manager {
  */
 
 
-	public Manager(int employeeID, String employeepassword) {
-		this.employeeID = employeeID;
-		this.employeepassword = employeepassword;
-		this.sorted = null;
-		this.reservations = null;
-		this.customer = null;
-		this.flight = null;
-		this.flightList = null;
-	}
-	
-	public Manager(String employeeEmail, String employeepassword) {
-		this.employeeID = -1;
-		this.employeepassword = employeepassword;
-		this.employeeEmail = employeeEmail;
-		this.sorted = null;
-		this.reservations = null;
-		this.customer = null;
-		this.flight = null;
-		this.flightList = null;
-	}
-	
 	public Manager(int employeeID, String employeepassword, ArrayList<Reservation> reservations) {
 
 	 this.employeeID = employeeID;
@@ -69,9 +44,6 @@ public class Manager {
 	 this.customer = null;
 	 this.flight = null;
 	 this.flightList = null;
-	 
-	 this.reservations = reservations;
-	 this.accounts = new ArrayList<Account>();
    }
 	 
 	/**
@@ -122,15 +94,13 @@ public class Manager {
 	 */
 	
 	public void totalReservations(){	
-		this.reservations = new ArrayList<Reservation>();
-		
 		int reservationID = -1;
 		int accountID = -1;
 		int flightID = -1;
 		ArrayList<String> people = new ArrayList<String>();
 		String type = null;
 		BigDecimal price = new BigDecimal(0);
-		LocalDateTime current = null;
+		ZonedDateTime current = null;
 		
 		try(BufferedReader in = new BufferedReader(new FileReader(this.reservationPath))){
 			while(in.ready()) {
@@ -139,41 +109,34 @@ public class Manager {
 					String[] r = line.split(": ");
 					
 					switch(r[0]){
-					case "Reservation ID":
+					case "Reservation ID:":
 						reservationID = Integer.parseInt(r[1]);
 						break;
-					case "Account ID":
+					case "Account ID:":
 						accountID = Integer.parseInt(r[1]);
 						break;
-					case "Flight Number":
+					case "Flight Number:":
 						flightID = Integer.parseInt(r[1]);
 						break;
-					case "Date of Booking":
-						current = LocalDateTime.parse(r[1]);
+					case "Date of Booking:":
+						current = ZonedDateTime.parse(r[1]);
 						break;
-					case "Total Pricing":
-						price = BigDecimal.valueOf(Double.parseDouble(r[1]));
+					case "Total Pricing:":
+						price = new BigDecimal(Integer.parseInt(r[1]));
 						break;
-					case "Cabin Class":
+					case "Cabin Class:":
 						type = r[1];
 						break;
-					case "\tPassenger Name":
-						people.add(r[1]);
-						break;
 					case "--Reservation End--":
-						if(reservationID != -1) {
-							Reservation store = new Reservation();
-							store.setId(reservationID);
-							store.setCustomerId(accountID);
-							store.setFlightId(flightID);
-							store.setBooking(current);
-							store.setTotalPrice(price);
-							store.setCabin(type);
-							
-							this.reservations.add(store);
-							break;
-						}else
-							break;
+						Reservation store = new Reservation();
+						store.setId(reservationID);
+						store.setCustomerId(accountID);
+						store.setFlightId(flightID);
+						store.setBooking(current);
+						store.setTotalPrice(price);
+						store.setCabin(type);
+						
+						this.reservations.add(store);
 					default:
 					}
 				}
@@ -185,19 +148,6 @@ public class Manager {
 	}
 	
 	/**
-	 * The getAllAccounts() method uses the AccountIO class to set the ArrayList of accounts to all accounts stored
-	 * in the system
-	 */
-	
-	public void getAllAccounts() {
-		AccountIO data = new AccountIO();
-		
-		data.readAccounts();
-		
-		this.accounts = data.getAccounts();
-	}
-	
-	/**
 	 * The getTotalRevenue method takes the ArrayList<Reservation> reservations and calculates the total revenue made from all reservations that are stored
 	 * @return BigDecimal
 	 */
@@ -206,28 +156,9 @@ public class Manager {
 		BigDecimal revenue = new BigDecimal(0);
 		
 		for(int i = 0; i < this.reservations.size(); i++) {
-			 revenue = revenue.add(this.reservations.get(i).getTotalPrice());
+			revenue.add(this.reservations.get(i).getTotalPrice());
 		}
 		
-		return revenue;
-	}
-	
-	/**
-	 * the getAccountRevenue() method allows a manager to calculate the total revenue made by one account that is searched
-	 * for using @param name, an instance of a String that represents the name of a customer being searched for,
-	 * and @return a BigDecimal that represents the total amount of money made by that customer
-	 */
-	
-	public BigDecimal getAccountRevenue(String name) {
-		BigDecimal revenue = new BigDecimal(0);
-		
-		for(int i = 0; i < accounts.size(); i++) {
-			if(accounts.get(i).getName().equals(name)) {
-				revenue = accounts.get(i).totalBalance();
-				return revenue;
-			}
-		}
-				
 		return revenue;
 	}
 	
