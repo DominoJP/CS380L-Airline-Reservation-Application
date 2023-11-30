@@ -3,11 +3,10 @@ import java.util.ArrayList;
 import java.math.BigDecimal;
 
 /**
- * Owner: Logan Langewisch
- * Created: November 21, 2023
- * 
  * The AccountIO class is meant to read from the Customers.txt file, create a list of Accounts from the file, then be able to give this information
  * in case if a manager wishes to view it or to open a pre-existing account
+ * @author Logan Langewisch
+ * @version 1.3, Last Modified November 30, 2023
  */
 
 
@@ -95,6 +94,13 @@ public class AccountIO {
 	public ArrayList<Account> getAccounts(){
 		return this.accounts;
 	}
+	
+	/**
+	 * The writeAccount method stores a new account that was made into the file were all accounts
+	 * are stored
+	 * @param account, an instance of Account that represents a new account that was created
+	 * and is not going to be added in the file where all accounts are stored
+	 */
 	
 	public void writeAccount(Account account) {
 		try(BufferedWriter write = new BufferedWriter(new FileWriter(accountsPath, true))){
