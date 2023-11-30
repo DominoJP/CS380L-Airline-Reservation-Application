@@ -101,7 +101,7 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		
-		for (int i = 1900; i < ZonedDateTime.now().getYear(); i++) {
+		for (int i = 1900; i <= ZonedDateTime.now().getYear(); i++) {
 			years.add(String.valueOf(i));
 		}
 		

@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -33,7 +34,7 @@ public final class ReservationIO {
 		int reservationID = 0;
 		int flightID = 0;
 		String cabin = "";
-		LocalDateTime bookingDateTime = LocalDateTime.parse("2000-01-01T12:00");
+		ZonedDateTime bookingDateTime = ZonedDateTime.parse("2000-01-01T20:45:30+05:30[Asia/Calcutta]");
 		BigDecimal totalPricing = new BigDecimal("0.00");
 		ArrayList<String> passengers = new ArrayList<>();
 
@@ -60,7 +61,7 @@ public final class ReservationIO {
 		    			flightID = Integer.parseInt(parts[1]);
 		    			break;
 		    		case "Date of Booking":
-		    			bookingDateTime = LocalDateTime.parse(parts[1]);
+		    			bookingDateTime = ZonedDateTime.parse(parts[1]);
 		    			break;
 		    		case "Cabin Class":
 		    			cabin = parts[1];

@@ -358,16 +358,17 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 			
 				if (updatePassengerCount() == true) {
 					IDGenerator IDGen = new IDGenerator();
-					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, ZonedDateTime.now());
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
 					try {
-					FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, selectedCabin);
+						FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, selectedCabin);
 					} catch (IOException ioe) {
 				        ioe.printStackTrace();
 				    }
 					support.firePropertyChange("reservationBooked", null, true);
+					lblError.setVisible(false);
 					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 				} else {
 					lblError.setVisible(true);
@@ -513,7 +514,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private boolean threeHoursBefore() {
 		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
 		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
-		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) <= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) > -3) {
+		if (ChronoUnit.MINUTES.between(zdt, ZonedDateTime.now()) <= 0 && ChronoUnit.MINUTES.between(zdt, ZonedDateTime.now()) > -180) {
 			return true;
 		}
 		return false;
@@ -526,7 +527,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private boolean flightHasPassed() {
 		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
 		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
-		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) >= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) > 0) {
+		if (ChronoUnit.MINUTES.between(zdt, ZonedDateTime.now()) >= 0) {
 			return true;
 		}
 		return false;
