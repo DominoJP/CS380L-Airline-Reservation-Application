@@ -59,10 +59,10 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		selectedPassengerAmount = 0;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{70, 0, 0, 0, 20, 0, 106, 0};
-		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64, 0};
+		gridBagLayout.columnWidths = new int[]{80, 0, 0, 0, 20, 0, 106, 0};
+		gridBagLayout.rowHeights = new int[]{40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel lblPricing = new JLabel("FARES");
@@ -174,7 +174,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (isNotUniqueReservation(account, selectedFlight.getID())) {
-					displayErrorMessage("You already booked this cabin for the flight.");
+					displayErrorMessage("You already booked this cabin for this flight.");
 					return;
 				}
 				if (rdbtnFirstClass.isSelected()) {
@@ -235,7 +235,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		lblError.setForeground(Color.RED);
 		lblError.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		GridBagConstraints gbc_lblError = new GridBagConstraints();
-		gbc_lblError.insets = new Insets(0, 0, 5, 5);
+		gbc_lblError.insets = new Insets(0, 0, 0, 5);
 		gbc_lblError.gridwidth = 4;
 		gbc_lblError.gridx = 2;
 		gbc_lblError.gridy = 9;
