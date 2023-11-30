@@ -37,6 +37,6 @@ Departure Airport: LAX
 Arrival Airport: JFK
 Cabin Class: Economy
 Total Pricing: 300.00
-Booking Records: 
+Booking Records:
 	Passenger Name: John
 --Reservation End--
