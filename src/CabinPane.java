@@ -256,7 +256,6 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 			Reservation reservation = iter.next();
 			if (reservation.getFlight().getID() == flightID) {
 				if (reservation.getCabin().equals("Economy") && rdbtnEconomy.isSelected()) {
-					System.out.println("s");
 					return true;
 				} else if (reservation.getCabin() == "Business" && rdbtnBusiness.isSelected()) {
 					return true;
