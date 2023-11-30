@@ -64,7 +64,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		FilterPane FilterPane = new FilterPane(contentPane, account, sort, selectedFlight);
 		// Instantiation of FlightFilterListScrollPane must happen at ActionLister of FlightFilterPane, AFTER the instantiation of the sorted list for the JList
 		// FlightFilterListScrollPane FilterListPane = new FlightFilterListScrollPane(contentPane, account, flightListSorted, flightArray, flight);
-		CabinPane CabinClassPane = new CabinPane(contentPane, selectedFlight);
+		CabinPane CabinClassPane = new CabinPane(contentPane, account, selectedFlight);
 		PassengerPane PassengerOnePane = new PassengerPane(contentPane, 1, "CABIN", "PASSENGER2", selectedFlight);
 		PassengerPane PassengerTwoPane = new PassengerPane(contentPane, 2, "PASSENGER1", "PASSENGER3", selectedFlight);
 		PassengerPane PassengerThreePane = new PassengerPane(contentPane, 3, "PASSENGER2", "PASSENGER4", selectedFlight);
@@ -101,11 +101,11 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// Select "Cancel"
 		contentPane.add(ReservationCancellationPane, "Cancel");
 
-
 		// in pattern observable.addPropertyChangeListener(observer)
 		// id & email
 		account.addPropertyChangeListener(ReservationListPane);
 		account.addPropertyChangeListener(PaymentPane);
+		account.addPropertyChangeListener(CabinClassPane);
 
 		// user-selected flight
 		selectedFlight.addPropertyChangeListener(PaymentPane);
@@ -139,6 +139,11 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		// confirmation message
 		PaymentPane.addPropertyChangeListener(NavigationPane);
 		SignUpPane.addPropertyChangeListener(NavigationPane);
-
+		PaymentPane.addPropertyChangeListener(PassengerOnePane);
+		PaymentPane.addPropertyChangeListener(PassengerTwoPane);
+		PaymentPane.addPropertyChangeListener(PassengerThreePane);
+		PaymentPane.addPropertyChangeListener(PassengerFourPane);
+		PaymentPane.addPropertyChangeListener(PassengerFivePane);
+		PaymentPane.addPropertyChangeListener(PassengerSixPane);
 	}
 }

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -80,13 +81,19 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	
 	private String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	
+	private String[] cardType = {
+			"Credit",
+			"Debit"
+		};
 	
+	/*
 	private String[] cardType = {
 		"Visa",
 		"Mastercard",
 		"American Express",
 		"Discover",
 	};
+	*/
 	
 	
 	/**
@@ -339,22 +346,32 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 				
 				if (threeHoursBefore()) {
 					lblError.setVisible(true);
-					lblError.setText("Cannot book, flight leaves within 3 hr.");
+					lblError.setText("Cannot book, departs within 3 hr.");
+					return;
+				}
+				
+				if (flightHasPassed()) {
+					lblError.setVisible(true);
+					lblError.setText("Cannot book, already departed.");
 					return;
 				}
 			
-				if (isUniqueReservation(account, selectedFlight.getID())) {
+				if (updatePassengerCount() == true) {
 					IDGenerator IDGen = new IDGenerator();
 					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
 					// Update reservation history in active account.
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
-					FlightIO.updatePassengerCount(selectedFlight, selectedPassengerAmount, selectedCabin);
+					try {
+					FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, selectedCabin);
+					} catch (IOException ioe) {
+				        ioe.printStackTrace();
+				    }
 					support.firePropertyChange("reservationBooked", null, true);
 					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 				} else {
 					lblError.setVisible(true);
-					lblError.setText("Account already booked class for flight.");
+					lblError.setText("Insufficient seating.");
 				}
 			}
 		});
@@ -399,7 +416,6 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		// fires from FilterPane
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
 			this.selectedPassengerAmount = ((int) evt.getNewValue());
-			System.out.println("passengerAmt PropertyChangeEvent" + this.selectedPassengerAmount);
 		}
 		
 		// fires from CabinClassPane
@@ -478,6 +494,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	 * @param pending reservation
 	 * @return true if is a unique reservation
 	 */
+	@Deprecated
 	private static boolean isUniqueReservation(Account account, int flightID) {
 		Iterator<Reservation> iter;
 		iter = account.getReservationHistory().iterator();
@@ -496,11 +513,42 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private boolean threeHoursBefore() {
 		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
 		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
-		System.out.println(ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()));
-		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) >= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) < 3) {
+		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) <= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) > -3) {
 			return true;
 		}
-			return false;
+		return false;
+	}
+	
+	/**
+	 * Checks whether flight on departure date would have already departed.
+	 * @return true if flight would have already departed
+	 */
+	private boolean flightHasPassed() {
+		LocalDateTime ldt = LocalDateTime.of(selectedFlight.getdateDeparture(), selectedFlight.gettimeDeparture());
+		ZonedDateTime zdt = ZonedDateTime.of(ldt, ZonedDateTime.now().getZone());
+		if (ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) >= 0 && ChronoUnit.HOURS.between(zdt, ZonedDateTime.now()) > 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Calls corresponding method to update passenger count of selected cabin.
+	 * @param selectedFlight
+	 * @param selectedCabin
+	 * @return whether sucessful
+	 */
+	private boolean updatePassengerCount() {
+		switch (selectedCabin) {
+			case "Economy":
+				return selectedFlight.addEconomyPassengerCount(selectedPassengerAmount);
+			case "Business":
+				return selectedFlight.addBusinessPassengerCount(selectedPassengerAmount);
+			case "First Class":
+				return selectedFlight.addFirstClassPassengerCount(selectedPassengerAmount);
+			default:
+				return false;
+		}
 	}
 
 }

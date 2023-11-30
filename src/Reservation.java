@@ -325,10 +325,11 @@ public class Reservation {
 		}
 		
 		return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + ", " + 
- 	   		   this.flight.getZonedDateTimeDeparture().getMonth() + " " +  this.flight.getZonedDateTimeDeparture().getDayOfMonth() + " " +
+ 	   		   this.flight.getZonedDateTimeDeparture().getMonth().toString().substring(0, 3) + " " +  this.flight.getZonedDateTimeDeparture().getDayOfMonth() + " " +
  	   		   timeDepartureHour + ":" + String.format("%02d", this.flight.getZonedDateTimeDeparture().getMinute()) + " " + departPeriod + " - " +
- 	   		   this.flight.getZonedDateTimeArrival().getMonth() + " " +  this.flight.getZonedDateTimeArrival().getDayOfMonth() + " " + 
- 	   		   timeArrivalHour + ":" + String.format("%02d", this.flight.getZonedDateTimeArrival().getMinute()) + " " + arrivePeriod;
+ 	   		   this.flight.getZonedDateTimeArrival().getMonth().toString().substring(0, 3) + " " +  this.flight.getZonedDateTimeArrival().getDayOfMonth() + " " + 
+ 	   		   timeArrivalHour + ":" + String.format("%02d", this.flight.getZonedDateTimeArrival().getMinute()) + " " + arrivePeriod + ", " +
+ 	   		   this.cabin;
     }
 	 
 	

@@ -428,30 +428,42 @@ public class Flight {
 	/**
 	 * Adds passenger amount booked.
 	 * @param passenger amount as selected by customer
+	 * @return whether added successfully
 	 */
-	public void addEconomyPassengerCount(int selectedPassengerCount) {
+	public boolean addEconomyPassengerCount(int selectedPassengerCount) {
 		if(!this.isFull("Economy") && (this.economyPassengerCount + selectedPassengerCount) <= this.economyCapacity) {
 			economyPassengerCount += selectedPassengerCount;
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
 	/**
 	 * Adds passenger amount booked.
 	 * @param passenger amount as selected by customer
+	 * @return whether added successfully
 	 */
-	public void addBusinessPassengerCount(int selectedPassengerCount) {
+	public boolean addBusinessPassengerCount(int selectedPassengerCount) {
 		if(!this.isFull("Business") && (this.businessPassengerCount + selectedPassengerCount) <= this.businessCapacity) {
 			businessPassengerCount += selectedPassengerCount;
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
 	/**
 	 * Adds passenger amount booked.
 	 * @param passenger amount as selected by customer
+	 * @return whether added successfully
 	 */
-	public void addFirstClassPassengerCount(int selectedPassengerCount) {
+	public boolean addFirstClassPassengerCount(int selectedPassengerCount) {
 		if(!this.isFull("First Class") && (this.firstClassPassengerCount + selectedPassengerCount) <= this.firstClassCapacity) {
 			firstClassPassengerCount += selectedPassengerCount;
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
