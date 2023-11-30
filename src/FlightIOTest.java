@@ -127,7 +127,7 @@ class FlightIOTest {
 	}
 
 	@Test
-	void testRewritePassengerCountHasSelectedFlightFSingleLineFile() {
+	void testRewritePassengerCountHasSelectedFlightSingleLineFile() {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {// prepare file
 			writer.write("0000000004, One Way, JFK, LAX,, 2023-12-22, 05:35, 2023-12-22, 13:15, America/New_York, " +
 						 "100, 10, 300.00, 50, 40, 450.00, 30, 5, 650.00");
