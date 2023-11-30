@@ -169,7 +169,7 @@ public class SignInPane extends JPanel {
 					if (Manager.signIn(textField.getText(), passwordField.getPassword())) {
 						lblWrong.setVisible(false);
 						// FIXME: REPORTS PANE
-						System.out.println("FIXME: REPORTS PANE");
+						((CardLayout) contentPane.getLayout()).show(contentPane, "MANAGER");
 					} else {
 						lblWrong.setVisible(true);
 						passwordField.setText("");
