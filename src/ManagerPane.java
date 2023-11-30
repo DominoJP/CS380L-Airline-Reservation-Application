@@ -117,6 +117,8 @@ public class ManagerPane extends JPanel {
 				if(comboBoxOptions.getSelectedItem().toString().equals("Get Customer Revenue")) {
 					lblCustomer.setVisible(true);
 					textCustomer.setVisible(true);
+					
+					textCustomer.setText("");
 				}else {
 					lblCustomer.setVisible(false);
 					textCustomer.setVisible(false);
