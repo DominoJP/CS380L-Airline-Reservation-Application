@@ -356,27 +356,22 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 					return;
 				}
 			
-				if (isUniqueReservation(account, selectedFlight.getID())) {
-					if (updatePassengerCount() == true) {
-						IDGenerator IDGen = new IDGenerator();
-						reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
-						// Update reservation history in active account.
-						account.addReservationHistory(reservation);
-						ReservationIO.writeReservation(account, reservation);
-						try {
-						FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, selectedCabin);
-						} catch (IOException ioe) {
-					        ioe.printStackTrace();
-					    }
-						support.firePropertyChange("reservationBooked", null, true);
-						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
-					} else {
-						lblError.setVisible(true);
-						lblError.setText("Insufficient seating.");
-					}
+				if (updatePassengerCount() == true) {
+					IDGenerator IDGen = new IDGenerator();
+					reservation = new Reservation(IDGen.generateReservationID(), account, selectedFlight, selectedCabin, passengerNames, runningTotal, LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+					// Update reservation history in active account.
+					account.addReservationHistory(reservation);
+					ReservationIO.writeReservation(account, reservation);
+					try {
+					FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, selectedCabin);
+					} catch (IOException ioe) {
+				        ioe.printStackTrace();
+				    }
+					support.firePropertyChange("reservationBooked", null, true);
+					((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
 				} else {
 					lblError.setVisible(true);
-					lblError.setText("Account already booked class for flight.");
+					lblError.setText("Insufficient seating.");
 				}
 			}
 		});
@@ -499,6 +494,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	 * @param pending reservation
 	 * @return true if is a unique reservation
 	 */
+	@Deprecated
 	private static boolean isUniqueReservation(Account account, int flightID) {
 		Iterator<Reservation> iter;
 		iter = account.getReservationHistory().iterator();
