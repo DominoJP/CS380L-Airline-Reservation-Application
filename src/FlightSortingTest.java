@@ -195,7 +195,6 @@ class FlightSortingTest {
 
 	@Test
 	void testFindAirport1() {
-		FlightSorting flight = new FlightSorting();
 		Airport foundAirport = sort2.findAirport("LAX");
 		
 		if(foundAirport == null) {
