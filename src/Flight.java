@@ -551,6 +551,14 @@ public class Flight {
 				timeArrivalHour = 12;
 		}
 		
+		if (timeDepartureHour == 0) {
+			timeDepartureHour = 12;
+		}
+		
+		if (timeArrivalHour == 0) {
+			timeArrivalHour = 12;
+		}
+		
 		return "DEPARTS: " + timeDepartureHour + ":" + String.format("%02d", dateTimeDeparture.getMinute()) + " " + departPeriod +
 			   " - ARRIVES: " + timeArrivalHour + ":" + String.format("%02d", dateTimeArrival.getMinute()) + " " + arrivePeriod + ", " +
 			   dateTimeArrival.getMonth() + " " +  dateTimeArrival.getDayOfMonth();

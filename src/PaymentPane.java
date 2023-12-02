@@ -312,6 +312,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		JButton btnNewButton = new JButton("Return");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				lblError.setVisible(false);
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER" + selectedPassengerAmount + "");
 			}
 		});
