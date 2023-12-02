@@ -70,6 +70,9 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 				((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
 			}
 		});
+		
+		JButton btnSort = new JButton("Sort");
+		toolBar.add(btnSort);
 		toolBar.add(btnReview);
 
 	}
