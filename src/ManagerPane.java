@@ -66,124 +66,36 @@ public class ManagerPane extends JPanel {
 		owner.getReservations();
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{200, 200, 65, 275, 200, 200, 60, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.columnWidths = new int[]{70, 63, 57, 115, 62};
+		gridBagLayout.rowHeights = new int[]{20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		
-		JLabel lblOptions = new JLabel("Options");
+		JLabel lblOptions = new JLabel("Options:");
 		GridBagConstraints gbc_lblOptions = new GridBagConstraints();
-		gbc_lblOptions.anchor = GridBagConstraints.EAST;
+		gbc_lblOptions.anchor = GridBagConstraints.WEST;
 		gbc_lblOptions.insets = new Insets(0, 0, 5, 5);
-		gbc_lblOptions.gridx = 2;
-		gbc_lblOptions.gridy = 2;
+		gbc_lblOptions.gridx = 1;
+		gbc_lblOptions.gridy = 1;
 		add(lblOptions, gbc_lblOptions);
 		
 		JComboBox comboBoxOptions = new JComboBox();
 		comboBoxOptions.setModel(new DefaultComboBoxModel(new String[] {"Get Total Revenue", "Get Customer Revenue", "Get Partial Revenue"}));
 		GridBagConstraints gbc_comboBoxOptions = new GridBagConstraints();
-		gbc_comboBoxOptions.anchor = GridBagConstraints.EAST;
+		gbc_comboBoxOptions.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBoxOptions.gridwidth = 2;
 		gbc_comboBoxOptions.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxOptions.gridx = 3;
-		gbc_comboBoxOptions.gridy = 2;
+		gbc_comboBoxOptions.gridx = 2;
+		gbc_comboBoxOptions.gridy = 1;
 		add(comboBoxOptions, gbc_comboBoxOptions);
 		
-		JLabel lblStart = new JLabel("From");
-		GridBagConstraints gbc_lblStart = new GridBagConstraints();
-		gbc_lblStart.anchor = GridBagConstraints.SOUTHEAST;
-		gbc_lblStart.insets = new Insets(0, 0, 5, 5);
-		gbc_lblStart.gridx = 0;
-		gbc_lblStart.gridy = 5;
-		add(lblStart, gbc_lblStart);
-		lblStart.setVisible(false);
-		
-		JLabel lblMDYStart = new JLabel("(M/D/YYYY)");
-		GridBagConstraints gbc_lblMDYStart = new GridBagConstraints();
-		gbc_lblMDYStart.insets = new Insets(0, 0, 5, 5);
-		gbc_lblMDYStart.gridx = 2;
-		gbc_lblMDYStart.gridy = 5;
-		add(lblMDYStart, gbc_lblMDYStart);
-		lblMDYStart.setVisible(false);
-		
-		JLabel lblEnd = new JLabel("To");
-		GridBagConstraints gbc_lblEnd = new GridBagConstraints();
-		gbc_lblEnd.insets = new Insets(0, 0, 5, 5);
-		gbc_lblEnd.gridx = 4;
-		gbc_lblEnd.gridy = 5;
-		add(lblEnd, gbc_lblEnd);
-		lblEnd.setVisible(false);
-		
-		JLabel lblMDYEnd = new JLabel("(M/D/YYYY)");
-		GridBagConstraints gbc_lblMDYEnd = new GridBagConstraints();
-		gbc_lblMDYEnd.insets = new Insets(0, 0, 5, 0);
-		gbc_lblMDYEnd.gridx = 6;
-		gbc_lblMDYEnd.gridy = 5;
-		add(lblMDYEnd, gbc_lblMDYEnd);
-		lblMDYEnd.setVisible(false);
-		
-		JComboBox comboBoxStartMonth = new JComboBox(months);
-		GridBagConstraints gbc_comboBoxStartMonth = new GridBagConstraints();
-		gbc_comboBoxStartMonth.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxStartMonth.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxStartMonth.gridx = 0;
-		gbc_comboBoxStartMonth.gridy = 6;
-		add(comboBoxStartMonth, gbc_comboBoxStartMonth);
-		comboBoxStartMonth.setVisible(false);
-		
-		JComboBox comboBoxStartDay = new JComboBox(days);
-		GridBagConstraints gbc_comboBoxStartDay = new GridBagConstraints();
-		gbc_comboBoxStartDay.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxStartDay.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxStartDay.gridx = 1;
-		gbc_comboBoxStartDay.gridy = 6;
-		add(comboBoxStartDay, gbc_comboBoxStartDay);
-		comboBoxStartDay.setVisible(false);
-		
-		textStartYear = new JTextField();
-		GridBagConstraints gbc_textStartYear = new GridBagConstraints();
-		gbc_textStartYear.insets = new Insets(0, 0, 5, 5);
-		gbc_textStartYear.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textStartYear.gridx = 2;
-		gbc_textStartYear.gridy = 6;
-		add(textStartYear, gbc_textStartYear);
-		textStartYear.setColumns(10);
-		textStartYear.setVisible(false);
-		
-		JComboBox comboBoxEndMonth = new JComboBox(months);
-		GridBagConstraints gbc_comboBoxEndMonth = new GridBagConstraints();
-		gbc_comboBoxEndMonth.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxEndMonth.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxEndMonth.gridx = 4;
-		gbc_comboBoxEndMonth.gridy = 6;
-		add(comboBoxEndMonth, gbc_comboBoxEndMonth);
-		comboBoxEndMonth.setVisible(false);
-		
-		JComboBox comboBoxEndDay = new JComboBox(days);
-		GridBagConstraints gbc_comboBoxEndDay = new GridBagConstraints();
-		gbc_comboBoxEndDay.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBoxEndDay.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBoxEndDay.gridx = 5;
-		gbc_comboBoxEndDay.gridy = 6;
-		add(comboBoxEndDay, gbc_comboBoxEndDay);
-		comboBoxEndDay.setVisible(false);
-		
-		textEndYear = new JTextField();
-		GridBagConstraints gbc_textEndYear = new GridBagConstraints();
-		gbc_textEndYear.insets = new Insets(0, 0, 5, 0);
-		gbc_textEndYear.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textEndYear.gridx = 6;
-		gbc_textEndYear.gridy = 6;
-		add(textEndYear, gbc_textEndYear);
-		textEndYear.setColumns(10);
-		textEndYear.setVisible(false);
-		
-		JLabel lblCustomer = new JLabel("Customer");
+		JLabel lblCustomer = new JLabel("Customer ID:");
 		GridBagConstraints gbc_lblCustomer = new GridBagConstraints();
-		gbc_lblCustomer.anchor = GridBagConstraints.EAST;
+		gbc_lblCustomer.gridwidth = 2;
 		gbc_lblCustomer.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCustomer.gridx = 2;
-		gbc_lblCustomer.gridy = 9;
+		gbc_lblCustomer.gridx = 1;
+		gbc_lblCustomer.gridy = 3;
 		add(lblCustomer, gbc_lblCustomer);
 		lblCustomer.setVisible(false);
 		
@@ -192,71 +104,107 @@ public class ManagerPane extends JPanel {
 		gbc_textCustomer.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textCustomer.insets = new Insets(0, 0, 5, 5);
 		gbc_textCustomer.gridx = 3;
-		gbc_textCustomer.gridy = 9;
+		gbc_textCustomer.gridy = 3;
 		add(textCustomer, gbc_textCustomer);
 		textCustomer.setColumns(10);
 		textCustomer.setVisible(false);
 		
-		JLabel lblRevenue = new JLabel("Revenue");
+		JLabel lblStart = new JLabel(" From (MM/DD/YYYY)");
+		GridBagConstraints gbc_lblStart = new GridBagConstraints();
+		gbc_lblStart.gridwidth = 3;
+		gbc_lblStart.anchor = GridBagConstraints.WEST;
+		gbc_lblStart.insets = new Insets(0, 0, 5, 5);
+		gbc_lblStart.gridx = 1;
+		gbc_lblStart.gridy = 4;
+		add(lblStart, gbc_lblStart);
+		lblStart.setVisible(false);
+		
+		JComboBox comboBoxStartMonth = new JComboBox(months);
+		GridBagConstraints gbc_comboBoxStartMonth = new GridBagConstraints();
+		gbc_comboBoxStartMonth.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxStartMonth.gridx = 1;
+		gbc_comboBoxStartMonth.gridy = 5;
+		add(comboBoxStartMonth, gbc_comboBoxStartMonth);
+		comboBoxStartMonth.setVisible(false);
+		
+		JComboBox comboBoxStartDay = new JComboBox(days);
+		GridBagConstraints gbc_comboBoxStartDay = new GridBagConstraints();
+		gbc_comboBoxStartDay.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxStartDay.gridx = 2;
+		gbc_comboBoxStartDay.gridy = 5;
+		add(comboBoxStartDay, gbc_comboBoxStartDay);
+		comboBoxStartDay.setVisible(false);
+		
+		textStartYear = new JTextField();
+		GridBagConstraints gbc_textStartYear = new GridBagConstraints();
+		gbc_textStartYear.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textStartYear.insets = new Insets(0, 0, 5, 5);
+		gbc_textStartYear.gridx = 3;
+		gbc_textStartYear.gridy = 5;
+		add(textStartYear, gbc_textStartYear);
+		textStartYear.setColumns(10);
+		textStartYear.setVisible(false);
+		
+		JLabel lblEnd = new JLabel(" To (MM/DD/YYYY)");
+		GridBagConstraints gbc_lblEnd = new GridBagConstraints();
+		gbc_lblEnd.gridwidth = 4;
+		gbc_lblEnd.anchor = GridBagConstraints.WEST;
+		gbc_lblEnd.insets = new Insets(0, 0, 5, 0);
+		gbc_lblEnd.gridx = 1;
+		gbc_lblEnd.gridy = 6;
+		add(lblEnd, gbc_lblEnd);
+		lblEnd.setVisible(false);
+		
+		JComboBox comboBoxEndMonth = new JComboBox(months);
+		GridBagConstraints gbc_comboBoxEndMonth = new GridBagConstraints();
+		gbc_comboBoxEndMonth.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxEndMonth.gridx = 1;
+		gbc_comboBoxEndMonth.gridy = 7;
+		add(comboBoxEndMonth, gbc_comboBoxEndMonth);
+		comboBoxEndMonth.setVisible(false);
+		
+		JComboBox comboBoxEndDay = new JComboBox(days);
+		GridBagConstraints gbc_comboBoxEndDay = new GridBagConstraints();
+		gbc_comboBoxEndDay.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBoxEndDay.gridx = 2;
+		gbc_comboBoxEndDay.gridy = 7;
+		add(comboBoxEndDay, gbc_comboBoxEndDay);
+		comboBoxEndDay.setVisible(false);
+		
+		textEndYear = new JTextField();
+		GridBagConstraints gbc_textEndYear = new GridBagConstraints();
+		gbc_textEndYear.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textEndYear.insets = new Insets(0, 0, 5, 5);
+		gbc_textEndYear.gridx = 3;
+		gbc_textEndYear.gridy = 7;
+		add(textEndYear, gbc_textEndYear);
+		textEndYear.setColumns(10);
+		textEndYear.setVisible(false);
+		
+		JLabel lblRevenue = new JLabel("Revenue:");
 		GridBagConstraints gbc_lblRevenue = new GridBagConstraints();
-		gbc_lblRevenue.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_lblRevenue.anchor = GridBagConstraints.WEST;
 		gbc_lblRevenue.insets = new Insets(0, 0, 5, 5);
-		gbc_lblRevenue.gridx = 2;
-		gbc_lblRevenue.gridy = 11;
+		gbc_lblRevenue.gridx = 1;
+		gbc_lblRevenue.gridy = 9;
 		add(lblRevenue, gbc_lblRevenue);
 		
 		JLabel lblCurrentRevenue = new JLabel("");
 		GridBagConstraints gbc_lblCurrentRevenue = new GridBagConstraints();
 		gbc_lblCurrentRevenue.insets = new Insets(0, 0, 5, 5);
-		gbc_lblCurrentRevenue.gridx = 3;
-		gbc_lblCurrentRevenue.gridy = 11;
+		gbc_lblCurrentRevenue.gridx = 2;
+		gbc_lblCurrentRevenue.gridy = 9;
 		add(lblCurrentRevenue, gbc_lblCurrentRevenue);
 		
-		JButton btnSelect = new JButton("Select");
-		GridBagConstraints gbc_btnSelect = new GridBagConstraints();
-		gbc_btnSelect.insets = new Insets(0, 0, 5, 5);
-		gbc_btnSelect.gridx = 3;
-		gbc_btnSelect.gridy = 12;
-		add(btnSelect, gbc_btnSelect);
+		JButton btnGenerate = new JButton("Generate");
+		GridBagConstraints gbc_btnGenerate = new GridBagConstraints();
+		gbc_btnGenerate.anchor = GridBagConstraints.EAST;
+		gbc_btnGenerate.insets = new Insets(0, 0, 5, 5);
+		gbc_btnGenerate.gridx = 3;
+		gbc_btnGenerate.gridy = 9;
+		add(btnGenerate, gbc_btnGenerate);
 		
-		comboBoxOptions.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				lblCurrentRevenue.setText("");
-				
-				lblCustomer.setVisible(false);
-				textCustomer.setVisible(false);
-				lblStart.setVisible(false);
-				lblMDYStart.setVisible(false);
-				comboBoxStartMonth.setVisible(false);
-				comboBoxStartDay.setVisible(false);
-				textStartYear.setVisible(false);
-				lblEnd.setVisible(false);
-				lblMDYEnd.setVisible(false);
-				comboBoxEndMonth.setVisible(false);
-				comboBoxEndDay.setVisible(false);
-				textEndYear.setVisible(false);
-				
-				if(comboBoxOptions.getSelectedItem().toString().equals("Get Customer Revenue")) {
-					lblCustomer.setVisible(true);
-					textCustomer.setVisible(true);
-					
-					textCustomer.setText("");
-				}else if(comboBoxOptions.getSelectedItem().toString().equals("Get Partial Revenue")) {
-					lblStart.setVisible(true);
-					lblMDYStart.setVisible(true);
-					comboBoxStartMonth.setVisible(true);
-					comboBoxStartDay.setVisible(true);
-					textStartYear.setVisible(true);
-					lblEnd.setVisible(true);
-					lblMDYEnd.setVisible(true);
-					comboBoxEndMonth.setVisible(true);
-					comboBoxEndDay.setVisible(true);
-					textEndYear.setVisible(true);
-				}
-			}
-		});
-		
-		btnSelect.addActionListener(new ActionListener() {
+		btnGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				switch(comboBoxOptions.getSelectedItem().toString()){
 				case "Get Total Revenue":
@@ -284,6 +232,43 @@ public class ManagerPane extends JPanel {
 					
 					lblCurrentRevenue.setText(owner.getPartialRevenue(start, end).toString());
 					break;
+				}
+			}
+		});
+		
+		comboBoxOptions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblCurrentRevenue.setText("");
+				
+				lblCustomer.setVisible(false);
+				textCustomer.setVisible(false);
+				lblStart.setVisible(false);
+				// lblMDYStart.setVisible(false);
+				comboBoxStartMonth.setVisible(false);
+				comboBoxStartDay.setVisible(false);
+				textStartYear.setVisible(false);
+				lblEnd.setVisible(false);
+				// lblMDYEnd.setVisible(false);
+				comboBoxEndMonth.setVisible(false);
+				comboBoxEndDay.setVisible(false);
+				textEndYear.setVisible(false);
+				
+				if(comboBoxOptions.getSelectedItem().toString().equals("Get Customer Revenue")) {
+					lblCustomer.setVisible(true);
+					textCustomer.setVisible(true);
+					
+					textCustomer.setText("");
+				}else if(comboBoxOptions.getSelectedItem().toString().equals("Get Partial Revenue")) {
+					lblStart.setVisible(true);
+					// lblMDYStart.setVisible(true);
+					comboBoxStartMonth.setVisible(true);
+					comboBoxStartDay.setVisible(true);
+					textStartYear.setVisible(true);
+					lblEnd.setVisible(true);
+					// lblMDYEnd.setVisible(true);
+					comboBoxEndMonth.setVisible(true);
+					comboBoxEndDay.setVisible(true);
+					textEndYear.setVisible(true);
 				}
 			}
 		});
