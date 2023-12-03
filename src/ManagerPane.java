@@ -36,6 +36,7 @@ import javax.swing.JTextArea;
 import java.time.ZonedDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -269,13 +270,19 @@ public class ManagerPane extends JPanel {
 					String startMDY = textStartYear.getText() + "-" + comboBoxStartMonth.getSelectedItem().toString() + "-"
 										+ comboBoxStartDay.getSelectedItem().toString();
 					int endD = Integer.parseInt(comboBoxEndDay.getSelectedItem().toString()) + 1;
-					String endMDY = textEndYear.getText() + "-" + comboBoxEndMonth.getSelectedItem().toString() + "-"
-							+ endD;
+					String endDFormatted = String.format("%02d", endD);
+					String endMDY = textEndYear.getText() + "-" + comboBoxEndMonth.getSelectedItem().toString() + "-" + endDFormatted;
 					
-					startDate = ZonedDateTime.parse(startMDY + "T08:00:00+00:00" + "[" + ZoneId.systemDefault().toString() + "]");
-					endDate = ZonedDateTime.parse(endMDY + "T07:59:59+00:00" + "[" +ZoneId.systemDefault().toString() + "]");
+					LocalDate startDate = LocalDate.parse(startMDY);
+					ZonedDateTime start = startDate.atStartOfDay(ZoneId.of(ZoneId.systemDefault().toString()));
 					
-					lblCurrentRevenue.setText(owner.getPartialRevenue(startDate, endDate).toString());
+					LocalDate endDate = LocalDate.parse(endMDY);
+					ZonedDateTime end = endDate.atStartOfDay(ZoneId.of(ZoneId.systemDefault().toString()));
+					
+					// startDate = ZonedDateTime.parse(startMDY + "T00:00:00+00:00" + "[" + ZoneId.systemDefault().toString() + "]");
+					// endDate = ZonedDateTime.parse(endMDY + "T23:59:59+00:00" + "[" +ZoneId.systemDefault().toString() + "]");
+					
+					lblCurrentRevenue.setText(owner.getPartialRevenue(start, end).toString());
 					break;
 				}
 			}
