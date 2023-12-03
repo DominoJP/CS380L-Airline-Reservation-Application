@@ -208,11 +208,11 @@ public class ManagerPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				switch(comboBoxOptions.getSelectedItem().toString()){
 				case "Get Total Revenue":
-					lblCurrentRevenue.setText(owner.getTotalRevenue().toString());
+					lblCurrentRevenue.setText("$" + owner.getTotalRevenue().toString());
 					break;
 				case "Get Customer Revenue":
 					owner.getAllAccounts();
-					lblCurrentRevenue.setText(owner.getAccountRevenue(Integer.parseInt(textCustomer.getText())).toString());
+					lblCurrentRevenue.setText("$" + owner.getAccountRevenue(Integer.parseInt(textCustomer.getText())).toString());
 					break;
 				case "Get Partial Revenue":
 					String startMDY = textStartYear.getText() + "-" + comboBoxStartMonth.getSelectedItem().toString() + "-"
@@ -230,7 +230,7 @@ public class ManagerPane extends JPanel {
 					// startDate = ZonedDateTime.parse(startMDY + "T00:00:00+00:00" + "[" + ZoneId.systemDefault().toString() + "]");
 					// endDate = ZonedDateTime.parse(endMDY + "T23:59:59+00:00" + "[" +ZoneId.systemDefault().toString() + "]");
 					
-					lblCurrentRevenue.setText(owner.getPartialRevenue(start, end).toString());
+					lblCurrentRevenue.setText("$" + owner.getPartialRevenue(start, end).toString());
 					break;
 				}
 			}
