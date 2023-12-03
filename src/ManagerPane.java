@@ -268,11 +268,12 @@ public class ManagerPane extends JPanel {
 				case "Get Partial Revenue":
 					String startMDY = textStartYear.getText() + "-" + comboBoxStartMonth.getSelectedItem().toString() + "-"
 										+ comboBoxStartDay.getSelectedItem().toString();
+					int endD = Integer.parseInt(comboBoxEndDay.getSelectedItem().toString()) + 1;
 					String endMDY = textEndYear.getText() + "-" + comboBoxEndMonth.getSelectedItem().toString() + "-"
-							+ comboBoxEndDay.getSelectedItem().toString();
+							+ endD;
 					
-					startDate = ZonedDateTime.parse(startMDY + "T00:00:00+00:00" + "[" + ZoneId.systemDefault().toString() + "]");
-					endDate = ZonedDateTime.parse(endMDY + "T23:59:59+00:00" + "[" +ZoneId.systemDefault().toString() + "]");
+					startDate = ZonedDateTime.parse(startMDY + "T08:00:00+00:00" + "[" + ZoneId.systemDefault().toString() + "]");
+					endDate = ZonedDateTime.parse(endMDY + "T07:59:59+00:00" + "[" +ZoneId.systemDefault().toString() + "]");
 					
 					lblCurrentRevenue.setText(owner.getPartialRevenue(startDate, endDate).toString());
 					break;
