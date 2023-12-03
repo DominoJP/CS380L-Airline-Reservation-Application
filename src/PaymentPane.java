@@ -77,7 +77,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 			"Mexico",
 		};
 	
-	private String [] years = { "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34"};
+	private String [] years = {"24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34"};
 	
 	private String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	
@@ -312,6 +312,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		JButton btnNewButton = new JButton("Return");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				lblError.setVisible(false);
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER" + selectedPassengerAmount + "");
 			}
 		});
