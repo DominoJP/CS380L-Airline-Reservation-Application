@@ -222,6 +222,19 @@ public class ManagerPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				lblCurrentRevenue.setText("");
 				
+				lblCustomer.setVisible(false);
+				textCustomer.setVisible(false);
+				lblStart.setVisible(false);
+				lblMDYStart.setVisible(false);
+				comboBoxStartMonth.setVisible(false);
+				comboBoxStartDay.setVisible(false);
+				textStartYear.setVisible(false);
+				lblEnd.setVisible(false);
+				lblMDYEnd.setVisible(false);
+				comboBoxEndMonth.setVisible(false);
+				comboBoxEndDay.setVisible(false);
+				textEndYear.setVisible(false);
+				
 				if(comboBoxOptions.getSelectedItem().toString().equals("Get Customer Revenue")) {
 					lblCustomer.setVisible(true);
 					textCustomer.setVisible(true);
@@ -238,19 +251,6 @@ public class ManagerPane extends JPanel {
 					comboBoxEndMonth.setVisible(true);
 					comboBoxEndDay.setVisible(true);
 					textEndYear.setVisible(true);
-				}else {
-					lblCustomer.setVisible(false);
-					textCustomer.setVisible(false);
-					lblStart.setVisible(false);
-					lblMDYStart.setVisible(false);
-					comboBoxStartMonth.setVisible(false);
-					comboBoxStartDay.setVisible(false);
-					textStartYear.setVisible(false);
-					lblEnd.setVisible(false);
-					lblMDYEnd.setVisible(false);
-					comboBoxEndMonth.setVisible(false);
-					comboBoxEndDay.setVisible(false);
-					textEndYear.setVisible(false);
 				}
 			}
 		});
