@@ -64,7 +64,6 @@ public class AccountSignUp {
            // writer.write(Integer.toString(id));
             writer.newLine();     // Add a newline character to separate entries
 
-           System.out.println("Account information saved to " + "Customers.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }

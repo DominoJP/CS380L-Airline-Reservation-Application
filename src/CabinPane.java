@@ -179,18 +179,30 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 				}
 				if (rdbtnFirstClass.isSelected()) {
 					support.firePropertyChange("selectedCabin", null, "First Class");
+					if (selectedFlight.getFirstClassPassengerCount() == selectedFlight.getFirstClassCapacity()) {
+						displayErrorMessage("Cabin full.");
+						return;
+					}
 					if (selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount > selectedFlight.getFirstClassCapacity()) {
 						displayErrorMessage("Insufficient seating for selected passenger amount.");
 						return;
 					}
 				} else if (rdbtnBusiness.isSelected()) {
 					support.firePropertyChange("selectedCabin", null, "Business");
+					if (selectedFlight.getBusinessPassengerCount() == selectedFlight.getBusinessCapacity()) {
+						displayErrorMessage("Cabin full.");
+						return;
+					}
 					if (selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount > selectedFlight.getBusinessCapacity()) {
 						displayErrorMessage("Insufficient seating for selected passenger amount.");
 						return;
 					}
 				} else if (rdbtnEconomy.isSelected()){
 					support.firePropertyChange("selectedCabin", null, "Economy");
+					if (selectedFlight.getEconomyPassengerCount() == selectedFlight.getEconomyCapacity()) {
+						displayErrorMessage("Cabin full.");
+						return;
+					}
 					if (selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount > selectedFlight.getEconomyCapacity()) {
 						displayErrorMessage("Insufficient seating for selected passenger amount.");
 						return;
