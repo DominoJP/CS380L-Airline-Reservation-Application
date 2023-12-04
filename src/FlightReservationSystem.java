@@ -74,6 +74,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PaymentPane PaymentPane = new PaymentPane(contentPane, account);
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
 		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
+		//ReviewPane ReviewPane = new ReviewPane(contentPane, CancelReservation);
 
 
 		// Program start
@@ -99,11 +100,14 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		contentPane.add(ReservationListPane, "REVIEW_LIST");
 
 		// Select "Cancel"
+		contentPane.add(ReviewPane, "Cancel");
 		contentPane.add(ReservationCancellationPane, "Cancel");
+		
 
 
 		// in pattern observable.addPropertyChangeListener(observer)
 		// id & email
+		account.addPropertyChangeListener(ReviewPane);
 		account.addPropertyChangeListener(ReservationListPane);
 		account.addPropertyChangeListener(PaymentPane);
 

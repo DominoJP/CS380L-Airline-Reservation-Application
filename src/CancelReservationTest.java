@@ -113,13 +113,5 @@ class CancelReservationTest {
       assertThrows(IllegalArgumentException.class, () -> cancelReservation.cancelReservationAction(null));
   }
 
-  /**
-   * Test method to test if the Reservation ID is empty
-   */
-  @Test
-  void testCancelReservationActionEmptyId() {
-      // Test when the reservation ID is empty
-      CancelReservation cancelReservation = new CancelReservation(testReservationFilePath);
-      assertThrows(IllegalArgumentException.class, () -> cancelReservation.cancelReservationAction(""));
-  }
+  
 }

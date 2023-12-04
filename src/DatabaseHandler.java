@@ -4,25 +4,27 @@ import java.util.List;
 
 public class DatabaseHandler {
 
-    public static List<String> readFile(String filePath) throws IOException {
+    public List<String> readFromFile(String filePath) throws IOException {
         List<String> lines = new ArrayList<>();
-
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 lines.add(line);
             }
         }
-
         return lines;
     }
 
-    public static void writeFile(String filePath, List<String> content) throws IOException {
+    public boolean writeToFile(String filePath, List<String> data) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (String line : content) {
+            for (String line : data) {
                 writer.write(line);
                 writer.newLine();
             }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }
