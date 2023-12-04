@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.border.EtchedBorder;
 
 /**
@@ -56,6 +59,19 @@ public class ReservationCancellationPane extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 // Get the reservation ID to cancel from the text field
                 String reservationIDToCancel = reservationIDField.getText();
+                
+                ArrayList<Reservation> reservationHistory = account.getReservationHistory();
+                boolean accountHasReservationToCancel = false;
+        		for (Iterator<Reservation> iterator = reservationHistory.iterator(); iterator.hasNext();) {
+        			Reservation reservation = iterator.next();
+        			if (reservation.getID() == Integer.parseInt(reservationIDToCancel)) {
+        				accountHasReservationToCancel = true;
+        			}
+        		}
+        		if (accountHasReservationToCancel == false) {
+        			dataTextArea.setText("Reservation with ID " + reservationIDToCancel + " was not found or could not be canceled.");
+        			return;
+        		}
 
                 // Call the cancelReservation method from the CancelReservation class
                 if (cancelReservation.cancelReservationAction(reservationIDToCancel)) {
