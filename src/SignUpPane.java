@@ -171,12 +171,12 @@ public class SignUpPane extends JPanel {
 				 } else if (!txtEmail.getText().contains("@")){
 					 setError("Invalid email.");
 				 } else if (passwordField.getPassword().length < 8) {
-					 setError("Password is required!");
+					 setError("Passwords must be 8 characters.");
 				 } else if (!Arrays.equals(passwordField.getPassword(), passwordFieldRetype.getPassword())) {	
-					 setError("Retype password!");
+					 setError("Passwords do not match.");
 				} else {
 					 if (!emailIsUnique(txtEmail.getText())) {
-						 setError("Email is already used! try again!");
+						 setError("Email already in use.");
 					 }else {
 						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
 						lblError.setVisible(false);
