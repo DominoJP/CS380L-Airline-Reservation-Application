@@ -281,7 +281,7 @@ public class Account{
       * @return whether sign in successful
       */
      public boolean signIn(String email, char[] password) {
-    	 final String FILE_PATH = "src/Database/Customers.txt";
+    	 final String FILE_PATH = "Database/Customers.txt";
     	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			 String line;
 			 while ((line = reader.readLine()) != null) {
