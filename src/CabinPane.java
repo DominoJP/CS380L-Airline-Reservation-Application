@@ -204,6 +204,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		JButton btnBack = new JButton("Return");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				lblError.setVisible(false);
 				((CardLayout) contentPane.getLayout()).show(contentPane, "FILTER_LIST");
 			}
 		});

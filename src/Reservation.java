@@ -24,6 +24,18 @@ public class Reservation {
 	private BigDecimal totalPrice; // keeps track of the total cost of this reservation since multiple tickets may be ordered
 	private ZonedDateTime dateTimeAtBooking;
 	
+	public Reservation() {
+		this.reservationId = -1;
+		this.customer = null;
+		this.customerId = -1;
+		this.flight = null;
+		this.flightId = -1;
+		this.cabin = null;
+		this.passengers = new ArrayList<String>();
+		totalPrice = new BigDecimal(0);
+		dateTimeAtBooking = null;
+	}
+	
 	/**
 	 * a constructor that accepts nothing
 	 * @param bookingDate 
@@ -178,7 +190,7 @@ public class Reservation {
 		 }
 		 
 		 for(int i = 0; i < this.passengers.size(); i++) {
-			 this.totalPrice.add(price);
+			 this.totalPrice = this.totalPrice.add(price);
 		 }
 		 
 	 }
@@ -257,6 +269,7 @@ public class Reservation {
 		 for(int i = 0; i < this.passengers.size(); i++) {
 			 if(this.passengers.get(i) == p) {
 				 this.passengers.remove(i);
+				 this.setTotalPrice();
 				 exist = true;
 			 }
 		 }
