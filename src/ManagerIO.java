@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class ManagerIO {
 	private ArrayList<Manager> managers;
-	private String managerPath = "src/Database/Managers.txt";
+	private String managerPath = "Database/Managers.txt";
 	
 	public ManagerIO() {
 		managers = new ArrayList<Manager>();
