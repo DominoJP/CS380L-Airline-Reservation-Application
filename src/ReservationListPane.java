@@ -86,6 +86,10 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 			// this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
 			model.addElement((Reservation) evt.getNewValue());
 		}
+		if ((evt.getPropertyName()).equals("reservationRemoved")) {
+			// this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
+			model.removeElement((Reservation) evt.getNewValue());
+		}
 
 	}
 

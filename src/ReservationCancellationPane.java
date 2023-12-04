@@ -18,7 +18,7 @@ public class ReservationCancellationPane extends JPanel {
     private JTextField reservationIDField;      // Text field for entering reservation ID
     private JButton cancelReservationButton;    // Button for canceling a reservation
 
-    public ReservationCancellationPane(CancelReservation cancelReservation, JPanel contentPane) {
+    public ReservationCancellationPane(CancelReservation cancelReservation, JPanel contentPane, Account account) {
         setLayout(new BorderLayout());  // Set the layout of this panel to BorderLayout
 
         dataTextArea = new JTextArea(2,5);
@@ -59,6 +59,7 @@ public class ReservationCancellationPane extends JPanel {
 
                 // Call the cancelReservation method from the CancelReservation class
                 if (cancelReservation.cancelReservationAction(reservationIDToCancel)) {
+                	account.cancelReservation(reservationIDToCancel);
                     // Update the text area with a success message
                     dataTextArea.setText("Reservation with ID " + reservationIDToCancel + " has been canceled.");
                 } else {

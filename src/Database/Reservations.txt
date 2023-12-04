@@ -28,4 +28,15 @@ Booking Records:
 	Passenger Name: Josh Test
 --Reservation End--
 
+Reservation ID: 3
+Account ID: 2
+Flight Number: 3
+Date of Booking: 2023-12-07T18:53:48.190065-08:00[America/New_York]
+Date of Departure: 2023-12-22
+Departure Airport: LAX
+Arrival Airport: JFK
+Cabin Class: Economy
+Total Pricing: 300.00
+Booking Records:
+	Passenger Name: John
 --Reservation End--

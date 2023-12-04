@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.math.BigDecimal;
 
@@ -177,11 +178,36 @@ public class Account{
     public void cancelReservation(Reservation reservation) {
 
     	if(reservation == null) {
-		 System.out.println("Reservation cannot be cancel!");
+		 // System.out.println("Reservation cannot be cancel!");
 	 }
 	 else {
+		 
 		 reservationHistory.remove(reservation);
-		 System.out.println("Cancellation sucessful!");
+		 // System.out.println("Cancellation sucessful!");
+	       }
+    	}
+    
+    /**
+	 * Method to cancel reservation for the user.
+	 * @param reservation : reservation to be canceled.
+	 */
+    public void cancelReservation(String reservationID) {
+    	int id = Integer.parseInt(reservationID);
+     if (reservationHistory.isEmpty()) {
+		 // System.out.println("Reservation cannot be cancel!");
+	 }
+	 else {
+		Reservation reservationToRemove = null;
+		for (Iterator<Reservation> iterator = reservationHistory.iterator(); iterator.hasNext();) {
+			Reservation reservation = iterator.next();
+			if (reservation.getID() == id) {
+				reservationToRemove = reservation;
+			}
+		}
+		if (reservationHistory.remove(reservationToRemove)) {
+			support.firePropertyChange("reservationRemoved", null, reservationToRemove);
+		}
+		 // System.out.println("Cancellation sucessful!");
 	       }
     	}
 
