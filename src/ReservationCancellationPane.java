@@ -24,7 +24,6 @@ public class ReservationCancellationPane extends JPanel {
         dataTextArea = new JTextArea(2,5);
         dataTextArea.setTabSize(5);
         dataTextArea.setEditable(false);
-        cancelReservationButton = new JButton("Cancel Reservation");  // Create a button
 
         // Create a panel for the label "Enter Reservation ID:"
         JPanel labelPanel = new JPanel();
@@ -35,13 +34,22 @@ public class ReservationCancellationPane extends JPanel {
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane, BorderLayout.CENTER);  // Add a scrollable text area in the center
-        JLabel label = new JLabel("Enter Reservation ID:");
-        label.setHorizontalAlignment(SwingConstants.LEFT);
-        scrollPane.setColumnHeaderView(label);
-        reservationIDField = new JTextField(10);  // Create a text field with a width of 10 characters
-        scrollPane.setRowHeaderView(reservationIDField);
         add(labelPanel, BorderLayout.NORTH);
-        add(cancelReservationButton, BorderLayout.SOUTH);  // Add the cancel button to the SOUTH
+        
+        JButton btnReturn = new JButton("Return");
+        btnReturn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
+        	}
+        });
+        labelPanel.add(btnReturn);
+        JLabel lblReservationId = new JLabel("ID:");
+        labelPanel.add(lblReservationId);
+        lblReservationId.setHorizontalAlignment(SwingConstants.LEFT);
+        reservationIDField = new JTextField(10);
+        labelPanel.add(reservationIDField);
+        cancelReservationButton = new JButton("Cancel Reservation");  // Create a button
+        labelPanel.add(cancelReservationButton);
 
         // Add an action listener for the cancel button
         cancelReservationButton.addActionListener(new ActionListener() {
