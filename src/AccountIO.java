@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 
 public class AccountIO {
 	private ArrayList<Account> accounts;
-	private static final String accountsPath = "src/Database/Customers.txt";
+	private static final String accountsPath = "Database/Customers.txt";
 	private ReservationIO reservations;
 	
 	/**

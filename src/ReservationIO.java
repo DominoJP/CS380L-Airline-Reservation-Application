@@ -23,7 +23,7 @@ import java.util.Iterator;
  * @author Jevy Miranda
  */
 public final class ReservationIO {
-	private static final String FILE_PATH = "src/Database/Reservations.txt";
+	private static final String FILE_PATH = "Database/Reservations.txt";
 
 	/**
 	 * Instantiate reservations associated with account to Reservation ArrayList attribute of Account object.
