@@ -95,6 +95,19 @@ public class AccountIO {
 		return this.accounts;
 	}
 	
+	public Account findAccount(int accountNum) {
+		Account found = null;
+		
+		for(int i = 0; i < accounts.size(); i++) {
+			if(accounts.get(i).getAccountNumber() == accountNum) {
+				found = accounts.get(i);
+				return found;
+			}
+		}
+		
+		return found;
+	}
+	
 	/**
 	 * The writeAccount method stores a new account that was made into the file were all accounts
 	 * are stored

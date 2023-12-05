@@ -77,6 +77,8 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
 		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
 		ManagerPane managerPane = new ManagerPane(contentPane, manager);
+		
+		ReviewPane ReviewPane = new ReviewPane(contentPane, account, "src/Database/Reservations.txt");
 
 
 		// Program start

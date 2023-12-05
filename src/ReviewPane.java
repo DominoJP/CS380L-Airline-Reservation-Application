@@ -44,6 +44,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
     private JButton returnButton; // Return button
     private JButton cancelButton;
     private static final long serialVersionUID = 1L;
+    private Account reviewer;
 
     /**
      * Constructor to initialize the ReviewPane.
@@ -56,6 +57,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
         this.loadReservation = new LoadReservation(account, reservationsFilePath);
         this.cancelReservation = new CancelReservation(reservationsFilePath);
         this.reservations = new ArrayList<>(loadReservation.loadReservations());
+        this.reviewer = account;
 
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(500, 300));
@@ -74,7 +76,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
             public void valueChanged(ListSelectionEvent event) {
                 if (!event.getValueIsAdjusting()) {
                     Reservation selectedReservation = reservations.get(list.getSelectedIndex());
-                    displayReservation(selectedReservation, account);
+                    displayReservation(selectedReservation, reviewer);
                 }
             }
         });
@@ -149,8 +151,12 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if ((evt.getPropertyName()).equals("accountNumber")) {
-            this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
+            this.reviewer.setaccountNumber(((Integer) evt.getNewValue()));
         	
+            AccountIO getter = new AccountIO();
+            getter.readAccounts();
+            
+            this.reviewer = getter.findAccount(reviewer.getAccountNumber());
         }
 
     }
