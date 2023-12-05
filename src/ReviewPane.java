@@ -142,5 +142,17 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
         revalidate(); // Refresh the panel
         repaint(); // Repaint the panel
     }
+    
+    /**
+     * Listens for PropertyChangeEvent.
+     */
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if ((evt.getPropertyName()).equals("accountNumber")) {
+            this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
+        	
+        }
+
+    }
 }
 
