@@ -71,7 +71,7 @@ public class AccountIO {
 		for(int i = 0; i < accounts.size(); i++) {
 			curr = accounts.get(i);
 			for(int j = i+1; j < accounts.size(); j++) {
-				if(curr.getName().compareTo(accounts.get(j).getName()) > 0) {
+				if(curr.getAccountNumber() > accounts.get(i).getAccountNumber()) {
 					accounts.set(i, accounts.get(j));
 					accounts.set(j, curr);
 					curr = accounts.get(j);
