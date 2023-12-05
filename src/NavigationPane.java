@@ -28,6 +28,7 @@ import javax.swing.JSeparator;
  */
 public class NavigationPane extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
+	private static final String DEFAULT_TEXT = "Select a reservation option: ";
 	private JLabel lblConfirmation;
 
 	/**
@@ -52,7 +53,7 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 				"EXIT"
 		};
 		
-		lblConfirmation = new JLabel("");
+		lblConfirmation = new JLabel(DEFAULT_TEXT);
 		lblConfirmation.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
 		GridBagConstraints gbc_lblConfirmation = new GridBagConstraints();
 		gbc_lblConfirmation.gridwidth = 3;
@@ -67,6 +68,7 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 		gbc_separator.gridx = 2;
 		gbc_separator.gridy = 2;
 		add(separator, gbc_separator);
+		
 		JComboBox comboBox = new JComboBox(optionsArray);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -78,7 +80,9 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblConfirmation.setVisible(false);
+				if (!lblConfirmation.getText().equals(DEFAULT_TEXT)) {
+					lblConfirmation.setText(DEFAULT_TEXT);
+				}
 				String selection = comboBox.getSelectedItem().toString();
 				switch (selection) {
 					case "Reserve":
@@ -102,7 +106,6 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 		gbc_btnContinue.gridy = 4;
 		add(btnContinue, gbc_btnContinue);
 		
-		lblConfirmation.setVisible(false);
 	}
 	
 	/**
@@ -112,7 +115,7 @@ public class NavigationPane extends JPanel implements PropertyChangeListener {
 		// fires from PaymentPane
 		if (evt.getPropertyName().equals("reservationBooked")) {
 			lblConfirmation.setVisible((boolean) evt.getNewValue());
-			lblConfirmation.setText("Reservation booked. Confirmation will be sent to your email.");
+			lblConfirmation.setText("Reservation booked. Select 'Review' to see, or 'EXIT' to quit the program.");
 		}
 		// fires from 
 		if (evt.getPropertyName().equals("successfulSignUp")) {

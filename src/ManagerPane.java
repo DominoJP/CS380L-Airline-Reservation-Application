@@ -44,7 +44,8 @@ import java.time.LocalDateTime;
  * on what revenue was earned by the company. Either total revenue earned during the companies entire existence,
  * earned over a period of time, or by a specific customer.
  * @author Logan Langewisch
- * @version 2.0, Date Last Modified: December 3, 2023
+ * @author Jevy Miranda
+ * @version 2.1, Date Last Modified: December 4, 2023
  */
 public class ManagerPane extends JPanel {
 

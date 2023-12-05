@@ -20,7 +20,7 @@ import java.util.Iterator;
  * @author Jevy Miranda
  */
 public class IDGenerator {
-	private final String filePath = "src/Database/IDGeneratorHelper.txt";
+	private final String filePath = "Database/IDGeneratorHelper.txt";
 	private int lastReservationID;
 	private int lastAccountID;
 	

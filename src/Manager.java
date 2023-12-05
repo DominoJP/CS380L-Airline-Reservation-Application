@@ -27,8 +27,8 @@ public class Manager {
 	private Account customer;
 	private Flight flight;
 	private ArrayList<Flight> flightList;
-	private String reservationPath = "src/Database/Reservations.txt";
-	private String flightPath = "src/Database/Flights.txt";
+	private String reservationPath = "Database/Reservations.txt";
+	private String flightPath = "Database/Flights.txt";
 	private FlightIO finder;
 	private ArrayList<Account> accounts;
 
@@ -264,7 +264,7 @@ public class Manager {
      * @return whether sign in successful
      */
     public static boolean signIn(String email, char[] password) {
-   	 final String FILE_PATH = "src/Database/Managers.txt";
+   	 final String FILE_PATH = "Database/Managers.txt";
    	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			 String line;
 			 while ((line = reader.readLine()) != null) {

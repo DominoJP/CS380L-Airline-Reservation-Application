@@ -323,9 +323,9 @@ public class Reservation {
 		} else {
 			departPeriod = "PM";
 			timeDepartureHour -= 12;
-			if (timeDepartureHour == 0)
-				timeDepartureHour = 12;
 		}
+		if (timeDepartureHour == 0)
+			timeDepartureHour = 12;
 		
 		String arrivePeriod = "";
 		int timeArrivalHour = this.flight.getZonedDateTimeArrival().getHour();
@@ -334,11 +334,12 @@ public class Reservation {
 		} else {
 			arrivePeriod = "PM";
 			timeArrivalHour -= 12;
-			if (timeArrivalHour == 0)
-				timeArrivalHour = 12;
 		}
+		if (timeArrivalHour == 0)
+			timeArrivalHour = 12;
 		
-		return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + ", " + 
+		return "ID: " + reservationId + ", " +
+			   this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + ", " + 
  	   		   this.flight.getZonedDateTimeDeparture().getMonth().toString().substring(0, 3) + " " +  this.flight.getZonedDateTimeDeparture().getDayOfMonth() + " " +
  	   		   timeDepartureHour + ":" + String.format("%02d", this.flight.getZonedDateTimeDeparture().getMinute()) + " " + departPeriod + " - " +
  	   		   this.flight.getZonedDateTimeArrival().getMonth().toString().substring(0, 3) + " " +  this.flight.getZonedDateTimeArrival().getDayOfMonth() + " " + 

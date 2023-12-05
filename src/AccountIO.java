@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 
 public class AccountIO {
 	private ArrayList<Account> accounts;
-	private static final String accountsPath = "src/Database/Customers.txt";
+	private static final String accountsPath = "Database/Customers.txt";
 	private ReservationIO reservations;
 	
 	/**
@@ -67,16 +67,20 @@ public class AccountIO {
 	
 	public void sortAccounts() {
 		Account curr;
+		int lowest;
 		
 		for(int i = 0; i < accounts.size(); i++) {
 			curr = accounts.get(i);
+			lowest = i;
 			for(int j = i+1; j < accounts.size(); j++) {
-				if(curr.getName().compareTo(accounts.get(j).getName()) > 0) {
-					accounts.set(i, accounts.get(j));
-					accounts.set(j, curr);
+				if(curr.getAccountNumber() < accounts.get(i).getAccountNumber()) {
 					curr = accounts.get(j);
+					lowest = j;
 				}
 			}
+			
+			accounts.set(i, accounts.get(lowest));
+			accounts.set(lowest, curr);
 		}
 	}
 	

@@ -2,28 +2,28 @@
 
 
 
-Reservation ID: 0000000001
+Reservation ID: 1
 Account ID: 0000000001
-Flight Number: 0000000001
-Date of Booking: 2023-12-05T18:53:48.190065-08:00[America/Los_Angeles]
+Flight Number: 0000000002
+Date of Booking: 2023-12-01T18:53:48.190065-08:00[America/Los_Angeles]
 Date of Departure: 2023-12-22
 Departure Airport: LAX
 Arrival Airport: JFK
-Total Pricing: 300.00
+Total Pricing: 300.72
 Cabin Class: Economy
 Booking Records:
 	Passenger Name: Josh Test
 --Reservation End--
 
-Reservation ID: 0000000002
+Reservation ID: 2
 Account ID: 0000000002
-Flight Number: 0000000002
-Date of Booking: 2023-12-05T18:53:48.190065-08:00[America/Los_Angeles]
+Flight Number: 0000000001
+Date of Booking: 2023-12-01T18:53:48.190065-08:00[America/Los_Angeles]
 Date of Departure: 2023-12-22
 Departure Airport: LAX
 Arrival Airport: JFK
 Cabin Class: Economy
-Total Pricing: 280.00
+Total Pricing: 280.59
 Booking Records:
 	Passenger Name: Josh Test
 --Reservation End--
@@ -31,12 +31,12 @@ Booking Records:
 Reservation ID: 3
 Account ID: 2
 Flight Number: 3
-Date of Booking: 2023-12-07T18:53:48.190065-08:00[America/New_York]
+Date of Booking: 2023-12-03T18:53:48.190065-08:00[America/New_York]
 Date of Departure: 2023-12-22
 Departure Airport: LAX
 Arrival Airport: JFK
 Cabin Class: Economy
-Total Pricing: 300.00
+Total Pricing: 300.02
 Booking Records:
 	Passenger Name: John
 --Reservation End--
