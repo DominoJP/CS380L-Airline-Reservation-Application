@@ -42,7 +42,7 @@ import javax.swing.JButton;
  * @author Jevy Miranda
  */
 public class PassengerPane extends JPanel implements PropertyChangeListener {
-	
+	private static final long serialVersionUID = 1L;
 	private int selectedPassengerAmount;
 	private Flight selectedFlight;
 	private String selectedCabin;
@@ -53,9 +53,9 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 								"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 	
 	private PropertyChangeSupport support;
-
-	private static final long serialVersionUID = 1L;
 	private JTextField textName;
+	private JComboBox comboBox;
+	private JComboBox comboBoxCountry;
 	private JComboBox comboBoxState;
 	private JComboBox comboBoxBirthDay;
 	private JComboBox comboBoxBirthMonth;
@@ -101,7 +101,7 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		
-		for (int i = 1900; i < ZonedDateTime.now().getYear(); i++) {
+		for (int i = 1900; i <= ZonedDateTime.now().getYear(); i++) {
 			years.add(String.valueOf(i));
 		}
 		
@@ -177,7 +177,7 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 		add(textName, gbc_textName);
 		textName.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox(DepartmentofStateGenderMarkerArray);
+		comboBox = new JComboBox(DepartmentofStateGenderMarkerArray);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -263,7 +263,7 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 		gbc_lblState.gridy = 8;
 		add(lblState, gbc_lblState);
 		
-		JComboBox comboBoxCountry = new JComboBox(countryArray);
+		comboBoxCountry = new JComboBox(countryArray);
 		comboBoxCountry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (comboBoxCountry.getSelectedItem().toString().equals("United States")) {
@@ -354,6 +354,18 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 			support.firePropertyChange("isMinor" + passengerIndex, null, false);
 		}
 	}
+	/**
+	 * Resets JTextFields and JComboBoxes to default;
+	 */
+	private void resetPane() {
+		textName.setText("");
+		comboBox.setSelectedIndex(0);
+		comboBoxCountry.setSelectedIndex(0);
+		comboBoxState.setSelectedIndex(0);
+		comboBoxBirthDay.setSelectedIndex(0);
+		comboBoxBirthMonth.setSelectedIndex(0);
+		comboBoxBirthYear.setSelectedItem("2000");
+	}
 	
 	/**
 	 * Adds PropertyChangeListener.
@@ -369,11 +381,12 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
 			this.selectedPassengerAmount = ((int) evt.getNewValue());
-			System.out.print("amt");
 		}
-		
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
 			this.selectedFlight = ((Flight) evt.getNewValue());
+		}
+		if ((evt.getPropertyName()).equals("reservationBooked")) {
+			resetPane();
 		}
 	}
 

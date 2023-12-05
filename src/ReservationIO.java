@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -23,7 +24,7 @@ import java.util.Iterator;
  */
 public final class ReservationIO {
 	private static final String FILE_PATH = "src/Database/Reservations.txt";
-	
+
 	/**
 	 * Instantiate reservations associated with account to Reservation ArrayList attribute of Account object.
 	 * @param : active account
@@ -33,17 +34,17 @@ public final class ReservationIO {
 		int reservationID = 0;
 		int flightID = 0;
 		String cabin = "";
-		LocalDateTime bookingDateTime = LocalDateTime.parse("2000-01-01T12:00");
+		ZonedDateTime bookingDateTime = ZonedDateTime.parse("2000-01-01T20:45:30+05:30[Asia/Calcutta]");
 		BigDecimal totalPricing = new BigDecimal("0.00");
 		ArrayList<String> passengers = new ArrayList<>();
-		
+
 		try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 		    String line;
 		    while ((line = reader.readLine()) != null) {
 		    	if(line.length() == 0) { // Skip whitespace.
 		    		continue;
 		    	}
-		    	
+
 		    	// switch-case for flexibility in event of changes to format
 		    	// once format is finalized, can simply read line-by-line
 		    	String[] parts = line.split(": ");
@@ -60,7 +61,7 @@ public final class ReservationIO {
 		    			flightID = Integer.parseInt(parts[1]);
 		    			break;
 		    		case "Date of Booking":
-		    			bookingDateTime = LocalDateTime.parse(parts[1]);
+		    			bookingDateTime = ZonedDateTime.parse(parts[1]);
 		    			break;
 		    		case "Cabin Class":
 		    			cabin = parts[1];
@@ -80,14 +81,14 @@ public final class ReservationIO {
 		    			break;
 	    			default:
 		    	}
-		    	
+
 		    }
 		    reader.close();
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Writes the pending reservation to Reservations.txt
 	 * @param active account
@@ -118,7 +119,7 @@ public final class ReservationIO {
             e.printStackTrace();
         }
 	}
-	
+
 	/**
 	 * Validates that reservation for selected flight does not already exist for this account.
 	 * @param active account
@@ -136,5 +137,5 @@ public final class ReservationIO {
 		}
 		return true;
 	}
- 	
+
 }

@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.Iterator;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.CardLayout;
@@ -27,7 +28,7 @@ import javax.swing.ButtonGroup;
  * <p>
  * Data Structures: N/A.
  * Algorithms: N/A.
- * @version 2.2, Last Modified: Nov 18, 2023
+ * @version 2.2.2, Last Modified: Nov 28, 2023
  * @author Jevy Miranda
  */
 public class CabinPane extends JPanel implements PropertyChangeListener {
@@ -41,6 +42,11 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 	private JLabel lblEconomySeating;
 	private JLabel lblBusinessSeating;
 	private JLabel lblFirstClassSeating;
+	private JLabel lblError;
+	
+	private JRadioButton rdbtnEconomy;
+	private JRadioButton rdbtnBusiness;
+	private JRadioButton rdbtnFirstClass;
 
 	private static final long serialVersionUID = 1L;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -48,13 +54,13 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 	/**
 	 * Create the panel.
 	 */
-	public CabinPane(JPanel contentPane, Flight selectedFlight) {
+	public CabinPane(JPanel contentPane, Account account, Flight selectedFlight) {
 		support = new PropertyChangeSupport(this);
-		selectedPassengerAmount = 1;
+		selectedPassengerAmount = 0;
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{60, 0, 0, 0, 20, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWidths = new int[]{80, 0, 0, 0, 20, 0, 106, 0};
+		gridBagLayout.rowHeights = new int[]{40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
@@ -101,7 +107,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		gbc_lblEconomySeating.gridy = 3;
 		add(lblEconomySeating, gbc_lblEconomySeating);
 		
-		JRadioButton rdbtnEconomy = new JRadioButton("Economy");
+		rdbtnEconomy = new JRadioButton("Economy");
 		buttonGroup.add(rdbtnEconomy);
 		GridBagConstraints gbc_rdbtnEconomy = new GridBagConstraints();
 		gbc_rdbtnEconomy.anchor = GridBagConstraints.WEST;
@@ -125,7 +131,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		gbc_lblBusinessSeating.gridy = 4;
 		add(lblBusinessSeating, gbc_lblBusinessSeating);
 		
-		JRadioButton rdbtnBusiness = new JRadioButton("Business");
+		rdbtnBusiness = new JRadioButton("Business");
 		buttonGroup.add(rdbtnBusiness);
 		GridBagConstraints gbc_rdbtnBusiness = new GridBagConstraints();
 		gbc_rdbtnBusiness.anchor = GridBagConstraints.WEST;
@@ -148,7 +154,7 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		gbc_lblFirstClassSeating.gridy = 5;
 		add(lblFirstClassSeating, gbc_lblFirstClassSeating);
 		
-		JRadioButton rdbtnFirstClass = new JRadioButton("First Class");
+		rdbtnFirstClass = new JRadioButton("First Class");
 		buttonGroup.add(rdbtnFirstClass);
 		GridBagConstraints gbc_rdbtnFirstClass = new GridBagConstraints();
 		gbc_rdbtnFirstClass.anchor = GridBagConstraints.WEST;
@@ -167,13 +173,30 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		JButton btnContinue = new JButton("Continue");
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (isNotUniqueReservation(account, selectedFlight.getID())) {
+					displayErrorMessage("You already booked this cabin for this flight.");
+					return;
+				}
 				if (rdbtnFirstClass.isSelected()) {
 					support.firePropertyChange("selectedCabin", null, "First Class");
+					if (selectedFlight.getFirstClassPassengerCount() + selectedPassengerAmount > selectedFlight.getFirstClassCapacity()) {
+						displayErrorMessage("Insufficient seating for selected passenger amount.");
+						return;
+					}
 				} else if (rdbtnBusiness.isSelected()) {
 					support.firePropertyChange("selectedCabin", null, "Business");
-				} else {
+					if (selectedFlight.getBusinessPassengerCount() + selectedPassengerAmount > selectedFlight.getBusinessCapacity()) {
+						displayErrorMessage("Insufficient seating for selected passenger amount.");
+						return;
+					}
+				} else if (rdbtnEconomy.isSelected()){
 					support.firePropertyChange("selectedCabin", null, "Economy");
+					if (selectedFlight.getEconomyPassengerCount() + selectedPassengerAmount > selectedFlight.getEconomyCapacity()) {
+						displayErrorMessage("Insufficient seating for selected passenger amount.");
+						return;
+					}
 				}
+				lblError.setVisible(false);
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER1");
 			}
 		});
@@ -208,16 +231,40 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 		gbc_separator.gridy = 8;
 		add(separator, gbc_separator);
 		
-		JLabel lblSeatingWarning = new JLabel("Insufficient seating for passenger selection.");
-		lblSeatingWarning.setForeground(Color.RED);
-		lblSeatingWarning.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
-		GridBagConstraints gbc_lblSeatingWarning = new GridBagConstraints();
-		gbc_lblSeatingWarning.insets = new Insets(0, 0, 0, 5);
-		gbc_lblSeatingWarning.gridwidth = 4;
-		gbc_lblSeatingWarning.gridx = 2;
-		gbc_lblSeatingWarning.gridy = 9;
-		add(lblSeatingWarning, gbc_lblSeatingWarning);
-		lblSeatingWarning.setVisible(false);
+		lblError = new JLabel("Insufficient seating for passenger selection.");
+		lblError.setForeground(Color.RED);
+		lblError.setFont(new Font("Lucida Grande", Font.PLAIN, 9));
+		GridBagConstraints gbc_lblError = new GridBagConstraints();
+		gbc_lblError.insets = new Insets(0, 0, 0, 5);
+		gbc_lblError.gridwidth = 4;
+		gbc_lblError.gridx = 2;
+		gbc_lblError.gridy = 9;
+		add(lblError, gbc_lblError);
+		lblError.setVisible(false);
+	}
+	
+	/**
+	 * Validates that reservation for selected flight does not already exist for this account.
+	 * @param active account
+	 * @param pending reservation
+	 * @return true if is a unique reservation
+	 */
+	private boolean isNotUniqueReservation(Account account, int flightID) {
+		Iterator<Reservation> iter;
+		iter = account.getReservationHistory().iterator();
+		while (iter.hasNext()) {
+			Reservation reservation = iter.next();
+			if (reservation.getFlight().getID() == flightID) {
+				if (reservation.getCabin().equals("Economy") && rdbtnEconomy.isSelected()) {
+					return true;
+				} else if (reservation.getCabin() == "Business" && rdbtnBusiness.isSelected()) {
+					return true;
+				} else if (reservation.getCabin() == "First Class" && rdbtnFirstClass.isSelected()) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	/**
@@ -234,7 +281,6 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if ((evt.getPropertyName()).equals("passengerAmount")) {
 			this.selectedPassengerAmount = ((int) evt.getNewValue());
-			// FIXME: add check
 		}
 		
 		if ((evt.getPropertyName()).equals("selectedFlight")) {
@@ -247,6 +293,14 @@ public class CabinPane extends JPanel implements PropertyChangeListener {
 			lblFirstClassSeating.setText(selectedFlight.getFirstClassCapacity() - selectedFlight.getFirstClassPassengerCount() + " left");
 		}
 		
+	}
+	
+	/**
+	 * Sets message JLabel visibility to true.
+	 */
+	private void displayErrorMessage(String message) {
+		lblError.setVisible(true);
+		lblError.setText(message);
 	}
 
 }

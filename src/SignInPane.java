@@ -71,8 +71,8 @@ public class SignInPane extends JPanel {
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		JRadioButton rdbtnCustomer = new JRadioButton("Customer");
-		rdbtnCustomer.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
+		rdbtnCustomer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				// shows "Sign Up" if "Customer" selected
 				btnSignUp.setVisible(true);
 				textField.setText("");
@@ -88,8 +88,8 @@ public class SignInPane extends JPanel {
 		add(rdbtnCustomer, gbc_rdbtnCustomer);
 		
 		JRadioButton rdbtnManager = new JRadioButton("Manager");
-		rdbtnManager.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
+		rdbtnManager.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				// hides "Sign Up" if "Employee" selected
 				btnSignUp.setVisible(false);
 				textField.setText("");
@@ -166,10 +166,10 @@ public class SignInPane extends JPanel {
 						passwordField.setText("");
 					}
 				} else if (rdbtnManager.isSelected()) {
-					if (account.signIn(textField.getText(), passwordField.getPassword())) {
+					if (Manager.signIn(textField.getText(), passwordField.getPassword())) {
 						lblWrong.setVisible(false);
 						// FIXME: REPORTS PANE
-						System.out.println("FIXME: REPORTS PANE");
+						((CardLayout) contentPane.getLayout()).show(contentPane, "MANAGER");
 					} else {
 						lblWrong.setVisible(true);
 						passwordField.setText("");

@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 
@@ -21,7 +22,19 @@ public class Reservation {
 	//private ArrayList<String> passports; //variable in case if we decide to add passports to the reservations
 	//private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
 	private BigDecimal totalPrice; // keeps track of the total cost of this reservation since multiple tickets may be ordered
-	private LocalDateTime dateTimeAtBooking;
+	private ZonedDateTime dateTimeAtBooking;
+	
+	public Reservation() {
+		this.reservationId = -1;
+		this.customer = null;
+		this.customerId = -1;
+		this.flight = null;
+		this.flightId = -1;
+		this.cabin = null;
+		this.passengers = new ArrayList<String>();
+		totalPrice = new BigDecimal(0);
+		dateTimeAtBooking = null;
+	}
 	
 	/**
 	 * a constructor that accepts nothing
@@ -57,7 +70,7 @@ public class Reservation {
 	 */
 	 
 	 public Reservation(int reservationID, Account account, Flight matchingFlight, String cabin, ArrayList<String> passengers, BigDecimal totalPricing, 
-			 LocalDateTime bookingDateTime) {
+			 ZonedDateTime bookingDateTime) {
 		 this.reservationId = reservationID;
 		 this.customer = account;
 		 this.customerId = account.getAccountNumber();
@@ -87,7 +100,7 @@ public class Reservation {
 	  * that all passengers want
 	  */
 	 public void setReservation(Flight f, String type, ArrayList<String> people) {
-		 this.dateTimeAtBooking = LocalDateTime.now();
+		 this.dateTimeAtBooking = ZonedDateTime.now();
 		 this.flight = f;
 		 this.flightId = f.getID();
 		 this.cabin = type;
@@ -133,7 +146,7 @@ public class Reservation {
 	 }
 	 */
 	 
-	 public void setBooking(LocalDateTime current) {
+	 public void setBooking(ZonedDateTime current) {
 		 this.dateTimeAtBooking = current;
 	 }
 	 
@@ -177,7 +190,7 @@ public class Reservation {
 		 }
 		 
 		 for(int i = 0; i < this.passengers.size(); i++) {
-			 this.totalPrice.add(price);
+			 this.totalPrice = this.totalPrice.add(price);
 		 }
 		 
 	 }
@@ -240,7 +253,7 @@ public class Reservation {
 	  * Method returning LocalDateTime at booking.
 	  * @return LocalDateTime
 	  */
-	 public LocalDateTime getDateTimeAtBooking() {
+	 public ZonedDateTime getDateTimeAtBooking() {
 		 return this.dateTimeAtBooking;
 	 }
 	 
@@ -256,6 +269,7 @@ public class Reservation {
 		 for(int i = 0; i < this.passengers.size(); i++) {
 			 if(this.passengers.get(i) == p) {
 				 this.passengers.remove(i);
+				 this.setTotalPrice();
 				 exist = true;
 			 }
 		 }
@@ -325,10 +339,11 @@ public class Reservation {
 		}
 		
 		return this.flight.getcityDeparture() + " to "  + this.flight.getcityArrival() + ", " + 
- 	   		   this.flight.getZonedDateTimeDeparture().getMonth() + " " +  this.flight.getZonedDateTimeDeparture().getDayOfMonth() + " " +
+ 	   		   this.flight.getZonedDateTimeDeparture().getMonth().toString().substring(0, 3) + " " +  this.flight.getZonedDateTimeDeparture().getDayOfMonth() + " " +
  	   		   timeDepartureHour + ":" + String.format("%02d", this.flight.getZonedDateTimeDeparture().getMinute()) + " " + departPeriod + " - " +
- 	   		   this.flight.getZonedDateTimeArrival().getMonth() + " " +  this.flight.getZonedDateTimeArrival().getDayOfMonth() + " " + 
- 	   		   timeArrivalHour + ":" + String.format("%02d", this.flight.getZonedDateTimeArrival().getMinute()) + " " + arrivePeriod;
+ 	   		   this.flight.getZonedDateTimeArrival().getMonth().toString().substring(0, 3) + " " +  this.flight.getZonedDateTimeArrival().getDayOfMonth() + " " + 
+ 	   		   timeArrivalHour + ":" + String.format("%02d", this.flight.getZonedDateTimeArrival().getMinute()) + " " + arrivePeriod + ", " +
+ 	   		   this.cabin;
     }
 	 
 	
