@@ -105,6 +105,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 
 		// Select "Cancel"
 		contentPane.add(ReservationCancellationPane, "Cancel");
+		contentPane.add(ReviewPane, "Review");
 		
 		// Select "Manager"
 		contentPane.add(managerPane, "MANAGER");
