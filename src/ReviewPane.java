@@ -34,7 +34,7 @@ import java.util.ArrayList;
  */
 
 
-public abstract class ReviewPane extends JPanel implements PropertyChangeListener {
+public class ReviewPane extends JPanel implements PropertyChangeListener {
     private ArrayList<Reservation> reservations;
     private DefaultListModel model = new DefaultListModel();
     private JList list;
@@ -125,11 +125,11 @@ public abstract class ReviewPane extends JPanel implements PropertyChangeListene
         detailsPanel.removeAll(); // Clear the panel
 
         detailsPanel.add(new JLabel("Reservation ID:"));
-        detailsPanel.add(new JLabel(reservation.getID()));
+        detailsPanel.add(new JLabel("" + reservation.getID()));
         detailsPanel.add(new JLabel("Account ID:"));
-        detailsPanel.add(new JLabel(account.getAccountNumber()));
+        detailsPanel.add(new JLabel("" + account.getAccountNumber()));
         detailsPanel.add(new JLabel("Date of Departure:"));
-        detailsPanel.add(new JLabel(reservation.getFlight().getdateDeparture()));
+        detailsPanel.add(new JLabel(reservation.getFlight().getdateDeparture().toString()));
         detailsPanel.add(new JLabel("Departure Airport:"));
         detailsPanel.add(new JLabel(reservation.getFlight().getcityDeparture()));
         detailsPanel.add(new JLabel("Arrival Airport:"));
