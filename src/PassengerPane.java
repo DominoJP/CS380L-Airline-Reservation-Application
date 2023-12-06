@@ -318,7 +318,7 @@ public class PassengerPane extends JPanel implements PropertyChangeListener {
 					lblNameRequired.setVisible(true);
 				} else {
 					lblNameRequired.setVisible(false);
-					support.firePropertyChange("passengerName" + passengerIndex, null, textName.getText());
+					support.firePropertyChange("passengerName" + passengerIndex, null, textName.getText().trim());
 					if (passengerIndex == selectedPassengerAmount) {
 						support.firePropertyChange("sumRunningTotal", null, null);
 						checkMinor(passengerIndex);

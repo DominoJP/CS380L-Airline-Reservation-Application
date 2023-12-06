@@ -157,7 +157,7 @@ public class SignInPane extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (rdbtnCustomer.isSelected()) {
 					// if sign in successful
-					if (account.signIn(textField.getText(), passwordField.getPassword())) {
+					if (account.signIn(textField.getText().trim(), passwordField.getPassword())) {
 						// instantiate reservations from .txt
 						ReservationIO.instantiateReservations(account);
 						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
@@ -166,7 +166,7 @@ public class SignInPane extends JPanel {
 						passwordField.setText("");
 					}
 				} else if (rdbtnManager.isSelected()) {
-					if (Manager.signIn(textField.getText(), passwordField.getPassword())) {
+					if (Manager.signIn(textField.getText().trim(), passwordField.getPassword())) {
 						lblWrong.setVisible(false);
 						// FIXME: REPORTS PANE
 						((CardLayout) contentPane.getLayout()).show(contentPane, "MANAGER");
