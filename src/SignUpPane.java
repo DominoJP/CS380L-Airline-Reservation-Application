@@ -164,21 +164,21 @@ public class SignUpPane extends JPanel {
 		JButton btnSignUp = new JButton("Sign Up");
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (txtFirstName.getText().equals("") || txtLastName.getText().equals("")) {
+				if (txtFirstName.getText().isBlank() || txtLastName.getText().isBlank()) {
 					setError("First & Last Name required.");
-				 } else if (txtEmail.getText().isEmpty()) {
+				 } else if (txtEmail.getText().isBlank()) {
 					 setError("Email required.");
-				 } else if (!txtEmail.getText().contains("@")){
+				 } else if (!txtEmail.getText().trim().contains("@")){
 					 setError("Invalid email.");
 				 } else if (passwordField.getPassword().length < 8) {
 					 setError("Passwords must be 8 characters.");
 				 } else if (!Arrays.equals(passwordField.getPassword(), passwordFieldRetype.getPassword())) {	
 					 setError("Passwords do not match.");
 				} else {
-					 if (!emailIsUnique(txtEmail.getText())) {
+					 if (!emailIsUnique(txtEmail.getText().trim())) {
 						 setError("Email already in use.");
 					 }else {
-						AccountSignUp.writeToFile(txtEmail.getText(), String.valueOf(passwordField.getPassword()), txtFirstName.getText(), txtLastName.getText());
+						AccountSignUp.writeToFile(txtEmail.getText().trim(), String.valueOf(passwordField.getPassword()), txtFirstName.getText().trim(), txtLastName.getText().trim());
 						lblError.setVisible(false);
 						support.firePropertyChange("Successful SignUp!", null, true);
 						((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
