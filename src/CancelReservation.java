@@ -14,7 +14,7 @@ public class CancelReservation {
 	 /**
 	  * The default reservation file path.
 	  */
-    private String reservationFilePath = "src/Database/Reservation.txt";
+    private String reservationFilePath = "Database/Reservation.txt";
 
     /**
      * Constructor to set the reservation file path.

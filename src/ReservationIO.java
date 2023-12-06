@@ -23,7 +23,7 @@ import java.util.Iterator;
  * @author Jevy Miranda
  */
 public final class ReservationIO {
-	private static final String FILE_PATH = "src/Database/Reservations.txt";
+	private static final String FILE_PATH = "Database/Reservations.txt";
 
 	/**
 	 * Instantiate reservations associated with account to Reservation ArrayList attribute of Account object.
@@ -34,7 +34,7 @@ public final class ReservationIO {
 		int reservationID = 0;
 		int flightID = 0;
 		String cabin = "";
-		ZonedDateTime bookingDateTime = ZonedDateTime.parse("2000-01-01T20:45:30+05:30[Asia/Calcutta]");
+		ZonedDateTime bookingDateTime = ZonedDateTime.now();
 		BigDecimal totalPricing = new BigDecimal("0.00");
 		ArrayList<String> passengers = new ArrayList<>();
 

@@ -4,7 +4,6 @@ Manager ID: M12345
 Name: Test Josh
 Username: manager.josh
 Password: please
-Role: Manager
 Email: josh.test@gmail.com
 Phone: +1 (555) 987-6543
 

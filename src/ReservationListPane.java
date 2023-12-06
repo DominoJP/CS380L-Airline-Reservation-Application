@@ -67,6 +67,7 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		btnReview.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// FIXME: CANCELLATION PANE
+				Reservation selectedReservation = (Reservation) list.getSelectedValue();
 				((CardLayout) contentPane.getLayout()).show(contentPane, "Cancel");
 			}
 		});
@@ -85,6 +86,10 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		if ((evt.getPropertyName()).equals("newReservation")) {
 			// this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
 			model.addElement((Reservation) evt.getNewValue());
+		}
+		if ((evt.getPropertyName()).equals("reservationRemoved")) {
+			// this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
+			model.removeElement((Reservation) evt.getNewValue());
 		}
 
 	}

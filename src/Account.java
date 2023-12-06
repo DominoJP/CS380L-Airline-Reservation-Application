@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.math.BigDecimal;
 
 /**
  * Design documentation: "Account" 
@@ -29,6 +31,7 @@ public class Account{
 	 private String password;
 	 private int accountNumber;
 	 private List<Reservation> reservationHistory;
+	 private BigDecimal accountBalance;
 	 
 	 private PropertyChangeSupport support;
 
@@ -175,11 +178,36 @@ public class Account{
     public void cancelReservation(Reservation reservation) {
 
     	if(reservation == null) {
-		 System.out.println("Reservation cannot be cancel!");
+		 // System.out.println("Reservation cannot be cancel!");
 	 }
 	 else {
+		 
 		 reservationHistory.remove(reservation);
-		 System.out.println("Cancellation sucessful!");
+		 // System.out.println("Cancellation sucessful!");
+	       }
+    	}
+    
+    /**
+	 * Method to cancel reservation for the user.
+	 * @param reservation : reservation to be canceled.
+	 */
+    public void cancelReservation(String reservationID) {
+    	int id = Integer.parseInt(reservationID);
+     if (reservationHistory.isEmpty()) {
+		 // System.out.println("Reservation cannot be cancel!");
+	 }
+	 else {
+		Reservation reservationToRemove = null;
+		for (Iterator<Reservation> iterator = reservationHistory.iterator(); iterator.hasNext();) {
+			Reservation reservation = iterator.next();
+			if (reservation.getID() == id) {
+				reservationToRemove = reservation;
+			}
+		}
+		if (reservationHistory.remove(reservationToRemove)) {
+			support.firePropertyChange("reservationRemoved", null, reservationToRemove);
+		}
+		 // System.out.println("Cancellation sucessful!");
 	       }
     	}
 
@@ -198,7 +226,27 @@ public class Account{
 	 else {
 		 System.out.println("Invalid reservation. Reservation is not to be changed!");
 	  }
-   }
+     }
+     
+     /**
+      * The totalBalance method uses the ArrayList<Reservation> reservationHistory variable to 
+      * calculate the total balance that the customer owes on their account by adding
+      * the total cost of each individual reservation together
+      */
+     
+     public BigDecimal totalBalance() {
+    	 BigDecimal total = new BigDecimal(0);
+    	 
+    	 if(reservationHistory == null || reservationHistory.size() == 0) {
+    		 return total;
+    	 }
+    	 
+    	 for(int i = 0; i < reservationHistory.size(); i++) {
+    		 total = total.add(reservationHistory.get(i).getTotalPrice());
+    	 }
+    	 
+    	 return total;
+     }
 
      /**
       * Method to review flight details.
@@ -233,7 +281,7 @@ public class Account{
       * @return whether sign in successful
       */
      public boolean signIn(String email, char[] password) {
-    	 final String FILE_PATH = "src/Database/Customers.txt";
+    	 final String FILE_PATH = "Database/Customers.txt";
     	 try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
 			 String line;
 			 while ((line = reader.readLine()) != null) {

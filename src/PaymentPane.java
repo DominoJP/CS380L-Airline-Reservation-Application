@@ -364,7 +364,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 					account.addReservationHistory(reservation);
 					ReservationIO.writeReservation(account, reservation);
 					try {
-						FlightIO.rewritePassengerCount("src/Database/Flights.txt", selectedFlight, selectedCabin);
+						FlightIO.rewritePassengerCount("Database/Flights.txt", selectedFlight, selectedCabin);
 					} catch (IOException ioe) {
 				        ioe.printStackTrace();
 				    }

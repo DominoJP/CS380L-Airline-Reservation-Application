@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.swing.border.EtchedBorder;
 
 /**
@@ -18,13 +21,12 @@ public class ReservationCancellationPane extends JPanel {
     private JTextField reservationIDField;      // Text field for entering reservation ID
     private JButton cancelReservationButton;    // Button for canceling a reservation
 
-    public ReservationCancellationPane(CancelReservation cancelReservation, JPanel contentPane) {
+    public ReservationCancellationPane(CancelReservation cancelReservation, JPanel contentPane, Account account) {
         setLayout(new BorderLayout());  // Set the layout of this panel to BorderLayout
 
         dataTextArea = new JTextArea(2,5);
         dataTextArea.setTabSize(5);
         dataTextArea.setEditable(false);
-        cancelReservationButton = new JButton("Cancel Reservation");  // Create a button
 
         // Create a panel for the label "Enter Reservation ID:"
         JPanel labelPanel = new JPanel();
@@ -35,22 +37,45 @@ public class ReservationCancellationPane extends JPanel {
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         add(scrollPane, BorderLayout.CENTER);  // Add a scrollable text area in the center
-        JLabel label = new JLabel("Enter Reservation ID:");
-        label.setHorizontalAlignment(SwingConstants.LEFT);
-        scrollPane.setColumnHeaderView(label);
-        reservationIDField = new JTextField(10);  // Create a text field with a width of 10 characters
-        scrollPane.setRowHeaderView(reservationIDField);
         add(labelPanel, BorderLayout.NORTH);
-        add(cancelReservationButton, BorderLayout.SOUTH);  // Add the cancel button to the SOUTH
+        
+        JButton btnReturn = new JButton("Return");
+        btnReturn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		((CardLayout) contentPane.getLayout()).show(contentPane, "MENU");
+        	}
+        });
+        labelPanel.add(btnReturn);
+        JLabel lblReservationId = new JLabel("ID:");
+        labelPanel.add(lblReservationId);
+        lblReservationId.setHorizontalAlignment(SwingConstants.LEFT);
+        reservationIDField = new JTextField(10);
+        labelPanel.add(reservationIDField);
+        cancelReservationButton = new JButton("Cancel Reservation");  // Create a button
+        labelPanel.add(cancelReservationButton);
 
         // Add an action listener for the cancel button
         cancelReservationButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Get the reservation ID to cancel from the text field
                 String reservationIDToCancel = reservationIDField.getText();
+                
+                ArrayList<Reservation> reservationHistory = account.getReservationHistory();
+                boolean accountHasReservationToCancel = false;
+        		for (Iterator<Reservation> iterator = reservationHistory.iterator(); iterator.hasNext();) {
+        			Reservation reservation = iterator.next();
+        			if (reservation.getID() == Integer.parseInt(reservationIDToCancel)) {
+        				accountHasReservationToCancel = true;
+        			}
+        		}
+        		if (accountHasReservationToCancel == false) {
+        			dataTextArea.setText("Reservation with ID " + reservationIDToCancel + " was not found or could not be canceled.");
+        			return;
+        		}
 
                 // Call the cancelReservation method from the CancelReservation class
                 if (cancelReservation.cancelReservationAction(reservationIDToCancel)) {
+                	account.cancelReservation(reservationIDToCancel);
                     // Update the text area with a success message
                     dataTextArea.setText("Reservation with ID " + reservationIDToCancel + " has been canceled.");
                 } else {

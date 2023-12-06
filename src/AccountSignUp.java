@@ -45,7 +45,7 @@ public class AccountSignUp {
 
     public static void writeToFile(String email, String password, String firstname, String lastname) {
     	
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Database/Customers.txt", true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Database/Customers.txt", true))) {
         	IDGenerator idGen = new IDGenerator();
         	int id = idGen.generateAccountID();
         	// + "" typecasts int to String
@@ -64,7 +64,6 @@ public class AccountSignUp {
            // writer.write(Integer.toString(id));
             writer.newLine();     // Add a newline character to separate entries
 
-           System.out.println("Account information saved to " + "Customers.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
