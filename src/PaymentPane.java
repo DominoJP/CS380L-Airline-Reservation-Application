@@ -383,13 +383,13 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		btnPay = new JButton("PAY $" + 0.00);
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*
+				
 				if (formattedTextCardNumber.getText().isBlank()|| textFirstName.getText().isBlank() || textLastName.getText().isBlank() 
 						|| formattedTextCSC.getText().isBlank() || textAddress.getText().isBlank() || textCity.getText().isBlank() || formattedTextZIP.getText().isBlank()) {
 						setError("Field empty or incomplete.");
 						return;
 					}
-				*/
+
 				
 				if (cardIsExpired(Integer.parseInt(comboBoxMonth.getSelectedItem().toString()), Integer.parseInt(comboBoxYear.getSelectedItem().toString()))) {
 					setError("Card expired.");
