@@ -73,8 +73,7 @@ public class AccountIO {
 			curr = accounts.get(i);
 			lowest = i;
 			for(int j = i+1; j < accounts.size(); j++) {
-				if(curr.getAccountNumber() < accounts.get(i).getAccountNumber()) {
-					curr = accounts.get(j);
+				if(accounts.get(lowest).getAccountNumber() < accounts.get(j).getAccountNumber()) {
 					lowest = j;
 				}
 			}

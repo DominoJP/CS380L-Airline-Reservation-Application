@@ -10,7 +10,10 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -19,10 +22,12 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Insets;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.JFormattedTextField;
 
 /**
  * Design Documentation: "PaymentUI."
@@ -36,7 +41,7 @@ import java.awt.Color;
  * <p>
  * Data Structures: Arrays as inputs for card type, card date, country, and state.
  * Algorithms: N/A.
- * @version 2.2, Last Modified: November 17, 2023
+ * @version 2.2.1, Last Modified: Dec 6, 2023
  * @author Jevy Miranda
  */
 public class PaymentPane extends JPanel implements PropertyChangeListener {
@@ -52,12 +57,18 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	private boolean[] areMinors = {true, true, true, true, true, true};
 	private boolean hasAdult;
 	private JButton btnPay;
+	private JFormattedTextField formattedTextCardNumber;
+	private JComboBox comboBoxMonth;
+	
 	private JTextField textFirstName;
-	private JTextField textCardNumber;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textLastName;
+	private JFormattedTextField formattedTextCSC;
+	private JTextField textAddress;
+	private JTextField textCity;
+	private JLabel lblState;
+	private JComboBox comboBoxState;
+	private JComboBox comboBoxYear;
+	private JFormattedTextField formattedTextZIP;
 	private JLabel lblError;
 	private PropertyChangeSupport support;
 
@@ -77,7 +88,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 			"Mexico",
 		};
 	
-	private String [] years = {"24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34"};
+	private ArrayList<String> years;
 	
 	private String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	
@@ -102,6 +113,11 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	 * @param account
 	 */
 	public PaymentPane(JPanel contentPane, Account account) {
+		years = new ArrayList<>();
+		for (int i = ZonedDateTime.now().getYear(); i < (ZonedDateTime.now().getYear() + 10); i++) {
+			years.add("" + i);
+		}
+		
 		support = new PropertyChangeSupport(this);
 		selectedPassengerAmount = 1;
 		selectedCabin = "Economy";
@@ -114,7 +130,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 53, 99, 81, 80};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, 0.0, 0.0};
+		gridBagLayout.columnWeights = new double[]{1.0, 1.0, 0.0, 1.0, 0.0, 1.0};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
@@ -125,8 +141,6 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblCardType.gridx = 0;
 		gbc_lblCardType.gridy = 0;
 		add(lblCardType, gbc_lblCardType);
-		
-		
 		
 		JLabel lblCardNumber = new JLabel(" Card Number");
 		GridBagConstraints gbc_lblCardNumber = new GridBagConstraints();
@@ -154,26 +168,30 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_comboBoxCardType.gridy = 1;
 		add(comboBoxCardType, gbc_comboBoxCardType);
 		
-		textCardNumber = new JTextField();
-		textCardNumber.setColumns(10);
-		GridBagConstraints gbc_textCardNumber = new GridBagConstraints();
-		gbc_textCardNumber.gridwidth = 3;
-		gbc_textCardNumber.insets = new Insets(0, 0, 5, 5);
-		gbc_textCardNumber.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textCardNumber.gridx = 1;
-		gbc_textCardNumber.gridy = 1;
-		add(textCardNumber, gbc_textCardNumber);
+		try {
+			formattedTextCardNumber = new JFormattedTextField(new MaskFormatter("################"));
+			GridBagConstraints gbc_formattedTextCardNumber = new GridBagConstraints();
+			gbc_formattedTextCardNumber.gridwidth = 3;
+			gbc_formattedTextCardNumber.insets = new Insets(0, 0, 5, 5);
+			gbc_formattedTextCardNumber.fill = GridBagConstraints.HORIZONTAL;
+			gbc_formattedTextCardNumber.gridx = 1;
+			gbc_formattedTextCardNumber.gridy = 1;
+			add(formattedTextCardNumber, gbc_formattedTextCardNumber);
+		} catch (ParseException e) {
+	         e.printStackTrace();
+	    }
 		
 		
-		JComboBox comboBoxMonth = new JComboBox(months);
+		comboBoxMonth = new JComboBox(months);
 		GridBagConstraints gbc_comboBoxMonth = new GridBagConstraints();
 		gbc_comboBoxMonth.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBoxMonth.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBoxMonth.gridx = 4;
 		gbc_comboBoxMonth.gridy = 1;
 		add(comboBoxMonth, gbc_comboBoxMonth);
+		comboBoxMonth.setSelectedItem("" + ZonedDateTime.now().getMonthValue());
 		
-		JComboBox comboBoxYear = new JComboBox(years);
+		comboBoxYear = new JComboBox(years.toArray());
 		GridBagConstraints gbc_comboBoxYear = new GridBagConstraints();
 		gbc_comboBoxYear.insets = new Insets(0, 0, 5, 0);
 		gbc_comboBoxYear.fill = GridBagConstraints.HORIZONTAL;
@@ -198,6 +216,14 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblLastName.gridy = 2;
 		add(lblLastName, gbc_lblLastName);
 		
+		JLabel lblCSC = new JLabel(" CSC");
+		GridBagConstraints gbc_lblCSC = new GridBagConstraints();
+		gbc_lblCSC.anchor = GridBagConstraints.WEST;
+		gbc_lblCSC.insets = new Insets(0, 0, 5, 0);
+		gbc_lblCSC.gridx = 5;
+		gbc_lblCSC.gridy = 2;
+		add(lblCSC, gbc_lblCSC);
+		
 		textFirstName = new JTextField();
 		GridBagConstraints gbc_textFirstName = new GridBagConstraints();
 		gbc_textFirstName.gridwidth = 3;
@@ -208,15 +234,27 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		add(textFirstName, gbc_textFirstName);
 		textFirstName.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 2;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 3;
-		gbc_textField.gridy = 3;
-		add(textField, gbc_textField);
+		textLastName = new JTextField();
+		textLastName.setColumns(10);
+		GridBagConstraints gbc_textLastName = new GridBagConstraints();
+		gbc_textLastName.gridwidth = 2;
+		gbc_textLastName.insets = new Insets(0, 0, 5, 5);
+		gbc_textLastName.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textLastName.gridx = 3;
+		gbc_textLastName.gridy = 3;
+		add(textLastName, gbc_textLastName);
+		
+		try {
+			formattedTextCSC = new JFormattedTextField(new MaskFormatter("###"));
+			GridBagConstraints gbc_formattedTextCSC = new GridBagConstraints();
+			gbc_formattedTextCSC.insets = new Insets(0, 0, 5, 0);
+			gbc_formattedTextCSC.fill = GridBagConstraints.HORIZONTAL;
+			gbc_formattedTextCSC.gridx = 5;
+			gbc_formattedTextCSC.gridy = 3;
+			add(formattedTextCSC, gbc_formattedTextCSC);
+		} catch (ParseException e) {
+	         e.printStackTrace();
+	    }
 		
 		JLabel lblCountry = new JLabel(" Country");
 		GridBagConstraints gbc_lblCountry = new GridBagConstraints();
@@ -237,6 +275,17 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		add(lblBillingAddress, gbc_lblBillingAddress);
 		
 		JComboBox comboBoxCountry = new JComboBox(countryArray);
+		comboBoxCountry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!comboBoxCountry.getSelectedItem().toString().equals("United States")) {
+					comboBoxState.setVisible(false);
+					lblState.setVisible(false);
+				} else {
+					comboBoxState.setVisible(true);
+					lblState.setVisible(true);
+				}
+			}
+		});
 		GridBagConstraints gbc_comboBoxCountry = new GridBagConstraints();
 		gbc_comboBoxCountry.gridwidth = 3;
 		gbc_comboBoxCountry.insets = new Insets(0, 0, 5, 5);
@@ -245,15 +294,15 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_comboBoxCountry.gridy = 5;
 		add(comboBoxCountry, gbc_comboBoxCountry);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 2;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 3;
-		gbc_textField_1.gridy = 5;
-		add(textField_1, gbc_textField_1);
+		textAddress = new JTextField();
+		textAddress.setColumns(10);
+		GridBagConstraints gbc_textAddress = new GridBagConstraints();
+		gbc_textAddress.gridwidth = 2;
+		gbc_textAddress.insets = new Insets(0, 0, 5, 5);
+		gbc_textAddress.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textAddress.gridx = 3;
+		gbc_textAddress.gridy = 5;
+		add(textAddress, gbc_textAddress);
 		
 		JLabel lblCity = new JLabel(" City");
 		GridBagConstraints gbc_lblCity = new GridBagConstraints();
@@ -263,7 +312,7 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblCity.gridy = 6;
 		add(lblCity, gbc_lblCity);
 		
-		JLabel lblState = new JLabel(" State");
+		lblState = new JLabel(" State");
 		GridBagConstraints gbc_lblState = new GridBagConstraints();
 		gbc_lblState.anchor = GridBagConstraints.WEST;
 		gbc_lblState.insets = new Insets(0, 0, 5, 5);
@@ -271,8 +320,6 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblState.gridy = 6;
 		add(lblState, gbc_lblState);
 					
-		
-		
 		JLabel lblPostalCode = new JLabel(" ZIP Code");
 		GridBagConstraints gbc_lblPostalCode = new GridBagConstraints();
 		gbc_lblPostalCode.anchor = GridBagConstraints.WEST;
@@ -281,17 +328,17 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_lblPostalCode.gridy = 6;
 		add(lblPostalCode, gbc_lblPostalCode);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.gridwidth = 3;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 0;
-		gbc_textField_2.gridy = 7;
-		add(textField_2, gbc_textField_2);
+		textCity = new JTextField();
+		textCity.setColumns(10);
+		GridBagConstraints gbc_textCity = new GridBagConstraints();
+		gbc_textCity.gridwidth = 3;
+		gbc_textCity.insets = new Insets(0, 0, 5, 5);
+		gbc_textCity.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textCity.gridx = 0;
+		gbc_textCity.gridy = 7;
+		add(textCity, gbc_textCity);
 		
-		JComboBox comboBoxState = new JComboBox(states);
+		comboBoxState = new JComboBox(states);
 		GridBagConstraints gbc_comboBoxState = new GridBagConstraints();
 		gbc_comboBoxState.gridwidth = 2;
 		gbc_comboBoxState.insets = new Insets(0, 0, 5, 5);
@@ -300,15 +347,6 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		gbc_comboBoxState.gridy = 7;
 		add(comboBoxState, gbc_comboBoxState);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 5;
-		gbc_textField_3.gridy = 7;
-		add(textField_3, gbc_textField_3);
-		
 		JButton btnNewButton = new JButton("Return");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -316,6 +354,18 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 				((CardLayout) contentPane.getLayout()).show(contentPane, "PASSENGER" + selectedPassengerAmount + "");
 			}
 		});
+		
+		try {
+			formattedTextZIP = new JFormattedTextField(new MaskFormatter("#####"));
+			GridBagConstraints gbc_formattedTextZIP = new GridBagConstraints();
+			gbc_formattedTextZIP.insets = new Insets(0, 0, 5, 0);
+			gbc_formattedTextZIP.fill = GridBagConstraints.HORIZONTAL;
+			gbc_formattedTextZIP.gridx = 5;
+			gbc_formattedTextZIP.gridy = 7;
+			add(formattedTextZIP, gbc_formattedTextZIP);
+		} catch (ParseException e) {
+	         e.printStackTrace();
+	    }
 		
 		JSeparator separator = new JSeparator();
 		GridBagConstraints gbc_separator = new GridBagConstraints();
@@ -333,12 +383,24 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 		btnPay = new JButton("PAY $" + 0.00);
 		btnPay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*
+				if (formattedTextCardNumber.getText().isBlank()|| textFirstName.getText().isBlank() || textLastName.getText().isBlank() 
+						|| formattedTextCSC.getText().isBlank() || textAddress.getText().isBlank() || textCity.getText().isBlank() || formattedTextZIP.getText().isBlank()) {
+						setError("Field empty or incomplete.");
+						return;
+					}
+				*/
+				
+				if (cardIsExpired(Integer.parseInt(comboBoxMonth.getSelectedItem().toString()), Integer.parseInt(comboBoxYear.getSelectedItem().toString()))) {
+					setError("Card expired.");
+					return;
+				}
+				
 				for (int i = 0; i < selectedPassengerAmount; i++) {
 					if (areMinors[i] == false) {
 						hasAdult = true;
 					}
 				}
-				
 				if (hasAdult == false) {
 					lblError.setVisible(true);
 					lblError.setText("Unaccompanied minor(s).");
@@ -522,6 +584,20 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 	}
 	
 	/**
+	 * Checks whether the card has expired.
+	 * @param month of expiry
+	 * @param year expiry
+	 * @return true if expired
+	 */
+	private boolean cardIsExpired(int month, int year) {
+		if (YearMonth.of(year, month).compareTo(YearMonth.now()) < 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
 	 * Checks whether flight on departure date would have already departed.
 	 * @return true if flight would have already departed
 	 */
@@ -552,6 +628,14 @@ public class PaymentPane extends JPanel implements PropertyChangeListener {
 				return false;
 		}
 	}
-
+	
+	/**
+	 * Changes error message and visibility.
+	 * @param message to display
+	 */
+	private void setError(String message) {
+		lblError.setVisible(true);
+		lblError.setText(message);
+	}
 }
 
