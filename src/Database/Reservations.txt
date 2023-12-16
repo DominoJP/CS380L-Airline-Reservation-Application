@@ -1,6 +1,3 @@
---Reservation End--
-
-
 
 Reservation ID: 0000000001
 Account ID: 0000000001

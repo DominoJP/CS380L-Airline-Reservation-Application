@@ -65,11 +65,20 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		
 		JButton btnReview = new JButton("Review Selected Reservation");
 		btnReview.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// FIXME: CANCELLATION PANE
-				((CardLayout) contentPane.getLayout()).show(contentPane, "Review");
-			}
+		   public void actionPerformed(ActionEvent e) {
+		       Reservation selectedReservation = (Reservation) list.getSelectedValue();
+		       // Pass the selected reservation to the ReviewPane
+		       PropertyChangeEvent event = new PropertyChangeEvent(this, "selectedReservation", null, selectedReservation);
+		       for (PropertyChangeListener listener : getPropertyChangeListeners()) {
+		           listener.propertyChange(event);
+		       }
+		       ((CardLayout) contentPane.getLayout()).show(contentPane, "Review");
+		   }
 		});
+
+		
+		JButton btnSort = new JButton("Sort");
+		toolBar.add(btnSort);
 		toolBar.add(btnReview);
 
 	}
@@ -83,7 +92,12 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 			// this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
 			model.addElement((Reservation) evt.getNewValue());
 		}
+		if ((evt.getPropertyName()).equals("reservationRemoved")) {
+			// this.reservations = ((ArrayList<Reservation>) evt.getNewValue());
+			model.removeElement((Reservation) evt.getNewValue());
+		}
 
 	}
 
 }
+
