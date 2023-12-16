@@ -27,6 +27,7 @@ public class DatabaseHandler {
             return true;
             
         } catch (IOException e) {
+            System.out.println("IOException occurred: " + e.getMessage());
             e.printStackTrace();
             return false;
         }

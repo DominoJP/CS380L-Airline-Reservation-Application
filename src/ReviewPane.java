@@ -76,11 +76,11 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	       System.out.println("Reservations Size: " + reservations.size());
 
 	       list.addListSelectionListener(new ListSelectionListener() {
+	    	   @Override
 	           public void valueChanged(ListSelectionEvent event) {
-	               if (!event.getValueIsAdjusting()) {
+	              if (!event.getValueIsAdjusting()) {
 	            	   Reservation selectedReservation = reservations.get(list.getSelectedIndex());
 	                  System.out.println("Selected Reservation: " + selectedReservation);
-	                  displayReservation(selectedReservation, reviewer);
 	               }
 	           }
 	       });
@@ -100,7 +100,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	       reservationListPane.addPropertyChangeListener("selectedReservation", new PropertyChangeListener() {
 	           @Override
 	           public void propertyChange(PropertyChangeEvent evt) {
-	               Reservation selectedReservation = (Reservation) evt.getNewValue();
+	                selectedReservation = (Reservation) evt.getNewValue();
 	               System.out.println("Received PropertyChangeEvent with selected reservation: " + selectedReservation);
 	               // Display the selected reservation
 	               displayReservation(selectedReservation, reviewer);
