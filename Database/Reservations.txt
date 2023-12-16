@@ -4,7 +4,7 @@
 
 Reservation ID: 1
 Account ID: 0000000001
-Flight Number: 0000000002
+Flight Number: 0000000008
 Date of Booking: 2023-12-01T18:53:48.190065-08:00[America/Los_Angeles]
 Date of Departure: 2023-12-22
 Departure Airport: LAX
