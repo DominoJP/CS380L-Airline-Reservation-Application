@@ -44,7 +44,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	   private JButton cancelButton;
 	   private static final long serialVersionUID = 1L;
 	   private Account reviewer;
-	   private Reservation selectedReservation;// Added field to store the currently selected reservation
+	   public Reservation selectedReservation;// Added field to store the currently selected reservation
 
 	   /**
 	    * Constructor to initialize the ReviewPane.
@@ -79,7 +79,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	    	   @Override
 	           public void valueChanged(ListSelectionEvent event) {
 	              if (!event.getValueIsAdjusting()) {
-	            	   Reservation selectedReservation = reservations.get(list.getSelectedIndex());
+	            	  selectedReservation = reservations.get(list.getSelectedIndex());
 	                  System.out.println("Selected Reservation: " + selectedReservation);
 	               }
 	           }
