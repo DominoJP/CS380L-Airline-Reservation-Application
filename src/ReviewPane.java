@@ -54,7 +54,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	    * @param String reservationsFilePath The file path for reservations.
 	    */
 	   public ReviewPane(JPanel contentPane, Account account, String reservationsFilePath, ReservationListPane reservationListPane) {
-	       this.reservations = new ArrayList<>();
+	       this.reservations = account.getReservationHistory();
 	       this.cancelReservation = new CancelReservation(reservationsFilePath, this.reservations);
 	       this.reviewer = account;
 	       this.selectedReservation = null;
