@@ -22,7 +22,7 @@ import java.util.Iterator;
  * @author Jevy Miranda
  */
 public final class FlightIO {
-	private static final String FILE_PATH = "src/Database/Flights.txt";
+	private static final String FILE_PATH = "Database/Flights.txt";
 	private static final int ECONOMY_COUNT_INDEX = 10;
 	private static final int BUSINESS_COUNT_INDEX = 13;
 	private static final int FIRST_CLASS_COUNT_INDEX = 16;

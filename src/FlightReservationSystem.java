@@ -24,7 +24,7 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 	public static void main(String[] args) {
 
 		//Instantiation of cancel reservation object.
-		CancelReservation cancelReservation = new CancelReservation("src/Database/Reservations.txt");
+		CancelReservation cancelReservation = new CancelReservation("Database/Reservations.txt", null);
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -75,10 +75,9 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		PassengerPane PassengerSixPane = new PassengerPane(contentPane, 6, "PASSENGER5", "NULL", selectedFlight);
 		PaymentPane PaymentPane = new PaymentPane(contentPane, account);
 		ReservationListPane ReservationListPane = new ReservationListPane(contentPane, account);
-		ReservationCancellationPane ReservationCancellationPane = new ReservationCancellationPane(CancelReservation, contentPane);
 		ManagerPane managerPane = new ManagerPane(contentPane, manager);
 		
-		ReviewPane ReviewPane = new ReviewPane(contentPane, account, "src/Database/Reservations.txt");
+		ReviewPane ReviewPane = new ReviewPane(contentPane, account, "Database/Reservations.txt", ReservationListPane);
 
 
 		// Program start
@@ -104,7 +103,6 @@ public class FlightReservationSystem extends javax.swing.JFrame {
 		contentPane.add(ReservationListPane, "REVIEW_LIST");
 
 		// Select "Cancel"
-		contentPane.add(ReservationCancellationPane, "Cancel");
 		contentPane.add(ReviewPane, "Review");
 		
 		// Select "Manager"

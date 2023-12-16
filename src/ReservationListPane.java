@@ -67,6 +67,7 @@ public class ReservationListPane extends JPanel implements PropertyChangeListene
 		btnReview.addActionListener(new ActionListener() {
 		   public void actionPerformed(ActionEvent e) {
 		       Reservation selectedReservation = (Reservation) list.getSelectedValue();
+		       System.out.println("Firing PropertyChangeEvent with selected reservation: " + selectedReservation);
 		       // Pass the selected reservation to the ReviewPane
 		       PropertyChangeEvent event = new PropertyChangeEvent(this, "selectedReservation", null, selectedReservation);
 		       for (PropertyChangeListener listener : getPropertyChangeListeners()) {

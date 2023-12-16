@@ -44,6 +44,7 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	   private JButton cancelButton;
 	   private static final long serialVersionUID = 1L;
 	   private Account reviewer;
+	   private Reservation selectedReservation;// Added field to store the currently selected reservation
 
 	   /**
 	    * Constructor to initialize the ReviewPane.
@@ -52,11 +53,12 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	    * @param Account account The account.
 	    * @param String reservationsFilePath The file path for reservations.
 	    */
-	   public ReviewPane(JPanel contentPane, Account account, String reservationsFilePath) {
-	       
-	       this.cancelReservation = new CancelReservation(reservationsFilePath);
-	       
+	   public ReviewPane(JPanel contentPane, Account account, String reservationsFilePath, ReservationListPane reservationListPane) {
+	       this.reservations = new ArrayList<>();
+	       this.cancelReservation = new CancelReservation(reservationsFilePath, this.reservations);
 	       this.reviewer = account;
+	       this.selectedReservation = null;
+	       reservationListPane.addPropertyChangeListener(this);
 
 	       setLayout(new BorderLayout());
 	       setPreferredSize(new Dimension(500, 300));
@@ -70,11 +72,14 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	       listScrollPane.setAlignmentX(LEFT_ALIGNMENT);
 
 	       add(listScrollPane, BorderLayout.WEST);
+	       System.out.println("Model Size: " + model.size());
+	       System.out.println("Reservations Size: " + reservations.size());
 
 	       list.addListSelectionListener(new ListSelectionListener() {
 	           public void valueChanged(ListSelectionEvent event) {
 	               if (!event.getValueIsAdjusting()) {
-	                  Reservation selectedReservation = reservations.get(list.getSelectedIndex());
+	            	   Reservation selectedReservation = reservations.get(list.getSelectedIndex());
+	                  System.out.println("Selected Reservation: " + selectedReservation);
 	                  displayReservation(selectedReservation, reviewer);
 	               }
 	           }
@@ -82,72 +87,100 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 
 	       //Initialize return button
 	       JToolBar toolBar = new JToolBar();
-			add(toolBar, BorderLayout.NORTH);
-			
-			
-			JButton btnReturn = new JButton("Return");
-			btnReturn.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					((CardLayout) contentPane.getLayout()).show(contentPane, "REVIEW_LIST");
-				}
-			});
-			toolBar.add(btnReturn);
-			
-			//Initialize cancel reservation button. 
-			JButton btnCancel = new JButton("Cancel Reservation");
-			btnCancel.addActionListener(new ActionListener() {
-			   @Override
-			   public void actionPerformed(ActionEvent e) {
-			       Reservation selectedReservation = reservations.get(list.getSelectedIndex());
-			       boolean result = cancelReservation.cancelReservationAction(reservationsFilePath);
-			       if (result) {
-			           // Successfully cancelled the reservation
-			           JOptionPane.showMessageDialog(ReviewPane.this, "Reservation cancelled successfully.");
-			           reservations.remove(selectedReservation); // remove reservation from the list
-			           model.removeElement(selectedReservation); // remove reservation from the model
-			       } else {
-			           // Failed to cancel the reservation
-			           JOptionPane.showMessageDialog(ReviewPane.this, "Failed to cancel the reservation.", "Error", JOptionPane.ERROR_MESSAGE);
-			       }
-			   }
-			});
-			toolBar.add(btnCancel); // Add cancel button to the tool bar
+	       add(toolBar, BorderLayout.NORTH);
 
+	       JButton btnReturn = new JButton("Return");
+	       btnReturn.addActionListener(new ActionListener() {
+	           public void actionPerformed(ActionEvent e) {
+	               ((CardLayout) contentPane.getLayout()).show(contentPane, "REVIEW_LIST");
+	           }
+	       });
+	       toolBar.add(btnReturn);
 	       // Add PropertyChangeListener to listen for the selectedReservation property
-	       addPropertyChangeListener("selectedReservation", new PropertyChangeListener() {
+	       reservationListPane.addPropertyChangeListener("selectedReservation", new PropertyChangeListener() {
 	           @Override
 	           public void propertyChange(PropertyChangeEvent evt) {
-	        	   Reservation selectedReservation = (Reservation) evt.getNewValue();
-	        	   System.out.println("Selected reservation: " + selectedReservation);
-	        	   // Display the selected reservation
-	        	   displayReservation(selectedReservation, reviewer);
-	        	   add(detailsPanel, BorderLayout.CENTER);
-	        	   revalidate();
-	        	   repaint();
-	        	}
-
+	               Reservation selectedReservation = (Reservation) evt.getNewValue();
+	               System.out.println("Received PropertyChangeEvent with selected reservation: " + selectedReservation);
+	               // Display the selected reservation
+	               displayReservation(selectedReservation, reviewer);
+	               add(detailsPanel, BorderLayout.CENTER);
+	               revalidate();
+	               repaint();
+	           }
 	       });
-	   }
-	   
+	       
+	       //Initialize cancel reservation button.
+	       JButton btnCancel = new JButton("Cancel Reservation");
+	       btnCancel.addActionListener(new ActionListener() {
+	           @Override
+	           public void actionPerformed(ActionEvent e) {
+	        	   System.out.println("Current Reservation: " + selectedReservation);
+	        	   int reservationID = selectedReservation.getID();
+	               boolean result = cancelReservation.cancelReservationAction(reservationID);
+	               if (result) {
+	                  // Successfully cancelled the reservation
+	                  JOptionPane.showMessageDialog(ReviewPane.this, "Reservation cancelled successfully.");
+	                  reservations.remove(selectedReservation); // remove reservation from the list
+	                  model.removeElement(selectedReservation); // remove reservation from the model
+	                  selectedReservation = null; // clear the currently selected reservation
+	               } else {
+	                  // Failed to cancel the reservation
+	                  JOptionPane.showMessageDialog(ReviewPane.this, "Failed to cancel the reservation.", "Error", JOptionPane.ERROR_MESSAGE);
+	               }
+	           }
+	       });
+	       toolBar.add(btnCancel); // Add cancel button to the tool bar
 
-	   
+	      
+	   }
 
 	   /**
 	    * Method to display the details of a reservation.
 	    * @param Reservation reservation The reservation to be displayed.
 	    */
 	   public void displayReservation(Reservation reservation, Account account) {
-		   
-	       detailsPanel.removeAll(); // Clear the panel
-	       System.out.println("Displaying reservation: " + reservation);
-	       System.out.println("Details panel: " + detailsPanel);
+	       // Clear the details panel to ensure that it only displays the details of the current reservation
+	       detailsPanel.removeAll();
 
+	       // Log the reservation object to the console for debugging purposes
+	       System.out.println("Displaying reservation: " + reservation);
+
+	       // Add the reservation ID to the details panel
 	       detailsPanel.add(new JLabel("Reservation ID:"));
 	       detailsPanel.add(new JLabel("" + reservation.getID()));
 	       System.out.println("Added reservation ID to detailsPanel");
 
-	       detailsPanel.add(returnButton); // Add return button to detailsPanel
-	       detailsPanel.add(cancelButton); // Add cancel button to detailsPanel
+	       // Add the account ID to the details panel
+	       detailsPanel.add(new JLabel("Account ID:"));
+	       detailsPanel.add(new JLabel("" + account.getAccountNumber()));
+
+	       // Add the flight number to the details panel
+	       detailsPanel.add(new JLabel("Flight Number:"));
+	       detailsPanel.add(new JLabel("" + reservation.getFlight()));
+
+	       // Add the date of booking to the details panel
+	       detailsPanel.add(new JLabel("Date of Booking:"));
+	       detailsPanel.add(new JLabel("" + reservation.getDateTimeAtBooking()));
+
+	       // Add the cabin class to the details panel
+	       detailsPanel.add(new JLabel("Cabin Class:"));
+	       detailsPanel.add(new JLabel("" + reservation.getCabin()));
+
+		   // Add the total pricing to the details panel
+		   detailsPanel.add(new JLabel("Total Pricing:"));
+		   detailsPanel.add(new JLabel("" + reservation.getTotalPrice()));
+
+		   // Add the passenger names to the details panel
+		   detailsPanel.add(new JLabel("Passenger Name:"));
+		   // Retrieve the passenger names from the reservation object
+		   ArrayList<String> passengers = reservation.getPassengers();
+		   // Iterate over the passenger names and add each one to the details panel
+		   for (String passengerName : passengers) {
+		      detailsPanel.add(new JLabel(passengerName));
+		      // Log the passenger name to the console for debugging purposes
+		      System.out.println("Passenger name: " + passengerName);
+		   }
 
 	       revalidate(); // Refresh the panel
 	       repaint(); // Repaint the panel

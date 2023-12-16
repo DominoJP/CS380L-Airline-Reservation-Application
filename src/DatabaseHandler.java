@@ -15,13 +15,17 @@ public class DatabaseHandler {
         return lines;
     }
 
-    public boolean writeToFile(String filePath, List<String> data) {
+    public boolean writeToFile(String filePath, List<Reservation> reservations) {
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (String line : data) {
-                writer.write(line);
+            
+            for(Reservation res : reservations) {
+                writer.write(res.toString()); 
                 writer.newLine();
             }
+            
             return true;
+            
         } catch (IOException e) {
             e.printStackTrace();
             return false;

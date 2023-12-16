@@ -14,14 +14,17 @@ public class CancelReservation {
    /**
     * The default reservation file path.
     */
-   private String reservationFilePath = "src/Database/Reservation.txt";
+   private String reservationFilePath = "Database/Reservations.txt";
    private DatabaseHandler databaseHandler = new DatabaseHandler();
+   private List<Reservation> reservations;
 
    /**
     * Constructor to set the reservation file path.
+ * @param reservations 
     * @param string reservationFilePath The path of the reservation file.
     */
-   public CancelReservation(String reservationFilePath) {
+   public CancelReservation(String reservationFilePath, ArrayList<Reservation> reservations) {
+	   this.reservations = reservations;
        this.reservationFilePath = reservationFilePath;
    }
 
@@ -30,58 +33,31 @@ public class CancelReservation {
     * @param string reservationID The ID of the reservation to be canceled.
     * @return true if the reservation was successfully canceled, false if not found or an error occurred.
     */
-   public boolean cancelReservationAction(String reservationID) {
-       List<String> reservations = new ArrayList<>();
-       boolean found = false;
-
-       if (reservationID == null) {
-           throw new IllegalArgumentException("Reservation ID cannot be null");
+   public boolean cancelReservationAction(int reservationID) {
+	    
+	   if(reservationID < 0) { 
+           throw new IllegalArgumentException("Invalid reservation ID");
        }
 
-       try {
-           // Read through the reservation file line by line
-           List<String> lines = databaseHandler.readFromFile(this.reservationFilePath);
-           StringBuilder currentReservation = new StringBuilder();
-           boolean reservationFound = false;
+       boolean removed = false;
 
-           for (String line : lines) {
-               if (line.contains("Reservation ID: " + reservationID)) {
-                  found = true;
-                  reservationFound = true;
+       for(Reservation reservation : this.reservations) {
+           
+           if(reservation.getID() == reservationID) {
 
-                  // Skip the current reservation by reading until the end marker
-                  for (int i = lines.indexOf(line); i < lines.size(); i++) {
-                      line = lines.get(i);
-                      if (line.contains("--Reservation End--")) {
-                          break;
-                      }
-                  }
-               }
+               removed = this.reservations.remove(reservation); 
+               break;
 
-               // If not inside a reservation block, add the current reservation to the list
-               if (!reservationFound) {
-                  // Build the current reservation content
-                  currentReservation.append(line).append("\n");
-               }
-
-               if (line.contains("--Reservation End--")) {
-                  reservationFound = false;
-                  if (!found) {
-                      reservations.add(currentReservation.toString());
-                  }
-                  currentReservation = new StringBuilder();
-               }
            }
-       } catch (IOException e) {
-           e.printStackTrace();
-           return false; // Return false in case of an error
        }
 
-       if (found) {
-           // Write the updated reservation data back to the file
-           return databaseHandler.writeToFile(this.reservationFilePath, reservations);
+       if(removed) {
+
+           DatabaseHandler handler = new DatabaseHandler();
+           return handler.writeToFile(reservationFilePath, reservations);
+
        }
 
-       return false; // Reservation was not found
+       return false;
    }
 }

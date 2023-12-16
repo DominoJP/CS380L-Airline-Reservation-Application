@@ -27,8 +27,8 @@ public class Manager {
 	private Account customer;
 	private Flight flight;
 	private ArrayList<Flight> flightList;
-	private String reservationPath = "src/Database/Reservations.txt";
-	private String flightPath = "src/Database/Flights.txt";
+	private String reservationPath = "Database/Reservations.txt";
+	private String flightPath = "Database/Flights.txt";
 	private FlightIO finder;
 	private ArrayList<Account> accounts;
 
