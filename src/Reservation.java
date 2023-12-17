@@ -23,6 +23,7 @@ public class Reservation {
 	//private int[] seatNumbers; //an array containing the list of chosen seat numbers for the flight
 	private BigDecimal totalPrice; // keeps track of the total cost of this reservation since multiple tickets may be ordered
 	private ZonedDateTime dateTimeAtBooking;
+	 private boolean cancelled = false;
 	
 	public Reservation() {
 		this.reservationId = -1;
@@ -257,7 +258,13 @@ public class Reservation {
 		 return this.dateTimeAtBooking;
 	 }
 	 
-	 
+	 public void setCancelled(boolean cancelled) {
+	       this.cancelled = cancelled;
+	   }
+
+	   public boolean isCancelled() {
+	       return this.cancelled;
+	   }
 	 /**
 	  * this method allows the user to remove a passenger from the reservation by inputting their name, String p
 	  * @param String p

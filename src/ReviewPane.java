@@ -67,11 +67,6 @@ public class ReviewPane extends JPanel implements PropertyChangeListener {
 	       list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	       list.setLayoutOrientation(JList.VERTICAL);
 	       list.setVisibleRowCount(-1);
-	       JScrollPane listScrollPane = new JScrollPane(list);
-	       listScrollPane.setPreferredSize(new Dimension(250, 100));
-	       listScrollPane.setAlignmentX(LEFT_ALIGNMENT);
-
-	       add(listScrollPane, BorderLayout.WEST);
 	       System.out.println("Model Size: " + model.size());
 	       System.out.println("Reservations Size: " + reservations.size());
 

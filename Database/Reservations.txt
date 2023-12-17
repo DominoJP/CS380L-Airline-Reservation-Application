@@ -7,7 +7,8 @@ Departure Airport: LAX
 Arrival Airport: JFK
 Total Pricing: 300.72
 Cabin Class: Economy
-Passenger: Josh Test
+Booking Records:
+Passenger Name: Josh Test
 --Reservation End--
 
 Reservation ID: 2
@@ -19,7 +20,8 @@ Departure Airport: LAX
 Arrival Airport: JFK
 Cabin Class: Economy
 Total Pricing: 280.59
-Passenger: Josh Test
+Booking Records:
+Passenger Name: Josh Test
 --Reservation End--
 
 Reservation ID: 3
@@ -31,5 +33,6 @@ Departure Airport: LAX
 Arrival Airport: JFK
 Cabin Class: Economy
 Total Pricing: 300.02
-Passenger: John
+Booking Records:
+Passenger Name: John
 --Reservation End--

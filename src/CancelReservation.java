@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Core logic for cancel reservation functionality.
@@ -30,34 +31,35 @@ public class CancelReservation {
 
    /**
     * Method to cancel a reservation by its ID.
-    * @param string reservationID The ID of the reservation to be canceled.
+    * @param List<Reservation> is used to flag to set up a list of reservations that are read by reservationID.
+    * If The ID is found the reservation is to be canceled and overwritten.
     * @return true if the reservation was successfully canceled, false if not found or an error occurred.
     */
    public boolean cancelReservationAction(int reservationID) {
-	    
-	   if(reservationID < 0) { 
-           throw new IllegalArgumentException("Invalid reservation ID");
-       }
+	      if(reservationID < 0) { 
+	          throw new IllegalArgumentException("Invalid reservation ID");
+	      }
 
-       boolean removed = false;
+	      boolean cancelled = false;
 
-       for(Reservation reservation : this.reservations) {
-           
-           if(reservation.getID() == reservationID) {
+	      for(Reservation reservation : this.reservations) {
+	          if(reservation.getID() == reservationID) {
+	              reservation.setCancelled(true);
+	              cancelled = true;
+	              break;
+	          }
+	      }
 
-               removed = this.reservations.remove(reservation); 
-               break;
+	      if(cancelled) {
+	          // Filter out the cancelled reservations
+	          List<Reservation> nonCancelledReservations = this.reservations.stream()
+	              .filter(reservation -> !reservation.isCancelled())
+	              .collect(Collectors.toList());
 
-           }
-       }
+	          // Write the non-cancelled reservations to the file
+	          return databaseHandler.writeToFile(this.reservationFilePath, nonCancelledReservations);
+	      }
 
-       if(removed) {
-
-           DatabaseHandler handler = new DatabaseHandler();
-           return handler.writeToFile(reservationFilePath, reservations);
-
-       }
-
-       return false;
-   }
+	      return false;
+	  }
 }
