@@ -158,6 +158,7 @@ public class Account{
 	  * @param flight : flight to be reserved.
 	  * @param passengers : list of passengers for reservation.
 	  */
+	 /*
 	 public void reserve(Flight flight, List<Passenger> passengers) {
 	 //Implementation to make a reservation flight
 	 if(flight.isFull(email)) {
@@ -168,7 +169,8 @@ public class Account{
 		 reservationHistory.add(reservation);
 		 System.out.println("Reservation sucessfully!");
 	 }
- }
+ 	 }
+ 	 */
 
 
 	/**
